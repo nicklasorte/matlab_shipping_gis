@@ -1,4 +1,4 @@
-function [T]=check_ports_rev1(result,ports,max_gap_km)
+function [T]=check_ports_rev1(result,ports,max_gap_km,min_network_cells)
 %check_ports_rev1  Confirm that large-ship traffic reaches named ports.
 %
 %   T=check_ports_rev1(result,ports,max_gap_km) returns, for each port in
@@ -9,14 +9,18 @@ function [T]=check_ports_rev1(result,ports,max_gap_km)
 %   change that cuts off a river port (for example, Baton Rouge at the head
 %   of deep-draft navigation on the Mississippi) can't pass unnoticed.
 %
-%   It also reports, per port, whether the ship cells near the port connect
-%   to the open sea through other ship cells (8-neighbor), so a river port
-%   is reached by a continuous route, not an isolated patch.
+%   It also reports, per port, whether the ship cells near the port belong
+%   to a large connected network of ship cells (8-neighbor; at least
+%   MIN_NETWORK_CELLS cells, or touching the grid edge, where routes leave
+%   for open sea). The Gulf, Atlantic, Pacific, and Great Lakes networks
+%   don't join inside the grid, so there is more than one. A river port on
+%   a small isolated patch fails this test.
 
 arguments
     result (1,1) struct
     ports table
     max_gap_km (1,1) double {mustBePositive} = 2
+    min_network_cells (1,1) double {mustBePositive} = 2000
 end
 
 R=result.R;
@@ -46,24 +50,26 @@ for dr=0:1
 end
 piece=conncomp(graph(edges(:,1),edges(:,2),[],num_src));
 piece_size=accumarray(piece(:),1);
-[~,sea_piece]=max(piece_size);   %%%%%the largest piece is the open-sea network
+at_edge=row_s==1 | row_s==R.RasterSize(1) | col_s==1 | col_s==R.RasterSize(2);
+touches_edge=accumarray(piece(:),at_edge,[numel(piece_size) 1],@any);
+is_network=piece_size>=min_network_cells | touches_edge;
 
 num_port=height(ports);
 gap_km=NaN(num_port,1);
-on_sea_route=false(num_port,1);
+on_network=false(num_port,1);
 for k=1:num_port
     d=2*earth_radius_km*asin(min(1,sqrt(sind((lat_vec(row_s)-ports.lat(k))/2).^2 + ...
         cosd(ports.lat(k))*cosd(lat_vec(row_s)).*sind((lon_vec(col_s)'-ports.lon(k))/2).^2)));
     [gap_km(k),ix]=min(d);
-    on_sea_route(k)=piece(ix)==sea_piece;
+    on_network(k)=is_network(piece(ix));
 end
-T=table(string(ports.name),ports.lat,ports.lon,gap_km,gap_km<=max_gap_km,on_sea_route, ...
-    'VariableNames',{'port','lat','lon','gap_to_ship_cell_km','reached','on_sea_route'});
+T=table(string(ports.name),ports.lat,ports.lon,gap_km,gap_km<=max_gap_km,on_network, ...
+    'VariableNames',{'port','lat','lon','gap_to_ship_cell_km','reached','on_route_network'});
 for z=1:numel(result.zone)
     T.(sprintf('in_%gkm_zone',result.zone(z).distance_km))=isinterior(result.zone(z).poly,ports.lon,ports.lat);
 end
 
-missed=T.port(~T.reached | ~T.on_sea_route);
+missed=T.port(~T.reached | ~T.on_route_network);
 if ~isempty(missed)
     warning('shipgis:portMissed','Large-ship routes do not reach: %s',strjoin(missed,', '));
 end

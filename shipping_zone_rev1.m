@@ -166,7 +166,7 @@ if isfield(p,'check_ports') && ~isempty(p.check_ports)
     result.port_check=check_ports_rev1(result,p.check_ports);
     writetable(result.port_check,fullfile(p.out_dir,sprintf('%s_port_check.csv',p.out_name)));
     disp_progress(sprintf('Port check: %d of %d ports reached by a continuous route', ...
-        nnz(result.port_check.reached & result.port_check.on_sea_route),height(result.port_check)));
+        nnz(result.port_check.reached & result.port_check.on_route_network),height(result.port_check)));
 end
 
 %%%%%Save the zones; the full-size grids only when asked, in compact types.
