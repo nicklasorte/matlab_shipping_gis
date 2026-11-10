@@ -135,7 +135,7 @@ num_bad=0;
 while ~(strcmp(f1.State,'finished') && strcmp(f2.State,'finished'))
     if isfile(cache_file)
         try
-            load(cache_file,'pairs');
+            S_read=load(cache_file,'pairs'); %#ok<NASGU> the read itself is the test
         catch
             num_bad=num_bad+1;
         end
