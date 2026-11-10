@@ -1,7 +1,7 @@
 function [csv_path,tf_private]=download_ais_day_rev1(day,data_dir,zstd_exe,keep_csv,prefilter_min_length)
 %download_ais_day_rev1  Download and decompress one day of AIS data.
 %
-%   [csv_path,tf_private]=download_ais_day_rev1(day,data_dir,zstd_exe,keep_csv)
+%   [csv_path,tf_private]=download_ais_day_rev1(day,data_dir,zstd_exe,keep_csv,prefilter_min_length)
 %   returns the path of the daily MarineCadastre AIS CSV for DAY.
 %
 %   - If the shared CSV (for example AIS 2024-01-01 -> ais-2024-01-01.csv)
@@ -76,7 +76,8 @@ if endsWith(file_name,'.csv.zst')
     if prefilter_min_length>0
         %%%%%Stream: zstd to stdout, filter by length in Python, write the small CSV
         script=fullfile(fileparts(mfilename('fullpath')),'ais_prefilter.py');
-        [status,msg]=system(sprintf('"%s" -dc -q "%s" | /usr/bin/python3 "%s" %g > "%s"', ...
+        %%%%%pipefail: a zstd failure must fail the command, not just a Python one
+        [status,msg]=system(sprintf('set -o pipefail; "%s" -dc -q "%s" | /usr/bin/python3 "%s" %g > "%s"', ...
             zstd_exe,archive_path,script,prefilter_min_length,private_csv));
     else
         [status,msg]=system(sprintf('"%s" -d -f -q "%s" -o "%s"',zstd_exe,archive_path,private_csv));
