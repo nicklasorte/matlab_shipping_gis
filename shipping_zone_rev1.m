@@ -169,6 +169,23 @@ if isfield(p,'check_ports') && ~isempty(p.check_ports)
         nnz(result.port_check.reached & result.port_check.on_route_network),height(result.port_check)));
 end
 
+%%%%%All USACE Principal Ports in the grid: warn only for coastal and Great
+%%%%%Lakes ports with at least 1 million tons of foreign trade (deep-draft
+%%%%%ports). Inland river ports are barge ports and are not expected to be
+%%%%%reached. Port points are district reference points, so the gap allowed
+%%%%%is p.principal_ports_gap_km.
+if isfield(p,'principal_ports') && p.principal_ports
+    pp=load_principal_ports_rev1(fullfile(p.data_dir,'usace_principal_ports.csv'));
+    pp=pp(pp.lat>=R.LatitudeLimits(1) & pp.lat<=R.LatitudeLimits(2) & ...
+        pp.lon>=R.LongitudeLimits(1) & pp.lon<=R.LongitudeLimits(2),:);
+    deep_draft=pp.type~="I" & pp.foreign_tons>=1e6;
+    result.principal_port_check=check_ports_rev1(result,pp,p.principal_ports_gap_km,2000,deep_draft);
+    writetable(result.principal_port_check,fullfile(p.out_dir,sprintf('%s_principal_port_check.csv',p.out_name)));
+    ok=result.principal_port_check.reached & result.principal_port_check.on_route_network;
+    disp_progress(sprintf('Principal ports: %d of %d deep-draft ports reached; %d of %d inland ports reached', ...
+        nnz(ok & deep_draft),nnz(deep_draft),nnz(ok & pp.type=="I"),nnz(pp.type=="I")));
+end
+
 %%%%%Save the zones; the full-size grids only when asked, in compact types.
 %%%%%-v7 compresses; -v7.3 (HDF5) is only needed above 2 GB per variable.
 saved=rmfield(result,{'source_mask','ship_days','unique_ships','land_mask','dist_field_km'});

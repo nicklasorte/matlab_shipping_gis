@@ -1,4 +1,4 @@
-function [T]=check_ports_rev1(result,ports,max_gap_km,min_network_cells)
+function [T]=check_ports_rev1(result,ports,max_gap_km,min_network_cells,warn_rows)
 %check_ports_rev1  Confirm that large-ship traffic reaches named ports.
 %
 %   T=check_ports_rev1(result,ports,max_gap_km) returns, for each port in
@@ -8,6 +8,9 @@ function [T]=check_ports_rev1(result,ports,max_gap_km,min_network_cells)
 %   flagged with reached=false, and a warning names them, so a filter
 %   change that cuts off a river port (for example, Baton Rouge at the head
 %   of deep-draft navigation on the Mississippi) can't pass unnoticed.
+%
+%   WARN_ROWS (default all true) picks the ports a miss should warn about,
+%   for example only the deep-draft ports in a longer list.
 %
 %   It also reports, per port, whether the ship cells near the port belong
 %   to a large connected network of ship cells (8-neighbor; at least
@@ -21,6 +24,7 @@ arguments
     ports table
     max_gap_km (1,1) double {mustBePositive} = 2
     min_network_cells (1,1) double {mustBePositive} = 2000
+    warn_rows logical = true(height(ports),1)
 end
 
 R=result.R;
@@ -63,13 +67,15 @@ for k=1:num_port
     [gap_km(k),ix]=min(d);
     on_network(k)=is_network(piece(ix));
 end
+extra=ports(:,setdiff(ports.Properties.VariableNames,{'name','lat','lon'},'stable'));
 T=table(string(ports.name),ports.lat,ports.lon,gap_km,gap_km<=max_gap_km,on_network, ...
     'VariableNames',{'port','lat','lon','gap_to_ship_cell_km','reached','on_route_network'});
+T=[T extra];   %%%%%carry any extra columns (type, rank, tonnage) through
 for z=1:numel(result.zone)
     T.(sprintf('in_%gkm_zone',result.zone(z).distance_km))=isinterior(result.zone(z).poly,ports.lon,ports.lat);
 end
 
-missed=T.port(~T.reached | ~T.on_route_network);
+missed=T.port(warn_rows(:) & (~T.reached | ~T.on_route_network));
 if ~isempty(missed)
     warning('shipgis:portMissed','Large-ship routes do not reach: %s',strjoin(missed,', '));
 end
