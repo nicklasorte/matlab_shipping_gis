@@ -40,14 +40,18 @@ S-band radars anyway. The code keeps them when they pass the filter.
 ## Method
 
 1. **Large-ship cells.** The code samples one AIS day per week for a year
-   (52 days by default). It reads each daily MarineCadastre file, applies the
-   filter, and bins positions onto a 0.01° grid (about 1 km). A cell becomes a
-   ship cell when at least two distinct ships report in it, which drops
-   single-ship GPS errors over land.
+   (52 days by default). It reads each daily MarineCadastre file in chunks,
+   applies the filter, and bins positions onto a 0.01° grid (about 1 km). A
+   cell becomes a ship cell when at least four distinct ships report in it
+   over the sampled days. With two, the 2024 run kept 903 cells of tug and
+   barge traffic on the upper Mississippi that passed the type and length
+   filter; with four, it kept none, while the Columbia, Sacramento, Hudson,
+   St. Lawrence, and lower Mississippi ports stay in.
 2. **Fairways.** The code adds NOAA shipping fairways, traffic separation
    schemes, precautionary areas, and recommended routes as ship cells.
 3. **Distance field.** The code computes the great-circle distance from every
-   grid cell to the nearest ship cell (spherical Earth, KD-tree search).
+   grid cell to the nearest ship cell (spherical Earth, KD-tree search over
+   the edge cells of the ship area).
 4. **Zone definition.** Choose one of two modes:
    - `shore` (default): water within `shore_link_km` (25 km) of ship cells is
      ship water. Land is measured from the Census coastline that faces ship
@@ -83,6 +87,19 @@ Lakes and inland waterways, at a 1-minute sample.
   200 MB compressed and 750–1,000 MB as CSV. The code deletes each CSV after
   it caches that day's ship cells, which take a few MB.
 
+## Memory and disk
+
+The code works in pieces so a full year fits on a laptop:
+
+- Each AIS day is read in chunks of `p.ais_read_rows` rows (default
+  1,000,000, about 150 MB) with a `tabularTextDatastore`, not loaded whole.
+- Each day's result is cached in `p.data_dir` (a few MB) and the day's CSV is
+  deleted, so a stopped run resumes where it left off.
+- Days are merged one at a time into a running set of cell and ship pairs.
+- Distances are computed in blocks of `p.block_rows` grid rows (default 200)
+  from 1-D coordinate vectors; intermediate grids are cleared before
+  contouring.
+
 ## Run
 
 1. Edit the settings at the top of `init_shipping_zone_rev1.m`: distances,
@@ -91,6 +108,23 @@ Lakes and inland waterways, at a 1-minute sample.
 
 To process days in parallel, start a pool and set `p.parallel_flag=1`. Each
 worker needs about 2 GB of disk while it works.
+
+## 2024 results (lower 48, `shore` mode)
+
+52 AIS days (one a week in 2024), 1,580–2,090 large ships a day, 468,246 ship
+cells plus 1,499 fairway-only cells, 20,476 coastline cells that face ship
+water.
+
+| Distance | U.S. land in the zone |
+| --- | --- |
+| 25 km | 356,183 km² |
+| 50 km | 673,235 km² |
+| 100 km | 1,284,704 km² |
+
+Spot checks at 50 km: Chicago, Duluth, Houston, Baton Rouge, Portland
+(Oregon), Sacramento, Seattle, Albany, and Washington, D.C. are in the zone;
+Denver, Memphis, St. Louis, Nashville, Atlanta, Pittsburgh, and Jackson
+(Mississippi) are not.
 
 ## Outputs
 
