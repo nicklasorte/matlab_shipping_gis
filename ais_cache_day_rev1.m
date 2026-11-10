@@ -25,7 +25,7 @@ if isfile(cache_file)
     return
 end
 
-csv_path=download_ais_day_rev1(day,p.data_dir,p.zstd_exe);
+[csv_path,tf_private]=download_ais_day_rev1(day,p.data_dir,p.zstd_exe,~p.delete_csv);
 [S.pairs,S.num_row_kept,S.num_mmsi_kept]=ais_large_ship_cells_rev1(csv_path,R,p.filt);
 
 %%%%%Atomic write: unique temp name in the same folder, then ATOMIC_MOVE.
@@ -44,7 +44,7 @@ else
     java.nio.file.Files.move(src,dst,opts);
 end
 
-if p.delete_csv
-    delete(csv_path);
+if tf_private
+    delete(csv_path);   %%%%%only this call's private copy; a shared CSV is never deleted here
 end
 end
