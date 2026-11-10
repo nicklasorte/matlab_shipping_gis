@@ -94,7 +94,7 @@ A full run writes about 4.5 MB:
 | Setting | Default | Effect |
 | --- | --- | --- |
 | `p.simplify_deg` | 0.005 | Drops polygon vertices within 0.005° (about 0.5 km, half a grid cell) with `reducem`. Cuts vertices about 6 times; the 50 km land zone moves by under 1% of its area. Use 0 to keep every vertex. |
-| `p.kmz` | `true` | Writes KMZ (zipped KML), about 5 times smaller than KML. |
+| `p.kmz` | `true` | Also writes a KMZ (zipped KML, about 5 times smaller) next to each KML. |
 | `p.save_grids` | `false` | Leaves the full-size grids out of the `.mat` (1.3 MB instead of 33 MB). `true` saves them in compact types. |
 | `p.png_dpi` | 200 | Map resolution. |
 
@@ -114,7 +114,8 @@ The code works in pieces so a full year fits on a laptop:
 ## Run
 
 1. Edit the settings at the top of `init_shipping_zone_rev1.m`: distances,
-   zone mode, AIS days, and folders.
+   zone mode, AIS days, and folders. Run it from the repo folder so it uses
+   the cached inputs in `data/`.
 2. Run `init_shipping_zone_rev1`.
 
 To process days in parallel, start a pool and set `p.parallel_flag=1`. Each
@@ -140,7 +141,12 @@ The 2024 maps are in `docs/`:
 | Land within X km of large-ship water | [25 km](docs/shipping_zone_2024_shore_25km_us_map.png) | [50 km](docs/shipping_zone_2024_shore_50km_us_map.png) | [100 km](docs/shipping_zone_2024_shore_100km_us_map.png) |
 | Large-ship routes with the X km buffer | [25 km](docs/shipping_zone_2024_shore_25km_routes_buffer_map.png) | [50 km](docs/shipping_zone_2024_shore_50km_routes_buffer_map.png) | [100 km](docs/shipping_zone_2024_shore_100km_routes_buffer_map.png) |
 
-Large-ship routes alone: [routes map](docs/shipping_zone_2024_routes_map.png).
+Other maps:
+
+- [Large-ship routes alone](docs/shipping_zone_2024_routes_map.png)
+- [Lower Mississippi, Gulf to Baton Rouge, with the 50 km zone](docs/shipping_zone_2024_lower_mississippi_50km_map.png)
+- [Diagnostic map: all three zones and the ship cells](docs/shipping_zone_2024_shore_map.png)
+- [Length cutoff check](docs/gt_proxy_check_2024.png)
 
 ![Large-ship routes and the 50 km buffer](docs/shipping_zone_2024_shore_50km_routes_buffer_map.png)
 
@@ -149,10 +155,44 @@ Large-ship routes alone: [routes map](docs/shipping_zone_2024_routes_map.png).
 ## 2024 zone files
 
 `outputs/2024/` holds the 2024 zones for 25, 50, and 100 km as shapefiles
-(EPSG:4326) and KMZ files for Google Earth:
+(EPSG:4326), KML files, and KMZ files for Google Earth:
 
 - `shipping_zone_2024_shore_<X>km`: ship water plus land out to X km.
 - `shipping_zone_2024_shore_<X>km_land`: the same zone clipped to U.S. land.
+
+It also holds `shipping_zone_2024_shore_rev1.mat` (the zones plus the
+full-size grids in compact types), `shipping_zone_2024_port_check.csv`, and
+the length cutoff tables (`gt_proxy_*.csv`).
+
+## Data in the repo
+
+`data/` holds every input the 2024 run used, so `init_shipping_zone_rev1`
+runs without downloading anything:
+
+| File | Content |
+| --- | --- |
+| `ais_cells_2024MMDD_*_rev1.mat` (52 files) | Large-ship grid cells for each sampled AIS day (the raw AIS files are 200 MB each and aren't stored) |
+| `fairways_rev1.geojson` | NOAA shipping fairways and traffic separation schemes |
+| `cb_2023_us_state_500k/` | Census state boundaries, 1:500,000 |
+| `tl_2023_us_coastline/` | Census TIGER/Line coastline |
+| `wikidata_imo_gt_len.csv` | Wikidata gross tonnage and length by IMO number (queried 2026-11-10) |
+| `ais_vessels_2024_4days.csv` | One row per ship from four 2024 AIS days, for the length cutoff check |
+
+## Ports the routes must reach
+
+Each run checks that large-ship routes reach these ports by a continuous
+chain of ship cells, and warns if one is cut off. The 2024 run reaches all
+of them; each is within 1.7 km of a ship cell and inside the 25, 50, and
+100 km zones.
+
+Baton Rouge (head of deep-draft navigation on the Mississippi), New Orleans,
+Houston, Portland (Oregon), Sacramento, Stockton, Albany, Philadelphia,
+Duluth, and Chicago. Edit `p.check_ports` to change the list. The results are
+in `outputs/2024/shipping_zone_2024_port_check.csv`.
+
+On the Mississippi, large-ship cells run without a break from Head of Passes
+to just above Baton Rouge (30.49°N); 251 different large ships used the
+Baton Rouge cells in the 52 sampled days.
 
 ## Outputs
 
@@ -160,8 +200,10 @@ For each distance `X` in `p.distances_km`, the output folder holds:
 
 | File | Content |
 | --- | --- |
-| `<name>_<mode>_<X>km.shp`, `.kmz` | Zone: ship water plus land out to X km |
-| `<name>_<mode>_<X>km_land.shp`, `.kmz` | The same zone clipped to U.S. land |
+| `<name>_<mode>_<X>km.shp`, `.kml`, `.kmz` | Zone: ship water plus land out to X km |
+| `<name>_<mode>_<X>km_land.shp`, `.kml`, `.kmz` | The same zone clipped to U.S. land |
+| `<name>_port_check.csv` | Distance from each port in `p.check_ports` to the nearest ship cell |
+| `<name>_<region>_<X>km_map.png` | Zoomed map for each entry in `p.region_maps` |
 | `<name>_<mode>_rev1.mat` | `result` struct: grid, masks, distance field, and zones |
 | `<name>_<mode>_map.png` | Diagnostic map: all zones and the ship cells |
 | `<name>_<mode>_<X>km_us_map.png` | U.S. map of the land within X km and the large-ship water |
