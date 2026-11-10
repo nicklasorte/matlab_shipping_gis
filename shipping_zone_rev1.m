@@ -182,7 +182,12 @@ if p.make_figure
         map_info=plot_zone_map_rev1(result,d_km, ...
             fullfile(p.out_dir,sprintf('%s_%s_%gkm_us_map.png',p.out_name,p.zone_mode,d_km)),state_shp,p.png_dpi);
         disp_progress(sprintf('Map %g km: %s',d_km,map_info.title));
+        %%%%%Routes with this buffer (water and land)
+        plot_routes_map_rev1(result,d_km, ...
+            fullfile(p.out_dir,sprintf('%s_%s_%gkm_routes_buffer_map.png',p.out_name,p.zone_mode,d_km)),state_shp,p.png_dpi);
     end
+    %%%%%Routes alone
+    plot_routes_map_rev1(result,[],fullfile(p.out_dir,sprintf('%s_routes_map.png',p.out_name)),state_shp,p.png_dpi);
 end
 disp_progress('shipping_zone_rev1: done');
 end
