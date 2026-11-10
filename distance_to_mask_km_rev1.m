@@ -43,7 +43,16 @@ if ~strcmp(R.ColumnsStartFrom,'south') || ~strcmp(R.RowsStartFrom,'west')
     error('shipgis:orientation','Expected a raster with ColumnsStartFrom south and RowsStartFrom west.');
 end
 
-[src_row,src_col]=find(source_mask);
+%%%%%Only edge cells of the mask can be the nearest source to a cell
+%%%%%outside it (a step toward the query point from an interior cell is
+%%%%%still a source cell and is closer), so the KD-tree holds edge cells
+%%%%%only and cells inside the mask get distance 0. With a year of AIS this
+%%%%%cuts the tree from about 500,000 cells to under 100,000.
+mask_pad=true(size(source_mask)+2);   %%%%%pad with true so the raster edge is not an edge of the mask
+mask_pad(2:end-1,2:end-1)=source_mask;
+interior=mask_pad(1:end-2,2:end-1) & mask_pad(3:end,2:end-1) & mask_pad(2:end-1,1:end-2) & mask_pad(2:end-1,3:end);
+edge_mask=source_mask & ~interior;
+[src_row,src_col]=find(edge_mask);
 xyz_src=sphere_xyz(lat_vec(src_row),lon_vec(src_col)',earth_radius_km);
 searcher=KDTreeSearcher(xyz_src);
 
@@ -67,6 +76,7 @@ for row_start=1:block_rows:numel(query_rows)
     arc_km(arc_km>max_km)=2*max_km;
     dist_km(rows,query_cols)=reshape(arc_km,numel(rows),numel(query_cols));
 end
+dist_km(source_mask)=0;
 end
 
 function xyz=sphere_xyz(lat,lon,radius)

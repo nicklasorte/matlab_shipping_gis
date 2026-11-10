@@ -30,7 +30,8 @@ p.filt.vessel_types=[60:69 70:89];  %%%%%AIS ship type: passenger, cargo, tanker
 p.filt.min_length_m=100;            %%%%%TODO: GT proxy; validate against a registry
 p.filt.require_imo=true;
 p.filt.min_sog_kn=0;
-p.min_unique_ships=2;               %%%%%drops single-ship GPS glitches over land
+p.min_unique_ships=4;               %%%%%distinct ships per cell over the sampled days; 4 removes
+                                    %%%%%tug/barge noise on the upper Mississippi (2024 test: 2 kept 903 such cells, 4 kept 0)
 
 %%%%%%%%%%Fairways and Traffic Separation Schemes (NOAA ENC Direct)
 p.include_fairways=true;

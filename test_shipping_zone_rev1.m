@@ -67,6 +67,23 @@ src([10 60],[20 80])=true;
 verifyEqual(tc,distance_to_mask_km_rev1(src,R,150,7),distance_to_mask_km_rev1(src,R,150,1000));
 end
 
+function test_distance_edge_sources_match_brute_force(tc)
+%%%%%A random blob with interior cells: edge-only search must equal a brute-force minimum.
+R=georefcells([30 31],[-80 -79],0.02,0.02);
+stream=RandStream('mrg32k3a','Seed',7);
+src=rand(stream,R.RasterSize)>0.97;
+src(20:35,10:30)=true;
+dist_km=distance_to_mask_km_rev1(src,R,500);
+[lat_grid,lon_grid]=geographicGrid(R);
+lat_s=lat_grid(src);
+lon_s=lon_grid(src);
+ref_km=zeros(R.RasterSize);
+for k=1:numel(lat_grid)
+    ref_km(k)=min(deg2km(distance(lat_grid(k),lon_grid(k),lat_s,lon_s),6371.0088));
+end
+verifyEqual(tc,dist_km,ref_km,'AbsTol',1e-6);
+end
+
 function test_distance_matches_geodesic(tc)
 R=tc.TestData.R;
 src=false(R.RasterSize);
