@@ -108,9 +108,8 @@ text(ax,x0+250,y0+80,'500 km','Color',dark_blue,'FontName',font_name,'FontSize',
 %%%%%Marking, title, source line
 annotation(fig,'textbox',[0.02 0.94 0.96 0.05],'String','DRAFT//PRE-DECISIONAL','EdgeColor','none', ...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
-title_str=sprintf('Land within %g km of large-ship water covers about %s km^2, %d%% of the lower 48', ...
-    d_km,format_thousands(round(info.land_area_km2,-4)),round(100*info.share));
-annotation(fig,'textbox',[0.02 0.85 0.96 0.09],'String',title_str,'EdgeColor','none','Interpreter','tex', ...
+title_str=sprintf('Land within %g km of large-ship water, lower 48 (2024)',d_km);
+annotation(fig,'textbox',[0.02 0.85 0.96 0.09],'String',title_str,'EdgeColor','none',...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',12,'HorizontalAlignment','left');
 source_str=['Source: NTIA analysis of MarineCadastre AIS (52 days in 2024; cargo, tanker, and passenger ships ' ...
     '100 m or longer), NOAA shipping fairways, and Census 2023 coastline and state boundaries.'];
@@ -131,13 +130,4 @@ end
 [lon_b,lat_b]=boundary(p_lonlat);
 [x,y]=projfwd(albers,lat_b,lon_b);
 p_xy=polyshape(x/1e3,y/1e3);
-end
-
-function s=format_thousands(v)
-%%%%%Integer with comma separators (num2str and string add none).
-s=char(compose("%d",v));
-n=numel(s);
-for k=n-3:-3:1
-    s=[s(1:k) ',' s(k+1:end)];
-end
 end

@@ -115,12 +115,6 @@ worker needs about 2 GB of disk while it works.
 cells plus 1,499 fairway-only cells, 20,476 coastline cells that face ship
 water.
 
-| Distance | U.S. land in the zone |
-| --- | --- |
-| 25 km | 356,183 km² |
-| 50 km | 673,235 km² |
-| 100 km | 1,284,704 km² |
-
 Spot checks at 50 km: Chicago, Duluth, Houston, Baton Rouge, Portland
 (Oregon), Sacramento, Seattle, Albany, and Washington, D.C. are in the zone;
 Denver, Memphis, St. Louis, Nashville, Atlanta, Pittsburgh, and Jackson
@@ -140,8 +134,7 @@ For each distance `X` in `p.distances_km`, the output folder holds:
 In `result.zone(k)`, `.poly` and `.poly_land` are planar `polyshape` objects
 (x = longitude, y = latitude). `.latlon` and `.latlon_land` are `[lat lon]`
 arrays with NaN between rings, ready for `inpolygon` or
-`find_points_inside_contour_two_step_rev2`. `.land_area_km2` is the U.S. land
-area in the zone.
+`find_points_inside_contour_two_step_rev2`. 
 
 ## Validation
 
