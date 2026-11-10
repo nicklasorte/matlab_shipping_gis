@@ -66,7 +66,7 @@ p.make_figure=true;
 
 %%%%%%%%%%Output size
 p.simplify_deg=0.005;     %%%%%drop polygon vertices within 0.005 deg (about 0.5 km); 0 keeps all
-p.kmz=true;               %%%%%zip KML into KMZ (about 5x smaller)
+p.kmz=true;               %%%%%also write a KMZ next to each KML (about 5x smaller)
 p.save_grids=false;       %%%%%true also saves the full-size grids in the .mat (tens of MB)
 p.png_dpi=200;            %%%%%U.S. map resolution
 p.parallel_flag=0;        %%%%%1: process AIS days on a parallel pool (parpool first)
