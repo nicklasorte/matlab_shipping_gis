@@ -99,6 +99,9 @@ end
 %%%%%%%%%%2b. Racons (radar beacons) as fixed 2900-3100 MHz sites
 if isfield(p,'include_racons') && p.include_racons
     racons=load_racons_rev1(p.data_dir);
+    in_box=racons.lat>=R.LatitudeLimits(1) & racons.lat<=R.LatitudeLimits(2) & ...
+        racons.lon>=R.LongitudeLimits(1) & racons.lon<=R.LongitudeLimits(2);
+    result.racons_all=racons(in_box,:);   %%%%%every charted racon in the grid, for the sites CSV
     if p.racon_bands=="S"
         racons=racons(racons.s_band,:);
     end
@@ -208,6 +211,9 @@ if isfield(p,'check_vts') && ~isempty(p.check_vts)
     result.vts_check=check_ports_rev1(result,p.check_vts,5,2000,false(height(p.check_vts),1));
     writetable(result.vts_check,fullfile(p.out_dir,sprintf('%s_vts_check.csv',p.out_name)));
 end
+
+%%%%%One CSV of every checked site (racons, VTS areas, ports)
+write_sites_csv_rev1(result,fullfile(p.out_dir,sprintf('%s_sites.csv',p.out_name)));
 
 %%%%%Save the zones; the full-size grids only when asked, in compact types.
 %%%%%-v7 compresses; -v7.3 (HDF5) is only needed above 2 GB per variable.
