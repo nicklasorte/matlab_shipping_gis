@@ -1,10 +1,10 @@
-function [info]=plot_zone_map_rev1(result,d_km,png_path,census_shp)
+function [info]=plot_zone_map_rev1(result,d_km,png_path,census_shp,dpi)
 %plot_zone_map_rev1  Standalone map of the lower 48 with the land within d_km of large-ship water.
 %
 %   info=plot_zone_map_rev1(result,d_km,png_path,census_shp) draws the U.S.
 %   land inside the zone for distance D_KM (light blue), the large-ship
 %   water (pale blue), and state lines (gray) on an Albers equal-area
-%   projection (EPSG:5070), and writes a 300 dpi PNG to PNG_PATH.
+%   projection (EPSG:5070), and writes a PNG to PNG_PATH at DPI (default 200).
 %   CENSUS_SHP is the Census cartographic-boundary state shapefile.
 %
 %   Follows the NTIA figure rules: DRAFT//PRE-DECISIONAL at the top, a
@@ -23,6 +23,7 @@ arguments
     d_km (1,1) double {mustBePositive}
     png_path (1,:) char
     census_shp (1,:) char
+    dpi (1,1) double {mustBePositive} = 200
 end
 
 dark_blue=[22 51 83]/255;      %%%%%#163353 text
@@ -116,7 +117,7 @@ source_str=['Source: NTIA analysis of MarineCadastre AIS (52 days in 2024; cargo
 annotation(fig,'textbox',[0.02 0.0 0.96 0.09],'String',source_str,'EdgeColor','none', ...
     'Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','left');
 
-exportgraphics(fig,png_path,'Resolution',300,'BackgroundColor','white');
+exportgraphics(fig,png_path,'Resolution',dpi,'BackgroundColor','white');
 close(fig);
 info.title=title_str;
 end

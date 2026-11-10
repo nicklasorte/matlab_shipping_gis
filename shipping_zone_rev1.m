@@ -124,9 +124,14 @@ num_dist=numel(p.distances_km);
 zone=repmat(struct('distance_km',[],'poly',[],'latlon',[],'poly_land',[],'latlon_land',[],'land_area_km2',[],'files',[]),num_dist,1);
 warn_state=warning('off','MATLAB:polyshape:repairedBySimplify');
 cleanup_warn=onCleanup(@() warning(warn_state));
+%%%%%Fewer vertices: simplify the land outline once and each zone outline
+land_poly=simplify_polyshape_rev1(land_poly,p.simplify_deg);
 for dist_idx=1:num_dist
     d_km=p.distances_km(dist_idx);
-    [zone_poly,zone_latlon]=field_to_zone_polyshape_rev1(dist_field_km,R,d_km);
+    zone_poly=field_to_zone_polyshape_rev1(dist_field_km,R,d_km);
+    zone_poly=simplify_polyshape_rev1(zone_poly,p.simplify_deg);
+    [lon_z,lat_z]=boundary(zone_poly);
+    zone_latlon=[lat_z lon_z];
     zone_land=intersect(zone_poly,land_poly);
     [lon_l,lat_l]=boundary(zone_land);
 
@@ -139,9 +144,9 @@ for dist_idx=1:num_dist
 
     base_name=sprintf('%s_%s_%gkm',p.out_name,p.zone_mode,d_km);
     files_all=write_zone_outputs_rev1(zone_poly,p.out_dir,base_name, ...
-        sprintf('%s mode, %g km (water + land)',p.zone_mode,d_km));
+        sprintf('%s mode, %g km (water + land)',p.zone_mode,d_km),p.kmz);
     files_land=write_zone_outputs_rev1(zone_land,p.out_dir,[base_name '_land'], ...
-        sprintf('%s mode, %g km (U.S. land only)',p.zone_mode,d_km));
+        sprintf('%s mode, %g km (U.S. land only)',p.zone_mode,d_km),p.kmz);
     zone(dist_idx).files=[files_all; files_land];
     disp_progress(sprintf('%g km: %d regions, U.S. land in zone %.0f km^2',d_km,zone_poly.NumRegions,zone(dist_idx).land_area_km2));
 end
@@ -155,8 +160,18 @@ result.dist_field_km=dist_field_km;
 result.zone=zone;
 result.params=p;
 
+%%%%%Save the zones; the full-size grids only when asked, in compact types.
+%%%%%-v7 compresses; -v7.3 (HDF5) is only needed above 2 GB per variable.
+saved=rmfield(result,{'source_mask','ship_days','unique_ships','land_mask','dist_field_km'});
+if p.save_grids
+    saved.source_mask=sparse(source_mask);
+    saved.land_mask=land_mask;
+    saved.ship_days=uint16(min(ship_days,double(intmax('uint16'))));
+    saved.unique_ships=uint16(min(unique_ships,double(intmax('uint16'))));
+    saved.dist_field_km=single(dist_field_km);
+end
 mat_path=fullfile(p.out_dir,sprintf('%s_%s_rev1.mat',p.out_name,p.zone_mode));
-save(mat_path,'result','-v7.3');
+save(mat_path,'-struct','saved','-v7');
 
 if p.make_figure
     plot_shipping_zone_rev1(result,fullfile(p.out_dir,sprintf('%s_%s_map.png',p.out_name,p.zone_mode)));
@@ -165,7 +180,7 @@ if p.make_figure
     for dist_idx=1:num_dist
         d_km=p.distances_km(dist_idx);
         map_info=plot_zone_map_rev1(result,d_km, ...
-            fullfile(p.out_dir,sprintf('%s_%s_%gkm_us_map.png',p.out_name,p.zone_mode,d_km)),state_shp);
+            fullfile(p.out_dir,sprintf('%s_%s_%gkm_us_map.png',p.out_name,p.zone_mode,d_km)),state_shp,p.png_dpi);
         disp_progress(sprintf('Map %g km: %s',d_km,map_info.title));
     end
 end
