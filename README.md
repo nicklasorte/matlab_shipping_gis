@@ -147,9 +147,22 @@ worker needs about 2 GB of disk while it works.
 
 ## 2024 results (lower 48, `shore` mode)
 
-52 AIS days (one a week in 2024), 1,580–2,090 large ships a day, 468,246 ship
-cells plus 1,499 fairway-only cells, 20,476 coastline cells that face ship
-water.
+52 AIS days (one a week in 2024), 1,650–2,090 large ships a day, 475,526 ship
+cells plus 1,490 fairway-only cells and 18 S-band racon cells, 20,633
+coastline cells that face ship water.
+
+Adding military, law enforcement, dredging, and other seagoing ship types to
+the original cargo, tanker, and passenger set changed the zones little:
+
+| Distance | U.S. land in zone, merchant ships only | With the added types and racons | Change |
+| --- | --- | --- | --- |
+| 25 km | 356,183 km² | 359,888 km² | +1.0% |
+| 50 km | 673,235 km² | 676,401 km² | +0.5% |
+| 100 km | 1,284,704 km² | 1,285,485 km² | +0.1% |
+
+The largest additions at 50 km are around Morgan City and Berwick Bay,
+Louisiana (about 2,300 km²), and inland of the Navy's southern California
+operating areas near Camp Pendleton (about 600 km²).
 
 Spot checks at 50 km: Chicago, Duluth, Houston, Baton Rouge, Portland
 (Oregon), Sacramento, Seattle, Albany, and Washington, D.C. are in the zone;
@@ -184,9 +197,18 @@ Other maps:
 - `shipping_zone_2024_shore_<X>km`: ship water plus land out to X km.
 - `shipping_zone_2024_shore_<X>km_land`: the same zone clipped to U.S. land.
 
-It also holds `shipping_zone_2024_shore_rev1.mat` (the zones plus the
-full-size grids in compact types), `shipping_zone_2024_port_check.csv`, and
-the length cutoff tables (`gt_proxy_*.csv`).
+It also holds:
+
+- `shipping_zone_2024_sites.csv`: every checked site in one table: all 75
+  charted racons in the grid (24 charted as S-band), the 10 Coast Guard
+  Vessel Traffic Service areas, the 24 named ports, and the 135 USACE
+  Principal Ports, with distance to the nearest ship cell and membership in
+  each zone.
+- `shipping_zone_2024_racons.csv`: the S-band racons used as zone sources.
+- `shipping_zone_2024_port_check.csv`, `..._principal_port_check.csv`, and
+  `..._vts_check.csv`: the individual checks.
+- `shipping_zone_2024_shore_rev1.mat`: the zones.
+- `gt_proxy_*.csv`: the length cutoff check.
 
 ## Data in the repo
 
@@ -195,13 +217,21 @@ runs without downloading anything:
 
 | File | Content |
 | --- | --- |
-| `ais_cells_2024MMDD_*_rev1.mat` (52 files) | Large-ship grid cells for each sampled AIS day (the raw AIS files are 200 MB each and aren't stored) |
+| `ais_cells_2024MMDD_*_rev1.mat` (52 files) | Large-ship grid cells for each sampled AIS day, for the default ship filter (the raw AIS files are 200 MB each and aren't stored) |
+| `racons/` | NOAA chart racon layers (general, coastal, and approach scales) |
 | `fairways_rev1.geojson` | NOAA shipping fairways and traffic separation schemes |
 | `cb_2023_us_state_500k/` | Census state boundaries, 1:500,000 |
 | `tl_2023_us_coastline/` | Census TIGER/Line coastline |
 | `wikidata_imo_gt_len.csv` | Wikidata gross tonnage and length by IMO number (queried 2026-11-10) |
 | `usace_principal_ports.csv` | USACE Principal Ports: name, type, tonnage, and location (retrieved 2026-11-10) |
 | `ais_vessels_2024_4days.csv` | One row per ship from four 2024 AIS days, for the length cutoff check |
+
+## Vessel Traffic Service areas
+
+8 of the 10 Coast Guard VTS areas in the lower 48 sit on large-ship routes
+and inside the 25 km zone. VTS Berwick Bay (Morgan City, Louisiana) is 11 km
+from a large-ship cell but inside the zone. VTS Louisville, on the Ohio
+River, serves towboats and is correctly outside every zone.
 
 ## Ports the routes must reach
 
