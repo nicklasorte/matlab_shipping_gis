@@ -20,20 +20,27 @@ if ~isfolder(c.out_dir)
     mkdir(c.out_dir);
 end
 
-%%%%%%%%%%Ships seen on the sample days (one row per MMSI; later days fill gaps)
-vessel_parts=cell(numel(c.days),1);
-for day_idx=1:numel(c.days)
-    [csv_path,tf_private]=download_ais_day_rev1(c.days(day_idx),c.data_dir,c.zstd_exe,false);
-    vessel_parts{day_idx}=ais_vessel_list_rev1(csv_path);
-    if tf_private
-        delete(csv_path);
+%%%%%%%%%%Ships seen on the sample days (one row per MMSI; later days fill gaps).
+%%%%%%%%%%The repo ships data/ais_vessels_2024_4days.csv; delete it to rebuild from AIS.
+vessel_csv=fullfile(c.data_dir,'ais_vessels_2024_4days.csv');
+if isfile(vessel_csv)
+    V=readtable(vessel_csv);
+else
+    vessel_parts=cell(numel(c.days),1);
+    for day_idx=1:numel(c.days)
+        [csv_path,tf_private]=download_ais_day_rev1(c.days(day_idx),c.data_dir,c.zstd_exe,false);
+        vessel_parts{day_idx}=ais_vessel_list_rev1(csv_path);
+        if tf_private
+            delete(csv_path);
+        end
+        fprintf('%s: %d ships\n',string(c.days(day_idx),'yyyy-MM-dd'),height(vessel_parts{day_idx}));
     end
-    fprintf('%s: %d ships\n',string(c.days(day_idx),'yyyy-MM-dd'),height(vessel_parts{day_idx}));
+    V=vertcat(vessel_parts{:});
+    V=sortrows(V,{'mmsi','imo'});              %%%%%rows with an IMO number sort first per MMSI
+    [~,first]=unique(V.mmsi,'stable');
+    V=V(first,:);
+    writetable(V,vessel_csv);
 end
-V=vertcat(vessel_parts{:});
-V=sortrows(V,{'mmsi','imo'});              %%%%%rows with an IMO number sort first per MMSI
-[~,first]=unique(V.mmsi,'stable');
-V=V(first,:);
 
 %%%%%%%%%%Registry gross tonnage, then the check
 ref=load_wikidata_gt_rev1(fullfile(c.data_dir,'wikidata_imo_gt_len.csv'));
