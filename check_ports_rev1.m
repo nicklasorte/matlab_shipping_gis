@@ -1,4 +1,4 @@
-function [T]=check_ports_rev1(result,ports,max_gap_km,min_network_cells,warn_rows)
+function [T]=check_ports_rev1(result,ports,max_gap_km,min_network_cells,warn_rows,link_cells)
 %check_ports_rev1  Confirm that large-ship traffic reaches named ports.
 %
 %   T=check_ports_rev1(result,ports,max_gap_km) returns, for each port in
@@ -13,7 +13,9 @@ function [T]=check_ports_rev1(result,ports,max_gap_km,min_network_cells,warn_row
 %   for example only the deep-draft ports in a longer list.
 %
 %   It also reports, per port, whether the ship cells near the port belong
-%   to a large connected network of ship cells (8-neighbor; at least
+%   to a large connected network of ship cells (cells within LINK_CELLS
+%   cells of each other count as connected, default 3, about 3 km, which
+%   bridges short gaps where approach traffic spreads out; at least
 %   MIN_NETWORK_CELLS cells, or touching the grid edge, where routes leave
 %   for open sea). The Gulf, Atlantic, Pacific, and Great Lakes networks
 %   don't join inside the grid, so there is more than one. A river port on
@@ -25,6 +27,7 @@ arguments
     max_gap_km (1,1) double {mustBePositive} = 2
     min_network_cells (1,1) double {mustBePositive} = 2000
     warn_rows logical = true(height(ports),1)
+    link_cells (1,1) double {mustBeInteger,mustBePositive} = 3
 end
 
 R=result.R;
@@ -39,8 +42,8 @@ num_src=numel(row_s);
 id=zeros(R.RasterSize);
 id(sub2ind(R.RasterSize,row_s,col_s))=1:num_src;
 edges=zeros(0,2);
-for dr=0:1
-    for dc=-1:1
+for dr=0:link_cells
+    for dc=-link_cells:link_cells
         if dr==0 && dc<=0
             continue   %%%%%each neighbor pair once
         end
@@ -49,7 +52,7 @@ for dr=0:1
         ok=r2>=1 & r2<=R.RasterSize(1) & c2>=1 & c2<=R.RasterSize(2);
         j=zeros(size(r2));
         j(ok)=id(sub2ind(R.RasterSize,r2(ok),c2(ok)));
-        edges=[edges; find(j>0) j(j>0)]; %#ok<AGROW> eight directions at most
+        edges=[edges; find(j>0) j(j>0)]; %#ok<AGROW> a few dozen offsets at most
     end
 end
 piece=conncomp(graph(edges(:,1),edges(:,2),[],num_src));
