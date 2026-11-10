@@ -176,19 +176,49 @@ runs without downloading anything:
 | `cb_2023_us_state_500k/` | Census state boundaries, 1:500,000 |
 | `tl_2023_us_coastline/` | Census TIGER/Line coastline |
 | `wikidata_imo_gt_len.csv` | Wikidata gross tonnage and length by IMO number (queried 2026-11-10) |
+| `usace_principal_ports.csv` | USACE Principal Ports: name, type, tonnage, and location (retrieved 2026-11-10) |
 | `ais_vessels_2024_4days.csv` | One row per ship from four 2024 AIS days, for the length cutoff check |
 
 ## Ports the routes must reach
 
-Each run checks that large-ship routes reach these ports by a continuous
-chain of ship cells, and warns if one is cut off. The 2024 run reaches all
-of them; each is within 1.7 km of a ship cell and inside the 25, 50, and
-100 km zones.
+Each run checks two port lists and warns if large-ship routes don't reach a
+port.
 
-Baton Rouge (head of deep-draft navigation on the Mississippi), New Orleans,
-Houston, Portland (Oregon), Sacramento, Stockton, Albany, Philadelphia,
-Duluth, and Chicago. Edit `p.check_ports` to change the list. The results are
-in `outputs/2024/shipping_zone_2024_port_check.csv`.
+**Named deep-draft ports (`p.check_ports`, 24 ports).** Baton Rouge (head of
+deep-draft navigation on the Mississippi), New Orleans, Houston, Corpus
+Christi, Mobile, Tampa, Miami, Savannah, Charleston, Norfolk, Baltimore,
+Philadelphia, Newark (New York/New Jersey), Albany, Boston, Los Angeles/Long
+Beach, Oakland, Sacramento, Stockton, Portland (Oregon), Seattle, Tacoma,
+Duluth, and Chicago. In 2024 all 24 are reached: each is within 1.7 km of a
+large-ship cell, on a connected route network, and inside the 25, 50, and
+100 km zones. Results: `outputs/2024/shipping_zone_2024_port_check.csv`.
+
+**Every USACE Principal Port in the grid (`p.principal_ports`, 135 ports).**
+The run warns only for the 73 coastal and Great Lakes ports with at least
+1 million tons of foreign trade. Port locations are USACE district
+reference points, so a port counts as reached within 5 km of a ship cell.
+Ship cells within 3 cells (about 3 km) of each other count as connected.
+Results: `outputs/2024/shipping_zone_2024_principal_port_check.csv`.
+
+| Group | Ports | Reached | In the 25 km zone |
+| --- | --- | --- | --- |
+| Coastal and Great Lakes, at least 1 million tons foreign | 73 | 65 | 73 |
+| Inland river ports (barge traffic) | 36 | 0 | 0 |
+
+The eight deep-draft ports not counted as reached are all inside the 25 km
+zone:
+
+- Port of Portland (Oregon) and Illinois International Port (Chicago): the
+  USACE reference point sits 6 km and 13 km from the berths. The named
+  Portland and Chicago points above are reached.
+- Portland (Maine), Portsmouth (New Hampshire), Searsport (Maine), Coos Bay,
+  Grays Harbor, and Panama City: large ships reach the port, but few call
+  there, so the offshore approach has stretches where fewer than four
+  different ships passed in the 52 sampled days. The approach isn't a
+  continuous chain of ship cells, though the zone still covers the port.
+
+Inland river ports (St. Louis, Memphis, Pittsburgh, and others) are served by
+towboats and barges, not ships of 3,000 GT, so they are correctly left out.
 
 On the Mississippi, large-ship cells run without a break from Head of Passes
 to just above Baton Rouge (30.49°N); 251 different large ships used the
