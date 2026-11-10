@@ -26,6 +26,7 @@ light_blue=[86 116 196]/255;
 land_gray=[232 233 234]/255;
 line_gray=[138 141 145]/255;
 font_name='Times New Roman';
+[period,ais_note]=labels(result);
 albers=projcrs(5070);
 warn_state=warning('off','MATLAB:polyshape:repairedBySimplify');
 cleanup_warn=onCleanup(@() warning(warn_state));
@@ -75,7 +76,7 @@ ylim(ax,[min(by) max(by)]/1e3);
 x_lim=xlim(ax);
 y_lim=ylim(ax);
 %%%%%Key in the top-left corner, clear of the offshore routes
-text(ax,x_lim(1)+10,y_lim(2)-15,'Dark blue: large-ship routes (2024 AIS)','Color',dark_blue,'FontWeight','bold', ...
+text(ax,x_lim(1)+10,y_lim(2)-15,sprintf('Dark blue: large-ship routes (%s AIS)',period),'Color',dark_blue,'FontWeight','bold', ...
     'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
 text(ax,x_lim(1)+10,y_lim(2)-37,sprintf('Light blue: %g km zone',d_km),'Color',light_blue,'FontWeight','bold', ...
     'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
@@ -87,7 +88,7 @@ annotation(fig,'textbox',[0.02 0.94 0.96 0.05],'String','DRAFT//PRE-DECISIONAL',
 annotation(fig,'textbox',[0.02 0.84 0.96 0.09],'String',title_str,'EdgeColor','none', ...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',12,'HorizontalAlignment','left');
 annotation(fig,'textbox',[0.02 0.0 0.96 0.07],'String', ...
-    ['Source: NTIA analysis of MarineCadastre AIS (52 days in 2024; merchant, military, and other seagoing ships ' ...
+    ['Source: NTIA analysis of MarineCadastre AIS (' ais_note '; merchant, military, tug-barge, and other seagoing ships ' ...
     '100 m or longer), NOAA shipping fairways and S-band racons, and Census 2023 boundaries.'],'EdgeColor','none', ...
     'Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','left');
 exportgraphics(fig,png_path,'Resolution',dpi,'BackgroundColor','white');
@@ -103,4 +104,14 @@ end
 [lon_b,lat_b]=boundary(p_lonlat);
 [x,y]=projfwd(albers,lat_b,lon_b);
 p_xy=polyshape(x/1e3,y/1e3);
+end
+
+function [period,ais_note]=labels(result)
+%%%%%Period and AIS-sample labels; older saved results have neither field
+period='2024';
+ais_note='52 days in 2024';
+if isfield(result,'period_label')
+    period=result.period_label;
+    ais_note=result.ais_note;
+end
 end

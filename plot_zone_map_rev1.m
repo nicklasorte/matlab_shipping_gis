@@ -32,6 +32,7 @@ pale_blue=[180 194 230]/255;   %%%%%#B4C2E6 second ramp step, context water
 land_gray=[232 233 234]/255;   %%%%%#E8E9EA land fill
 line_gray=[138 141 145]/255;   %%%%%#8A8D91 state lines
 font_name='Times New Roman';
+[period,ais_note]=labels(result);
 
 zone_idx=find([result.zone.distance_km]==d_km,1);
 if isempty(zone_idx)
@@ -97,7 +98,7 @@ plot(ax,[lx(1) lx(2)],[ly(1)-40 ly(2)+15],'Color',light_blue,'LineWidth',1);
 text(ax,lx(1),ly(1),sprintf('Land within %g km\nof large-ship water',d_km), ...
     'Color',light_blue,'FontWeight','bold','FontName',font_name,'FontSize',9, ...
     'HorizontalAlignment','center','VerticalAlignment','bottom');
-text(ax,lx(3),ly(3),sprintf('Large-ship water\n(2024 AIS)'), ...
+text(ax,lx(3),ly(3),sprintf('Large-ship water\n(%s AIS)',period), ...
     'Color',dark_blue,'FontName',font_name,'FontSize',9,'HorizontalAlignment','center');
 
 %%%%%Scale bar: 500 km
@@ -109,10 +110,10 @@ text(ax,x0+250,y0+80,'500 km','Color',dark_blue,'FontName',font_name,'FontSize',
 %%%%%Marking, title, source line
 annotation(fig,'textbox',[0.02 0.94 0.96 0.05],'String','DRAFT//PRE-DECISIONAL','EdgeColor','none', ...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
-title_str=sprintf('Land within %g km of large-ship water, lower 48 (2024)',d_km);
+title_str=sprintf('Land within %g km of large-ship water, lower 48 (%s)',d_km,period);
 annotation(fig,'textbox',[0.02 0.85 0.96 0.09],'String',title_str,'EdgeColor','none',...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',12,'HorizontalAlignment','left');
-source_str=['Source: NTIA analysis of MarineCadastre AIS (52 days in 2024; merchant, military, and other seagoing ships ' ...
+source_str=['Source: NTIA analysis of MarineCadastre AIS (' ais_note '; merchant, military, tug-barge, and other seagoing ships ' ...
     '100 m or longer), NOAA shipping fairways and S-band racons, and Census 2023 coastline and state boundaries.'];
 annotation(fig,'textbox',[0.02 0.0 0.96 0.09],'String',source_str,'EdgeColor','none', ...
     'Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','left');
@@ -131,4 +132,14 @@ end
 [lon_b,lat_b]=boundary(p_lonlat);
 [x,y]=projfwd(albers,lat_b,lon_b);
 p_xy=polyshape(x/1e3,y/1e3);
+end
+
+function [period,ais_note]=labels(result)
+%%%%%Period and AIS-sample labels; older saved results have neither field
+period='2024';
+ais_note='52 days in 2024';
+if isfield(result,'period_label')
+    period=result.period_label;
+    ais_note=result.ais_note;
+end
 end

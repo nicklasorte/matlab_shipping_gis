@@ -20,17 +20,24 @@ p.cells_per_degree=100;   %%%%%0.01 deg, about 1.1 km by 0.8-1.0 km
 %%%%%%%%%%AIS sample: one day a week for a full year covers seasonal
 %%%%%%%%%%traffic (Great Lakes close Jan-Mar) at 1/7 of the download.
 %%%%%%%%%%Each 2024 day is about 200 MB compressed, 750 MB as CSV.
-p.ais_days=datetime(2024,1,3):caldays(7):datetime(2024,12,31);
+%%%%%%%%%%Two years (2023 and 2024) so one unusual year doesn't set the
+%%%%%%%%%%routes: the Key Bridge collapse closed Baltimore's main channel
+%%%%%%%%%%from March 26 to June 10, 2024. A cell counts when either year
+%%%%%%%%%%meets the ship threshold. ais_cells_py_rev1.py builds the same
+%%%%%%%%%%per-day caches in Python (streams each day, no CSV on disk).
+p.ais_days=[datetime(2023,1,4):caldays(7):datetime(2023,12,31), ...
+    datetime(2024,1,3):caldays(7):datetime(2024,12,31)];
 p.delete_csv=true;        %%%%%keep only the per-day cell cache
 p.prefilter_min_length=100; %%%%%stream-filter each day by length (needs /usr/bin/python3); 0 writes the full CSV
 p.zstd_exe='/opt/homebrew/bin/zstd';
 
 %%%%%%%%%%Large-ship filter (proxy for SOLAS V/19: >= 3000 GT carries a
 %%%%%%%%%%3 GHz radar or a second 9 GHz radar)
-p.filt.vessel_types=[0 33 35 55 60:89 90:99]; %%%%%AIS ship types: passenger, cargo, tanker, military (35),
-                                    %%%%%law enforcement (55), dredging (33), other and unknown (0, 90-99).
-                                    %%%%%Left out: towing (31, 32, 52), whose AIS length is often the whole
-                                    %%%%%barge tow (inland river towboats use X-band), and special craft and
+p.filt.vessel_types=[0 31 32 33 35 52 55 60:89 90:99]; %%%%%AIS ship types: passenger, cargo, tanker, military (35),
+                                    %%%%%law enforcement (55), dredging (33), other and unknown (0, 90-99), and
+                                    %%%%%towing (31, 32, 52) with an IMO number: ocean-going articulated
+                                    %%%%%tug-barges. Inland river towboats have no IMO number, so the IMO
+                                    %%%%%rule below keeps them out. Left out: special craft and
                                     %%%%%fishing (30, 34, 36, 37, 50-54, 56-59), which on a 2024 test day
                                     %%%%%reported mostly from inland rivers at 100 m and up.
 p.filt.min_length_m=100;            %%%%%GT proxy; init_check_gt_proxy_rev1: 99.6% precision, 98.1% recall
@@ -39,8 +46,11 @@ p.filt.no_imo_types=[35 55];        %%%%%military and law enforcement (Navy and 
                                     %%%%%Without the IMO rule, other/unknown and dredge entries added
                                     %%%%%inland river towboats above Baton Rouge (2024 test).
 p.filt.min_sog_kn=0;
-p.min_unique_ships=4;               %%%%%distinct ships per cell over the sampled days; 4 removes
-                                    %%%%%tug/barge noise on the upper Mississippi (2024 test: 2 kept 903 such cells, 4 kept 0)
+p.min_unique_ships=4;               %%%%%distinct ships per cell in one year (a cell counts if either year
+                                    %%%%%reaches it); 4 removes tug/barge noise on the upper Mississippi
+                                    %%%%%(2024 test: 2 kept 903 such cells, 4 kept 0)
+p.port_relax_km=50;                 %%%%%within this distance of a deep-draft USACE Principal Port ...
+p.port_min_unique_ships=2;          %%%%%... 2 ships in one year are enough (thin approaches: Searsport, Coos Bay)
 
 %%%%%%%%%%Fairways and Traffic Separation Schemes (NOAA ENC Direct)
 p.include_fairways=true;
@@ -73,7 +83,7 @@ p.principal_ports_gap_km=5;   %%%%%port points are district reference points, no
 %%%%%%%%%%Zoomed maps: the lower Mississippi, Gulf to Baton Rouge
 p.region_maps=struct('name','lower_mississippi','d_km',50,'latlim',[28.8 31.0],'lonlim',[-91.7 -88.8], ...
     'ports',p.check_ports(ismember(p.check_ports.name,["Baton Rouge, LA";"New Orleans, LA"]),:), ...
-    'title','Large ships travel the Mississippi up to Baton Rouge (2024)');
+    'title','Large ships travel the Mississippi up to Baton Rouge (2023-2024)');
 
 %%%%%%%%%%Coast Guard Vessel Traffic Service areas (report only)
 p.check_vts=table( ...
@@ -90,7 +100,7 @@ p.census_year=2023;
 %%%%%%%%%%Folders and names
 p.data_dir=fullfile(pwd,'data');
 p.out_dir=fullfile(pwd,'output');
-p.out_name='shipping_zone_2024';
+p.out_name='shipping_zone_2023_2024';
 p.make_figure=true;
 
 %%%%%%%%%%Output size

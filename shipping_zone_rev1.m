@@ -10,7 +10,9 @@ function [result]=shipping_zone_rev1(p)
 %   Steps
 %     1. Large-ship cells: sample AIS days, keep likely S-band carriers
 %        (ais_large_ship_cells_rev1), and keep grid cells visited by at
-%        least p.min_unique_ships distinct ships.
+%        least p.min_unique_ships distinct ships in any one year
+%        (p.port_min_unique_ships within p.port_relax_km of deep-draft
+%        ports).
 %     2. Add NOAA shipping fairways and TSS lanes (optional).
 %     3. Distance field:
 %          'ships' mode: distance to the nearest ship-source cell.
@@ -26,6 +28,9 @@ function [result]=shipping_zone_rev1(p)
 %     .source_mask       logical, ship and fairway cells
 %     .ship_days         ship-days per cell over the sampled days
 %     .unique_ships      distinct MMSI per cell over the sampled days
+%     .max_year_ships    largest one-year distinct-MMSI count per cell
+%     .ais_mask          AIS route cells (before fairways and racons)
+%     .routes_files      routes shapefile, KML, and KMZ paths
 %     .land_mask         U.S. land cells
 %     .dist_field_km     distance field that was contoured
 %     .zone(k)           per distance: .distance_km, .poly, .latlon,
@@ -72,22 +77,58 @@ else
 end
 result.day_log=table(p.ais_days(:),day_rows,day_mmsi,'VariableNames',{'day','rows_kept','mmsi_kept'});
 
-%%%%%Merge days one at a time so memory holds one running set, not all days
+%%%%%Merge days one at a time so memory holds one running set, not all days.
+%%%%%Distinct ships are counted per calendar year, and a cell counts when
+%%%%%any one year reaches the threshold (union of years). Pooling two years
+%%%%%would double the one-off visitors and loosen the threshold.
 ship_days=zeros(R.RasterSize);
-cell_mmsi=zeros(0,2);
-for day_idx=1:num_day
-    day_pairs=cell_pairs{day_idx};
-    cell_pairs{day_idx}=[];
-    if isempty(day_pairs)
+unique_ships=zeros(R.RasterSize);          %%%%%distinct ships over all days
+max_year_ships=zeros(R.RasterSize);        %%%%%largest per-year distinct-ship count
+day_year=year(ais_days(:));
+all_mmsi=zeros(0,2);
+for yr=unique(day_year)'
+    cell_mmsi=zeros(0,2);
+    for day_idx=find(day_year==yr)'
+        day_pairs=cell_pairs{day_idx};
+        cell_pairs{day_idx}=[];
+        if isempty(day_pairs)
+            continue
+        end
+        ship_days=ship_days+reshape(accumarray(day_pairs(:,1),1,[num_cell 1]),R.RasterSize);
+        cell_mmsi=unique([cell_mmsi; day_pairs],'rows');
+    end
+    if isempty(cell_mmsi)
         continue
     end
-    ship_days=ship_days+reshape(accumarray(day_pairs(:,1),1,[num_cell 1]),R.RasterSize);
-    cell_mmsi=unique([cell_mmsi; day_pairs],'rows');
+    max_year_ships=max(max_year_ships,reshape(accumarray(cell_mmsi(:,1),1,[num_cell 1]),R.RasterSize));
+    all_mmsi=unique([all_mmsi; cell_mmsi],'rows');
 end
-unique_ships=reshape(accumarray(cell_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
-clear cell_mmsi
-source_mask=unique_ships>=p.min_unique_ships;
-disp_progress(sprintf('AIS source cells: %d',nnz(source_mask)));
+if ~isempty(all_mmsi)
+    unique_ships=reshape(accumarray(all_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
+end
+clear cell_mmsi all_mmsi
+source_mask=max_year_ships>=p.min_unique_ships;
+disp_progress(sprintf('AIS source cells: %d (%d years)',nnz(source_mask),numel(unique(day_year))));
+
+%%%%%Lower threshold near deep-draft ports: approaches to small deep-draft
+%%%%%ports (Searsport, Coos Bay) see fewer distinct ships than the main
+%%%%%lanes, so cells within p.port_relax_km of a deep-draft USACE Principal
+%%%%%Port count at p.port_min_unique_ships in any one year.
+if isfield(p,'port_relax_km') && p.port_relax_km>0
+    pp=load_principal_ports_rev1(fullfile(p.data_dir,'usace_principal_ports.csv'));
+    pp=pp(pp.type~="I" & pp.foreign_tons>=1e6,:);
+    [port_row,port_col]=geographicToDiscrete(R,pp.lat,pp.lon);
+    in_grid=~isnan(port_row);
+    port_mask=false(R.RasterSize);
+    port_mask(sub2ind(R.RasterSize,port_row(in_grid),port_col(in_grid)))=true;
+    near_port=distance_to_mask_km_rev1(port_mask,R,p.port_relax_km,p.block_rows)<=p.port_relax_km;
+    relaxed=near_port & ~source_mask & max_year_ships>=p.port_min_unique_ships;
+    source_mask=source_mask | relaxed;
+    disp_progress(sprintf('Port approaches: %d cells added within %g km of %d deep-draft ports (>= %d ships)', ...
+        nnz(relaxed),p.port_relax_km,nnz(in_grid),p.port_min_unique_ships));
+    clear near_port relaxed
+end
+ais_mask=source_mask;   %%%%%AIS cells only, before fairways and racons
 
 %%%%%%%%%%2. Fairways and TSS lanes
 if p.include_fairways
@@ -174,6 +215,10 @@ result.R=R;
 result.source_mask=source_mask;
 result.ship_days=ship_days;
 result.unique_ships=unique_ships;
+result.max_year_ships=max_year_ships;
+result.ais_mask=ais_mask;
+result.period_label=period_label(ais_days);
+result.ais_note=sprintf('%d days in %s',num_day,result.period_label);
 result.land_mask=land_mask;
 result.dist_field_km=dist_field_km;
 result.zone=zone;
@@ -212,12 +257,24 @@ if isfield(p,'check_vts') && ~isempty(p.check_vts)
     writetable(result.vts_check,fullfile(p.out_dir,sprintf('%s_vts_check.csv',p.out_name)));
 end
 
+%%%%%Routes file: the route cells (AIS ship cells, fairways, racons) as
+%%%%%polygons in shapefile, KML, and KMZ, plus the AIS-only cells
+route_field=double(~source_mask);   %%%%%0 on route cells; contour at 0.5
+routes_poly=simplify_polyshape_rev1(field_to_zone_polyshape_rev1(route_field,R,0.5),p.simplify_deg);
+result.routes_files=write_zone_outputs_rev1(routes_poly,p.out_dir,sprintf('%s_routes',p.out_name), ...
+    sprintf('Large-ship routes, %s (AIS, fairways, S-band racons)',result.period_label),p.kmz);
+ais_poly=simplify_polyshape_rev1(field_to_zone_polyshape_rev1(double(~ais_mask),R,0.5),p.simplify_deg);
+result.routes_files=[result.routes_files; write_zone_outputs_rev1(ais_poly,p.out_dir,sprintf('%s_routes_ais_only',p.out_name), ...
+    sprintf('Large-ship AIS cells, %s',result.period_label),p.kmz)];
+clear route_field
+disp_progress(sprintf('Routes: %d regions (%d AIS-only regions)',routes_poly.NumRegions,ais_poly.NumRegions));
+
 %%%%%One CSV of every checked site (racons, VTS areas, ports)
 write_sites_csv_rev1(result,fullfile(p.out_dir,sprintf('%s_sites.csv',p.out_name)));
 
 %%%%%Save the zones; the full-size grids only when asked, in compact types.
 %%%%%-v7 compresses; -v7.3 (HDF5) is only needed above 2 GB per variable.
-saved=rmfield(result,{'source_mask','ship_days','unique_ships','land_mask','dist_field_km'});
+saved=rmfield(result,{'source_mask','ais_mask','ship_days','unique_ships','max_year_ships','land_mask','dist_field_km'});
 if p.save_grids
     saved.source_mask=sparse(source_mask);
     saved.land_mask=land_mask;
@@ -252,6 +309,16 @@ if p.make_figure
     end
 end
 disp_progress('shipping_zone_rev1: done');
+end
+
+function label=period_label(days)
+%%%%%'2024' or '2023-2024' from the sampled days
+yrs=unique(year(days));
+if numel(yrs)==1
+    label=sprintf('%d',yrs);
+else
+    label=sprintf('%d-%d',min(yrs),max(yrs));
+end
 end
 
 function disp_progress(msg)

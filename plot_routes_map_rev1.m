@@ -32,6 +32,7 @@ light_blue=[86 116 196]/255;   %%%%%#5674C4 buffer
 land_gray=[232 233 234]/255;   %%%%%#E8E9EA land
 line_gray=[138 141 145]/255;   %%%%%#8A8D91 state lines
 font_name='Times New Roman';
+[period,ais_note]=labels(result);
 albers=projcrs(5070);
 
 warn_state=warning('off','MATLAB:polyshape:repairedBySimplify');
@@ -83,7 +84,7 @@ ylim(ax,y_lim);
 
 %%%%%Direct labels in the Atlantic
 [lx,ly]=projfwd(albers,[31.5 35.0],[-70.5 -69.0]);
-text(ax,lx(1)/1e3,ly(1)/1e3,sprintf('Large-ship routes\n(2024 AIS)'),'Color',dark_blue,'FontWeight','bold', ...
+text(ax,lx(1)/1e3,ly(1)/1e3,sprintf('Large-ship routes\n(%s AIS)',period),'Color',dark_blue,'FontWeight','bold', ...
     'FontName',font_name,'FontSize',9,'HorizontalAlignment','center');
 if ~isempty(d_km)
     text(ax,lx(2)/1e3,ly(2)/1e3,sprintf('%g km buffer',d_km),'Color',light_blue,'FontWeight','bold', ...
@@ -100,13 +101,13 @@ text(ax,x0+250,y0+80,'500 km','Color',dark_blue,'FontName',font_name,'FontSize',
 annotation(fig,'textbox',[0.02 0.94 0.96 0.05],'String','DRAFT//PRE-DECISIONAL','EdgeColor','none', ...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
 if isempty(d_km)
-    title_str='Large-ship routes, lower 48 (2024)';
+    title_str=sprintf('Large-ship routes, lower 48 (%s)',period);
 else
-    title_str=sprintf('Large-ship routes and the %g km buffer, lower 48 (2024)',d_km);
+    title_str=sprintf('Large-ship routes and the %g km buffer, lower 48 (%s)',d_km,period);
 end
 annotation(fig,'textbox',[0.02 0.85 0.96 0.09],'String',title_str,'EdgeColor','none', ...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',12,'HorizontalAlignment','left');
-source_str=['Source: NTIA analysis of MarineCadastre AIS (52 days in 2024; merchant, military, and other seagoing ships ' ...
+source_str=['Source: NTIA analysis of MarineCadastre AIS (' ais_note '; merchant, military, tug-barge, and other seagoing ships ' ...
     '100 m or longer; 1 km cells used by 4 or more ships), NOAA shipping fairways and S-band racons, and Census 2023 boundaries.'];
 annotation(fig,'textbox',[0.02 0.0 0.96 0.09],'String',source_str,'EdgeColor','none', ...
     'Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','left');
@@ -125,4 +126,14 @@ end
 [lon_b,lat_b]=boundary(p_lonlat);
 [x,y]=projfwd(albers,lat_b,lon_b);
 p_xy=polyshape(x/1e3,y/1e3);
+end
+
+function [period,ais_note]=labels(result)
+%%%%%Period and AIS-sample labels; older saved results have neither field
+period='2024';
+ais_note='52 days in 2024';
+if isfield(result,'period_label')
+    period=result.period_label;
+    ais_note=result.ais_note;
+end
 end
