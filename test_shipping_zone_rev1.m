@@ -50,6 +50,23 @@ for T={new_style,old_style}
 end
 end
 
+function test_chunked_read_matches_single_read(tc)
+[p,R]=synthetic_days(tc,'chunk');
+[~,name]=ais_day_url_rev1(p.ais_days(1));
+f=fullfile(p.data_dir,erase(name,'.zst'));
+[pairs_small,rows_small,mmsi_small]=ais_large_ship_cells_rev1(f,R,p.filt,777);
+[pairs_one,rows_one,mmsi_one]=ais_large_ship_cells_rev1(f,R,p.filt,1e7);
+verifyEqual(tc,pairs_small,pairs_one);
+verifyEqual(tc,[rows_small mmsi_small],[rows_one mmsi_one]);
+end
+
+function test_distance_block_size_invariant(tc)
+R=tc.TestData.R;
+src=false(R.RasterSize);
+src([10 60],[20 80])=true;
+verifyEqual(tc,distance_to_mask_km_rev1(src,R,150,7),distance_to_mask_km_rev1(src,R,150,1000));
+end
+
 function test_distance_matches_geodesic(tc)
 R=tc.TestData.R;
 src=false(R.RasterSize);
@@ -141,6 +158,7 @@ mkdir(p.data_dir);
 p.ais_days=[datetime(2024,1,1) datetime(2024,1,2)];
 p.zstd_exe='/opt/homebrew/bin/zstd';
 p.delete_csv=false;
+p.ais_read_rows=1000;   %%%%%small chunks so every day is read in several pieces
 p.filt=struct('vessel_types',[60:69 70:89],'min_length_m',100,'require_imo',true,'min_sog_kn',0);
 stream=RandStream('mrg32k3a','Seed',1);
 for k=1:numel(p.ais_days)

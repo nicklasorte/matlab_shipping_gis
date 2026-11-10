@@ -72,14 +72,20 @@ else
 end
 result.day_log=table(p.ais_days(:),day_rows,day_mmsi,'VariableNames',{'day','rows_kept','mmsi_kept'});
 
-all_pairs=vertcat(cell_pairs{:});
+%%%%%Merge days one at a time so memory holds one running set, not all days
 ship_days=zeros(R.RasterSize);
-unique_ships=zeros(R.RasterSize);
-if ~isempty(all_pairs)
-    ship_days=reshape(accumarray(all_pairs(:,1),1,[num_cell 1]),R.RasterSize);
-    cell_mmsi=unique(all_pairs,'rows');
-    unique_ships=reshape(accumarray(cell_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
+cell_mmsi=zeros(0,2);
+for day_idx=1:num_day
+    day_pairs=cell_pairs{day_idx};
+    cell_pairs{day_idx}=[];
+    if isempty(day_pairs)
+        continue
+    end
+    ship_days=ship_days+reshape(accumarray(day_pairs(:,1),1,[num_cell 1]),R.RasterSize);
+    cell_mmsi=unique([cell_mmsi; day_pairs],'rows');
 end
+unique_ships=reshape(accumarray(cell_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
+clear cell_mmsi
 source_mask=unique_ships>=p.min_unique_ships;
 disp_progress(sprintf('AIS source cells: %d',nnz(source_mask)));
 
@@ -95,16 +101,17 @@ end
 max_km=max(p.distances_km);
 switch p.zone_mode
     case 'ships'
-        dist_field_km=distance_to_mask_km_rev1(source_mask,R,max_km);
+        dist_field_km=distance_to_mask_km_rev1(source_mask,R,max_km,p.block_rows);
     case 'shore'
-        dist_ship_km=distance_to_mask_km_rev1(source_mask,R,max_km+p.shore_link_km);
+        dist_ship_km=distance_to_mask_km_rev1(source_mask,R,max_km+p.shore_link_km,p.block_rows);
         %%%%%Ship water: non-land within shore_link_km of a ship cell
         water_zone=~land_mask & dist_ship_km<=p.shore_link_km;
         %%%%%Facing shoreline: Census coastline cells within shore_link_km of a ship cell
         shore_mask=coast_mask & dist_ship_km<=p.shore_link_km;
-        dist_shore_km=distance_to_mask_km_rev1(shore_mask,R,max_km);
+        dist_shore_km=distance_to_mask_km_rev1(shore_mask,R,max_km,p.block_rows);
         %%%%%min() with dist_ship keeps river ports the coastline layer omits
         dist_field_km=min(dist_ship_km,dist_shore_km);
+        clear dist_ship_km dist_shore_km   %%%%%free two full grids before contouring
         dist_field_km(water_zone)=0;
         dist_field_km(dist_field_km>max_km)=2*max_km;
         disp_progress(sprintf('Shore mode: %d coastline cells face shipping',nnz(shore_mask)));

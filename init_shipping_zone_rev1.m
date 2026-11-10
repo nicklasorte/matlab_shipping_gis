@@ -51,6 +51,10 @@ p.out_name='shipping_zone_2024';
 p.make_figure=true;
 p.parallel_flag=0;        %%%%%1: process AIS days on a parallel pool (parpool first)
 
+%%%%%%%%%%Memory: work in pieces
+p.ais_read_rows=1e6;      %%%%%AIS rows per read chunk (about 150 MB each)
+p.block_rows=200;         %%%%%grid rows per distance-query block
+
 result=shipping_zone_rev1(p);
 
 %%%%%%%%%%Example: tract centroids inside the 50 km land zone, using

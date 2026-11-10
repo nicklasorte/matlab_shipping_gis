@@ -1,4 +1,4 @@
-function [pairs,num_row_kept,num_mmsi_kept]=ais_large_ship_cells_rev1(csv_path,R,filt)
+function [pairs,num_row_kept,num_mmsi_kept]=ais_large_ship_cells_rev1(csv_path,R,filt,read_rows)
 %ais_large_ship_cells_rev1  Grid cells visited by large ships in one AIS day.
 %
 %   [pairs,num_row_kept,num_mmsi_kept]=ais_large_ship_cells_rev1(csv_path,R,filt)
@@ -24,6 +24,10 @@ function [pairs,num_row_kept,num_mmsi_kept]=ais_large_ship_cells_rev1(csv_path,R
 %     csv_path  daily AIS CSV (2024+ snake_case or 2009-2023 CamelCase)
 %     R         GeographicCellsReference of the analysis grid
 %     filt      struct with the fields above
+%     read_rows rows read per chunk (default 1e6). The file is read in
+%               chunks with a tabularTextDatastore, so memory stays near
+%               one chunk (about 150 MB at 1e6 rows) instead of the whole
+%               day (7-10 million rows).
 %
 %   OUTPUTS
 %     pairs          K-by-2 double, unique [linear cell index, MMSI]
@@ -34,11 +38,12 @@ arguments
     csv_path (1,:) char
     R (1,1) map.rasterref.GeographicCellsReference
     filt (1,1) struct
+    read_rows (1,1) double {mustBePositive,mustBeInteger} = 1e6
 end
 
 %%%%%Map both column-name styles onto one set of names
-opts=detectImportOptions(csv_path);
-key=lower(erase(opts.VariableNames,'_'));
+ds=tabularTextDatastore(csv_path,'TextType','string');
+key=lower(erase(ds.VariableNames,'_'));
 name_map=struct('mmsi',{{'mmsi'}},'lat',{{'lat','latitude'}},'lon',{{'lon','longitude'}}, ...
     'sog',{{'sog'}},'imo',{{'imo'}},'vessel_type',{{'vesseltype'}},'length',{{'length'}});
 out_names=fieldnames(name_map);
@@ -48,30 +53,41 @@ for k=1:numel(out_names)
     if isempty(hit)
         error('shipgis:columns','Column for "%s" not found in %s',out_names{k},csv_path);
     end
-    src_names{k}=opts.VariableNames{hit};
+    src_names{k}=ds.VariableNames{hit};
 end
-opts.SelectedVariableNames=src_names;
-num_cols=src_names(~strcmp(out_names,'imo'));
-opts=setvartype(opts,num_cols,'double');
-opts=setvartype(opts,src_names(strcmp(out_names,'imo')),'string');
-T=readtable(csv_path,opts);
-T=renamevars(T,src_names,out_names);
+ds.SelectedVariableNames=src_names;
+fmt=repmat({'%f'},1,numel(out_names));
+fmt(strcmp(out_names,'imo'))={'%q'};
+ds.SelectedFormats=fmt;
+ds.ReadSize=read_rows;
 
-%%%%%Large-ship filter
-keep=ismember(T.vessel_type,filt.vessel_types) & T.length>=filt.min_length_m;
-if filt.require_imo
-    keep=keep & strlength(T.imo)>0 & ~ismissing(T.imo);
-end
-if filt.min_sog_kn>0
-    keep=keep & T.sog>=filt.min_sog_kn;
-end
-T=T(keep,:);
-num_row_kept=height(T);
-num_mmsi_kept=numel(unique(T.mmsi));
+%%%%%Read, filter, and bin one chunk at a time
+chunk_pairs=cell(0,1);
+chunk_mmsi=cell(0,1);
+num_row_kept=0;
+while hasdata(ds)
+    T=read(ds);
+    T=renamevars(T,src_names,out_names);
+    keep=ismember(T.vessel_type,filt.vessel_types) & T.length>=filt.min_length_m;
+    if filt.require_imo
+        keep=keep & strlength(T.imo)>0 & ~ismissing(T.imo);
+    end
+    if filt.min_sog_kn>0
+        keep=keep & T.sog>=filt.min_sog_kn;
+    end
+    T=T(keep,:);
+    num_row_kept=num_row_kept+height(T);
+    chunk_mmsi{end+1,1}=unique(T.mmsi); %#ok<AGROW> chunk count is not known in advance
 
-%%%%%Bin onto the grid; reports outside the grid return NaN and are dropped
-[row_idx,col_idx]=geographicToDiscrete(R,T.lat,T.lon);
-in_grid=~isnan(row_idx);
-cell_idx=sub2ind(R.RasterSize,row_idx(in_grid),col_idx(in_grid));
-pairs=unique([cell_idx T.mmsi(in_grid)],'rows');
+    %%%%%Bin onto the grid; reports outside the grid return NaN and are dropped
+    [row_idx,col_idx]=geographicToDiscrete(R,T.lat,T.lon);
+    in_grid=~isnan(row_idx);
+    cell_idx=sub2ind(R.RasterSize,row_idx(in_grid),col_idx(in_grid));
+    chunk_pairs{end+1,1}=unique([cell_idx T.mmsi(in_grid)],'rows'); %#ok<AGROW>
+end
+num_mmsi_kept=numel(unique(vertcat(chunk_mmsi{:})));
+pairs=unique(vertcat(chunk_pairs{:}),'rows');
+if isempty(pairs)
+    pairs=zeros(0,2);
+end
 end

@@ -22,11 +22,11 @@ arguments
     level (1,1) double
 end
 
-[lat_grid,lon_grid]=geographicGrid(R);
-lat_vec=lat_grid(:,1);
-lon_vec=lon_grid(1,:);
+%%%%%Cell-center vectors; no full-size coordinate matrices
 dlat=R.CellExtentInLatitude;
 dlon=R.CellExtentInLongitude;
+lat_vec=R.LatitudeLimits(1)+dlat*((1:R.RasterSize(1))'-0.5);
+lon_vec=R.LongitudeLimits(1)+dlon*((1:R.RasterSize(2))-0.5);
 
 pad_value=level+max(1,abs(level));
 field_pad=pad_value*ones(size(field)+2);
