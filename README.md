@@ -25,7 +25,7 @@ fields as a proxy:
 | Filter | Default | Why |
 | --- | --- | --- |
 | AIS ship type | 60–69 passenger, 70–79 cargo, 80–89 tanker | Container ships, bulkers, car carriers, tankers, and cruise ships |
-| Length overall | 100 m or longer | Proxy for 3,000 GT. **TODO:** validate against a registry with GT. |
+| Length overall | 100 m or longer | Proxy for 3,000 GT, checked against registry tonnage (see Validation) |
 | IMO number | Present | IMO numbers go to seagoing SOLAS ships |
 | Speed | Any | Radars often stay on at anchor |
 
@@ -184,10 +184,36 @@ arrays with NaN between rings, ready for `inpolygon` or
   test box, the `bufferm` zones and the distance-field zones differ by 1.5% of
   area at 25 km and 0.5% at 50 km.
 
+## Length cutoff check
+
+`init_check_gt_proxy_rev1.m` tests the 100 m cutoff against registry gross
+tonnage. It takes every passenger, cargo, and tanker ship with an IMO number
+seen on four 2024 AIS days (one per season) and matches the IMO numbers to
+gross tonnage on Wikidata (81,000 ships with an IMO number, tonnage, and
+length, mostly imported from public registers).
+
+- 4,129 of 5,674 AIS ships matched (73%; 68% between 75 and 100 m, 75–84%
+  above 100 m).
+- At 100 m, 99.6% of the ships the cutoff keeps are 3,000 GT or more
+  (3,801 of 3,818), and the cutoff keeps 98.1% of the ships that are
+  3,000 GT or more (3,801 of 3,873).
+- The 72 ships it misses are mostly 90–99 m cargo ships and ferries;
+  12 of them have a wrong AIS length (the register shows 100 m or more).
+  Passenger ships have the lowest recall (86%), because many ferries of
+  3,000 GT and up are shorter than 100 m.
+- The 17 ships it keeps by mistake are 997–2,996 GT, close to the line.
+- AIS lengths agree with register lengths: median difference 0.1 m,
+  90th percentile 1 m.
+- A 90 m cutoff balances the two errors (99.2% and 99.0%).
+
+![Length cutoff check](docs/gt_proxy_check_2024.png)
+
+The tables are in `outputs/2024/gt_proxy_*.csv`.
+
 ## Limits
 
-- The 100 m length cutoff is a proxy for 3,000 GT; a registry check would
-  confirm it.
+- The 100 m length cutoff stands in for 3,000 GT; the check above found it
+  right for about 98% of ships.
 - AIS doesn't report radar band or whether the radar is on.
 - The grid is 0.01°, so zone edges carry about ±0.5 km of resolution error.
 - Alaska, Hawaii, and the territories are outside the default grid.
