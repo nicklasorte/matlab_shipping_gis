@@ -61,6 +61,16 @@ land_xy=to_xy(union(polyshape(state_lon,state_lat)),albers);
 zone_land_xy=to_xy(zone.poly_land,albers);
 ship_water_xy=to_xy(subtract(zone.poly,zone.poly_land),albers);
 
+%%%%%Show ship water only near the coast (within water_show_km of land), so
+%%%%%ocean lanes far offshore don't dominate the picture. polybuffer runs on
+%%%%%a coarse copy of the land outline (reducem, about 2 km tolerance) in
+%%%%%Albers km, where planar distance is accurate to about 1 percent.
+water_show_km=100;
+[lat_r,lon_r]=reducem(state_lat,state_lon,0.02);
+coarse_land=to_xy(union(polyshape(lon_r,lat_r)),albers);
+near_land=polybuffer(coarse_land,water_show_km);
+ship_water_xy=intersect(ship_water_xy,near_land);
+
 %%%%%Figure: 7.5 x 5.2 in, white background
 fig=figure('Visible','off','Units','inches','Position',[0 0 7.5 5.2],'Color','w');
 ax=axes(fig,'Position',[0.02 0.10 0.96 0.72]);
@@ -72,22 +82,26 @@ plot(ax,sx/1e3,sy/1e3,'Color',line_gray,'LineWidth',0.3);
 axis(ax,'equal');
 axis(ax,'off');
 
-%%%%%Crop to the lower 48 plus near-shore water
-[bx,by]=projfwd(albers,[24 24 50 50 37],[-125.5 -66 -66 -125.5 -96]);
-xlim(ax,[min(bx) max(bx)]/1e3+[30 -30]);
-ylim(ax,[min(by) max(by)]/1e3+[0 -60]);
+%%%%%Crop to the lower 48 plus the near-shore water shown
+[x_lim,y_lim]=boundingbox(union(land_xy,ship_water_xy));
+xlim(ax,x_lim+[-20 20]);
+ylim(ax,y_lim+[-20 20]);
 
-%%%%%Direct labels (offshore of the Gulf, and the Atlantic water)
-[lx,ly]=projfwd(albers,[25.6 31.0],[-90.5 -71.5]);
-text(ax,lx(1)/1e3,ly(1)/1e3,sprintf('Land within %g km\nof large-ship water',d_km), ...
-    'Color',light_blue,'FontWeight','bold','FontName',font_name,'FontSize',9,'HorizontalAlignment','center');
-text(ax,lx(2)/1e3,ly(2)/1e3,sprintf('Large-ship water\n(2024 AIS)'), ...
+%%%%%Direct labels: land label on gray land with a leader to the Texas coast;
+%%%%%water label in the Atlantic
+[lx,ly]=projfwd(albers,[33.6 29.6 33.5],[-101.5 -95.2 -72.6]);
+lx=lx/1e3;
+ly=ly/1e3;
+plot(ax,[lx(1) lx(2)],[ly(1)-40 ly(2)+15],'Color',light_blue,'LineWidth',1);
+text(ax,lx(1),ly(1),sprintf('Land within %g km\nof large-ship water',d_km), ...
+    'Color',light_blue,'FontWeight','bold','FontName',font_name,'FontSize',9, ...
+    'HorizontalAlignment','center','VerticalAlignment','bottom');
+text(ax,lx(3),ly(3),sprintf('Large-ship water\n(2024 AIS)'), ...
     'Color',dark_blue,'FontName',font_name,'FontSize',9,'HorizontalAlignment','center');
 
 %%%%%Scale bar: 500 km
-[x0,y0]=projfwd(albers,26.2,-120.5);
-x0=x0/1e3;
-y0=y0/1e3;
+x0=x_lim(1)+80;
+y0=y_lim(1)+60;
 plot(ax,[x0 x0+500],[y0 y0],'Color',dark_blue,'LineWidth',1.5);
 text(ax,x0+250,y0+45,'500 km','Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
 
