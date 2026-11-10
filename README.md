@@ -12,6 +12,17 @@ Each run produces, for every distance you set, polygons as MATLAB
 `polyshape` objects, `[lat lon]` vertex arrays, shapefiles (EPSG:4326), and
 KML files, plus a map.
 
+## Who uses 2900–3100 MHz maritime radionavigation
+
+NTIA's band summary lists three groups of users of maritime
+radionavigation in 2900–3100 MHz:
+
+| User | Where | How this repo covers it |
+| --- | --- | --- |
+| Commercial ships (cargo, tanker, passenger, many foreign-flagged; fishing vessels) | Wherever they sail | AIS ships, below |
+| Coast Guard and Navy ships | U.S. waters, homeports, operating areas | AIS military and law enforcement ships, 100 m and up; ships that don't broadcast AIS are missed |
+| Fixed sites: Coast Guard Vessel Traffic Service radars, racons (Coast Guard and private, for example oil platforms) | Busy harbors, channels, coasts, offshore platforms | Racons charted as S-band are zone sources; VTS areas are checked against the zones |
+
 ## Which ships carry an S-band radar
 
 SOLAS Chapter V, Regulation 19 requires ships of 3,000 gross tonnage (GT) and
@@ -24,9 +35,9 @@ fields as a proxy:
 
 | Filter | Default | Why |
 | --- | --- | --- |
-| AIS ship type | 60–69 passenger, 70–79 cargo, 80–89 tanker | Container ships, bulkers, car carriers, tankers, and cruise ships |
+| AIS ship type | 60–69 passenger, 70–79 cargo, 80–89 tanker, 35 military, 55 law enforcement, 33 dredging, 0 and 90–99 other | Merchant ships plus Navy, Coast Guard, seagoing dredges, and other large ships |
 | Length overall | 100 m or longer | Proxy for 3,000 GT, checked against registry tonnage (see Validation) |
-| IMO number | Present | IMO numbers go to seagoing SOLAS ships |
+| IMO number | Present, except military and law enforcement | IMO numbers go to seagoing ships; Navy and Coast Guard ships have none |
 | Speed | Any | Radars often stay on at anchor |
 
 The proxy isn't sensitive to the length cutoff. On 2024-01-01, U.S. AIS had
@@ -36,6 +47,19 @@ The proxy isn't sensitive to the length cutoff. On 2024-01-01, U.S. AIS had
 U.S. domestic ships that don't make international voyages, such as Great
 Lakes freighters, fall under 33 CFR 164 instead of SOLAS. Many of them carry
 S-band radars anyway. The code keeps them when they pass the filter.
+
+Left out on purpose:
+
+- **Towing (AIS types 31, 32, 52).** River towboats often report the length
+  of the whole barge tow (300 m and more), and they use X-band radars. On a
+  2024 test day, 92% of towing reports at 100 m and up came from inland
+  rivers.
+- **Fishing and special craft (30, 34, 36, 37, 50–54, 56–59).** At 100 m and
+  up these were also mostly inland river reports, which points to coding
+  errors.
+- **Other and dredging entries without an IMO number.** Allowing them pulled
+  river towboats into the zones up the Mississippi to Memphis, St. Louis,
+  and Dubuque.
 
 ## Method
 
