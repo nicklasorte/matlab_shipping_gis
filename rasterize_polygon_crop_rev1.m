@@ -36,9 +36,10 @@ row_last=round((lat_hi-R.LatitudeLimits(1))/dlat);
 col_first=round((lon_lo-R.LongitudeLimits(1))/dlon)+1;
 col_last=round((lon_hi-R.LongitudeLimits(1))/dlon);
 
-%%%%%georefcells needs at least 2 cells per side; widen a 1-cell crop inside R.
-[row_first,row_last]=widen_to_two(row_first,row_last,R.RasterSize(1));
-[col_first,col_last]=widen_to_two(col_first,col_last,R.RasterSize(2));
+%%%%%georefcells needs at least 2 cells per side, and rounding can make an
+%%%%%exact 2-cell span fail its check, so widen small crops to 3 cells inside R.
+[row_first,row_last]=widen_to_three(row_first,row_last,R.RasterSize(1));
+[col_first,col_last]=widen_to_three(col_first,col_last,R.RasterSize(2));
 row_range=row_first:row_last;
 col_range=col_first:col_last;
 lat_lo=R.LatitudeLimits(1)+dlat*(row_first-1);
@@ -51,14 +52,11 @@ Z=vec2mtx(lat,lon,zeros(R_sub.RasterSize),R_sub,'filled');
 mask_sub=Z<=1;
 end
 
-function [first,last]=widen_to_two(first,last,num)
-%%%%%Grow [first,last] to at least 2 indices without leaving 1..num.
-if last-first+1>=2
+function [first,last]=widen_to_three(first,last,num)
+%%%%%Grow [first,last] to at least 3 indices without leaving 1..num.
+if last-first+1>=3
     return
 end
-if last<num
-    last=first+1;
-else
-    first=last-1;
-end
+first=max(1,min(first,num-2));
+last=first+2;
 end
