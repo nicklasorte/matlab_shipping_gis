@@ -87,6 +87,17 @@ Lakes and inland waterways, at a 1-minute sample.
   200 MB compressed and 750–1,000 MB as CSV. The code deletes each CSV after
   it caches that day's ship cells, which take a few MB.
 
+## Output size
+
+A full run writes about 4.5 MB:
+
+| Setting | Default | Effect |
+| --- | --- | --- |
+| `p.simplify_deg` | 0.005 | Drops polygon vertices within 0.005° (about 0.5 km, half a grid cell) with `reducem`. Cuts vertices about 6 times; the 50 km land zone moves by under 1% of its area. Use 0 to keep every vertex. |
+| `p.kmz` | `true` | Writes KMZ (zipped KML), about 5 times smaller than KML. |
+| `p.save_grids` | `false` | Leaves the full-size grids out of the `.mat` (1.3 MB instead of 33 MB). `true` saves them in compact types. |
+| `p.png_dpi` | 200 | Map resolution. |
+
 ## Memory and disk
 
 The code works in pieces so a full year fits on a laptop:
@@ -124,11 +135,24 @@ Denver, Memphis, St. Louis, Nashville, Atlanta, Pittsburgh, and Jackson
 
 The 2024 maps are in `docs/`:
 
-- `docs/shipping_zone_2024_shore_25km_us_map.png`
-- `docs/shipping_zone_2024_shore_50km_us_map.png`
-- `docs/shipping_zone_2024_shore_100km_us_map.png`
+| Map | 25 km | 50 km | 100 km |
+| --- | --- | --- | --- |
+| Land within X km of large-ship water | [25 km](docs/shipping_zone_2024_shore_25km_us_map.png) | [50 km](docs/shipping_zone_2024_shore_50km_us_map.png) | [100 km](docs/shipping_zone_2024_shore_100km_us_map.png) |
+| Large-ship routes with the X km buffer | [25 km](docs/shipping_zone_2024_shore_25km_routes_buffer_map.png) | [50 km](docs/shipping_zone_2024_shore_50km_routes_buffer_map.png) | [100 km](docs/shipping_zone_2024_shore_100km_routes_buffer_map.png) |
+
+Large-ship routes alone: [routes map](docs/shipping_zone_2024_routes_map.png).
+
+![Large-ship routes and the 50 km buffer](docs/shipping_zone_2024_shore_50km_routes_buffer_map.png)
 
 ![Land within 50 km of large-ship water](docs/shipping_zone_2024_shore_50km_us_map.png)
+
+## 2024 zone files
+
+`outputs/2024/` holds the 2024 zones for 25, 50, and 100 km as shapefiles
+(EPSG:4326) and KMZ files for Google Earth:
+
+- `shipping_zone_2024_shore_<X>km`: ship water plus land out to X km.
+- `shipping_zone_2024_shore_<X>km_land`: the same zone clipped to U.S. land.
 
 ## Outputs
 
@@ -136,11 +160,13 @@ For each distance `X` in `p.distances_km`, the output folder holds:
 
 | File | Content |
 | --- | --- |
-| `<name>_<mode>_<X>km.shp`, `.kml` | Zone: ship water plus land out to X km |
-| `<name>_<mode>_<X>km_land.shp`, `.kml` | The same zone clipped to U.S. land |
+| `<name>_<mode>_<X>km.shp`, `.kmz` | Zone: ship water plus land out to X km |
+| `<name>_<mode>_<X>km_land.shp`, `.kmz` | The same zone clipped to U.S. land |
 | `<name>_<mode>_rev1.mat` | `result` struct: grid, masks, distance field, and zones |
 | `<name>_<mode>_map.png` | Diagnostic map: all zones and the ship cells |
 | `<name>_<mode>_<X>km_us_map.png` | U.S. map of the land within X km and the large-ship water |
+| `<name>_<mode>_<X>km_routes_buffer_map.png` | U.S. map of the large-ship routes and the X km buffer |
+| `<name>_routes_map.png` | U.S. map of the large-ship routes |
 
 In `result.zone(k)`, `.poly` and `.poly_land` are planar `polyshape` objects
 (x = longitude, y = latitude). `.latlon` and `.latlon_land` are `[lat lon]`
