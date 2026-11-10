@@ -31,7 +31,7 @@ shp_path=fullfile(out_dir,[base_name '.shp']);
 shapewrite(S,shp_path);
 %%%%%shapewrite writes no .prj; write the WGS84 geographic CRS so GIS tools read it as EPSG:4326.
 prj_path=fullfile(out_dir,[base_name '.prj']);
-writelines(wktstring(geocrs(4326)),prj_path);
+writelines(wktstring(geocrs(4326),'Version','wkt1'),prj_path); %%%%%ESRI .prj files use WKT1
 
 kml_path=fullfile(out_dir,[base_name '.kml']);
 kmlwrite(kml_path,S,'Name',zone_label,'FaceColor',[0.85 0.33 0.10],'FaceAlpha',0.35,'EdgeColor','k');
