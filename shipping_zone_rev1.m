@@ -160,6 +160,14 @@ save(mat_path,'result','-v7.3');
 
 if p.make_figure
     plot_shipping_zone_rev1(result,fullfile(p.out_dir,sprintf('%s_%s_map.png',p.out_name,p.zone_mode)));
+    %%%%%One standalone U.S. map per distance
+    state_shp=fullfile(p.data_dir,sprintf('cb_%d_us_state_500k',p.census_year),sprintf('cb_%d_us_state_500k.shp',p.census_year));
+    for dist_idx=1:num_dist
+        d_km=p.distances_km(dist_idx);
+        map_info=plot_zone_map_rev1(result,d_km, ...
+            fullfile(p.out_dir,sprintf('%s_%s_%gkm_us_map.png',p.out_name,p.zone_mode,d_km)),state_shp);
+        disp_progress(sprintf('Map %g km: %s',d_km,map_info.title));
+    end
 end
 disp_progress('shipping_zone_rev1: done');
 end
