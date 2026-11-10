@@ -22,6 +22,7 @@ p.cells_per_degree=100;   %%%%%0.01 deg, about 1.1 km by 0.8-1.0 km
 %%%%%%%%%%Each 2024 day is about 200 MB compressed, 750 MB as CSV.
 p.ais_days=datetime(2024,1,3):caldays(7):datetime(2024,12,31);
 p.delete_csv=true;        %%%%%keep only the per-day cell cache
+p.prefilter_min_length=100; %%%%%stream-filter each day by length (needs /usr/bin/python3); 0 writes the full CSV
 p.zstd_exe='/opt/homebrew/bin/zstd';
 
 %%%%%%%%%%Large-ship filter (proxy for SOLAS V/19: >= 3000 GT carries a

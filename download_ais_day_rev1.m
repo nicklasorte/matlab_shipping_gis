@@ -1,4 +1,4 @@
-function [csv_path,tf_private]=download_ais_day_rev1(day,data_dir,zstd_exe,keep_csv)
+function [csv_path,tf_private]=download_ais_day_rev1(day,data_dir,zstd_exe,keep_csv,prefilter_min_length)
 %download_ais_day_rev1  Download and decompress one day of AIS data.
 %
 %   [csv_path,tf_private]=download_ais_day_rev1(day,data_dir,zstd_exe,keep_csv)
@@ -13,6 +13,11 @@ function [csv_path,tf_private]=download_ais_day_rev1(day,data_dir,zstd_exe,keep_
 %     With KEEP_CSV=false the private file is returned (tf_private=true)
 %     and the caller deletes it when done.
 %
+%   With PREFILTER_MIN_LENGTH > 0 (2024+ files only), the file is
+%   decompressed through ais_prefilter.py, which keeps only rows with a
+%   length of at least that many meters, so the full CSV (about 1 GB) never
+%   touches the disk. Set it no higher than the ship filter's length.
+%
 %   2024+ files are .csv.zst. MATLAB has no zstd reader (unzip, gunzip,
 %   and untar don't handle zstd), so the zstd command-line tool is called.
 %   Install it with "brew install zstd". 2023 and earlier files are .zip
@@ -23,6 +28,7 @@ arguments
     data_dir (1,:) char
     zstd_exe (1,:) char = '/opt/homebrew/bin/zstd'
     keep_csv (1,1) logical = false
+    prefilter_min_length (1,1) double {mustBeNonnegative} = 0
 end
 
 if ~isfolder(data_dir)
@@ -67,7 +73,14 @@ if endsWith(file_name,'.csv.zst')
     if ~isfile(zstd_exe)
         error('shipgis:zstd','zstd not found at %s. Install it (brew install zstd) or pass its path.',zstd_exe);
     end
-    [status,msg]=system(sprintf('"%s" -d -f -q "%s" -o "%s"',zstd_exe,archive_path,private_csv));
+    if prefilter_min_length>0
+        %%%%%Stream: zstd to stdout, filter by length in Python, write the small CSV
+        script=fullfile(fileparts(mfilename('fullpath')),'ais_prefilter.py');
+        [status,msg]=system(sprintf('"%s" -dc -q "%s" | /usr/bin/python3 "%s" %g > "%s"', ...
+            zstd_exe,archive_path,script,prefilter_min_length,private_csv));
+    else
+        [status,msg]=system(sprintf('"%s" -d -f -q "%s" -o "%s"',zstd_exe,archive_path,private_csv));
+    end
     if status~=0
         error('shipgis:zstd','zstd failed on %s: %s',archive_path,msg);
     end

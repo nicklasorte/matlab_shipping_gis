@@ -25,7 +25,11 @@ if isfile(cache_file)
     return
 end
 
-[csv_path,tf_private]=download_ais_day_rev1(day,p.data_dir,p.zstd_exe,~p.delete_csv);
+prefilter=0;
+if isfield(p,'prefilter_min_length')
+    prefilter=min(p.prefilter_min_length,p.filt.min_length_m);   %%%%%never stricter than the ship filter
+end
+[csv_path,tf_private]=download_ais_day_rev1(day,p.data_dir,p.zstd_exe,~p.delete_csv,prefilter);
 [S.pairs,S.num_row_kept,S.num_mmsi_kept]=ais_large_ship_cells_rev1(csv_path,R,p.filt,p.ais_read_rows);
 
 %%%%%Atomic write: unique temp name in the same folder, then ATOMIC_MOVE.
