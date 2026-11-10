@@ -47,7 +47,8 @@ lat_hi=R.LatitudeLimits(1)+dlat*row_last;
 lon_lo=R.LongitudeLimits(1)+dlon*(col_first-1);
 lon_hi=R.LongitudeLimits(1)+dlon*col_last;
 
-R_sub=georefcells([lat_lo lat_hi],[lon_lo lon_hi],dlat,dlon);
+%%%%%Give the raster size, not the cell extent, so the crop size matches the index ranges exactly.
+R_sub=georefcells([lat_lo lat_hi],[lon_lo lon_hi],[numel(row_range) numel(col_range)]);
 Z=vec2mtx(lat,lon,zeros(R_sub.RasterSize),R_sub,'filled');
 mask_sub=Z<=1;
 end
