@@ -49,6 +49,7 @@ p.data_dir=fullfile(pwd,'data');
 p.out_dir=fullfile(pwd,'output');
 p.out_name='shipping_zone_2024';
 p.make_figure=true;
+p.parallel_flag=0;        %%%%%1: process AIS days on a parallel pool (parpool first)
 
 result=shipping_zone_rev1(p);
 

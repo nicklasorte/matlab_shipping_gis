@@ -38,36 +38,37 @@ arguments
 end
 
 disp_progress('shipping_zone_rev1: start');
+for folder={p.data_dir,p.out_dir}
+    if ~isfolder(folder{1})
+        mkdir(folder{1});
+    end
+end
 R=georefcells(p.latlim,p.lonlim,1/p.cells_per_degree,1/p.cells_per_degree);
 num_cell=prod(R.RasterSize);
 
-%%%%%%%%%%1. Large-ship cells from AIS
+%%%%%%%%%%1. Large-ship cells from AIS (one cache file per day)
 num_day=numel(p.ais_days);
 cell_pairs=cell(num_day,1);
 day_rows=zeros(num_day,1);
 day_mmsi=zeros(num_day,1);
-filt_key=sprintf('cpd%d_L%g_imo%d_sog%g_vt%d-%d-n%d-s%d',p.cells_per_degree,p.filt.min_length_m, ...
-    p.filt.require_imo,p.filt.min_sog_kn,min(p.filt.vessel_types),max(p.filt.vessel_types), ...
-    numel(p.filt.vessel_types),sum(p.filt.vessel_types));
-lat_key=sprintf('%g_%g_%g_%g',p.latlim,p.lonlim);
-for day_idx=1:num_day
-    day=p.ais_days(day_idx);
-    cache_file=fullfile(p.data_dir,sprintf('ais_cells_%s_%s_%s_rev1.mat',string(day,'yyyyMMdd'),filt_key,lat_key));
-    if isfile(cache_file)
-        S=load(cache_file,'pairs','num_row_kept','num_mmsi_kept');
-    else
-        csv_path=download_ais_day_rev1(day,p.data_dir,p.zstd_exe);
-        [S.pairs,S.num_row_kept,S.num_mmsi_kept]=ais_large_ship_cells_rev1(csv_path,R,p.filt);
-        save(cache_file,'-struct','S');
-        if p.delete_csv
-            delete(csv_path);
-        end
+ais_days=p.ais_days;
+if p.parallel_flag
+    %%%%%Days are independent; each worker downloads, filters, and caches its own day.
+    parfor day_idx=1:num_day
+        S=ais_cache_day_rev1(ais_days(day_idx),R,p);
+        cell_pairs{day_idx}=S.pairs;
+        day_rows(day_idx)=S.num_row_kept;
+        day_mmsi(day_idx)=S.num_mmsi_kept;
     end
-    cell_pairs{day_idx}=S.pairs;
-    day_rows(day_idx)=S.num_row_kept;
-    day_mmsi(day_idx)=S.num_mmsi_kept;
-    disp_progress(sprintf('AIS %s: %d large-ship reports, %d ships (%d of %d days)', ...
-        string(day,'yyyy-MM-dd'),S.num_row_kept,S.num_mmsi_kept,day_idx,num_day));
+else
+    for day_idx=1:num_day
+        S=ais_cache_day_rev1(ais_days(day_idx),R,p);
+        cell_pairs{day_idx}=S.pairs;
+        day_rows(day_idx)=S.num_row_kept;
+        day_mmsi(day_idx)=S.num_mmsi_kept;
+        disp_progress(sprintf('AIS %s: %d large-ship reports, %d ships (%d of %d days)', ...
+            string(ais_days(day_idx),'yyyy-MM-dd'),S.num_row_kept,S.num_mmsi_kept,day_idx,num_day));
+    end
 end
 result.day_log=table(p.ais_days(:),day_rows,day_mmsi,'VariableNames',{'day','rows_kept','mmsi_kept'});
 
