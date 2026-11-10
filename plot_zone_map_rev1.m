@@ -103,7 +103,7 @@ text(ax,lx(3),ly(3),sprintf('Large-ship water\n(2024 AIS)'), ...
 x0=x_lim(1)+80;
 y0=y_lim(1)+60;
 plot(ax,[x0 x0+500],[y0 y0],'Color',dark_blue,'LineWidth',1.5);
-text(ax,x0+250,y0+45,'500 km','Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
+text(ax,x0+250,y0+80,'500 km','Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
 
 %%%%%Marking, title, source line
 annotation(fig,'textbox',[0.02 0.94 0.96 0.05],'String','DRAFT//PRE-DECISIONAL','EdgeColor','none', ...
