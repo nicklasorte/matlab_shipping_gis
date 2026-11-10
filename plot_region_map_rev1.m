@@ -74,10 +74,11 @@ ylim(ax,[min(by) max(by)]/1e3);
 %%%%%Direct label for the zone, and a 50 km scale bar
 x_lim=xlim(ax);
 y_lim=ylim(ax);
-text(ax,x_lim(2)-10,y_lim(1)+20,sprintf('Light blue: %g km zone',d_km),'Color',light_blue,'FontWeight','bold', ...
-    'FontName',font_name,'FontSize',9,'HorizontalAlignment','right');
-text(ax,x_lim(2)-10,y_lim(1)+42,'Dark blue: large-ship routes (2024 AIS)','Color',dark_blue,'FontWeight','bold', ...
-    'FontName',font_name,'FontSize',9,'HorizontalAlignment','right');
+%%%%%Key in the top-left corner, clear of the offshore routes
+text(ax,x_lim(1)+10,y_lim(2)-15,'Dark blue: large-ship routes (2024 AIS)','Color',dark_blue,'FontWeight','bold', ...
+    'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
+text(ax,x_lim(1)+10,y_lim(2)-37,sprintf('Light blue: %g km zone',d_km),'Color',light_blue,'FontWeight','bold', ...
+    'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
 plot(ax,x_lim(1)+[15 65],y_lim(1)+[20 20],'Color',dark_blue,'LineWidth',1.5);
 text(ax,x_lim(1)+40,y_lim(1)+32,'50 km','Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
 
