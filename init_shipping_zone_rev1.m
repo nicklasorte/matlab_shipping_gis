@@ -26,9 +26,12 @@ p.zstd_exe='/opt/homebrew/bin/zstd';
 
 %%%%%%%%%%Large-ship filter (proxy for SOLAS V/19: >= 3000 GT carries a
 %%%%%%%%%%3 GHz radar or a second 9 GHz radar)
-p.filt.vessel_types=0:99;           %%%%%every AIS ship type (S-band radar is also on military,
-                                    %%%%%fishing, tug-barge, and other large ships); [60:69 70:89]
-                                    %%%%%keeps only passenger, cargo, and tanker ships
+p.filt.vessel_types=[0 33 35 55 60:89 90:99]; %%%%%AIS ship types: passenger, cargo, tanker, military (35),
+                                    %%%%%law enforcement (55), dredging (33), other and unknown (0, 90-99).
+                                    %%%%%Left out: towing (31, 32, 52), whose AIS length is often the whole
+                                    %%%%%barge tow (inland river towboats use X-band), and special craft and
+                                    %%%%%fishing (30, 34, 36, 37, 50-54, 56-59), which on a 2024 test day
+                                    %%%%%reported mostly from inland rivers at 100 m and up.
 p.filt.min_length_m=100;            %%%%%GT proxy; init_check_gt_proxy_rev1: 99.6% precision, 98.1% recall
 p.filt.require_imo=false;           %%%%%military and many U.S. domestic ships have no IMO number
 p.filt.min_sog_kn=0;
