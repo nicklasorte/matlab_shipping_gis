@@ -34,7 +34,10 @@ p.filt.vessel_types=[0 33 35 55 60:89 90:99]; %%%%%AIS ship types: passenger, ca
                                     %%%%%fishing (30, 34, 36, 37, 50-54, 56-59), which on a 2024 test day
                                     %%%%%reported mostly from inland rivers at 100 m and up.
 p.filt.min_length_m=100;            %%%%%GT proxy; init_check_gt_proxy_rev1: 99.6% precision, 98.1% recall
-p.filt.require_imo=false;           %%%%%military and many U.S. domestic ships have no IMO number
+p.filt.require_imo=true;            %%%%%IMO number required (seagoing ships), except for:
+p.filt.no_imo_types=[35 55];        %%%%%military and law enforcement (Navy and Coast Guard ships have none).
+                                    %%%%%Without the IMO rule, other/unknown and dredge entries added
+                                    %%%%%inland river towboats above Baton Rouge (2024 test).
 p.filt.min_sog_kn=0;
 p.min_unique_ships=4;               %%%%%distinct ships per cell over the sampled days; 4 removes
                                     %%%%%tug/barge noise on the upper Mississippi (2024 test: 2 kept 903 such cells, 4 kept 0)

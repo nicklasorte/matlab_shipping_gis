@@ -17,6 +17,8 @@ function [pairs,num_row_kept,num_mmsi_kept]=ais_large_ship_cells_rev1(csv_path,R
 %                         and 98.1% recall against registry tonnage)
 %     filt.require_imo    IMO number present (IMO numbers go to seagoing
 %                         SOLAS ships), default true
+%     filt.no_imo_types   optional: AIS types kept without an IMO number
+%                         (military 35, law enforcement 55)
 %     filt.min_sog_kn     minimum speed over ground, default 0 (keep ships
 %                         at anchor; radars are often on at anchor)
 %
@@ -70,7 +72,11 @@ while hasdata(ds)
     T=renamevars(T,src_names,out_names);
     keep=ismember(T.vessel_type,filt.vessel_types) & T.length>=filt.min_length_m;
     if filt.require_imo
-        keep=keep & strlength(T.imo)>0 & ~ismissing(T.imo);
+        has_imo=strlength(T.imo)>0 & ~ismissing(T.imo);
+        if isfield(filt,'no_imo_types')
+            has_imo=has_imo | ismember(T.vessel_type,filt.no_imo_types);   %%%%%e.g. Navy ships carry no IMO number
+        end
+        keep=keep & has_imo;
     end
     if filt.min_sog_kn>0
         keep=keep & T.sog>=filt.min_sog_kn;

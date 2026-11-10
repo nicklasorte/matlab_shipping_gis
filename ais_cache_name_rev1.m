@@ -15,6 +15,9 @@ vt=p.filt.vessel_types;
 filt_key=sprintf('L%g_imo%d_sog%g_vt%d-%d-n%d-s%d',p.filt.min_length_m,p.filt.require_imo, ...
     p.filt.min_sog_kn,min(vt),max(vt),numel(vt),sum(vt));
 grid_key=sprintf('%g_%g_%g_%g_d%g',R.LatitudeLimits,R.LongitudeLimits,R.CellExtentInLatitude);
+if isfield(p.filt,'no_imo_types') && ~isempty(p.filt.no_imo_types)
+    filt_key=sprintf('%s_ni%s',filt_key,strjoin(string(p.filt.no_imo_types),'-'));
+end
 cache_file=fullfile(p.data_dir,sprintf('ais_cells_%s_%s_%s_rev1.mat', ...
     char(string(day,'yyyyMMdd')),filt_key,grid_key));
 end
