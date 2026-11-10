@@ -16,8 +16,9 @@ function [result]=shipping_zone_rev1(p)
 %          'ships' mode: distance to the nearest ship-source cell.
 %          'shore' mode: water within p.shore_link_km of ships is set to
 %          0, and land is measured from the shoreline that faces that
-%          water. Always a superset of 'ships' mode.
-%     4. Contour at each distance; clip a land-only copy to U.S. land.
+%          water (Census TIGER coastline). Always a superset of 'ships'.
+%     4. Contour at each distance; clip a land-only copy to U.S. land
+%        (Census cartographic boundary states, 1:500,000).
 %     5. Write .mat, shapefile, KML, and a map.
 %
 %   result (struct)
@@ -88,25 +89,24 @@ if p.include_fairways
     source_mask=source_mask | fairway_mask;
 end
 
-%%%%%%%%%%3. Distance field
-[land_mask,land_poly]=us_land_mask_rev1(R);
+%%%%%%%%%%3. Distance field (Census land and coastline as the land/water reference)
+[land_mask,land_poly,coast_mask]=census_reference_rev1(R,p.data_dir,p.census_year);
 max_km=max(p.distances_km);
 switch p.zone_mode
     case 'ships'
         dist_field_km=distance_to_mask_km_rev1(source_mask,R,max_km);
     case 'shore'
         dist_ship_km=distance_to_mask_km_rev1(source_mask,R,max_km+p.shore_link_km);
+        %%%%%Ship water: non-land within shore_link_km of a ship cell
         water_zone=~land_mask & dist_ship_km<=p.shore_link_km;
-        %%%%%Shoreline: land cells with a 4-neighbor in water_zone (manual shift; imdilate needs Image Processing).
-        wz_pad=false(size(water_zone)+2);
-        wz_pad(2:end-1,2:end-1)=water_zone;
-        touch=wz_pad(1:end-2,2:end-1) | wz_pad(3:end,2:end-1) | wz_pad(2:end-1,1:end-2) | wz_pad(2:end-1,3:end);
-        shore_mask=land_mask & touch;
+        %%%%%Facing shoreline: Census coastline cells within shore_link_km of a ship cell
+        shore_mask=coast_mask & dist_ship_km<=p.shore_link_km;
         dist_shore_km=distance_to_mask_km_rev1(shore_mask,R,max_km);
+        %%%%%min() with dist_ship keeps river ports the coastline layer omits
         dist_field_km=min(dist_ship_km,dist_shore_km);
         dist_field_km(water_zone)=0;
         dist_field_km(dist_field_km>max_km)=2*max_km;
-        disp_progress(sprintf('Shore mode: %d shoreline cells facing shipping',nnz(shore_mask)));
+        disp_progress(sprintf('Shore mode: %d coastline cells face shipping',nnz(shore_mask)));
     otherwise
         error('shipgis:mode','p.zone_mode must be ''ships'' or ''shore''.');
 end

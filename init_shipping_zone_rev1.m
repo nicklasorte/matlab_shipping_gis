@@ -37,9 +37,12 @@ p.include_fairways=true;
 
 %%%%%%%%%%Zone definition
 p.distances_km=[25 50 100];
-p.zone_mode='ships';      %%%%%'ships': X km from the ships themselves
-                          %%%%%'shore': ship water + X km inland from the facing shoreline
+p.zone_mode='shore';      %%%%%'shore': ship water + X km inland from the facing shoreline (default)
+                          %%%%%'ships': X km from the ships themselves
 p.shore_link_km=25;       %%%%%'shore' mode: water within this distance of ships counts as ship water
+
+%%%%%%%%%%Census reference layers (land mask and coastline)
+p.census_year=2023;
 
 %%%%%%%%%%Folders and names
 p.data_dir=fullfile(pwd,'data');
