@@ -96,6 +96,22 @@ if p.include_fairways
     source_mask=source_mask | fairway_mask;
 end
 
+%%%%%%%%%%2b. Racons (radar beacons) as fixed 2900-3100 MHz sites
+if isfield(p,'include_racons') && p.include_racons
+    racons=load_racons_rev1(p.data_dir);
+    if p.racon_bands=="S"
+        racons=racons(racons.s_band,:);
+    end
+    [r_row,r_col]=geographicToDiscrete(R,racons.lat,racons.lon);
+    in_grid=~isnan(r_row);
+    racon_mask=false(R.RasterSize);
+    racon_mask(sub2ind(R.RasterSize,r_row(in_grid),r_col(in_grid)))=true;
+    disp_progress(sprintf('Racons: %d in the grid (%d cells not already ship cells)',nnz(in_grid),nnz(racon_mask & ~source_mask)));
+    source_mask=source_mask | racon_mask;
+    result.racons=racons(in_grid,:);
+    writetable(result.racons,fullfile(p.out_dir,sprintf('%s_racons.csv',p.out_name)));
+end
+
 %%%%%%%%%%3. Distance field (Census land and coastline as the land/water reference)
 [land_mask,land_poly,coast_mask]=census_reference_rev1(R,p.data_dir,p.census_year);
 max_km=max(p.distances_km);
@@ -184,6 +200,13 @@ if isfield(p,'principal_ports') && p.principal_ports
     ok=result.principal_port_check.reached & result.principal_port_check.on_route_network;
     disp_progress(sprintf('Principal ports: %d of %d deep-draft ports reached; %d of %d inland ports reached', ...
         nnz(ok & deep_draft),nnz(deep_draft),nnz(ok & pp.type=="I"),nnz(pp.type=="I")));
+end
+
+%%%%%Coast Guard Vessel Traffic Service areas (report only: Louisville and
+%%%%%Berwick Bay serve towboats, not S-band ships)
+if isfield(p,'check_vts') && ~isempty(p.check_vts)
+    result.vts_check=check_ports_rev1(result,p.check_vts,5,2000,false(height(p.check_vts),1));
+    writetable(result.vts_check,fullfile(p.out_dir,sprintf('%s_vts_check.csv',p.out_name)));
 end
 
 %%%%%Save the zones; the full-size grids only when asked, in compact types.

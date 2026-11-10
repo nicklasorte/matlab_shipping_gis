@@ -26,15 +26,21 @@ p.zstd_exe='/opt/homebrew/bin/zstd';
 
 %%%%%%%%%%Large-ship filter (proxy for SOLAS V/19: >= 3000 GT carries a
 %%%%%%%%%%3 GHz radar or a second 9 GHz radar)
-p.filt.vessel_types=[60:69 70:89];  %%%%%AIS ship type: passenger, cargo, tanker
+p.filt.vessel_types=0:99;           %%%%%every AIS ship type (S-band radar is also on military,
+                                    %%%%%fishing, tug-barge, and other large ships); [60:69 70:89]
+                                    %%%%%keeps only passenger, cargo, and tanker ships
 p.filt.min_length_m=100;            %%%%%GT proxy; init_check_gt_proxy_rev1: 99.6% precision, 98.1% recall
-p.filt.require_imo=true;
+p.filt.require_imo=false;           %%%%%military and many U.S. domestic ships have no IMO number
 p.filt.min_sog_kn=0;
 p.min_unique_ships=4;               %%%%%distinct ships per cell over the sampled days; 4 removes
                                     %%%%%tug/barge noise on the upper Mississippi (2024 test: 2 kept 903 such cells, 4 kept 0)
 
 %%%%%%%%%%Fairways and Traffic Separation Schemes (NOAA ENC Direct)
 p.include_fairways=true;
+
+%%%%%%%%%%Racons (radar beacons) from NOAA charts as fixed S-band sites
+p.include_racons=true;
+p.racon_bands="S";        %%%%%"S": racons charted with the 0.10 m (S-band) wavelength; "all": every racon
 
 %%%%%%%%%%Zone definition
 p.distances_km=[25 50 100];
@@ -61,6 +67,15 @@ p.principal_ports_gap_km=5;   %%%%%port points are district reference points, no
 p.region_maps=struct('name','lower_mississippi','d_km',50,'latlim',[28.8 31.0],'lonlim',[-91.7 -88.8], ...
     'ports',p.check_ports(ismember(p.check_ports.name,["Baton Rouge, LA";"New Orleans, LA"]),:), ...
     'title','Large ships travel the Mississippi up to Baton Rouge (2024)');
+
+%%%%%%%%%%Coast Guard Vessel Traffic Service areas (report only)
+p.check_vts=table( ...
+    ["VTS New York";"VTS Houston-Galveston";"VTS Port Arthur";"VTS Berwick Bay"; ...
+     "VTS Lower Mississippi River";"VTS Louisville";"VTS St. Marys River";"VTS Puget Sound"; ...
+     "VTS San Francisco";"VTS Los Angeles-Long Beach"], ...
+    [40.62;29.35;29.87;29.69;29.95;38.26;46.50;47.60;37.81;33.72], ...
+    [-74.06;-94.73;-93.93;-91.21;-90.06;-85.77;-84.35;-122.34;-122.36;-118.27], ...
+    'VariableNames',{'name','lat','lon'});
 
 %%%%%%%%%%Census reference layers (land mask and coastline)
 p.census_year=2023;
