@@ -112,6 +112,9 @@ def process_stream(stream):
 
 
 def build_day(day, out_dir):
+    if os.path.isfile("%s/%s" % (out_dir, cache_name(day))):
+        print("%s cached" % day, flush=True)
+        return
     url = day_url(day)
     with tempfile.TemporaryFile() as tmp:
         with requests.get(url, stream=True, timeout=600) as r:
@@ -128,8 +131,10 @@ def build_day(day, out_dir):
                 with z.open(member) as f:
                     pairs, rows, nm = process_stream(f)
     out = "%s/%s" % (out_dir, cache_name(day))
-    scipy.io.savemat(out, {"pairs": pairs.astype(float), "num_row_kept": float(rows),
+    tmp_out = out + ".part.mat"  # rename into place so a reader never sees a partial file
+    scipy.io.savemat(tmp_out, {"pairs": pairs.astype(float), "num_row_kept": float(rows),
                            "num_mmsi_kept": float(nm)}, do_compression=True)
+    os.replace(tmp_out, out)
     print("%s rows %d mmsi %d pairs %d" % (day, rows, nm, len(pairs)), flush=True)
 
 

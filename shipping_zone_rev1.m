@@ -314,7 +314,7 @@ end
 function label=period_label(days)
 %%%%%'2024' or '2023-2024' from the sampled days
 yrs=unique(year(days));
-if numel(yrs)==1
+if isscalar(yrs)
     label=sprintf('%d',yrs);
 else
     label=sprintf('%d-%d',min(yrs),max(yrs));
