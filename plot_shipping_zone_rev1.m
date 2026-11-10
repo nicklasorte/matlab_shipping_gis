@@ -13,7 +13,7 @@ arguments
     png_path (1,:) char
 end
 
-fig=figure('Visible','off','Position',[100 100 1400 850]);
+fig=figure('Visible','off','Position',[100 100 1400 850],'Theme','light'); %%%%%light theme even when MATLAB runs in dark mode
 gx=geoaxes(fig);
 geobasemap(gx,'grayland');
 hold(gx,'on');

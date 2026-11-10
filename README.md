@@ -120,6 +120,16 @@ Spot checks at 50 km: Chicago, Duluth, Houston, Baton Rouge, Portland
 Denver, Memphis, St. Louis, Nashville, Atlanta, Pittsburgh, and Jackson
 (Mississippi) are not.
 
+## Figures
+
+The 2024 maps are in `docs/`:
+
+- `docs/shipping_zone_2024_shore_25km_us_map.png`
+- `docs/shipping_zone_2024_shore_50km_us_map.png`
+- `docs/shipping_zone_2024_shore_100km_us_map.png`
+
+![Land within 50 km of large-ship water](docs/shipping_zone_2024_shore_50km_us_map.png)
+
 ## Outputs
 
 For each distance `X` in `p.distances_km`, the output folder holds:
@@ -129,7 +139,8 @@ For each distance `X` in `p.distances_km`, the output folder holds:
 | `<name>_<mode>_<X>km.shp`, `.kml` | Zone: ship water plus land out to X km |
 | `<name>_<mode>_<X>km_land.shp`, `.kml` | The same zone clipped to U.S. land |
 | `<name>_<mode>_rev1.mat` | `result` struct: grid, masks, distance field, and zones |
-| `<name>_<mode>_map.png` | Map of the zones and the ship cells |
+| `<name>_<mode>_map.png` | Diagnostic map: all zones and the ship cells |
+| `<name>_<mode>_<X>km_us_map.png` | U.S. map of the land within X km and the large-ship water |
 
 In `result.zone(k)`, `.poly` and `.poly_land` are planar `polyshape` objects
 (x = longitude, y = latitude). `.latlon` and `.latlon_land` are `[lat lon]`
