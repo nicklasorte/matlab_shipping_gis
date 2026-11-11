@@ -1,0 +1,33 @@
+{
+  "theme": "ntia",
+  "layout": "grid2x2",
+  "page_inches": [
+    11,
+    8.0
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    11.0,
+    12.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#5674C4",
+    "#8A8D91"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Four line charts of large ships per sampled day for the Great Lakes, Atlantic, Gulf, and Pacific; only the Great Lakes line dips sharply each winter.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig03_seasons_by_coast.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig03_seasons_by_coast.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig03_seasons_by_coast.svg"
+  },
+  "lint": []
+}

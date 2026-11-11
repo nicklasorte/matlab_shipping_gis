@@ -1,0 +1,1 @@
+Line chart of large ships in Baltimore harbor each sampled week in 2023 (gray) and 2024 (blue); the 2024 line drops during the shaded closure and recovers by June.

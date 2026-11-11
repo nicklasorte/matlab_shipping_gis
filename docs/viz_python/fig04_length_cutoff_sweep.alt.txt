@@ -1,0 +1,1 @@
+Line chart of two measures against the length cutoff from 50 to 200 m: the share of kept ships that are 3,000 GT or more rises, the share of 3,000 GT ships kept falls, and they cross near 100 m.

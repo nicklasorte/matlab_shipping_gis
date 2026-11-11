@@ -1,0 +1,1 @@
+Map of route cells: cells that pass the ship threshold in both years form the main lanes in blue; cells that pass in only one year are scattered gray cells around them.

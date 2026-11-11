@@ -1,0 +1,39 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    6.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    10.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#B4C2E6"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Line chart of distinct large ships along the Mississippi from Head of Passes to Baton Rouge; traffic is highest below New Orleans, stays in the hundreds up to Baton Rouge, and ends just above it.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig08_mississippi_profile.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig08_mississippi_profile.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig08_mississippi_profile.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #B4C2E6 has contrast 1.78:1; marks need 3:1."
+    }
+  ]
+}

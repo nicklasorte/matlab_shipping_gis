@@ -1,0 +1,34 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    6.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    10.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#8A8D91"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Line chart of two measures against the length cutoff from 50 to 200 m: the share of kept ships that are 3,000 GT or more rises, the share of 3,000 GT ships kept falls, and they cross near 100 m.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig04_length_cutoff_sweep.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig04_length_cutoff_sweep.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig04_length_cutoff_sweep.svg"
+  },
+  "lint": []
+}

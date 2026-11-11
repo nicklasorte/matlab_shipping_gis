@@ -1,0 +1,32 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    6.4
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#5674C4",
+    "#8A8D91"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Horizontal bar chart of ships after each filter step on July 10, 2024: 22,414 reporting, 1,980 kept.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig05_filter_funnel.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig05_filter_funnel.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig05_filter_funnel.svg"
+  },
+  "lint": []
+}

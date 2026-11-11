@@ -1,0 +1,37 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#5674C4",
+    "#8A8D91",
+    "#E8E9EA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Map of route cells: cells that pass the ship threshold in both years form the main lanes in blue; cells that pass in only one year are scattered gray cells around them.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig06_stability_between_years.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig06_stability_between_years.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig06_stability_between_years.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #E8E9EA has contrast 1.22:1; marks need 3:1."
+    }
+  ]
+}

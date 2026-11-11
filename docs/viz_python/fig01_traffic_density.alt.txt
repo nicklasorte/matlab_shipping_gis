@@ -1,0 +1,1 @@
+Map of the lower 48 states with each large-ship route cell colored by how many distinct ships used it; the darkest cells are the main coastal lanes and port approaches.

@@ -1,0 +1,1 @@
+Horizontal bar chart of ships after each filter step on July 10, 2024: 22,414 reporting, 1,980 kept.

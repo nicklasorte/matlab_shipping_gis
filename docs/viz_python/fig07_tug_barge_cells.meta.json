@@ -1,0 +1,42 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#5674C4",
+    "#C9CBCE",
+    "#E8E9EA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Map of large-ship routes in gray with the few cells that only tug-barges add shown in blue, mostly along the Northeast, Gulf, and Great Lakes coasts.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig07_tug_barge_cells.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig07_tug_barge_cells.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig07_tug_barge_cells.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #C9CBCE has contrast 1.63:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #E8E9EA has contrast 1.22:1; marks need 3:1."
+    }
+  ]
+}

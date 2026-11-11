@@ -1,0 +1,39 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    6.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    10.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#5674C4",
+    "#8A8D91",
+    "#E6E6E6"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Cumulative distribution of route-cell distance to the coastline for four coasts; the Great Lakes curve rises fastest, the Atlantic next, and the Pacific and Gulf curves extend hundreds of kilometers.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig10_offshore_distance.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig10_offshore_distance.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig10_offshore_distance.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #E6E6E6 has contrast 1.25:1; marks need 3:1."
+    }
+  ]
+}

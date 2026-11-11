@@ -1,0 +1,32 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    6.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    10.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Strip plot of distance to the nearest large-ship route for six kinds of site; ports, racons, and VTS areas cluster under 5 km, while inland river ports sit hundreds of kilometers away.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig09_sites_near_routes.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig09_sites_near_routes.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig09_sites_near_routes.svg"
+  },
+  "lint": []
+}

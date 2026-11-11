@@ -1,0 +1,1 @@
+Strip plot of distance to the nearest large-ship route for six kinds of site; ports, racons, and VTS areas cluster under 5 km, while inland river ports sit hundreds of kilometers away.
