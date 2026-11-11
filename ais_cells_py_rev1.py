@@ -30,8 +30,8 @@ import scipy.io
 import zstandard
 
 # Must match init_shipping_zone_rev1.m (p.filt and p.filt_towing)
-LATLIM = (24.0, 50.0)
-LONLIM = (-125.5, -66.0)
+LATLIM = (22.0, 50.0)
+LONLIM = (-130.0, -66.0)
 CELL_DEG = 0.01
 FILTERS = {
     # merchant, military, law enforcement, dredging, other: p.filt

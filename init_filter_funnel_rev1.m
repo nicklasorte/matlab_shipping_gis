@@ -17,8 +17,8 @@
 clear; clc;
 
 f.days=[datetime(2023,7,12) datetime(2024,7,10)];   %%%%%mid-year Wednesdays (in the weekly sample)
-f.latlim=[24 50];
-f.lonlim=[-125.5 -66];
+f.latlim=[22 50];
+f.lonlim=[-130 -66];
 f.cells_per_degree=100;
 f.filt.vessel_types=[0 31 32 33 35 52 55 60:89 90:99];
 f.filt.min_length_m=100;

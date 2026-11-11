@@ -13,8 +13,8 @@ clear;
 clc;
 
 %%%%%%%%%%Grid (lower 48 plus the Great Lakes and coastal waters)
-p.latlim=[24 50];
-p.lonlim=[-125.5 -66];
+p.latlim=[22 50];        %%%%%22 N: Florida Straits and the approaches south of the Keys
+p.lonlim=[-130 -66];     %%%%%130 W: room for traffic farther off Oregon and Washington
 p.cells_per_degree=100;   %%%%%0.01 deg, about 1.1 km by 0.8-1.0 km
 
 %%%%%%%%%%AIS sample: one day a week for a full year covers seasonal
