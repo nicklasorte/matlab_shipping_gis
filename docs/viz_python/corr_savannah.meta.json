@@ -1,0 +1,64 @@
+{
+  "theme": "ntia",
+  "layout": "map-left",
+  "page_inches": [
+    11,
+    6.4
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    8.5,
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#3F5FA8",
+    "#5674C4",
+    "#7F96D3",
+    "#B4C2E6",
+    "#D5D7DA",
+    "#E4E9F6",
+    "#E8E9EA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Map of the Savannah River route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 750 ships at the entrance and 682 at Garden City.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_savannah.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_savannah.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_savannah.svg"
+  },
+  "lint": [
+    {
+      "severity": "advice",
+      "message": "A legend is present. Prefer direct labels on the marks."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #7F96D3 has contrast 2.91:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #B4C2E6 has contrast 1.78:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #D5D7DA has contrast 1.44:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #E4E9F6 has contrast 1.21:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #E8E9EA has contrast 1.22:1; marks need 3:1."
+    }
+  ]
+}

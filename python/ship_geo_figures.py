@@ -289,7 +289,7 @@ def geo_types():
     t_share = GS.get("type_share_ships_gulf_tanker", np.nan)
     c_share = GS.get("type_share_ships_gulf_cargo", np.nan)
     page = OnePager(
-        headline=f"{100 * t_share:.0f}% of tankers call in the Gulf, against {100 * c_share:.0f}% of cargo ships; "
+        headline=f"{100 * t_share:.0f}% of tankers sail in Gulf waters, against {100 * c_share:.0f}% of cargo ships; "
                  "passenger and government ships cluster at a few ports",
         subhead="Distinct ships of each type per 25 km hexagon, 2023 and 2024 together (each map has its own shading)",
         source=SRC + " Types from the AIS ship-type code: tanker 80-89, cargo 70-79, passenger 60-69, "

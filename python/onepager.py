@@ -179,6 +179,7 @@ LAYOUTS = {
     "hero-right2": (2, 3, None, None, lambda g: [g[:, :2], g[0, 2], g[1, 2]]),
     "hero-bottom3": (2, 3, [1.8, 1], None, lambda g: [g[0, :], g[1, 0], g[1, 1], g[1, 2]]),
     "grid2x2": (2, 2, None, None, lambda g: [g[0, 0], g[0, 1], g[1, 0], g[1, 1]]),
+    "map-left": (1, 5, None, None, lambda g: [g[0, :2], g[0, 2:]]),
     "kpi3-hero": (2, 3, [0.55, 1.8], None, lambda g: [g[0, 0], g[0, 1], g[0, 2], g[1, :]]),
     "kpi3-hero-bottom2": (
         3, 6, [0.75, 1.5, 0.95], None,

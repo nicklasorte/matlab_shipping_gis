@@ -1,0 +1,48 @@
+corridor,label,role,name,lat,lon
+houston,Houston Ship Channel,start,Galveston Bay Entrance,29.335,-94.695
+houston,Houston Ship Channel,mark,Morgans Point,29.680,-94.985
+houston,Houston Ship Channel,end,Houston,29.748,-95.290
+columbia,Columbia River,start,Columbia River Bar,46.255,-124.070
+columbia,Columbia River,mark,Astoria,46.190,-123.830
+columbia,Columbia River,mark,Longview,46.110,-122.940
+columbia,Columbia River,mark,Kalama,46.026,-122.865
+columbia,Columbia River,end,Vancouver,45.622,-122.680
+delaware,Delaware River,start,Delaware Bay Entrance,38.800,-75.050
+delaware,Delaware River,mark,Wilmington DE,39.715,-75.506
+delaware,Delaware River,mark,Philadelphia,39.918,-75.202
+delaware,Delaware River,end,Trenton,40.180,-74.750
+chesapeake,Chesapeake Bay to Baltimore,start,Cape Henry,36.940,-76.000
+chesapeake,Chesapeake Bay to Baltimore,mark,Bay Bridge,38.993,-76.380
+chesapeake,Chesapeake Bay to Baltimore,end,Baltimore,39.255,-76.565
+james,James River,start,Hampton Roads,36.980,-76.320
+james,James River,mark,Hopewell,37.300,-77.280
+james,James River,end,Richmond,37.457,-77.419
+hudson,Hudson River,start,Verrazzano Narrows,40.606,-74.045
+hudson,Hudson River,mark,George Washington Bridge,40.852,-73.952
+hudson,Hudson River,end,Albany,42.642,-73.748
+sacramento,Sacramento River,start,Golden Gate,37.810,-122.478
+sacramento,Sacramento River,mark,Carquinez Strait,38.060,-122.220
+sacramento,Sacramento River,end,West Sacramento,38.561,-121.545
+stockton,San Joaquin River,start,Golden Gate,37.810,-122.478
+stockton,San Joaquin River,mark,Carquinez Strait,38.060,-122.220
+stockton,San Joaquin River,end,Stockton,37.952,-121.315
+savannah,Savannah River,start,Savannah Entrance,32.000,-80.800
+savannah,Savannah River,mark,Fort Pulaski,32.035,-80.900
+savannah,Savannah River,end,Garden City,32.125,-81.145
+sabine,Sabine-Neches Waterway,start,Sabine Pass Entrance,29.640,-93.825
+sabine,Sabine-Neches Waterway,mark,Port Arthur,29.870,-93.930
+sabine,Sabine-Neches Waterway,end,Beaumont,30.084,-94.094
+calcasieu,Calcasieu Ship Channel,start,Calcasieu Pass,29.750,-93.345
+calcasieu,Calcasieu Ship Channel,mark,Cameron LNG,29.800,-93.330
+calcasieu,Calcasieu Ship Channel,end,Lake Charles,30.220,-93.250
+mobile,Mobile Bay,start,Mobile Bay Entrance,30.225,-88.030
+mobile,Mobile Bay,end,Mobile,30.700,-88.040
+stjohns,St. Johns River,start,St. Johns Entrance,30.400,-81.390
+stjohns,St. Johns River,mark,Blount Island,30.400,-81.520
+stjohns,St. Johns River,end,Jacksonville,30.330,-81.640
+capefear,Cape Fear River,start,Cape Fear Entrance,33.875,-78.015
+capefear,Cape Fear River,end,Wilmington NC,34.230,-77.952
+mississippi,Mississippi River,start,Head of Passes,29.150,-89.250
+mississippi,Mississippi River,mark,New Orleans,29.950,-90.060
+mississippi,Mississippi River,end,Baton Rouge,30.440,-91.190
+mississippi,Mississippi River,target,Upstream limit,30.700,-91.350

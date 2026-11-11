@@ -1,0 +1,48 @@
+corridor,role,name,lat,lon,km,off_path_km
+houston,start,Galveston Bay Entrance,29.335,-94.695,0.0,0.0
+houston,mark,Morgans Point,29.68,-94.985,53.7,0.6
+houston,end,Houston,29.748,-95.29,91.7,0.6
+columbia,start,Columbia River Bar,46.255,-124.07,0.0,0.4
+columbia,mark,Astoria,46.19,-123.83,22.0,0.7
+columbia,mark,Longview,46.11,-122.94,110.3,1.3
+columbia,mark,Kalama,46.026,-122.865,122.9,0.1
+columbia,end,Vancouver,45.622,-122.68,174.6,1.2
+delaware,start,Delaware Bay Entrance,38.8,-75.05,0.0,0.7
+delaware,mark,Wilmington DE,39.715,-75.506,121.7,0.1
+delaware,mark,Philadelphia,39.918,-75.202,159.5,3.9
+delaware,end,Trenton,40.18,-74.75,214.3,3.9
+chesapeake,start,Cape Henry,36.94,-76.0,0.0,0.7
+chesapeake,mark,Bay Bridge,38.993,-76.38,253.0,0.5
+chesapeake,end,Baltimore,39.255,-76.565,290.6,0.0
+james,start,Hampton Roads,36.98,-76.32,0.0,0.7
+james,mark,Hopewell,37.3,-77.28,121.8,1.4
+james,end,Richmond,37.457,-77.419,121.8,21.7
+hudson,start,Verrazzano Narrows,40.606,-74.045,0.0,0.1
+hudson,mark,George Washington Bridge,40.852,-73.952,31.2,0.7
+hudson,end,Albany,42.642,-73.748,248.1,2.0
+sacramento,start,Golden Gate,37.81,-122.478,0.0,0.6
+sacramento,mark,Carquinez Strait,38.06,-122.22,45.2,0.7
+sacramento,end,West Sacramento,38.561,-121.545,156.1,0.4
+stockton,start,Golden Gate,37.81,-122.478,0.0,0.6
+stockton,mark,Carquinez Strait,38.06,-122.22,45.2,0.7
+stockton,end,Stockton,37.952,-121.315,145.0,0.3
+savannah,start,Savannah Entrance,32.0,-80.8,0.0,0.7
+savannah,mark,Fort Pulaski,32.035,-80.9,11.9,0.5
+savannah,end,Garden City,32.125,-81.145,39.3,0.9
+sabine,start,Sabine Pass Entrance,29.64,-93.825,0.0,0.6
+sabine,mark,Port Arthur,29.87,-93.93,33.7,0.7
+sabine,end,Beaumont,30.084,-94.094,76.1,1.0
+calcasieu,start,Calcasieu Pass,29.75,-93.345,0.0,0.6
+calcasieu,mark,Cameron LNG,29.8,-93.33,5.6,1.6
+calcasieu,end,Lake Charles,30.22,-93.25,57.8,0.7
+mobile,start,Mobile Bay Entrance,30.225,-88.03,0.0,0.5
+mobile,end,Mobile,30.7,-88.04,55.2,0.7
+stjohns,start,St. Johns Entrance,30.4,-81.39,0.0,0.7
+stjohns,mark,Blount Island,30.4,-81.52,13.0,0.7
+stjohns,end,Jacksonville,30.33,-81.64,31.3,2.2
+capefear,start,Cape Fear Entrance,33.875,-78.015,0.0,0.0
+capefear,end,Wilmington NC,34.23,-77.952,42.9,0.6
+mississippi,start,Head of Passes,29.15,-89.25,0.0,0.7
+mississippi,mark,New Orleans,29.95,-90.06,155.5,0.7
+mississippi,end,Baton Rouge,30.44,-91.19,355.9,0.7
+mississippi,target,Upstream limit,30.7,-91.35,360.3,28.1

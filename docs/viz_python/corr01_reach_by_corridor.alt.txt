@@ -1,0 +1,1 @@
+Dot chart with one row per river or ship channel, showing distinct large ships at the entrance (gray) and at the head port (blue); the gap is largest on the James, Hudson, Sacramento, Mississippi, Delaware, and Houston corridors.

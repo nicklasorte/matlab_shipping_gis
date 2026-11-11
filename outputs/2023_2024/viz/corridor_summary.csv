@@ -1,0 +1,16 @@
+corridor,label,length_km,bin_km,ships_entrance,ships_head,ships_head_2023,ships_head_2024,share_head
+houston,Houston Ship Channel,91.7,2.0,2586,481,243,260,0.186
+columbia,Columbia River,174.6,5.0,546,280,133,158,0.513
+delaware,Delaware River,214.3,5.0,803,136,70,69,0.169
+chesapeake,Chesapeake Bay to Baltimore,290.6,5.0,1384,789,487,423,0.57
+james,James River,121.8,5.0,938,36,23,17,0.038
+hudson,Hudson River,248.1,5.0,1347,78,50,36,0.058
+sacramento,Sacramento River,156.1,5.0,746,86,41,53,0.115
+stockton,San Joaquin River,145.0,5.0,746,187,117,85,0.251
+savannah,Savannah River,39.3,2.0,750,682,387,444,0.909
+sabine,Sabine-Neches Waterway,76.1,2.0,1007,215,104,126,0.214
+calcasieu,Calcasieu Ship Channel,57.8,2.0,401,206,109,109,0.514
+mobile,Mobile Bay,55.2,2.0,459,424,221,248,0.924
+stjohns,St. Johns River,31.3,2.0,361,152,85,89,0.421
+capefear,Cape Fear River,42.9,2.0,212,168,80,99,0.792
+mississippi,Mississippi River,360.3,5.0,2084,267,136,138,0.128

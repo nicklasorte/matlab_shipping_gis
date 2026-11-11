@@ -1,0 +1,33 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    9.5,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#5674C4",
+    "#8A8D91"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Dot chart with one row per river or ship channel, showing distinct large ships at the entrance (gray) and at the head port (blue); the gap is largest on the James, Hudson, Sacramento, Mississippi, Delaware, and Houston corridors.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr01_reach_by_corridor.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr01_reach_by_corridor.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr01_reach_by_corridor.svg"
+  },
+  "lint": []
+}

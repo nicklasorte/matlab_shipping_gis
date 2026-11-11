@@ -1,0 +1,1 @@
+Map of the Houston Ship Channel route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 2,586 ships at the entrance and 481 at Houston.

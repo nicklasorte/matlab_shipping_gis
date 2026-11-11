@@ -3,6 +3,14 @@
  "hex_max_ships": 3120,
  "hex_share_top5pct": 0.4123900346788861,
  "hex_ge_1000": 132,
+ "type_ships_cargo": 10216,
+ "type_share_ships_gulf_cargo": 0.5103758809710258,
+ "type_ships_tanker": 4452,
+ "type_share_ships_gulf_tanker": 0.8699460916442049,
+ "type_ships_passenger": 282,
+ "type_share_ships_gulf_passenger": 0.375886524822695,
+ "type_ships_government": 68,
+ "type_share_ships_gulf_government": 0.23529411764705882,
  "ports_top": [
   [
    "Galveston, TX",

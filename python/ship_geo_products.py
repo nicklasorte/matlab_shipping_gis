@@ -133,11 +133,13 @@ def main():
     summ["hex_ge_1000"] = int((n >= 1000).sum())
 
     # 7. Hex counts by ship type (route cells of any large ship)
+    type_pairs = {}
     types = [] if os.environ.get("SKIP_TYPES") else TYPES   # SKIP_TYPES=1 while the type caches build
     with open(os.path.join(OUT, "geo_hex_types.csv"), "w") as f:
         f.write("type,q,r,x_km,y_km,ships\n")
         for t in types:
             pt = load_year_pairs([t])
+            type_pairs[t] = pt
             tq, tr, tn = hex_counts(pt)
             tx, ty = hex_center(tq, tr)
             for a, b, c, d, e in zip(tq, tr, tx, ty, tn):
@@ -161,17 +163,28 @@ def main():
     ucell, inv = np.unique(allp[:, 0], return_inverse=True)
     ulat, ulon = vp.cell_latlon(ucell)
     chord = 2 * vp.R_EARTH * np.sin(PORT_KM / (2 * vp.R_EARTH))
-    hits = ptree.query_ball_point(vp.ecef(ulat, ulon), chord)
-    sets = [set() for _ in pp]
-    cell_ports = {ci: lst for ci, lst in enumerate(hits) if lst}
-    sel = np.isin(inv, np.fromiter(cell_ports.keys(), np.int64))
-    for ci, m in zip(inv[sel], allp[sel, 1]):
-        for pi in cell_ports[int(ci)]:
-            sets[pi].add(int(m))
+
+    def port_ship_counts(pairs):
+        """Distinct ships within PORT_KM of each port, for a [cell, mmsi] pair list."""
+        uc, iv = np.unique(pairs[:, 0], return_inverse=True)
+        la, lo = vp.cell_latlon(uc)
+        hits = ptree.query_ball_point(vp.ecef(la, lo), chord)
+        cell_ports = {ci: lst for ci, lst in enumerate(hits) if lst}
+        sets = [set() for _ in pp]
+        sel = np.isin(iv, np.fromiter(cell_ports.keys(), np.int64))
+        for ci, m in zip(iv[sel], pairs[sel, 1]):
+            for pi in cell_ports[int(ci)]:
+                sets[pi].add(int(m))
+        return np.array([len(x) for x in sets])
+
+    port_n = port_ship_counts(allp)
+    port_t = {t: port_ship_counts(tp) for t, tp in type_pairs.items()}
     with open(os.path.join(OUT, "geo_ports.csv"), "w") as f:
-        f.write("port,lat,lon,rank,ships\n")
-        for r_, s_ in zip(pp, sets):
-            f.write(f"\"{r_['port']}\",{r_['lat']},{r_['lon']},{r_['rank']},{len(s_)}\n")
+        f.write("port,lat,lon,rank,ships" + "".join("," + t for t in port_t) + "\n")
+        for i, r_ in enumerate(pp):
+            f.write(f"\"{r_['port']}\",{r_['lat']},{r_['lon']},{r_['rank']},{port_n[i]}"
+                    + "".join(f",{port_t[t][i]}" for t in port_t) + "\n")
+    sets = [range(n_) for n_ in port_n]   # only the counts are used below
     pn = sorted(((len(s_), r_["port"]) for r_, s_ in zip(pp, sets)), reverse=True)
     summ["ports_top"] = [[p_, n_] for n_, p_ in pn[:10]]
     summ["ports_ge_1000"] = int(sum(1 for n_, _ in pn if n_ >= 1000))

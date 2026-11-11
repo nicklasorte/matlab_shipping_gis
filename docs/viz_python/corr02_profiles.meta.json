@@ -1,0 +1,31 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    8.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    8.0,
+    8.5,
+    9.0,
+    9.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Fifteen small step charts, one per river or ship channel, each showing distinct large ships against distance from the entrance; every profile steps down past the ports along the way.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr02_profiles.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr02_profiles.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr02_profiles.svg"
+  },
+  "lint": []
+}

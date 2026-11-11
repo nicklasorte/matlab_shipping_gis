@@ -61,7 +61,8 @@ def days():
 
 
 def load_pairs(day, filt):
-    f = os.path.join(DATA, cells.cache_name(day.isoformat(), cells.FILTERS[filt]))
+    spec = cells.FILTERS[filt] if filt in cells.FILTERS else cells.TYPE_FILTERS[filt]
+    f = os.path.join(DATA, cells.cache_name(day.isoformat(), spec))
     if not os.path.isfile(f):
         raise FileNotFoundError(f)
     return scipy.io.loadmat(f)["pairs"].astype(np.int64)

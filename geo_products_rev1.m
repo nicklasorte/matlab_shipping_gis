@@ -50,6 +50,7 @@ s.hex_ge_1000=nnz(n>=1000);
 %%%%%7. Hexagons by ship type (all cells for that type)
 types=string(fieldnames(type_filts))';
 parts=cell(numel(types),1);
+type_pairs=struct();
 for k=1:numel(types)
     pk=p;
     pk.filt=type_filts.(types(k));
@@ -59,6 +60,7 @@ for k=1:numel(types)
         tp=[tp; S.pairs]; %#ok<AGROW> 104 days, unique below
     end
     tp=unique(tp,'rows');
+    type_pairs.(types(k))=tp;
     T=hex_counts(tp,cell_lat,cell_lon,albers,hex_r);
     T=addvars(T,repmat(types(k),height(T),1),'Before',1,'NewVariableNames','type');
     parts{k}=T;
@@ -74,20 +76,15 @@ end
 %%%%%6. Deep-draft ports: distinct ships within 10 km
 pp=readtable(fullfile(p.out_dir,sprintf('%s_principal_port_check.csv',p.out_name)),'TextType','string');
 pp=pp(pp.type~="I" & pp.foreign_tons>=1e6,:);
-[uc,~,inv]=unique(P(:,1));
 port_tree=KDTreeSearcher(xyz(pp.lat,pp.lon));
 chord=2*earth_km*sin(10/(2*earth_km));
-hits=rangesearch(port_tree,xyz(cell_lat(uc),cell_lon(uc)),chord);
-nhit=cellfun(@numel,hits);
-cell_of_hit=repelem((1:numel(uc))',nhit);
-port_of_hit=[hits{:}]';
-%%%%%Join pairs to the cell -> port hits (many to many), then count distinct ships per port
-near_port=nhit(inv)>0;
-J=innerjoin(table(inv(near_port),P(near_port,2),'VariableNames',{'c','mmsi'}), ...
-    table(cell_of_hit,port_of_hit,'VariableNames',{'c','port'}),'Keys','c');
-pm=unique([J.port J.mmsi],'rows');
-ships=accumarray(pm(:,1),1,[height(pp) 1]);
+ships=port_counts(P,port_tree,chord,height(pp),cell_lat,cell_lon,xyz);
 geo.ports=table(pp.port,pp.lat,pp.lon,pp.rank,ships,'VariableNames',{'port','lat','lon','rank','ships'});
+for t=string(fieldnames(type_pairs))'
+    geo.ports.(t)=port_counts(type_pairs.(t),port_tree,chord,height(pp),cell_lat,cell_lon,xyz);
+end
+[uc,~,inv]=unique(P(:,1));
+
 [~,o]=sort(ships,'descend');
 s.ports_top=[cellstr(pp.port(o(1:10))) num2cell(ships(o(1:10)))];
 s.ports_ge_1000=nnz(ships>=1000);
@@ -143,6 +140,20 @@ rac=sites(sites.category=="racon" & sites.sband_source==1,:);
 s.sband_racons=height(rac);
 s.sband_racons_within_5km=nnz(arc(ch)<=5);
 geo.summary=s;
+end
+
+function ships=port_counts(P,port_tree,chord,num_port,cell_lat,cell_lon,xyz)
+%%%%%Distinct ships within the chord distance of each port, for a [cell mmsi] pair list
+[uc,~,inv]=unique(P(:,1));
+hits=rangesearch(port_tree,xyz(cell_lat(uc),cell_lon(uc)),chord);
+nhit=cellfun(@numel,hits);
+cell_of_hit=repelem((1:numel(uc))',nhit);
+port_of_hit=[hits{:}]';
+near_port=nhit(inv)>0;
+J=innerjoin(table(inv(near_port),P(near_port,2),'VariableNames',{'c','mmsi'}), ...
+    table(cell_of_hit,port_of_hit,'VariableNames',{'c','port'}),'Keys','c');
+pm=unique([J.port J.mmsi],'rows');
+ships=accumarray(pm(:,1),1,[num_port 1]);
 end
 
 function T=hex_counts(P,cell_lat,cell_lon,albers,r)
