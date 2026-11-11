@@ -1,0 +1,89 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    6.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    8.5,
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#6E4F92",
+    "#9A6B00",
+    "#D5D7DA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Four 100% stacked horizontal bars, one per coast, each split into its five busiest ports and the rest; the top five ports take more than half of each ocean coast's port visits.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share09_coast_bars.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share09_coast_bars.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share09_coast_bars.svg"
+  },
+  "lint": [
+    {
+      "severity": "error",
+      "message": "Text 'Galveston 15%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'New Orleans 13%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Plaquemines 12%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'New York- New Jersey 17%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Baltimore 10%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Virginia 10%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Long Beach 16%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'San Francisco 11%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Los Angeles 10%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Detroit- Wayne County 31%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Duluth- Superior 17%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Cleveland- Cuyahoga 12%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #D5D7DA has contrast 1.44:1; marks need 3:1."
+    }
+  ]
+}

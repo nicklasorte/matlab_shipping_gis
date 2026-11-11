@@ -1,0 +1,1 @@
+Marimekko chart of the 12 busiest port complexes with column width set by share of port visits and column height split by ship type; tanker share is highest in the Gulf complexes and cargo share highest in the Atlantic and Pacific complexes.

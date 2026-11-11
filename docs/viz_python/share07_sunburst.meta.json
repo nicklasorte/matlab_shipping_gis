@@ -1,0 +1,71 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#6E4F92",
+    "#9A6B00"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Sunburst chart with coasts in the inner ring, port complexes in the middle ring, and ports in the outer ring, each sized by share of large-ship port visits; the Gulf takes about half the circle.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share07_sunburst.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share07_sunburst.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share07_sunburst.svg"
+  },
+  "lint": [
+    {
+      "severity": "error",
+      "message": "Text 'Gulf 48%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Atlantic 26%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Pacific 24%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text overlaps: 'Plaquemines' and 'South Louisiana'."
+    },
+    {
+      "severity": "error",
+      "message": "Text overlaps: 'Port Arthur' and 'Sabine Pass'."
+    },
+    {
+      "severity": "error",
+      "message": "Text overlaps: 'Sabine Pass' and 'Corpus Christi'."
+    },
+    {
+      "severity": "error",
+      "message": "Text overlaps: 'New York-New Jersey' and 'Baltimore'."
+    },
+    {
+      "severity": "error",
+      "message": "Text overlaps: 'Baltimore' and 'Virginia (Norfolk)'."
+    },
+    {
+      "severity": "error",
+      "message": "Text overlaps: 'Virginia (Norfolk)' and 'Savannah'."
+    }
+  ]
+}

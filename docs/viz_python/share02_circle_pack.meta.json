@@ -1,0 +1,92 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    8.5,
+    9.0,
+    9.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#6E4F92",
+    "#9A6B00"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Packed circles, one per deep-draft port, sized by large-ship port visits and colored by coast; Galveston, New Orleans, and Plaquemines are the largest circles, and dozens of small circles ring them.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share02_circle_pack.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share02_circle_pack.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share02_circle_pack.svg"
+  },
+  "lint": [
+    {
+      "severity": "error",
+      "message": "Text 'Galveston 2,838' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'New Orleans 2,413' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Plaquemines 2,161' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'New York- New Jersey 1,683' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Houston 1,637' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Long Beach 1,491' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'South Louisiana 1,397' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Port Arthur 1,117' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Sabine Pass 1,073' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Baltimore 1,045' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Virginia 997' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'San Francisco 996' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Savannah 984' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Los Angeles 952' has contrast 1.00:1; needs 4.5:1."
+    }
+  ]
+}

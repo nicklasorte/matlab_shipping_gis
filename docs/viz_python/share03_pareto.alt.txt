@@ -1,0 +1,1 @@
+Horizontal bar chart of the 25 busiest deep-draft ports by share of large-ship port visits, colored by coast, with the running total beside each bar; the running total passes 50% at the 13th port.

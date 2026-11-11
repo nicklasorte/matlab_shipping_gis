@@ -1,0 +1,74 @@
+port,short,complex,coast,lat,lon,rank,ships,ships_2023,ships_2024,share,cargo,tanker,passenger,government
+"Galveston, TX",Galveston,Houston-Galveston,Gulf,29.31049,-94.8127,46,2838,1615,1878,0.07364,987,1714,8,0
+"New Orleans, LA",New Orleans,Lower Mississippi,Gulf,29.91414,-90.08526,5,2413,1275,1420,0.06262,1533,740,7,0
+"Plaquemines Port District, LA",Plaquemines,Lower Mississippi,Gulf,29.48,-89.68745,12,2161,1157,1253,0.05608,1349,757,5,0
+"New York, NY & NJ",New York-New Jersey,New York-New Jersey,Atlantic,40.67395,-74.03836,4,1683,986,1006,0.04367,977,613,43,2
+"Houston Port Authority, TX",Houston,Houston-Galveston,Gulf,29.74702,-95.29368,1,1637,868,986,0.04248,800,778,1,0
+"Port of Long Beach, CA",Long Beach,Los Angeles-Long Beach,Pacific,33.73957,-118.2095,6,1491,851,889,0.03869,923,533,12,3
+"South Louisiana, LA, Port of",South Louisiana,Lower Mississippi,Gulf,30.03345,-90.61794,2,1397,700,800,0.03625,901,493,1,0
+"Port Arthur, TX",Port Arthur,Sabine-Neches,Gulf,29.83142,-93.96069,15,1117,580,685,0.02899,277,733,0,0
+"Sabine Pass Port Authority, TX",Sabine Pass,Sabine-Neches,Gulf,29.76503,-93.92777,73,1073,606,628,0.02784,204,833,0,0
+"Baltimore, MD",Baltimore,Baltimore,Atlantic,39.25083,-76.56164,18,1045,651,551,0.02712,973,49,4,1
+"Virginia, VA, Port of",Virginia (Norfolk),Virginia (Norfolk),Atlantic,36.86642,-76.31174,10,997,560,601,0.02587,921,39,4,10
+"San Francisco Port, CA",San Francisco,San Francisco Bay,Pacific,37.80667,-122.39904,107,996,585,632,0.02585,612,331,26,3
+"Port of Savannah, GA",Savannah,Savannah,Atlantic,32.08471,-81.09538,13,984,579,595,0.02553,820,149,0,0
+"Port of Los Angeles, CA",Los Angeles,Los Angeles-Long Beach,Pacific,33.72664,-118.2681,9,952,576,591,0.0247,735,179,20,1
+"Corpus Christi, TX",Corpus Christi,Corpus Christi,Gulf,27.81277,-97.39789,3,866,460,512,0.02247,238,588,0,0
+"Wilmington, DE","Wilmington, DE",Delaware River,Atlantic,39.71589,-75.50697,72,797,446,461,0.02068,494,279,1,0
+"Mobile, AL",Mobile,Mobile,Gulf,30.69123,-88.03583,11,787,411,453,0.02042,680,74,0,3
+"Port of Longview, WA",Longview,Lower Columbia,Pacific,46.14222,-122.914,47,741,358,448,0.01923,695,38,3,0
+"Port of Vancouver USA, WA","Vancouver, WA",Lower Columbia,Pacific,45.62244,-122.6806,48,705,343,427,0.01829,641,48,7,1
+"Port of Charleston, SC",Charleston,Charleston,Atlantic,32.78878,-79.9216,27,683,387,403,0.01772,559,84,9,8
+"Port of Kalama, WA",Kalama,Lower Columbia,Pacific,46.0266,-122.86686,37,653,316,379,0.01694,603,42,2,1
+"Seattle, WA",Seattle,Puget Sound,Pacific,47.58771,-122.35922,30,643,369,385,0.01669,576,16,28,2
+"Port of Oakland, CA",Oakland,San Francisco Bay,Pacific,37.82152,-122.3081,36,611,364,376,0.01585,446,138,0,4
+"Port Freeport, TX",Freeport,Freeport,Gulf,28.96133,-95.3707,16,583,296,374,0.01513,135,393,0,0
+"South Jersey Port District, NJ",South Jersey,Delaware River,Atlantic,39.84645,-75.26109,35,575,321,324,0.01492,410,162,1,0
+"Philadelphia Regional Port, PA",Philadelphia,Delaware River,Atlantic,39.91882,-75.20219,23,571,319,322,0.01482,490,75,3,1
+"Oxnard Harbor District, CA",Oxnard,Oxnard,Pacific,34.14824,-119.20848,118,568,297,357,0.01474,495,61,1,3
+"Richmond, CA",Richmond,San Francisco Bay,Pacific,37.92424,-122.37423,32,558,315,330,0.01448,277,264,0,1
+"Port Everglades, FL",Port Everglades,Port Everglades,Atlantic,26.09339,-80.1178,34,549,305,329,0.01425,355,122,35,2
+"Lake Charles Harbor District, LA",Lake Charles,Lake Charles,Gulf,30.10641,-93.28684,14,527,291,286,0.01368,178,346,0,0
+"Texas City, TX",Texas City,Houston-Galveston,Gulf,29.36307,-94.91809,20,521,241,333,0.01352,36,413,0,0
+"Manatee County Port, FL",Manatee County,Tampa Bay,Gulf,27.63368,-82.56414,84,471,232,296,0.01222,358,66,9,0
+"Tacoma, WA",Tacoma,Puget Sound,Pacific,47.28966,-122.4515,31,441,233,273,0.01144,419,9,3,0
+"Beaumont, TX",Beaumont,Sabine-Neches,Gulf,30.08487,-94.09499,8,398,211,228,0.01033,101,297,0,0
+"Port of Greater Baton Rouge, LA",Baton Rouge,Lower Mississippi,Gulf,30.42292,-91.19934,7,331,163,185,0.00859,171,155,3,0
+"Tampa Port Authority, FL",Tampa,Tampa Bay,Gulf,27.78534,-82.52235,24,329,164,204,0.00854,224,58,8,0
+"Wilmington, NC","Wilmington, NC","Wilmington, NC",Atlantic,34.22737,-77.9505,67,296,156,165,0.00768,234,56,1,0
+"Boston, MA",Boston,Boston,Atlantic,42.35094,-71.05229,44,287,156,154,0.00745,167,73,27,1
+"Jackson County Port, MS",Jackson County,Jackson County,Gulf,30.34802,-88.55879,29,286,143,164,0.00742,95,156,0,0
+"Port of Brunswick, GA",Brunswick,Brunswick,Atlantic,31.13243,-81.53666,101,273,137,169,0.00708,267,2,0,0
+"Brownsville, TX",Brownsville,Brownsville,Gulf,25.9522,-97.39814,66,256,121,148,0.00664,226,21,1,0
+"Detroit-Wayne County Port, MI",Detroit-Wayne County,Detroit-Wayne County,Great Lakes,42.26909,-83.10959,57,241,167,186,0.00625,191,32,7,1
+"Canaveral Port District, FL",Canaveral,Canaveral,Atlantic,28.41409,-80.60815,80,222,122,115,0.00576,129,59,19,2
+"PortMiami, FL",PortMiami,PortMiami,Atlantic,25.78286,-80.18164,55,216,131,137,0.00561,150,15,48,0
+"San Diego Unified Port, CA",San Diego,San Diego,Pacific,32.70821,-117.1784,133,211,108,134,0.00548,132,12,23,30
+"Stockton, CA",Stockton,Stockton,Pacific,37.9527,-121.3156,78,207,130,96,0.00537,145,60,1,0
+"Jacksonville, FL",Jacksonville,Jacksonville,Gulf,30.32276,-81.66513,38,170,96,99,0.00441,123,34,0,0
+"New Haven, CT",New Haven,New Haven,Atlantic,41.29883,-72.90473,58,163,74,97,0.00423,67,74,0,0
+"Anacortes, WA",Anacortes,Anacortes,Pacific,48.49594,-122.59961,65,162,89,100,0.0042,24,110,11,0
+"Port of Providence, RI",Providence,Providence,Atlantic,41.81178,-71.39844,63,158,74,96,0.0041,88,60,0,0
+"Calhoun Port Authority, TX",Calhoun,Calhoun,Gulf,28.62939,-96.59232,77,141,73,83,0.00366,11,127,0,0
+"Morehead City, NC",Morehead City,Morehead City,Atlantic,34.71693,-76.72421,123,136,82,75,0.00353,125,10,0,0
+"Duluth-Superior, MN and WI",Duluth-Superior,Duluth-Superior,Great Lakes,46.77836,-92.09641,26,132,93,85,0.00343,127,1,1,0
+"Port of Palm Beach District, FL",Palm Beach,Palm Beach,Atlantic,26.76904,-80.05267,106,117,55,80,0.00304,80,21,2,0
+"Panama City Port Authority, FL",Panama City,Panama City,Gulf,30.134,-85.63376,110,116,56,72,0.00301,108,3,0,0
+"Grays Harbor Port District, WA",Grays Harbor,Grays Harbor,Pacific,46.90416,-124.17615,93,98,50,50,0.00254,88,9,0,0
+"Cleveland-Cuyahoga Port, OH",Cleveland-Cuyahoga,Cleveland-Cuyahoga,Great Lakes,41.47852,-81.67191,49,94,53,65,0.00244,81,1,4,1
+"Sacramento-Yolo Port, CA",Sacramento-Yolo,Sacramento-Yolo,Pacific,38.56132,-121.54154,143,86,41,53,0.00223,83,2,0,0
+"Toledo-Lucas County Port, OH",Toledo-Lucas County,Toledo-Lucas County,Great Lakes,41.66294,-83.50751,52,84,45,66,0.00218,76,2,0,0
+"Albany Port District, NY",Albany,Albany,Atlantic,42.64271,-73.74816,79,80,51,37,0.00208,59,21,0,0
+"Port of Portland, OR","Portland, OR",Lower Columbia,Pacific,45.47881,-122.6653,33,75,44,39,0.00195,74,0,0,1
+"Portsmouth, NH",Portsmouth,Portsmouth,Atlantic,43.07398,-70.73806,99,75,37,47,0.00195,51,17,0,0
+"Two Harbors, MN",Two Harbors,Two Harbors,Great Lakes,47.01455,-91.67069,43,74,54,52,0.00192,70,1,3,0
+"Milwaukee, WI",Milwaukee,Milwaukee,Great Lakes,42.98824,-87.89967,98,70,32,49,0.00182,55,4,6,1
+"Portland, ME","Portland, ME","Portland, ME",Atlantic,43.64951,-70.25134,82,63,34,44,0.00163,17,20,21,0
+"Coos Bay OR, Port of",Coos Bay,Coos Bay,Pacific,43.36351,-124.2095,119,49,35,26,0.00127,48,0,0,0
+"Gulfport, MS",Gulfport,Gulfport,Gulf,30.35962,-89.09257,128,49,18,36,0.00127,26,0,0,0
+"Searsport, ME",Searsport,Searsport,Atlantic,44.45285,-68.92497,129,41,25,24,0.00106,28,12,1,0
+"Redwood City, CA",Redwood City,Redwood City,Pacific,37.50536,-122.21401,115,38,19,23,0.00099,38,0,0,0
+"Sandusky, OH",Sandusky,Sandusky,Great Lakes,41.47022,-82.71227,125,33,21,21,0.00086,31,1,0,0
+"Marquette, MI",Marquette,Marquette,Great Lakes,46.57729,-87.38482,71,25,16,21,0.00065,21,0,1,0
+"Conneaut, OH",Conneaut,Conneaut,Great Lakes,41.96671,-80.5486,64,19,11,14,0.00049,19,0,0,0
+"Illinois International Port, IL",Chicago (Illinois Intl.),Chicago (Illinois Intl.),Great Lakes,41.88662,-87.63799,51,2,1,1,5e-05,0,0,0,0

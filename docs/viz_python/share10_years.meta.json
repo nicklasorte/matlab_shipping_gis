@@ -1,0 +1,41 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    9.5,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#6E4F92",
+    "#9A6B00",
+    "#FFFFFF"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Dumbbell chart of the 15 busiest deep-draft ports, each row joining its share of large-ship port visits in 2023 to its share in 2024; most pairs nearly touch.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share10_years.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share10_years.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share10_years.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #FFFFFF has contrast 1.00:1; marks need 3:1."
+    }
+  ]
+}

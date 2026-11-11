@@ -1,0 +1,172 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    8.5,
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#6E4F92",
+    "#9A6B00"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Treemap of the 73 deep-draft ports grouped into Gulf, Atlantic, Pacific, and Great Lakes blocks, each rectangle sized by its share of large-ship port visits; the Gulf block covers about half the area, led by Galveston, New Orleans, and Plaquemines.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share01_treemap.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share01_treemap.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share01_treemap.svg"
+  },
+  "lint": [
+    {
+      "severity": "error",
+      "message": "Text 'Galveston 7.4%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'New Orleans 6.3%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Plaquemines 5.6%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Houston 4.2%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'South Louisiana 3.6%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Port Arthur 2.9%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Sabine Pass 2.8%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Corpus Christi 2.2%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Mobile 2.0%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Freeport 1.5%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Lake Charles 1.4%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Texas City 1.4%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Manatee County 1.2%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Baton Rouge 0.9%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Tampa 0.9%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Jackson County 0.7%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'New York- New Jersey 4.4%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Baltimore 2.7%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Virginia 2.6%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Savannah 2.6%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Wilmington, DE 2.1%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Charleston 1.8%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'South Jersey 1.5%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Port Everglades 1.4%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Boston 0.7%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Long Beach 3.9%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'San Francisco 2.6%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Los Angeles 2.5%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Longview 1.9%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Vancouver, WA 1.8%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Kalama 1.7%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Seattle 1.7%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Oakland 1.6%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Oxnard 1.5%' has contrast 1.00:1; needs 4.5:1."
+    }
+  ]
+}

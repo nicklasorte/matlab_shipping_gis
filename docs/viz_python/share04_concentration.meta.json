@@ -1,0 +1,34 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.4
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    9.5,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#8A8D91"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Concentration curve rising steeply from zero: the cumulative share of large-ship port visits passes 50% at the 13th port and 80% at the 30th, against a dashed line for an even split across 73 ports.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share04_concentration.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share04_concentration.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share04_concentration.svg"
+  },
+  "lint": []
+}

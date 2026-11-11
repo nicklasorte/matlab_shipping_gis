@@ -1,0 +1,89 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.8
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    8.5,
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#6E4F92",
+    "#9A6B00",
+    "#C9CBCE"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Marimekko chart of the 12 busiest port complexes with column width set by share of port visits and column height split by ship type; tanker share is highest in the Gulf complexes and cargo share highest in the Atlantic and Pacific complexes.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share06_marimekko.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share06_marimekko.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share06_marimekko.svg"
+  },
+  "lint": [
+    {
+      "severity": "error",
+      "message": "Text 'Lower Mississippi' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Houston-Galveston' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Sabine-Neches' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Los Angeles-Long Beach' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Lower Columbia' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'San Francisco Bay' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Delaware River' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'New York-New Jersey' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Puget Sound' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Baltimore' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Virginia (Norfolk)' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Savannah' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #C9CBCE has contrast 1.63:1; marks need 3:1."
+    }
+  ]
+}

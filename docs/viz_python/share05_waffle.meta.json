@@ -1,0 +1,52 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.4
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#3F5FA8",
+    "#5674C4",
+    "#6E4F92",
+    "#7F96D3",
+    "#9A6B00",
+    "#9C82BC",
+    "#C9A54A",
+    "#D5D7DA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Waffle chart of 100 squares, each 1% of large-ship port visits, colored by port complex; the lower Mississippi and Houston-Galveston fill 29 squares, and all other ports fill about a third.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share05_waffle.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share05_waffle.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share05_waffle.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #7F96D3 has contrast 2.91:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #C9A54A has contrast 2.34:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #D5D7DA has contrast 1.44:1; marks need 3:1."
+    }
+  ]
+}

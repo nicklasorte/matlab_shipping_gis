@@ -1,0 +1,40 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    9.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#6E4F92",
+    "#9A6B00",
+    "#E8E9EA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Map of the lower 48 states with one non-overlapping circle per deep-draft port, sized by large-ship port visits and colored by coast; the largest circles crowd the Texas and Louisiana coast.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share08_dorling.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share08_dorling.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share08_dorling.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #E8E9EA has contrast 1.22:1; marks need 3:1."
+    }
+  ]
+}

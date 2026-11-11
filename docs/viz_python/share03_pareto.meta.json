@@ -1,0 +1,35 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    8.2
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    9.5,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#5674C4",
+    "#6E4F92",
+    "#9A6B00"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Horizontal bar chart of the 25 busiest deep-draft ports by share of large-ship port visits, colored by coast, with the running total beside each bar; the running total passes 50% at the 13th port.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share03_pareto.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share03_pareto.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share03_pareto.svg"
+  },
+  "lint": []
+}
