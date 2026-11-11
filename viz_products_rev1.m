@@ -17,6 +17,7 @@ function [prod]=viz_products_rev1(p)
 %     prod.river           table: river_km_from, river_km_to, ships (Mississippi)
 %     prod.river_km        struct: new_orleans, baton_rouge, last (km above Head of Passes)
 %     prod.sites           table: group, name, lat, lon, route_km
+%     prod.all_pairs       unique [cell mmsi] over both years (main + tug-barges near the coast)
 %     prod.summary         struct of the headline numbers
 %
 %   The Python twin is python/ship_viz_products.py; both read the same
@@ -107,6 +108,7 @@ prod.both_years=intersect(r_all{1},r_all{2});
 prod.only_one_year=setxor(r_all{1},r_all{2});
 prod.tow_only=setdiff(prod.route_cells,union(r_main{1},r_main{2}));
 prod.R=R;
+prod.all_pairs=all_pairs;   %%%%%unique [cell mmsi], both years (used by geo_products_rev1)
 
 %%%%%Offshore distance of route cells
 [rlat,rlon]=cell_ll(prod.route_cells);
