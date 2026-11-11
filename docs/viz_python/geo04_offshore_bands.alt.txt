@@ -1,0 +1,1 @@
+Map of large-ship route cells colored by distance from shore: darkest within 25 km at ports and on the Great Lakes, lighter farther offshore.

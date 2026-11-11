@@ -1,0 +1,68 @@
+{
+ "hex_count": 7578,
+ "hex_max_ships": 3120,
+ "hex_share_top5pct": 0.4123900346788861,
+ "hex_ge_1000": 132,
+ "ports_top": [
+  [
+   "Galveston, TX",
+   2839
+  ],
+  [
+   "New Orleans, LA",
+   2413
+  ],
+  [
+   "Plaquemines Port District, LA",
+   2161
+  ],
+  [
+   "Port of Long Beach, CA",
+   1894
+  ],
+  [
+   "Port of Los Angeles, CA",
+   1833
+  ],
+  [
+   "New York, NY & NJ",
+   1683
+  ],
+  [
+   "Houston Port Authority, TX",
+   1637
+  ],
+  [
+   "South Louisiana, LA, Port of",
+   1397
+  ],
+  [
+   "Sabine Pass Port Authority, TX",
+   1263
+  ],
+  [
+   "Port Arthur, TX",
+   1135
+  ]
+ ],
+ "ports_ge_1000": 13,
+ "profile_peak_Pacific": [
+  33.5,
+  34.0,
+  2076
+ ],
+ "profile_peak_Gulf": [
+  -95.0,
+  -94.5,
+  3891
+ ],
+ "profile_peak_Atlantic": [
+  40.5,
+  41.0,
+  2152
+ ],
+ "land_share_within_25km": 0.03623206091965245,
+ "land_share_within_50km": 0.07902042858537538,
+ "land_share_within_100km": 0.1589805232841941,
+ "land_max_km": 1327.934946517303
+}

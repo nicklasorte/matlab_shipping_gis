@@ -1,0 +1,74 @@
+port,lat,lon,rank,ships
+"Houston Port Authority, TX",29.74702,-95.29368,1,1637
+"South Louisiana, LA, Port of",30.03345,-90.61794,2,1397
+"Corpus Christi, TX",27.81277,-97.39789,3,866
+"New York, NY & NJ",40.67395,-74.03836,4,1683
+"New Orleans, LA",29.91414,-90.08526,5,2413
+"Port of Long Beach, CA",33.73957,-118.2095,6,1894
+"Port of Greater Baton Rouge, LA",30.42292,-91.19934,7,331
+"Beaumont, TX",30.08487,-94.09499,8,398
+"Port of Los Angeles, CA",33.72664,-118.2681,9,1833
+"Virginia, VA, Port of",36.86642,-76.31174,10,997
+"Mobile, AL",30.69123,-88.03583,11,787
+"Plaquemines Port District, LA",29.48,-89.68745,12,2161
+"Port of Savannah, GA",32.08471,-81.09538,13,984
+"Lake Charles Harbor District, LA",30.10641,-93.28684,14,527
+"Port Arthur, TX",29.83142,-93.96069,15,1135
+"Port Freeport, TX",28.96133,-95.3707,16,583
+"Baltimore, MD",39.25083,-76.56164,18,1045
+"Texas City, TX",29.36307,-94.91809,20,524
+"Philadelphia Regional Port, PA",39.91882,-75.20219,23,671
+"Tampa Port Authority, FL",27.78534,-82.52235,24,329
+"Duluth-Superior, MN and WI",46.77836,-92.09641,26,132
+"Port of Charleston, SC",32.78878,-79.9216,27,683
+"Jackson County Port, MS",30.34802,-88.55879,29,286
+"Seattle, WA",47.58771,-122.35922,30,643
+"Tacoma, WA",47.28966,-122.4515,31,441
+"Richmond, CA",37.92424,-122.37423,32,723
+"Port of Portland, OR",45.47881,-122.6653,33,76
+"Port Everglades, FL",26.09339,-80.1178,34,549
+"South Jersey Port District, NJ",39.84645,-75.26109,35,596
+"Port of Oakland, CA",37.82152,-122.3081,36,1053
+"Port of Kalama, WA",46.0266,-122.86686,37,732
+"Jacksonville, FL",30.32276,-81.66513,38,170
+"Two Harbors, MN",47.01455,-91.67069,43,74
+"Boston, MA",42.35094,-71.05229,44,287
+"Galveston, TX",29.31049,-94.8127,46,2839
+"Port of Longview, WA",46.14222,-122.914,47,749
+"Port of Vancouver USA, WA",45.62244,-122.6806,48,736
+"Cleveland-Cuyahoga Port, OH",41.47852,-81.67191,49,94
+"Illinois International Port, IL",41.88662,-87.63799,51,2
+"Toledo-Lucas County Port, OH",41.66294,-83.50751,52,84
+"PortMiami, FL",25.78286,-80.18164,55,216
+"Detroit-Wayne County Port, MI",42.26909,-83.10959,57,241
+"New Haven, CT",41.29883,-72.90473,58,163
+"Port of Providence, RI",41.81178,-71.39844,63,158
+"Conneaut, OH",41.96671,-80.5486,64,19
+"Anacortes, WA",48.49594,-122.59961,65,162
+"Brownsville, TX",25.9522,-97.39814,66,256
+"Wilmington, NC",34.22737,-77.9505,67,296
+"Marquette, MI",46.57729,-87.38482,71,25
+"Wilmington, DE",39.71589,-75.50697,72,797
+"Sabine Pass Port Authority, TX",29.76503,-93.92777,73,1263
+"Calhoun Port Authority, TX",28.62939,-96.59232,77,141
+"Stockton, CA",37.9527,-121.3156,78,207
+"Albany Port District, NY",42.64271,-73.74816,79,80
+"Canaveral Port District, FL",28.41409,-80.60815,80,222
+"Portland, ME",43.64951,-70.25134,82,63
+"Manatee County Port, FL",27.63368,-82.56414,84,471
+"Grays Harbor Port District, WA",46.90416,-124.17615,93,98
+"Milwaukee, WI",42.98824,-87.89967,98,70
+"Portsmouth, NH",43.07398,-70.73806,99,75
+"Port of Brunswick, GA",31.13243,-81.53666,101,273
+"Port of Palm Beach District, FL",26.76904,-80.05267,106,117
+"San Francisco Port, CA",37.80667,-122.39904,107,1078
+"Panama City Port Authority, FL",30.134,-85.63376,110,116
+"Redwood City, CA",37.50536,-122.21401,115,38
+"Oxnard Harbor District, CA",34.14824,-119.20848,118,568
+"Coos Bay OR, Port of",43.36351,-124.2095,119,49
+"Morehead City, NC",34.71693,-76.72421,123,136
+"Sandusky, OH",41.47022,-82.71227,125,33
+"Gulfport, MS",30.35962,-89.09257,128,49
+"Searsport, ME",44.45285,-68.92497,129,41
+"San Diego Unified Port, CA",32.70821,-117.1784,133,211
+"Sacramento-Yolo Port, CA",38.56132,-121.54154,143,86

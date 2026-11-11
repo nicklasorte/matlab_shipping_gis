@@ -1,0 +1,29 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    8.2
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Six close-up maps of port areas showing large-ship route cells shaded by ship count; traffic runs in narrow dredged channels in each.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo03_port_closeups.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo03_port_closeups.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo03_port_closeups.svg"
+  },
+  "lint": []
+}

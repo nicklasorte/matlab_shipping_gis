@@ -15,6 +15,7 @@ Grid: georefcells(latlim, lonlim, d, d) with MATLAB defaults
 
 Usage:
   python3 ais_cells_py_rev1.py OUT_DIR YYYY-MM-DD [YYYY-MM-DD ...]
+  python3 ais_cells_py_rev1.py --types OUT_DIR YYYY-MM-DD ...   (ship-type groups)
 """
 import os
 import sys
@@ -39,6 +40,15 @@ FILTERS = {
              "min_length_m": 100.0, "no_imo_types": [35, 55]},
     # towing with an IMO number (ocean-going tug-barges): p.filt_towing
     "towing": {"types": [31, 32, 52], "min_length_m": 100.0, "no_imo_types": []},
+}
+
+# Ship-type groups for the "where each type goes" maps (init_ship_geo_rev1.m,
+# python/ship_geo_products.py). Same length and IMO rules as "main".
+TYPE_FILTERS = {
+    "cargo": {"types": list(range(70, 80)), "min_length_m": 100.0, "no_imo_types": []},
+    "tanker": {"types": list(range(80, 90)), "min_length_m": 100.0, "no_imo_types": []},
+    "passenger": {"types": list(range(60, 70)), "min_length_m": 100.0, "no_imo_types": []},
+    "government": {"types": [35, 55], "min_length_m": 100.0, "no_imo_types": [35, 55]},
 }
 
 NUM_ROW = round((LATLIM[1] - LATLIM[0]) / CELL_DEG)
@@ -170,6 +180,10 @@ def build_day(day, out_dir):
 
 
 if __name__ == "__main__":
-    out_dir = sys.argv[1]
-    for d in sys.argv[2:]:
+    args = sys.argv[1:]
+    if args and args[0] == "--types":
+        FILTERS = TYPE_FILTERS
+        args = args[1:]
+    out_dir = args[0]
+    for d in args[1:]:
         build_day(d, out_dir)

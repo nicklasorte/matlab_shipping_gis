@@ -1,0 +1,53 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#3F5FA8",
+    "#7F96D3",
+    "#B4C2E6",
+    "#E4E9F6",
+    "#E8E9EA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Hexagon map of the lower 48 states; hexagons along the coasts, Great Lakes, and lower Mississippi are shaded by the number of distinct large ships, darkest at the major port complexes.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo01_hex_grid.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo01_hex_grid.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo01_hex_grid.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #7F96D3 has contrast 2.91:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #B4C2E6 has contrast 1.78:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #E4E9F6 has contrast 1.21:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #E8E9EA has contrast 1.22:1; marks need 3:1."
+    }
+  ]
+}

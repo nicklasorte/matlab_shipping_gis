@@ -1,0 +1,1 @@
+Hexagon map of the lower 48 states; hexagons along the coasts, Great Lakes, and lower Mississippi are shaded by the number of distinct large ships, darkest at the major port complexes.

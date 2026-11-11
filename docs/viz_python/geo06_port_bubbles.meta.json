@@ -1,0 +1,36 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#E8E9EA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Bubble map of 73 deep-draft ports sized by the number of large ships nearby; the largest circles are on the Texas and Louisiana coast, at Los Angeles-Long Beach, and at New York.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo06_port_bubbles.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo06_port_bubbles.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo06_port_bubbles.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #E8E9EA has contrast 1.22:1; marks need 3:1."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    7.6
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    9.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#6E4F92",
+    "#8A8D91",
+    "#B4C2E6",
+    "#E8E9EA"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Map of large-ship hexagons in light blue with racons and VTS areas marked; the S-band racons and VTS areas sit on the busiest lanes, except VTS Louisville on the Ohio River.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo09_sband_sites.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo09_sband_sites.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo09_sband_sites.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #B4C2E6 has contrast 1.78:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #E8E9EA has contrast 1.22:1; marks need 3:1."
+    }
+  ]
+}

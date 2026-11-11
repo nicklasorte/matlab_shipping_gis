@@ -1,0 +1,38 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    8.0
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    9.5,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Three bar charts of near-shore large-ship traffic along the Pacific, Gulf, and Atlantic coasts; each has one or two clear peaks at the major port complexes.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo05_coast_profile.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo05_coast_profile.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/geo05_coast_profile.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Text '-100.0' sits inside the page margin."
+    },
+    {
+      "severity": "warn",
+      "message": "Text '47.5' sits inside the page margin."
+    }
+  ]
+}
