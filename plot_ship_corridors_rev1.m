@@ -7,6 +7,7 @@ function [titles]=plot_ship_corridors_rev1(cor,prod,out_dir,census_shp,dpi)
 %
 %     corr01_reach_by_corridor   ships at the entrance and at the head port
 %     corr02_profiles            small multiples of ships along each corridor
+%     corr03_normalized_profiles all corridors on one chart, normalized
 %     corr_<name>                route map and profile for each corridor
 %
 %   NTIA style: DRAFT//PRE-DECISIONAL, takeaway titles with computed numbers,
@@ -102,6 +103,9 @@ for k=o'
 end
 xlabel(tl,'km from the entrance','FontName',C.font,'FontSize',8,'Color',C.dark);
 finish(C,fig,'corr02_profiles');
+
+%%%%%C2b. All corridors on one normalized chart
+titles(end+1)=plot_corridor_normalized_rev1(cor,out_dir,dpi);
 
 %%%%%C3. One page per corridor
 land=load_land(census_shp);

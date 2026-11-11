@@ -4,6 +4,7 @@ Run python/ship_viz_products.py and python/ship_corridor_products.py first.
 Writes PNG, PDF, SVG, and alt text to docs/viz_python/:
   corr01_reach_by_corridor   ships at the entrance and at the head port, every corridor
   corr02_profiles            small multiples: distinct ships along each corridor
+  corr03_normalized_profiles all corridors on one chart, distance and ships normalized
   corr_<name>                one page per corridor: route map and profile
 The MATLAB versions are drawn by init_ship_corridors_rev1.m.
 
@@ -138,6 +139,58 @@ def corr_profiles():
     vf.save(page, "corr02_profiles")
 
 
+# C2b. All corridors on one normalized chart ---------------------------------------
+def corr_normalized():
+    """Distance as a share of corridor length, ships as a share of ships at the entrance."""
+    tiers = [(0.5, "Most ships reach the head (over 50%)", "#5674C4"),
+             (0.15, "Some reach the head (15-50%)", "#6E4F92"),
+             (0.0, "Few reach the head (under 15%)", "#163353")]
+
+    def tier(v):
+        return next(t for t in tiers if v > t[0] or t[0] == 0.0)
+
+    page = OnePager(
+        headline="Mobile and Savannah keep 9 in 10 large ships to the head port; the Hudson and James keep fewer than 1 in 15",
+        subhead="Distinct large ships in each reach as a share of ships at the entrance, against distance as a share "
+                "of corridor length, 15 rivers and ship channels, 2023 and 2024 together",
+        source=SRC + " Entrance counts include ships bound for other ports near the entrance.",
+        theme="ntia", layout="hero", size=(11, 7.8), margin_right=2.3,
+        alt="Fifteen step lines, one per river or ship channel, of large ships as a share of entrance traffic "
+            "against distance as a share of corridor length, colored by how many reach the head port; Mobile and "
+            "Savannah stay near 1 to the head, while the James, Hudson, Sacramento, and Mississippi fall to about "
+            "0.1 or less.")
+    ax = page.panel(0)
+    ends = []
+    for c in ORDER:
+        L = float(SUMM[c]["length_km"])
+        ent = int(SUMM[c]["ships_entrance"])
+        km, n = map(np.array, zip(*PROF[c]))
+        b = float(SUMM[c]["bin_km"])
+        x = np.clip(np.append(km - b / 2, km[-1] + b / 2) / L, 0, 1)
+        y = np.append(n, n[-1]) / ent
+        v = int(SUMM[c]["ships_head"]) / ent
+        col = tier(v)[2]
+        ax.step(x, y, where="post", color=col, lw=1.4, alpha=0.85, zorder=2)
+        ends.append((v, SUMM[c]["label"], col))
+    ends.sort()
+    gap = 0.058
+    pos = []
+    for v, _, _ in ends:
+        pos.append(max(v, pos[-1] + gap) if pos else v)
+    for (v, lab, col), py in zip(ends, pos):
+        ax.plot([1.0, 1.03, 1.06], [v, v, py], color=col, lw=0.6, alpha=0.6, clip_on=False)
+        ax.text(1.07, py, f"{lab} ({100 * v:.0f}%)", va="center", fontsize=9, clip_on=False, color=col, fontweight="bold")
+    for i, (_, lab, col) in enumerate(tiers):
+        ax.plot([0.02, 0.06], [1.58 - i * 0.07] * 2, color=col, lw=2.5)
+        ax.text(0.075, 1.58 - i * 0.07, lab, va="center", fontsize=9.5, color=col, fontweight="bold")
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1.65)
+    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2])
+    ax.set_xlabel("Distance from the entrance, as a share of the corridor length (0 = entrance, 1 = head port)")
+    ax.set_ylabel("Large ships, as a share of ships at the entrance")
+    vf.save(page, "corr03_normalized_profiles")
+
+
 # C3. One page per corridor ---------------------------------------------------------
 def corr_page(c):
     s = SUMM[c]
@@ -236,6 +289,7 @@ def main():
         LAND += [pts[a:b] for a, b in zip(parts[:-1], parts[1:])]
     corr_reach()
     corr_profiles()
+    corr_normalized()
     for c in ORDER:
         corr_page(c)
 
