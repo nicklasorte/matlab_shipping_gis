@@ -20,6 +20,7 @@ import tempfile
 import zipfile
 
 import numpy as np
+import pandas as pd
 import pyarrow as pa
 import pyarrow.csv as pv
 import requests
@@ -70,10 +71,20 @@ def discrete(lat, lon):
     return row, col, ok
 
 
+def num(arr):
+    """Text column to float; unparseable values become NaN (as MATLAB's %f does)."""
+    return pd.to_numeric(pd.Series(arr.to_pylist(), dtype="string"), errors="coerce").to_numpy(dtype=float, na_value=np.nan)
+
+
 def process_stream(stream):
     opts = pv.ReadOptions(block_size=64 << 20)
+    # Read the filter columns as text and convert here: a few rows carry bad
+    # values (MMSI 'I367333430' on a 2023 day) that break type inference.
+    text_cols = ["MMSI", "mmsi", "LAT", "LON", "lat", "lon", "latitude", "longitude",
+                 "IMO", "imo", "VesselType", "vessel_type", "Length", "length"]
     head = pv.open_csv(stream, read_options=opts,
-                       convert_options=pv.ConvertOptions(strings_can_be_null=False))
+                       convert_options=pv.ConvertOptions(strings_can_be_null=False,
+                                                         column_types={c: pa.string() for c in text_cols}))
     names = head.schema.names
     key = [n.lower().replace("_", "") for n in names]
     want = {"mmsi": ["mmsi"], "lat": ["lat", "latitude"], "lon": ["lon", "longitude"],
@@ -88,18 +99,20 @@ def process_stream(stream):
     mmsi_all = set()
     rows_kept = 0
     for batch in head:
-        vt = batch.column(names.index(col["vt"])).to_numpy(zero_copy_only=False).astype(float)
-        ln = batch.column(names.index(col["length"])).to_numpy(zero_copy_only=False).astype(float)
+        vt = num(batch.column(names.index(col["vt"])))
+        ln = num(batch.column(names.index(col["length"])))
         imo_arr = batch.column(names.index(col["imo"]))
         imo = np.array([(s is not None and len(s) > 0) for s in imo_arr.cast(pa.string()).to_pylist()])
         keep = np.isin(vt, VESSEL_TYPES) & (ln >= MIN_LENGTH_M)
         keep &= imo | np.isin(vt, list(NO_IMO_TYPES))
         if not keep.any():
             continue
-        lat = batch.column(names.index(col["lat"])).to_numpy(zero_copy_only=False).astype(float)[keep]
-        lon = batch.column(names.index(col["lon"])).to_numpy(zero_copy_only=False).astype(float)[keep]
-        mmsi = batch.column(names.index(col["mmsi"])).to_numpy(zero_copy_only=False).astype(float)[keep]
-        rows_kept += int(keep.sum())
+        lat = num(batch.column(names.index(col["lat"])).filter(pa.array(keep)))
+        lon = num(batch.column(names.index(col["lon"])).filter(pa.array(keep)))
+        mmsi = num(batch.column(names.index(col["mmsi"])).filter(pa.array(keep)))
+        good = ~np.isnan(mmsi)  # a report with no readable MMSI can't be counted as a ship
+        lat, lon, mmsi = lat[good], lon[good], mmsi[good]
+        rows_kept += int(good.sum())
         mmsi_all.update(np.unique(mmsi).tolist())
         row, colx, ok = discrete(lat, lon)
         cell = row[ok] + (colx[ok] - 1) * NUM_ROW
