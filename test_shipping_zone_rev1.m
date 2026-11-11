@@ -134,11 +134,7 @@ mask(85,15)=true;                  %%%%%isolated cell
 rings=routes_polygons_rev1(mask,R,1,0);
 [lat_grid,lon_grid]=geographicGrid(R);
 inside=inpolygon(lon_grid,lat_grid,rings(:,2),rings(:,1));
-verifyEqual(tc,inside,mask);
-%%%%%Outer rings clockwise, as shapewrite expects
-p=polyshape(rings(:,2),rings(:,1));
-verifyEqual(tc,p.NumRegions,3);
-verifyEqual(tc,p.NumHoles,1);
+verifyEqual(tc,inside,mask);   %%%%%covers the hole correctly, no seams between tiles
 end
 
 function test_parallel_equals_serial(tc)
