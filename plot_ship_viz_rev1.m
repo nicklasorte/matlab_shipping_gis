@@ -60,8 +60,8 @@ bin=discretize(ships,edges);
 scatter(ax,x(o),y(o),0.6,C.ramp(bin(o),:),'s','filled','MarkerEdgeColor','none');
 labels=["4-9","10-49","50-199","200-999","1,000+"];
 for k=1:5
-    rectangle(ax,'Position',[-2850+(k-1)*320 120 310 70],'FaceColor',C.ramp(k,:),'EdgeColor','none');
-    text(ax,-2850+(k-1)*320+155,60,labels(k),'HorizontalAlignment','center','VerticalAlignment','top', ...
+    rectangle(ax,'Position',[-2850+(k-1)*420 120 410 70],'FaceColor',C.ramp(k,:),'EdgeColor','none');
+    text(ax,-2850+(k-1)*420+205,60,labels(k),'HorizontalAlignment','center','VerticalAlignment','top', ...
         'FontName',C.font,'FontSize',8,'Color',C.dark);
 end
 text(ax,-2850,240,'Distinct ships per cell','FontName',C.font,'FontSize',8.5,'FontWeight','bold','Color',C.dark);
@@ -101,7 +101,7 @@ titles(3)=sprintf('Great Lakes traffic falls by half in winter (%.0f vs. %.0f sh
 fig=new_page(C,titles(3),'Distinct large ships on each sampled Wednesday, 2023 and 2024', ...
     [C.src ' Coasts are split by simple latitude and longitude boxes.'],6.2);
 tl=tiledlayout(fig,2,2,'TileSpacing','compact','Padding','compact');
-tl.Position=[0.07 0.12 0.9 0.66];
+tl.Position=[0.07 0.13 0.9 0.6];
 names=["Great_Lakes","Atlantic","Gulf","Pacific"];
 for k=1:4
     ax=nexttile(tl);
@@ -175,7 +175,7 @@ titles(7)=sprintf('Tug-barges add %.0f%% more route cells, mostly near Atlantic,
 scatter(ax,x,y,0.3,[0.79 0.80 0.81],'s','filled','MarkerEdgeColor','none');
 [x,y]=cells_xy(prod.R,prod.tow_only,C.albers);
 scatter(ax,x,y,3,C.blue,'s','filled','MarkerEdgeColor','none');
-lab=struct('Atlantic',[1950 1250],'Gulf',[650 120],'GreatLakes',[900 2650],'Pacific',[-2700 1500]);
+lab=struct('Atlantic',[1950 1250],'Gulf',[650 120],'GreatLakes',[250 2450],'Pacific',[-2700 1500]);
 for f=fieldnames(lab)'
     xy=lab.(f{1});
     text(ax,xy(1),xy(2),sprintf('%s\n%s cells',strrep(f{1},'GreatLakes','Great Lakes'),comma(s.(['tow_only_' f{1}]))), ...
@@ -216,17 +216,18 @@ rs=RandStream('mrg32k3a','Seed',1);
 ng=size(groups,1);
 for k=1:ng
     v=max(st.route_km(st.group==groups(k,1)),0.1);
-    yk=ng-k+(rand(rs,numel(v),1)-0.5)*0.36;
+    yk=ng-k+1+(rand(rs,numel(v),1)-0.5)*0.36;
     hl=k<=2;
     scatter(ax,v,yk,14,ifelse(hl,C.blue,C.gray),'filled','MarkerFaceAlpha',0.85,'MarkerEdgeColor','none');
-    text(ax,0.11,ng-k+0.26,sprintf('%s (%d)',groups(k,2),numel(v)),'VerticalAlignment','bottom','FontName',C.font, ...
+    text(ax,0.11,ng-k+1.26,sprintf('%s (%d)',groups(k,2),numel(v)),'VerticalAlignment','bottom','FontName',C.font, ...
         'FontSize',9,'Color',C.dark,'FontWeight',ifelse(hl,'bold','normal'));
 end
 xline(ax,5,'--','Color',C.dark,'LineWidth',1);
 text(ax,5.4,ng+0.55,'5 km','FontName',C.font,'FontSize',9,'Color',C.dark);
 set(ax,'XScale','log','YTick',[],'YColor','none','YGrid','off','XGrid','on');
 xlim(ax,[0.1 1000]);
-ylim(ax,[0.6 ng+0.9]);
+ylim(ax,[0.5 ng+0.9]);
+ax.Position=[0.09 0.21 0.84 0.5];
 xticks(ax,[0.1 1 10 100 1000]);
 xticklabels(ax,{'0.1','1','10','100','1,000'});
 xlabel(ax,'Distance to the nearest large-ship route cell (km)');

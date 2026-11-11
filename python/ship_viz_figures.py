@@ -290,7 +290,7 @@ def fig_tugs():
     ax.scatter(x, y, s=0.15, marker="s", linewidths=0, color="#C9CBCE", zorder=2, rasterized=True)
     x, y = cells_xy(Z["tow_only"], GRID)
     ax.scatter(x, y, s=1.6, marker="s", linewidths=0, color=page.theme.accent, zorder=3, rasterized=True)
-    for g, (lx, ly) in {"Atlantic": (1950, 1250), "Gulf": (650, 120), "Great Lakes": (900, 2650), "Pacific": (-2700, 1500)}.items():
+    for g, (lx, ly) in {"Atlantic": (1950, 1250), "Gulf": (650, 120), "Great Lakes": (250, 2450), "Pacific": (-2700, 1500)}.items():
         ax.text(lx, ly, f"{g}\n{SUMM['tow_only_' + g]:,} cells", fontsize=10, color=page.theme.text, ha="center")
     save(page, "fig07_tug_barge_cells")
     return add, total
