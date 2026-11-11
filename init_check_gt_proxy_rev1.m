@@ -46,6 +46,10 @@ end
 ref=load_wikidata_gt_rev1(fullfile(c.data_dir,'wikidata_imo_gt_len.csv'));
 chk=check_gt_proxy_rev1(V,ref,c.filt,fullfile(c.out_dir,'gt_proxy_check_2024.png'));
 
+%%%%%%%%%%Working-paper figure: what the length filter keeps and drops
+fig_info=plot_filter_scatter_rev1(chk.matched,c.filt.min_length_m,fullfile(c.out_dir,'filter_length_vs_gt_2024.png'));
+disp(fig_info)
+
 writetable(chk.sweep,fullfile(c.out_dir,'gt_proxy_sweep_2024.csv'));
 writetable(chk.by_type,fullfile(c.out_dir,'gt_proxy_by_type_2024.csv'));
 writetable(chk.coverage,fullfile(c.out_dir,'gt_proxy_coverage_2024.csv'));
