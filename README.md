@@ -50,10 +50,15 @@ S-band radars anyway. The code keeps them when they pass the filter.
 
 Left out on purpose:
 
-- **Towing (AIS types 31, 32, 52).** River towboats often report the length
-  of the whole barge tow (300 m and more), and they use X-band radars. On a
-  2024 test day, 92% of towing reports at 100 m and up came from inland
-  rivers.
+- **Towing (AIS types 31, 32, 52), except tug-barges.** Towing ships 100 m
+  or longer with an IMO number (ocean-going articulated tug-barges) are kept
+  through a separate filter, `p.filt_towing`, but only within
+  `p.towing_coast_km` (25 km) of the Census coastline. Some river towboats
+  also report IMO numbers and the length of the whole tow (on 2024-07-10,
+  COOPERATIVE SPIRIT and AEP MARINER on the Mississippi). Without the coastal
+  rule, a test run reached 15 of 36 inland river ports; with it, none. The
+  2023 AIS files report the tug's own length, so few towing ships pass the
+  100 m test in 2023 (15 on 2023-07-12, 761 on 2024-07-10).
 - **Fishing and special craft (30, 34, 36, 37, 50–54, 56–59).** At 100 m and
   up these were also mostly inland river reports, which points to coding
   errors.
@@ -63,14 +68,16 @@ Left out on purpose:
 
 ## Method
 
-1. **Large-ship cells.** The code samples one AIS day per week for a year
-   (52 days by default). It reads each daily MarineCadastre file in chunks,
+1. **Large-ship cells.** The code samples one AIS day per week for 2023 and
+   2024 (104 days). It reads each daily MarineCadastre file in chunks,
    applies the filter, and bins positions onto a 0.01° grid (about 1 km). A
-   cell becomes a ship cell when at least four distinct ships report in it
-   over the sampled days. With two, the 2024 run kept 903 cells of tug and
-   barge traffic on the upper Mississippi that passed the type and length
-   filter; with four, it kept none, while the Columbia, Sacramento, Hudson,
-   St. Lawrence, and lower Mississippi ports stay in.
+   cell becomes a ship cell when at least four distinct ships report in it in
+   one calendar year; each year is counted on its own, and a cell that passes
+   in either year is kept. Within 50 km of a deep-draft USACE Principal Port
+   (coastal or Great Lakes, 1 million tons or more of foreign trade), two
+   ships in a year are enough, which keeps thin approaches such as Searsport
+   and Coos Bay. With two ships everywhere, the 2024 run kept 903 cells of
+   tug and barge traffic on the upper Mississippi; with four, it kept none.
 2. **Fairways.** The code adds NOAA shipping fairways, traffic separation
    schemes, precautionary areas, and recommended routes as ship cells.
 3. **Distance field.** The code computes the great-circle distance from every
@@ -145,79 +152,113 @@ The code works in pieces so a full year fits on a laptop:
 To process days in parallel, start a pool and set `p.parallel_flag=1`. Each
 worker needs about 2 GB of disk while it works.
 
-## 2024 results (lower 48, `shore` mode)
+## Results, 2023–2024 (lower 48, `shore` mode)
 
-52 AIS days (one a week in 2024), 1,650–2,090 large ships a day, 475,526 ship
-cells plus 1,490 fairway-only cells and 18 S-band racon cells, 20,633
-coastline cells that face ship water.
+104 AIS days (every Wednesday in 2023 and 2024).
 
-Adding military, law enforcement, dredging, and other seagoing ship types to
-the original cargo, tanker, and passenger set changed the zones little:
+| Route cells by source | Cells |
+| --- | --- |
+| AIS cells, 4 or more large ships in a year (tug-barges near the coast included) | 597,138 |
+| Port approaches, 2 or more ships within 50 km of 73 deep-draft ports | 14,627 |
+| NOAA fairways and traffic separation schemes not already AIS cells | 1,166 |
+| S-band racons not already route cells | 16 |
+| Total | 612,947 |
 
-| Distance | U.S. land in zone, merchant ships only | With the added types and racons | Change |
-| --- | --- | --- | --- |
-| 25 km | 356,183 km² | 359,888 km² | +1.0% |
-| 50 km | 673,235 km² | 676,401 km² | +0.5% |
-| 100 km | 1,284,704 km² | 1,285,485 km² | +0.1% |
+| Distance | U.S. land in zone |
+| --- | --- |
+| 25 km | 396,951 km² |
+| 50 km | 721,434 km² |
+| 100 km | 1,325,903 km² |
 
-The largest additions at 50 km are around Morgan City and Berwick Bay,
-Louisiana (about 2,300 km²), and inland of the Navy's southern California
-operating areas near Camp Pendleton (about 600 km²).
+- Named ports: 24 of 24 reached by a continuous route, including Baltimore
+  and Baton Rouge.
+- USACE Principal Ports: 69 of 73 deep-draft ports reached; 0 of 36 inland
+  river ports. Not reached: Portland, Oregon, and Illinois International
+  Port (the USACE reference points sit 6 and 13 km from the ship berths),
+  and Panama City and Searsport (thin approach traffic). All four are inside
+  the 25 km zone.
+- Baton Rouge: 267 distinct large ships within 3 km on the sampled days
+  (136 in 2023, 138 in 2024).
+- Vessel Traffic Service: 9 of 10 VTS areas are inside the 25 km zone;
+  VTS Louisville, on the Ohio River, is not.
 
-Spot checks at 50 km: Chicago, Duluth, Houston, Baton Rouge, Portland
-(Oregon), Sacramento, Seattle, Albany, and Washington, D.C. are in the zone;
-Denver, Memphis, St. Louis, Nashville, Atlanta, Pittsburgh, and Jackson
-(Mississippi) are not.
+## Filter attrition
+
+`init_filter_funnel_rev1.m` runs the filter one step at a time on one full
+day per year (`outputs/2023_2024/ais_filter_funnel.csv` and
+`ais_filter_by_type.csv`). Ship counts:
+
+| Step | 2023-07-12 | 2024-07-10 |
+| --- | --- | --- |
+| All reports | 22,344 | 22,414 |
+| Ship type kept (towing included) | 8,948 | 8,295 |
+| and length 100 m or more | 1,844 | 2,754 |
+| and IMO number (or military or law enforcement) | 1,805 | 2,184 |
+| and inside the lower-48 grid | 1,600 | 1,860 |
+
+Step 4 matches the day caches exactly (1,080,250 and 1,347,288 reports;
+1,805 and 2,184 ships), and the caches were built by a separate program
+(`ais_cells_py_rev1.py`). That program also reproduces the MATLAB cache for
+2024-01-03 cell for cell (166,382 pairs).
 
 ## Figures
 
-The 2024 maps are in `docs/`:
+The 2023–2024 maps are in `docs/`:
 
-| Map | 25 km | 50 km | 100 km |
-| --- | --- | --- | --- |
-| Land within X km of large-ship water | [25 km](docs/shipping_zone_2024_shore_25km_us_map.png) | [50 km](docs/shipping_zone_2024_shore_50km_us_map.png) | [100 km](docs/shipping_zone_2024_shore_100km_us_map.png) |
-| Large-ship routes with the X km buffer | [25 km](docs/shipping_zone_2024_shore_25km_routes_buffer_map.png) | [50 km](docs/shipping_zone_2024_shore_50km_routes_buffer_map.png) | [100 km](docs/shipping_zone_2024_shore_100km_routes_buffer_map.png) |
-
-Other maps:
-
-- [Large-ship routes alone](docs/shipping_zone_2024_routes_map.png)
-- [Lower Mississippi, Gulf to Baton Rouge, with the 50 km zone](docs/shipping_zone_2024_lower_mississippi_50km_map.png)
-- [Diagnostic map: all three zones and the ship cells](docs/shipping_zone_2024_shore_map.png)
+- [Large-ship routes, no buffer](docs/shipping_zone_2023_2024_routes_map.png)
+- [New Orleans to Baton Rouge routes, no buffer](docs/shipping_zone_2023_2024_new_orleans_baton_rouge_routes_map.png)
+- [Example frequency-dependent zones](docs/shipping_zone_2023_2024_band_zones_map.png)
+- Land within X km of large-ship water: [25 km](docs/shipping_zone_2023_2024_shore_25km_us_map.png), [50 km](docs/shipping_zone_2023_2024_shore_50km_us_map.png), [100 km](docs/shipping_zone_2023_2024_shore_100km_us_map.png)
+- Routes with the X km buffer: [25 km](docs/shipping_zone_2023_2024_shore_25km_routes_buffer_map.png), [50 km](docs/shipping_zone_2023_2024_shore_50km_routes_buffer_map.png), [100 km](docs/shipping_zone_2023_2024_shore_100km_routes_buffer_map.png)
+- [Lower Mississippi with the 50 km zone](docs/shipping_zone_2023_2024_lower_mississippi_50km_map.png)
 - [Length cutoff check](docs/gt_proxy_check_2024.png)
 
-![Large-ship routes and the 50 km buffer](docs/shipping_zone_2024_shore_50km_routes_buffer_map.png)
+The 2024-only maps from the earlier run stay in `docs/` under `shipping_zone_2024_*`.
 
-![Land within 50 km of large-ship water](docs/shipping_zone_2024_shore_50km_us_map.png)
+![Large-ship routes, 2023-2024](docs/shipping_zone_2023_2024_routes_map.png)
 
-## 2024 zone files
+## Frequency-dependent zones
 
-`outputs/2024/` holds the 2024 zones for 25, 50, and 100 km as shapefiles
-(EPSG:4326), KML files, and KMZ files for Google Earth:
+`p.band_zones` assigns a zone distance to each part of 2900–3100 MHz. The
+default is an example, not an EMC result:
 
-- `shipping_zone_2024_shore_<X>km`: ship water plus land out to X km.
-- `shipping_zone_2024_shore_<X>km_land`: the same zone clipped to U.S. land.
+| Band | Distance |
+| --- | --- |
+| 2900–3000 MHz | 25 km |
+| 3000–3030 MHz | 50 km |
+| 3030–3070 MHz | 100 km |
+| 3070–3100 MHz | 50 km |
 
-It also holds:
+Each band gets its own shapefile, KML, and KMZ
+(`shipping_zone_2023_2024_band_<f1>-<f2>MHz_<X>km`), a row in
+`shipping_zone_2023_2024_band_zones.csv`, and a panel in the band map.
 
-- `shipping_zone_2024_sites.csv`: every checked site in one table: all 75
-  charted racons in the grid (24 charted as S-band), the 10 Coast Guard
-  Vessel Traffic Service areas, the 24 named ports, and the 135 USACE
-  Principal Ports, with distance to the nearest ship cell and membership in
-  each zone.
-- `shipping_zone_2024_racons.csv`: the S-band racons used as zone sources.
-- `shipping_zone_2024_port_check.csv`, `..._principal_port_check.csv`, and
-  `..._vts_check.csv`: the individual checks.
-- `shipping_zone_2024_shore_rev1.mat`: the zones.
-- `gt_proxy_*.csv`: the length cutoff check.
+## Output files
+
+`outputs/2023_2024/` holds:
+
+- `shipping_zone_2023_2024_routes`: the route cells as polygons (one
+  feature per 1° tile), shapefile and KMZ. The KML is 42 MB, so only the KMZ
+  (the same KML, zipped, 1.7 MB) is in the repo; a run writes both.
+  `..._routes_ais_only` holds the AIS cells without fairways and racons.
+- `shipping_zone_2023_2024_shore_<X>km` and `..._land`: the zones for 25,
+  50, and 100 km (shapefile, KML, KMZ).
+- `shipping_zone_2023_2024_band_*`: the frequency-dependent zones.
+- `shipping_zone_2023_2024_sites.csv`: racons, VTS areas, named ports, and
+  USACE Principal Ports, with distance to the routes and zone membership.
+- Port, principal-port, and VTS checks, Baton Rouge ship counts, the filter
+  attrition tables, and the `.mat` result.
+
+The 2024-only outputs from the earlier run stay in `outputs/2024/`.
 
 ## Data in the repo
 
-`data/` holds every input the 2024 run used, so `init_shipping_zone_rev1`
+`data/` holds every input the 2023–2024 run uses, so `init_shipping_zone_rev1`
 runs without downloading anything:
 
 | File | Content |
 | --- | --- |
-| `ais_cells_2024MMDD_*_rev1.mat` (52 files) | Large-ship grid cells for each sampled AIS day, for the default ship filter (the raw AIS files are 200 MB each and aren't stored) |
+| `ais_cells_YYYYMMDD_*_rev1.mat` (208 files) | Large-ship grid cells for each of the 104 sampled AIS days: one file for the main filter (`vt0-99-n44`) and one for tug-barges (`vt31-52-n3`). The raw AIS files are 200–300 MB each and aren't stored. `ais_cells_py_rev1.py` rebuilds them without writing the CSV to disk. |
 | `racons/` | NOAA chart racon layers (general, coastal, and approach scales) |
 | `fairways_rev1.geojson` | NOAA shipping fairways and traffic separation schemes |
 | `cb_2023_us_state_500k/` | Census state boundaries, 1:500,000 |
@@ -228,10 +269,10 @@ runs without downloading anything:
 
 ## Vessel Traffic Service areas
 
-8 of the 10 Coast Guard VTS areas in the lower 48 sit on large-ship routes
-and inside the 25 km zone. VTS Berwick Bay (Morgan City, Louisiana) is 11 km
-from a large-ship cell but inside the zone. VTS Louisville, on the Ohio
-River, serves towboats and is correctly outside every zone.
+In the 2023–2024 run, 9 of the 10 Coast Guard VTS areas in the lower 48 are
+inside the 25 km zone. VTS Berwick Bay (Morgan City, Louisiana) is within
+1 km of a large-ship cell but not on the connected route network. VTS
+Louisville, on the Ohio River, serves towboats and is outside every zone.
 
 ## Ports the routes must reach
 
