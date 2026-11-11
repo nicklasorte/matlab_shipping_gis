@@ -254,6 +254,39 @@ Each band gets its own shapefile, KML, and KMZ
 
 The 2024-only outputs from the earlier run stay in `outputs/2024/`.
 
+## Ship-data figures
+
+Ten figures on the large-ship data, each with a MATLAB version and a Python
+version that compute the same numbers from the same AIS day caches:
+
+| # | Figure | Takeaway |
+| --- | --- | --- |
+| 1 | Traffic density (map) | The busiest 7% of route cells carry half of all large-ship traffic |
+| 2 | Baltimore and the Key Bridge | Large ships in Baltimore harbor fell 40% during the 2024 closure |
+| 3 | Seasons by coast | Great Lakes traffic falls by half in winter; the ocean coasts barely change |
+| 4 | Length cutoff sweep | At 100 m the length test is right 99.6% of the time and keeps 98.1% of big ships |
+| 5 | Filter funnel | About 1 ship in 11 reporting on AIS passes the large-ship filter |
+| 6 | Stability between years (map) | 85% of traffic is in cells that pass the threshold in both years |
+| 7 | Tug-barge cells (map) | Tug-barges add 1% more route cells |
+| 8 | Mississippi profile | Traffic thins above New Orleans but reaches Baton Rouge, 351 river km up |
+| 9 | Sites near routes | Every named port and 97% of deep-draft ports are within 5 km of a route |
+| 10 | Offshore distance | Half of Pacific and Gulf route cells lie more than 130 km offshore |
+
+- **MATLAB:** `init_ship_viz_rev1.m` runs `viz_products_rev1.m` (the
+  numbers) and `plot_ship_viz_rev1.m` (the figures). Figures:
+  `docs/viz_matlab/`; tables: `outputs/2023_2024/viz_matlab/`.
+- **Python:** `python/ship_viz_products.py` then
+  `python/ship_viz_figures.py`, drawn with the NTIA theme of the vendored
+  one-page toolkit (`python/onepager.py`, checked with `python/review.py`
+  for overlaps, small text, contrast, and color blindness). Figures (PNG,
+  PDF, SVG, alt text): `docs/viz_python/`; tables:
+  `outputs/2023_2024/viz/`.
+- **Cross-check:** the two versions agree within one cell: 661,136 route
+  cells in MATLAB and 661,137 in Python, 6,514 and 6,515 tug-barge cells,
+  and the same shares, river distances, and offshore medians. The one-cell
+  differences come from how each rasterizes the Census coastline for the
+  25 km tug-barge rule.
+
 ## Data in the repo
 
 `data/` holds every input the 2023–2024 run uses, so `init_shipping_zone_rev1`
