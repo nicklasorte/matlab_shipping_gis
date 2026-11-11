@@ -101,7 +101,7 @@ text(ax,x0+250,y0+80,'500 km','Color',dark_blue,'FontName',font_name,'FontSize',
 annotation(fig,'textbox',[0.02 0.94 0.96 0.05],'String','DRAFT//PRE-DECISIONAL','EdgeColor','none', ...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
 if isempty(d_km)
-    title_str=sprintf('Large-ship routes, lower 48 (%s)',period);
+    title_str=sprintf('Large ships stay on the coasts, the Great Lakes, and a few deep rivers (%s)',period);
 else
     title_str=sprintf('Large-ship routes and the %g km buffer, lower 48 (%s)',d_km,period);
 end

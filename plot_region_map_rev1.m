@@ -87,24 +87,34 @@ axis(ax,'off');
 xlim(ax,[min(bx) max(bx)]/1e3);
 ylim(ax,[min(by) max(by)]/1e3);
 
-%%%%%Direct label for the zone, and a 50 km scale bar
+%%%%%Key in the top-right corner and a scale bar in the lower left. Offsets
+%%%%%scale with the map so small and large regions lay out the same way.
 x_lim=xlim(ax);
 y_lim=ylim(ax);
-%%%%%Key in the top-left corner, clear of the offshore routes
-text(ax,x_lim(1)+10,y_lim(2)-15,sprintf('Dark blue: large-ship routes (%s AIS)',period),'Color',dark_blue,'FontWeight','bold', ...
-    'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
-key_y=y_lim(2)-37;
+w_km=diff(x_lim);
+h_km=diff(y_lim);
+key_x=x_lim(2)-0.02*w_km;
+key_y=y_lim(2)-0.05*h_km;
+key_step=0.075*h_km;
+text(ax,key_x,key_y,sprintf('Dark blue: large-ship routes (%s AIS)',period),'Color',dark_blue,'FontWeight','bold', ...
+    'FontName',font_name,'FontSize',9,'HorizontalAlignment','right','BackgroundColor','w','Margin',1);
 if ~isempty(d_km)
-    text(ax,x_lim(1)+10,key_y,sprintf('Light blue: %g km zone',d_km),'Color',light_blue,'FontWeight','bold', ...
-        'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
-    key_y=key_y-22;
+    key_y=key_y-key_step;
+    text(ax,key_x,key_y,sprintf('Light blue: %g km zone',d_km),'Color',light_blue,'FontWeight','bold', ...
+        'FontName',font_name,'FontSize',9,'HorizontalAlignment','right','BackgroundColor','w','Margin',1);
 end
 if ~isempty(note)
-    text(ax,x_lim(1)+10,key_y,note,'Color',dark_blue,'FontName',font_name,'FontSize',9, ...
-        'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
+    key_y=key_y-key_step;
+    text(ax,key_x,key_y,note,'Color',dark_blue,'FontName',font_name,'FontSize',9, ...
+        'HorizontalAlignment','right','BackgroundColor','w','Margin',1);
 end
-plot(ax,x_lim(1)+[15 65],y_lim(1)+[20 20],'Color',dark_blue,'LineWidth',1.5);
-text(ax,x_lim(1)+40,y_lim(1)+32,'50 km','Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
+nice_km=[5 10 20 25 50 100 200];
+bar_km=nice_km(find(nice_km<=0.25*w_km,1,'last'));
+bar_x=x_lim(1)+0.04*w_km;
+bar_y=y_lim(1)+0.05*h_km;
+plot(ax,bar_x+[0 bar_km],bar_y*[1 1],'Color',dark_blue,'LineWidth',1.5);
+text(ax,bar_x+bar_km/2,bar_y+0.03*h_km,sprintf('%g km',bar_km),'Color',dark_blue,'FontName',font_name,'FontSize',8, ...
+    'HorizontalAlignment','center','BackgroundColor','w','Margin',1);
 
 annotation(fig,'textbox',[0.02 0.94 0.96 0.05],'String','DRAFT//PRE-DECISIONAL','EdgeColor','none', ...
     'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
