@@ -154,15 +154,17 @@ worker needs about 2 GB of disk while it works.
 
 ## Results, 2023–2024 (lower 48, `shore` mode)
 
-104 AIS days (every Wednesday in 2023 and 2024).
+104 AIS days (every Wednesday in 2023 and 2024). The grid covers 22–50° N and
+66–130° W, which takes in the Florida Straits and waters well off the West
+Coast.
 
 | Route cells by source | Cells |
 | --- | --- |
-| AIS cells, 4 or more large ships in a year (tug-barges near the coast included) | 597,138 |
-| Port approaches, 2 or more ships within 50 km of 73 deep-draft ports | 14,627 |
+| AIS cells, 4 or more large ships in a year (tug-barges near the coast included) | 661,136 |
+| Port approaches, 2 or more ships within 50 km of 73 deep-draft ports | 14,629 |
 | NOAA fairways and traffic separation schemes not already AIS cells | 1,166 |
 | S-band racons not already route cells | 16 |
-| Total | 612,947 |
+| Total | 676,947 |
 
 | Distance | U.S. land in zone |
 | --- | --- |
@@ -194,7 +196,7 @@ day per year (`outputs/2023_2024/ais_filter_funnel.csv` and
 | Ship type kept (towing included) | 8,948 | 8,295 |
 | and length 100 m or more | 1,844 | 2,754 |
 | and IMO number (or military or law enforcement) | 1,805 | 2,184 |
-| and inside the lower-48 grid | 1,600 | 1,860 |
+| and inside the analysis grid | 1,671 | 1,980 |
 
 Step 4 matches the day caches exactly (1,080,250 and 1,347,288 reports;
 1,805 and 2,184 ships), and the caches were built by a separate program
