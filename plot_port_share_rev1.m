@@ -54,6 +54,8 @@ titles(1)=sprintf('Gulf ports take %.0f%% of large-ship port visits; Galveston a
     '2023 and 2024 together (area = share)'],C.src,5.8,[0.04 0.13 0.92 0.60]);
 W=1.6;
 H=1.0;
+set(ax,'YDir','reverse','XLim',[0 W],'YLim',[0 H]);
+daspect(ax,[1 1 1]);
 boxes=squarify(cshare,0,0,W,H);
 for k=1:numel(coasts)
     rows=T(T.coast==coasts(k),:);
@@ -61,14 +63,15 @@ for k=1:numel(coasts)
     for j=1:height(rows)
         r=rects(j,:);
         rectangle(ax,'Position',r,'FaceColor',ccol(char(coasts(k))),'EdgeColor','w','LineWidth',1);
-        if r(3)>0.13 && r(4)>0.07
-            text(ax,r(1)+0.007,r(2)+0.007,sprintf('%s\n%.1f%%',rows.short(j),100*rows.share(j)), ...
-                'VerticalAlignment','top','FontName',C.font,'FontSize',8,'FontWeight','bold','Color','w');
+        if r(3)>0.06 && r(4)>0.05
+            fit_label(C,ax,r,rows.short(j),rows.share(j));
         end
     end
     rectangle(ax,'Position',boxes(k,:),'EdgeColor','w','LineWidth',3);
 end
-set(ax,'YDir','reverse','XLim',[0 W],'YLim',[0 H],'Visible','off');
+xlim(ax,[0 W]);
+ylim(ax,[0 H]);
+set(ax,'YDir','reverse','Visible','off');
 daspect(ax,[1 1 1]);
 key_text(C,ax,coasts,cshare,ccol,[0 -0.02],0.4);
 finish(C,fig,'share01_treemap');
@@ -102,7 +105,7 @@ cum=cumsum(T.share);
 n50=find(cum>=0.5,1);
 titles(3)=sprintf('%d ports take half of all large-ship port visits; the busiest 25 take %.0f%%',n50,100*cum(25));
 [fig,ax]=new_page(C,titles(3),['Share of large-ship port visits, the 25 busiest deep-draft ports, with the ' ...
-    'running total, 2023 and 2024 together'],C.src,6.4,[0.20 0.11 0.62 0.64]);
+    'running total, 2023 and 2024 together'],C.src,6.4,[0.20 0.16 0.62 0.59]);
 style_axes(C,ax);
 set(ax,'YGrid','off','XGrid','on');
 y=(25:-1:1)';
@@ -127,7 +130,7 @@ n80=find(cum>=0.8,1);
 titles(4)=sprintf(['Large-ship port visits are concentrated: %d of 73 deep-draft ports take half, and %d take ' ...
     'four-fifths'],n50,n80);
 [fig,ax]=new_page(C,titles(4),['Cumulative share of large-ship port visits, ports ranked from busiest to least ' ...
-    'busy, 2023 and 2024 together'],C.src,5.6,[0.09 0.13 0.86 0.60]);
+    'busy, 2023 and 2024 together'],C.src,5.6,[0.09 0.19 0.86 0.54]);
 style_axes(C,ax);
 plot(ax,[0 73],[0 100],'--','Color',C.gray);
 text(ax,50,100*50/73-4,'Even split across all 73 ports','FontName',C.font,'FontSize',8,'Color',C.dark);
@@ -289,9 +292,27 @@ end
 for k=o'
     patch(ax,dx(k)+rk(k)*cos(th),dy(k)+rk(k)*sin(th),ccol(char(T.coast(k))),'EdgeColor','w','FaceAlpha',0.92);
 end
+%%%%%Labels with short leader lines, pointing away from the cluster (same directions as the Python twin)
+lab_dir=containers.Map({'Galveston','Houston','New Orleans','Plaquemines','South Louisiana','Port Arthur', ...
+    'New York-New Jersey','Long Beach','Baltimore','Sabine Pass'},{[-1 -1],[-1 1],[1 1],[1 -1],[0 1],[0 1], ...
+    [1 0],[-1 0],[1 0],[0 -1]});
+ha={'right','center','left'};
+va={'top','middle','bottom'};
 for k=1:10
-    text(ax,dx(k)+rk(k)*0.72+30,dy(k)+rk(k)*0.72+30,T.short(k),'FontName',C.font,'FontSize',7.5, ...
-        'FontWeight','bold','Color',C.dark,'BackgroundColor','none');
+    u=[1 0];
+    if isKey(lab_dir,char(T.short(k)))
+        u=lab_dir(char(T.short(k)));
+    end
+    f=1;
+    if all(u~=0)
+        f=0.7071;
+    end
+    e=[dx(k) dy(k)]+u*f*rk(k);
+    t=e+u*f*55;
+    plot(ax,[e(1) t(1)],[e(2) t(2)],'Color',C.dark,'LineWidth',0.6);
+    text(ax,t(1)+u(1)*8,t(2)+u(2)*8,T.short(k),'HorizontalAlignment',ha{u(1)+2},'VerticalAlignment', ...
+        va{u(2)+2},'FontName',C.font,'FontSize',7.5,'FontWeight','bold','Color',C.dark,'BackgroundColor','w', ...
+        'Margin',0.5);
 end
 for k=1:2
     sv=[2000 500];
@@ -351,7 +372,7 @@ ch=s24-s23;
 titles(10)=sprintf('Port shares barely moved between years; the largest shift among the top 15 is %.1f points at %s', ...
     100*abs(ch(ib)),top.short(ib));
 [fig,ax]=new_page(C,titles(10),['Share of large-ship port visits in 2023 (open circle) and 2024 (filled circle), ' ...
-    'the 15 busiest deep-draft ports'],C.src,5.8,[0.20 0.12 0.72 0.60]);
+    'the 15 busiest deep-draft ports'],C.src,5.8,[0.20 0.18 0.72 0.54]);
 style_axes(C,ax);
 set(ax,'YGrid','off','XGrid','on');
 y=(15:-1:1)';
@@ -495,6 +516,22 @@ function ring(ax,r0,r1,a0,a1,col,lw)
 %%%%%Annular sector from angle a0 to a1 (degrees)
 t=linspace(a0,a1,max(8,ceil(abs(a1-a0))));
 patch(ax,[r1*cosd(t) r0*cosd(fliplr(t))],[r1*sind(t) r0*sind(fliplr(t))],col,'EdgeColor','w','LineWidth',lw);
+end
+
+function fit_label(C,ax,r,name,share)
+%%%%%Label a treemap rectangle only if the label fits inside it (measured with Extent)
+name=char(extractBefore(string(name)+" (", " ("));
+tries={{sprintf('%s\n%.1f%%',name,100*share),8},{sprintf('%s\n%.1f%%',name,100*share),7}, ...
+    {sprintf('%s\n%.1f%%',regexprep(name,'[ -]','$0\n','once'),100*share),7}};
+for k=1:numel(tries)
+    t=text(ax,r(1)+0.007,r(2)+0.007,tries{k}{1},'VerticalAlignment','top','FontName',C.font, ...
+        'FontSize',tries{k}{2},'FontWeight','bold','Color','w');
+    e=t.Extent;
+    if e(3)<r(3)-0.012 && e(4)<r(4)-0.012
+        return
+    end
+    delete(t);
+end
 end
 
 function key_box(C,ax,coasts,cshare,ccol,xy,dy)
