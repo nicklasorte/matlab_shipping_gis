@@ -5,7 +5,9 @@ function [titles]=plot_corridor_normalized_rev1(cor,out_dir,dpi)
 %   cor.continuation (corridor_products_rev1): distinct large ships seen at
 %   or beyond each point, with distance scaled so 1 = the head port. Every
 %   corridor is a thin gray step line; Savannah, Houston, the Mississippi, and
-%   the Hudson are drawn in the accent and labeled at the right. Writes:
+%   the Hudson each get their own color (the same in both charts) and are
+%   labeled at the right; the count chart also labels them at the left with
+%   the ships that enter. Writes:
 %
 %     corr03_normalized_profiles   share of entering ships still on the corridor
 %     corr04_continuation_counts   the same as ship counts (y not normalized)
@@ -43,18 +45,20 @@ src=['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in 2023 and 
 draw(K,S,M,'share_beyond',titles(1),['Share of large ships entering each corridor that were seen at or beyond ' ...
     'each point, 15 rivers and ship channels, 2023 and 2024 together'],[src 'Ships entering = seen at least ' ...
     '3 km in from the entrance on any sampled day.'],'Share of entering large ships still on the corridor', ...
-    @(v) sprintf('%.0f%%',100*v),1.05,fullfile(out_dir,'corr03_normalized_profiles.png'),dpi);
+    @(v) sprintf('%.0f%%',100*v),1.05,fullfile(out_dir,'corr03_normalized_profiles.png'),dpi,false);
 draw(K,S,M,'ships_beyond',titles(2),['Distinct large ships seen at or beyond each point of each corridor, ' ...
     '15 rivers and ship channels, 2023 and 2024 together'],[src 'Counts start 3 km in from the entrance.'], ...
-    'Distinct large ships seen at or beyond this point',@(v) sprintf('%s ships',comma(v)), ...
-    1.08*max(first.ships_beyond),fullfile(out_dir,'corr04_continuation_counts.png'),dpi);
+    'Distinct large ships seen at or beyond this point',@(v) comma(v), ...
+    1.08*max(first.ships_beyond),fullfile(out_dir,'corr04_continuation_counts.png'),dpi,true);
 end
 
-function draw(K,S,M,var,title_str,subtitle,source,ylab,fmt,ytop,png,dpi)
+function draw(K,S,M,var,title_str,subtitle,source,ylab,fmt,ytop,png,dpi,left_labels)
 dark=[22 51 83]/255;
-blue=[86 116 196]/255;
 font='Times New Roman';
 hl=["savannah","houston","mississippi","hudson"];
+%%%%%One color per highlighted corridor, the same in both charts: NTIA light blue, purple, dark blue, and a
+%%%%%dark ochre (not a brand color; the brand has three series colors)
+hl_col=[86 116 196; 110 79 146; 22 51 83; 154 107 0]/255;
 h_in=6.4;
 fig=figure('Visible','off','Units','inches','Position',[0 0 9 h_in],'Color','w','Theme','light');
 annotation(fig,'textbox',[0.02 1-0.32/h_in 0.96 0.25/h_in],'String','DRAFT//PRE-DECISIONAL','EdgeColor','none', ...
@@ -73,29 +77,43 @@ xlim(ax,[0 1]);
 ylim(ax,[0 ytop]);
 names=S.corridor';
 ends=zeros(numel(hl),1);
+starts=zeros(numel(hl),1);
 for c=[names(~ismember(names,hl)) hl]
     T=K(K.corridor==c,:);
     [xs,ys]=stairs(T.frac_to_head,T.(var));
     if ismember(c,hl)
-        plot(ax,xs,ys,'Color',blue,'LineWidth',2);
+        plot(ax,xs,ys,'Color',hl_col(hl==c,:),'LineWidth',2);
         ends(hl==c)=T.(var)(end);
+        starts(hl==c)=T.(var)(1);
     else
         plot(ax,xs,ys,'Color',[0.725 0.733 0.745],'LineWidth',0.8);
     end
 end
 %%%%%Labels for the highlighted corridors, spread so they don't overlap
-[v,o]=sort(ends);
-pos=v;
 gap=0.06*ytop;
-for j=2:numel(pos)
-    pos(j)=max(v(j),pos(j-1)+gap);
-end
+[v,o]=sort(ends);
+pos=spread(v,gap);
 for j=1:numel(o)
     c=hl(o(j));
     en=M.name(M.corridor==c & M.role=="end");
-    plot(ax,[1 1.02 1.04],[v(j) v(j) pos(j)],'Color',blue,'LineWidth',0.6,'Clipping','off');
-    text(ax,1.05,pos(j),sprintf('%s to %s: %s',S.label(S.corridor==c),en,fmt(v(j))),'FontName',font, ...
-        'FontSize',8,'FontWeight','bold','Color',blue,'Clipping','off');
+    if left_labels
+        lab=sprintf('%s reach %s',fmt(v(j)),en);
+    else
+        lab=sprintf('%s to %s: %s',S.label(S.corridor==c),en,fmt(v(j)));
+    end
+    plot(ax,[1 1.02 1.04],[v(j) v(j) pos(j)],'Color',hl_col(o(j),:),'LineWidth',0.6,'Clipping','off');
+    text(ax,1.05,pos(j),lab,'FontName',font,'FontSize',8,'FontWeight','bold','Color',hl_col(o(j),:), ...
+        'Clipping','off');
+end
+if left_labels
+    [v,o]=sort(starts);
+    pos=spread(v,gap);
+    for j=1:numel(o)
+        c=hl(o(j));
+        text(ax,0.012,pos(j)+0.012*ytop,sprintf('%s: %s enter',S.label(S.corridor==c),fmt(v(j))), ...
+            'FontName',font,'FontSize',8,'FontWeight','bold','Color',hl_col(o(j),:), ...
+            'VerticalAlignment','bottom','BackgroundColor','w','Margin',0.5);
+    end
 end
 text(ax,0.99,0.985,'Gray: the other 11 rivers and ship channels (Table 7)','Units','normalized', ...
     'HorizontalAlignment','right','VerticalAlignment','top','FontName',font,'FontSize',8,'Color',dark);
@@ -103,6 +121,14 @@ xlabel(ax,'Distance from the entrance, as a share of the distance to the head po
 ylabel(ax,ylab);
 exportgraphics(fig,png,'Resolution',dpi,'BackgroundColor','white');
 close(fig);
+end
+
+function pos=spread(v,gap)
+%%%%%Label positions at least GAP apart, starting from the sorted values V
+pos=v;
+for j=2:numel(pos)
+    pos(j)=max(v(j),pos(j-1)+gap);
+end
 end
 
 function s=comma(n)

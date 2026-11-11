@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>69% of the large ships that enter the Savannah River reach Garden City; on the Hudson and the Mississippi, fewer than 1 in 10 reach the head port</dc:title>
-    <dc:date>2026-11-11T11:36:51.170105</dc:date>
+    <dc:date>2026-11-11T11:44:22.670367</dc:date>
     <dc:description>Fifteen falling step lines, one per river or ship channel, of the share of entering large ships seen at or beyond each point against distance scaled to the head port; four are highlighted: Savannah ends near 0.7, Houston near 0.13, the Mississippi near 0.07, and the Hudson near 0.05.</dc:description>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
@@ -842,7 +842,7 @@ z
      <g id="line2d_7">
       <path d="M 64.31 429.655703 
 L 558 429.655703 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_8"/>
      <g id="text_8">
@@ -858,7 +858,7 @@ L 558 429.655703
      <g id="line2d_9">
       <path d="M 64.31 387.335975 
 L 558 387.335975 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_10"/>
      <g id="text_9">
@@ -874,7 +874,7 @@ L 558 387.335975
      <g id="line2d_11">
       <path d="M 64.31 345.016246 
 L 558 345.016246 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_12"/>
      <g id="text_10">
@@ -890,7 +890,7 @@ L 558 345.016246
      <g id="line2d_13">
       <path d="M 64.31 302.696518 
 L 558 302.696518 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_14"/>
      <g id="text_11">
@@ -906,7 +906,7 @@ L 558 302.696518
      <g id="line2d_15">
       <path d="M 64.31 260.376789 
 L 558 260.376789 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_16"/>
      <g id="text_12">
@@ -922,7 +922,7 @@ L 558 260.376789
      <g id="line2d_17">
       <path d="M 64.31 218.057061 
 L 558 218.057061 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #e6e6e6; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_18"/>
      <g id="text_13">
@@ -1301,7 +1301,7 @@ L 548.1262 381.495852
 L 548.1262 385.431587 
 L 558 385.431587 
 L 558 385.431587 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_20">
     <path d="M 64.31 218.057061 
@@ -1513,7 +1513,7 @@ L 543.1893 404.475465
 L 543.1893 408.26308 
 L 558 408.26308 
 L 558 408.26308 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_21">
     <path d="M 64.31 218.057061 
@@ -1739,7 +1739,7 @@ L 553.0631 330.860297
 L 553.0631 332.701205 
 L 558 332.701205 
 L 558 332.701205 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_22">
     <path d="M 64.31 218.057061 
@@ -1767,7 +1767,7 @@ L 328.43415 411.564019
 L 328.43415 412.071856 
 L 558 412.071856 
 L 558 412.071856 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_23">
     <path d="M 64.31 218.057061 
@@ -1861,7 +1861,7 @@ L 476.54115 408.199601
 L 476.54115 408.453519 
 L 558 408.453519 
 L 558 408.453519 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_24">
     <path d="M 64.31 218.057061 
@@ -1985,7 +1985,7 @@ L 548.1262 384.140835
 L 548.1262 386.46842 
 L 558 386.46842 
 L 558 386.46842 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_25">
     <path d="M 64.31 218.057061 
@@ -2091,7 +2091,7 @@ L 533.3155 393.133777
 L 533.3155 401.195686 
 L 558 401.195686 
 L 558 401.195686 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_26">
     <path d="M 64.31 218.057061 
@@ -2157,7 +2157,7 @@ L 525.91015 354.749784
 L 525.91015 358.5374 
 L 558 358.5374 
 L 558 358.5374 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_27">
     <path d="M 64.31 218.057061 
@@ -2211,7 +2211,7 @@ L 525.91015 306.060936
 L 525.91015 320.238045 
 L 558 320.238045 
 L 558 320.238045 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_28">
     <path d="M 64.31 218.057061 
@@ -2257,7 +2257,7 @@ L 496.28875 353.056995
 L 496.28875 356.88693 
 L 558 356.88693 
 L 558 356.88693 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_29">
     <path d="M 64.31 218.057061 
@@ -2295,25 +2295,25 @@ L 520.97325 274.046062
 L 520.97325 320.280365 
 L 558 320.280365 
 L 558 320.280365 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #b9bbbe; stroke-linecap: square"/>
    </g>
    <g id="line2d_30">
     <path d="M 558 418.123577 
 L 567.8738 418.123577 
 L 577.7476 418.123577 
-" style="fill: none; stroke: #5674c4; stroke-width: 0.8; stroke-linecap: square"/>
+" style="fill: none; stroke: #9a6b00; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="line2d_31">
     <path d="M 558 415.563234 
 L 567.8738 415.563234 
 L 577.7476 404.792863 
-" style="fill: none; stroke: #5674c4; stroke-width: 0.8; stroke-linecap: square"/>
+" style="fill: none; stroke: #163353; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="line2d_32">
     <path d="M 558 402.528757 
 L 567.8738 402.528757 
 L 577.7476 391.462148 
-" style="fill: none; stroke: #5674c4; stroke-width: 0.8; stroke-linecap: square"/>
+" style="fill: none; stroke: #6e4f92; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="line2d_33">
     <path d="M 558 283.885399 
@@ -2440,7 +2440,7 @@ L 538.2524 393.726254
 L 538.2524 402.528757 
 L 558 402.528757 
 L 558 402.528757 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #5674c4; stroke-width: 2.4; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #6e4f92; stroke-width: 2.4; stroke-linecap: square"/>
    </g>
    <g id="line2d_35">
     <path d="M 64.31 218.057061 
@@ -2526,7 +2526,7 @@ L 553.0631 417.827339
 L 553.0631 418.123577 
 L 558 418.123577 
 L 558 418.123577 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #5674c4; stroke-width: 2.4; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #9a6b00; stroke-width: 2.4; stroke-linecap: square"/>
    </g>
    <g id="line2d_36">
     <path d="M 64.31 218.057061 
@@ -2576,7 +2576,7 @@ L 503.6941 272.141674
 L 503.6941 283.885399 
 L 558 283.885399 
 L 558 283.885399 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #5674c4; stroke-width: 2.4; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #5674c4; stroke-width: 2.4; stroke-linecap: square"/>
    </g>
    <g id="line2d_37">
     <path d="M 64.31 218.057061 
@@ -2856,11 +2856,11 @@ L 553.0631 415.140036
 L 553.0631 415.563234 
 L 558 415.563234 
 L 558 415.563234 
-" clip-path="url(#p0ffc0bc2fc)" style="fill: none; stroke: #5674c4; stroke-width: 2.4; stroke-linecap: square"/>
+" clip-path="url(#p2973ea21a1)" style="fill: none; stroke: #163353; stroke-width: 2.4; stroke-linecap: square"/>
    </g>
    <g id="text_15">
     <!-- Hudson River to Albany: 5% -->
-    <g style="fill: #5674c4" transform="translate(582.6845 420.394485) scale(0.095 -0.095)">
+    <g style="fill: #9a6b00" transform="translate(582.6845 420.394485) scale(0.095 -0.095)">
      <defs>
       <path id="LiberationSerif-Bold-2b" d="M 109 0 
 L 109 231 
@@ -3416,7 +3416,7 @@ z
    </g>
    <g id="text_16">
     <!-- Mississippi River to Baton Rouge: 7% -->
-    <g style="fill: #5674c4" transform="translate(582.6845 407.040206) scale(0.095 -0.095)">
+    <g style="fill: #163353" transform="translate(582.6845 407.040206) scale(0.095 -0.095)">
      <defs>
       <path id="LiberationSerif-Bold-30" d="M 2756 0 
 L 2584 0 
@@ -3613,7 +3613,7 @@ z
    </g>
    <g id="text_17">
     <!-- Houston Ship Channel to Houston: 13% -->
-    <g style="fill: #5674c4" transform="translate(582.6845 393.733056) scale(0.095 -0.095)">
+    <g style="fill: #6e4f92" transform="translate(582.6845 393.733056) scale(0.095 -0.095)">
      <defs>
       <path id="LiberationSerif-Bold-36" d="M 341 1284 
 L 616 1284 
@@ -5470,7 +5470,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p0ffc0bc2fc">
+  <clipPath id="p2973ea21a1">
    <rect x="64.31" y="207.477129" width="493.69" height="222.178574"/>
   </clipPath>
  </defs>

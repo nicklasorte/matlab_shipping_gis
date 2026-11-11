@@ -142,34 +142,49 @@ def corr_profiles():
 
 # C2b/C2c. Continuation curves: all corridors on one chart, four highlighted -----------
 HIGHLIGHT = ["savannah", "houston", "mississippi", "hudson"]
+# One color per highlighted corridor, the same in both charts: NTIA light blue, purple, dark blue, and a dark
+# ochre (not a brand color; the brand has three series colors) that stays apart from the blues in color blindness.
+HL_COLOR = {"savannah": "#5674C4", "houston": "#6E4F92", "mississippi": "#163353", "hudson": "#9A6B00"}
 CONT = {}
 for r in read("corridor_continuation.csv"):
     CONT.setdefault(r["corridor"], []).append((float(r["frac_to_head"]), int(r["ships_beyond"]),
                                                float(r["share_beyond"])))
 
 
-def _continuation(page, ax, col, fmt):
-    """Gray step lines for every corridor, the four HIGHLIGHT corridors in the accent, labeled at the right."""
-    ends = []
+def _spread(vals, gap):
+    """Positions for labels at vals (sorted ascending), at least gap apart."""
+    pos = []
+    for v in vals:
+        pos.append(max(v, pos[-1] + gap) if pos else v)
+    return pos
+
+
+def _continuation(page, ax, col, fmt, left_labels=False):
+    """Gray step lines for every corridor, the HIGHLIGHT corridors in their own colors, labeled."""
+    ends, starts = [], []
     for c in ORDER:
         f, n, sh = map(np.array, zip(*CONT[c]))
         y = n if col == "n" else sh
         hi = c in HIGHLIGHT
-        ax.step(f, y, where="post", color=page.theme.accent if hi else "#B9BBBE",
+        ax.step(f, y, where="post", color=HL_COLOR[c] if hi else "#B9BBBE",
                 lw=2.4 if hi else 1.0, zorder=3 if hi else 2)
         if hi:
             ends.append((y[-1], c))
-    ends.sort()
+            starts.append((y[0], c))
     lo, hi_ = ax.get_ylim()
     gap = 0.06 * (hi_ - lo)
-    pos = []
-    for v, _ in ends:
-        pos.append(max(v, pos[-1] + gap) if pos else v)
-    for (v, c), py in zip(ends, pos):
+    halo = [pe.withStroke(linewidth=3, foreground="white")]
+    ends.sort()
+    for (v, c), py in zip(ends, _spread([e[0] for e in ends], gap)):
         end = end_mark(c)["name"]
-        ax.plot([1.0, 1.02, 1.04], [v, v, py], color=page.theme.accent, lw=0.8, clip_on=False)
-        ax.text(1.05, py, f"{SUMM[c]['label']} to {end}: {fmt(v)}", va="center", fontsize=9.5, clip_on=False,
-                color=page.theme.accent, fontweight="bold")
+        txt = f"{fmt(v)} reach {end}" if left_labels else f"{SUMM[c]['label']} to {end}: {fmt(v)}"
+        ax.plot([1.0, 1.02, 1.04], [v, v, py], color=HL_COLOR[c], lw=0.8, clip_on=False)
+        ax.text(1.05, py, txt, va="center", fontsize=9.5, clip_on=False, color=HL_COLOR[c], fontweight="bold")
+    if left_labels:
+        starts.sort()
+        for (v, c), py in zip(starts, _spread([s_[0] for s_ in starts], gap)):
+            ax.text(0.012, py + 0.012 * (hi_ - lo), f"{SUMM[c]['label']}: {fmt(v)} enter", va="bottom",
+                    fontsize=9.5, color=HL_COLOR[c], fontweight="bold", path_effects=halo, zorder=5)
     ax.text(0.99, 0.985, "Gray: the other 11 rivers and ship channels (Table 7)", transform=ax.transAxes,
             ha="right", va="top", fontsize=9, color=page.theme.text)
     ax.set_xlim(0, 1)
@@ -214,7 +229,7 @@ def corr_counts():
     ax = page.panel(0)
     top = max(CONT[c][0][1] for c in ORDER)
     ax.set_ylim(0, top * 1.08)
-    _continuation(page, ax, "n", lambda v: f"{v:,.0f} ships")
+    _continuation(page, ax, "n", lambda v: f"{v:,.0f}", left_labels=True)
     ax.set_ylabel("Distinct large ships seen at or beyond this point")
     vf.save(page, "corr04_continuation_counts")
 
