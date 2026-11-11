@@ -287,6 +287,60 @@ version that compute the same numbers from the same AIS day caches:
   differences come from how each rasterizes the Census coastline for the
   25 km tug-barge rule.
 
+## Geographic figures and the busiest ports
+
+Nine maps of where large ships operate (Appendix A.9 to A.17 of the working
+paper), each in MATLAB and Python: hexagon grid, spike map, port close-ups,
+offshore distance bands, near-shore profile by coast, deep-draft port
+bubbles, ship types (tanker, cargo, passenger, military and law
+enforcement), land distance to the nearest route, and S-band racons and VTS
+areas over the hexagons.
+
+- **MATLAB:** `init_ship_geo_rev1.m` runs `geo_products_rev1.m` and
+  `plot_ship_geo_rev1.m`.
+- **Python:** `python/ship_geo_products.py` then `python/ship_geo_figures.py`.
+- **Busiest ports:** `geo_ports.csv` ranks the 73 deep-draft ports by
+  distinct large ships within 10 km, with counts by ship type. Galveston
+  (2,839), New Orleans (2,413), Plaquemines (2,161), Long Beach (1,894), and
+  Los Angeles (1,833) lead. MATLAB and Python give identical counts.
+- **Ship-type caches:** `python3 ais_cells_py_rev1.py --types data <days>`
+  writes one cache per day for each type group (`vt70-79`, `vt80-89`,
+  `vt60-69`, `vt35-55`).
+
+## Rivers and ship channels
+
+How far up each river or ship channel large ships go: the Mississippi
+profile, extended to 15 corridors defined in `config/corridors_rev1.csv`
+(start, ports along the way, head port). For each corridor the code finds
+the least-cost path through the route cells (each step costs its length
+times 1 + 100 / ships, so the path keeps to the busy channel), assigns route
+cells within 2 km of the path to the corridor, and counts distinct ships per
+reach, at the entrance, and at the head port (within 3 km along the path).
+
+| Corridor | Head port | km | Ships at entrance | Ships at head |
+| --- | --- | --- | --- | --- |
+| Mobile Bay | Mobile | 55 | 459 | 424 |
+| Savannah River | Garden City | 39 | 750 | 682 |
+| Chesapeake Bay | Baltimore | 291 | 1,384 | 789 |
+| Columbia River | Vancouver, WA | 175 | 546 | 280 |
+| Houston Ship Channel | Houston | 92 | 2,586 | 481 |
+| Delaware River | Trenton | 214 | 803 | 136 |
+| Mississippi River | Baton Rouge | 360 | 2,084 | 267 |
+| Hudson River | Albany | 248 | 1,347 | 78 |
+| James River | Hopewell (routes end 22 km below Richmond) | 122 | 938 | 36 |
+
+The full table (15 corridors, by year) is `outputs/2023_2024/viz/corridor_summary.csv`.
+
+- **MATLAB:** `init_ship_corridors_rev1.m` runs `corridor_products_rev1.m`
+  (`graph`, `shortestpath`, `KDTreeSearcher`) and
+  `plot_ship_corridors_rev1.m`. Figures: `docs/viz_matlab/corr*.png`.
+- **Python:** `python/ship_corridor_products.py` then
+  `python/ship_corridor_figures.py`. Figures: `docs/viz_python/corr*`.
+- **Cross-check:** head counts, by year, match exactly on all 15 corridors.
+  Two entrance counts differ by under 2% (James 933 and 938, Calcasieu 393
+  and 401) because the two shortest-path solvers break ties between equal
+  paths differently.
+
 ## Data in the repo
 
 `data/` holds every input the 2023–2024 run uses, so `init_shipping_zone_rev1`
