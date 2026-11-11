@@ -1,4 +1,4 @@
-function plot_region_map_rev1(result,d_km,latlim,lonlim,ports,title_str,png_path,census_shp,dpi)
+function plot_region_map_rev1(result,d_km,latlim,lonlim,ports,title_str,png_path,census_shp,dpi,note)
 %plot_region_map_rev1  Zoomed map of large-ship routes, the d_km zone, and named ports.
 %
 %   plot_region_map_rev1(result,d_km,latlim,lonlim,ports,title_str,png_path,census_shp,dpi)
@@ -7,11 +7,14 @@ function plot_region_map_rev1(result,d_km,latlim,lonlim,ports,title_str,png_path
 %   ports in table PORTS (name, lat, lon) as labeled dots. Albers equal
 %   area (EPSG:5070), Times New Roman, DRAFT//PRE-DECISIONAL at the top.
 %
+%   Pass D_KM=[] for the routes alone (no zone). NOTE (optional) is one
+%   line of text drawn under the key, for example a ship count.
+%
 %   Example: the lower Mississippi from the Gulf to Baton Rouge.
 
 arguments
     result (1,1) struct
-    d_km (1,1) double {mustBePositive}
+    d_km double
     latlim (1,2) double
     lonlim (1,2) double
     ports table
@@ -19,6 +22,7 @@ arguments
     png_path (1,:) char
     census_shp (1,:) char
     dpi (1,1) double {mustBePositive} = 200
+    note (1,:) char = ''
 end
 
 dark_blue=[22 51 83]/255;
@@ -43,11 +47,14 @@ for k=1:height(T)
 end
 land_ll=union(state_polys);
 
-zone_idx=find([result.zone.distance_km]==d_km,1);
-if isempty(zone_idx)
-    error('shipgis:distance','No zone for %g km in result.zone.',d_km);
+zone_ll=polyshape();
+if ~isempty(d_km)
+    zone_idx=find([result.zone.distance_km]==d_km,1);
+    if isempty(zone_idx)
+        error('shipgis:distance','No zone for %g km in result.zone.',d_km);
+    end
+    zone_ll=intersect(result.zone(zone_idx).poly,box_ll);
 end
-zone_ll=intersect(result.zone(zone_idx).poly,box_ll);
 
 %%%%%Ship cells in the box
 R=result.R;
@@ -62,7 +69,15 @@ ax=axes(fig,'Position',[0.02 0.09 0.96 0.75]);
 hold(ax,'on');
 plot(ax,to_xy(land_ll,albers),'FaceColor',land_gray,'FaceAlpha',1,'EdgeColor',line_gray,'LineWidth',0.3);
 plot(ax,to_xy(zone_ll,albers),'FaceColor',light_blue,'FaceAlpha',0.45,'EdgeColor','none');
-scatter(ax,cx/1e3,cy/1e3,2,dark_blue,'filled','MarkerEdgeColor','none');
+%%%%%Draw each 0.01-degree cell as a square about its true size (1 km):
+%%%%%marker side in points = axes width in points / map width in km
+[bx0,by0]=projfwd(albers,latlim([1 1 2 2]),lonlim([1 2 2 1]));
+map_w_km=(max(bx0)-min(bx0))/1e3;
+map_h_km=(max(by0)-min(by0))/1e3;
+axes_w_in=min(0.96*7.5,0.75*5.6*map_w_km/map_h_km);   %%%%%axis equal: width or height limits
+cell_km=111.2*R.CellExtentInLatitude;
+side_pt=max(1,axes_w_in*72*cell_km/map_w_km);
+scatter(ax,cx/1e3,cy/1e3,side_pt^2,dark_blue,'s','filled','MarkerEdgeColor','none');
 [px,py]=projfwd(albers,ports.lat,ports.lon);
 scatter(ax,px/1e3,py/1e3,28,'w','filled','MarkerEdgeColor',dark_blue,'LineWidth',1.2);
 text(ax,px/1e3+8,py/1e3,string(ports.name),'Color',dark_blue,'FontWeight','bold','FontName',font_name,'FontSize',9);
@@ -78,8 +93,16 @@ y_lim=ylim(ax);
 %%%%%Key in the top-left corner, clear of the offshore routes
 text(ax,x_lim(1)+10,y_lim(2)-15,sprintf('Dark blue: large-ship routes (%s AIS)',period),'Color',dark_blue,'FontWeight','bold', ...
     'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
-text(ax,x_lim(1)+10,y_lim(2)-37,sprintf('Light blue: %g km zone',d_km),'Color',light_blue,'FontWeight','bold', ...
-    'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
+key_y=y_lim(2)-37;
+if ~isempty(d_km)
+    text(ax,x_lim(1)+10,key_y,sprintf('Light blue: %g km zone',d_km),'Color',light_blue,'FontWeight','bold', ...
+        'FontName',font_name,'FontSize',9,'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
+    key_y=key_y-22;
+end
+if ~isempty(note)
+    text(ax,x_lim(1)+10,key_y,note,'Color',dark_blue,'FontName',font_name,'FontSize',9, ...
+        'HorizontalAlignment','left','BackgroundColor','w','Margin',1);
+end
 plot(ax,x_lim(1)+[15 65],y_lim(1)+[20 20],'Color',dark_blue,'LineWidth',1.5);
 text(ax,x_lim(1)+40,y_lim(1)+32,'50 km','Color',dark_blue,'FontName',font_name,'FontSize',8,'HorizontalAlignment','center');
 

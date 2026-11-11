@@ -82,7 +82,16 @@ def process_stream(stream):
     # values (MMSI 'I367333430' on a 2023 day) that break type inference.
     text_cols = ["MMSI", "mmsi", "LAT", "LON", "lat", "lon", "latitude", "longitude",
                  "IMO", "imo", "VesselType", "vessel_type", "Length", "length"]
+    # Rows with the wrong number of fields (a stray leading comma on a 2023 day)
+    # are skipped and counted.
+    bad = {"rows": 0}
+
+    def skip_row(row):
+        bad["rows"] += 1
+        return "skip"
+
     head = pv.open_csv(stream, read_options=opts,
+                       parse_options=pv.ParseOptions(invalid_row_handler=skip_row),
                        convert_options=pv.ConvertOptions(strings_can_be_null=False,
                                                          column_types={c: pa.string() for c in text_cols}))
     names = head.schema.names
@@ -121,6 +130,8 @@ def process_stream(stream):
         p = np.unique(np.vstack(pairs), axis=0)
     else:
         p = np.zeros((0, 2))
+    if bad["rows"]:
+        print("  skipped %d malformed rows" % bad["rows"], flush=True)
     return p, rows_kept, len(mmsi_all)
 
 

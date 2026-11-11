@@ -303,8 +303,24 @@ if p.make_figure
     %%%%%Zoomed regional maps (for example, the Mississippi to Baton Rouge)
     if isfield(p,'region_maps')
         for reg=p.region_maps(:)'
+            note='';
+            if isfield(reg,'count_port') && strlength(reg.count_port)>0
+                port_row=reg.ports(reg.ports.name==reg.count_port,:);
+                counts=count_ships_near_rev1(p,R,port_row.lat(1),port_row.lon(1),reg.count_radius_km);
+                writetable(counts,fullfile(p.out_dir,sprintf('%s_%s_ship_counts.csv',p.out_name,reg.name)));
+                yr_rows=counts(~isnan(counts.year),:);
+                parts=compose('%d: %d',[yr_rows.year yr_rows.num_ships]);
+                note=sprintf('Distinct large ships within %g km of %s: %s',reg.count_radius_km, ...
+                    extractBefore(reg.count_port,','),strjoin(parts,', '));
+                disp_progress(note);
+            end
+            if isempty(reg.d_km)
+                png_name=sprintf('%s_%s_routes_map.png',p.out_name,reg.name);
+            else
+                png_name=sprintf('%s_%s_%gkm_map.png',p.out_name,reg.name,reg.d_km);
+            end
             plot_region_map_rev1(result,reg.d_km,reg.latlim,reg.lonlim,reg.ports,reg.title, ...
-                fullfile(p.out_dir,sprintf('%s_%s_%gkm_map.png',p.out_name,reg.name,reg.d_km)),state_shp,p.png_dpi);
+                fullfile(p.out_dir,png_name),state_shp,p.png_dpi,note);
         end
     end
 end
