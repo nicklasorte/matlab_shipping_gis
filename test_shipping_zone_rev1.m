@@ -136,6 +136,15 @@ rings=cell2mat(cellfun(@(c) [c; NaN NaN],tile_rings,'UniformOutput',false));
 [lat_grid,lon_grid]=geographicGrid(R);
 inside=inpolygon(lon_grid,lat_grid,rings(:,2),rings(:,1));
 verifyEqual(tc,inside,mask);   %%%%%covers the hole correctly, no seams between tiles
+
+%%%%%The KML holds every ring: kmlwrite once dropped multi-part features
+out_dir=tempname;
+cleanup_dir=onCleanup(@() rmdir(out_dir,'s'));
+files=write_zone_outputs_rev1(tile_rings,out_dir,'routes_test','routes test',false);
+kml_text=fileread(files(endsWith(files,'.kml')));
+S=shaperead(char(files(endsWith(files,'.shp'))),'UseGeoCoords',true);
+num_ring=sum(arrayfun(@(s) sum(isnan(s.Lat))+~isnan(s.Lat(end)),S));
+verifyGreaterThanOrEqual(tc,count(kml_text,'<coordinates'),num_ring);   %%%%%one coordinates element per ring
 end
 
 function test_parallel_equals_serial(tc)

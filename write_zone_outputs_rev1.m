@@ -49,7 +49,10 @@ writelines(wktstring(geocrs(4326),'Version','wkt1'),prj_path); %%%%%ESRI .prj fi
 %%%%%KML always; with WRITE_KMZ also a zipped copy (KMZ is a zip holding doc.kml;
 %%%%%kmlwrite has no KMZ option)
 kml_path=fullfile(out_dir,[base_name '.kml']);
-kmlwrite(kml_path,S,'Name',zone_label,'FaceColor',[0.85 0.33 0.10],'FaceAlpha',0.35,'EdgeColor','k');
+%%%%%'Name' must be one name per feature: with a single char name and several
+%%%%%multi-part features, R2025b kmlwrite wrote only 38 of 42,629 placemarks
+%%%%%for the routes file (checked 2026-11-10).
+kmlwrite(kml_path,S,'Name',S.Name,'FaceColor',[0.85 0.33 0.10],'FaceAlpha',0.35,'EdgeColor','k');
 kmz_files=strings(0,1);
 if write_kmz
     tmp_dir=tempname;
