@@ -213,6 +213,7 @@ The 2023–2024 maps are in `docs/`:
 - Land within X km of large-ship water: [25 km](docs/shipping_zone_2023_2024_shore_25km_us_map.png), [50 km](docs/shipping_zone_2023_2024_shore_50km_us_map.png), [100 km](docs/shipping_zone_2023_2024_shore_100km_us_map.png)
 - Routes with the X km buffer: [25 km](docs/shipping_zone_2023_2024_shore_25km_routes_buffer_map.png), [50 km](docs/shipping_zone_2023_2024_shore_50km_routes_buffer_map.png), [100 km](docs/shipping_zone_2023_2024_shore_100km_routes_buffer_map.png)
 - [Lower Mississippi with the 50 km zone](docs/shipping_zone_2023_2024_lower_mississippi_50km_map.png)
+- [Length filter: what it keeps and drops (working paper Figure 2)](docs/filter_length_vs_gt_2024.png)
 - [Length cutoff check](docs/gt_proxy_check_2024.png)
 
 The 2024-only maps from the earlier run stay in `docs/` under `shipping_zone_2024_*`.
