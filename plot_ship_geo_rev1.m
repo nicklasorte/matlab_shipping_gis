@@ -202,8 +202,11 @@ for i=1:3
 end
 finish(C,fig,'geo06_port_bubbles');
 
-%%%%%G7. Ship types
+%%%%%G7. Ship types (skipped when the ship-type caches are not built yet)
 ht=geo.hex_types;
+if isempty(ht) || height(ht)==0
+    titles(7)="(skipped: no ship-type data)";
+else
 titles(7)=sprintf(['%.0f%% of tankers call in the Gulf, against %.0f%% of cargo ships; passenger and government ' ...
     'ships cluster at a few ports'],100*s.type_share_ships_gulf_tanker,100*s.type_share_ships_gulf_cargo);
 fig=new_page(C,titles(7),'Distinct ships of each type per 25 km hexagon, 2023 and 2024 together (each map has its own shading)', ...
@@ -230,6 +233,7 @@ for i=1:4
         'FontSize',9,'Color',C.dark);
 end
 finish(C,fig,'geo07_ship_types');
+end
 
 %%%%%G8. Land distance
 L=geo.land;

@@ -67,6 +67,9 @@ for k=1:numel(types)
     s.(sprintf('type_share_ships_gulf_%s',types(k)))=numel(unique(tp(reg=="Gulf",2)))/numel(unique(tp(:,2)));
 end
 geo.hex_types=vertcat(parts{:});
+if isempty(geo.hex_types)
+    geo.hex_types=table();
+end
 
 %%%%%6. Deep-draft ports: distinct ships within 10 km
 pp=readtable(fullfile(p.out_dir,sprintf('%s_principal_port_check.csv',p.out_name)),'TextType','string');
