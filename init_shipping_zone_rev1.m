@@ -65,6 +65,12 @@ p.zone_mode='shore';      %%%%%'shore': ship water + X km inland from the facing
                           %%%%%'ships': X km from the ships themselves
 p.shore_link_km=25;       %%%%%'shore' mode: water within this distance of ships counts as ship water
 
+%%%%%%%%%%Frequency-dependent zones (example distances, pending the EMC
+%%%%%%%%%%analysis): each 2900-3100 MHz sub-band gets the zone for its
+%%%%%%%%%%distance. Every distance here must be in p.distances_km.
+p.band_zones=table([2900;3000;3030;3070],[3000;3030;3070;3100],[25;50;100;50], ...
+    'VariableNames',{'f_low_mhz','f_high_mhz','distance_km'});
+
 %%%%%%%%%%Ports the large-ship routes must reach (river and lake ports included)
 p.check_ports=table( ...
     ["Baton Rouge, LA";"New Orleans, LA";"Houston, TX";"Corpus Christi, TX";"Mobile, AL"; ...

@@ -269,6 +269,28 @@ result.routes_files=[result.routes_files; write_zone_outputs_rev1(ais_poly,p.out
 clear route_field
 disp_progress(sprintf('Routes: %d regions (%d AIS-only regions)',routes_poly.NumRegions,ais_poly.NumRegions));
 
+%%%%%Frequency-dependent zones: each band gets the zone for its distance
+%%%%%(shapefile, KML, KMZ named by band) and one row in <out_name>_band_zones.csv
+if isfield(p,'band_zones') && ~isempty(p.band_zones)
+    bz=p.band_zones;
+    zone_files=strings(height(bz),1);
+    for b=1:height(bz)
+        zone_idx=find([zone.distance_km]==bz.distance_km(b),1);
+        if isempty(zone_idx)
+            error('shipgis:band','Band %g-%g MHz needs a %g km zone; add it to p.distances_km.', ...
+                bz.f_low_mhz(b),bz.f_high_mhz(b),bz.distance_km(b));
+        end
+        band_name=sprintf('%s_band_%g-%gMHz_%gkm',p.out_name,bz.f_low_mhz(b),bz.f_high_mhz(b),bz.distance_km(b));
+        files=write_zone_outputs_rev1(zone(zone_idx).poly,p.out_dir,band_name, ...
+            sprintf('%g-%g MHz: %g km zone (water + land)',bz.f_low_mhz(b),bz.f_high_mhz(b),bz.distance_km(b)),p.kmz);
+        [~,shp_name,shp_ext]=fileparts(files(1));
+        zone_files(b)=shp_name+shp_ext;
+    end
+    bz.zone_file=zone_files;
+    writetable(bz,fullfile(p.out_dir,sprintf('%s_band_zones.csv',p.out_name)));
+    result.band_zones=bz;
+end
+
 %%%%%One CSV of every checked site (racons, VTS areas, ports)
 write_sites_csv_rev1(result,fullfile(p.out_dir,sprintf('%s_sites.csv',p.out_name)));
 
@@ -300,6 +322,12 @@ if p.make_figure
     end
     %%%%%Routes alone
     plot_routes_map_rev1(result,[],fullfile(p.out_dir,sprintf('%s_routes_map.png',p.out_name)),state_shp,p.png_dpi);
+    %%%%%Frequency-dependent zones, one panel per band
+    if isfield(p,'band_zones') && ~isempty(p.band_zones)
+        band_info=plot_band_zones_rev1(result,p.band_zones, ...
+            fullfile(p.out_dir,sprintf('%s_band_zones_map.png',p.out_name)),state_shp,p.png_dpi);
+        disp_progress(sprintf('Band map: %s',band_info.title));
+    end
     %%%%%Zoomed regional maps (for example, the Mississippi to Baton Rouge)
     if isfield(p,'region_maps')
         for reg=p.region_maps(:)'
