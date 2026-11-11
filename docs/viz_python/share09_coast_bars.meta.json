@@ -25,7 +25,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Four 100% stacked horizontal bars, one per coast, each split into its five busiest ports and the rest; the top five ports take more than half of each ocean coast's port visits.",
+  "alt": "Four 100% stacked horizontal bars, one per coast, each split into its five busiest ports and the rest; no port takes more than a sixth of any ocean coast's port visits.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share09_coast_bars.png",

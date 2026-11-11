@@ -341,6 +341,26 @@ The full table (15 corridors, by year) is `outputs/2023_2024/viz/corridor_summar
   and 401) because the two shortest-path solvers break ties between equal
   paths differently.
 
+## Share of port visits
+
+How large-ship port visits split among the 73 deep-draft ports, in ten
+figures (Appendix A.20 of the working paper): treemap, circle packing, ranked
+bars with a running total, concentration curve, waffle by port complex,
+Marimekko by ship type, sunburst (coast, complex, port), Dorling map, 100%
+bars within each coast, and 2023 against 2024. A port visit is one distinct
+large ship within 10 km of a port, with each 1 km cell assigned to its
+nearest port so the visits add up (38,537 in all). Thirteen ports take half
+of all visits; Gulf ports take 48%.
+
+- **Config:** `config/port_short_names_rev1.csv` (display names) and
+  `config/port_complexes_rev1.csv` (neighboring ports grouped into complexes).
+- **MATLAB:** `init_port_share_rev1.m` runs `port_share_products_rev1.m` and
+  `plot_port_share_rev1.m`. Figures: `docs/viz_matlab/share*.png`.
+- **Python:** `python/ship_port_share_products.py` then
+  `python/ship_port_share_figures.py`. Figures: `docs/viz_python/share*`.
+- **Cross-check:** all 73 ports match exactly between MATLAB and Python, for
+  both years and all four ship types.
+
 ## Data in the repo
 
 `data/` holds every input the 2023–2024 run uses, so `init_shipping_zone_rev1`

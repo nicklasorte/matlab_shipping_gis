@@ -525,7 +525,7 @@ def share_coast_bars():
                 "together",
         source=SRC, theme="ntia", layout="hero", size=(11, 6.8),
         alt="Four 100% stacked horizontal bars, one per coast, each split into its five busiest ports and the rest; "
-            "the top five ports take more than half of each ocean coast's port visits.")
+            "no port takes more than a sixth of any ocean coast's port visits.")
     ax = page.panel(0, grid=None)
     for i, c in enumerate(COASTS):
         ports = [r for r in P if r["coast"] == c]

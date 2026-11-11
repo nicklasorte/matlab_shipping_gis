@@ -1,1 +1,1 @@
-Four 100% stacked horizontal bars, one per coast, each split into its five busiest ports and the rest; the top five ports take more than half of each ocean coast's port visits.
+Four 100% stacked horizontal bars, one per coast, each split into its five busiest ports and the rest; no port takes more than a sixth of any ocean coast's port visits.
