@@ -130,6 +130,7 @@ p.make_figure=true;
 
 %%%%%%%%%%Output size
 p.simplify_deg=0.005;     %%%%%drop polygon vertices within 0.005 deg (about 0.5 km); 0 keeps all
+p.routes_simplify_deg=0; %%%%%routes file: 0 keeps exact cell edges (single cells survive)
 p.kmz=true;               %%%%%also write a KMZ next to each KML (about 5x smaller)
 p.save_grids=false;       %%%%%true also saves the full-size grids in the .mat (tens of MB)
 p.png_dpi=200;            %%%%%U.S. map resolution

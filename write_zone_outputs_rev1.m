@@ -7,10 +7,13 @@ function [file_list]=write_zone_outputs_rev1(zone_poly,out_dir,base_name,zone_la
 %   the written paths. With WRITE_KMZ true (default), it also writes a
 %   zipped copy of the KML as .kmz, about 5 times smaller.
 %
+%   ZONE_POLY can also be an N-by-2 [lat lon] array of rings (NaN between
+%   rings, outer rings clockwise), as routes_polygons_rev1 returns.
+%
 %   Built-ins: geoshape carries the polygon; shapewrite and kmlwrite write it.
 
 arguments
-    zone_poly (1,1) polyshape
+    zone_poly
     out_dir (1,:) char
     base_name (1,:) char
     zone_label (1,:) char
@@ -21,11 +24,18 @@ if ~isfolder(out_dir)
     mkdir(out_dir);
 end
 file_list=strings(0,1);
-if zone_poly.NumRegions==0
-    return
+if isa(zone_poly,'polyshape')
+    if zone_poly.NumRegions==0
+        return
+    end
+    [lon_b,lat_b]=boundary(zone_poly);
+else
+    if isempty(zone_poly)
+        return
+    end
+    lat_b=zone_poly(:,1);
+    lon_b=zone_poly(:,2);
 end
-
-[lon_b,lat_b]=boundary(zone_poly);
 S=geoshape(lat_b,lon_b,'Geometry','polygon');
 S.Name=zone_label;
 

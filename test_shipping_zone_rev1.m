@@ -121,6 +121,26 @@ verifyTrue(tc,all(mask(inside)));
 verifyFalse(tc,any(mask(outside)));
 end
 
+function test_routes_polygons_cover_cells(tc)
+%%%%%Rings from routes_polygons_rev1 cover the route cells across tile edges:
+%%%%%a block that spans four 1-degree tiles, a block with a hole, and one
+%%%%%isolated cell. Cell centers inside the rings must equal the mask.
+R=georefcells([30 32],[-80 -78],0.02,0.02);
+mask=false(R.RasterSize);
+mask(40:60,40:60)=true;            %%%%%spans the tile corner at (31, -79)
+mask(10:20,70:90)=true;
+mask(14:16,78:82)=false;           %%%%%hole
+mask(85,15)=true;                  %%%%%isolated cell
+rings=routes_polygons_rev1(mask,R,1,0);
+[lat_grid,lon_grid]=geographicGrid(R);
+inside=inpolygon(lon_grid,lat_grid,rings(:,2),rings(:,1));
+verifyEqual(tc,inside,mask);
+%%%%%Outer rings clockwise, as shapewrite expects
+p=polyshape(rings(:,2),rings(:,1));
+verifyEqual(tc,p.NumRegions,3);
+verifyEqual(tc,p.NumHoles,1);
+end
+
 function test_parallel_equals_serial(tc)
 pool=gcp('nocreate');
 assumeNotEmpty(tc,pool,'No parallel pool; start parpool(''Processes'',2) to run this test.');

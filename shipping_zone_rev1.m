@@ -285,15 +285,14 @@ end
 
 %%%%%Routes file: the route cells (AIS ship cells, fairways, racons) as
 %%%%%polygons in shapefile, KML, and KMZ, plus the AIS-only cells
-route_field=double(~source_mask);   %%%%%0 on route cells; contour at 0.5
-routes_poly=simplify_polyshape_rev1(field_to_zone_polyshape_rev1(route_field,R,0.5),p.simplify_deg);
-result.routes_files=write_zone_outputs_rev1(routes_poly,p.out_dir,sprintf('%s_routes',p.out_name), ...
+routes_tile_deg=1;
+[routes_rings,num_tile]=routes_polygons_rev1(source_mask,R,routes_tile_deg,p.routes_simplify_deg);
+result.routes_files=write_zone_outputs_rev1(routes_rings,p.out_dir,sprintf('%s_routes',p.out_name), ...
     sprintf('Large-ship routes, %s (AIS, fairways, S-band racons)',result.period_label),p.kmz);
-ais_poly=simplify_polyshape_rev1(field_to_zone_polyshape_rev1(double(~ais_mask),R,0.5),p.simplify_deg);
-result.routes_files=[result.routes_files; write_zone_outputs_rev1(ais_poly,p.out_dir,sprintf('%s_routes_ais_only',p.out_name), ...
+ais_rings=routes_polygons_rev1(ais_mask,R,routes_tile_deg,p.routes_simplify_deg);
+result.routes_files=[result.routes_files; write_zone_outputs_rev1(ais_rings,p.out_dir,sprintf('%s_routes_ais_only',p.out_name), ...
     sprintf('Large-ship AIS cells, %s',result.period_label),p.kmz)];
-clear route_field
-disp_progress(sprintf('Routes: %d regions (%d AIS-only regions)',routes_poly.NumRegions,ais_poly.NumRegions));
+disp_progress(sprintf('Routes: %d rings in %d one-degree tiles',nnz(isnan(routes_rings(:,1)))+1,num_tile));
 
 %%%%%Frequency-dependent zones: each band gets the zone for its distance
 %%%%%(shapefile, KML, KMZ named by band) and one row in <out_name>_band_zones.csv
