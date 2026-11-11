@@ -187,7 +187,7 @@ s.share_traffic_both_years=sum(prod.both_ships(r & b))/sum(prod.both_ships(r));
 sh=sort(prod.both_ships(r),'descend');
 s.share_cells_half_traffic=find(cumsum(sh)/sum(sh)>=0.5,1)/numel(sh);
 for name=["Pacific","Gulf","Atlantic","Great Lakes"]
-    f=matlab.lang.makeValidName(name);
+    f=char(matlab.lang.makeValidName(name));
     km=prod.offshore.coast_km(prod.offshore.coast==name);
     s.(['offshore_median_km_' f])=median(km);
     s.(['offshore_p90_km_' f])=prctile(km,90);
