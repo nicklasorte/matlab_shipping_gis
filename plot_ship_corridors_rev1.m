@@ -106,7 +106,7 @@ xlabel(tl,'km from the entrance','FontName',C.font,'FontSize',8,'Color',C.dark);
 finish(C,fig,'corr02_profiles');
 
 %%%%%C2b. Continuation curves: share and count of ships still on each corridor
-titles=[titles; plot_corridor_normalized_rev1(cor,out_dir,dpi)];
+titles=[titles(:); plot_corridor_normalized_rev1(cor,out_dir,dpi)];
 
 %%%%%C3. One page per corridor
 land=load_land(census_shp);
