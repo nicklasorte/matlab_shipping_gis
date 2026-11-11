@@ -84,20 +84,20 @@ finish(C,fig,'corr01_reach_by_corridor');
 [~,o]=sort(S.length_km,'descend');
 titles(end+1)="Large-ship traffic falls off step by step as each river or channel passes its ports";
 fig=new_page(C,titles(end),['Distinct large ships (vertical axis) in each reach of each corridor (2 km reaches ' ...
-    'under 120 km long, 5 km otherwise), 2023 and 2024 together; each panel has its own scale'],C.src,7.0);
-tl=tiledlayout(fig,3,5,'TileSpacing','compact','Padding','compact');
-tl.Position=[0.03 0.10 0.94 0.68];
+    'under 120 km long, 5 km otherwise), 2023 and 2024 together; each panel has its own scale'],C.src,8.0);
+tl=tiledlayout(fig,3,5,'TileSpacing','loose','Padding','compact');
+tl.Position=[0.03 0.10 0.94 0.70];
 for k=o'
     ax=nexttile(tl);
     style_axes(C,ax);
     P=cor.profile(cor.profile.corridor==S.corridor(k),:);
-    km=(P.km_from+P.km_to)/2;
-    area(ax,km,P.ships,'FaceColor',C.ramp(2,:),'EdgeColor','none');
-    stairs(ax,km-(P.km_to-P.km_from)/2,P.ships,'Color',C.blue,'LineWidth',1);
+    [xs,ys]=stairs([P.km_from; P.km_to(end)],[P.ships; P.ships(end)]);
+    area(ax,xs,ys,'FaceColor',C.ramp(2,:),'EdgeColor','none');
+    plot(ax,xs,ys,'Color',C.blue,'LineWidth',1);
     xlim(ax,[0 S.length_km(k)*1.03]);
     ylim(ax,[0 max(P.ships)*1.15]);
-    title(ax,S.label(k),'FontName',C.font,'FontSize',8,'Color',C.dark,'HorizontalAlignment','left', ...
-        'Units','normalized','Position',[0 1.02]);
+    title(ax,S.label(k),'FontName',C.font,'FontSize',7.5,'Color',C.dark,'HorizontalAlignment','left', ...
+        'Units','normalized','Position',[0 1.04]);
     set(ax,'FontSize',7);
 end
 xlabel(tl,'km from the entrance','FontName',C.font,'FontSize',8,'Color',C.dark);
@@ -179,9 +179,9 @@ for k=1:height(S)
     %%%%%Profile
     ax=axes(fig,'Position',[0.47 0.17 0.50 0.50]);
     style_axes(C,ax);
-    km=(P.km_from+P.km_to)/2;
-    area(ax,km,P.ships,'FaceColor',C.ramp(2,:),'EdgeColor','none');
-    stairs(ax,P.km_from,P.ships,'Color',C.blue,'LineWidth',1.5);
+    [xs,ys]=stairs([P.km_from; P.km_to(end)],[P.ships; P.ships(end)]);
+    area(ax,xs,ys,'FaceColor',C.ramp(2,:),'EdgeColor','none');
+    plot(ax,xs,ys,'Color',C.blue,'LineWidth',1.5);
     for j=1:height(M)
         if M.role(j)=="start" || M.role(j)=="target" || (M.role(j)=="end" && stop)
             continue
