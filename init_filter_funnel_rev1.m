@@ -9,7 +9,10 @@
 %%%%%Check: step 4 (reports) must equal num_row_kept in the day's AIS cache,
 %%%%%which ais_cache_day_rev1 or ais_cells_py_rev1.py built independently.
 %%%%%
-%%%%%The filter below must match init_shipping_zone_rev1.m.
+%%%%%The ship types below are p.filt.vessel_types plus p.filt_towing.vessel_types
+%%%%%from init_shipping_zone_rev1.m (towing also needs an IMO number). The
+%%%%%coastal rule for towing is applied later, in shipping_zone_rev1. The
+%%%%%step-4 check runs only when a cache for these combined types exists.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear; clc;
 

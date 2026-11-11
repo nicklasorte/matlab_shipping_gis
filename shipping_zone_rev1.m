@@ -77,6 +77,32 @@ else
 end
 result.day_log=table(p.ais_days(:),day_rows,day_mmsi,'VariableNames',{'day','rows_kept','mmsi_kept'});
 
+%%%%%Census land and coastline (also the reference for the towing rule)
+[land_mask,land_poly,coast_mask]=census_reference_rev1(R,p.data_dir,p.census_year);
+
+%%%%%Tug-barges: towing ships with an IMO number (p.filt_towing) count only
+%%%%%in cells within p.towing_coast_km of the Census coastline (ocean, bays,
+%%%%%Great Lakes). Inland river towboats also carry IMO numbers and report
+%%%%%the whole barge tow as their length; this keeps them off the rivers.
+result.towing_cells=0;
+if isfield(p,'filt_towing') && ~isempty(p.filt_towing)
+    near_coast=distance_to_mask_km_rev1(coast_mask,R,p.towing_coast_km,p.block_rows)<=p.towing_coast_km;
+    p_tow=p;
+    p_tow.filt=p.filt_towing;
+    tow_cells=false(R.RasterSize);
+    for day_idx=1:num_day
+        S=ais_cache_day_rev1(ais_days(day_idx),R,p_tow);
+        tow=S.pairs(near_coast(S.pairs(:,1)),:);
+        tow_cells(tow(:,1))=true;
+        cell_pairs{day_idx}=unique([cell_pairs{day_idx}; tow],'rows');
+        day_rows(day_idx)=day_rows(day_idx)+S.num_row_kept;
+    end
+    result.day_log.rows_kept=day_rows;
+    result.towing_cells=nnz(tow_cells);
+    disp_progress(sprintf('Tug-barges: %d cells within %g km of the coastline',nnz(tow_cells),p.towing_coast_km));
+    clear near_coast tow_cells
+end
+
 %%%%%Merge days one at a time so memory holds one running set, not all days.
 %%%%%Distinct ships are counted per calendar year, and a cell counts when
 %%%%%any one year reaches the threshold (union of years). Pooling two years
@@ -157,7 +183,7 @@ if isfield(p,'include_racons') && p.include_racons
 end
 
 %%%%%%%%%%3. Distance field (Census land and coastline as the land/water reference)
-[land_mask,land_poly,coast_mask]=census_reference_rev1(R,p.data_dir,p.census_year);
+%%%%%(land_mask, land_poly, coast_mask from census_reference_rev1 above)
 max_km=max(p.distances_km);
 switch p.zone_mode
     case 'ships'

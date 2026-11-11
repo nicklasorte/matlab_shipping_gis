@@ -5,7 +5,9 @@ daily MarineCadastre file (2024+ .csv.zst, 2023 and earlier .zip) without
 writing the CSV to disk, applies the same ship filter as
 ais_large_ship_cells_rev1.m, bins reports onto the same 0.01-degree grid, and
 saves the unique [cell_index, mmsi] pairs as a .mat file that
-ais_cache_day_rev1.m loads as is.
+ais_cache_day_rev1.m loads as is. One download serves several filters
+(FILTERS below); each filter gets its own cache file, named exactly as
+ais_cache_name_rev1.m names it.
 
 Grid: georefcells(latlim, lonlim, d, d) with MATLAB defaults
 (ColumnsStartFrom 'south', RowsStartFrom 'west'); linear index is column-major,
@@ -27,23 +29,27 @@ import requests
 import scipy.io
 import zstandard
 
-# Must match init_shipping_zone_rev1.m
+# Must match init_shipping_zone_rev1.m (p.filt and p.filt_towing)
 LATLIM = (24.0, 50.0)
 LONLIM = (-125.5, -66.0)
 CELL_DEG = 0.01
-VESSEL_TYPES = sorted(set([0, 31, 32, 33, 35, 52, 55] + list(range(60, 90)) + list(range(90, 100))))
-MIN_LENGTH_M = 100.0
-NO_IMO_TYPES = {35, 55}
-if os.environ.get("SHIPGIS_OLD_TYPES"):  # validation only: the filter before towing was added
-    VESSEL_TYPES = sorted(set([0, 33, 35, 55] + list(range(60, 90)) + list(range(90, 100))))
+FILTERS = {
+    # merchant, military, law enforcement, dredging, other: p.filt
+    "main": {"types": sorted(set([0, 33, 35, 55] + list(range(60, 90)) + list(range(90, 100)))),
+             "min_length_m": 100.0, "no_imo_types": [35, 55]},
+    # towing with an IMO number (ocean-going tug-barges): p.filt_towing
+    "towing": {"types": [31, 32, 52], "min_length_m": 100.0, "no_imo_types": []},
+}
 
 NUM_ROW = round((LATLIM[1] - LATLIM[0]) / CELL_DEG)
 NUM_COL = round((LONLIM[1] - LONLIM[0]) / CELL_DEG)
 
 
-def cache_name(day):
-    vt = VESSEL_TYPES
-    filt_key = "L%g_imo1_sog0_vt%d-%d-n%d-s%d_ni35-55" % (MIN_LENGTH_M, min(vt), max(vt), len(vt), sum(vt))
+def cache_name(day, filt):
+    vt = filt["types"]
+    filt_key = "L%g_imo1_sog0_vt%d-%d-n%d-s%d" % (filt["min_length_m"], min(vt), max(vt), len(vt), sum(vt))
+    if filt["no_imo_types"]:
+        filt_key += "_ni" + "-".join(str(t) for t in filt["no_imo_types"])
     grid_key = "%g_%g_%g_%g_d%g" % (LATLIM + LONLIM + (CELL_DEG,))
     return "ais_cells_%s_%s_%s_rev1.mat" % (day.replace("-", ""), filt_key, grid_key)
 
@@ -76,7 +82,7 @@ def num(arr):
     return pd.to_numeric(pd.Series(arr.to_pylist(), dtype="string"), errors="coerce").to_numpy(dtype=float, na_value=np.nan)
 
 
-def process_stream(stream):
+def process_stream(stream, filters):
     opts = pv.ReadOptions(block_size=64 << 20)
     # Read the filter columns as text and convert here: a few rows carry bad
     # values (MMSI 'I367333430' on a 2023 day) that break type inference.
@@ -104,39 +110,40 @@ def process_stream(stream):
         if not hits:
             raise RuntimeError("column %s not found" % k)
         col[k] = names[hits[0]]
-    pairs = []
-    mmsi_all = set()
-    rows_kept = 0
+    acc = {k: {"pairs": [], "mmsi": set(), "rows": 0} for k in filters}
     for batch in head:
         vt = num(batch.column(names.index(col["vt"])))
         ln = num(batch.column(names.index(col["length"])))
         imo_arr = batch.column(names.index(col["imo"]))
         imo = np.array([(s is not None and len(s) > 0) for s in imo_arr.cast(pa.string()).to_pylist()])
-        keep = np.isin(vt, VESSEL_TYPES) & (ln >= MIN_LENGTH_M)
-        keep &= imo | np.isin(vt, list(NO_IMO_TYPES))
-        if not keep.any():
-            continue
-        lat = num(batch.column(names.index(col["lat"])).filter(pa.array(keep)))
-        lon = num(batch.column(names.index(col["lon"])).filter(pa.array(keep)))
-        mmsi = num(batch.column(names.index(col["mmsi"])).filter(pa.array(keep)))
-        good = ~np.isnan(mmsi)  # a report with no readable MMSI can't be counted as a ship
-        lat, lon, mmsi = lat[good], lon[good], mmsi[good]
-        rows_kept += int(good.sum())
-        mmsi_all.update(np.unique(mmsi).tolist())
-        row, colx, ok = discrete(lat, lon)
-        cell = row[ok] + (colx[ok] - 1) * NUM_ROW
-        pairs.append(np.unique(np.column_stack([cell, mmsi[ok]]), axis=0))
-    if pairs:
-        p = np.unique(np.vstack(pairs), axis=0)
-    else:
-        p = np.zeros((0, 2))
+        for k, filt in filters.items():
+            keep = np.isin(vt, filt["types"]) & (ln >= filt["min_length_m"])
+            keep &= imo | np.isin(vt, filt["no_imo_types"])
+            if not keep.any():
+                continue
+            lat = num(batch.column(names.index(col["lat"])).filter(pa.array(keep)))
+            lon = num(batch.column(names.index(col["lon"])).filter(pa.array(keep)))
+            mmsi = num(batch.column(names.index(col["mmsi"])).filter(pa.array(keep)))
+            good = ~np.isnan(mmsi)  # a report with no readable MMSI can't be counted as a ship
+            lat, lon, mmsi = lat[good], lon[good], mmsi[good]
+            a = acc[k]
+            a["rows"] += int(good.sum())
+            a["mmsi"].update(np.unique(mmsi).tolist())
+            row, colx, ok = discrete(lat, lon)
+            cell = row[ok] + (colx[ok] - 1) * NUM_ROW
+            a["pairs"].append(np.unique(np.column_stack([cell, mmsi[ok]]), axis=0))
+    out = {}
+    for k, a in acc.items():
+        p = np.unique(np.vstack(a["pairs"]), axis=0) if a["pairs"] else np.zeros((0, 2))
+        out[k] = (p, a["rows"], len(a["mmsi"]))
     if bad["rows"]:
         print("  skipped %d malformed rows" % bad["rows"], flush=True)
-    return p, rows_kept, len(mmsi_all)
+    return out
 
 
 def build_day(day, out_dir):
-    if os.path.isfile("%s/%s" % (out_dir, cache_name(day))):
+    todo = {k: f for k, f in FILTERS.items() if not os.path.isfile("%s/%s" % (out_dir, cache_name(day, f)))}
+    if not todo:
         print("%s cached" % day, flush=True)
         return
     url = day_url(day)
@@ -147,19 +154,19 @@ def build_day(day, out_dir):
                 tmp.write(chunk)
         tmp.seek(0)
         if url.endswith(".zst"):
-            stream = zstandard.ZstdDecompressor().stream_reader(tmp)
-            pairs, rows, nm = process_stream(stream)
+            res = process_stream(zstandard.ZstdDecompressor().stream_reader(tmp), todo)
         else:
             with zipfile.ZipFile(tmp) as z:
                 member = [n for n in z.namelist() if n.endswith(".csv")][0]
                 with z.open(member) as f:
-                    pairs, rows, nm = process_stream(f)
-    out = "%s/%s" % (out_dir, cache_name(day))
-    tmp_out = out + ".part.mat"  # rename into place so a reader never sees a partial file
-    scipy.io.savemat(tmp_out, {"pairs": pairs.astype(float), "num_row_kept": float(rows),
-                           "num_mmsi_kept": float(nm)}, do_compression=True)
-    os.replace(tmp_out, out)
-    print("%s rows %d mmsi %d pairs %d" % (day, rows, nm, len(pairs)), flush=True)
+                    res = process_stream(f, todo)
+    for k, (pairs, rows, nm) in res.items():
+        out = "%s/%s" % (out_dir, cache_name(day, todo[k]))
+        tmp_out = out + ".part.mat"  # rename into place so a reader never sees a partial file
+        scipy.io.savemat(tmp_out, {"pairs": pairs.astype(float), "num_row_kept": float(rows),
+                                   "num_mmsi_kept": float(nm)}, do_compression=True)
+        os.replace(tmp_out, out)
+        print("%s %s rows %d mmsi %d pairs %d" % (day, k, rows, nm, len(pairs)), flush=True)
 
 
 if __name__ == "__main__":

@@ -33,11 +33,9 @@ p.zstd_exe='/opt/homebrew/bin/zstd';
 
 %%%%%%%%%%Large-ship filter (proxy for SOLAS V/19: >= 3000 GT carries a
 %%%%%%%%%%3 GHz radar or a second 9 GHz radar)
-p.filt.vessel_types=[0 31 32 33 35 52 55 60:89 90:99]; %%%%%AIS ship types: passenger, cargo, tanker, military (35),
-                                    %%%%%law enforcement (55), dredging (33), other and unknown (0, 90-99), and
-                                    %%%%%towing (31, 32, 52) with an IMO number: ocean-going articulated
-                                    %%%%%tug-barges. Inland river towboats have no IMO number, so the IMO
-                                    %%%%%rule below keeps them out. Left out: special craft and
+p.filt.vessel_types=[0 33 35 55 60:89 90:99]; %%%%%AIS ship types: passenger, cargo, tanker, military (35),
+                                    %%%%%law enforcement (55), dredging (33), other and unknown (0, 90-99).
+                                    %%%%%Towing is handled by p.filt_towing below. Left out: special craft and
                                     %%%%%fishing (30, 34, 36, 37, 50-54, 56-59), which on a 2024 test day
                                     %%%%%reported mostly from inland rivers at 100 m and up.
 p.filt.min_length_m=100;            %%%%%GT proxy; init_check_gt_proxy_rev1: 99.6% precision, 98.1% recall
@@ -46,6 +44,16 @@ p.filt.no_imo_types=[35 55];        %%%%%military and law enforcement (Navy and 
                                     %%%%%Without the IMO rule, other/unknown and dredge entries added
                                     %%%%%inland river towboats above Baton Rouge (2024 test).
 p.filt.min_sog_kn=0;
+%%%%%Tug-barges: towing ships (31, 32, 52) 100 m or longer with an IMO number,
+%%%%%counted only within p.towing_coast_km of the Census coastline (ocean,
+%%%%%bays, Great Lakes). Some river towboats also carry IMO numbers and report
+%%%%%the whole tow as their length (on 2024-07-10, COOPERATIVE SPIRIT and AEP
+%%%%%MARINER on the Mississippi). 2023 AIS reports the tug's own length, so few
+%%%%%towing ships pass the 100 m test in 2023 (15 on 2023-07-12, 761 on 2024-07-10).
+%%%%%Set p.filt_towing=[] to leave tug-barges out.
+p.filt_towing=struct('vessel_types',[31 32 52],'min_length_m',100,'require_imo',true, ...
+    'no_imo_types',[],'min_sog_kn',0);
+p.towing_coast_km=25;
 p.min_unique_ships=4;               %%%%%distinct ships per cell in one year (a cell counts if either year
                                     %%%%%reaches it); 4 removes tug/barge noise on the upper Mississippi
                                     %%%%%(2024 test: 2 kept 903 such cells, 4 kept 0)
