@@ -175,10 +175,10 @@ titles(7)=sprintf('Tug-barges add %.0f%% more route cells, mostly near Atlantic,
 scatter(ax,x,y,0.3,[0.79 0.80 0.81],'s','filled','MarkerEdgeColor','none');
 [x,y]=cells_xy(prod.R,prod.tow_only,C.albers);
 scatter(ax,x,y,3,C.blue,'s','filled','MarkerEdgeColor','none');
-lab=struct('Atlantic',[1950 1250],'Gulf',[650 120],'Great_Lakes',[900 2650],'Pacific',[-2700 1500]);
+lab=struct('Atlantic',[1950 1250],'Gulf',[650 120],'GreatLakes',[900 2650],'Pacific',[-2700 1500]);
 for f=fieldnames(lab)'
     xy=lab.(f{1});
-    text(ax,xy(1),xy(2),sprintf('%s\n%s cells',strrep(f{1},'_',' '),comma(s.(['tow_only_' f{1}]))), ...
+    text(ax,xy(1),xy(2),sprintf('%s\n%s cells',strrep(f{1},'GreatLakes','Great Lakes'),comma(s.(['tow_only_' f{1}]))), ...
         'HorizontalAlignment','center','FontName',C.font,'FontSize',8.5,'Color',C.dark);
 end
 finish(C,fig,'fig07_tug_barge_cells');
