@@ -57,11 +57,12 @@ lon_c=R.LongitudeLimits(1)+R.CellExtentInLongitude*(col_idx-0.5);
 [cx,cy]=projfwd(albers,lat_c,lon_c);
 info.num_route_cells=numel(row_idx);
 
-%%%%%Crop: lower 48 plus 150 km of water
+%%%%%Crop: the lower 48 and every route cell, plus a 40 km margin, so no
+%%%%%offshore lane (Pacific approaches, western Gulf) is cut at the frame
 [x_lim,y_lim]=boundingbox(land_xy);
-x_lim=x_lim+[-150 150];
-y_lim=y_lim+[-150 100];
-keep=cx/1e3>=x_lim(1) & cx/1e3<=x_lim(2) & cy/1e3>=y_lim(1) & cy/1e3<=y_lim(2);
+x_lim=[min(x_lim(1),min(cx)/1e3) max(x_lim(2),max(cx)/1e3)]+[-40 40];
+y_lim=[min(y_lim(1),min(cy)/1e3) max(y_lim(2),max(cy)/1e3)]+[-40 40];
+keep=true(size(cx));
 
 fig=figure('Visible','off','Units','inches','Position',[0 0 7.5 5.2],'Color','w','Theme','light');
 ax=axes(fig,'Position',[0.02 0.10 0.96 0.72]);
