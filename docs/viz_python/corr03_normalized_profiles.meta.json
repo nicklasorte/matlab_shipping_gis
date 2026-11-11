@@ -3,7 +3,7 @@
   "layout": "hero",
   "page_inches": [
     11,
-    7.8
+    7.4
   ],
   "dpi": 300,
   "background": "#FFFFFF",
@@ -17,18 +17,22 @@
     24.0
   ],
   "mark_colors": [
-    "#163353",
     "#5674C4",
-    "#6E4F92"
+    "#B9BBBE"
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Fifteen step lines, one per river or ship channel, of large ships as a share of entrance traffic against distance as a share of corridor length, colored by how many reach the head port; Mobile and Savannah stay near 1 to the head, while the James, Hudson, Sacramento, and Mississippi fall to about 0.1 or less.",
+  "alt": "Fifteen falling step lines, one per river or ship channel, of the share of entering large ships seen at or beyond each point against distance scaled to the head port; four are highlighted: Savannah ends near 0.7, Houston near 0.13, the Mississippi near 0.07, and the Hudson near 0.05.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr03_normalized_profiles.png",
     "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr03_normalized_profiles.pdf",
     "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr03_normalized_profiles.svg"
   },
-  "lint": []
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #B9BBBE has contrast 1.92:1; marks need 3:1."
+    }
+  ]
 }

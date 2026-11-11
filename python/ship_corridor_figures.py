@@ -4,7 +4,8 @@ Run python/ship_viz_products.py and python/ship_corridor_products.py first.
 Writes PNG, PDF, SVG, and alt text to docs/viz_python/:
   corr01_reach_by_corridor   ships at the entrance and at the head port, every corridor
   corr02_profiles            small multiples: distinct ships along each corridor
-  corr03_normalized_profiles all corridors on one chart, distance and ships normalized
+  corr03_normalized_profiles share of entering ships seen at or beyond each point, all corridors
+  corr04_continuation_counts the same as ship counts
   corr_<name>                one page per corridor: route map and profile
 The MATLAB versions are drawn by init_ship_corridors_rev1.m.
 
@@ -139,56 +140,83 @@ def corr_profiles():
     vf.save(page, "corr02_profiles")
 
 
-# C2b. All corridors on one normalized chart ---------------------------------------
-def corr_normalized():
-    """Distance as a share of corridor length, ships as a share of ships at the entrance."""
-    tiers = [(0.5, "Most ships reach the head (over 50%)", "#5674C4"),
-             (0.15, "Some reach the head (15-50%)", "#6E4F92"),
-             (0.0, "Few reach the head (under 15%)", "#163353")]
+# C2b/C2c. Continuation curves: all corridors on one chart, four highlighted -----------
+HIGHLIGHT = ["savannah", "houston", "mississippi", "hudson"]
+CONT = {}
+for r in read("corridor_continuation.csv"):
+    CONT.setdefault(r["corridor"], []).append((float(r["frac_to_head"]), int(r["ships_beyond"]),
+                                               float(r["share_beyond"])))
 
-    def tier(v):
-        return next(t for t in tiers if v > t[0] or t[0] == 0.0)
 
-    page = OnePager(
-        headline="Mobile and Savannah keep 9 in 10 large ships to the head port; the Hudson and James keep fewer than 1 in 15",
-        subhead="Distinct large ships in each reach as a share of ships at the entrance, against distance as a share "
-                "of corridor length, 15 rivers and ship channels, 2023 and 2024 together",
-        source=SRC + " Entrance counts include ships bound for other ports near the entrance.",
-        theme="ntia", layout="hero", size=(11, 7.8), margin_right=2.3,
-        alt="Fifteen step lines, one per river or ship channel, of large ships as a share of entrance traffic "
-            "against distance as a share of corridor length, colored by how many reach the head port; Mobile and "
-            "Savannah stay near 1 to the head, while the James, Hudson, Sacramento, and Mississippi fall to about "
-            "0.1 or less.")
-    ax = page.panel(0)
+def _continuation(page, ax, col, fmt):
+    """Gray step lines for every corridor, the four HIGHLIGHT corridors in the accent, labeled at the right."""
     ends = []
     for c in ORDER:
-        L = float(SUMM[c]["length_km"])
-        ent = int(SUMM[c]["ships_entrance"])
-        km, n = map(np.array, zip(*PROF[c]))
-        b = float(SUMM[c]["bin_km"])
-        x = np.clip(np.append(km - b / 2, km[-1] + b / 2) / L, 0, 1)
-        y = np.append(n, n[-1]) / ent
-        v = int(SUMM[c]["ships_head"]) / ent
-        col = tier(v)[2]
-        ax.step(x, y, where="post", color=col, lw=1.4, alpha=0.85, zorder=2)
-        ends.append((v, SUMM[c]["label"], col))
+        f, n, sh = map(np.array, zip(*CONT[c]))
+        y = n if col == "n" else sh
+        hi = c in HIGHLIGHT
+        ax.step(f, y, where="post", color=page.theme.accent if hi else "#B9BBBE",
+                lw=2.4 if hi else 1.0, zorder=3 if hi else 2)
+        if hi:
+            ends.append((y[-1], c))
     ends.sort()
-    gap = 0.058
+    lo, hi_ = ax.get_ylim()
+    gap = 0.06 * (hi_ - lo)
     pos = []
-    for v, _, _ in ends:
+    for v, _ in ends:
         pos.append(max(v, pos[-1] + gap) if pos else v)
-    for (v, lab, col), py in zip(ends, pos):
-        ax.plot([1.0, 1.03, 1.06], [v, v, py], color=col, lw=0.6, alpha=0.6, clip_on=False)
-        ax.text(1.07, py, f"{lab} ({100 * v:.0f}%)", va="center", fontsize=9, clip_on=False, color=col, fontweight="bold")
-    for i, (_, lab, col) in enumerate(tiers):
-        ax.plot([0.02, 0.06], [1.58 - i * 0.07] * 2, color=col, lw=2.5)
-        ax.text(0.075, 1.58 - i * 0.07, lab, va="center", fontsize=9.5, color=col, fontweight="bold")
+    for (v, c), py in zip(ends, pos):
+        end = end_mark(c)["name"]
+        ax.plot([1.0, 1.02, 1.04], [v, v, py], color=page.theme.accent, lw=0.8, clip_on=False)
+        ax.text(1.05, py, f"{SUMM[c]['label']} to {end}: {fmt(v)}", va="center", fontsize=9.5, clip_on=False,
+                color=page.theme.accent, fontweight="bold")
+    ax.text(0.99, 0.985, "Gray: the other 11 rivers and ship channels (Table 7)", transform=ax.transAxes,
+            ha="right", va="top", fontsize=9, color=page.theme.text)
     ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1.65)
-    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2])
-    ax.set_xlabel("Distance from the entrance, as a share of the corridor length (0 = entrance, 1 = head port)")
-    ax.set_ylabel("Large ships, as a share of ships at the entrance")
+    ax.set_xlabel("Distance from the entrance, as a share of the distance to the head port (1 = head port)")
+
+
+def corr_normalized():
+    """Share of the ships that enter each corridor that are seen at or beyond each point."""
+    sv = float(SUMM["savannah"]["share_reaching_head"])
+    page = OnePager(
+        headline=f"{100 * sv:.0f}% of the large ships that enter the Savannah River reach Garden City; on the "
+                 "Hudson and the Mississippi, fewer than 1 in 10 reach the head port",
+        subhead="Share of large ships entering each corridor that were seen at or beyond each point, 15 rivers and "
+                "ship channels, 2023 and 2024 together",
+        source=SRC + " Ships entering = seen at least 3 km in from the entrance on any sampled day.",
+        theme="ntia", layout="hero", size=(11, 7.4), margin_right=2.6,
+        alt="Fifteen falling step lines, one per river or ship channel, of the share of entering large ships seen "
+            "at or beyond each point against distance scaled to the head port; four are highlighted: Savannah ends "
+            "near 0.7, Houston near 0.13, the Mississippi near 0.07, and the Hudson near 0.05.")
+    ax = page.panel(0)
+    ax.set_ylim(0, 1.05)
+    _continuation(page, ax, "share", lambda v: f"{100 * v:.0f}%")
+    ax.set_ylabel("Share of entering large ships still on the corridor")
     vf.save(page, "corr03_normalized_profiles")
+
+
+def corr_counts():
+    """Number of ships seen at or beyond each point, distance normalized."""
+    def head_n(c):
+        return CONT[c][-1][1]
+    page = OnePager(
+        headline=f"More large ships enter the Mississippi and the Houston Ship Channel than any other corridor, but "
+                 f"only about {round(head_n('mississippi'), -1):.0f} reach Baton Rouge and "
+                 f"{round(head_n('houston'), -1):.0f} reach Houston",
+        subhead="Distinct large ships seen at or beyond each point of each corridor, 15 rivers and ship channels, "
+                "2023 and 2024 together",
+        source=SRC + " Counts start 3 km in from the entrance.",
+        theme="ntia", layout="hero", size=(11, 7.4), margin_right=2.6,
+        alt="Fifteen falling step lines, one per river or ship channel, of distinct large ships seen at or beyond "
+            "each point against distance scaled to the head port; the Mississippi starts near 4,500 and the "
+            "Houston Ship Channel near 3,750, and both end in the hundreds.")
+    ax = page.panel(0)
+    top = max(CONT[c][0][1] for c in ORDER)
+    ax.set_ylim(0, top * 1.08)
+    _continuation(page, ax, "n", lambda v: f"{v:,.0f} ships")
+    ax.set_ylabel("Distinct large ships seen at or beyond this point")
+    vf.save(page, "corr04_continuation_counts")
 
 
 # C3. One page per corridor ---------------------------------------------------------
@@ -290,6 +318,7 @@ def main():
     corr_reach()
     corr_profiles()
     corr_normalized()
+    corr_counts()
     for c in ORDER:
         corr_page(c)
 

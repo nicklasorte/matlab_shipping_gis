@@ -27,7 +27,12 @@ Writes outputs/2023_2024/viz/:
   corridor_cells.csv     corridor, cell, lat, lon, km, ships (corridor cells, for maps)
   corridor_path.csv      corridor, km, lat, lon, ships (path cells)
   corridor_summary.csv   corridor, label, length_km, bin_km, ships_entrance,
-                         ships_head, ships_head_2023, ships_head_2024, share_head
+                         ships_head, ships_head_2023, ships_head_2024, share_head,
+                         ships_entering, share_reaching_head
+  corridor_continuation.csv  corridor, frac_to_head, ships_beyond, share_beyond:
+                         distinct ships seen at or beyond each point (counted from
+                         3 km in), and that count over the ships that went at least
+                         3 km in (distance scaled so 1 = the head port)
 """
 import csv
 import os
@@ -50,6 +55,7 @@ BOX_PAD_DEG = 0.3      # box around start and end points for the graph
 COST_K = 100.0         # edge cost = km * (1 + COST_K / ships): the path keeps to the busy channel
 PATH_KM = 2.0          # route cells this close to the path belong to the corridor
 END_KM = 3.0           # "reached the head": within this distance of the path end
+GRID = np.linspace(0, 1, 201)   # continuation curve, share of the distance to the head port
 SHORT_KM = 120.0       # corridors shorter than this use 2 km bins, others 5 km
 
 
@@ -155,7 +161,7 @@ def main():
         print(yr, len(pairs[yr]), flush=True)
     both = np.unique(np.vstack([pairs[2023], pairs[2024]]), axis=0)
 
-    prof_rows, mark_rows, path_rows, summ_rows, cell_rows = [], [], [], [], []
+    prof_rows, mark_rows, path_rows, summ_rows, cell_rows, surv_rows = [], [], [], [], [], []
     for name, c in cor.items():
         cells, reach, path, pkm, (clat, clon) = corridor_path(route, ships_of, c["start"][1], c["target"][1], [m[1] for m in c["marks"]])
         ptree = cKDTree(vp.ecef(clat[path], clon[path]))
@@ -202,9 +208,24 @@ def main():
 
         ent = ships_near(both, "entrance")
         head = ships_near(both, "head")
+        # Continuation curve: distinct ships seen at or beyond each point (any day), counting from 3 km in. It can only fall going
+        # upstream, so anchorage spikes and lane splits drop out. Distance is scaled so 1 = the head port;
+        # at 1 the count is ships seen within 3 km below the head port or above it.
+        kP = np.array([km_of[int(v)] for v in P[:, 0]])
+        far = {}
+        for m_, k_ in zip(P[:, 1].tolist(), kP.tolist()):
+            if k_ > far.get(m_, -1.0):
+                far[m_] = k_
+        far_all = np.array(list(far.values()))
+        n_in = int(np.sum(far_all >= END_KM))   # ships that went at least 3 km in (drops passers-by at the entrance)
+        for f in GRID:
+            thr = min(max(f * e_km, END_KM), e_km - END_KM)
+            nb = int(np.sum(far_all >= thr))
+            surv_rows.append([name, round(float(f), 3), nb, round(nb / n_in, 4)])
+        cont = float(np.sum(far_all >= e_km - END_KM)) / n_in
         summ_rows.append([name, c["label"], round(length, 1), bin_km, ent, head,
                           ships_near(pairs[2023], "head"), ships_near(pairs[2024], "head"),
-                          round(head / ent, 3) if ent else ""])
+                          round(head / ent, 3) if ent else "", n_in, round(cont, 3)])
         # Marks
         for role, (mn, pt) in [("start", c["start"])] + [("mark", m) for m in c["marks"]] + [("end", c["end"])] + \
                 ([("target", c["target"])] if c["target"] is not c["end"] else []):
@@ -224,7 +245,9 @@ def main():
     write("corridor_cells.csv", ["corridor", "cell", "lat", "lon", "km", "ships"], cell_rows)
     write("corridor_path.csv", ["corridor", "km", "lat", "lon", "ships"], path_rows)
     write("corridor_summary.csv", ["corridor", "label", "length_km", "bin_km", "ships_entrance", "ships_head",
-                                   "ships_head_2023", "ships_head_2024", "share_head"], summ_rows)
+                                   "ships_head_2023", "ships_head_2024", "share_head", "ships_entering", "share_reaching_head"],
+          summ_rows)
+    write("corridor_continuation.csv", ["corridor", "frac_to_head", "ships_beyond", "share_beyond"], surv_rows)
 
 
 if __name__ == "__main__":

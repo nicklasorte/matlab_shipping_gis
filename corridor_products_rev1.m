@@ -19,8 +19,13 @@ function [cor]=corridor_products_rev1(prod,corridor_csv)
 %     4. Entrance: distinct ships within 3 km (along the path) of the start.
 %        Head: distinct ships within 3 km of the end port, or of the path
 %        end when the routes stop short of the port.
+%     5. Continuation: distinct ships seen at or beyond each point (any
+%        sampled day), on 201 points with distance scaled so 1 = the head
+%        port, counted from 3 km in (which drops ships passing the entrance).
+%        It can only fall going upstream, so anchorage spikes drop out.
 %
-%   Returns struct cor with tables profile, marks, cells, path, summary (same
+%   Returns struct cor with tables profile, marks, cells, path, summary,
+%   continuation (same
 %   columns as the Python twin, python/ship_corridor_products.py).
 %
 %   Built-ins: readtable, graph/shortestpath/distances, KDTreeSearcher with
@@ -60,6 +65,7 @@ mk=cell(numel(names),1);
 ce=cell(numel(names),1);
 pa=cell(numel(names),1);
 su=cell(numel(names),1);
+co=cell(numel(names),1);
 for i=1:numel(names)
     Ci=C(C.corridor==names(i),:);
     st=Ci(Ci.role=="start",:);
@@ -138,9 +144,18 @@ for i=1:numel(names)
         Py=in_c(prod.pairs_year{y});
         hy(y)=count(Py,@(k) abs(k-e_km)<=end_km);
     end
-    su{i}=table(names(i),st.label,len,bin_km,ent,head,hy(1),hy(2),head/ent, ...
+    %%%%%5. Continuation curve: distinct ships seen at or beyond each point, counted from 3 km in
+    [um,~,im]=unique(Pb(:,2));
+    far=accumarray(im,kb,[numel(um) 1],@max);
+    n_in=nnz(far>=end_km);
+    f=linspace(0,1,201)';
+    thr=min(max(f*e_km,end_km),e_km-end_km);
+    nb=sum(far'>=thr,2);
+    co{i}=table(repmat(names(i),numel(f),1),f,nb,nb/n_in, ...
+        'VariableNames',{'corridor','frac_to_head','ships_beyond','share_beyond'});
+    su{i}=table(names(i),st.label,len,bin_km,ent,head,hy(1),hy(2),head/ent,n_in,nb(end)/n_in, ...
         'VariableNames',{'corridor','label','length_km','bin_km','ships_entrance','ships_head', ...
-        'ships_head_2023','ships_head_2024','share_head'});
+        'ships_head_2023','ships_head_2024','share_head','ships_entering','share_reaching_head'});
     [jm,dm]=knnsearch(ptree,xyz(Ci.lat,Ci.lon));
     mk{i}=table(Ci.corridor,Ci.role,Ci.name,Ci.lat,Ci.lon,pkm(jm),arc(dm), ...
         'VariableNames',{'corridor','role','name','lat','lon','km','off_path_km'});
@@ -150,6 +165,7 @@ cor.marks=vertcat(mk{:});
 cor.cells=vertcat(ce{:});
 cor.path=vertcat(pa{:});
 cor.summary=vertcat(su{:});
+cor.continuation=vertcat(co{:});
 end
 
 function j=loc_in(a,b)

@@ -45,6 +45,7 @@ fprintf('Products: %.0f s\n',toc);
 writetable(cor.summary,fullfile(viz_dir,'corridor_summary.csv'));
 writetable(cor.profile,fullfile(viz_dir,'corridor_profile.csv'));
 writetable(cor.marks,fullfile(viz_dir,'corridor_marks.csv'));
+writetable(cor.continuation,fullfile(viz_dir,'corridor_continuation.csv'));
 disp(cor.summary)
 
 titles=plot_ship_corridors_rev1(cor,prod,viz_dir,fullfile(p.data_dir,'cb_2023_us_state_500k','cb_2023_us_state_500k.shp'));
