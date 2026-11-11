@@ -292,7 +292,7 @@ result.routes_files=write_zone_outputs_rev1(routes_rings,p.out_dir,sprintf('%s_r
 ais_rings=routes_polygons_rev1(ais_mask,R,routes_tile_deg,p.routes_simplify_deg);
 result.routes_files=[result.routes_files; write_zone_outputs_rev1(ais_rings,p.out_dir,sprintf('%s_routes_ais_only',p.out_name), ...
     sprintf('Large-ship AIS cells, %s',result.period_label),p.kmz)];
-disp_progress(sprintf('Routes: %d rings in %d one-degree tiles',nnz(isnan(routes_rings(:,1)))+1,num_tile));
+disp_progress(sprintf('Routes: %d one-degree tiles hold route cells',num_tile));
 
 %%%%%Frequency-dependent zones: each band gets the zone for its distance
 %%%%%(shapefile, KML, KMZ named by band) and one row in <out_name>_band_zones.csv

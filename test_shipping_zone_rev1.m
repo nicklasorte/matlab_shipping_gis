@@ -131,7 +131,8 @@ mask(40:60,40:60)=true;            %%%%%spans the tile corner at (31, -79)
 mask(10:20,70:90)=true;
 mask(14:16,78:82)=false;           %%%%%hole
 mask(85,15)=true;                  %%%%%isolated cell
-rings=routes_polygons_rev1(mask,R,1,0);
+tile_rings=routes_polygons_rev1(mask,R,1,0);
+rings=cell2mat(cellfun(@(c) [c; NaN NaN],tile_rings,'UniformOutput',false));
 [lat_grid,lon_grid]=geographicGrid(R);
 inside=inpolygon(lon_grid,lat_grid,rings(:,2),rings(:,1));
 verifyEqual(tc,inside,mask);   %%%%%covers the hole correctly, no seams between tiles

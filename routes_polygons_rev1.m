@@ -1,13 +1,14 @@
-function [ring_latlon,num_tile]=routes_polygons_rev1(route_mask,R,tile_deg,simplify_deg)
+function [tile_rings,num_tile]=routes_polygons_rev1(route_mask,R,tile_deg,simplify_deg)
 %routes_polygons_rev1  Polygon rings around the route cells, built tile by tile.
 %
-%   [ring_latlon,num_tile]=routes_polygons_rev1(route_mask,R,tile_deg,simplify_deg)
-%   traces the cells where ROUTE_MASK is true (raster R) into polygon rings
-%   and returns them as an N-by-2 [lat lon] array, NaN between rings,
-%   outer rings clockwise and holes counterclockwise (shapewrite and
-%   kmlwrite order). The grid is cut into TILE_DEG tiles (default 1 degree)
-%   so each polyshape holds a few hundred rings instead of the whole
-%   country; num_tile returns how many tiles held route cells.
+%   [tile_rings,num_tile]=routes_polygons_rev1(route_mask,R,tile_deg,simplify_deg)
+%   traces the cells where ROUTE_MASK is true (raster R) into polygon rings.
+%   The grid is cut into TILE_DEG tiles (default 1 degree) so each
+%   polyshape holds a few hundred rings instead of the whole country.
+%   TILE_RINGS is a cell array with one N-by-2 [lat lon] array per tile
+%   that holds route cells (NaN between rings, outer rings clockwise, holes
+%   counterclockwise: the shapewrite and kmlwrite order). Each tile becomes
+%   one polygon feature, which keeps kmlwrite fast. num_tile is the count.
 %
 %   Each tile is contoured with a one-cell margin of real data and then
 %   clipped at its exact edge, so polygons from neighboring tiles meet
@@ -44,7 +45,7 @@ tile_cols=round(tile_deg/dlon);
 
 row_starts=1:tile_rows:num_row;
 col_starts=1:tile_cols:num_col;
-rings=cell(numel(row_starts)*numel(col_starts),1);
+tile_rings=cell(numel(row_starts)*numel(col_starts),1);
 num_tile=0;
 k=0;
 for r0=row_starts
@@ -81,15 +82,10 @@ for r0=row_starts
             continue
         end
         [xb,yb]=boundary(tile_poly);
-        rings{k}=[yb xb; NaN NaN];
+        tile_rings{k}=[yb xb];
     end
 end
-ring_latlon=vertcat(rings{:});
-if isempty(ring_latlon)
-    ring_latlon=zeros(0,2);
-else
-    ring_latlon=ring_latlon(1:end-1,:);   %%%%%drop the trailing NaN row
-end
+tile_rings=tile_rings(~cellfun(@isempty,tile_rings));
 end
 
 function [x,y]=contour_rings(C)
