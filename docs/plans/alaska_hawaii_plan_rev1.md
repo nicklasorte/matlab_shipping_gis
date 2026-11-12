@@ -223,6 +223,18 @@ unchanged on the islands.
   receiver range in the last few kilometers. Kawaihae joins only with rules
   that count small or occasional traffic.
 
+**Decision (November 12, 2026):** Nick chose the ship-days rule (at least 6)
+for Hawaii. Built in MATLAB (`init_shipping_zone_hawaii_rev1.m`, outputs in
+`outputs/2023_2024/hawaii/`) and checked against Python (same 6,561 cells).
+Every Hawaii port lies inside the 25 km zone; the 25, 50, and 100 km zones
+cover 70%, 95%, and all of the land. Written up as Section 4 of the working
+paper.
+
+**Queued:** 2025 and 2026 AIS for all grids. MarineCadastre has all of 2025
+and 2026 through June 30 (checked November 12, 2026). The 78 weekly days
+(2025-01-01 to 2026-06-24) are being cached for the lower 48, Hawaii, and
+Puerto Rico and the U.S. Virgin Islands.
+
 ### Phase 3: Alaska (one to three days, depending on the source)
 
 1. Build an Alaska grid: 51–72° N, from 129° W across the 180° meridian to

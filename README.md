@@ -361,6 +361,28 @@ of all visits; Gulf ports take 48%.
 - **Cross-check:** all 73 ports match exactly between MATLAB and Python, for
   both years and all four ship types.
 
+## Hawaii
+
+Hawaii uses the same AIS sample, ship filter, zone method, and band distances as
+the lower 48, with one change: the **ship-days** route rule. A cell is a route
+cell when the distinct large ships seen in it on each sampled day add up to at
+least 6 over the 104 days. Under the lower-48 rule (4 distinct ships in one
+year) the inter-island lanes break, because a few dedicated ships serve the
+neighbor islands. The cutoff of 6 best reproduces the lower-48 network
+(Jaccard index 0.81).
+
+| Result | Value |
+| --- | --- |
+| Route cells | 6,561 |
+| Ports on the route network | Honolulu, Kalaeloa, Kahului, Nawiliwili (Hilo 3.8 km, Kawaihae 24 km away) |
+| Land within 25 / 50 / 100 km | 12,324 km² (70%) / 16,681 km² (95%) / 17,573 km² (all) |
+
+Run (MATLAB): `init_shipping_zone_hawaii_rev1` (writes `output_hawaii/`; the repo
+copy is `outputs/2023_2024/hawaii/`). Python: `python3 python/ship_route_rules.py`
+compares the rules, and `python3 python/ship_hawaii_figures.py` draws `haw01_routes`
+and `haw02_zones`. MATLAB and Python give the same 6,561 cells. Data-validity
+checks and the plan for Alaska are in `docs/plans/alaska_hawaii_plan_rev1.md`.
+
 ## Data in the repo
 
 `data/` holds every input the 2023–2024 run uses, so `init_shipping_zone_rev1`
