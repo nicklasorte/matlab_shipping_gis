@@ -40,6 +40,10 @@ PORTS = {
                "Guayanilla and Penuelas": (17.990, -66.760), "Yabucoa": (18.040, -65.830),
                "Mayaguez": (18.205, -67.160), "St. Croix (Limetree Bay)": (17.690, -64.750),
                "Charlotte Amalie (St. Thomas)": (18.335, -64.930)},
+    # USACE Principal Ports in Alaska (district reference points)
+    "alaska": {"Valdez": (61.12473, -146.3464), "Port of Alaska (Anchorage)": (61.23778, -149.895),
+               "Nikiski": (60.74793, -151.3144), "Unalaska (Dutch Harbor)": (53.89419, -166.54992),
+               "Kivalina": (67.72677, -164.52689)},
 }
 
 
@@ -58,13 +62,20 @@ def cell_latlon(cell, grid):
 def coast_tree(grid):
     """KD-tree of Census coastline points inside the grid (about 100 m spacing)."""
     (la0, la1), (lo0, lo1) = cells.GRIDS[grid]
+    wrap = lo1 > 180   # grid in 0-360 longitude (Alaska)
     sf = shapefile.Reader(os.path.join(ROOT, "data", "tl_2023_us_coastline", "tl_2023_us_coastline.shp"))
     pts = []
     for shp in sf.shapes():
         b = shp.bbox
-        if b[2] < lo0 or b[0] > lo1 or b[3] < la0 or b[1] > la1:
+        if b[3] < la0 or b[1] > la1:
+            continue
+        if not wrap and (b[2] < lo0 or b[0] > lo1):
             continue
         p = np.array(shp.points)
+        if wrap:
+            p[:, 0] = np.where(p[:, 0] < 0, p[:, 0] + 360, p[:, 0])
+            if p[:, 0].max() < lo0 or p[:, 0].min() > lo1:
+                continue
         parts = list(shp.parts) + [len(p)]
         for a, e in zip(parts[:-1], parts[1:]):
             for q0, q1 in zip(p[a:e - 1], p[a + 1:e]):

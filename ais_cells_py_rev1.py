@@ -41,6 +41,9 @@ GRIDS = {
     "conus": (LATLIM, LONLIM),
     "hawaii": ((17.0, 24.0), (-162.0, -153.0)),
     "prusvi": ((16.5, 19.5), (-68.5, -64.0)),
+    # Alaska crosses 180 degrees: longitudes run 172 E to 129 W as 172 to 231
+    # (west longitudes + 360), so the grid is one block with no wrap inside it.
+    "alaska": ((51.0, 72.0), (172.0, 231.0)),
 }
 FILTERS = {
     # merchant, military, law enforcement, dredging, other: p.filt
@@ -95,6 +98,8 @@ def discrete(lat, lon, grid=None):
     cpd = round(1 / CELL_DEG)
     la, lo = GRIDS[grid] if grid else (LATLIM, LONLIM)
     nr, nc = grid_size(grid)
+    if lo[1] > 180:   # grid given in 0-360 longitude (Alaska)
+        lon = np.where(lon < 0, lon + 360.0, lon)
     row = np.floor(0.5 + (lat - la[0]) * cpd + 0.5)
     col = np.floor(0.5 + (lon - lo[0]) * cpd + 0.5)
     row = np.minimum(row, nr)  # the top and east edges belong to the last cell

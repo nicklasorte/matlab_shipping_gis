@@ -38,7 +38,7 @@ import ship_island_routes as isl  # noqa: E402
 
 OUT = os.path.join(ROOT, "outputs", "2023_2024", "islands")
 TIF = os.path.join(ROOT, "data", "ref", "ais-transit-count-2024.tif")
-HUB = {"hawaii": "Honolulu", "prusvi": "San Juan"}
+HUB = {"hawaii": "Honolulu", "prusvi": "San Juan", "alaska": "Valdez"}
 TO_LL = Transformer.from_crs(3857, 4326, always_xy=True)
 TO_M = Transformer.from_crs(4326, 3857, always_xy=True)
 
