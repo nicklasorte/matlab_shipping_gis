@@ -1,0 +1,13 @@
+category,name,lat,lon,sband_source,gap_to_ship_cell_km,reached_by_ship_routes,in_25km_zone,in_50km_zone,in_100km_zone,notes
+named_port,"Honolulu, HI",21.31111,-157.8717,0,0.55132432317749,1,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Kalaeloa Barbers Point, HI",21.32307,-158.11368,0,0.254461694636485,1,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Kahului, HI",20.89861,-156.4728,0,0.461912605132552,1,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Hilo, HI",19.73062,-155.05478,0,3.82295619218571,0,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Nawiliwili, HI",21.95248,-159.35232,0,0.393588460174987,1,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Kawaihae, HI",20.03515,-155.82797,0,24.1243125528252,0,1,1,1,required deep-draft port (p.check_ports)
+usace_principal_port,"Honolulu, O'ahu, HI",21.31111,-157.8717,0,0.55132432317749,1,1,1,1,type C; rank 45; foreign tons 836924
+usace_principal_port,"Kalaeloa Barbers Point, HI",21.32307,-158.11368,0,0.254461694636485,1,1,1,1,type C; rank 61; foreign tons 5079836
+usace_principal_port,"Kahului, Maui, HI",20.89861,-156.4728,0,0.461912605132552,1,1,1,1,type C; rank 91; foreign tons 38238
+usace_principal_port,"Kawaihae, Hawai'i, HI",20.03515,-155.82797,0,24.1243125528252,0,1,1,1,type C; rank 114; foreign tons 0
+usace_principal_port,"Hilo, Hawai'i, HI",19.73062,-155.05478,0,3.82295619218571,0,1,1,1,type C; rank 116; foreign tons 18459
+usace_principal_port,"Nawiliwili, Kaua'i, HI",21.95248,-159.35232,0,0.393588460174987,1,1,1,1,type C; rank 122; foreign tons 12726
