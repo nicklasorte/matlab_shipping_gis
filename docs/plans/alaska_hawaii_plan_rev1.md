@@ -196,6 +196,33 @@ with the lower-48 rules unchanged:
   and Anegada passages. Mayaguez is a small port and sits off the network,
   like the other smaller coastal ports.
 
+**Route rules compared (November 12, 2026),** from `python/ship_route_rules.py`.
+Each threshold for the new rules was set on the lower 48, as the value whose
+route set best matches the paper's network (Jaccard index), then used
+unchanged on the islands.
+
+| Rule | Lower-48 match | Hawaii route cells | Hawaii ports connected to Honolulu (of 6) | Puerto Rico and USVI ports connected to San Juan (of 7) |
+| --- | --- | --- | --- | --- |
+| At least 4 distinct ships a year (paper) | 1.00 | 3,882 | 2 | 5 |
+| At least 3 | not calibrated | 7,231 | 3 | 5 |
+| At least 2 | not calibrated | 18,178 | 4 | 6 |
+| At least 1 | not calibrated | 72,757 | 5 | 7 |
+| Ship-days: distinct large ships summed over the 104 days, at least 6 | 0.81 | 6,561 | 4 | 5 |
+| NOAA 2024 transits, at least 3 (all vessel groups) | 0.37 | 27,144 | 5 | 7 |
+
+- Ship-days fits the lower 48 best of the new rules and draws the cleanest
+  Hawaii network: it follows the Honolulu–Kahului–Hilo cargo loop around the
+  Big Island, because a few dedicated ships cross the same cells week after
+  week.
+- Two distinct ships connects the same four ports but adds scattered one-off
+  tracks.
+- NOAA transits match the lower-48 network poorly, because they count every
+  vessel, including ferries, fishing boats, and tour boats around Oahu. Use
+  them as a cross-check, not as the rule.
+- Hilo stays 2–9 km from every rule's network; ships likely drop out of
+  receiver range in the last few kilometers. Kawaihae joins only with rules
+  that count small or occasional traffic.
+
 ### Phase 3: Alaska (one to three days, depending on the source)
 
 1. Build an Alaska grid: 51–72° N, from 129° W across the 180° meridian to

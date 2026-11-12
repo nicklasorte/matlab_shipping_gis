@@ -1,0 +1,436 @@
+{
+ "calibration": {
+  "paper_route_cells": 661137,
+  "ship_days_jaccard": {
+   "2": 0.347,
+   "3": 0.495,
+   "4": 0.657,
+   "5": 0.774,
+   "6": 0.81,
+   "8": 0.684,
+   "10": 0.543,
+   "12": 0.444,
+   "15": 0.349,
+   "20": 0.254,
+   "25": 0.196,
+   "30": 0.157
+  },
+  "K": 6,
+  "noaa_jaccard": {
+   "1": 0.204,
+   "2": 0.308,
+   "3": 0.374,
+   "5": 0.372,
+   "8": 0.286,
+   "10": 0.239,
+   "15": 0.162,
+   "20": 0.12,
+   "30": 0.081,
+   "40": 0.063,
+   "50": 0.051,
+   "75": 0.035,
+   "100": 0.027
+  },
+  "T": 3
+ },
+ "hawaii": {
+  "min_ships_4": {
+   "route_cells": 3882,
+   "ports_within_2km": 4,
+   "ports_connected_to_hub": 2,
+   "ports": {
+    "Honolulu": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Kalaeloa (Barbers Point)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Kahului": {
+     "km": 0.5,
+     "connected_to_hub": false
+    },
+    "Hilo": {
+     "km": 8.8,
+     "connected_to_hub": false
+    },
+    "Nawiliwili": {
+     "km": 0.0,
+     "connected_to_hub": false
+    },
+    "Kawaihae": {
+     "km": 23.4,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "min_ships_3": {
+   "route_cells": 7231,
+   "ports_within_2km": 4,
+   "ports_connected_to_hub": 3,
+   "ports": {
+    "Honolulu": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Kalaeloa (Barbers Point)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Kahului": {
+     "km": 0.5,
+     "connected_to_hub": false
+    },
+    "Hilo": {
+     "km": 8.5,
+     "connected_to_hub": false
+    },
+    "Nawiliwili": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Kawaihae": {
+     "km": 23.1,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "min_ships_2": {
+   "route_cells": 18178,
+   "ports_within_2km": 4,
+   "ports_connected_to_hub": 4,
+   "ports": {
+    "Honolulu": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Kalaeloa (Barbers Point)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Kahului": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Hilo": {
+     "km": 7.3,
+     "connected_to_hub": false
+    },
+    "Nawiliwili": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Kawaihae": {
+     "km": 22.2,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "min_ships_1": {
+   "route_cells": 72757,
+   "ports_within_2km": 5,
+   "ports_connected_to_hub": 5,
+   "ports": {
+    "Honolulu": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Kalaeloa (Barbers Point)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Kahului": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Hilo": {
+     "km": 2.1,
+     "connected_to_hub": false
+    },
+    "Nawiliwili": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Kawaihae": {
+     "km": 0.5,
+     "connected_to_hub": true
+    }
+   }
+  },
+  "ship_days_6": {
+   "route_cells": 6561,
+   "ports_within_2km": 4,
+   "ports_connected_to_hub": 4,
+   "ports": {
+    "Honolulu": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Kalaeloa (Barbers Point)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Kahului": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Hilo": {
+     "km": 3.9,
+     "connected_to_hub": false
+    },
+    "Nawiliwili": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Kawaihae": {
+     "km": 23.9,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "noaa_3": {
+   "route_cells": 27144,
+   "ports_within_2km": 5,
+   "ports_connected_to_hub": 5,
+   "ports": {
+    "Honolulu": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "Kalaeloa (Barbers Point)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Kahului": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Hilo": {
+     "km": 5.8,
+     "connected_to_hub": false
+    },
+    "Nawiliwili": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Kawaihae": {
+     "km": 0.5,
+     "connected_to_hub": true
+    }
+   }
+  }
+ },
+ "prusvi": {
+  "min_ships_4": {
+   "route_cells": 41057,
+   "ports_within_2km": 6,
+   "ports_connected_to_hub": 5,
+   "ports": {
+    "San Juan": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Ponce": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Guayanilla and Penuelas": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Yabucoa": {
+     "km": 0.8,
+     "connected_to_hub": false
+    },
+    "Mayaguez": {
+     "km": 29.7,
+     "connected_to_hub": false
+    },
+    "St. Croix (Limetree Bay)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Charlotte Amalie (St. Thomas)": {
+     "km": 0.5,
+     "connected_to_hub": true
+    }
+   }
+  },
+  "min_ships_3": {
+   "route_cells": 57222,
+   "ports_within_2km": 6,
+   "ports_connected_to_hub": 5,
+   "ports": {
+    "San Juan": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Ponce": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Guayanilla and Penuelas": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Yabucoa": {
+     "km": 0.8,
+     "connected_to_hub": false
+    },
+    "Mayaguez": {
+     "km": 29.5,
+     "connected_to_hub": false
+    },
+    "St. Croix (Limetree Bay)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Charlotte Amalie (St. Thomas)": {
+     "km": 0.5,
+     "connected_to_hub": true
+    }
+   }
+  },
+  "min_ships_2": {
+   "route_cells": 80110,
+   "ports_within_2km": 6,
+   "ports_connected_to_hub": 6,
+   "ports": {
+    "San Juan": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Ponce": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Guayanilla and Penuelas": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Yabucoa": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Mayaguez": {
+     "km": 28.0,
+     "connected_to_hub": false
+    },
+    "St. Croix (Limetree Bay)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Charlotte Amalie (St. Thomas)": {
+     "km": 0.5,
+     "connected_to_hub": true
+    }
+   }
+  },
+  "min_ships_1": {
+   "route_cells": 107537,
+   "ports_within_2km": 7,
+   "ports_connected_to_hub": 7,
+   "ports": {
+    "San Juan": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Ponce": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Guayanilla and Penuelas": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Yabucoa": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Mayaguez": {
+     "km": 1.9,
+     "connected_to_hub": true
+    },
+    "St. Croix (Limetree Bay)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Charlotte Amalie (St. Thomas)": {
+     "km": 0.5,
+     "connected_to_hub": true
+    }
+   }
+  },
+  "ship_days_6": {
+   "route_cells": 45934,
+   "ports_within_2km": 6,
+   "ports_connected_to_hub": 5,
+   "ports": {
+    "San Juan": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Ponce": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Guayanilla and Penuelas": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Yabucoa": {
+     "km": 0.8,
+     "connected_to_hub": false
+    },
+    "Mayaguez": {
+     "km": 29.5,
+     "connected_to_hub": false
+    },
+    "St. Croix (Limetree Bay)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Charlotte Amalie (St. Thomas)": {
+     "km": 0.5,
+     "connected_to_hub": true
+    }
+   }
+  },
+  "noaa_3": {
+   "route_cells": 66482,
+   "ports_within_2km": 7,
+   "ports_connected_to_hub": 7,
+   "ports": {
+    "San Juan": {
+     "km": 0.0,
+     "connected_to_hub": true
+    },
+    "Ponce": {
+     "km": 1.1,
+     "connected_to_hub": true
+    },
+    "Guayanilla and Penuelas": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Yabucoa": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Mayaguez": {
+     "km": 0.5,
+     "connected_to_hub": true
+    },
+    "St. Croix (Limetree Bay)": {
+     "km": 0.8,
+     "connected_to_hub": true
+    },
+    "Charlotte Amalie (St. Thomas)": {
+     "km": 0.5,
+     "connected_to_hub": true
+    }
+   }
+  }
+ }
+}
