@@ -1,0 +1,5 @@
+f_low_mhz,f_high_mhz,distance_km,zone_file
+2900,3000,25,shipping_zone_alaska_2018_2019_band_2900-3000MHz_25km.shp
+3000,3030,50,shipping_zone_alaska_2018_2019_band_3000-3030MHz_50km.shp
+3030,3070,100,shipping_zone_alaska_2018_2019_band_3030-3070MHz_100km.shp
+3070,3100,50,shipping_zone_alaska_2018_2019_band_3070-3100MHz_50km.shp
