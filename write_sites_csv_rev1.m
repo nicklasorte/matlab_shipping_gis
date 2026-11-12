@@ -46,7 +46,11 @@ n=numel(lat);
 T=table(repmat(string(category),n,1),string(name),lat(:),lon(:),logical(sband(:)),gap(:),logical(reached(:)), ...
     'VariableNames',{'category','name','lat','lon','sband_source','gap_to_ship_cell_km','reached_by_ship_routes'});
 for z=1:numel(result.zone)
-    T.(sprintf('in_%gkm_zone',result.zone(z).distance_km))=isinterior(result.zone(z).poly,lon(:),lat(:));
+    if n==0   %%%%%no sites of this kind in the grid (Hawaii has no S-band racons); isinterior rejects empty points
+        T.(sprintf('in_%gkm_zone',result.zone(z).distance_km))=false(0,1);
+    else
+        T.(sprintf('in_%gkm_zone',result.zone(z).distance_km))=isinterior(result.zone(z).poly,lon(:),lat(:));
+    end
 end
 T.notes=string(notes(:));
 end
