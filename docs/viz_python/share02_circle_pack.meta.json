@@ -34,59 +34,59 @@
   "lint": [
     {
       "severity": "error",
-      "message": "Text 'Galveston 2,838' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Galveston 2,951' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'New Orleans 2,413' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'New Orleans 2,426' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Plaquemines 2,161' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Plaquemines 2,193' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'New York- New Jersey 1,683' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Houston 1,704' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Houston 1,637' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'New York- New Jersey 1,700' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Long Beach 1,491' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Long Beach 1,475' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'South Louisiana 1,397' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'South Louisiana 1,415' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Port Arthur 1,117' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Port Arthur 1,192' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Sabine Pass 1,073' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Sabine Pass 1,101' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Baltimore 1,045' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Baltimore 1,067' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Virginia 997' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Virginia 1,063' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'San Francisco 996' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'San Francisco 1,033' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Savannah 984' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Savannah 1,024' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Los Angeles 952' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Los Angeles 969' has contrast 1.00:1; needs 4.5:1."
     }
   ]
 }

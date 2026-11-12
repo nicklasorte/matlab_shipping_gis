@@ -28,7 +28,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of the Columbia River route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 546 ships at the entrance and 280 at Vancouver.",
+  "alt": "Map of the Columbia River route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 580 ships at the entrance and 279 at Vancouver.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_columbia.png",

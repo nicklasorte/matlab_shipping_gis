@@ -1,0 +1,76 @@
+{
+ "hex_count": 7678,
+ "hex_max_ships": 3206,
+ "hex_share_top5pct": 0.41651185686624215,
+ "hex_ge_1000": 140,
+ "type_ships_cargo": 10485,
+ "type_share_ships_gulf_cargo": 0.503099666189795,
+ "type_ships_tanker": 4438,
+ "type_share_ships_gulf_tanker": 0.8744930148715637,
+ "type_ships_passenger": 283,
+ "type_share_ships_gulf_passenger": 0.3745583038869258,
+ "type_ships_government": 88,
+ "type_share_ships_gulf_government": 0.2727272727272727,
+ "ports_top": [
+  [
+   "Galveston, TX",
+   2953
+  ],
+  [
+   "New Orleans, LA",
+   2426
+  ],
+  [
+   "Plaquemines Port District, LA",
+   2193
+  ],
+  [
+   "Port of Long Beach, CA",
+   1898
+  ],
+  [
+   "Port of Los Angeles, CA",
+   1839
+  ],
+  [
+   "Houston Port Authority, TX",
+   1704
+  ],
+  [
+   "New York, NY & NJ",
+   1700
+  ],
+  [
+   "South Louisiana, LA, Port of",
+   1415
+  ],
+  [
+   "Sabine Pass Port Authority, TX",
+   1327
+  ],
+  [
+   "Port Arthur, TX",
+   1209
+  ]
+ ],
+ "ports_ge_1000": 15,
+ "profile_peak_Pacific": [
+  33.5,
+  34.0,
+  2126
+ ],
+ "profile_peak_Gulf": [
+  -95.0,
+  -94.5,
+  4031
+ ],
+ "profile_peak_Atlantic": [
+  39.0,
+  39.5,
+  2199
+ ],
+ "land_share_within_25km": 0.03650053695206482,
+ "land_share_within_50km": 0.07938653226593771,
+ "land_share_within_100km": 0.15916662598847994,
+ "land_max_km": 1327.934946517303
+}

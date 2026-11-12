@@ -161,7 +161,7 @@ def main():
                 parts.append(t[tow_ok(t[:, 0])])
         pairs[yr] = np.unique(np.vstack(parts), axis=0)
         print(yr, len(pairs[yr]), flush=True)
-    both = np.unique(np.vstack([pairs[2023], pairs[2024]]), axis=0)
+    both = np.unique(np.vstack([pairs[PER.Y0], pairs[PER.Y1]]), axis=0)
 
     prof_rows, mark_rows, path_rows, summ_rows, cell_rows, surv_rows = [], [], [], [], [], []
     for name, c in cor.items():
@@ -226,7 +226,7 @@ def main():
             surv_rows.append([name, round(float(f), 3), nb, round(nb / n_in, 4)])
         cont = float(np.sum(far_all >= e_km - END_KM)) / n_in
         summ_rows.append([name, c["label"], round(length, 1), bin_km, ent, head,
-                          ships_near(pairs[2023], "head"), ships_near(pairs[2024], "head"),
+                          ships_near(pairs[PER.Y0], "head"), ships_near(pairs[PER.Y1], "head"),
                           round(head / ent, 3) if ent else "", n_in, round(cont, 3)])
         # Marks
         for role, (mn, pt) in [("start", c["start"])] + [("mark", m) for m in c["marks"]] + [("end", c["end"])] + \

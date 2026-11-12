@@ -247,6 +247,9 @@ def corr_page(c):
     if stop:
         head = (f"Large-ship routes on the {s['label']} stop {stop:.0f} km short of {end['name']}; "
                 f"{int(s['ships_head']):,} ships reach the end of the routes")
+    elif pct >= 100:   # more ships counted at the head than in the entrance window (gaps in entrance reports)
+        head = (f"Nearly every large ship that enters reaches {end['name']}: {int(s['ships_head']):,} at the port, "
+                f"{float(end['km']):.0f} km in, against {int(s['ships_entrance']):,} counted at the entrance")
     else:
         head = (f"{int(s['ships_head']):,} large ships reach {end['name']}, {float(end['km']):.0f} km from the "
                 f"entrance: {pct:.0f}% of the {int(s['ships_entrance']):,} seen at the entrance")

@@ -38,15 +38,15 @@
     },
     {
       "severity": "error",
-      "message": "Text 'New Orleans 6.3%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'New Orleans 6.1%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Plaquemines 5.6%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Plaquemines 5.5%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Houston 4.2%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Houston 4.3%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -54,7 +54,7 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Port Arthur 2.9%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Port Arthur 3.0%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -62,27 +62,27 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Corpus Christi 2.2%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Mobile 2.2%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Mobile 2.0%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Corpus Christi 2.1%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Freeport 1.5%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Freeport 1.6%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Lake Charles 1.4%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Texas City 1.3%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Texas City 1.4%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Lake Charles 1.3%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Manatee County 1.2%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Manatee County 1.3%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -90,15 +90,15 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Tampa 0.9%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Tampa 0.8%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Jackson County 0.7%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Jackson County 0.8%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'New York- New Jersey 4.4%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'New York- New Jersey 4.3%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -106,7 +106,7 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Virginia 2.6%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Virginia 2.7%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -114,7 +114,7 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Wilmington, DE 2.1%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Wilmington, DE 2.0%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -134,7 +134,7 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Long Beach 3.9%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Long Beach 3.7%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -142,23 +142,23 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Los Angeles 2.5%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Los Angeles 2.4%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Longview 1.9%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Longview 2.0%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Vancouver, WA 1.8%' has contrast 1.00:1; needs 4.5:1."
-    },
-    {
-      "severity": "error",
-      "message": "Text 'Kalama 1.7%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Vancouver, WA 1.9%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
       "message": "Text 'Seattle 1.7%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Kalama 1.7%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -167,6 +167,10 @@
     {
       "severity": "error",
       "message": "Text 'Oxnard 1.5%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
+      "message": "Text 'Tacoma 1.2%' has contrast 1.00:1; needs 4.5:1."
     }
   ]
 }

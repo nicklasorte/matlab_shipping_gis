@@ -98,8 +98,8 @@ def haw_routes():
     route = np.load(os.path.join(ISL, "hawaii_rule_cells.npz"))["ship_days_6"]
     allc = np.load(os.path.join(ISL, "hawaii_routes.npz"))["both_cell"]
     page = OnePager(
-        headline="Large-ship routes link Honolulu with Kahului, Nawiliwili, and Hilo, and run northeast to the "
-                 "U.S. mainland",
+        headline="Large-ship routes link Honolulu with Kahului and Nawiliwili, circle the Big Island toward Hilo, "
+                 "and run northeast to the U.S. mainland",
         subhead=f"Route cells around the main Hawaiian Islands (ship-days rule), {len(route):,} cells of about 1 km; "
                 "gray shows every cell a large ship crossed",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),

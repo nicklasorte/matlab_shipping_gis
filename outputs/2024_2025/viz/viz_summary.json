@@ -1,0 +1,31 @@
+{
+ "route_cells": 658867,
+ "route_cells_main_only": 649737,
+ "tow_only_cells": 9130,
+ "cells_y0": 532800,
+ "cells_y1": 462436,
+ "years": [
+  2024,
+  2025
+ ],
+ "both_years": 336369,
+ "only_y0": 196431,
+ "only_y1": 126067,
+ "share_both_years": 0.5105264036596157,
+ "river_km_new_orleans": 156.04267903955284,
+ "river_km_baton_rouge": 352.0248988526984,
+ "river_km_end": 356.47270206203956,
+ "river_end_lat": 30.485,
+ "offshore_median_km_Pacific": 132.0532901695355,
+ "offshore_p90_km_Pacific": 607.943410240241,
+ "tow_only_Pacific": 705,
+ "offshore_median_km_Gulf": 137.6632558807433,
+ "offshore_p90_km_Gulf": 362.4808499314458,
+ "tow_only_Gulf": 2285,
+ "offshore_median_km_Atlantic": 81.80731149998408,
+ "offshore_p90_km_Atlantic": 195.49484681010424,
+ "tow_only_Atlantic": 4121,
+ "offshore_median_km_Great Lakes": 20.0243068479754,
+ "offshore_p90_km_Great Lakes": 48.83632829285983,
+ "tow_only_Great Lakes": 2019
+}

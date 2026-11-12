@@ -53,10 +53,6 @@
     },
     {
       "severity": "error",
-      "message": "Text overlaps: 'Sabine Pass' and 'Corpus Christi'."
-    },
-    {
-      "severity": "error",
       "message": "Text overlaps: 'New York-New Jersey' and 'Baltimore'."
     },
     {

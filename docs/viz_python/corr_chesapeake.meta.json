@@ -28,7 +28,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of the Chesapeake Bay to Baltimore route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 1,384 ships at the entrance and 789 at Baltimore.",
+  "alt": "Map of the Chesapeake Bay to Baltimore route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 1,461 ships at the entrance and 829 at Baltimore.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_chesapeake.png",

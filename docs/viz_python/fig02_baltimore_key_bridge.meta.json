@@ -23,7 +23,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Line chart of large ships in Baltimore harbor each sampled week in 2023 (gray) and 2024 (blue); the 2024 line drops during the shaded closure and recovers by June.",
+  "alt": "Line chart of large ships in Baltimore harbor each sampled week in 2025 (gray) and 2024 (blue); the 2024 line drops during the shaded closure and recovers by June.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig02_baltimore_key_bridge.png",

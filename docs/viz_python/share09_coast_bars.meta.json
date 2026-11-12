@@ -43,7 +43,7 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Plaquemines 12%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Plaquemines 11%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
@@ -75,11 +75,11 @@
     },
     {
       "severity": "error",
-      "message": "Text 'Duluth- Superior 17%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Duluth- Superior 15%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
-      "message": "Text 'Cleveland- Cuyahoga 12%' has contrast 1.00:1; needs 4.5:1."
+      "message": "Text 'Toledo- Lucas County 13%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "warn",

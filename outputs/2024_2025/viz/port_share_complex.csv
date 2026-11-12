@@ -1,0 +1,57 @@
+complex,coast,ships,visits,share
+Lower Mississippi,Gulf,3521,6377,0.16068
+Houston-Galveston,Gulf,3540,5172,0.13032
+Sabine-Neches,Gulf,1553,2750,0.06929
+Los Angeles-Long Beach,Pacific,1905,2444,0.06158
+Lower Columbia,Pacific,1257,2248,0.05664
+San Francisco Bay,Pacific,1156,2226,0.05609
+Delaware River,Atlantic,1013,1936,0.04878
+New York-New Jersey,Atlantic,1700,1700,0.04283
+Puget Sound,Pacific,849,1166,0.02938
+Baltimore,Atlantic,1067,1067,0.02688
+Virginia (Norfolk),Atlantic,1063,1063,0.02678
+Savannah,Atlantic,1024,1024,0.0258
+Mobile,Gulf,867,867,0.02185
+Corpus Christi,Gulf,850,850,0.02142
+Tampa Bay,Gulf,529,843,0.02124
+Charleston,Atlantic,721,721,0.01817
+Freeport,Gulf,624,624,0.01572
+Oxnard,Pacific,584,584,0.01471
+Port Everglades,Atlantic,536,536,0.01351
+Lake Charles,Gulf,514,514,0.01295
+Jackson County,Gulf,320,320,0.00806
+"Wilmington, NC",Atlantic,289,289,0.00728
+Boston,Atlantic,287,287,0.00723
+Brunswick,Atlantic,285,285,0.00718
+Brownsville,Gulf,278,278,0.007
+PortMiami,Atlantic,248,248,0.00625
+Detroit-Wayne County,Great Lakes,242,242,0.0061
+Canaveral,Atlantic,216,216,0.00544
+San Diego,Pacific,205,205,0.00517
+Stockton,Pacific,186,186,0.00469
+Providence,Atlantic,178,178,0.00448
+Anacortes,Pacific,174,174,0.00438
+Jacksonville,Gulf,173,173,0.00436
+New Haven,Atlantic,173,173,0.00436
+Calhoun,Gulf,158,158,0.00398
+Morehead City,Atlantic,149,149,0.00375
+Palm Beach,Atlantic,141,141,0.00355
+Panama City,Gulf,123,123,0.0031
+Duluth-Superior,Great Lakes,114,114,0.00287
+Toledo-Lucas County,Great Lakes,99,99,0.00249
+Cleveland-Cuyahoga,Great Lakes,93,93,0.00234
+Grays Harbor,Pacific,93,93,0.00234
+Portsmouth,Atlantic,91,91,0.00229
+Sacramento-Yolo,Pacific,91,91,0.00229
+Milwaukee,Great Lakes,82,82,0.00207
+"Portland, ME",Atlantic,74,74,0.00186
+Albany,Atlantic,73,73,0.00184
+Gulfport,Gulf,72,72,0.00181
+Two Harbors,Great Lakes,69,69,0.00174
+Searsport,Atlantic,47,47,0.00118
+Coos Bay,Pacific,41,41,0.00103
+Redwood City,Pacific,38,38,0.00096
+Sandusky,Great Lakes,28,28,0.00071
+Marquette,Great Lakes,24,24,0.0006
+Conneaut,Great Lakes,21,21,0.00053
+Chicago (Illinois Intl.),Great Lakes,1,1,3e-05

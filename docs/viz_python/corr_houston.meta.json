@@ -28,7 +28,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of the Houston Ship Channel route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 2,586 ships at the entrance and 481 at Houston.",
+  "alt": "Map of the Houston Ship Channel route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 2,693 ships at the entrance and 491 at Houston.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_houston.png",

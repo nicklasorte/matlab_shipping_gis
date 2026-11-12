@@ -25,7 +25,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Dumbbell chart of the 15 busiest deep-draft ports, each row joining its share of large-ship port visits in 2023 to its share in 2024; most pairs nearly touch.",
+  "alt": "Dumbbell chart of the 15 busiest deep-draft ports, each row joining its share of large-ship port visits in 2024 to its share in 2025; most pairs nearly touch.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/share10_years.png",

@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>About 1 ship in 11 reporting on AIS passes the large-ship filter</dc:title>
-    <dc:date>2026-11-11T09:54:43.632141</dc:date>
+    <dc:date>2026-11-12T18:30:53.875884</dc:date>
     <dc:description>Horizontal bar chart of ships after each filter step on July 10, 2024: 22,414 reporting, 1,980 kept.</dc:description>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
@@ -869,7 +869,7 @@ L 655.108125 169.173061
 L 655.108125 136.152066 
 L 144.3425 136.152066 
 z
-" clip-path="url(#p03ba54adba)" style="fill: #8a8d91"/>
+" clip-path="url(#p6e2287b8f6)" style="fill: #8a8d91"/>
    </g>
    <g id="patch_4">
     <path d="M 144.3425 222.432732 
@@ -877,7 +877,7 @@ L 333.367255 222.432732
 L 333.367255 189.411736 
 L 144.3425 189.411736 
 z
-" clip-path="url(#p03ba54adba)" style="fill: #8a8d91"/>
+" clip-path="url(#p6e2287b8f6)" style="fill: #8a8d91"/>
    </g>
    <g id="patch_5">
     <path d="M 144.3425 275.692402 
@@ -885,7 +885,7 @@ L 207.100086 275.692402
 L 207.100086 242.671406 
 L 144.3425 242.671406 
 z
-" clip-path="url(#p03ba54adba)" style="fill: #8a8d91"/>
+" clip-path="url(#p6e2287b8f6)" style="fill: #8a8d91"/>
    </g>
    <g id="patch_6">
     <path d="M 144.3425 328.952072 
@@ -893,7 +893,7 @@ L 194.111043 328.952072
 L 194.111043 295.931077 
 L 144.3425 295.931077 
 z
-" clip-path="url(#p03ba54adba)" style="fill: #8a8d91"/>
+" clip-path="url(#p6e2287b8f6)" style="fill: #8a8d91"/>
    </g>
    <g id="patch_7">
     <path d="M 144.3425 382.211743 
@@ -901,7 +901,7 @@ L 189.462333 382.211743
 L 189.462333 349.190747 
 L 144.3425 349.190747 
 z
-" clip-path="url(#p03ba54adba)" style="fill: #5674c4"/>
+" clip-path="url(#p6e2287b8f6)" style="fill: #5674c4"/>
    </g>
    <g id="text_6">
     <!-- 22,414 -->
@@ -2523,7 +2523,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p03ba54adba">
+  <clipPath id="p6e2287b8f6">
    <rect x="144.3425" y="123.849082" width="572.0575" height="270.665645"/>
   </clipPath>
  </defs>

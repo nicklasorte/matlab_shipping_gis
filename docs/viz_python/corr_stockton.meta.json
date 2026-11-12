@@ -28,7 +28,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of the San Joaquin River route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 746 ships at the entrance and 187 at Stockton.",
+  "alt": "Map of the San Joaquin River route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 743 ships at the entrance and 164 at Stockton.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_stockton.png",

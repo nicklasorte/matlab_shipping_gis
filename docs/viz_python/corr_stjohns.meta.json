@@ -28,7 +28,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of the St. Johns River route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 361 ships at the entrance and 152 at Jacksonville.",
+  "alt": "Map of the St. Johns River route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 393 ships at the entrance and 157 at Jacksonville.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_stjohns.png",

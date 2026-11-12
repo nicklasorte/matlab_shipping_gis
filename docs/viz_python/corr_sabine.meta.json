@@ -28,7 +28,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of the Sabine-Neches Waterway route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 1,007 ships at the entrance and 215 at Beaumont.",
+  "alt": "Map of the Sabine-Neches Waterway route cells shaded by distinct large ships, and a step chart of ships against distance from the entrance; 1,032 ships at the entrance and 205 at Beaumont.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/corr_sabine.png",
