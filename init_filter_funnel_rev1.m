@@ -16,7 +16,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear; clc;
 
-f.days=[datetime(2023,7,12) datetime(2024,7,10)];   %%%%%mid-year Wednesdays (in the weekly sample)
+f.days=[datetime(2024,7,10) datetime(2025,7,9)];   %%%%%mid-year Wednesdays in the 2024-2025 sample (2023-07-12 before November 2026)
 f.latlim=[22 50];
 f.lonlim=[-130 -66];
 f.cells_per_degree=100;
@@ -26,7 +26,8 @@ f.filt.require_imo=true;
 f.filt.no_imo_types=[35 55];
 f.filt.min_sog_kn=0;
 f.data_dir=fullfile(pwd,'data');
-f.out_dir=fullfile(pwd,'output');
+per=period_rev1();
+f.out_dir=fullfile(pwd,'outputs',per.tag);   %%%%%the paper's attrition tables read from here
 f.zstd_exe='/opt/homebrew/bin/zstd';
 f.read_rows=1e6;
 
