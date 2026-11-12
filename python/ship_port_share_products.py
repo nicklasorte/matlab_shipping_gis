@@ -12,8 +12,8 @@ the shares are shares of port visits: port ships / sum over all ports.
 Usage (from the repo root):
   python3 python/ship_port_share_products.py
 
-Writes outputs/2023_2024/viz/port_share.csv:
-  port, short, complex, coast, lat, lon, rank, ships, ships_2023, ships_2024,
+Writes outputs/<period>/viz/port_share.csv:
+  port, short, complex, coast, lat, lon, rank, ships, ships_y0, ships_y1,
   share, cargo, tanker, passenger, government
 and port_share_complex.csv: complex, coast, ships (distinct ships in the
 union of its port areas), visits (sum of its ports), share.
@@ -28,17 +28,19 @@ from scipy.spatial import cKDTree
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, ".."))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ship_period as PER  # noqa: E402  analysis years
 import ship_viz_products as vp  # noqa: E402
 
 ROOT = os.path.join(HERE, "..")
-OUT = os.path.join(ROOT, "outputs", "2023_2024", "viz")
+OUT = os.path.join(ROOT, "outputs", PER.TAG, "viz")
 PORT_KM = 10.0
 TYPES = ["cargo", "tanker", "passenger", "government"]
 
 
 def main():
-    pp = [r for r in csv.DictReader(open(os.path.join(ROOT, "outputs", "2023_2024",
-                                                       "shipping_zone_2023_2024_principal_port_check.csv")))
+    pp = [r for r in csv.DictReader(open(os.path.join(ROOT, "outputs", PER.TAG,
+                                                       f"shipping_zone_{PER.TAG}_principal_port_check.csv")))
           if r["type"] != "I" and int(r["foreign_tons"]) >= 1e6]
     short = {r["port"]: r["short"] for r in csv.DictReader(open(os.path.join(ROOT, "config",
                                                                            "port_short_names_rev1.csv")))}
@@ -65,7 +67,7 @@ def main():
                 near[int(v)] = bool(kk)
         return np.array([near[int(v)] for v in c], dtype=bool)
 
-    def load(filts, years=(2023, 2024)):
+    def load(filts, years=PER.YEARS):
         parts = []
         for d in vp.days():
             if d.year not in years:
@@ -92,8 +94,8 @@ def main():
         u = np.unique(np.column_stack([pi[keep], P[keep, 1]]), axis=0)
         return np.bincount(u[:, 0], minlength=len(pp)), u
 
-    y23 = load(["main", "towing"], (2023,))
-    y24 = load(["main", "towing"], (2024,))
+    y23 = load(["main", "towing"], (PER.Y0,))
+    y24 = load(["main", "towing"], (PER.Y1,))
     both = np.unique(np.vstack([y23, y24]), axis=0)
     n_all, pm = port_counts(both)
     n23, _ = port_counts(y23)
@@ -109,7 +111,7 @@ def main():
     rows.sort(key=lambda x: -x[7])
     with open(os.path.join(OUT, "port_share.csv"), "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["port", "short", "complex", "coast", "lat", "lon", "rank", "ships", "ships_2023", "ships_2024", "share"]
+        w.writerow(["port", "short", "complex", "coast", "lat", "lon", "rank", "ships", "ships_y0", "ships_y1", "share"]
                    + TYPES)
         w.writerows(rows)
 

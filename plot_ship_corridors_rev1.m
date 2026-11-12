@@ -32,7 +32,8 @@ end
 C=style();
 C.out_dir=out_dir;
 C.dpi=dpi;
-C.src=['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in 2023 and 2024; large ships = cargo, ' ...
+per=period_rev1();   %%%%%analysis years (period_rev1.m)
+C.src=[['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in ' per.and '; large ships = cargo, '] ...
     'tanker, passenger, military, and other seagoing ships 100 m or longer, plus tug-barges near the coast. ' ...
     'Distance is measured along the large-ship route cells from the entrance.'];
 S=cor.summary;
@@ -46,7 +47,7 @@ n_half=nnz(S.share<0.5);
 titles(end+1)=sprintf(['On %d of %d rivers and ship channels, fewer than half of the large ships at the ' ...
     'entrance reach the head port'],n_half,height(S));
 fig=new_page(C,titles(end),['Distinct large ships within 3 km of the entrance and of the head port, ' ...
-    '104 sampled days in 2023 and 2024'],[C.src ' Entrance counts include ships bound for other ports near the entrance.'],6.6);
+    ['104 sampled days in ' per.and '']],[C.src ' Entrance counts include ships bound for other ports near the entrance.'],6.6);
 ax=axes(fig,'Position',[0.40 0.14 0.50 0.62]);
 style_axes(C,ax);
 set(ax,'YGrid','off','XGrid','on');
@@ -86,7 +87,7 @@ finish(C,fig,'corr01_reach_by_corridor');
 [~,o]=sort(S.length_km,'descend');
 titles(end+1)="Large-ship traffic falls off step by step as each river or channel passes its ports";
 fig=new_page(C,titles(end),['Distinct large ships (vertical axis) in each reach of each corridor (2 km reaches ' ...
-    'under 120 km long, 5 km otherwise), 2023 and 2024 together; each panel has its own scale'],C.src,8.0);
+    ['under 120 km long, 5 km otherwise), ' per.and ' together; each panel has its own scale']],C.src,8.0);
 tl=tiledlayout(fig,3,5,'TileSpacing','loose','Padding','compact');
 tl.Position=[0.03 0.10 0.94 0.70];
 for k=o'
@@ -132,8 +133,8 @@ for k=1:height(S)
     end
     titles(end+1)=t; %#ok<AGROW> one per corridor
     fig=new_page(C,t,sprintf(['%s: distinct large ships per route cell (map) and per %g km reach (chart), ' ...
-        '2023 and 2024 together (%d at the head in 2023, %d in 2024)'],S.label(k),S.bin_km(k), ...
-        S.ships_head_2023(k),S.ships_head_2024(k)),C.src,5.4);
+        ['' per.and ' together (%d at the head in ' num2str(per.years(1)) ', %d in ' num2str(per.years(2)) ')']],S.label(k),S.bin_km(k), ...
+        S.ships_head_y0(k),S.ships_head_y1(k)),C.src,5.4);
     %%%%%Map
     pts=[E.lat E.lon; M.lat(M.role~="target") M.lon(M.role~="target")];
     a0=min(pts(:,1));

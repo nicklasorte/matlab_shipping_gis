@@ -22,6 +22,8 @@ import matplotlib.patheffects as pe
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ship_period as PER  # noqa: E402  analysis years
 from onepager import OnePager  # noqa: E402
 import ship_viz_figures as vf  # noqa: E402
 
@@ -71,7 +73,7 @@ def corr_reach():
     page = OnePager(
         headline=f"On {n_half} of {len(ORDER)} rivers and ship channels, fewer than half of the large ships "
                  "at the entrance reach the head port",
-        subhead="Distinct large ships within 3 km of the entrance and of the head port, 104 sampled days in 2023 and 2024",
+        subhead=f"Distinct large ships within 3 km of the entrance and of the head port, 104 sampled days in {PER.AND}",
         source=SRC + " Entrance counts include ships bound for other ports near the entrance.",
         theme="ntia", layout="hero", size=(11, 7.8),
         alt="Dot chart with one row per river or ship channel, showing distinct large ships at the entrance (gray) "
@@ -111,7 +113,7 @@ def corr_profiles():
     page = OnePager(
         headline="Large-ship traffic falls off step by step as each river or channel passes its ports",
         subhead="Distinct large ships (vertical axis) in each reach of each corridor (2 km reaches under 120 km long, 5 km otherwise), "
-                "2023 and 2024 together; each panel has its own scale",
+                f"{PER.AND} together; each panel has its own scale",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.6),
         alt="Fifteen small step charts, one per river or ship channel, each showing distinct large ships against "
             "distance from the entrance; every profile steps down past the ports along the way.")
@@ -198,7 +200,7 @@ def corr_normalized():
         headline=f"{100 * sv:.0f}% of the large ships that enter the Savannah River reach Garden City; on the "
                  "Hudson and the Mississippi, fewer than 1 in 10 reach the head port",
         subhead="Share of large ships entering each corridor that were seen at or beyond each point, 15 rivers and "
-                "ship channels, 2023 and 2024 together",
+                f"ship channels, {PER.AND} together",
         source=SRC + " Ships entering = seen at least 3 km in from the entrance on any sampled day.",
         theme="ntia", layout="hero", size=(11, 7.4), margin_right=2.6,
         alt="Fifteen falling step lines, one per river or ship channel, of the share of entering large ships seen "
@@ -220,7 +222,7 @@ def corr_counts():
                  f"only about {round(head_n('mississippi'), -1):.0f} reach Baton Rouge and "
                  f"{round(head_n('houston'), -1):.0f} reach Houston",
         subhead="Distinct large ships seen at or beyond each point of each corridor, 15 rivers and ship channels, "
-                "2023 and 2024 together",
+                f"{PER.AND} together",
         source=SRC + " Counts start 3 km in from the entrance.",
         theme="ntia", layout="hero", size=(11, 7.4), margin_right=2.6,
         alt="Fifteen falling step lines, one per river or ship channel, of distinct large ships seen at or beyond "
@@ -251,8 +253,8 @@ def corr_page(c):
     page = OnePager(
         headline=head,
         subhead=f"{s['label']}: distinct large ships per route cell (map) and per {float(s['bin_km']):g} km reach "
-                f"(chart), 2023 and 2024 together ({int(s['ships_head_2023'])} at the head in 2023, "
-                f"{int(s['ships_head_2024'])} in 2024)",
+                f"(chart), {PER.AND} together ({int(s['ships_head_y0'])} at the head in {PER.Y0}, "
+                f"{int(s['ships_head_y1'])} in {PER.Y1})",
         source=SRC, theme="ntia", layout="map-left", size=(11, 6.4),
         alt=f"Map of the {s['label']} route cells shaded by distinct large ships, and a step chart of ships against "
             f"distance from the entrance; {int(s['ships_entrance']):,} ships at the entrance and "

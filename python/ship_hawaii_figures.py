@@ -1,8 +1,8 @@
 """Draw the Hawaii route and zone maps (Python), NTIA style.
 
-Inputs: outputs/2023_2024/islands/hawaii_rule_cells.npz (ship-days route cells, from
-ship_route_rules.py), outputs/2023_2024/islands/hawaii_routes.npz (all large-ship
-cells), and the MATLAB zone shapefiles in outputs/2023_2024/hawaii/ (from
+Inputs: outputs/<period>/islands/hawaii_rule_cells.npz (ship-days route cells, from
+ship_route_rules.py), outputs/<period>/islands/hawaii_routes.npz (all large-ship
+cells), and the MATLAB zone shapefiles in outputs/<period>/hawaii/ (from
 init_shipping_zone_hawaii_rev1.m). Maps use Hawaii Albers equal area (ESRI:102007).
 
 Usage (from the repo root):
@@ -25,13 +25,14 @@ sys.path.insert(0, HERE)
 from onepager import OnePager  # noqa: E402
 import ship_island_routes as isl  # noqa: E402
 import ship_viz_figures as vf  # noqa: E402
+import ship_period as PER  # noqa: E402  analysis years
 
-ISL = os.path.join(ROOT, "outputs", "2023_2024", "islands")
-HAW = os.path.join(ROOT, "outputs", "2023_2024", "hawaii")
-STEM = "shipping_zone_hawaii_2023_2024"
+ISL = os.path.join(ROOT, "outputs", PER.TAG, "islands")
+HAW = os.path.join(ROOT, "outputs", PER.TAG, "hawaii")
+STEM = f"shipping_zone_hawaii_{PER.TAG}"
 TO = Transformer.from_crs(4326, "ESRI:102007", always_xy=True)
 EXT = (-160.6, -154.6, 18.8, 22.4)   # lon, lat limits drawn
-SRC = ("Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in 2023 and 2024; route cells crossed by "
+SRC = (f"Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in {PER.AND}; route cells crossed by "
        "large ships on at least 6 ship-days (ship-days rule); Census 1:500,000 state outline.")
 SHORT = {"Honolulu, O'ahu, HI": "Honolulu", "Kalaeloa Barbers Point, HI": "Kalaeloa", "Kahului, Maui, HI": "Kahului",
          "Kawaihae, Hawai'i, HI": "Kawaihae", "Hilo, Hawai'i, HI": "Hilo", "Nawiliwili, Kaua'i, HI": "Nawiliwili"}
@@ -118,8 +119,6 @@ def haw_routes():
 
 def haw_zones():
     shares = {}
-    with open(os.path.join(HAW, f"{STEM}_band_zones.csv")) as f:
-        bands = list(csv.DictReader(f))
     import scipy.io
     m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_shore_rev1.mat"), squeeze_me=True, struct_as_record=False)
     zs = m["zone"]

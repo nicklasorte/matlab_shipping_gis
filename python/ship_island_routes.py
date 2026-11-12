@@ -2,7 +2,7 @@
 
 Same rules as ship_viz_products.py: a cell is on the route network when at least
 MIN_SHIPS distinct large ships (main filter, plus tug-barges within
-TOWING_COAST_KM of the Census coastline) cross it in 2023 or in 2024.
+TOWING_COAST_KM of the Census coastline) cross it in either year of the analysis period (python/ship_period.py).
 
 Checks reported for the gate in docs/plans/alaska_hawaii_plan_rev1.md:
   - distance from each USACE port in the area to the nearest route cell,
@@ -10,7 +10,7 @@ Checks reported for the gate in docs/plans/alaska_hawaii_plan_rev1.md:
   - distinct large ships per sampled day.
 
 Usage: python3 python/ship_island_routes.py [hawaii] [prusvi]
-Writes outputs/2023_2024/islands/<grid>_routes.npz, <grid>_summary.json, <grid>_daily.csv.
+Writes outputs/<period>/islands/<grid>_routes.npz, <grid>_summary.json, <grid>_daily.csv.
 """
 import csv
 import json
@@ -29,8 +29,9 @@ sys.path.insert(0, ROOT)
 sys.path.insert(0, HERE)
 import ais_cells_py_rev1 as cells  # noqa: E402
 import ship_viz_products as vp  # noqa: E402  same days(), MIN_SHIPS, TOWING_COAST_KM
+import ship_period as PER  # noqa: E402  analysis years
 
-OUT = os.path.join(ROOT, "outputs", "2023_2024", "islands")
+OUT = os.path.join(ROOT, "outputs", PER.TAG, "islands")
 # USACE Principal Ports in each area (approximate public coordinates of the harbor)
 PORTS = {
     "hawaii": {"Honolulu": (21.305, -157.870), "Kalaeloa (Barbers Point)": (21.320, -158.120),
@@ -95,7 +96,7 @@ def run(grid):
     tree = coast_tree(grid)
     tow_ok = {}
     per_year, daily = {}, []
-    for yr in (2023, 2024):
+    for yr in PER.YEARS:
         acc = []
         for d in [x for x in vp.days() if x.year == yr]:
             m, t = load(d, "main", grid), load(d, "towing", grid)
@@ -135,7 +136,7 @@ def run(grid):
                        "on_main_piece": bool(lab[(route[i[0]] - 1) % nr, (route[i[0]] - 1) // nr] == np.argmax(sizes) + 1)}
     ships_day = np.array([r["ships"] for r in daily])
     summ = {"grid": grid, "limits": cells.GRIDS[grid], "days": len(daily),
-            "route_cells": int(len(route)), "route_cells_2023": n_year[2023], "route_cells_2024": n_year[2024],
+            "route_cells": int(len(route)), "route_cells_y0": n_year[PER.Y0], "route_cells_y1": n_year[PER.Y1],
             "route_area_km2_approx": round(float(np.sum(np.cos(np.radians(rl)) * (111.32 * cells.CELL_DEG) ** 2)), 0),
             "distinct_ships_both_years": int(len(np.unique(allp[:, 1]))),
             "ships_per_day_median": float(np.median(ships_day)), "ships_per_day_min": int(ships_day.min()),

@@ -6,7 +6,7 @@ function [titles]=plot_ship_viz_rev1(prod,out_dir,census_shp,sweep_csv,funnel_cs
 %   and writes PNGs to OUT_DIR:
 %
 %     fig01_traffic_density          distinct ships per route cell (map)
-%     fig02_baltimore_key_bridge     ships in Baltimore harbor by week, 2023 vs 2024
+%     fig02_baltimore_key_bridge     ships in Baltimore harbor by week, closure year vs the other year
 %     fig03_seasons_by_coast         ships per sampled day, four coasts
 %     fig04_length_cutoff_sweep      length test vs gross tonnage, 50-200 m
 %     fig05_filter_funnel            ships left after each filter step
@@ -42,7 +42,8 @@ C.albers=projcrs(5070);
 C.states=load_states(census_shp,C.albers);
 C.dpi=dpi;
 C.out_dir=out_dir;
-C.src=['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in 2023 and 2024; large ships = cargo, ' ...
+per=period_rev1();   %%%%%analysis years (period_rev1.m)
+C.src=[['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in ' per.and '; large ships = cargo, '] ...
     'tanker, passenger, military, and other seagoing ships 100 m or longer, plus tug-barges near the coast.'];
 s=prod.summary;
 titles=strings(10,1);
@@ -52,7 +53,7 @@ in_route=ismember(prod.both_cell,prod.route_cells);
 cells=prod.both_cell(in_route);
 ships=prod.both_ships(in_route);
 titles(1)=sprintf('The busiest %.0f%% of route cells carry half of all large-ship traffic',100*s.share_cells_half_traffic);
-[fig,ax]=new_map(C,titles(1),'Distinct large ships per 1 km route cell, 2023 and 2024 together',C.src);
+[fig,ax]=new_map(C,titles(1),['Distinct large ships per 1 km route cell, ' per.and ' together'],C.src);
 [x,y]=cells_xy(prod.R,cells,C.albers);
 edges=[4 10 50 200 1000 Inf];
 bin=discretize(ships,edges);
@@ -72,8 +73,9 @@ d=prod.daily;
 doy=day(d.day,'dayofyear');
 c0=day(datetime(2024,3,26),'dayofyear');
 c1=day(datetime(2024,6,10),'dayofyear');
-in24=d.year==2024 & doy>=c0 & doy<=c1;
-in23=d.year==2023 & doy>=c0-3 & doy<=c1+3;
+other=setdiff(per.years,per.closure_year);   %%%%%the year without the closure
+in24=d.year==per.closure_year & doy>=c0 & doy<=c1;
+in23=d.year==other & doy>=c0-3 & doy<=c1+3;
 drop=1-mean(d.Baltimore(in24))/mean(d.Baltimore(in23));
 titles(2)=sprintf('Large ships in Baltimore harbor fell %.0f%% during the 2024 Key Bridge closure',100*drop);
 [fig,ax]=new_chart(C,titles(2),'Distinct large ships within 8 km of the Patapsco River harbor on each sampled Wednesday', ...
@@ -81,12 +83,12 @@ titles(2)=sprintf('Large ships in Baltimore harbor fell %.0f%% during the 2024 K
 wk=(doy-1)/7+1;
 patch(ax,[c0 c1 c1 c0]/7+1,[0 0 34 34],C.panel,'EdgeColor','none');
 text(ax,(c0+c1)/14+1,31,'Key Bridge closure','HorizontalAlignment','center','FontName',C.font,'FontSize',9,'Color',C.dark);
-m=d.year==2023;
+m=d.year==other;
 plot(ax,wk(m),d.Baltimore(m),'Color',C.gray,'LineWidth',1.2);
-text(ax,wk(find(m,1,'last'))+0.7,d.Baltimore(find(m,1,'last')),'2023','FontName',C.font,'FontSize',9,'FontWeight','bold','Color',C.dark);
-m=d.year==2024;
+text(ax,wk(find(m,1,'last'))+0.7,d.Baltimore(find(m,1,'last')),num2str(other),'FontName',C.font,'FontSize',9,'FontWeight','bold','Color',C.dark);
+m=d.year==per.closure_year;
 plot(ax,wk(m),d.Baltimore(m),'Color',C.blue,'LineWidth',2);
-text(ax,wk(find(m,1,'last'))+0.7,d.Baltimore(find(m,1,'last')),'2024','FontName',C.font,'FontSize',9,'FontWeight','bold','Color',C.dark);
+text(ax,wk(find(m,1,'last'))+0.7,d.Baltimore(find(m,1,'last')),num2str(per.closure_year),'FontName',C.font,'FontSize',9,'FontWeight','bold','Color',C.dark);
 xlim(ax,[1 55]);
 ylim(ax,[0 34]);
 xlabel(ax,'Week of the year');
@@ -98,7 +100,7 @@ mon=month(d.day);
 gl=d.Great_Lakes;
 titles(3)=sprintf('Great Lakes traffic falls by half in winter (%.0f vs. %.0f ships); the ocean coasts barely change', ...
     mean(gl(ismember(mon,1:3))),mean(gl(ismember(mon,6:9))));
-fig=new_page(C,titles(3),'Distinct large ships on each sampled Wednesday, 2023 and 2024', ...
+fig=new_page(C,titles(3),['Distinct large ships on each sampled Wednesday, ' per.and ''], ...
     [C.src ' Coasts are split by simple latitude and longitude boxes.'],6.2);
 tl=tiledlayout(fig,2,2,'TileSpacing','compact','Padding','compact');
 tl.Position=[0.07 0.13 0.9 0.6];
@@ -158,7 +160,7 @@ finish(C,fig,'fig05_filter_funnel');
 
 %%%%%6. Stability between years
 titles(6)=sprintf('%.0f%% of large-ship traffic is in cells that pass the threshold in both years',100*s.share_traffic_both_years);
-[fig,ax]=new_map(C,titles(6),sprintf(['Route cells with 4 or more ships in both 2023 and 2024 (%s cells, blue) or in only ' ...
+[fig,ax]=new_map(C,titles(6),sprintf([['Route cells with 4 or more ships in both ' per.and ' (%s cells, blue) or in only '] ...
     'one year (%s cells, gray)'],comma(s.both_years),comma(s.only_one_year)),C.src);
 [x,y]=cells_xy(prod.R,prod.only_one_year,C.albers);
 scatter(ax,x,y,0.4,C.gray,'s','filled','MarkerEdgeColor','none');
@@ -188,7 +190,7 @@ rv=prod.river;
 km=(rv.river_km_from+rv.river_km_to)/2;
 titles(8)=sprintf('Traffic thins above New Orleans, but large ships still reach Baton Rouge, %.0f river km upstream', ...
     prod.river_km.baton_rouge);
-[fig,ax]=new_chart(C,titles(8),'Distinct large ships in each 5 km reach of the Mississippi River, 104 sampled days in 2023 and 2024', ...
+[fig,ax]=new_chart(C,titles(8),['Distinct large ships in each 5 km reach of the Mississippi River, 104 sampled days in ' per.and ''], ...
     [C.src ' River distance is measured through the route cells from Head of Passes.']);
 stairs(ax,[rv.river_km_from; rv.river_km_to(end)],[rv.ships; rv.ships(end)],'Color',C.blue,'LineWidth',1.8);
 top=max(rv.ships);

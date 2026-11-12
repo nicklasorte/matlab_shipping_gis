@@ -21,13 +21,13 @@ For each corridor:
 Usage (from the repo root):
   python3 python/ship_corridor_products.py
 
-Writes outputs/2023_2024/viz/:
+Writes outputs/<period>/viz/:
   corridor_profile.csv   corridor, km_from, km_to, ships
   corridor_marks.csv     corridor, role, name, lat, lon, km
   corridor_cells.csv     corridor, cell, lat, lon, km, ships (corridor cells, for maps)
   corridor_path.csv      corridor, km, lat, lon, ships (path cells)
   corridor_summary.csv   corridor, label, length_km, bin_km, ships_entrance,
-                         ships_head, ships_head_2023, ships_head_2024, share_head,
+                         ships_head, ships_head_y0, ships_head_y1, share_head,
                          ships_entering, share_reaching_head
   corridor_continuation.csv  corridor, frac_to_head, ships_beyond, share_beyond:
                          distinct ships seen at or beyond each point (counted from
@@ -46,10 +46,12 @@ from scipy.spatial import cKDTree
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, ".."))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ship_period as PER  # noqa: E402  analysis years
 import ship_viz_products as vp  # noqa: E402  same days, grid, coastline, and tug-barge rule
 
 ROOT = os.path.join(HERE, "..")
-OUT = os.path.join(ROOT, "outputs", "2023_2024", "viz")
+OUT = os.path.join(ROOT, "outputs", PER.TAG, "viz")
 CONFIG = os.path.join(ROOT, "config", "corridors_rev1.csv")
 BOX_PAD_DEG = 0.3      # box around start and end points for the graph
 COST_K = 100.0         # edge cost = km * (1 + COST_K / ships): the path keeps to the busy channel
@@ -150,7 +152,7 @@ def main():
         return np.array([near[int(v)] for v in c], dtype=bool)
 
     pairs = {}
-    for yr in (2023, 2024):
+    for yr in PER.YEARS:
         parts = []
         for d in [x for x in vp.days() if x.year == yr]:
             parts.append(vp.load_pairs(d, "main"))
@@ -245,7 +247,7 @@ def main():
     write("corridor_cells.csv", ["corridor", "cell", "lat", "lon", "km", "ships"], cell_rows)
     write("corridor_path.csv", ["corridor", "km", "lat", "lon", "ships"], path_rows)
     write("corridor_summary.csv", ["corridor", "label", "length_km", "bin_km", "ships_entrance", "ships_head",
-                                   "ships_head_2023", "ships_head_2024", "share_head", "ships_entering", "share_reaching_head"],
+                                   "ships_head_y0", "ships_head_y1", "share_head", "ships_entering", "share_reaching_head"],
           summ_rows)
     write("corridor_continuation.csv", ["corridor", "frac_to_head", "ships_beyond", "share_beyond"], surv_rows)
 

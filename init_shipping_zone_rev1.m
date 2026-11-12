@@ -20,13 +20,13 @@ p.cells_per_degree=100;   %%%%%0.01 deg, about 1.1 km by 0.8-1.0 km
 %%%%%%%%%%AIS sample: one day a week for a full year covers seasonal
 %%%%%%%%%%traffic (Great Lakes close Jan-Mar) at 1/7 of the download.
 %%%%%%%%%%Each 2024 day is about 200 MB compressed, 750 MB as CSV.
-%%%%%%%%%%Two years (2023 and 2024) so one unusual year doesn't set the
-%%%%%%%%%%routes: the Key Bridge collapse closed Baltimore's main channel
-%%%%%%%%%%from March 26 to June 10, 2024. A cell counts when either year
+%%%%%%%%%%Two years (2024 and 2025, the most recent full years) so one
+%%%%%%%%%%unusual year doesn't set the routes: the Key Bridge collapse closed
+%%%%%%%%%%Baltimore's main channel from March 26 to June 10, 2024. A cell counts when either year
 %%%%%%%%%%meets the ship threshold. ais_cells_py_rev1.py builds the same
 %%%%%%%%%%per-day caches in Python (streams each day, no CSV on disk).
-p.ais_days=[datetime(2023,1,4):caldays(7):datetime(2023,12,31), ...
-    datetime(2024,1,3):caldays(7):datetime(2024,12,31)];
+per=period_rev1();         %%%%%analysis years: 2024-2025 (period_rev1.m)
+p.ais_days=per.days;       %%%%%the first 52 Wednesdays of each year
 p.delete_csv=true;        %%%%%keep only the per-day cell cache
 p.prefilter_min_length=100; %%%%%stream-filter each day by length (needs /usr/bin/python3); 0 writes the full CSV
 p.zstd_exe='/opt/homebrew/bin/zstd';
@@ -105,8 +105,8 @@ p.region_maps=struct( ...
     'latlim',{[28.8 31.0],[29.80 30.62]}, ...
     'lonlim',{[-91.7 -88.8],[-91.40 -89.85]}, ...
     'ports',{river_ports,river_ports}, ...
-    'title',{'Large ships travel the Mississippi up to Baton Rouge (2023-2024)', ...
-             'Large ships use the Mississippi from New Orleans to Baton Rouge (2023-2024)'}, ...
+    'title',{['Large ships travel the Mississippi up to Baton Rouge (' per.range ')'], ...
+             ['Large ships use the Mississippi from New Orleans to Baton Rouge (' per.range ')']}, ...
     'count_port',{"Baton Rouge, LA","Baton Rouge, LA"}, ...
     'count_radius_km',{3,3});
 
@@ -125,7 +125,7 @@ p.census_year=2023;
 %%%%%%%%%%Folders and names
 p.data_dir=fullfile(pwd,'data');
 p.out_dir=fullfile(pwd,'output');
-p.out_name='shipping_zone_2023_2024';
+p.out_name=['shipping_zone_' per.tag];
 p.make_figure=true;
 
 %%%%%%%%%%Output size

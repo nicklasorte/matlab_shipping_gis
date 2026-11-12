@@ -1,7 +1,7 @@
 """Compare three route rules for the island grids, each calibrated on the lower 48.
 
 Rules (a cell is a route cell when ...):
-  A. min_ships  - at least N distinct large ships cross it in 2023 or in 2024
+  A. min_ships  - at least N distinct large ships cross it in either year of the analysis period
                   (the paper's rule uses N = 4; sweep N = 1..4).
   B. ship_days  - our own transit count: the sum over the 104 sampled days of the
                   distinct large ships in the cell that day is at least K.
@@ -15,7 +15,7 @@ cell, and whether each port connects to Honolulu (or San Juan) through route cel
 (8-neighbor, with one-cell gaps bridged).
 
 Usage: python3 python/ship_route_rules.py
-Writes outputs/2023_2024/islands/route_rules.json and <grid>_rule_cells.npz.
+Writes outputs/<period>/islands/route_rules.json and <grid>_rule_cells.npz.
 """
 import json
 import os
@@ -34,9 +34,10 @@ sys.path.insert(0, ROOT)
 sys.path.insert(0, HERE)
 import ais_cells_py_rev1 as cells  # noqa: E402
 import ship_viz_products as vp  # noqa: E402
+import ship_period as PER  # noqa: E402  analysis years
 import ship_island_routes as isl  # noqa: E402
 
-OUT = os.path.join(ROOT, "outputs", "2023_2024", "islands")
+OUT = os.path.join(ROOT, "outputs", PER.TAG, "islands")
 TIF = os.path.join(ROOT, "data", "ref", "ais-transit-count-2024.tif")
 HUB = {"hawaii": "Honolulu", "prusvi": "San Juan", "alaska": "Valdez"}
 TO_LL = Transformer.from_crs(3857, 4326, always_xy=True)
@@ -75,7 +76,7 @@ def conus_counts():
     coast = vp.coast_cells()
     cl, co = vp.cell_latlon(coast)
     tree = cKDTree(vp.ecef(cl, co))
-    ok_tow, days_acc, year = {}, [], {2023: [], 2024: []}
+    ok_tow, days_acc, year = {}, [], {y: [] for y in PER.YEARS}
     for d in vp.days():
         m, t = vp.load_pairs(d, "main"), vp.load_pairs(d, "towing")
         if len(t):
@@ -97,7 +98,7 @@ def conus_counts():
 
 def island_counts(grid):
     tree = isl.coast_tree(grid)
-    ok_tow, days_acc, year = {}, [], {2023: [], 2024: []}
+    ok_tow, days_acc, year = {}, [], {y: [] for y in PER.YEARS}
     for d in vp.days():
         m, t = isl.load(d, "main", grid), isl.load(d, "towing", grid)
         if len(t):

@@ -26,8 +26,8 @@ p.lonlim=[-162 -153];
 p.cells_per_degree=100;   %%%%%0.01 deg, same as the lower 48
 
 %%%%%%%%%%AIS sample (same 104 days as the lower 48)
-p.ais_days=[datetime(2023,1,4):caldays(7):datetime(2023,12,31), ...
-    datetime(2024,1,3):caldays(7):datetime(2024,12,31)];
+per=period_rev1();         %%%%%analysis years: 2024-2025 (period_rev1.m)
+p.ais_days=per.days;       %%%%%the first 52 Wednesdays of each year
 p.delete_csv=true;
 p.prefilter_min_length=100;
 p.zstd_exe='/opt/homebrew/bin/zstd';
@@ -76,7 +76,7 @@ p.census_year=2023;
 %%%%%%%%%%Folders and names
 p.data_dir=fullfile(pwd,'data');
 p.out_dir=fullfile(pwd,'output_hawaii');
-p.out_name='shipping_zone_hawaii_2023_2024';
+p.out_name=['shipping_zone_hawaii_' per.tag];
 p.make_figure=false;
 
 %%%%%%%%%%Output size

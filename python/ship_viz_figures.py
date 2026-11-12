@@ -22,13 +22,15 @@ from pyproj import Transformer
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ship_period as PER  # noqa: E402  analysis years
 from onepager import OnePager  # noqa: E402
 
 ROOT = os.path.join(HERE, "..")
-VIZ = os.path.join(ROOT, "outputs", "2023_2024", "viz")
+VIZ = os.path.join(ROOT, "outputs", PER.TAG, "viz")
 OUT = os.path.join(ROOT, "docs", "viz_python")
 STATES = os.path.join(ROOT, "data", "cb_2023_us_state_500k", "cb_2023_us_state_500k.shp")
-SRC_AIS = ("Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in 2023 and 2024; "
+SRC_AIS = (f"Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in {PER.AND}; "
            "large ships = cargo, tanker, passenger, military, and other seagoing ships 100 m or longer, "
            "plus tug-barges near the coast.")
 TO_ALB = Transformer.from_crs(4326, 5070, always_xy=True)
@@ -107,7 +109,7 @@ def fig_density():
     half_share = np.searchsorted(cs, 0.5) / len(ships)
     page = OnePager(
         headline=f"The busiest {100 * half_share:.0f}% of route cells carry half of all large-ship traffic",
-        subhead="Distinct large ships per 1 km route cell, 2023 and 2024 together",
+        subhead=f"Distinct large ships per 1 km route cell, {PER.AND} together",
         source=SRC_AIS, theme="ntia", layout="hero", size=(11, 7.6),
         alt="Map of the lower 48 states with each large-ship route cell colored by how many distinct ships "
             "used it; the darkest cells are the main coastal lanes and port approaches.")
@@ -134,22 +136,23 @@ def fig_baltimore():
     b = np.array([int(r["Baltimore"]) for r in DAILY])
     doy = np.array([(dt.date.fromisoformat(r["day"]) - dt.date(int(r["year"]), 1, 1)).days for r in DAILY])
     c0, c1 = (dt.date(2024, 3, 26) - dt.date(2024, 1, 1)).days, (dt.date(2024, 6, 10) - dt.date(2024, 1, 1)).days
-    in24 = (YEAR == 2024) & (doy >= c0) & (doy <= c1)
-    in23 = (YEAR == 2023) & (doy >= c0 - 3) & (doy <= c1 + 3)
+    other = [y for y in PER.YEARS if y != PER.CLOSURE_YEAR][0]   # the year without the closure
+    in24 = (YEAR == PER.CLOSURE_YEAR) & (doy >= c0) & (doy <= c1)
+    in23 = (YEAR == other) & (doy >= c0 - 3) & (doy <= c1 + 3)
     drop = 1 - b[in24].mean() / b[in23].mean()
     page = OnePager(
         headline=f"Large ships in Baltimore harbor fell {100 * drop:.0f}% during the 2024 Key Bridge closure",
         subhead="Distinct large ships within 8 km of the Patapsco River harbor on each sampled Wednesday",
         source=SRC_AIS + " Closure: Fort McHenry Federal Channel, March 26 to June 10, 2024 (USACE).",
         theme="ntia", layout="hero", size=(11, 6.8), margin_right=0.8,
-        alt="Line chart of large ships in Baltimore harbor each sampled week in 2023 (gray) and 2024 (blue); "
+        alt=f"Line chart of large ships in Baltimore harbor each sampled week in {other} (gray) and 2024 (blue); "
             "the 2024 line drops during the shaded closure and recovers by June.")
     ax = page.panel(0)
     x = doy / 7.0 + 1
     ax.axvspan(c0 / 7 + 1, c1 / 7 + 1, color=page.theme.panel, zorder=0)
     ax.text((c0 + c1) / 14 + 1, 30, "Key Bridge closure", ha="center", fontsize=10.5, color=page.theme.text)
     page.lines(ax, None, {}, end_labels=False) if False else None
-    for yr, col, lw in ((2023, page.theme.context, 1.5), (2024, page.theme.accent, 2.4)):
+    for yr, col, lw in ((other, page.theme.context, 1.5), (PER.CLOSURE_YEAR, page.theme.accent, 2.4)):
         m = YEAR == yr
         ax.plot(x[m], b[m], color=col, lw=lw, zorder=3)
         ax.text(x[m][-1] + 0.6, b[m][-1], str(yr), color=page.theme.text,
@@ -169,8 +172,8 @@ def fig_seasons():
     gl = np.array([int(r["Great_Lakes"]) for r in DAILY])
     winter, summer = gl[np.isin(mon, [1, 2, 3])].mean(), gl[np.isin(mon, [6, 7, 8, 9])].mean()
     page = OnePager(
-        headline=f"Great Lakes traffic falls by half in winter; the ocean coasts barely change",
-        subhead="Distinct large ships on each sampled Wednesday, 2023 and 2024",
+        headline="Great Lakes traffic falls by half in winter; the ocean coasts barely change",
+        subhead=f"Distinct large ships on each sampled Wednesday, {PER.AND}",
         source=SRC_AIS + " Coasts are split by simple latitude and longitude boxes.",
         theme="ntia", layout="grid2x2", size=(11, 8.0),
         alt="Four line charts of large ships per sampled day for the Great Lakes, Atlantic, Gulf, and Pacific; "
@@ -221,7 +224,7 @@ def fig_sweep():
 
 # 5. Filter funnel -------------------------------------------------------------
 def fig_funnel():
-    rows = list(csv.DictReader(open(os.path.join(ROOT, "outputs", "2023_2024", "ais_filter_funnel.csv"))))
+    rows = list(csv.DictReader(open(os.path.join(ROOT, "outputs", "2023_2024", "ais_filter_funnel.csv"))))  # one day: July 10, 2024
     r24 = [r for r in rows if r["day"].startswith("10-Jul-2024") or r["day"].startswith("2024-07-10")]
     steps = ["All ships reporting", "Ship type kept", "Length 100 m or more", "IMO number", "Inside the analysis grid"]
     ships = [int(float(r["ships"])) for r in r24]
@@ -256,8 +259,8 @@ def fig_stability():
     share_visits = ships[r & both].sum() / ships[r].sum()
     page = OnePager(
         headline=f"{100 * share_visits:.0f}% of large-ship traffic is in cells that pass the threshold in both years",
-        subhead=f"Route cells with 4 or more ships in both 2023 and 2024 ({SUMM['both_years']:,} cells, blue) "
-                f"or in only one year ({SUMM['only_2023'] + SUMM['only_2024']:,} cells, gray)",
+        subhead=f"Route cells with 4 or more ships in both {PER.AND} ({SUMM['both_years']:,} cells, blue) "
+                f"or in only one year ({SUMM['only_y0'] + SUMM['only_y1']:,} cells, gray)",
         source=SRC_AIS, theme="ntia", layout="hero", size=(11, 7.6),
         alt="Map of route cells: cells that pass the ship threshold in both years form the main lanes in blue; "
             "cells that pass in only one year are scattered gray cells around them.")
@@ -305,7 +308,7 @@ def fig_mississippi():
     at_br = ships[np.argmin(abs(km - br))]
     page = OnePager(
         headline=f"Traffic thins above New Orleans, but large ships still reach Baton Rouge, {br:.0f} river km upstream",
-        subhead="Distinct large ships in each 5 km reach of the Mississippi River, 104 sampled days in 2023 and 2024",
+        subhead=f"Distinct large ships in each 5 km reach of the Mississippi River, 104 sampled days in {PER.AND}",
         source=SRC_AIS + " River distance is measured through the route cells from Head of Passes.",
         theme="ntia", layout="hero", size=(11, 6.6),
         alt="Line chart of distinct large ships along the Mississippi from Head of Passes to Baton Rouge; "

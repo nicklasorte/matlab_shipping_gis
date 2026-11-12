@@ -39,7 +39,8 @@ C.albers=projcrs(5070);
 C.states=load_states(census_shp,C.albers);
 C.dpi=dpi;
 C.out_dir=out_dir;
-C.src=['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in 2023 and 2024; large ships = cargo, ' ...
+per=period_rev1();   %%%%%analysis years (period_rev1.m)
+C.src=[['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in ' per.and '; large ships = cargo, '] ...
     'tanker, passenger, military, and other seagoing ships 100 m or longer, plus tug-barges near the coast.'];
 s=geo.summary;
 H=geo.hex;
@@ -49,7 +50,7 @@ hex_labels=["1-9","10-99","100-499","500-999","1,000+"];
 
 %%%%%G1. Hex grid
 titles(1)=sprintf('The busiest 5%% of hexagons carry %.0f%% of large-ship traffic',100*s.hex_share_top5pct);
-[fig,ax]=new_map(C,titles(1),'Distinct large ships per 25 km hexagon on the large-ship routes, 2023 and 2024 together', ...
+[fig,ax]=new_map(C,titles(1),['Distinct large ships per 25 km hexagon on the large-ship routes, ' per.and ' together'], ...
     [C.src ' Hexagons are drawn on an equal-area (Albers) projection.']);
 [~,o]=sort(H.ships);
 draw_hex(ax,H.x_km(o),H.y_km(o),C.ramp(discretize(H.ships(o),hex_edges),:),'w');
@@ -59,7 +60,7 @@ finish(C,fig,'geo01_hex_grid');
 %%%%%G2. Spike map
 titles(2)='Galveston Bay, the lower Mississippi, Los Angeles-Long Beach, and New York tower over the rest of the coast';
 [fig,ax]=new_map(C,titles(2),sprintf(['Spike height = distinct large ships per 25 km hexagon with 10 or more ships, ' ...
-    '2023 and 2024 together (tallest spike: %s ships)'],comma(s.hex_max_ships)),C.src);
+    ['' per.and ' together (tallest spike: %s ships)']],comma(s.hex_max_ships)),C.src);
 ylim(ax,[-150 3550]);
 k=H.ships>=10;
 [~,o]=sort(H.y_km(k),'descend');
@@ -99,7 +100,7 @@ for i=1:size(areas,1)
 end
 titles(3)=sprintf(['Inside the busiest port areas, large ships keep to narrow channels; these six areas hold %.0f%% ' ...
     'of the busiest route cells'],100*nnz(busy & inside)/nnz(busy));
-fig=new_page(C,titles(3),'Distinct large ships per 1 km route cell, 2023 and 2024 together (busiest cells: 200 or more ships)', ...
+fig=new_page(C,titles(3),['Distinct large ships per 1 km route cell, ' per.and ' together (busiest cells: 200 or more ships)'], ...
     C.src,6.2);
 tl=tiledlayout(fig,2,3,'TileSpacing','compact','Padding','compact');
 tl.Position=[0.03 0.11 0.94 0.63];
@@ -154,7 +155,7 @@ finish(C,fig,'geo04_offshore_bands');
 
 %%%%%G5. Near-shore profile
 titles(5)='Near-shore traffic peaks off Houston-Galveston, New York, and Los Angeles-Long Beach';
-fig=new_page(C,titles(5),'Distinct large ships within 50 km of shore in each half-degree along the coast, 2023 and 2024', ...
+fig=new_page(C,titles(5),['Distinct large ships within 50 km of shore in each half-degree along the coast, ' per.and ''], ...
     [C.src ' Pacific and Atlantic by latitude (south to north); Gulf by longitude (west to east).'],6.2);
 tl=tiledlayout(fig,3,1,'TileSpacing','compact','Padding','compact');
 tl.Position=[0.08 0.12 0.88 0.62];
@@ -182,7 +183,7 @@ finish(C,fig,'geo05_coast_profile');
 %%%%%G6. Port bubbles
 gp=geo.ports;
 titles(6)=sprintf('%d deep-draft ports each saw 1,000 or more different large ships within 10 km',s.ports_ge_1000);
-[fig,ax]=new_map(C,titles(6),'Circle area = distinct large ships within 10 km of each deep-draft port, 2023 and 2024 together', ...
+[fig,ax]=new_map(C,titles(6),['Circle area = distinct large ships within 10 km of each deep-draft port, ' per.and ' together'], ...
     [C.src ' Ports: USACE Principal Ports, coastal or Great Lakes, 1 million tons or more of foreign trade.']);
 [x,y]=projfwd(C.albers,gp.lat,gp.lon);
 [~,o]=sort(gp.ships,'descend');
@@ -209,7 +210,7 @@ if isempty(ht) || height(ht)==0
 else
 titles(7)=sprintf(['%.0f%% of tankers sail in Gulf waters, against %.0f%% of cargo ships; passenger and government ' ...
     'ships cluster at a few ports'],100*s.type_share_ships_gulf_tanker,100*s.type_share_ships_gulf_cargo);
-fig=new_page(C,titles(7),'Distinct ships of each type per 25 km hexagon, 2023 and 2024 together (each map has its own shading)', ...
+fig=new_page(C,titles(7),['Distinct ships of each type per 25 km hexagon, ' per.and ' together (each map has its own shading)'], ...
     [C.src ' Types from the AIS ship-type code: tanker 80-89, cargo 70-79, passenger 60-69, military 35, ' ...
     'law enforcement 55.'],6.6);
 tl=tiledlayout(fig,2,2,'TileSpacing','compact','Padding','compact');

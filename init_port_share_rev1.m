@@ -16,8 +16,8 @@ clear; clc;
 p.latlim=[22 50];
 p.lonlim=[-130 -66];
 p.cells_per_degree=100;
-p.ais_days=[datetime(2023,1,4):caldays(7):datetime(2023,12,31), ...
-    datetime(2024,1,3):caldays(7):datetime(2024,12,31)];
+per=period_rev1();         %%%%%analysis years: 2024-2025 (period_rev1.m)
+p.ais_days=per.days;       %%%%%the first 52 Wednesdays of each year
 p.filt=struct('vessel_types',[0 33 35 55 60:89 90:99],'min_length_m',100,'require_imo',true, ...
     'no_imo_types',[35 55],'min_sog_kn',0);
 p.filt_towing=struct('vessel_types',[31 32 52],'min_length_m',100,'require_imo',true, ...
@@ -27,8 +27,8 @@ p.min_unique_ships=4;
 p.census_year=2023;
 p.data_dir=fullfile(pwd,'data');
 p.config_dir=fullfile(pwd,'config');
-p.out_dir=fullfile(pwd,'outputs','2023_2024');
-p.out_name='shipping_zone_2023_2024';
+p.out_dir=fullfile(pwd,'outputs',per.tag);
+p.out_name=['shipping_zone_' per.tag];
 p.zstd_exe='/opt/homebrew/bin/zstd';      %%%%%only used if a day cache is missing
 p.delete_csv=true;
 p.prefilter_min_length=100;

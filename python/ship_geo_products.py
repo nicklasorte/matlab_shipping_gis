@@ -6,7 +6,7 @@ ais_cells_py_rev1.py (main, tug-barge, and ship-type filters).
 Usage (from the repo root):
   python3 python/ship_geo_products.py
 
-Writes outputs/2023_2024/viz/:
+Writes outputs/<period>/viz/:
   geo_hex.csv            distinct large ships per 25 km hexagon (Albers), all types
   geo_hex_types.csv      distinct ships per hexagon for cargo, tanker, passenger, government
   geo_ports.csv          distinct large ships within 10 km of each deep-draft port
@@ -30,10 +30,12 @@ from shapely.ops import unary_union
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, ".."))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ship_period as PER  # noqa: E402  analysis years
 import ship_viz_products as vp  # noqa: E402  same days, grid, coastline, and tug-barge rule
 
 ROOT = os.path.join(HERE, "..")
-OUT = os.path.join(ROOT, "outputs", "2023_2024", "viz")
+OUT = os.path.join(ROOT, "outputs", PER.TAG, "viz")
 HEX_R_KM = 12.5           # hexagon circumradius; 25 km corner to corner
 PORT_KM = 10.0
 NEAR_SHORE_KM = 50.0
@@ -154,8 +156,8 @@ def main():
             print("type", t, len(pt), flush=True)
 
     # 6. Ports: distinct ships within 10 km of each deep-draft port
-    pp = [r_ for r_ in csv.DictReader(open(os.path.join(ROOT, "outputs", "2023_2024",
-                                                       "shipping_zone_2023_2024_principal_port_check.csv")))
+    pp = [r_ for r_ in csv.DictReader(open(os.path.join(ROOT, "outputs", PER.TAG,
+                                                       f"shipping_zone_{PER.TAG}_principal_port_check.csv")))
           if r_["type"] != "I" and float(r_["foreign_tons"]) >= 1e6]
     plat = np.array([float(r_["lat"]) for r_ in pp])
     plon = np.array([float(r_["lon"]) for r_ in pp])

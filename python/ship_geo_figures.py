@@ -19,6 +19,8 @@ import matplotlib.patheffects as pe
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ship_period as PER  # noqa: E402  analysis years
 from onepager import OnePager  # noqa: E402
 import ship_viz_figures as vf  # noqa: E402  base map, Albers, cell helpers, products
 
@@ -66,7 +68,7 @@ HEX_LABELS = ["1-9", "10-99", "100-499", "500-999", "1,000+"]
 def geo_hex():
     page = OnePager(
         headline=f"The busiest 5% of hexagons carry {100 * GS['hex_share_top5pct']:.0f}% of large-ship traffic",
-        subhead="Distinct large ships per 25 km hexagon on the large-ship routes, 2023 and 2024 together",
+        subhead=f"Distinct large ships per 25 km hexagon on the large-ship routes, {PER.AND} together",
         source=SRC + " Hexagons are drawn on an equal-area (Albers) projection.",
         theme="ntia", layout="hero", size=(11, 7.6),
         alt="Hexagon map of the lower 48 states; hexagons along the coasts, Great Lakes, and lower Mississippi "
@@ -86,7 +88,7 @@ def geo_spikes():
     top = GS["ports_top"]
     page = OnePager(
         headline="Galveston Bay, the lower Mississippi, Los Angeles-Long Beach, and New York tower over the rest of the coast",
-        subhead="Spike height = distinct large ships per 25 km hexagon with 10 or more ships, 2023 and 2024 together "
+        subhead=f"Spike height = distinct large ships per 25 km hexagon with 10 or more ships, {PER.AND} together "
                 f"(tallest spike: {GS['hex_max_ships']:,} ships)",
         source=SRC, theme="ntia", layout="hero", size=(11, 7.6),
         alt="Spike map of the lower 48 states with a vertical spike on each hexagon, sized by distinct large "
@@ -147,7 +149,7 @@ def geo_closeups():
     page = OnePager(
         headline=f"Inside the busiest port areas, large ships keep to narrow channels; these six areas hold "
                  f"{100 * share:.0f}% of the busiest route cells",
-        subhead="Distinct large ships per 1 km route cell, 2023 and 2024 together (busiest cells: 200 or more ships)",
+        subhead=f"Distinct large ships per 1 km route cell, {PER.AND} together (busiest cells: 200 or more ships)",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),
         alt="Six close-up maps of port areas showing large-ship route cells shaded by ship count; traffic runs "
             "in narrow dredged channels in each.")
@@ -212,7 +214,7 @@ def geo_profile():
     rows = read("geo_profile.csv")
     page = OnePager(
         headline="Near-shore traffic peaks off Houston-Galveston, New York, and Los Angeles-Long Beach",
-        subhead=f"Distinct large ships within {int(50)} km of shore in each half-degree along the coast, 2023 and 2024",
+        subhead=f"Distinct large ships within {int(50)} km of shore in each half-degree along the coast, {PER.AND}",
         source=SRC + " Pacific and Atlantic by latitude (south to north); Gulf by longitude (west to east).",
         theme="ntia", layout="hero", size=(11, 8.0),
         alt="Three bar charts of near-shore large-ship traffic along the Pacific, Gulf, and Atlantic coasts; each "
@@ -251,7 +253,7 @@ def geo_ports():
     n = np.array([int(r["ships"]) for r in rows])
     page = OnePager(
         headline=f"{GS['ports_ge_1000']} deep-draft ports each saw 1,000 or more different large ships within 10 km",
-        subhead="Circle area = distinct large ships within 10 km of each deep-draft port, 2023 and 2024 together",
+        subhead=f"Circle area = distinct large ships within 10 km of each deep-draft port, {PER.AND} together",
         source=SRC + " Ports: USACE Principal Ports, coastal or Great Lakes, 1 million tons or more of foreign trade.",
         theme="ntia", layout="hero", size=(11, 7.6),
         alt="Bubble map of 73 deep-draft ports sized by the number of large ships nearby; the largest circles are "
@@ -291,7 +293,7 @@ def geo_types():
     page = OnePager(
         headline=f"{100 * t_share:.0f}% of tankers sail in Gulf waters, against {100 * c_share:.0f}% of cargo ships; "
                  "passenger and government ships cluster at a few ports",
-        subhead="Distinct ships of each type per 25 km hexagon, 2023 and 2024 together (each map has its own shading)",
+        subhead=f"Distinct ships of each type per 25 km hexagon, {PER.AND} together (each map has its own shading)",
         source=SRC + " Types from the AIS ship-type code: tanker 80-89, cargo 70-79, passenger 60-69, "
                      "military 35, law enforcement 55.",
         theme="ntia", layout="grid2x2", size=(11, 8.4),
@@ -352,8 +354,8 @@ def geo_land_distance():
 # G9. Fixed S-band sites over the hex grid --------------------------------------
 def geo_sites():
     sites = read("viz_sites.csv")
-    raw = list(csv.DictReader(open(os.path.join(vf.ROOT, "outputs", "2023_2024",
-                                                "shipping_zone_2023_2024_sites.csv"))))
+    raw = list(csv.DictReader(open(os.path.join(vf.ROOT, "outputs", PER.TAG,
+                                                f"shipping_zone_{PER.TAG}_sites.csv"))))
     rac = [(s, r) for s, r in zip(sites, raw) if r["category"] == "racon"]
     sb = np.array([float(s["route_km"]) for s, r in rac if r["sband_source"] == "1"])
     page = OnePager(

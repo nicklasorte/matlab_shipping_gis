@@ -6,8 +6,8 @@ The MATLAB twin is viz_products_rev1.m; both read the same per-day cache files
 Usage (from the repo root):
   python3 python/ship_viz_products.py
 
-Writes outputs/2023_2024/viz/:
-  viz_cells.npz            per-cell distinct-ship counts (2023, 2024, both years,
+Writes outputs/<period>/viz/:
+  viz_cells.npz            per-cell distinct-ship counts (both years,
                            with and without tug-barges) and the coastline distance
   viz_daily.csv            distinct large ships per sampled day: total, by coast,
                            and at Baltimore
@@ -16,7 +16,6 @@ Writes outputs/2023_2024/viz/:
   viz_sites.csv            distance from each site to the nearest route cell
   viz_summary.json         the numbers the figure headlines quote
 """
-import datetime as dt
 import heapq
 import json
 import os
@@ -28,11 +27,13 @@ import shapefile
 from scipy.spatial import cKDTree
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ship_period as PER  # noqa: E402  analysis years
 import ais_cells_py_rev1 as cells  # noqa: E402  same grid and cache names as the builder
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 DATA = os.path.join(ROOT, "data")
-OUT = os.path.join(ROOT, "outputs", "2023_2024", "viz")
+OUT = os.path.join(ROOT, "outputs", PER.TAG, "viz")
 
 # Must match init_shipping_zone_rev1.m
 MIN_SHIPS = 4             # distinct ships per cell in one year
@@ -51,13 +52,8 @@ CLOSURE = ("2024-03-26", "2024-06-10")  # Fort McHenry Federal Channel closed to
 
 
 def days():
-    out = []
-    for yr, start in ((2023, dt.date(2023, 1, 4)), (2024, dt.date(2024, 1, 3))):
-        d = start
-        while d.year == yr:
-            out.append(d)
-            d += dt.timedelta(7)
-    return out
+    """Sampled days of the analysis period (python/ship_period.py)."""
+    return PER.days()
 
 
 def load_pairs(day, filt):
@@ -142,7 +138,7 @@ def main():
     per_year = {}
     daily = []
     tow_ok_cache = {}
-    for yr in (2023, 2024):
+    for yr in PER.YEARS:
         main_p, tow_p = [], []
         for d in [x for x in ds if x.year == yr]:
             m = load_pairs(d, "main")
@@ -175,24 +171,24 @@ def main():
 
     # Distinct ships per cell, per year, with and without tug-barges
     res = {}
-    for yr in (2023, 2024):
+    for yr in PER.YEARS:
         m, t = per_year[yr]
         res[f"all_{yr}"] = counts(np.unique(np.vstack([m, t]), axis=0))
         res[f"main_{yr}"] = counts(m)
-    all2 = np.unique(np.vstack([per_year[2023][0], per_year[2023][1], per_year[2024][0], per_year[2024][1]]), axis=0)
+    all2 = np.unique(np.vstack([per_year[PER.Y0][0], per_year[PER.Y0][1], per_year[PER.Y1][0], per_year[PER.Y1][1]]), axis=0)
     res["all_both"] = counts(all2)
 
     def route_set(prefix):
         s = set()
-        for yr in (2023, 2024):
+        for yr in PER.YEARS:
             c, n = res[f"{prefix}_{yr}"]
             s |= set(c[n >= MIN_SHIPS].tolist())
         return s
 
     route_all = route_set("all")
     route_main = route_set("main")
-    r23 = set(res["all_2023"][0][res["all_2023"][1] >= MIN_SHIPS].tolist())
-    r24 = set(res["all_2024"][0][res["all_2024"][1] >= MIN_SHIPS].tolist())
+    r23 = set(res[f"all_{PER.Y0}"][0][res[f"all_{PER.Y0}"][1] >= MIN_SHIPS].tolist())   # first year
+    r24 = set(res[f"all_{PER.Y1}"][0][res[f"all_{PER.Y1}"][1] >= MIN_SHIPS].tolist())   # second year
     both_years = r23 & r24
     only23 = r23 - r24
     only24 = r24 - r23
@@ -282,7 +278,7 @@ def main():
     km_of = dict(zip(river_cell.tolist(), river_km.tolist()))
     bin_km = 5.0
     ships_bins = {}
-    for yr in (2023, 2024):
+    for yr in PER.YEARS:
         m, t = per_year[yr]
         p = np.unique(np.vstack([m, t]), axis=0)
         sel = np.isin(p[:, 0], river_cell)
@@ -302,11 +298,11 @@ def main():
     import csv
     rt = cKDTree(ecef(lat, lon))
     rows = []
-    with open(os.path.join(ROOT, "outputs", "2023_2024", "shipping_zone_2023_2024_sites.csv")) as f:
+    with open(os.path.join(ROOT, "outputs", PER.TAG, f"shipping_zone_{PER.TAG}_sites.csv")) as f:
         for r in csv.DictReader(f):
             rows.append(r)
     pp = {}
-    with open(os.path.join(ROOT, "outputs", "2023_2024", "shipping_zone_2023_2024_principal_port_check.csv")) as f:
+    with open(os.path.join(ROOT, "outputs", PER.TAG, f"shipping_zone_{PER.TAG}_principal_port_check.csv")) as f:
         for r in csv.DictReader(f):
             pp[r["port"]] = r
     with open(os.path.join(OUT, "viz_sites.csv"), "w") as f:
@@ -331,8 +327,8 @@ def main():
         "route_cells": len(route_all),
         "route_cells_main_only": len(route_main),
         "tow_only_cells": len(tow_only),
-        "cells_2023": len(r23), "cells_2024": len(r24),
-        "both_years": len(both_years), "only_2023": len(only23), "only_2024": len(only24),
+        "cells_y0": len(r23), "cells_y1": len(r24), "years": list(PER.YEARS),
+        "both_years": len(both_years), "only_y0": len(only23), "only_y1": len(only24),
         "share_both_years": len(both_years) / len(r23 | r24),
         "river_km_new_orleans": km_at(NEW_ORLEANS),
         "river_km_baton_rouge": km_at(BATON_ROUGE),

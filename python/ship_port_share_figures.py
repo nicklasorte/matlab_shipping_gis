@@ -13,7 +13,7 @@ by init_port_share_rev1.m.
   share07_sunburst         rings: coast, complex, port
   share08_dorling          Dorling map: non-overlapping circles at the ports
   share09_coast_bars       100% bars: how each coast's visits split among its ports
-  share10_years            share in 2023 against 2024, top 15 ports (dumbbell)
+  share10_years            share in the first year against the second, top 15 ports (dumbbell)
 
 Usage (from the repo root):
   MPLBACKEND=Agg python3 python/ship_port_share_figures.py
@@ -28,6 +28,8 @@ from matplotlib.patches import Circle, Rectangle, Wedge
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ship_period as PER  # noqa: E402  analysis years
 from onepager import OnePager  # noqa: E402
 import ship_viz_figures as vf  # noqa: E402
 
@@ -50,7 +52,7 @@ def read(name):
 
 P = read("port_share.csv")
 for r in P:
-    for k in ("ships", "ships_2023", "ships_2024", "cargo", "tanker", "passenger", "government", "rank"):
+    for k in ("ships", "ships_y0", "ships_y1", "cargo", "tanker", "passenger", "government", "rank"):
         r[k] = int(r[k])
     for k in ("share", "lat", "lon"):
         r[k] = float(r[k])
@@ -133,7 +135,7 @@ def share_treemap():
     page = OnePager(
         headline=f"Gulf ports take {pct(COAST_SHARE['Gulf'])} of large-ship port visits; Galveston alone takes "
                  f"{pct(top['share'])}",
-        subhead="Share of large-ship port visits at the 73 deep-draft ports, grouped by coast, 2023 and 2024 "
+        subhead=f"Share of large-ship port visits at the 73 deep-draft ports, grouped by coast, {PER.AND} "
                 "together (area = share)",
         source=SRC, theme="ntia", layout="hero", size=(11, 7.8),
         alt="Treemap of the 73 deep-draft ports grouped into Gulf, Atlantic, Pacific, and Great Lakes blocks, each "
@@ -225,7 +227,7 @@ def share_circles():
     page = OnePager(
         headline=f"The 10 busiest deep-draft ports take {pct(n10)} of large-ship port visits; the other 63 share "
                  f"the rest",
-        subhead="One circle per deep-draft port, area = distinct large ships within 10 km, 2023 and 2024 together, "
+        subhead=f"One circle per deep-draft port, area = distinct large ships within 10 km, {PER.AND} together, "
                 "colored by coast",
         source=SRC, theme="ntia", layout="hero", size=(11, 7.8),
         alt="Packed circles, one per deep-draft port, sized by large-ship port visits and colored by coast; "
@@ -255,8 +257,8 @@ def share_pareto():
     n50 = int(np.searchsorted(cum, 0.5)) + 1
     page = OnePager(
         headline=f"Thirteen ports take half of all large-ship port visits; the busiest 25 take {pct(cum[24])}",
-        subhead="Share of large-ship port visits, the 25 busiest deep-draft ports, with the running total, 2023 and "
-                "2024 together",
+        subhead="Share of large-ship port visits, the 25 busiest deep-draft ports, with the running total, "
+                f"{PER.AND} together",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2), margin_right=1.2,
         alt="Horizontal bar chart of the 25 busiest deep-draft ports by share of large-ship port visits, colored by "
             "coast, with the running total beside each bar; the running total passes 50% at the 13th port.")
@@ -291,7 +293,7 @@ def share_concentration():
     page = OnePager(
         headline=f"Large-ship port visits are concentrated: {n50} of 73 deep-draft ports take half, and {n80} take "
                  f"four-fifths",
-        subhead="Cumulative share of large-ship port visits, ports ranked from busiest to least busy, 2023 and 2024 "
+        subhead=f"Cumulative share of large-ship port visits, ports ranked from busiest to least busy, {PER.AND} "
                 "together",
         source=SRC, theme="ntia", layout="hero", size=(11, 7.4),
         alt="Concentration curve rising steeply from zero: the cumulative share of large-ship port visits passes "
@@ -321,7 +323,7 @@ def share_waffle():
     page = OnePager(
         headline=f"Eight port complexes take {100 - other}% of large-ship port visits, led by the lower "
                  f"Mississippi ({pct(top[0]['share'])}) and Houston-Galveston ({pct(top[1]['share'])})",
-        subhead="Each square = 1% of large-ship port visits at the 73 deep-draft ports, 2023 and 2024 together "
+        subhead=f"Each square = 1% of large-ship port visits at the 73 deep-draft ports, {PER.AND} together "
                 "(complexes group neighboring ports)",
         source=SRC + " Shares rounded to whole squares.",
         theme="ntia", layout="hero", size=(11, 7.4),
@@ -362,7 +364,7 @@ def share_marimekko():
                  f"{pct(tank['Houston-Galveston'])} at Houston-Galveston; cargo and container ships lead everywhere "
                  f"else",
         subhead="The 12 busiest port complexes: width = share of their large-ship port visits, height = ship-type "
-                "mix, 2023 and 2024 together",
+                f"mix, {PER.AND} together",
         source=SRC + " Types from the AIS ship-type code (tanker 80-89, cargo 70-79, passenger 60-69, military 35, "
                      "law enforcement 55).",
         theme="ntia", layout="hero", size=(11, 7.8), margin_right=2.0,
@@ -404,8 +406,8 @@ def share_sunburst():
     page = OnePager(
         headline="Nearly half of all large-ship port visits are at Gulf ports, and a third of those are on the "
                  "lower Mississippi",
-        subhead="Rings from the center: coast, port complex, port; angle = share of large-ship port visits, 2023 and "
-                "2024 together",
+        subhead="Rings from the center: coast, port complex, port; angle = share of large-ship port visits, "
+                f"{PER.AND} together",
         source=SRC, theme="ntia", layout="hero", size=(11, 7.8),
         alt="Sunburst chart with coasts in the inner ring, port complexes in the middle ring, and ports in the outer "
             "ring, each sized by share of large-ship port visits; the Gulf takes about half the circle.")
@@ -485,7 +487,7 @@ def share_dorling():
         headline="On a map, the Gulf ports from Corpus Christi to the Mississippi form the largest cluster of "
                  "large-ship port visits",
         subhead="Dorling map: one circle per deep-draft port, area = distinct large ships within 10 km, nudged apart "
-                "so none overlap, 2023 and 2024 together",
+                f"so none overlap, {PER.AND} together",
         source=SRC, theme="ntia", layout="hero", size=(11, 7.6),
         alt="Map of the lower 48 states with one non-overlapping circle per deep-draft port, sized by large-ship "
             "port visits and colored by coast; the largest circles crowd the Texas and Louisiana coast.")
@@ -521,7 +523,7 @@ def share_coast_bars():
     page = OnePager(
         headline="Galveston, New York, and Long Beach lead their coasts, but no port takes more than a sixth of "
                  "any ocean coast's large-ship visits",
-        subhead="How each coast's large-ship port visits split among its ports (top five named), 2023 and 2024 "
+        subhead=f"How each coast's large-ship port visits split among its ports (top five named), {PER.AND} "
                 "together",
         source=SRC, theme="ntia", layout="hero", size=(11, 6.8),
         alt="Four 100% stacked horizontal bars, one per coast, each split into its five busiest ports and the rest; "
@@ -559,20 +561,20 @@ def share_coast_bars():
 
 def share_years():
     top = P[:15]
-    t23 = sum(r["ships_2023"] for r in P)
-    t24 = sum(r["ships_2024"] for r in P)
-    s23 = np.array([r["ships_2023"] / t23 for r in top])
-    s24 = np.array([r["ships_2024"] / t24 for r in top])
+    t23 = sum(r["ships_y0"] for r in P)
+    t24 = sum(r["ships_y1"] for r in P)
+    s23 = np.array([r["ships_y0"] / t23 for r in top])
+    s24 = np.array([r["ships_y1"] / t24 for r in top])
     ch = s24 - s23
     big = int(np.argmax(np.abs(ch)))
     page = OnePager(
         headline=f"Port shares barely moved between years; the largest shift among the top 15 is "
                  f"{100 * abs(ch[big]):.1f} points at {top[big]['short']}",
-        subhead="Share of large-ship port visits in 2023 (open circle) and 2024 (filled circle), the 15 busiest "
+        subhead=f"Share of large-ship port visits in {PER.Y0} (open circle) and {PER.Y1} (filled circle), the 15 busiest "
                 "deep-draft ports",
         source=SRC, theme="ntia", layout="hero", size=(11, 7.6), margin_right=0.8,
         alt="Dumbbell chart of the 15 busiest deep-draft ports, each row joining its share of large-ship port visits "
-            "in 2023 to its share in 2024; most pairs nearly touch.")
+            f"in {PER.Y0} to its share in {PER.Y1}; most pairs nearly touch.")
     ax = page.panel(0, grid="x")
     y = np.arange(len(top))[::-1]
     for yi, r, a_, b_, c_ in zip(y, top, s23, s24, ch):

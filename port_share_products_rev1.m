@@ -11,7 +11,7 @@ function [ps]=port_share_products_rev1(p,prod,type_filts)
 %   of port visits. Returns:
 %
 %     ps.ports    table port, short, complex, coast, lat, lon, rank, ships,
-%                 ships_2023, ships_2024, share, cargo, tanker, passenger,
+%                 ships_y0, ships_y1, share, cargo, tanker, passenger,
 %                 government (sorted by ships, descending)
 %     ps.complex  table complex, coast, ships (distinct in the union of its
 %                 port areas), visits (sum of its ports), share
@@ -52,8 +52,9 @@ chord=2*earth_km*sin(port_km/(2*earth_km));
 
 counts=@(P) port_counts(P,tree,chord,num_port,cell_lat,cell_lon,xyz);
 [n_all,pm]=counts(unique([prod.pairs_year{1}; prod.pairs_year{2}],'rows'));
-n23=counts(prod.pairs_year{prod.years==2023});
-n24=counts(prod.pairs_year{prod.years==2024});
+per=period_rev1();
+n23=counts(prod.pairs_year{prod.years==per.years(1)});   %%%%%first year
+n24=counts(prod.pairs_year{prod.years==per.years(2)});   %%%%%second year
 types=["cargo","tanker","passenger","government"];
 n_type=zeros(num_port,numel(types));
 for k=1:numel(types)
@@ -68,7 +69,7 @@ for k=1:numel(types)
 end
 total=sum(n_all);
 T=table(pp.port,short,comp,coast,pp.lat,pp.lon,pp.rank,n_all,n23,n24,n_all/total, ...
-    'VariableNames',{'port','short','complex','coast','lat','lon','rank','ships','ships_2023','ships_2024','share'});
+    'VariableNames',{'port','short','complex','coast','lat','lon','rank','ships','ships_y0','ships_y1','share'});
 for k=1:numel(types)
     T.(types(k))=n_type(:,k);
 end

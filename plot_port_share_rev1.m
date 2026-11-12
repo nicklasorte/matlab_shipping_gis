@@ -13,7 +13,7 @@ function [titles]=plot_port_share_rev1(ps,out_dir,census_shp,dpi)
 %     share07_sunburst       rings: coast, complex, port
 %     share08_dorling        Dorling map of the ports
 %     share09_coast_bars     100% bars: each coast split among its ports
-%     share10_years          2023 against 2024 share, top 15 ports (dumbbell)
+%     share10_years          first-year against second-year share, top 15 ports (dumbbell)
 %
 %   NTIA style: DRAFT//PRE-DECISIONAL, takeaway titles with computed numbers,
 %   NTIA palette (plus a dark ochre for the Great Lakes), Times New Roman.
@@ -35,7 +35,8 @@ end
 C=style();
 C.out_dir=out_dir;
 C.dpi=dpi;
-C.src=['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in 2023 and 2024; large ships = cargo, ' ...
+per=period_rev1();   %%%%%analysis years (period_rev1.m)
+C.src=[['Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in ' per.and '; large ships = cargo, '] ...
     'tanker, passenger, military, and other seagoing ships 100 m or longer, plus tug-barges near the coast. Port ' ...
     'visits = distinct large ships seen within 10 km of a deep-draft port (each 1 km cell assigned to its nearest ' ...
     'port); a ship that calls at two ports counts at both.'];
@@ -51,7 +52,7 @@ titles=strings(10,1);
 titles(1)=sprintf('Gulf ports take %.0f%% of large-ship port visits; Galveston alone takes %.0f%%',100*cshare(1), ...
     100*T.share(1));
 [fig,ax]=new_page(C,titles(1),['Share of large-ship port visits at the 73 deep-draft ports, grouped by coast, ' ...
-    '2023 and 2024 together (area = share)'],C.src,5.8,[0.04 0.13 0.92 0.60]);
+    ['' per.and ' together (area = share)']],C.src,5.8,[0.04 0.13 0.92 0.60]);
 W=1.6;
 H=1.0;
 set(ax,'YDir','reverse','XLim',[0 W],'YLim',[0 H]);
@@ -81,8 +82,8 @@ rad=sqrt(T.ships/pi);
 xy=pack_circles(rad);
 titles(2)=sprintf('The 10 busiest deep-draft ports take %.0f%% of large-ship port visits; the other 63 share the rest', ...
     100*sum(T.share(1:10)));
-[fig,ax]=new_page(C,titles(2),['One circle per deep-draft port, area = distinct large ships within 10 km, 2023 ' ...
-    'and 2024 together, colored by coast'],C.src,5.8,[0.04 0.13 0.92 0.60]);
+[fig,ax]=new_page(C,titles(2),['One circle per deep-draft port, area = distinct large ships within 10 km, ' ...
+    per.and ' together, colored by coast'],C.src,5.8,[0.04 0.13 0.92 0.60]);
 hold(ax,'on');
 th=linspace(0,2*pi,60);
 for k=1:height(T)
@@ -105,7 +106,7 @@ cum=cumsum(T.share);
 n50=find(cum>=0.5,1);
 titles(3)=sprintf('%d ports take half of all large-ship port visits; the busiest 25 take %.0f%%',n50,100*cum(25));
 [fig,ax]=new_page(C,titles(3),['Share of large-ship port visits, the 25 busiest deep-draft ports, with the ' ...
-    'running total, 2023 and 2024 together'],C.src,6.4,[0.20 0.16 0.62 0.59]);
+    ['running total, ' per.and ' together']],C.src,6.4,[0.20 0.16 0.62 0.59]);
 style_axes(C,ax);
 set(ax,'YGrid','off','XGrid','on');
 y=(25:-1:1)';
@@ -130,7 +131,7 @@ n80=find(cum>=0.8,1);
 titles(4)=sprintf(['Large-ship port visits are concentrated: %d of 73 deep-draft ports take half, and %d take ' ...
     'four-fifths'],n50,n80);
 [fig,ax]=new_page(C,titles(4),['Cumulative share of large-ship port visits, ports ranked from busiest to least ' ...
-    'busy, 2023 and 2024 together'],C.src,5.6,[0.09 0.19 0.86 0.54]);
+    ['busy, ' per.and ' together']],C.src,5.6,[0.09 0.19 0.86 0.54]);
 style_axes(C,ax);
 plot(ax,[0 73],[0 100],'--','Color',C.gray);
 text(ax,50,100*50/73-4,'Even split across all 73 ports','FontName',C.font,'FontSize',8,'Color',C.dark);
@@ -156,8 +157,8 @@ n=[n; 100-sum(n)];
 wcol=[22 51 83; 63 95 168; 86 116 196; 127 150 211; 110 79 146; 156 130 188; 154 107 0; 201 165 74; 213 215 218]/255;
 titles(5)=sprintf('Eight port complexes take %d%% of large-ship port visits, led by the lower Mississippi (%.0f%%) and Houston-Galveston (%.0f%%)', ...
     100-n(end),100*top.share(1),100*top.share(2));
-[fig,ax]=new_page(C,titles(5),['Each square = 1% of large-ship port visits at the 73 deep-draft ports, 2023 and ' ...
-    '2024 together (complexes group neighboring ports)'],[C.src ' Shares rounded to whole squares.'],5.6, ...
+[fig,ax]=new_page(C,titles(5),['Each square = 1% of large-ship port visits at the 73 deep-draft ports, ' per.and ...
+    ' together (complexes group neighboring ports)'],[C.src ' Shares rounded to whole squares.'],5.6, ...
     [0.04 0.13 0.92 0.60]);
 hold(ax,'on');
 k=0;
@@ -191,7 +192,7 @@ mix=mix./top.visits;
 titles(6)=sprintf(['Tankers make up %.0f%% of large-ship visits at %s and %.0f%% at Houston-Galveston; cargo ' ...
     'and container ships lead everywhere else'],100*tmax,top.complex(it),100*mix(top.complex=="Houston-Galveston",1));
 [fig,ax]=new_page(C,titles(6),['The 12 busiest port complexes: width = share of their large-ship port visits, ' ...
-    'height = ship-type mix, 2023 and 2024 together'],[C.src ' Types from the AIS ship-type code (tanker 80-89, ' ...
+    ['height = ship-type mix, ' per.and ' together']],[C.src ' Types from the AIS ship-type code (tanker 80-89, ' ...
     'cargo 70-79, passenger 60-69, military 35, law enforcement 55).'],6.0,[0.08 0.13 0.70 0.58]);
 hold(ax,'on');
 x=0;
@@ -227,7 +228,7 @@ lm=sum(T.ships(T.complex=="Lower Mississippi"))/sum(T.ships(T.coast=="Gulf"));
 titles(7)=sprintf(['Nearly half of all large-ship port visits are at Gulf ports, and %s of those are on the ' ...
     'lower Mississippi'],ifelse(abs(lm-1/3)<0.04,'a third',sprintf('%.0f%%',100*lm)));
 [fig,ax]=new_page(C,titles(7),['Rings from the center: coast, port complex, port; angle = share of large-ship ' ...
-    'port visits, 2023 and 2024 together'],C.src,6.0,[0.04 0.12 0.92 0.64]);
+    ['port visits, ' per.and ' together']],C.src,6.0,[0.04 0.12 0.92 0.64]);
 hold(ax,'on');
 a0=90;
 for k=1:numel(coasts)
@@ -277,7 +278,7 @@ rk=sqrt(T.ships)*4.0;
 [dx,dy]=dorling(px,py,rk);
 titles(8)="On a map, the Gulf ports from Corpus Christi to the Mississippi form the largest cluster of large-ship port visits";
 [fig,ax]=new_page(C,titles(8),['Dorling map: one circle per deep-draft port, area = distinct large ships within ' ...
-    '10 km, nudged apart so none overlap, 2023 and 2024 together'],C.src,5.8,[0.02 0.10 0.96 0.64]);
+    ['10 km, nudged apart so none overlap, ' per.and ' together']],C.src,5.8,[0.02 0.10 0.96 0.64]);
 hold(ax,'on');
 S=readgeotable(census_shp);
 S=S(~ismember(string(S.STUSPS),["AK","HI","PR","VI","GU","MP","AS"]),:);
@@ -334,7 +335,7 @@ if any(top_share>1/6+0.005)
     error('plot_port_share_rev1:title','The coast-bars headline no longer matches the data; rewrite it.');
 end
 [fig,ax]=new_page(C,titles(9),['How each coast''s large-ship port visits split among its ports (top five named), ' ...
-    '2023 and 2024 together'],C.src,5.2,[0.03 0.13 0.94 0.58]);
+    ['' per.and ' together']],C.src,5.2,[0.03 0.13 0.94 0.58]);
 hold(ax,'on');
 for k=1:numel(coasts)
     rows=T(T.coast==coasts(k),:);
@@ -363,15 +364,15 @@ set(ax,'XLim',[0 1],'YLim',[-0.6 numel(coasts)-0.2],'YTick',[],'XTick',0:0.25:1,
     'Box','off');
 finish(C,fig,'share09_coast_bars');
 
-%%%%%10. 2023 against 2024
+%%%%%10. First year against second year
 top=T(1:15,:);
-s23=top.ships_2023/sum(T.ships_2023);
-s24=top.ships_2024/sum(T.ships_2024);
+s23=top.ships_y0/sum(T.ships_y0);
+s24=top.ships_y1/sum(T.ships_y1);
 ch=s24-s23;
 [~,ib]=max(abs(ch));
 titles(10)=sprintf('Port shares barely moved between years; the largest shift among the top 15 is %.1f points at %s', ...
     100*abs(ch(ib)),top.short(ib));
-[fig,ax]=new_page(C,titles(10),['Share of large-ship port visits in 2023 (open circle) and 2024 (filled circle), ' ...
+[fig,ax]=new_page(C,titles(10),['Share of large-ship port visits in ' num2str(per.years(1)) ' (open circle) and ' num2str(per.years(2)) ' (filled circle), ' ...
     'the 15 busiest deep-draft ports'],C.src,5.8,[0.20 0.18 0.72 0.54]);
 style_axes(C,ax);
 set(ax,'YGrid','off','XGrid','on');
