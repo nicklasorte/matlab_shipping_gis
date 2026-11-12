@@ -124,6 +124,28 @@ paper's data-sources appendix cites only the sources marked "used".
    Washington state areas.
 4. Report what each source holds before any build.
 
+**Results (November 12, 2026):**
+
+| Area | Large ships, 2024-07-10 | Large ships, 2023-07-12 |
+| --- | --- | --- |
+| Hawaii | 27 | 16 |
+| Puerto Rico and USVI | 63 | 56 |
+| Guam and CNMI | 12 | 16 |
+| Alaska | 3 (strays near the Washington state line) | 1 |
+
+- 2023–2024 MarineCadastre files hold Hawaii, Puerto Rico, the U.S. Virgin
+  Islands, and Guam, but not Alaska.
+- The 2015–2017 daily files hold Alaska (366,000–622,000 reports per sampled
+  day), but use vessel-type codes 1001–1025 that need the MarineCadastre
+  crosswalk, and the IMO field is blank.
+- The 2009–2014 files are monthly UTM-zone file geodatabases. Zone 6 for July
+  2014 holds 4.1 million reports from 332 vessels, 88 of them 100 m or longer;
+  the IMO field is blank.
+- The data-source search added the North Pacific and Arctic dataset (Kapsar
+  and others, 2022), which counts unique ships per hexagon by type from
+  satellite AIS. It's the strongest public Alaska candidate. See
+  `data_sources_register.csv`.
+
 ### Phase 2: Hawaii, using the lower-48 method (about one day, mostly unattended)
 
 1. Add a separate Hawaii grid: 17–24° N, 162–153° W, 0.01° cells. The cache
@@ -184,6 +206,90 @@ paper's data-sources appendix cites only the sources marked "used".
 - Every deep-draft port in Alaska and Hawaii sits on the route network.
 - Alaska: report how well the calibration reproduces the lower-48 routes, and
   compare the routes with the charted IMO routing measures.
+
+## Data validity
+
+AIS is self-reported. Transponders broadcast wrong identities, wrong vessel
+types, and bad positions, and receivers miss ships. These checks show whether
+our counts are good enough for the paper. They run in four tiers, and Alaska
+or Hawaii numbers go into the paper only after they pass the gate below.
+
+### Tier 1: Internal consistency and physics
+
+`python/ais_qc_day.py` checks the large ships our filter keeps on one day:
+
+- MMSI is 9 digits with a ship-station country code (201–775).
+- The IMO number passes its check digit.
+- No implied speed over 50 knots between consecutive reports, and no reported
+  speed over 40 knots.
+- No MMSI reports two positions more than 50 km apart within 10 minutes
+  (shared or spoofed MMSI).
+- No reports more than 2 km inland, split into the Great Lakes, route cells
+  (narrow rivers the 1:500,000 shoreline closes), and the rest.
+- Flagged reports don't create route cells on their own.
+
+| Check (lower 48) | 2024-07-10 | 2023-07-12 |
+| --- | --- | --- |
+| Large ships checked | 1,743 | 1,663 |
+| Ships with a bad MMSI | 1 | 12 |
+| IMO numbers failing the check digit | 3 of 1,732 | 7 of 1,662 |
+| Ships with a position jump | 120 | 119 |
+| Reports over 40 knots | 5 | 1,777 |
+| Ships with a possible duplicate MMSI | 99 | 89 |
+| Reports inland, off the routes and lakes | 6,389 (19 ships) | 1,705 (9 ships) |
+| Cells made only by flagged reports | 803 (288 route cells) | 359 (213 route cells) |
+
+Hawaii passed every check on 2024-07-10.
+
+**What this means:** errors touch a small share of ships, and the route rule
+(at least four distinct ships per cell) absorbs most of them, because one bad
+transmitter adds one ship to a cell. The 288 route cells made only by flagged
+reports are the open item: rerun the route rule with flagged reports removed
+and count how many route cells drop out. The duplicate-MMSI ships need a
+look, since a shared MMSI makes two ships count as one.
+
+### Tier 2: Independent public references
+
+| Reference | Result | Reading |
+| --- | --- | --- |
+| NOAA AIS Vessel Transit Counts 2024 (independent processing of the same raw data, all vessel groups, read at 800 m) | 95% of our 661,137 route cells have NOAA traffic. Rank correlation between our ships per cell and NOAA transits per cell is 0.66. 66% of NOAA's busiest 1% of cells lie within 2 km of our routes, 82% within 10 km. | Our pipeline finds the same lanes. NOAA's busy cells far from our routes cluster in Rhode Island and Block Island Sound, Pamlico Sound, Louisiana bayous and the Red and Ouachita rivers, the Florida Keys, coastal Maine, and the Potomac and York rivers: ferries, fishing boats, and towboats, which our 100 m filter excludes by design. |
+| USACE Principal Ports tonnage (2022) | Rank correlation 0.74 with foreign tons and 0.67 with total tons, across the 73 deep-draft ports. | Ports that rank higher on ships than tonnage have passing traffic (Galveston, San Francisco, Oxnard, Sabine Pass). Ports that rank lower are Great Lakes ports and Baton Rouge. |
+
+The transit-count check tests our processing, not the raw data, because both
+start from the same Coast Guard receivers. For a check on the raw data, use
+a different receiver network: World Bank density (terrestrial and satellite)
+or the North Pacific and Arctic dataset for Alaska, and PacIOOS for Hawaii.
+
+### Tier 3: Coverage
+
+- Terrestrial receivers typically see about 20–40 nautical miles from shore, so far-
+  offshore lanes thin out. Compare our route density with distance from shore
+  against World Bank satellite-fed density; if ours drops faster, mark the
+  outer edge of the network as a coverage limit, not an absence of ships.
+- Check receiver gaps by finding long stretches where ships disappear and
+  reappear on the same heading.
+
+### Tier 4: Sampling and filter stability
+
+- Rebuild the routes from 52 of the 104 days (every other week). If most route
+  cells hold, the sample is big enough.
+- Test the IMO rule on the Great Lakes: count lakers 100 m or longer with no
+  IMO number. If many are dropped, the Great Lakes ports undercount.
+- Check known events: the Baltimore channel closure (March–June 2024) and the
+  Great Lakes winter closure (the Soo Locks shut from mid-January to late
+  March) should show up as drops.
+
+### Gate for Alaska and Hawaii numbers
+
+Before any Alaska or Hawaii number goes into the paper:
+
+1. Tier 1 passes on at least two sample days in that area, with the same or
+   lower error rates than the lower 48.
+2. Every deep-draft port in the area sits on the route network.
+3. At least one Tier 2 reference from a different receiver network agrees on
+   where the lanes are.
+4. MATLAB and Python give identical counts.
+5. A separate reviewer who didn't build the results tries to break them.
 
 ## Decisions needed
 

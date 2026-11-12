@@ -1,2 +1,5 @@
 __pycache__/
 *.part.mat
+
+# Large public reference rasters (downloaded by the validity checks; not committed)
+data/ref/*.tif

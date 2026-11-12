@@ -1,0 +1,50 @@
+{
+ "day": "2024-07-10",
+ "large_ship_reports": 1148584,
+ "Lower 48 grid": {
+  "reports": 1039291,
+  "ships": 1743,
+  "ships_bad_mmsi": 1,
+  "ships_length_over_400m": 0,
+  "ships_imo_bad_check_digit": 3,
+  "ships_with_imo": 1732,
+  "reports_implied_speed_over_50kn": 2142,
+  "ships_with_jump": 120,
+  "reports_sog_over_40kn": 5,
+  "ships_possible_duplicate_mmsi": 99,
+  "reports_on_land_2km": 165054,
+  "reports_on_land_2km_great_lakes": 2976,
+  "reports_on_land_2km_on_route_cells": 155689,
+  "reports_on_land_2km_off_routes": 6389,
+  "ships_on_land_2km_off_routes": 19,
+  "cells_only_from_flagged_reports": 803,
+  "of_which_route_cells": 288,
+  "reports_outside_day": 0
+ },
+ "Hawaii": {
+  "reports": 14155,
+  "ships": 27,
+  "ships_bad_mmsi": 0,
+  "ships_length_over_400m": 0,
+  "ships_imo_bad_check_digit": 0,
+  "ships_with_imo": 22,
+  "reports_implied_speed_over_50kn": 0,
+  "ships_with_jump": 0,
+  "reports_sog_over_40kn": 0,
+  "ships_possible_duplicate_mmsi": 0,
+  "reports_outside_day": 0
+ },
+ "Puerto Rico and USVI": {
+  "reports": 27467,
+  "ships": 63,
+  "ships_bad_mmsi": 0,
+  "ships_length_over_400m": 0,
+  "ships_imo_bad_check_digit": 0,
+  "ships_with_imo": 63,
+  "reports_implied_speed_over_50kn": 6,
+  "ships_with_jump": 1,
+  "reports_sog_over_40kn": 1,
+  "ships_possible_duplicate_mmsi": 1,
+  "reports_outside_day": 0
+ }
+}

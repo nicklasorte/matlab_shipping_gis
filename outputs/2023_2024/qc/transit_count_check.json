@@ -1,0 +1,62 @@
+{
+ "route_cells": 661137,
+ "route_cells_with_noaa_traffic": 0.9482512701603449,
+ "noaa_transits_on_route_cells_median": 5.0,
+ "spearman_ships_vs_transits_route_cells": 0.6616458452971092,
+ "noaa_top1pct_threshold_transits": 108.0,
+ "noaa_top1pct_cells": 30705,
+ "noaa_top1pct_within_2km_of_routes": 0.6619117407588341,
+ "noaa_top1pct_within_10km_of_routes": 0.8220810942843185,
+ "far_busy_cells_top_1deg_boxes": [
+  {
+   "lat": 41.0,
+   "lon": -71.0,
+   "cells": 443
+  },
+  {
+   "lat": 29.0,
+   "lon": -90.0,
+   "cells": 295
+  },
+  {
+   "lat": 35.0,
+   "lon": -77.0,
+   "cells": 246
+  },
+  {
+   "lat": 31.0,
+   "lon": -92.0,
+   "cells": 199
+  },
+  {
+   "lat": 30.0,
+   "lon": -92.0,
+   "cells": 166
+  },
+  {
+   "lat": 25.0,
+   "lon": -81.0,
+   "cells": 146
+  },
+  {
+   "lat": 33.0,
+   "lon": -92.0,
+   "cells": 143
+  },
+  {
+   "lat": 44.0,
+   "lon": -69.0,
+   "cells": 137
+  },
+  {
+   "lat": 38.0,
+   "lon": -77.0,
+   "cells": 127
+  },
+  {
+   "lat": 37.0,
+   "lon": -77.0,
+   "cells": 113
+  }
+ ]
+}

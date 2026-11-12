@@ -16,6 +16,7 @@ Grid: georefcells(latlim, lonlim, d, d) with MATLAB defaults
 Usage:
   python3 ais_cells_py_rev1.py OUT_DIR YYYY-MM-DD [YYYY-MM-DD ...]
   python3 ais_cells_py_rev1.py --types OUT_DIR YYYY-MM-DD ...   (ship-type groups)
+  python3 ais_cells_py_rev1.py [--with-types] --grids=hawaii,prusvi OUT_DIR YYYY-MM-DD ...   (other grids, one pass)
 """
 import os
 import sys
@@ -34,6 +35,13 @@ import zstandard
 LATLIM = (22.0, 50.0)
 LONLIM = (-130.0, -66.0)
 CELL_DEG = 0.01
+# Extra grids filled in the same pass over each day's file (--grids). Each grid's
+# limits go into its cache file names, so the lower-48 caches never change.
+GRIDS = {
+    "conus": (LATLIM, LONLIM),
+    "hawaii": ((17.0, 24.0), (-162.0, -153.0)),
+    "prusvi": ((16.5, 19.5), (-68.5, -64.0)),
+}
 FILTERS = {
     # merchant, military, law enforcement, dredging, other: p.filt
     "main": {"types": sorted(set([0, 33, 35, 55] + list(range(60, 90)) + list(range(90, 100)))),
@@ -55,12 +63,13 @@ NUM_ROW = round((LATLIM[1] - LATLIM[0]) / CELL_DEG)
 NUM_COL = round((LONLIM[1] - LONLIM[0]) / CELL_DEG)
 
 
-def cache_name(day, filt):
+def cache_name(day, filt, grid=None):
     vt = filt["types"]
     filt_key = "L%g_imo1_sog0_vt%d-%d-n%d-s%d" % (filt["min_length_m"], min(vt), max(vt), len(vt), sum(vt))
     if filt["no_imo_types"]:
         filt_key += "_ni" + "-".join(str(t) for t in filt["no_imo_types"])
-    grid_key = "%g_%g_%g_%g_d%g" % (LATLIM + LONLIM + (CELL_DEG,))
+    la, lo = GRIDS[grid] if grid else (LATLIM, LONLIM)
+    grid_key = "%g_%g_%g_%g_d%g" % (la + lo + (CELL_DEG,))
     return "ais_cells_%s_%s_%s_rev1.mat" % (day.replace("-", ""), filt_key, grid_key)
 
 
@@ -71,7 +80,12 @@ def day_url(day):
     return "https://coast.noaa.gov/htdata/CMSP/AISDataHandler/%d/AIS_%s.zip" % (yr, day.replace("-", "_"))
 
 
-def discrete(lat, lon):
+def grid_size(grid=None):
+    la, lo = GRIDS[grid] if grid else (LATLIM, LONLIM)
+    return round((la[1] - la[0]) / CELL_DEG), round((lo[1] - lo[0]) / CELL_DEG)
+
+
+def discrete(lat, lon, grid=None):
     """geographicToDiscrete for this cells reference; ok=False outside the grid.
 
     Intrinsic coordinate y = 0.5 + (lat - lat0)*cells_per_degree, rounded half up.
@@ -79,11 +93,13 @@ def discrete(lat, lon):
     dividing by 0.01 instead differed in 22 boundary pairs.
     """
     cpd = round(1 / CELL_DEG)
-    row = np.floor(0.5 + (lat - LATLIM[0]) * cpd + 0.5)
-    col = np.floor(0.5 + (lon - LONLIM[0]) * cpd + 0.5)
-    row = np.minimum(row, NUM_ROW)  # the top and east edges belong to the last cell
-    col = np.minimum(col, NUM_COL)
-    ok = (lat >= LATLIM[0]) & (lat <= LATLIM[1]) & (lon >= LONLIM[0]) & (lon <= LONLIM[1])
+    la, lo = GRIDS[grid] if grid else (LATLIM, LONLIM)
+    nr, nc = grid_size(grid)
+    row = np.floor(0.5 + (lat - la[0]) * cpd + 0.5)
+    col = np.floor(0.5 + (lon - lo[0]) * cpd + 0.5)
+    row = np.minimum(row, nr)  # the top and east edges belong to the last cell
+    col = np.minimum(col, nc)
+    ok = (lat >= la[0]) & (lat <= la[1]) & (lon >= lo[0]) & (lon <= lo[1])
     return row, col, ok
 
 
@@ -92,7 +108,7 @@ def num(arr):
     return pd.to_numeric(pd.Series(arr.to_pylist(), dtype="string"), errors="coerce").to_numpy(dtype=float, na_value=np.nan)
 
 
-def process_stream(stream, filters):
+def process_stream(stream, filters, grids=(None,)):
     opts = pv.ReadOptions(block_size=64 << 20)
     # Read the filter columns as text and convert here: a few rows carry bad
     # values (MMSI 'I367333430' on a 2023 day) that break type inference.
@@ -120,7 +136,7 @@ def process_stream(stream, filters):
         if not hits:
             raise RuntimeError("column %s not found" % k)
         col[k] = names[hits[0]]
-    acc = {k: {"pairs": [], "mmsi": set(), "rows": 0} for k in filters}
+    acc = {(g, k): {"pairs": [], "mmsi": set(), "rows": 0} for g in grids for k in filters}
     for batch in head:
         vt = num(batch.column(names.index(col["vt"])))
         ln = num(batch.column(names.index(col["length"])))
@@ -136,12 +152,13 @@ def process_stream(stream, filters):
             mmsi = num(batch.column(names.index(col["mmsi"])).filter(pa.array(keep)))
             good = ~np.isnan(mmsi)  # a report with no readable MMSI can't be counted as a ship
             lat, lon, mmsi = lat[good], lon[good], mmsi[good]
-            a = acc[k]
-            a["rows"] += int(good.sum())
-            a["mmsi"].update(np.unique(mmsi).tolist())
-            row, colx, ok = discrete(lat, lon)
-            cell = row[ok] + (colx[ok] - 1) * NUM_ROW
-            a["pairs"].append(np.unique(np.column_stack([cell, mmsi[ok]]), axis=0))
+            for g in grids:
+                a = acc[(g, k)]
+                row, colx, ok = discrete(lat, lon, g)
+                a["rows"] += int(ok.sum()) if g else int(good.sum())
+                a["mmsi"].update(np.unique(mmsi[ok] if g else mmsi).tolist())
+                cell = row[ok] + (colx[ok] - 1) * grid_size(g)[0]
+                a["pairs"].append(np.unique(np.column_stack([cell, mmsi[ok]]), axis=0))
     out = {}
     for k, a in acc.items():
         p = np.unique(np.vstack(a["pairs"]), axis=0) if a["pairs"] else np.zeros((0, 2))
@@ -151,8 +168,9 @@ def process_stream(stream, filters):
     return out
 
 
-def build_day(day, out_dir):
-    todo = {k: f for k, f in FILTERS.items() if not os.path.isfile("%s/%s" % (out_dir, cache_name(day, f)))}
+def build_day(day, out_dir, grids=(None,)):
+    todo = {k: f for k, f in FILTERS.items()
+            if any(not os.path.isfile("%s/%s" % (out_dir, cache_name(day, f, g))) for g in grids)}
     if not todo:
         print("%s cached" % day, flush=True)
         return
@@ -164,26 +182,35 @@ def build_day(day, out_dir):
                 tmp.write(chunk)
         tmp.seek(0)
         if url.endswith(".zst"):
-            res = process_stream(zstandard.ZstdDecompressor().stream_reader(tmp), todo)
+            res = process_stream(zstandard.ZstdDecompressor().stream_reader(tmp), todo, grids)
         else:
             with zipfile.ZipFile(tmp) as z:
                 member = [n for n in z.namelist() if n.endswith(".csv")][0]
                 with z.open(member) as f:
-                    res = process_stream(f, todo)
-    for k, (pairs, rows, nm) in res.items():
-        out = "%s/%s" % (out_dir, cache_name(day, todo[k]))
+                    res = process_stream(f, todo, grids)
+    for (g, k), (pairs, rows, nm) in res.items():
+        out = "%s/%s" % (out_dir, cache_name(day, todo[k], g))
+        if os.path.isfile(out):
+            continue
         tmp_out = out + ".part.mat"  # rename into place so a reader never sees a partial file
         scipy.io.savemat(tmp_out, {"pairs": pairs.astype(float), "num_row_kept": float(rows),
                                    "num_mmsi_kept": float(nm)}, do_compression=True)
         os.replace(tmp_out, out)
-        print("%s %s rows %d mmsi %d pairs %d" % (day, k, rows, nm, len(pairs)), flush=True)
+        print("%s %s %s rows %d mmsi %d pairs %d" % (day, g or "conus", k, rows, nm, len(pairs)), flush=True)
 
 
 if __name__ == "__main__":
     args = sys.argv[1:]
+    grids = (None,)
     if args and args[0] == "--types":
         FILTERS = TYPE_FILTERS
         args = args[1:]
+    if args and args[0] == "--with-types":   # main, towing, and the ship-type groups in one pass
+        FILTERS = {**FILTERS, **TYPE_FILTERS}
+        args = args[1:]
+    if args and args[0].startswith("--grids="):
+        grids = tuple(None if g == "conus" else g for g in args[0].split("=", 1)[1].split(","))
+        args = args[1:]
     out_dir = args[0]
     for d in args[1:]:
-        build_day(d, out_dir)
+        build_day(d, out_dir, grids)
