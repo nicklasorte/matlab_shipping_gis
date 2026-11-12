@@ -272,6 +272,21 @@ Puerto Rico and the U.S. Virgin Islands.
 - Alaska: report how well the calibration reproduces the lower-48 routes, and
   compare the routes with the charted IMO routing measures.
 
+## Status (November 12, 2026)
+
+- **Analysis period:** moved to 2024–2025 for the lower 48, Hawaii, and Puerto
+  Rico and the U.S. Virgin Islands (Nick's choice). 2023 and January–June 2026
+  are held out: 81% and 94% of their route cells fall inside the 2024–2025
+  network. Lower-48 zones grew 0.7–1.9%.
+- **Hawaii:** rebuilt on 2024–2025 (7,310 route cells); Section 4 of the paper.
+- **Alaska:** MarineCadastre 2018–2019 (Alaska is filtered out from 2021),
+  ship-days rule, grid stops at 180° (Nick's choice). 26,983 ship-track cells
+  plus 23,444 charted-lane cells. Kapsar satellite check: near-shore routes
+  agree; offshore lanes beyond receiver range are missing. Section 5 of the
+  paper.
+- **Open:** whether to add Kapsar's offshore lanes to the Alaska routes; whether
+  to add Puerto Rico and the U.S. Virgin Islands to the paper.
+
 ## Data validity
 
 AIS is self-reported. Transponders broadcast wrong identities, wrong vessel

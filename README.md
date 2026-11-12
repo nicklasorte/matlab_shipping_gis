@@ -152,35 +152,35 @@ The code works in pieces so a full year fits on a laptop:
 To process days in parallel, start a pool and set `p.parallel_flag=1`. Each
 worker needs about 2 GB of disk while it works.
 
-## Results, 2023–2024 (lower 48, `shore` mode)
+## Results, 2024–2025 (lower 48, `shore` mode)
 
-104 AIS days (every Wednesday in 2023 and 2024). The grid covers 22–50° N and
+104 AIS days (the first 52 Wednesdays of 2024 and of 2025; set in `period_rev1.m` and `python/ship_period.py`). Until November 12, 2026, the analysis used 2023–2024; those outputs stay in `outputs/2023_2024/`. 2023 and January–June 2026 are held out as stability checks (`python/ship_year_stability.py`). The grid covers 22–50° N and
 66–130° W, which takes in the Florida Straits and waters well off the West
 Coast.
 
 | Route cells by source | Cells |
 | --- | --- |
-| AIS cells, 4 or more large ships in a year (tug-barges near the coast included) | 661,136 |
-| Port approaches, 2 or more ships within 50 km of 73 deep-draft ports | 14,629 |
-| NOAA fairways and traffic separation schemes not already AIS cells | 1,166 |
-| S-band racons not already route cells | 16 |
-| Total | 676,947 |
+| AIS cells, 4 or more large ships in a year (tug-barges near the coast included) | 658,865 |
+| Port approaches, 2 or more ships within 50 km of 73 deep-draft ports | 15,782 |
+| NOAA fairways and traffic separation schemes not already AIS cells | 1,099 |
+| S-band racons not already route cells | 17 |
+| Total | 675,763 |
 
 | Distance | U.S. land in zone |
 | --- | --- |
-| 25 km | 396,951 km² |
-| 50 km | 721,434 km² |
-| 100 km | 1,325,903 km² |
+| 25 km | 404,668 km² |
+| 50 km | 730,157 km² |
+| 100 km | 1,335,776 km² |
 
 - Named ports: 24 of 24 reached by a continuous route, including Baltimore
   and Baton Rouge.
 - USACE Principal Ports: 69 of 73 deep-draft ports reached; 0 of 36 inland
   river ports. Not reached: Portland, Oregon, and Illinois International
-  Port (the USACE reference points sit 6 and 13 km from the ship berths),
+  Port (the USACE reference points sit 5 and 12 km from the ship berths),
   and Panama City and Searsport (thin approach traffic). All four are inside
   the 25 km zone.
-- Baton Rouge: 267 distinct large ships within 3 km on the sampled days
-  (136 in 2023, 138 in 2024).
+- Baton Rouge: 263 distinct large ships within 3 km on the sampled days
+  (138 in 2024, 139 in 2025).
 - Vessel Traffic Service: 9 of 10 VTS areas are inside the 25 km zone;
   VTS Louisville, on the Ohio River, is not.
 
@@ -373,15 +373,37 @@ neighbor islands. The cutoff of 6 best reproduces the lower-48 network
 
 | Result | Value |
 | --- | --- |
-| Route cells | 6,561 |
-| Ports on the route network | Honolulu, Kalaeloa, Kahului, Nawiliwili (Hilo 3.8 km, Kawaihae 24 km away) |
-| Land within 25 / 50 / 100 km | 12,324 km² (70%) / 16,681 km² (95%) / 17,573 km² (all) |
+| Route cells (2024–2025) | 7,310 |
+| Ports on the route network | Honolulu, Kalaeloa, Kahului, Nawiliwili (Hilo 5.0 km, Kawaihae 25 km away) |
+| Land within 25 / 50 / 100 km | 12,351 km² (70%) / 16,720 km² (95%) / 17,573 km² (all) |
 
 Run (MATLAB): `init_shipping_zone_hawaii_rev1` (writes `output_hawaii/`; the repo
-copy is `outputs/2023_2024/hawaii/`). Python: `python3 python/ship_route_rules.py`
+copy is `outputs/2024_2025/hawaii/`). Python: `python3 python/ship_route_rules.py`
 compares the rules, and `python3 python/ship_hawaii_figures.py` draws `haw01_routes`
-and `haw02_zones`. MATLAB and Python give the same 6,561 cells. Data-validity
+and `haw02_zones`. MATLAB and Python give the same 7,310 cells. Data-validity
 checks and the plan for Alaska are in `docs/plans/alaska_hawaii_plan_rev1.md`.
+
+## Alaska
+
+MarineCadastre has filtered Alaska out of its daily files since 2021, so Alaska
+uses 2018–2019 (the first 52 Wednesdays of each year), the ship-days rule, and a
+grid of 51–72° N, 180–129° W (stopping at 180° keeps polygons and KML whole).
+
+| Result | Value |
+| --- | --- |
+| Route cells from ship tracks (ship-days ≥ 6) | 26,983 |
+| Plus NOAA charted lanes | 23,444 (total 50,427) |
+| Deep-draft ports reached | Anchorage (0.3 km), Valdez (3.0 km) |
+| Land within 25 / 50 / 100 km | 156,250 km² (10%) / 232,003 km² (15%) / 373,112 km² (24%) |
+
+Shore receivers miss the lanes far offshore: in the satellite-based North
+Pacific and Arctic dataset (Kapsar and others, 2022), 83% of the busiest
+hexagons hold no route cell, and 95% of those are more than 74 km from shore
+(`python/check_alaska_kapsar.py`).
+
+Run: `python3 python/alaska_grid_to_180.py` (caches for the 180° grid), then
+`init_shipping_zone_alaska_rev1` in MATLAB (outputs in `outputs/2018_2019/alaska/`),
+`python3 python/ship_alaska_routes.py`, and `python3 python/ship_alaska_figures.py`.
 
 ## Data in the repo
 
