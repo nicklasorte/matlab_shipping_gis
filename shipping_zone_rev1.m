@@ -133,8 +133,25 @@ if ~isempty(all_mmsi)
     unique_ships=reshape(accumarray(all_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
 end
 clear cell_mmsi all_mmsi
-source_mask=max_year_ships>=p.min_unique_ships;
-disp_progress(sprintf('AIS source cells: %d (%d years)',nnz(source_mask),numel(unique(day_year))));
+%%%%%Route rule. 'unique_ships' (lower 48): distinct ships in one year.
+%%%%%'ship_days' (Hawaii): distinct ships per sampled day, summed over all
+%%%%%days, so a few dedicated ships that cross the same lane every week
+%%%%%(neighbor-island cargo) still make a route. p.min_ship_days=6 is the
+%%%%%value whose lower-48 route set best matches the unique_ships network
+%%%%%(Jaccard 0.81; python/ship_route_rules.py).
+route_rule='unique_ships';
+if isfield(p,'route_rule')
+    route_rule=p.route_rule;
+end
+switch route_rule
+    case 'unique_ships'
+        source_mask=max_year_ships>=p.min_unique_ships;
+    case 'ship_days'
+        source_mask=ship_days>=p.min_ship_days;
+    otherwise
+        error('shipgis:rule','p.route_rule must be ''unique_ships'' or ''ship_days''.');
+end
+disp_progress(sprintf('AIS source cells (%s rule): %d (%d years)',route_rule,nnz(source_mask),numel(unique(day_year))));
 
 %%%%%Lower threshold near deep-draft ports: approaches to small deep-draft
 %%%%%ports (Searsport, Coos Bay) see fewer distinct ships than the main

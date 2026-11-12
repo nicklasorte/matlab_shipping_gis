@@ -24,7 +24,10 @@ end
 if ~isfolder(data_dir)
     mkdir(data_dir);
 end
-geojson_path=fullfile(data_dir,'fairways_rev1.geojson');
+geojson_path=fullfile(data_dir,'fairways_rev1.geojson');   %%%%%lower-48 grid keeps its original name
+if ~isequal(R.LatitudeLimits,[22 50]) || ~isequal(R.LongitudeLimits,[-130 -66])
+    geojson_path=fullfile(data_dir,sprintf('fairways_rev1_%g_%g_%g_%g.geojson',R.LatitudeLimits,R.LongitudeLimits));
+end
 url='https://encdirect.noaa.gov/arcgis/rest/services/NavigationChartData/MarineTransportation/FeatureServer/0/query';
 
 if ~isfile(geojson_path)
