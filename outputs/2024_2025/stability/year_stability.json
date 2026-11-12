@@ -1,0 +1,127 @@
+{
+ "base_years": [
+  2024,
+  2025
+ ],
+ "held_out": [
+  2023,
+  2026
+ ],
+ "ship_days_calibration_2024_2025": {
+  "jaccard": {
+   "3": 0.496,
+   "4": 0.659,
+   "5": 0.772,
+   "6": 0.804,
+   "7": 0.762,
+   "8": 0.677,
+   "10": 0.54
+  },
+  "K": 6
+ },
+ "lower48": {
+  "rule": "min_ships_4",
+  "base_cells": 661901,
+  "paper_cells": 661137,
+  "jaccard_base_vs_paper": 0.762,
+  "cells_added": 89556,
+  "cells_dropped": 88792,
+  "ships_per_day_median": {
+   "2023": 1591.0,
+   "2024": 1884.0,
+   "2025": 1789.0,
+   "2026": 1848.0
+  },
+  "sampled_days": {
+   "2023": 52,
+   "2024": 52,
+   "2025": 53,
+   "2026": 25
+  },
+  "held_2023": {
+   "cells": 466072,
+   "share_inside_base": 0.809,
+   "share_of_base_reproduced": 0.57
+  },
+  "held_2026": {
+   "cells": 231878,
+   "share_inside_base": 0.935,
+   "share_of_base_reproduced": 0.328
+  },
+  "deep_draft_ports_within_5km": {
+   "base": 71,
+   "paper": 71,
+   "of": 73
+  }
+ },
+ "hawaii": {
+  "rule": "ship_days_6",
+  "base_cells": 7358,
+  "paper_cells": 6561,
+  "jaccard_base_vs_paper": 0.669,
+  "cells_added": 1778,
+  "cells_dropped": 981,
+  "ships_per_day_median": {
+   "2023": 16.0,
+   "2024": 17.0,
+   "2025": 15.0,
+   "2026": 16.0
+  },
+  "sampled_days": {
+   "2023": 52,
+   "2024": 52,
+   "2025": 53,
+   "2026": 25
+  },
+  "held_2023": {
+   "cells": 7056,
+   "share_inside_base": 0.634,
+   "share_of_base_reproduced": 0.608
+  },
+  "held_2026": {
+   "cells": 8163,
+   "share_inside_base": 0.563,
+   "share_of_base_reproduced": 0.625
+  },
+  "deep_draft_ports_within_5km": {
+   "base": 1,
+   "paper": 1,
+   "of": 1
+  }
+ },
+ "prusvi": {
+  "rule": "min_ships_4",
+  "base_cells": 41711,
+  "paper_cells": 41057,
+  "jaccard_base_vs_paper": 0.756,
+  "cells_added": 6070,
+  "cells_dropped": 5416,
+  "ships_per_day_median": {
+   "2023": 58.5,
+   "2024": 62.0,
+   "2025": 57.0,
+   "2026": 66.0
+  },
+  "sampled_days": {
+   "2023": 52,
+   "2024": 52,
+   "2025": 53,
+   "2026": 25
+  },
+  "held_2023": {
+   "cells": 29684,
+   "share_inside_base": 0.818,
+   "share_of_base_reproduced": 0.582
+  },
+  "held_2026": {
+   "cells": 14542,
+   "share_inside_base": 0.922,
+   "share_of_base_reproduced": 0.322
+  },
+  "deep_draft_ports_within_5km": {
+   "base": 4,
+   "paper": 4,
+   "of": 4
+  }
+ }
+}
