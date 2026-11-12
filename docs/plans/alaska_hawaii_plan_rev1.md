@@ -170,6 +170,32 @@ paper's data-sources appendix cites only the sources marked "used".
    routes map, and the KML and shapefile outputs. Most or all of Hawaii's land
    may fall inside the 50 km and 100 km zones; compute it rather than assume.
 
+**First results (November 12, 2026),** from `python/ship_island_routes.py`
+with the lower-48 rules unchanged:
+
+| Measure | Hawaii | Puerto Rico and USVI |
+| --- | --- | --- |
+| Route cells | 3,882 | 41,057 |
+| Distinct large ships, 2023–2024 | 409 | 2,270 |
+| Large ships per sampled day (median, range) | 16 (8–28) | 60.5 (37–91) |
+| Share of route cells in the biggest connected piece | 81% | 88% |
+| Ports more than 2 km from a route | Hilo (8.8 km), Kawaihae (23 km) | Mayaguez (30 km) |
+
+- Honolulu and Kalaeloa sit on one connected network with the trans-Pacific
+  lanes. Kahului and Nawiliwili have short approach spurs that don't connect
+  to it.
+- The inter-island channels break. The likely cause is the rule, not the
+  data: a few dedicated ships serve the neighbor islands, so many lane cells
+  see traffic but fewer than four distinct ships a year. Inter-island tugs
+  are under 100 m, so tug-barges drop out too.
+- Options for Hawaii, for Nick to choose: keep the lower-48 rule and report
+  the gaps; lower the distinct-ship threshold for Hawaii; or count a cell when
+  enough transits cross it, as the NOAA transit counts do. The zones, maps,
+  and MATLAB twin wait for that choice.
+- Puerto Rico and the U.S. Virgin Islands form wide swaths through the Mona
+  and Anegada passages. Mayaguez is a small port and sits off the network,
+  like the other smaller coastal ports.
+
 ### Phase 3: Alaska (one to three days, depending on the source)
 
 1. Build an Alaska grid: 51–72° N, from 129° W across the 180° meridian to

@@ -1,0 +1,55 @@
+{
+ "grid": "prusvi",
+ "limits": [
+  [
+   16.5,
+   19.5
+  ],
+  [
+   -68.5,
+   -64.0
+  ]
+ ],
+ "days": 104,
+ "route_cells": 41057,
+ "route_cells_2023": 29684,
+ "route_cells_2024": 31903,
+ "route_area_km2_approx": 48339.0,
+ "distinct_ships_both_years": 2270,
+ "ships_per_day_median": 60.5,
+ "ships_per_day_min": 37,
+ "ships_per_day_max": 91,
+ "route_pieces": 1214,
+ "largest_piece_share": 0.875,
+ "pieces_over_20_cells": 22,
+ "ports": {
+  "San Juan": {
+   "km_to_route": 0.0,
+   "on_main_piece": true
+  },
+  "Ponce": {
+   "km_to_route": 0.0,
+   "on_main_piece": false
+  },
+  "Guayanilla and Penuelas": {
+   "km_to_route": 0.77,
+   "on_main_piece": true
+  },
+  "Yabucoa": {
+   "km_to_route": 0.77,
+   "on_main_piece": false
+  },
+  "Mayaguez": {
+   "km_to_route": 29.68,
+   "on_main_piece": false
+  },
+  "St. Croix (Limetree Bay)": {
+   "km_to_route": 0.77,
+   "on_main_piece": true
+  },
+  "Charlotte Amalie (St. Thomas)": {
+   "km_to_route": 0.53,
+   "on_main_piece": true
+  }
+ }
+}
