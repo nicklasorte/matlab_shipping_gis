@@ -1,0 +1,12 @@
+{
+ "rule": "min_ships_4",
+ "hexagons_in_kapsar": 6553,
+ "hexagons_with_traffic_either": 5751,
+ "spearman_our_shipdays_vs_kapsar_cargo_tanker_opdays": 0.231,
+ "kapsar_top10pct_hexagons": 574,
+ "kapsar_top10pct_with_our_route": 0.171,
+ "kapsar_top10pct_without_route_median_km_from_shore": 171.4,
+ "kapsar_top10pct_without_route_share_beyond_74km": 0.945,
+ "our_route_cells_in_kapsar_area": 11541,
+ "share_of_those_in_hex_with_kapsar_cargo_tanker": 1.0
+}

@@ -1,0 +1,127 @@
+{
+ "days": 104,
+ "distinct_large_ships": 1804,
+ "ships_per_day_median": 53.5,
+ "ships_per_day_range": [
+  1,
+  116
+ ],
+ "rules": {
+  "min_ships_4": {
+   "route_cells": 19142,
+   "ports_within_2km": 2,
+   "ports_within_gap": 3,
+   "gap_km": 5.0,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Valdez": {
+     "km": 3.0,
+     "connected_to_hub": true
+    },
+    "Port of Alaska (Anchorage)": {
+     "km": 0.3,
+     "connected_to_hub": false
+    },
+    "Nikiski": {
+     "km": 6.8,
+     "connected_to_hub": false
+    },
+    "Unalaska (Dutch Harbor)": {
+     "km": 1.0,
+     "connected_to_hub": false
+    },
+    "Kivalina": {
+     "km": 22.3,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "min_ships_3": {
+   "route_cells": 26739,
+   "ports_within_2km": 2,
+   "ports_within_gap": 3,
+   "gap_km": 5.0,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Valdez": {
+     "km": 3.0,
+     "connected_to_hub": true
+    },
+    "Port of Alaska (Anchorage)": {
+     "km": 0.3,
+     "connected_to_hub": false
+    },
+    "Nikiski": {
+     "km": 5.8,
+     "connected_to_hub": false
+    },
+    "Unalaska (Dutch Harbor)": {
+     "km": 0.3,
+     "connected_to_hub": false
+    },
+    "Kivalina": {
+     "km": 22.1,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "min_ships_2": {
+   "route_cells": 44509,
+   "ports_within_2km": 2,
+   "ports_within_gap": 3,
+   "gap_km": 5.0,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Valdez": {
+     "km": 2.7,
+     "connected_to_hub": true
+    },
+    "Port of Alaska (Anchorage)": {
+     "km": 0.3,
+     "connected_to_hub": false
+    },
+    "Nikiski": {
+     "km": 5.5,
+     "connected_to_hub": false
+    },
+    "Unalaska (Dutch Harbor)": {
+     "km": 0.3,
+     "connected_to_hub": false
+    },
+    "Kivalina": {
+     "km": 21.3,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "ship_days_6": {
+   "route_cells": 26983,
+   "ports_within_2km": 2,
+   "ports_within_gap": 3,
+   "gap_km": 5.0,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Valdez": {
+     "km": 3.0,
+     "connected_to_hub": true
+    },
+    "Port of Alaska (Anchorage)": {
+     "km": 0.3,
+     "connected_to_hub": false
+    },
+    "Nikiski": {
+     "km": 6.8,
+     "connected_to_hub": false
+    },
+    "Unalaska (Dutch Harbor)": {
+     "km": 1.0,
+     "connected_to_hub": false
+    },
+    "Kivalina": {
+     "km": 22.1,
+     "connected_to_hub": false
+    }
+   }
+  }
+ }
+}

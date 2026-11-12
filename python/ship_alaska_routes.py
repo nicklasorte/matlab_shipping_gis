@@ -13,7 +13,8 @@ Rules compared (as for Hawaii, python/ship_route_rules.py):
   ship_days_6  ship-days of at least 6 over the 104 days (the Hawaii rule; 6 is the
                lower-48 calibration for both 2023-2024 and 2024-2025)
 Checks: distance from each USACE Principal Port to the route network, and which
-ports connect to Valdez through route cells.
+ports connect to Valdez through route cells (ports within 5 km count as reached,
+as for the lower-48 principal ports, because USACE points are district references).
 
 Usage: python3 python/ship_alaska_routes.py
 Writes outputs/2018_2019/alaska/alaska_rules.json, alaska_rule_cells.npz, alaska_daily.csv.
@@ -71,7 +72,7 @@ def main():
     res = {"days": len(daily), "distinct_large_ships": int(len(np.unique(allp[:, 1]))),
            "ships_per_day_median": float(np.median([r["ships"] for r in daily])),
            "ships_per_day_range": [int(min(r["ships"] for r in daily)), int(max(r["ships"] for r in daily))],
-           "rules": {k: rr.checks(v, GRID) for k, v in rules.items()}}
+           "rules": {k: rr.checks(v, GRID, gap_km=5.0) for k, v in rules.items()}}
     np.savez_compressed(os.path.join(OUT, "alaska_rule_cells.npz"), both_cell=c, ship_days=n,
                         both_cell_ships=np.unique(allp[:, 0], return_counts=True)[1], **rules)
     with open(os.path.join(OUT, "alaska_rules.json"), "w") as f:
@@ -81,7 +82,7 @@ def main():
         w.writeheader()
         w.writerows(daily)
     for k, v in res["rules"].items():
-        print(k, v["route_cells"], v["ports_within_2km"], v["ports_connected_to_hub"],
+        print(k, v["route_cells"], v["ports_within_gap"], v["ports_connected_to_hub"],
               {p: (x["km"], x["connected_to_hub"]) for p, x in v["ports"].items()})
     print({k: v for k, v in res.items() if k != "rules"})
 

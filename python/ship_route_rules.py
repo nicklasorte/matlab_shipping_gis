@@ -123,7 +123,8 @@ def by_min_ships(yr, n):
     return np.array(sorted(s), dtype=np.int64)
 
 
-def checks(route, grid):
+def checks(route, grid, gap_km=2.0):
+    """gap_km: largest port-to-route distance counted as reached (USACE points are district references)."""
     la0, lo0, nr, nc = isl.grid_ref(grid)
     mask = np.zeros((nr, nc), bool)
     mask[(route - 1) % nr, (route - 1) // nr] = True
@@ -140,9 +141,10 @@ def checks(route, grid):
         if name == HUB[grid]:
             hub_lab = L
     for v in out.values():
-        v["connected_to_hub"] = bool(v.pop("label") == hub_lab and v["km"] <= 2)
+        v["connected_to_hub"] = bool(v.pop("label") == hub_lab and v["km"] <= gap_km)
     return {"route_cells": int(len(route)),
             "ports_within_2km": int(sum(v["km"] <= 2 for v in out.values())),
+            "ports_within_gap": int(sum(v["km"] <= gap_km for v in out.values())), "gap_km": gap_km,
             "ports_connected_to_hub": int(sum(v["connected_to_hub"] for v in out.values())),
             "ports": out}
 
