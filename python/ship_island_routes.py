@@ -42,10 +42,11 @@ PORTS = {
                "Mayaguez": (18.205, -67.160), "St. Croix (Limetree Bay)": (17.690, -64.750),
                "Charlotte Amalie (St. Thomas)": (18.335, -64.930)},
     # USACE Principal Ports in Alaska (district reference points)
-    "alaska": {"Valdez": (61.12473, -146.3464), "Port of Alaska (Anchorage)": (61.23778, -149.895),
+    "alaska180": {"Valdez": (61.12473, -146.3464), "Port of Alaska (Anchorage)": (61.23778, -149.895),
                "Nikiski": (60.74793, -151.3144), "Unalaska (Dutch Harbor)": (53.89419, -166.54992),
                "Kivalina": (67.72677, -164.52689)},
 }
+PORTS["alaska"] = PORTS["alaska180"]
 
 
 def grid_ref(grid):

@@ -226,8 +226,8 @@ def corr_counts():
         source=SRC + " Counts start 3 km in from the entrance.",
         theme="ntia", layout="hero", size=(11, 7.4), margin_right=2.6,
         alt="Fifteen falling step lines, one per river or ship channel, of distinct large ships seen at or beyond "
-            "each point against distance scaled to the head port; the Mississippi starts near 4,500 and the "
-            "Houston Ship Channel near 3,750, and both end in the hundreds.")
+            "each point against distance scaled to the head port; the Mississippi starts near 4,600 and the "
+            "Houston Ship Channel near 3,900, and both end in the hundreds.")
     ax = page.panel(0)
     top = max(CONT[c][0][1] for c in ORDER)
     ax.set_ylim(0, top * 1.08)

@@ -71,7 +71,7 @@ def main(rule):
     rad = max(np.max(np.hypot(*(polys[h] - polys[h].mean(axis=0)).T)) for h in hid[:50]) * 1.01
 
     def hex_of(cells_):
-        la, lo = isl.cell_latlon(cells_, "alaska")
+        la, lo = isl.cell_latlon(cells_, "alaska180")
         x, y = TO.transform(np.where(lo > 180, lo - 360, lo), la)
         xy = np.column_stack([x, y])
         out = np.full(len(xy), -1)
@@ -95,7 +95,7 @@ def main(rule):
     has_route[hr[hr >= 0]] = True
     top = kap >= np.quantile(kap[kap > 0], 0.9)
     # Distance from shore of Kapsar's busiest hexagons that hold no route cell
-    ct = isl.coast_tree("alaska")
+    ct = isl.coast_tree("alaska")   # whole Alaska coastline, both sides of 180
     lon_c, lat_c = Transformer.from_crs(3338, 4326, always_xy=True).transform(cent[:, 0], cent[:, 1])
     lon_c = np.where(lon_c < 0, lon_c + 360, lon_c)
     shore_km = vp.chord_to_arc(ct.query(vp.ecef(lat_c, lon_c))[0])

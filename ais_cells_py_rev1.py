@@ -44,6 +44,10 @@ GRIDS = {
     # Alaska crosses 180 degrees: longitudes run 172 E to 129 W as 172 to 231
     # (west longitudes + 360), so the grid is one block with no wrap inside it.
     "alaska": ((51.0, 72.0), (172.0, 231.0)),
+    # Alaska east of 180 degrees only (the zones stop at 180 to avoid splitting
+    # polygons and KML at the date line); made from the "alaska" caches by
+    # python/alaska_grid_to_180.py, which drops the columns west of 180.
+    "alaska180": ((51.0, 72.0), (-180.0, -129.0)),
 }
 FILTERS = {
     # merchant, military, law enforcement, dredging, other: p.filt

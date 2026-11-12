@@ -33,7 +33,7 @@ import ship_viz_products as vp  # noqa: E402
 import ship_island_routes as isl  # noqa: E402
 import ship_route_rules as rr  # noqa: E402
 
-GRID = "alaska"
+GRID = "alaska180"   # zones stop at 180 degrees (Nick, November 12, 2026)
 OUT = os.path.join(HERE, "..", "outputs", "2018_2019", "alaska")
 
 
