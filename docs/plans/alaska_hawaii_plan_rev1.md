@@ -59,6 +59,58 @@ traffic.
 3. If you can approve government-only data, request ASTD Level I or USCG NAIS
    records for 2023–2024. Either would let Alaska match the lower 48 exactly.
 
+## How to search for more data sources
+
+The table above is a starting list, not a complete one. Before Phase 3,
+spend a few hours searching systematically so the Alaska choice is defensible.
+Hawaii is covered by MarineCadastre, so this search is mainly for Alaska, plus
+a cross-check source for Hawaii.
+
+### Where to search
+
+| Place | What to look for | Example queries or paths |
+| --- | --- | --- |
+| [Data.gov](https://catalog.data.gov) and [NOAA InPort](https://www.fisheries.noaa.gov/inport/) | Federal AIS, vessel traffic, and transit-count datasets; check each record's "Geographic extent" and access constraints | `AIS Alaska`, `vessel traffic Alaska`, `vessel transit counts`, `AIS Hawaii` |
+| [NOAA NCEI](https://www.ncei.noaa.gov) and [BOEM](https://www.boem.gov) | Archived AIS products and environmental studies with traffic layers (Beaufort and Chukchi lease areas, Cook Inlet) | `AIS`, `vessel traffic`, `Cook Inlet vessel`, `Chukchi vessel traffic` |
+| U.S. Coast Guard [NAVCEN](https://www.navcen.uscg.gov) and Port Access Route Studies | How agencies request historical NAIS data; PARS reports with traffic summaries for the Bering Strait, Alaska Arctic coast, and Hawaii | `NAIS historical data request`, `Port Access Route Study Alaska`, `PARS Bering Strait` |
+| Regional ocean observing systems: [AOOS](https://aoos.org) (Alaska), [PacIOOS](https://www.pacioos.hawaii.edu) (Hawaii), and their ERDDAP and THREDDS servers | AIS heat maps and vessel density layers with download links | Search each portal's catalog for `AIS` and `vessel` |
+| Arctic data archives: [Arctic Data Center](https://arcticdata.io), [PAME ASTD](https://pame.is/ourwork/arctic-shipping/astd/) | Arctic ship traffic datasets and access rules | `ship traffic`, `AIS`, `vessel density` |
+| Open research repositories: [Zenodo](https://zenodo.org), [Dryad](https://datadryad.org), [figshare](https://figshare.com), and [Google Dataset Search](https://datasetsearch.research.google.com) | AIS-derived grids published with papers, often under open licenses | `AIS Bering Sea`, `vessel traffic Alaska dataset`, `ship density Hawaii` |
+| Literature (Google Scholar, Frontiers in Marine Science, Marine Policy) | Papers on Alaska and Bering Strait traffic; their data-availability statements name sources and stewards | `Bering Strait vessel traffic AIS`, `Alaska shipping AIS analysis`, `Aleutian great circle route AIS` |
+| International open data: [World Bank](https://datacatalog.worldbank.org), [Global Fishing Watch](https://globalfishingwatch.org/datasets-and-code/), [EMODnet](https://emodnet.ec.europa.eu) (method reference only) | Global gridded AIS products and how others process them | `shipping traffic density`, `vessel presence` |
+
+Also ask data stewards directly. NOAA's Office for Coastal Management runs
+MarineCadastre and may know whether an Alaska release exists for federal
+users. AOOS and the Alaska Marine Data Exchange can say what they share and
+on what terms.
+
+### How to judge a source
+
+Score every candidate on the same points, and record the result:
+
+1. **Access:** public with an open license, government-only, or paid. Only
+   public and cleared sources go in the paper without your approval.
+2. **Coverage:** Alaska (including the Bering Sea, Aleutians, and Arctic
+   coast) and Hawaii, out to at least 100 km from the routes.
+3. **Years:** ideally 2023–2024 to match the lower 48; older data needs an
+   age caveat.
+4. **Measure:** distinct ships (best), ship hours or transits, or position
+   counts (needs calibration).
+5. **Fields:** MMSI, length, ship type, and IMO number. Without length and
+   type, the large-ship filter can't be applied.
+6. **Resolution:** 1 km or finer for routes; coarser grids work only as
+   checks.
+7. **Receiver mix:** terrestrial only, or terrestrial plus satellite.
+   Terrestrial-only data misses traffic far from shore.
+8. **Reproducibility:** a stable download link and documented processing.
+
+### How to record it
+
+Keep a sources register at `docs/plans/data_sources_register.csv` with one
+row per candidate: name, link, steward, access, coverage, years, measure,
+fields, resolution, receiver mix, license, date checked, and decision. The
+paper's data-sources appendix cites only the sources marked "used".
+
 ## Plan
 
 ### Phase 1: Confirm coverage (about half a day)
@@ -142,7 +194,7 @@ traffic.
    in the same files at no extra download cost. Guam needs a check first.
 3. **Aleutians west of 180°:** include them, or stop at 180°?
 
-Phases 1 and 2 don't depend on these answers and can start now.
+Phases 1 and 2, and the data-source search, don't depend on these answers and can start now.
 
 ## Sources
 
