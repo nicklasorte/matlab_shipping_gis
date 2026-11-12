@@ -1,0 +1,47 @@
+{
+  "theme": "ntia",
+  "layout": "hero",
+  "page_inches": [
+    11,
+    8.2
+  ],
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "marking": "DRAFT//PRE-DECISIONAL",
+  "font_sizes_pt": [
+    9.0,
+    10.0,
+    11.0,
+    13.0,
+    24.0
+  ],
+  "mark_colors": [
+    "#163353",
+    "#7F96D3",
+    "#E4E9F6",
+    "#FFFFFF"
+  ],
+  "accent": "#5674C4",
+  "context": "#8A8D91",
+  "alt": "Map of Alaska with land near the coast shaded by zone: 10% within 25 km, 15% within 50 km, and 24% within 100 km of large-ship water, concentrated in Southeast Alaska, Southcentral Alaska, and the Alaska Peninsula.",
+  "alt_supplied": true,
+  "files": {
+    "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/ak02_zones.png",
+    "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/ak02_zones.pdf",
+    "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/ak02_zones.svg"
+  },
+  "lint": [
+    {
+      "severity": "warn",
+      "message": "Mark color #7F96D3 has contrast 2.91:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #E4E9F6 has contrast 1.21:1; marks need 3:1."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #FFFFFF has contrast 1.00:1; marks need 3:1."
+    }
+  ]
+}
