@@ -12,8 +12,8 @@ function [land_mask,land_poly,coast_mask,coast_gt]=census_reference_rev1(R,data_
 %                https://www2.census.gov/geo/tiger/TIGER<yyyy>/COASTLINE/tl_<yyyy>_us_coastline.zip
 %
 %   OUTPUTS
-%     land_mask   logical, lower-48 land cells
-%     land_poly   planar polyshape of lower-48 land (x = lon, y = lat)
+%     land_mask   logical, U.S. land cells in the grid
+%     land_poly   planar polyshape of U.S. land in the grid (x = lon, y = lat)
 %     coast_mask  logical, cells the coastline passes through
 %     coast_gt    geotable of the coastline lines inside R
 
@@ -32,11 +32,15 @@ state_shp=fetch_census_zip(data_dir,sprintf('cb_%d_us_state_500k',census_year), 
 coast_shp=fetch_census_zip(data_dir,sprintf('tl_%d_us_coastline',census_year), ...
     sprintf('https://www2.census.gov/geo/tiger/TIGER%d/COASTLINE/tl_%d_us_coastline.zip',census_year,census_year));
 
-%%%%%%%%%%Land: lower 48 plus DC
+%%%%%%%%%%Land: the states and territories whose outline touches the grid
+%%%%%(lower 48 plus DC on the lower-48 grid; Hawaii on the Hawaii grid)
 S=readgeotable(state_shp);
-lower48=~ismember(string(S.STUSPS),["AK","HI","PR","VI","GU","MP","AS"]);
-S=S(lower48,:);
 T=geotable2table(S,["Lat","Lon"]);
+lat_lo=cellfun(@min,T.Lat); lat_hi=cellfun(@max,T.Lat);
+lon_lo=cellfun(@min,T.Lon); lon_hi=cellfun(@max,T.Lon);
+in_grid=lat_hi>=R.LatitudeLimits(1) & lat_lo<=R.LatitudeLimits(2) & ...
+    lon_hi>=R.LongitudeLimits(1) & lon_lo<=R.LongitudeLimits(2);
+T=T(in_grid,:);
 
 warn_state=warning('off','MATLAB:polyshape:repairedBySimplify');
 cleanup_warn=onCleanup(@() warning(warn_state));
