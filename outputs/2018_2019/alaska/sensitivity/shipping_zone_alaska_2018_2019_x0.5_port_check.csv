@@ -1,0 +1,6 @@
+port,lat,lon,gap_to_ship_cell_km,reached,on_route_network,in_25km_zone,in_50km_zone,in_100km_zone
+"Valdez, AK",61.12473,-146.3464,0.612874435748519,1,1,1,1,1
+"Port of Alaska (Anchorage), AK",61.23778,-149.895,0.30912232304937,1,1,1,1,1
+"Nikiski, AK",60.74793,-151.3144,0.32742881016706,1,1,1,1,1
+"Unalaska (Dutch Harbor), AK",53.89419,-166.54992,0.334724579933526,1,1,1,1,1
+"Kivalina, AK",67.72677,-164.52689,11.9013542054886,0,0,1,1,1
