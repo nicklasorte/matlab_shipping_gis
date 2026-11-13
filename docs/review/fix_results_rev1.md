@@ -39,9 +39,9 @@ Date: November 12, 2026. Zone runs: Mac, MATLAB R2025b, commit `518ee86` plus
 | S-band racons in the grid / not already route cells | 17 not already | 24 in the grid / 13 not already |
 | Total route cells | 675,763 | 686,325 |
 | Deep-draft ports reached (of 73) | 69 | 70 |
-| Land in 25 km zone | 404,668 km² | 300,985 km² |
-| Land in 50 km zone | 730,157 km² | 638,386 km² |
-| Land in 100 km zone | 1,335,776 km² | 1,260,934 km² |
+| Land in 25 km zone | 404,668 km² | 301,168 km² |
+| Land in 50 km zone | 730,157 km² | 638,688 km² |
+| Land in 100 km zone | 1,335,776 km² | 1,261,529 km² |
 | Mississippi route end above Baton Rouge | 30.77° N | 30.49° N (about 5 km above the city) |
 
 On the same grid-cell basis, the new zone definition alone makes the land
@@ -71,8 +71,8 @@ AIS route cells 41,237; port-approach cells 1,564 (1,044 dropped as more than
 
 Ship-track cells 26,983; charted-lane cells 26,674 (23,550 not already AIS
 cells; before 23,444, the gain is the traffic separation schemes); satellite
-cells 334,651 (318,028 not already route cells). Land: 25 km 112,390 km² (7%);
-50 km 210,667 km² (14%); 100 km 353,211 km² (23%) of 1,518,386 km² of Census
+cells 334,651 (318,028 not already route cells). Land: 25 km 112,427 km² (7%);
+50 km 210,892 km² (14%); 100 km 353,650 km² (23%) of 1,518,386 km² of Census
 land east of 180°. Before: 179,047 (12%), 261,953 (17%), 409,521 (27%).
 
 ## Year stability (fixed script, 52 days per year)
@@ -88,3 +88,11 @@ fall inside the base network; the 2023 network reproduces 57.2% of the base and
 
 See `findings_rev1.md` (sensitivity, shore link, held-out capture, flagged
 reports, sampling stability) and `length_sensitivity_rev1.csv` (80 and 120 m).
+
+## Update: foreign-land clip (rerun 23:07)
+
+Natural Earth's border coast overlapped Census U.S. land at border rivers (Detroit River), so the first fixed run removed slivers of U.S. land; Detroit fell outside every zone. The clip now keeps all Census U.S. land. The numbers above are from the rerun (`034709a`). Hawaii and Puerto Rico didn't change.
+
+## Length cutoff (lower 48)
+
+`length_sensitivity_rev1.csv`: at 120 m, 2.4% fewer ships and 3.6%, 2.2%, and 1.3% less land within 25, 50, and 100 km; at 80 m, 2.4% more ships, 2.5% more route cells, and 11.5%, 10.4%, and 10.6% more land. The added cells are mostly offshore in the Gulf; the added land comes from cells far up the Columbia and Snake Rivers and the Mississippi above Baton Rouge.
