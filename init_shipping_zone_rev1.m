@@ -58,7 +58,8 @@ p.min_unique_ships=4;               %%%%%distinct ships per cell in one year (a 
                                     %%%%%reaches it); 4 removes tug/barge noise on the upper Mississippi
                                     %%%%%(2024 test: 2 kept 903 such cells, 4 kept 0)
 p.port_relax_km=50;                 %%%%%within this distance of a deep-draft USACE Principal Port ...
-p.port_min_unique_ships=2;          %%%%%... 2 ships in one year are enough (thin approaches: Searsport, Coos Bay)
+p.port_min_unique_ships=2;          %%%%%... 2 ships in one year are enough (thin approaches: Coos Bay)
+p.port_relax_coast_km=25;           %%%%%... and only within 25 km of the coastline, so the rule doesn't run upriver (review CA-8)
 
 %%%%%%%%%%Fairways and Traffic Separation Schemes (NOAA ENC Direct)
 p.include_fairways=true;
@@ -69,7 +70,7 @@ p.racon_bands="S";        %%%%%"S": racons charted with the 0.10 m (S-band) wave
 
 %%%%%%%%%%Zone definition
 p.distances_km=[25 50 100];
-p.zone_mode='shore';      %%%%%'shore': ship water + X km inland from the facing shoreline (default)
+p.zone_mode='ships';      %%%%%zone = U.S. land and water within X km of a route cell (ship water); was 'shore' before the November 2026 review (CA-4 to CA-7)
                           %%%%%'ships': X km from the ships themselves
 p.shore_link_km=25;       %%%%%'shore' mode: water within this distance of ships counts as ship water
 

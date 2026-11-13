@@ -280,6 +280,18 @@ verifyGreaterThanOrEqual(tc,cell_area,square_area);
 verifyLessThanOrEqual(tc,cell_area,ring_area*(1+1e-9));
 end
 
+function test_polygon_area_matches_quadrangle(tc)
+%%%%%The land areas come from polygons in an equal-area projection; a 1 by 1
+%%%%%degree quadrangle with a 0.5 by 0.5 degree hole must match areaquad.
+outer=polyshape([-80 -79 -79 -80],[30 30 31 31]);
+hole=polyshape([-79.75 -79.25 -79.25 -79.75],[30.25 30.25 30.75 30.75]);
+donut=subtract(outer,hole);
+want=areaquad(30,-80,31,-79,wgs84Ellipsoid('km'))-areaquad(30.25,-79.75,30.75,-79.25,wgs84Ellipsoid('km'));
+%%%%%Straight edges in the projection differ slightly from parallels; 0.1% is enough here.
+verifyEqual(tc,polyshape_area_km2_rev1(donut),want,'RelTol',1e-3);
+verifyEqual(tc,polyshape_area_km2_rev1(polyshape()),0);
+end
+
 function [ship_days,max_year_ships]=rule_counts()
 %%%%%Rows: cells; values chosen to sit on both sides of each cutoff.
 ship_days     =[0 5 ; 104 6 ; 5 40];

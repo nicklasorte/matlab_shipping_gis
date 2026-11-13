@@ -98,7 +98,7 @@ def ak_routes():
     z = np.load(os.path.join(AK, "alaska_rule_cells.npz"))
     ais, allc = z["ship_days_6"], z["both_cell"]
     # MATLAB route cells: AIS (ship-days) cells plus NOAA charted fairways and routing measures
-    m = scipy.io.loadmat(os.path.join(AK, f"{STEM}_shore_rev1.mat"), squeeze_me=True, struct_as_record=False)
+    m = scipy.io.loadmat(os.path.join(AK, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     r_, c_ = m["source_mask"].nonzero()
     nr = m["source_mask"].shape[0]
     route = np.sort(r_ + 1 + c_ * nr).astype(np.int64)
@@ -133,7 +133,7 @@ def ak_routes():
 
 
 def ak_zones():
-    m = scipy.io.loadmat(os.path.join(AK, f"{STEM}_shore_rev1.mat"), squeeze_me=True, struct_as_record=False)
+    m = scipy.io.loadmat(os.path.join(AK, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     zs = {int(z.distance_km): float(z.land_area_km2) for z in m["zone"]}
     R = m["R"]
     land = m["land_mask"].astype(bool)
@@ -146,7 +146,7 @@ def ak_zones():
     page = OnePager(
         headline=f"A 25 km zone would cover {100 * zs[25] / total:.0f}% of Alaska's land east of 180°, a 50 km "
                  f"zone {100 * zs[50] / total:.0f}%, and a 100 km zone {100 * zs[100] / total:.0f}%",
-        subhead="Land within each distance of large-ship water (shore mode, same method as the lower 48), 2018–2019 "
+        subhead="Land within each distance of large-ship water (distance from large-ship water, same method as the lower 48), 2018–2019 "
                 "routes; the interior stays outside every zone",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),
         alt=f"Map of Alaska with land near the coast shaded by zone: {100 * zs[25] / total:.0f}% within 25 km, "
@@ -157,7 +157,7 @@ def ak_zones():
     cols = {100: ramp[0], 50: ramp[len(ramp) // 2], 25: ramp[-1]}
     ax.add_collection(PolyCollection(rings(vf.STATES, "AK"), facecolor="white", edgecolor=page.theme.text, lw=0.4))
     for d in (100, 50, 25):
-        ax.add_collection(PolyCollection(rings(os.path.join(AK, f"{STEM}_shore_{d}km_land.shp")),
+        ax.add_collection(PolyCollection(rings(os.path.join(AK, f"{STEM}_ships_{d}km_land.shp")),
                                          facecolor=cols[d], edgecolor="none", zorder=2))
     frame(page, ax)
     ports(page, ax, hollow=True)

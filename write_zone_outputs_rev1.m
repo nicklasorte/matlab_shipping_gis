@@ -44,7 +44,9 @@ shp_path=fullfile(out_dir,[base_name '.shp']);
 shapewrite(S,shp_path);
 %%%%%shapewrite writes no .prj; write the WGS84 geographic CRS so GIS tools read it as EPSG:4326.
 prj_path=fullfile(out_dir,[base_name '.prj']);
-writelines(wktstring(geocrs(4326),'Version','wkt1'),prj_path); %%%%%ESRI .prj files use WKT1
+%%%%%ESRI-style WKT1 (no AXIS clause): the data are stored lon/lat, and the WKT1 that
+%%%%%wktstring(geocrs(4326)) writes declares lat/lon axis order (review CA-85).
+writelines('GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]]',prj_path);
 
 %%%%%KML always; with WRITE_KMZ also a zipped copy (KMZ is a zip holding doc.kml;
 %%%%%kmlwrite has no KMZ option)

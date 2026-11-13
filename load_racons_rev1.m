@@ -27,7 +27,18 @@ for k=1:size(layers,1)
     f=fullfile(cache_dir,[layers{k,1} '_rtpbcn.geojson']);
     if ~isfile(f)
         url=sprintf('https://encdirect.noaa.gov/arcgis/rest/services/encdirect/%s/MapServer/%d/query',layers{k,1},layers{k,2});
-        websave(f,url,'where','1=1','outFields','OBJNAM,RADWAL','outSR','4326','f','geojson',weboptions('Timeout',120));
+        num_try=3;   %%%%%NOAA's service fails now and then (review CA-90)
+        for try_idx=1:num_try
+            try
+                websave(f,url,'where','1=1','outFields','OBJNAM,RADWAL','outSR','4326','f','geojson',weboptions('Timeout',120));
+                break
+            catch err
+                if try_idx==num_try
+                    error('shipgis:racons','Racon download failed for %s: %s',layers{k,1},err.message);
+                end
+                pause(5);
+            end
+        end
     end
     T=geotable2table(readgeotable(f),["lat","lon"]);
     parts{k}=table(string(T.OBJNAM),string(T.RADWAL),T.lat,T.lon,'VariableNames',{'name','radwal','lat','lon'});

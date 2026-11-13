@@ -42,12 +42,20 @@ HELD = (2023, 2026)
 
 
 def all_days():
-    """Weekly Wednesdays: 2023-01-04 ... 2024-12-25 (paper) and 2025-01-01 ... 2026-06-24."""
-    out = list(vp.days())
-    d = dt.date(2025, 1, 1)
-    while d <= dt.date(2026, 6, 30):
-        out.append(d)
-        d += dt.timedelta(7)
+    """The 52 sampled Wednesdays of 2023, of each base year (ship_period.py), and January-June 2026.
+
+    Fixed in the November 2026 review (CA-36): the earlier version appended
+    2025-01-01 onward to vp.days(), which by then already held 2025, so 2025 got
+    53 days and the base network 661,901 cells.
+    """
+    def wednesdays(start, n=None, end=None):
+        out, d = [], start
+        while (n is None or len(out) < n) and (end is None or d <= end):
+            out.append(d)
+            d += dt.timedelta(7)
+        return out
+    out = wednesdays(dt.date(2023, 1, 4), n=52) + list(vp.days()) + wednesdays(dt.date(2026, 1, 7), end=dt.date(2026, 6, 30))
+    assert len(out) == len(set(out)), "duplicate sample days"
     return out
 
 

@@ -154,6 +154,17 @@ if isfield(p,'port_relax_km') && p.port_relax_km>0
     port_mask(sub2ind(R.RasterSize,port_row(in_grid),port_col(in_grid)))=true;
     near_port=distance_to_mask_km_rev1(port_mask,R,p.port_relax_km,p.block_rows)<=p.port_relax_km;
     relaxed=near_port & ~source_mask & max_year_ships>=p.port_min_unique_ships;
+    %%%%%Approaches only: with p.port_relax_coast_km set, a relaxed cell must lie
+    %%%%%within that distance of the Census coastline, so the rule can't extend a
+    %%%%%route upriver past a port (it made the Mississippi route above Baton
+    %%%%%Rouge from two river vessels; review CA-8).
+    if isfield(p,'port_relax_coast_km') && ~isempty(p.port_relax_coast_km)
+        near_coast=distance_to_mask_km_rev1(coast_mask,R,p.port_relax_coast_km,p.block_rows)<=p.port_relax_coast_km;
+        disp_progress(sprintf('Port approaches: %d candidate cells dropped as more than %g km from the coastline', ...
+            nnz(relaxed & ~near_coast),p.port_relax_coast_km));
+        relaxed=relaxed & near_coast;
+        clear near_coast
+    end
     source_mask=source_mask | relaxed;
     disp_progress(sprintf('Port approaches: %d cells added within %g km of %d deep-draft ports (>= %d ships)', ...
         nnz(relaxed),p.port_relax_km,nnz(in_grid),p.port_min_unique_ships));
@@ -222,15 +233,24 @@ end
 
 %%%%%%%%%%4-5. Contour, clip, write
 num_dist=numel(p.distances_km);
-zone=repmat(struct('distance_km',[],'poly',[],'latlon',[],'poly_land',[],'latlon_land',[],'land_area_km2',[],'files',[]),num_dist,1);
+zone=repmat(struct('distance_km',[],'poly',[],'latlon',[],'poly_land',[],'latlon_land',[],'land_area_km2',[],'land_cells_area_km2',[],'files',[]),num_dist,1);
 warn_state=warning('off','MATLAB:polyshape:repairedBySimplify');
 cleanup_warn=onCleanup(@() warning(warn_state));
 %%%%%Fewer vertices: simplify the land outline once and each zone outline
 land_poly=simplify_polyshape_rev1(land_poly,p.simplify_deg);
+%%%%%Other countries' land is taken out of every zone (review CA-3); the zones
+%%%%%then hold U.S. land and water only.
+foreign_poly=polyshape();
+if ~isfield(p,'clip_foreign') || p.clip_foreign
+    foreign_poly=load_foreign_land_rev1(R,p.data_dir);
+end
 for dist_idx=1:num_dist
     d_km=p.distances_km(dist_idx);
     zone_poly=field_to_zone_polyshape_rev1(dist_field_km,R,d_km);
     zone_poly=simplify_polyshape_rev1(zone_poly,p.simplify_deg);
+    if foreign_poly.NumRegions>0
+        zone_poly=subtract(zone_poly,foreign_poly);
+    end
     [lon_z,lat_z]=boundary(zone_poly);
     zone_latlon=[lat_z lon_z];
     zone_land=intersect(zone_poly,land_poly);
@@ -241,15 +261,20 @@ for dist_idx=1:num_dist
     zone(dist_idx).latlon=zone_latlon;
     zone(dist_idx).poly_land=zone_land;
     zone(dist_idx).latlon_land=[lat_l lon_l];
-    zone(dist_idx).land_area_km2=areamat(land_mask & dist_field_km<=d_km,R,wgs84Ellipsoid('km'));
+    %%%%%Land area from the clipped land polygon (equal-area projection), not
+    %%%%%from counting grid cells that touch land (review CA-33). The cell count
+    %%%%%is kept for comparison.
+    zone(dist_idx).land_area_km2=polyshape_area_km2_rev1(zone_land);
+    zone(dist_idx).land_cells_area_km2=areamat(land_mask & dist_field_km<=d_km,R,wgs84Ellipsoid('km'));
 
     base_name=sprintf('%s_%s_%gkm',p.out_name,p.zone_mode,d_km);
     files_all=write_zone_outputs_rev1(zone_poly,p.out_dir,base_name, ...
-        sprintf('%s mode, %g km (water + land)',p.zone_mode,d_km),p.kmz);
+        sprintf('%s mode, %g km (U.S. water + land)',p.zone_mode,d_km),p.kmz);
     files_land=write_zone_outputs_rev1(zone_land,p.out_dir,[base_name '_land'], ...
         sprintf('%s mode, %g km (U.S. land only)',p.zone_mode,d_km),p.kmz);
     zone(dist_idx).files=[files_all; files_land];
-    disp_progress(sprintf('%g km: %d regions, U.S. land in zone %.0f km^2',d_km,zone_poly.NumRegions,zone(dist_idx).land_area_km2));
+    disp_progress(sprintf('%g km: %d regions, U.S. land in zone %.0f km^2 (grid cells touching land: %.0f km^2)',d_km,zone_poly.NumRegions, ...
+        zone(dist_idx).land_area_km2,zone(dist_idx).land_cells_area_km2));
 end
 
 result.R=R;

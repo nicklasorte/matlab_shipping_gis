@@ -55,7 +55,7 @@ p.racon_bands="S";
 
 %%%%%%%%%%Zones (same distances and bands as the lower 48)
 p.distances_km=[25 50 100];
-p.zone_mode='shore';
+p.zone_mode='ships';      %%%%%zone = U.S. land and water within X km of a route cell (ship water); was 'shore' before the November 2026 review (CA-4 to CA-7)
 p.shore_link_km=25;
 p.band_zones=table([2900;3000;3030;3070],[3000;3030;3070;3100],[25;50;100;50], ...
     'VariableNames',{'f_low_mhz','f_high_mhz','distance_km'});

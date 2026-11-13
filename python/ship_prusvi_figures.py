@@ -103,7 +103,7 @@ def land_rings():
 
 
 def pr_routes():
-    m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_shore_rev1.mat"), squeeze_me=True, struct_as_record=False)
+    m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     r_, c_ = m["source_mask"].nonzero()
     route = (r_ + 1 + c_ * m["source_mask"].shape[0]).astype(np.int64)
     allc = np.load(os.path.join(ISL, "prusvi_routes.npz"))["both_cell"]
@@ -132,7 +132,7 @@ def pr_routes():
 
 
 def pr_zones():
-    m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_shore_rev1.mat"), squeeze_me=True, struct_as_record=False)
+    m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     zs = {int(z.distance_km): float(z.land_area_km2) for z in m["zone"]}
     land = m["land_mask"].astype(bool)
     nr = land.shape[0]
@@ -143,7 +143,7 @@ def pr_zones():
     page = OnePager(
         headline=f"A 25 km zone would cover {100 * sh[25]:.0f}% of the land of Puerto Rico and the U.S. Virgin Islands, and "
                  f"a 50 km zone {100 * sh[50]:.0f}%",
-        subhead="Land within each distance of large-ship water (shore mode, same method as the lower 48); "
+        subhead="Land within each distance of large-ship water (distance from large-ship water, same method as the lower 48); "
                 f"the 100 km zone covers {100 * sh[100]:.0f}%",
         source=SRC, theme="ntia", layout="hero", size=(11, 7.4),
         alt=f"Map of Puerto Rico and the U.S. Virgin Islands with land shaded by zone: {100 * sh[25]:.0f}% within 25 km, "
@@ -153,7 +153,7 @@ def pr_zones():
     cols = {100: ramp[0], 50: ramp[len(ramp) // 2], 25: ramp[-1]}
     ax.add_collection(PolyCollection(land_rings(), facecolor="white", edgecolor=page.theme.text, lw=0.5))
     for d in (100, 50, 25):
-        ax.add_collection(PolyCollection(rings(os.path.join(HAW, f"{STEM}_shore_{d}km_land.shp")),
+        ax.add_collection(PolyCollection(rings(os.path.join(HAW, f"{STEM}_ships_{d}km_land.shp")),
                                          facecolor=cols[d], edgecolor="none", zorder=2))
     frame(page, ax)
     ports(page, ax, hollow=True)

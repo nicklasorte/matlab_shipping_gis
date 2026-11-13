@@ -3,3 +3,4 @@ __pycache__/
 
 # Large public reference rasters (downloaded by the validity checks; not committed)
 data/ref/*.tif
+data/length_variants/

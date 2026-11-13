@@ -81,6 +81,7 @@ while hasdata(ds)
     if filt.min_sog_kn>0
         keep=keep & T.sog>=filt.min_sog_kn;
     end
+    keep=keep & ~isnan(T.mmsi);   %%%%%a report with no readable MMSI can't be counted as a ship (as in Python; review CA-79)
     T=T(keep,:);
     num_row_kept=num_row_kept+height(T);
     chunk_mmsi{end+1,1}=unique(T.mmsi); %#ok<AGROW> chunk count is not known in advance

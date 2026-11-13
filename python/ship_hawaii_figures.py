@@ -120,7 +120,7 @@ def haw_routes():
 def haw_zones():
     shares = {}
     import scipy.io
-    m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_shore_rev1.mat"), squeeze_me=True, struct_as_record=False)
+    m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     zs = m["zone"]
     land_total = float(next(z.land_area_km2 for z in zs if z.distance_km == 100))
     for z in zs:
@@ -128,7 +128,7 @@ def haw_zones():
     page = OnePager(
         headline=f"A 50 km zone would cover {100 * shares[50][1]:.0f}% of Hawaii's land, and a 25 km zone "
                  f"{100 * shares[25][1]:.0f}%",
-        subhead="Land within each distance of large-ship water (shore mode, same method as the lower 48); the 100 km "
+        subhead="Land within each distance of large-ship water (distance from large-ship water, same method as the lower 48); the 100 km "
                 "zone covers all of the main islands",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),
         alt=f"Map of the main Hawaiian Islands with land shaded by zone: the 25 km zone covers "
@@ -139,7 +139,7 @@ def haw_zones():
     cols = {100: ramp[0], 50: ramp[len(ramp) // 2], 25: ramp[-1]}
     ax.add_collection(PolyCollection(rings(vf.STATES, "HI"), facecolor="white", edgecolor=page.theme.text, lw=0.5))
     for d in (100, 50, 25):
-        ax.add_collection(PolyCollection(rings(os.path.join(HAW, f"{STEM}_shore_{d}km_land.shp")),
+        ax.add_collection(PolyCollection(rings(os.path.join(HAW, f"{STEM}_ships_{d}km_land.shp")),
                                          facecolor=cols[d], edgecolor="none", zorder=2))
     frame(page, ax)
     ports(page, ax, hollow=True)
