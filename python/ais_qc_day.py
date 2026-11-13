@@ -9,7 +9,8 @@ Checks (each a share of large-ship reports or ships, by area):
   4. Duplicate MMSI: one MMSI reporting two positions more than 50 km apart
      within 10 minutes (two transmitters sharing an MMSI, or spoofing).
   5. Positions on land: reports more than 2 km inside Census state polygons
-     (cb_2023_us_state_500k), each area in its own equal-area projection, split
+     (cb_2023_us_state_500k), each area in its own projected CRS (equal-area except EPSG:32161 for Puerto Rico,
+     which is conformal; fine for a 2 km inland test), split
      into the Great Lakes (lower 48 only; inside state lines), route cells
      (narrow rivers and channels the 1:500,000 shoreline closes), and the rest
      (truly off the water).
@@ -169,11 +170,11 @@ def main(day):
         r["reports_sog_over_40kn"] = int(np.sum(x["sog"] > 40))
         dup = same & (dt_h <= 10 / 60) & (dk > 50)
         r["ships_possible_duplicate_mmsi"] = int(len(np.unique(mm[1:][dup])))
-        # 5. On land, more than 2 km in, in the area's equal-area projection
+        # 5. On land, more than 2 km in, in the area's projected CRS
         if land is not None:
             xm, ym = to_m.transform(x["lon"], x["lat"])
             inland = contains_xy(land, xm, ym)
-            # State polygons include the Great Lakes, and the 1:500,000 shoreline closes
+            # Lake reports are split out as a separate class (the lakes aren't in the state polygons), and the 1:500,000 shoreline closes
             # narrow rivers, so split on-land reports by where they are.
             lakes = (x["lat"] > 41) & (x["lat"] < 49.5) & (x["lon"] > -92.5) & (x["lon"] < -75.8)
             if grid is not None:
