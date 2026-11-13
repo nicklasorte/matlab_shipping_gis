@@ -14,7 +14,8 @@ and is out of scope.
 
 - The review has five stages: reproduce, trace the numbers, attack the
   method, expert review, and sign-off. Stages 1 through 3 can run without
-  outside reviewers. Stages 4 and 5 need people.
+  outside reviewers. Stages 4 and 5 need people. There is no external
+  reviewer (Nick, November 12, 2026).
 - The paper changed a lot in one day: the analysis years moved to
   2024–2025, and Hawaii, Alaska, and Puerto Rico and the U.S. Virgin
   Islands were added. Checks that passed on the earlier version don't
@@ -218,7 +219,6 @@ Agents can't substitute for these.
 
 | Reviewer | What to review | Questions to ask |
 | --- | --- | --- |
-| Maritime operations (for example, a Coast Guard or NOAA Coast Survey contact) | Sections 1.1, 1.4, 1.5, 4, 5, 6 | Do the routes match where large ships sail? Is anything missing, such as Navy areas or anchorages? Are the Alaska lanes right? |
 | RF engineer on the 2.7 GHz study | Sections 1.1 and 3 | Does a 100 m ship stand in for an S-band radar well enough? Does the zone method give the EMC analysis what it needs? |
 | GIS or data analyst | Sections 1.5 and 3.1, and the code | Are the distance method, the projections, and the land and coastline layers right, including in Alaska? |
 | NTIA style and Section 508 reviewer | Whole paper | Plain language, marking on every page, alt text, table headers, color contrast. |
@@ -287,8 +287,16 @@ a technical check of Sections 4–6 and the route maps only, under the
 DRAFT//PRE-DECISIONAL marking. Against A: it adds about a week. Option C
 leaves the routes unchecked by anyone who knows the waters.
 
-**Applied:** stage 4 order set as above. Names still to be filled in by
-Nick.
+**Decided (Nick, November 12, 2026): C, no external reviewer.** Stage 4
+uses internal reviewers only: the RF engineer on the study, a GIS analyst,
+the NTIA style and Section 508 reviewer, and counsel for data use. Names
+still to be filled in by Nick.
+
+Because nobody who knows the waters will check the routes, the route check
+falls to stage 3 and the outside data already in the repo: the NOAA AIS
+Vessel Transit Counts (`python/check_transit_counts.py`), the NOAA charted
+lanes, the satellite-AIS dataset in Alaska, and the deep-draft port check.
+The paper should say the routes weren't reviewed by a maritime operator.
 
 ### 3. MATLAB and Python agreement statement (gap 1)
 

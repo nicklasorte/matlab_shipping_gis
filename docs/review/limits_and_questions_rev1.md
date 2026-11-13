@@ -54,7 +54,10 @@ weakly in the paper.
    the charts that none exist.
 8. **Not analyzed:** the western Aleutians (west of 180°), Guam, the
    Northern Mariana Islands, and American Samoa.
-9. **Zone distances are examples.** The 25, 50, and 100 km zones show the
+9. **No maritime operator reviewed the routes.** They were checked against
+   NOAA transit counts, NOAA charts, satellite AIS in Alaska, and the
+   deep-draft ports, not against local knowledge.
+10. **Zone distances are examples.** The 25, 50, and 100 km zones show the
    method, not a recommendation.
 
 ## Questions for reviewers
@@ -62,7 +65,10 @@ weakly in the paper.
 Answer the ones in your area; skip the rest. Comments in the working-paper
 doc are best.
 
-### Maritime operations
+### Routes (any reviewer)
+
+The routes haven't been reviewed by a maritime operator, so these questions
+are open to everyone.
 
 1. Do the route maps in Sections 3 through 6 match where large ships
    sail? Name any lane, anchorage, or port approach that is missing or
