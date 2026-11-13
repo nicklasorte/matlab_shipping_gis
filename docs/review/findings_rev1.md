@@ -98,7 +98,7 @@ The full list is in the Action column (35 rows). The main ones:
 | Held-out capture (2023 and 2026 days) | Lower 48: 98% of large-ship cell visits within 25 km, 99.5% within 100 km. Puerto Rico and USVI: 99.95–100%. Hawaii: 81–82% within 25 km, 94–96% within 100 km | `heldout_capture_rev1.csv` |
 | Outside port totals | Top-15 ranks don't match public call counts (Spearman −0.09); all 73 ports 0.66; explained by gateway ports, overlapping 10 km circles, and reference points far from terminals | `agent_totals.md` |
 | Sampling stability (200 halves) | See `stability_rev1.csv` when complete | `stability_rev1.csv` |
-| Flagged reports removed | See `flagged_rebuild.json` when complete | `outputs/2024_2025/flagged/` |
+| Flagged reports removed (all 104 days per area) | Lower 48: 4,474 route cells (0.68%) depend only on position jumps or shared ship IDs, mostly far off the Pacific coast; land in the zones falls 0.13–0.19%. Hawaii 0, Puerto Rico and USVI 1, Alaska 11 cells. Rebuilt day pairs match the committed caches exactly on every lower-48, Hawaii, and Puerto Rico day, and to within one pair on 16 Alaska days | `outputs/2024_2025/flagged/flagged_rebuild.json` |
 
 Sensitivity, lower 48 (direct-distance land metric; the changes, not the
 absolute areas, are what matter):

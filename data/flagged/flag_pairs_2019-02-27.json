@@ -1,0 +1,13 @@
+{
+ "day": "2019-02-27",
+ "reports": 671883,
+ "flagged_reports": 29,
+ "alaska180": {
+  "pairs": 8996,
+  "flagged_only_pairs": 0,
+  "flagged_only_cells": 0,
+  "cache_pairs": 8995,
+  "pairs_not_in_cache": 1,
+  "cache_pairs_not_rebuilt": 0
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "Lower 48": {
+  "rule": "unique_ships",
+  "days": 104,
+  "days_without_flag_file": [],
+  "pairs_removed": 97785,
+  "route_cells_committed": 658867,
+  "route_cells_rebuilt_all_reports": 658867,
+  "rebuilt_matches_committed": true,
+  "route_cells_without_flagged": 654393,
+  "route_cells_dropped": 4474,
+  "route_cells_dropped_pct": 0.679,
+  "route_cells_gained": 0
+ },
+ "Hawaii": {
+  "rule": "ship_days",
+  "days": 104,
+  "days_without_flag_file": [],
+  "pairs_removed": 3,
+  "route_cells_committed": 7310,
+  "route_cells_rebuilt_all_reports": 7310,
+  "rebuilt_matches_committed": true,
+  "route_cells_without_flagged": 7310,
+  "route_cells_dropped": 0,
+  "route_cells_dropped_pct": 0.0,
+  "route_cells_gained": 0
+ },
+ "Puerto Rico and USVI": {
+  "rule": "unique_ships",
+  "days": 104,
+  "days_without_flag_file": [],
+  "pairs_removed": 46,
+  "route_cells_committed": 41236,
+  "route_cells_rebuilt_all_reports": 41236,
+  "rebuilt_matches_committed": true,
+  "route_cells_without_flagged": 41235,
+  "route_cells_dropped": 1,
+  "route_cells_dropped_pct": 0.0024,
+  "route_cells_gained": 0
+ },
+ "Alaska to 180": {
+  "rule": "ship_days",
+  "days": 104,
+  "days_without_flag_file": [],
+  "pairs_removed": 996,
+  "route_cells_committed": 26983,
+  "route_cells_rebuilt_all_reports": 26983,
+  "rebuilt_matches_committed": true,
+  "route_cells_without_flagged": 26972,
+  "route_cells_dropped": 11,
+  "route_cells_dropped_pct": 0.0408,
+  "route_cells_gained": 0
+ },
+ "generated": "2026-11-12"
+}
