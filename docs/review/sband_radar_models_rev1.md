@@ -142,3 +142,32 @@ Main points for the EMC analysis:
   pulses at about 2% duty cycle and about 5 W average.
 - **Both:** horizontal polarization, about a 2° by 25° beam, sidelobes at
   −26 dB to −30 dB, and turning at about 24 rpm.
+
+### Antenna and scan modes (added November 13, 2026)
+
+| Column | Meaning |
+| --- | --- |
+| `antenna_type` | Slotted waveguide array. Furuno states it; ITU-R M.1460 calls it typical, and rows marked "typical" rely on that. |
+| `antenna_options` | Radiators and antenna units sold for the model, and rotation options |
+| `scan_mode` | All ship navigation radars found turn mechanically through 360° with a fixed fan beam about 25° tall. None scans in elevation. |
+| `sector_blanking` | IMO radars installed from July 1, 2008, must be able to mute transmission over a preset sector (MSC.192(79) 7.3). The sector is set at installation, often toward the ship's own structure or another radar. Legacy models aren't confirmed. |
+| `frequency_channels` | Magnetrons transmit at one frequency within their tolerance, not selectable. Solid-state radars use fixed or selectable channels: Furuno NXT two, JRC by option, SharpEye eight. |
+| `roll_pitch_performance` | IMO radars must detect normally at roll or pitch up to ±10°. With a 25° beam, the main beam tilts with the ship. |
+| `detection_reference_height_m` | IMO detection tests assume an antenna 15 m above the sea; real masts vary. |
+| `protection_criterion` | I/N of −6 dB for these radars (ITU-R M.1460, aggregate) |
+| `antenna_source_url` | Sources for these columns |
+
+A generic row, "ITU-R M.1460-1 (generic)", gives the ITU envelope for ship
+radars in this band, to use where a model value is blank:
+
+- 3020–3080 MHz, at 30–75 kW peak.
+- Pulses of 0.05–1.2 µs, at a PRF of 375–4000 Hz.
+- A 26–28 dB antenna gain, with a 1–4° by 24–30° beam.
+- 20–60 rpm.
+- A 3–8.5 dB noise figure.
+- More than 300,000 units worldwide (2006).
+
+Furuno's current installation manual also lists 8 ft and 10 ft S-band radiators
+(SN24CF and SN30CF) for installations that aren't IMO type-approved. That
+strengthens the photo-coding rule: antennas shorter than 10 ft are "unclear",
+not X-band.
