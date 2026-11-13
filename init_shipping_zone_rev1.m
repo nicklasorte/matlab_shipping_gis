@@ -9,7 +9,7 @@
 %%%%%Requires: Mapping Toolbox, Statistics and Machine Learning Toolbox,
 %%%%%and the zstd command-line tool for 2024+ AIS files.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clear;
+clearvars -except shore_link_override   %%%%%set shore_link_override (km) before running for the review sensitivity runs
 clc;
 
 %%%%%%%%%%Grid (lower 48 plus the Great Lakes and coastal waters)
@@ -127,6 +127,11 @@ p.data_dir=fullfile(pwd,'data');
 p.out_dir=fullfile(pwd,'output');
 p.out_name=['shipping_zone_' per.tag];
 p.make_figure=true;
+if exist('shore_link_override','var')   %%%%%review sensitivity run: other shore link, own output names, no figure
+    p.shore_link_km=shore_link_override;
+    p.out_name=sprintf('%s_shorelink%gkm',p.out_name,shore_link_override);
+    p.make_figure=false;
+end
 
 %%%%%%%%%%Output size
 p.simplify_deg=0.005;     %%%%%drop polygon vertices within 0.005 deg (about 0.5 km); 0 keeps all
