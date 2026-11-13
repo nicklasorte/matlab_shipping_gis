@@ -1,0 +1,245 @@
+group,name,lat,lon,route_km
+racon,"",27.4350014,-82.7027906,18.2715329442586
+racon,"",48.2345556,-123.5329722,0.158109041912985
+racon,"Antioch Bridge Racon",38.0275407999998,-121.7514025,0.423219441855398
+racon,"",28.7874038,-95.060946,0.638137277397504
+racon,"",28.1640717,-92.8617838,0.672973272622325
+racon,"",28.0118136,-94.3553378,3.12881882725837
+racon,"",28.2188778,-92.9253325,0.681537552511203
+racon,"",26.2349833,-91.2611083,7.95369385021709
+racon,"",28.0335028,-89.1006111,2.83921381042305
+racon,"",27.2267497,-91.1900639,2.83378382737934
+racon,"",27.1732583,-90.3656344,5.69792392371586
+racon,"",28.5210925,-88.2887873,5.51296691098639
+racon,"",27.1955556,-90.0269444,3.36959134349986
+racon,"",28.190395,-88.4952726,6.75756723753942
+racon,"",28.7183197,-89.3930908,0.765791815347425
+racon,"",28.6616385,-89.5510541,0.536595527285316
+racon,"",27.1883333,-90.2686111,13.4979315507924
+racon,"",29.2285949,-87.7810642,6.5869440110182
+racon,"",30.0846985,-88.4964906,1.10607999908922
+racon,"",30.0946853,-87.8831105,4.48647895856297
+racon,"",28.8341787,-89.4533307,0.816604791520732
+racon,"",29.5601119,-93.431639,1.68709459775281
+racon,"",29.061345,-94.269117,0.57034506628989
+racon,"",29.129954,-94.546163,0.562324208013106
+racon,"",49.0752058,-123.3808831,0.300748821572659
+racon,"Carquinez Strait Bridge North Channel Racon N",38.0632243,-122.2253188,0.199411892063694
+racon,"Carquinez Strait Bridge South Channel Racon C",38.0592433999991,-122.224982199999,0.47184777711919
+racon,"",43.5267533,-70.0911564,0.366110787557572
+racon,"",41.3969771,-71.0346848,1.23938734864468
+racon,"",42.378585,-70.782839,0.436370818062173
+racon,"",44.3225274,-68.1233686,0.304030468170415
+racon,"",25.76831,-80.0833156,0.404865492389724
+racon,"",29.3263316,-88.8770544,0.784391475709318
+racon,"",28.9059364,-89.4287431,0.378947270776578
+racon,"",47.4198056,-87.5868361,4.24409028648682
+racon,"",45.5814778,-86.9987139,16.6400183465894
+racon,"",45.8430356,-84.6153975,0.220591064891042
+racon,"",46.7711177,-84.9573443,1.03447629785266
+racon,"",45.0210075,-85.9571433,0.688920426300915
+racon,"",45.6947861,-84.3621189,1.11093948488963
+racon,"",45.8416961,-85.1356808,1.11310959570414
+racon,"",47.0375278,-84.7865278,10.3887563647053
+racon,"",45.9491167,-83.9031317,0.480007481110562
+racon,"",45.1357111,-83.154965,0.785651963744344
+racon,"",48.2235152,-88.3657511,0.704770449094875
+racon,"",32.6222756,-117.2458689,0.313678673283357
+racon,"",34.125,-119.4012224,1.16505842960208
+racon,"",33.69,-118.183611,0.570633479487014
+racon,"",33.6877778,-118.24,0.556257172940755
+racon,"",37.9981806,-76.1968853,0.390349183634441
+racon,"",38.5552728,-76.4275608,0.224732337396601
+racon,"",41.2296322,-72.0666288,0.61221678224285
+racon,"",33.7713462,-78.0504742,0.583146471088464
+racon,"",40.4424411,-73.9168308,0.323982578016526
+racon,"",41.3833333,-71.3892972,1.3231123930977
+racon,"",32.5943306,-79.5377525,0.268388233330278
+racon,"",49.0380556,-123.2563889,0.713777913021912
+racon,"",48.3753708,-123.3926376,0.179295209582329
+racon,"",48.8031667,-123.0274167,0.925187726587689
+racon,"Golden Gate Bridge RACON G",37.8197412000009,-122.478554900001,0.612737453359471
+racon,"",37.7933606000006,-122.383072000001,0.248858541570393
+racon,"",37.7997477999997,-122.376220800001,0.538718820901215
+racon,"San Mateo-Hayward Bridge Racon M",37.5836963000002,-122.2516258,0.330782602046871
+racon,"",37.9351251000007,-122.4446171,0.0363476590272998
+racon,"",37.9339302000008,-122.426860400001,0.20191975592435
+racon,"Harding Rock RACON",37.8379869,-122.446043600001,0.344541043066442
+racon,"",37.9124293999994,-122.4204264,0.492629169131536
+racon,"",38.0383335000006,-122.1213016,0.492248102475065
+racon,"",37.8032863000008,-122.372409899999,0.296805259641431
+racon,"Rio Vista Bridge Racon T",38.1590180000003,-121.684206600001,0.452135301241463
+racon,"",39.3052991999994,-75.3766510999994,0.145905825959338
+racon,"",38.9225203000005,-75.1001866999995,0.499406066199382
+racon,"",36.8868297,-75.4915781,1.35015581220929
+racon,"",34.4683328,-120.6816669,6.67178022779605
+racon,"",32.3975,-117.2422222,6.37301277406116
+vts_area,"VTS New York",40.62,-74.06,0.69798827139902
+vts_area,"VTS Houston-Galveston",29.35,-94.73,0.737526521416078
+vts_area,"VTS Port Arthur",29.87,-93.93,0.735890662038697
+vts_area,"VTS Berwick Bay",29.69,-91.21,0.736459330947051
+vts_area,"VTS Lower Mississippi River",29.95,-90.06,0.735637107148299
+vts_area,"VTS Louisville",38.26,-85.77,393.14617027619
+vts_area,"VTS St. Marys River",46.5,-84.35,0.674952407510227
+vts_area,"VTS Puget Sound",47.6,-122.34,0.670553413714352
+vts_area,"VTS San Francisco",37.81,-122.36,0.708561835375724
+vts_area,"VTS Los Angeles-Long Beach",33.72,-118.27,0.723149631490192
+named_port,"Baton Rouge, LA",30.44,-91.2,0.734073264436189
+named_port,"New Orleans, LA",29.95,-90.06,0.735637107148299
+named_port,"Houston, TX",29.73,-95.27,0.736333179588851
+named_port,"Corpus Christi, TX",27.81,-97.4,0.742243498552745
+named_port,"Mobile, AL",30.7,-88.04,0.733235994697035
+named_port,"Tampa, FL",27.92,-82.43,0.741913042425081
+named_port,"Miami, FL",25.77,-80.17,0.748184649886039
+named_port,"Savannah, GA",32.12,-81.14,0.728574299800643
+named_port,"Charleston, SC",32.84,-79.9,0.726171983235502
+named_port,"Norfolk, VA",36.92,-76.33,0.711804517502629
+named_port,"Baltimore, MD",39.25,-76.55,0.703180580713558
+named_port,"Philadelphia, PA",39.9,-75.14,0.700727413130747
+named_port,"Newark, NJ (New York/New Jersey)",40.68,-74.15,0.697759019634992
+named_port,"Albany, NY",42.63,-73.76,0.69025205177176
+named_port,"Boston, MA",42.35,-71.04,0.691321787210578
+named_port,"Los Angeles/Long Beach, CA",33.75,-118.22,0.723046255558558
+named_port,"Oakland, CA",37.8,-122.32,0.708598709023817
+named_port,"Sacramento, CA",38.57,-121.55,0.705744433081913
+named_port,"Stockton, CA",37.95,-121.33,0.708026582667721
+named_port,"Portland, OR",45.6,-122.75,1.71269841244538
+named_port,"Seattle, WA",47.58,-122.35,0.670633535098378
+named_port,"Tacoma, WA",47.27,-122.41,0.67187481602804
+named_port,"Duluth, MN",46.77,-92.1,0.673874243856573
+named_port,"Chicago, IL",41.73,-87.53,0.693723876943212
+deep_draft_port,"Houston Port Authority, TX",29.74702,-95.29368,0.25824735924085
+deep_draft_port,"South Louisiana, LA, Port of",30.03345,-90.61794,0.331367440424492
+deep_draft_port,"Corpus Christi, TX",27.81277,-97.39789,0.377189219378622
+deep_draft_port,"New York, NY & NJ",40.67395,-74.03836,0.306470458794228
+deep_draft_port,"New Orleans, LA",29.91414,-90.08526,0.0988565672781547
+deep_draft_port,"Port of Long Beach, CA",33.73957,-118.2095,0.656792368210035
+deep_draft_port,"Port of Greater Baton Rouge, LA",30.42292,-91.19934,0.476090112938087
+deep_draft_port,"Beaumont, TX",30.08487,-94.09499,0.961298947807819
+deep_draft_port,"Port of Los Angeles, CA",33.72664,-118.2681,0.339775852712577
+deep_draft_port,"Virginia, VA, Port of",36.86642,-76.31174,0.330210255502513
+deep_draft_port,"Mobile, AL",30.69123,-88.03583,0.426651742246681
+deep_draft_port,"Plaquemines Port District, LA",29.48,-89.68745,0.604440942882668
+deep_draft_port,"Port of Savannah, GA",32.08471,-81.09538,0.0481820030096327
+deep_draft_port,"Lake Charles Harbor District, LA",30.10641,-93.28684,0.236453271900189
+deep_draft_port,"Port Arthur, TX",29.83142,-93.96069,0.575591394372404
+deep_draft_port,"Port Freeport, TX",28.96133,-95.3707,3.09029254518767
+inland_port,"Mid-Ohio Valley Port, OH and WV",39.26638,-81.5694,244.609805795512
+deep_draft_port,"Baltimore, MD",39.25083,-76.56164,0.546538572661693
+inland_port,"Cincinnati-Northern KY, Ports of",39.09403,-84.5045,292.932825326497
+deep_draft_port,"Texas City, TX",29.36307,-94.91809,0.368409311452241
+inland_port,"St. Louis Metro Port, IL and MO",38.61752,-90.18417,406.796851233354
+inland_port,"Huntington-Tristate, KY, OH, WV",38.43361,-82.41998,336.665660318098
+deep_draft_port,"Philadelphia Regional Port, PA",39.91882,-75.20219,3.81030357336204
+deep_draft_port,"Tampa Port Authority, FL",27.78534,-82.52235,0.26341947625581
+deep_draft_port,"Duluth-Superior, MN and WI",46.77836,-92.09641,0.388738393064173
+deep_draft_port,"Port of Charleston, SC",32.78878,-79.9216,0.526958543686384
+other_coastal_port,"Indiana (Northern District), IN",41.62505,-87.20251,3.30806307854883
+deep_draft_port,"Jackson County Port, MS",30.34802,-88.55879,0.684015117694796
+deep_draft_port,"Seattle, WA",47.58771,-122.35922,0.437005338460612
+deep_draft_port,"Tacoma, WA",47.28966,-122.4515,0.581541571439595
+deep_draft_port,"Richmond, CA",37.92424,-122.37423,0.813988856772662
+deep_draft_port,"Port of Portland, OR",45.47881,-122.6653,6.29361079429131
+deep_draft_port,"Port Everglades, FL",26.09339,-80.1178,0.332012258837204
+deep_draft_port,"South Jersey Port District, NJ",39.84645,-75.26109,0.370705876093291
+deep_draft_port,"Port of Oakland, CA",37.82152,-122.3081,0.944966939685854
+deep_draft_port,"Port of Kalama, WA",46.0266,-122.86686,0.228637040343699
+deep_draft_port,"Jacksonville, FL",30.32276,-81.66513,3.85980050238707
+inland_port,"Pittsburgh, PA Port of",40.44234,-80.01612,174.907531524039
+inland_port,"New Bourbon Port Authority, MO",38.01453,-90.09012,460.935001689357
+inland_port,"Mid-America Port, IA, IL and MO",39.71677,-91.34832,386.829463256477
+inland_port,"Illinois Waterway Ports, IL",40.87455,-89.48962,184.548841170012
+deep_draft_port,"Two Harbors, MN",47.01455,-91.67069,0.330566906772649
+deep_draft_port,"Boston, MA",42.35094,-71.05229,0.750112671700247
+deep_draft_port,"Galveston, TX",29.31049,-94.8127,0.548837176085583
+deep_draft_port,"Port of Longview, WA",46.14222,-122.914,4.77878536249459
+deep_draft_port,"Port of Vancouver USA, WA",45.62244,-122.6806,1.15544724818915
+deep_draft_port,"Cleveland-Cuyahoga Port, OH",41.47852,-81.67191,0.468474574069228
+deep_draft_port,"Illinois International Port, IL",41.88662,-87.63799,12.2477676785768
+deep_draft_port,"Toledo-Lucas County Port, OH",41.66294,-83.50751,0.309746525081932
+inland_port,"Memphis-Shelby County Port, TN",35.18177,-90.06198,525.520927816671
+inland_port,"Joliet Regional Port, IL",41.51573,-88.08984,47.8721512690219
+deep_draft_port,"PortMiami, FL",25.78286,-80.18164,0.412069463600369
+inland_port,"E Iowa and W Illinois, IA IL",41.77875,-90.25201,220.096174984131
+deep_draft_port,"Detroit-Wayne County Port, MI",42.26909,-83.10959,0.591172646965786
+deep_draft_port,"New Haven, CT",41.29883,-72.90473,0.426474064031309
+inland_port,"Louisville-Jefferson Port, KY",38.26147,-85.76099,393.219327165229
+inland_port,"Nashville, TN",36.16513,-86.77467,607.863525410322
+other_coastal_port,"Greater Lafourche Port, LA",29.12195,-90.20528,0.340233858311398
+deep_draft_port,"Port of Providence, RI",41.81178,-71.39844,0.457686177146012
+deep_draft_port,"Conneaut, OH",41.96671,-80.5486,0.353193193297339
+deep_draft_port,"Anacortes, WA",48.49594,-122.59961,1.47433639164223
+deep_draft_port,"Brownsville, TX",25.9522,-97.39814,0.442147993023736
+deep_draft_port,"Wilmington, NC",34.22737,-77.9505,0.490527299222428
+other_coastal_port,"Rogers City, MI",45.4223,-83.81197,2.12613113187977
+inland_port,"Mount Vernon, IN",37.92208,-87.875,413.313533624708
+inland_port,"Kaskaskia Regional Port, IL",38.14333,-90.04615,446.449130962705
+deep_draft_port,"Marquette, MI",46.57729,-87.38482,0.255008144816435
+deep_draft_port,"Wilmington, DE",39.71589,-75.50697,0.195414717387239
+deep_draft_port,"Sabine Pass Port Authority, TX",29.76503,-93.92777,0.267394986271777
+inland_port,"Southeast Missouri Port, MO",37.24644,-89.49999,519.93186464997
+inland_port,"Paducah-McCracken Riverport, KY",37.12928,-88.69318,512.446270249733
+inland_port,"St. Paul Port Authority, MN",44.95157,-93.0619,210.14465452955
+deep_draft_port,"Calhoun Port Authority, TX",28.62939,-96.59232,2.71080323887682
+deep_draft_port,"Stockton, CA",37.9527,-121.3156,0.261103173199841
+deep_draft_port,"Albany Port District, NY",42.64271,-73.74816,2.04721832411719
+deep_draft_port,"Canaveral Port District, FL",28.41409,-80.60815,0.324259800888469
+inland_port,"Tulsa-Rogers County Port, OK",36.2182,-95.74002,699.132213618404
+deep_draft_port,"Portland, ME",43.64951,-70.25134,0.581562501277858
+other_coastal_port,"Silver Bay, MN",47.29421,-91.25639,1.21264288490097
+deep_draft_port,"Manatee County Port, FL",27.63368,-82.56414,0.169472601250035
+inland_port,"Vicksburg, MS",32.3347,-90.90056,207.566598621295
+other_coastal_port,"Orange County Nav District, TX",30.09537,-93.72356,18.3297677839204
+inland_port,"Massac-Metropolis Port, IL",37.14437,-88.72741,511.494632990883
+other_coastal_port,"Presque Isle Township, MI",45.29794,-83.42138,0.432490174697424
+other_coastal_port,"Ashtabula Port Authority, OH",41.90369,-80.79398,0.168356946474291
+other_coastal_port,"Mueller Township, MI",45.96942,-85.87297,0.515917592072394
+deep_draft_port,"Grays Harbor Port District, WA",46.90416,-124.17615,0.127894689390159
+inland_port,"Greenville, MS",33.36781,-91.10161,320.675376099675
+inland_port,"Central Louisiana Regional, LA",31.31208,-92.44067,142.81563603984
+inland_port,"Owensboro Riverport, KY",37.77637,-87.11169,427.226320571171
+deep_draft_port,"Milwaukee, WI",42.98824,-87.89967,2.99971701856764
+deep_draft_port,"Portsmouth, NH",43.07398,-70.73806,0.273201601915374
+other_coastal_port,"Marblehead, OH",41.52962,-82.70906,2.16446432876215
+deep_draft_port,"Port of Brunswick, GA",31.13243,-81.53666,0.326539886921545
+inland_port,"New Madrid County Port, MO",36.52684,-89.56866,597.951498305633
+other_coastal_port,"Alpena, MI",45.06197,-83.42173,1.3564761717998
+other_coastal_port,"Port Jefferson, NY",40.94881,-73.07216,0.486185249707611
+other_coastal_port,"Clark Township, MI",45.99139,-84.31281,3.00633829099078
+deep_draft_port,"Port of Palm Beach District, FL",26.76904,-80.05267,0.505287990534369
+deep_draft_port,"San Francisco Port, CA",37.80667,-122.39904,0.400573982358837
+deep_draft_port,"Panama City Port Authority, FL",30.134,-85.63376,0.163046642714255
+other_coastal_port,"Victoria, TX",28.69131,-96.97247,37.3515704310668
+other_coastal_port,"Green Bay, WI",44.51622,-88.01812,0.282135306776098
+inland_port,"Chattanooga, TN",35.02448,-85.32682,502.477345038465
+deep_draft_port,"Redwood City, CA",37.50536,-122.21401,1.07547152747207
+other_coastal_port,"Terrebonne Parish Port, LA",29.57907,-90.65905,13.7910012049832
+deep_draft_port,"Oxnard Harbor District, CA",34.14824,-119.20848,0.482032331531898
+deep_draft_port,"Coos Bay OR, Port of",43.36351,-124.2095,2.43058042102075
+inland_port,"Guntersville, AL",34.3739,-86.28751,432.007680600044
+deep_draft_port,"Morehead City, NC",34.71693,-76.72421,1.76887472866039
+inland_port,"Henderson County Riverport, KY",37.84269,-87.59378,420.090913699567
+deep_draft_port,"Sandusky, OH",41.47022,-82.71227,0.578134501647013
+other_coastal_port,"Port of Iberia District, LA",29.93731,-91.8438,9.19169600564514
+other_coastal_port,"Port of Harlingen Authority, TX",26.20198,-97.59711,19.6959121852873
+deep_draft_port,"Gulfport, MS",30.35962,-89.09257,0.56415555895608
+deep_draft_port,"Searsport, ME",44.45285,-68.92497,2.39077957333106
+other_coastal_port,"Bridgeport, CT",41.172,-73.17886,0.842761902364855
+other_coastal_port,"Grand Haven, MI",43.06694,-86.23557,0.220632131971824
+inland_port,"Kansas City Port Authority, MO",39.11169,-94.60642,661.417372772312
+deep_draft_port,"San Diego Unified Port, CA",32.70821,-117.1784,0.478125801886946
+inland_port,"Alexandria-Cario Port, IL",37.0403,-89.18481,533.204934571732
+inland_port,"Port of Rosedale, MS",33.81355,-91.02206,370.476099413608
+inland_port,"Helena-West Helena Port, AR",34.52186,-90.58323,452.526951200504
+other_coastal_port,"Monroe, MI",41.91513,-83.39061,3.70067009244839
+inland_port,"Pemiscot County Port, MO",36.21169,-89.68008,623.67802617583
+other_coastal_port,"Everett, WA",47.98476,-122.2294,0.328559271430246
+other_coastal_port,"Marine City, MI",42.71545,-82.50235,0.602567708571678
+other_coastal_port,"Muskegon, MI",43.22708,-86.34316,0.275170331054825
+deep_draft_port,"Sacramento-Yolo Port, CA",38.56132,-121.54154,0.507881019537433
+inland_port,"Hickman-Fulton County Port, KY",36.58154,-89.20535,582.698733156166
+inland_port,"Lake Providence Port, LA",32.79472,-91.15361,256.859379625169
+inland_port,"Heartland Port Authority, MO",38.58486,-92.17883,521.966752103489
+other_coastal_port,"Richmond, VA",37.45701,-77.41936,21.7191437242389
+other_coastal_port,"Drummond Island, MI",45.98873,-83.87892,0.513565776065129
+other_coastal_port,"Lorain Port Authority, OH",41.48248,-82.19514,0.28045418133713

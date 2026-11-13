@@ -1,0 +1,137 @@
+Products: 25 s
+                      route_cells: 658865
+            route_cells_main_only: 649737
+                   tow_only_cells: 9128
+                       both_years: 336367
+                    only_one_year: 322498
+         share_traffic_both_years: 0.8537
+         share_cells_half_traffic: 0.0635
+       offshore_median_km_Pacific: 132.0533
+          offshore_p90_km_Pacific: 607.9450
+                 tow_only_Pacific: 705
+          offshore_median_km_Gulf: 137.7053
+             offshore_p90_km_Gulf: 362.6245
+                    tow_only_Gulf: 2284
+      offshore_median_km_Atlantic: 81.8181
+         offshore_p90_km_Atlantic: 195.5063
+                tow_only_Atlantic: 4120
+    offshore_median_km_GreatLakes: 20.0276
+       offshore_p90_km_GreatLakes: 48.8369
+              tow_only_GreatLakes: 2019
+             river_km_new_orleans: 156.0427
+             river_km_baton_rouge: 352.0249
+                    river_km_last: 356.4727
+
+    "The busiest 6% of route cells carry half of all large-ship traffic"
+    "Large ships in Baltimore harbor fell 45% during the 2024 Key Bridge closure"
+    "Great Lakes traffic falls by half in winter (61 vs. 118 ships); the ocean coasts barely change"
+    "At 100 m, the length test is right 99.6% of the time and keeps 98.1% of big ships"
+    "About 1 ship in 11 reporting on AIS passes the large-ship filter"
+    "85% of large-ship traffic is in cells that pass the threshold in both years"
+    "Tug-barges add 1% more route cells, mostly near Atlantic, Gulf, and Great Lakes ports"
+    "Traffic thins above New Orleans, but large ships still reach Baton Rouge, 352 river km upstream"
+    "Every named major port and 97% of deep-draft ports sit within 5 km of a large-ship route; inland river ports do not"
+    "Half of Pacific and Gulf route cells lie more than 130 km offshore; 90% of Great Lakes route cells are within 49 km of shore"
+
+Products: 67 s
+                           hex_count: 7678
+                       hex_max_ships: 3206
+                   hex_share_top5pct: 0.4165
+                         hex_ge_1000: 140
+                    type_ships_cargo: 10485
+         type_share_ships_gulf_cargo: 0.5031
+                   type_ships_tanker: 4438
+        type_share_ships_gulf_tanker: 0.8745
+                type_ships_passenger: 283
+     type_share_ships_gulf_passenger: 0.3746
+               type_ships_government: 88
+    type_share_ships_gulf_government: 0.2727
+                           ports_top: {10×2 cell}
+                       ports_ge_1000: 15
+                profile_peak_Pacific: [33.5000 34 2126]
+                   profile_peak_Gulf: [-95 -94.5000 4031]
+               profile_peak_Atlantic: [39 39.5000 2199]
+                         land_max_km: 1.3279e+03
+                        sband_racons: 24
+             sband_racons_within_5km: 18
+
+    "The busiest 5% of hexagons carry 42% of large-ship traffic"
+    "Galveston Bay, the lower Mississippi, Los Angeles-Long Beach, and New York tower over the rest of the coast"
+    "Inside the busiest port areas, large ships keep to narrow channels; these six areas hold 25% of the busiest route cells"
+    "Half of all large-ship route cells are within 100 km of shore; 24% are within 50 km"
+    "Near-shore traffic peaks off Houston-Galveston, New York, and Los Angeles-Long Beach"
+    "15 deep-draft ports each saw 1,000 or more different large ships within 10 km"
+    "87% of tankers sail in Gulf waters, against 50% of cargo ships; passenger and government ships cluster at a few ports"
+    "Away from the coasts, only the Great Lakes and a few deep rivers bring large-ship routes inland"
+    "18 of 24 charted S-band racons and 9 of 10 VTS areas sit within 5 km of a large-ship route"
+
+Products: 24 s
+      corridor                   label                length_km    bin_km    ships_entrance    ships_head    ships_head_y0    ships_head_y1    share_head    ships_entering    share_reaching_head
+    _____________    _____________________________    _________    ______    ______________    __________    _____________    _____________    __________    ______________    ___________________
+
+    "houston"        "Houston Ship Channel"            91.718        2            2693            491             260              268           0.18232          3871               0.12684      
+    "columbia"       "Columbia River"                  174.12        5             580            279             158              132           0.48103          1407               0.19829      
+    "delaware"       "Delaware River"                  214.31        5             761            123              69               57           0.16163          1313              0.093679      
+    "chesapeake"     "Chesapeake Bay to Baltimore"     290.62        5            1461            829             423              530           0.56742          1692               0.48995      
+    "james"          "James River"                     123.35        5             970             28              17               16          0.028866           428              0.065421      
+    "hudson"         "Hudson River"                    248.14        5            1380             69              36               35              0.05          1453              0.047488      
+    "sacramento"     "Sacramento River"                156.06        5             743             91              53               46           0.12248           866               0.10508      
+    "stockton"       "San Joaquin River"               144.96        5             743            164              85               87           0.22073           908               0.18062      
+    "savannah"       "Savannah River"                  39.252        2             785            765             444              474           0.97452          1032               0.74128      
+    "sabine"         "Sabine-Neches Waterway"          76.243        2            1032            205              94              126           0.19864          1692               0.12116      
+    "calcasieu"      "Calcasieu Ship Channel"          58.877        2             400            211             109              116            0.5275           661               0.31921      
+    "mobile"         "Mobile Bay"                      55.153        2             475            495             248              301            1.0421           907               0.54576      
+    "stjohns"        "St. Johns River"                 31.296        2             393            157              89              105           0.39949           478               0.32845      
+    "capefear"       "Cape Fear River"                  42.91        2             206            179              99               97           0.86893           321               0.55763      
+    "mississippi"    "Mississippi River"               360.31        5            2095            262             138              138           0.12506          4610              0.065076      
+
+    "On 10 of 15 rivers and ship channels, fewer than half of the large ships at the entrance reach the head port"
+    "Large-ship traffic falls off step by step as each river or channel passes its ports"
+    "74% of the large ships that enter the Savannah River reach Garden City; on the Hudson and the Mississippi, fewer than 1 in 10 reach the head port"
+    "More large ships enter the Mississippi and the Houston Ship Channel than any other corridor, but only about 300 reach Baton Rouge and 490 reach Houston"
+    "491 large ships reach Houston, 92 km from the entrance: 18% of the 2,693 seen at the entrance"
+    "279 large ships reach Vancouver, 174 km from the entrance: 48% of the 580 seen at the entrance"
+    "123 large ships reach Trenton, 214 km from the entrance: 16% of the 761 seen at the entrance"
+    "829 large ships reach Baltimore, 291 km from the entrance: 57% of the 1,461 seen at the entrance"
+    "Large-ship routes on the James River stop 22 km short of Richmond; 28 ships reach the end of the routes"
+    "69 large ships reach Albany, 248 km from the entrance: 5% of the 1,380 seen at the entrance"
+    "91 large ships reach West Sacramento, 156 km from the entrance: 12% of the 743 seen at the entrance"
+    "164 large ships reach Stockton, 145 km from the entrance: 22% of the 743 seen at the entrance"
+    "765 large ships reach Garden City, 39 km from the entrance: 97% of the 785 seen at the entrance"
+    "205 large ships reach Beaumont, 76 km from the entrance: 20% of the 1,032 seen at the entrance"
+    "211 large ships reach Lake Charles, 59 km from the entrance: 53% of the 400 seen at the entrance"
+    "495 large ships reach Mobile, 55 km from the entrance: 104% of the 475 seen at the entrance"
+    "157 large ships reach Jacksonville, 31 km from the entrance: 40% of the 393 seen at the entrance"
+    "179 large ships reach Wilmington NC, 43 km from the entrance: 87% of the 206 seen at the entrance"
+    "262 large ships reach Baton Rouge, 356 km from the entrance: 13% of the 2,095 seen at the entrance"
+
+Products: 28 s
+                  port                          short                    complex               coast        lat        lon      rank    ships    ships_y0    ships_y1     share      cargo    tanker    passenger    government
+    ________________________________    _____________________    ________________________    __________    ______    _______    ____    _____    ________    ________    ________    _____    ______    _________    __________
+
+    "Galveston, TX"                     "Galveston"              "Houston-Galveston"         "Gulf"         29.31    -94.813     46     2951       1878        1851      0.074355    1017      1758        11             0    
+    "New Orleans, LA"                   "New Orleans"            "Lower Mississippi"         "Gulf"        29.914    -90.085      5     2426       1420        1395      0.061127    1556       705         6             0    
+    "Plaquemines Port District, LA"     "Plaquemines"            "Lower Mississippi"         "Gulf"         29.48    -89.687     12     2193       1253        1218      0.055256    1384       747         2             0    
+    "Houston Port Authority, TX"        "Houston"                "Houston-Galveston"         "Gulf"        29.747    -95.294      1     1704        986         980      0.042935     827       796         1             0    
+    "New York, NY & NJ"                 "New York-New Jersey"    "New York-New Jersey"       "Atlantic"    40.674    -74.038      4     1700       1006        1049      0.042834    1058       530        42             1    
+    "Port of Long Beach, CA"            "Long Beach"             "Los Angeles-Long Beach"    "Pacific"      33.74    -118.21      6     1475        889         848      0.037165     936       495        21             6    
+    "South Louisiana, LA, Port of"      "South Louisiana"        "Lower Mississippi"         "Gulf"        30.033    -90.618      2     1415        800         756      0.035653     932       482         2             0    
+    "Port Arthur, TX"                   "Port Arthur"            "Sabine-Neches"             "Gulf"        29.831    -93.961     15     1192        685         738      0.030034     297       754         1             0    
+    "Sabine Pass Port Authority, TX"    "Sabine Pass"            "Sabine-Neches"             "Gulf"        29.765    -93.928     73     1101        628         686      0.027741     214       849         0             0    
+    "Baltimore, MD"                     "Baltimore"              "Baltimore"                 "Atlantic"    39.251    -76.562     18     1067        551         674      0.026885     993        48         2             3    
+    "Virginia, VA, Port of"             "Virginia (Norfolk)"     "Virginia (Norfolk)"        "Atlantic"    36.866    -76.312     10     1063        601         628      0.026784     963        44         3            20    
+    "San Francisco Port, CA"            "San Francisco"          "San Francisco Bay"         "Pacific"     37.807     -122.4    107     1033        632         622      0.026028     606       374        24             4    
+
+    "Gulf ports take 48% of large-ship port visits; Galveston alone takes 7%"
+    "The 10 busiest deep-draft ports take 43% of large-ship port visits; the other 63 share the rest"
+    "13 ports take half of all large-ship port visits; the busiest 25 take 74%"
+    "Large-ship port visits are concentrated: 13 of 73 deep-draft ports take half, and 30 take four-fifths"
+    "Eight port complexes take 63% of large-ship port visits, led by the lower Mississippi (16%) and Houston-Galveston (13%)"
+    "Tankers make up 71% of large-ship visits at Sabine-Neches and 57% at Houston-Galveston; cargo and container ships lead everywhere else"
+    "Nearly half of all large-ship port visits are at Gulf ports, and a third of those are on the lower Mississippi"
+    "On a map, the Gulf ports from Corpus Christi to the Mississippi form the largest cluster of large-ship port visits"
+    "Galveston, New York, and Long Beach lead their coasts, but no port takes more than a sixth of any ocean coast's large-ship visits"
+    "Port shares barely moved between years; the largest shift among the top 15 is 0.5 points at Baltimore"
+
+{Unrecognized function or variable 't0'.
+} 
