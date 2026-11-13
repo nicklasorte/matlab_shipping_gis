@@ -180,6 +180,21 @@ if p.include_fairways
     source_mask=source_mask | fairway_mask;
 end
 
+%%%%%%%%%%2a. Extra ship water from another source (Alaska: satellite-AIS
+%%%%%%%%%%lanes beyond shore-receiver range, python/alaska_satellite_lanes.py).
+%%%%%%%%%%The CSV holds one linear cell index per row on this grid.
+if isfield(p,'extra_source_csv') && strlength(p.extra_source_csv)>0
+    extra_idx=readmatrix(p.extra_source_csv);
+    if any(extra_idx<1 | extra_idx>num_cell | extra_idx~=round(extra_idx))
+        error('shipgis:extra','%s holds cell indices outside this grid.',p.extra_source_csv);
+    end
+    extra_mask=false(R.RasterSize);
+    extra_mask(extra_idx)=true;
+    disp_progress(sprintf('Extra source cells: %d (%d not already route cells)',nnz(extra_mask),nnz(extra_mask & ~source_mask)));
+    source_mask=source_mask | extra_mask;
+    result.extra_cells=nnz(extra_mask);
+end
+
 %%%%%%%%%%2b. Racons (radar beacons) as fixed 2900-3100 MHz sites
 if isfield(p,'include_racons') && p.include_racons
     racons=load_racons_rev1(p.data_dir);

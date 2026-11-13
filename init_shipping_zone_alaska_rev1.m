@@ -16,9 +16,10 @@
 %%%%%date line (the western Aleutians are out of scope). The day caches come
 %%%%%from python/alaska_grid_to_180.py.
 %%%%%
-%%%%%Coverage limit: the Coast Guard receivers are on shore. The satellite-
-%%%%%based North Pacific and Arctic dataset (Kapsar and others, 2022) shows
-%%%%%busy lanes far offshore that these data miss (python/check_alaska_kapsar.py).
+%%%%%Coverage: the Coast Guard receivers are on shore, so busy lanes far
+%%%%%offshore are missing (python/check_alaska_kapsar.py). The satellite-based
+%%%%%North Pacific and Arctic dataset (Kapsar and others, 2022) fills them
+%%%%%(p.extra_source_csv below).
 %%%%%
 %%%%%Maps are drawn in Python (python/ship_alaska_figures.py).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,6 +52,12 @@ p.route_rule='ship_days';
 p.min_ship_days=6;
 p.min_unique_ships=4;     %%%%%not used by the ship_days rule
 p.port_relax_km=0;
+
+%%%%%%%%%%Satellite-AIS lanes beyond shore-receiver range (Kapsar and others,
+%%%%%%%%%%2022), added as ship water: hexagons whose cargo plus tanker operating
+%%%%%%%%%%days reach the cutoff that best matches the shore-receiver routes near
+%%%%%%%%%%shore (python/alaska_satellite_lanes.py). '' leaves them out.
+p.extra_source_csv=fullfile(pwd,'outputs','2018_2019','alaska','satellite_lane_cells.csv');
 
 %%%%%%%%%%Fairways, TSS lanes, and S-band racons (NOAA ENC Direct)
 p.include_fairways=true;
