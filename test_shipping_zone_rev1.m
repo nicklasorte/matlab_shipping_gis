@@ -249,7 +249,7 @@ function test_fairways_empty_download(tc)
 R=tc.TestData.R;
 data_dir=fullfile(tc.TestData.folder,'fairways_empty');
 mkdir(data_dir);
-GT=table.empty; num_expected=0; %#ok<NASGU> saved below
+GT=table.empty; num_expected=0;
 save(fullfile(data_dir,sprintf('fairways_rev2_%g_%g_%g_%g.mat',R.LatitudeLimits,R.LongitudeLimits)),'GT','num_expected');
 [mask,GT_out]=load_shipping_fairways_rev1(R,data_dir);
 verifyEqual(tc,size(mask),R.RasterSize);
@@ -268,9 +268,9 @@ square=['{"type":"FeatureCollection","features":[{"type":"Feature","properties":
     '{"type":"Polygon","coordinates":[[[-79.5,30.5],[-78.5,30.5],[-78.5,31.5],[-79.5,31.5],[-79.5,30.5]]]}}]}'];
 gj=fullfile(data_dir,'square.geojson');
 writelines(square,gj);
-GT=readgeotable(gj); num_expected=1; %#ok<NASGU> saved below
+GT=readgeotable(gj); num_expected=1;
 save(fullfile(data_dir,sprintf('fairways_rev2_%g_%g_%g_%g.mat',R.LatitudeLimits,R.LongitudeLimits)),'GT','num_expected');
-GT=table.empty; num_expected=0; %#ok<NASGU> another grid's cache, empty
+GT=table.empty; num_expected=0;   %%%%%another grid's cache, empty
 save(fullfile(data_dir,'fairways_rev2_22_50_-130_-66.mat'),'GT','num_expected');
 mask=load_shipping_fairways_rev1(R,data_dir);
 cell_area=areamat(mask,R,wgs84Ellipsoid('km'));

@@ -15,38 +15,38 @@
    "6": 0.804,
    "7": 0.762,
    "8": 0.677,
-   "10": 0.54
+   "10": 0.539
   },
   "K": 6
  },
  "lower48": {
   "rule": "min_ships_4",
-  "base_cells": 661901,
+  "base_cells": 658867,
   "paper_cells": 661137,
-  "jaccard_base_vs_paper": 0.762,
-  "cells_added": 89556,
-  "cells_dropped": 88792,
+  "jaccard_base_vs_paper": 0.764,
+  "cells_added": 87145,
+  "cells_dropped": 89415,
   "ships_per_day_median": {
    "2023": 1591.0,
    "2024": 1884.0,
-   "2025": 1789.0,
+   "2025": 1793.0,
    "2026": 1848.0
   },
   "sampled_days": {
    "2023": 52,
    "2024": 52,
-   "2025": 53,
+   "2025": 52,
    "2026": 25
   },
   "held_2023": {
    "cells": 466072,
-   "share_inside_base": 0.809,
-   "share_of_base_reproduced": 0.57
+   "share_inside_base": 0.808,
+   "share_of_base_reproduced": 0.572
   },
   "held_2026": {
    "cells": 231878,
-   "share_inside_base": 0.935,
-   "share_of_base_reproduced": 0.328
+   "share_inside_base": 0.934,
+   "share_of_base_reproduced": 0.329
   },
   "deep_draft_ports_within_5km": {
    "base": 71,
@@ -56,11 +56,11 @@
  },
  "hawaii": {
   "rule": "ship_days_6",
-  "base_cells": 7358,
+  "base_cells": 7310,
   "paper_cells": 6561,
-  "jaccard_base_vs_paper": 0.669,
-  "cells_added": 1778,
-  "cells_dropped": 981,
+  "jaccard_base_vs_paper": 0.67,
+  "cells_added": 1743,
+  "cells_dropped": 994,
   "ships_per_day_median": {
    "2023": 16.0,
    "2024": 17.0,
@@ -70,17 +70,17 @@
   "sampled_days": {
    "2023": 52,
    "2024": 52,
-   "2025": 53,
+   "2025": 52,
    "2026": 25
   },
   "held_2023": {
    "cells": 7056,
-   "share_inside_base": 0.634,
-   "share_of_base_reproduced": 0.608
+   "share_inside_base": 0.633,
+   "share_of_base_reproduced": 0.611
   },
   "held_2026": {
    "cells": 8163,
-   "share_inside_base": 0.563,
+   "share_inside_base": 0.56,
    "share_of_base_reproduced": 0.625
   },
   "deep_draft_ports_within_5km": {
@@ -91,32 +91,32 @@
  },
  "prusvi": {
   "rule": "min_ships_4",
-  "base_cells": 41711,
+  "base_cells": 41236,
   "paper_cells": 41057,
-  "jaccard_base_vs_paper": 0.756,
-  "cells_added": 6070,
-  "cells_dropped": 5416,
+  "jaccard_base_vs_paper": 0.76,
+  "cells_added": 5703,
+  "cells_dropped": 5524,
   "ships_per_day_median": {
    "2023": 58.5,
    "2024": 62.0,
-   "2025": 57.0,
+   "2025": 56.0,
    "2026": 66.0
   },
   "sampled_days": {
    "2023": 52,
    "2024": 52,
-   "2025": 53,
+   "2025": 52,
    "2026": 25
   },
   "held_2023": {
    "cells": 29684,
-   "share_inside_base": 0.818,
-   "share_of_base_reproduced": 0.582
+   "share_inside_base": 0.814,
+   "share_of_base_reproduced": 0.586
   },
   "held_2026": {
    "cells": 14542,
-   "share_inside_base": 0.922,
-   "share_of_base_reproduced": 0.322
+   "share_inside_base": 0.92,
+   "share_of_base_reproduced": 0.324
   },
   "deep_draft_ports_within_5km": {
    "base": 4,
