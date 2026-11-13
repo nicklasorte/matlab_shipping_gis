@@ -22,9 +22,17 @@
 %%%%%(p.extra_source_csv below).
 %%%%%
 %%%%%Maps are drawn in Python (python/ship_alaska_figures.py).
+%%%%%
+%%%%%Sensitivity to the satellite cutoff: set lane_suffix before running,
+%%%%%for example  matlab -batch "lane_suffix='_x0.5'; init_shipping_zone_alaska_rev1"
+%%%%%reads satellite_lane_cells_x0.5.csv (half the cutoff) and adds the
+%%%%%suffix to the output names.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clear;
+clearvars -except lane_suffix
 clc;
+if ~exist('lane_suffix','var')
+    lane_suffix='';
+end
 
 %%%%%%%%%%Grid: Alaska east of 180 degrees
 p.latlim=[51 72];
@@ -57,7 +65,7 @@ p.port_relax_km=0;
 %%%%%%%%%%2022), added as ship water: hexagons whose cargo plus tanker operating
 %%%%%%%%%%days reach the cutoff that best matches the shore-receiver routes near
 %%%%%%%%%%shore (python/alaska_satellite_lanes.py). '' leaves them out.
-p.extra_source_csv=fullfile(pwd,'outputs','2018_2019','alaska','satellite_lane_cells.csv');
+p.extra_source_csv=fullfile(pwd,'outputs','2018_2019','alaska',['satellite_lane_cells' lane_suffix '.csv']);
 
 %%%%%%%%%%Fairways, TSS lanes, and S-band racons (NOAA ENC Direct)
 p.include_fairways=true;
@@ -87,7 +95,7 @@ p.census_year=2023;
 %%%%%%%%%%Folders and names
 p.data_dir=fullfile(pwd,'data');
 p.out_dir=fullfile(pwd,'output_alaska');
-p.out_name='shipping_zone_alaska_2018_2019';
+p.out_name=['shipping_zone_alaska_2018_2019' lane_suffix];
 p.make_figure=false;
 
 %%%%%%%%%%Output size

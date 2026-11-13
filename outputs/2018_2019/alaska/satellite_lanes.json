@@ -4,6 +4,8 @@
  "hexagons_in_grid": 4221,
  "hexagons_near_shore": 1742,
  "cutoff_operating_days": 271.92499999999905,
+ "best_match_cutoff": 271.92499999999905,
+ "factor": 1.0,
  "jaccard_at_cutoff_near_shore": 0.571,
  "jaccard_curve": {
   "2": 0.102,

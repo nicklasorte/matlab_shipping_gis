@@ -20,8 +20,11 @@ Kapsar has no length cut, so cargo and tanker are the closest match to the large
 ship filter; the hexagons are coarse (about 27 km across), so the added ship water
 is wider than a lane.
 
-Usage: python3 python/alaska_satellite_lanes.py
+Usage: python3 python/alaska_satellite_lanes.py [FACTOR]
 Writes outputs/2018_2019/alaska/satellite_lane_cells.csv and satellite_lanes.json.
+With FACTOR (for example 0.5 or 2), the cutoff is FACTOR times the best-match
+cutoff, for the sensitivity check in the review plan, and the files get the
+suffix _x<FACTOR> (satellite_lane_cells_x0.5.csv).
 """
 import json
 import os
@@ -51,7 +54,7 @@ TO_LL = Transformer.from_crs(3338, 4326, always_xy=True)
 TO_AK = Transformer.from_crs(4326, 3338, always_xy=True)
 
 
-def main():
+def main(factor=None):
     polys, ops, _ = kc.read_hex()
     hid = list(polys)
     kap = np.array([ops[h] for h in hid], float)
@@ -79,7 +82,9 @@ def main():
         a, b = near & (kap >= t), near & has
         jac.append((a & b).sum() / max(1, (a | b).sum()))
     jac = np.array(jac)
-    T = float(cands[np.argmax(jac)])
+    T_best = float(cands[np.argmax(jac)])
+    T = T_best if factor is None else T_best * factor
+    sfx = "" if factor is None else f"_x{factor:g}"
     keep = in_grid & (kap >= T)
     # Water cells inside the kept hexagons
     sf = shapefile.Reader(vp.os.path.join(ROOT, "data", "cb_2023_us_state_500k", "cb_2023_us_state_500k.shp"))
@@ -100,19 +105,21 @@ def main():
         inside &= ~contains_xy(land, glon, glat)
         out.append(rr[inside] + 1 + cc[inside] * nr)   # 1-based linear index, column-major from the south
     lin = np.unique(np.concatenate(out)).astype(np.int64)
-    np.savetxt(os.path.join(AK, "satellite_lane_cells.csv"), lin, fmt="%d")
+    np.savetxt(os.path.join(AK, f"satellite_lane_cells{sfx}.csv"), lin, fmt="%d")
     res = {"source": "Kapsar and others (2022), doi:10.18739/A2XG9FC41, CC BY 4.0; months 2018-01 to 2019-12",
            "measure": "cargo plus tanker operating days per 625 km2 hexagon, summed over 24 months",
            "hexagons_in_grid": int(in_grid.sum()), "hexagons_near_shore": int(near.sum()),
-           "cutoff_operating_days": T, "jaccard_at_cutoff_near_shore": round(float(jac.max()), 3),
+           "cutoff_operating_days": T, "best_match_cutoff": T_best, "factor": factor or 1.0,
+           "jaccard_at_cutoff_near_shore": round(float(((near & (kap >= T)) & (near & has)).sum()
+                                                       / max(1, ((near & (kap >= T)) | (near & has)).sum())), 3),
            "jaccard_curve": {f"{c:.0f}": round(float(j), 3) for c, j in zip(cands, jac)},
            "hexagons_kept": int(keep.sum()), "hexagons_kept_beyond_shore_range": int((keep & ~near).sum()),
            "kept_hexagons_without_our_routes": int((keep & ~has).sum()),
            "water_cells_added": int(len(lin))}
-    with open(os.path.join(AK, "satellite_lanes.json"), "w") as f:
+    with open(os.path.join(AK, f"satellite_lanes{sfx}.json"), "w") as f:
         json.dump(res, f, indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != "jaccard_curve"}, indent=1))
 
 
 if __name__ == "__main__":
-    main()
+    main(float(sys.argv[1]) if len(sys.argv) > 1 else None)
