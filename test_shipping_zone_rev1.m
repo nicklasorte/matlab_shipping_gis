@@ -193,6 +193,93 @@ verifyTrue(tc,isfile(cache_file));
 verifyEmpty(tc,dir(fullfile(p.data_dir,'*.part.*')));
 end
 
+function test_route_rule_unique_ships_default(tc)
+%%%%%No p.route_rule: the busiest single year must reach p.min_unique_ships.
+[ship_days,max_year_ships]=rule_counts();
+p=struct('min_unique_ships',4,'min_ship_days',6);
+verifyEqual(tc,route_source_mask_rev1(ship_days,max_year_ships,p),max_year_ships>=4);
+p.route_rule='unique_ships';
+verifyEqual(tc,route_source_mask_rev1(ship_days,max_year_ships,p),max_year_ships>=4);
+end
+
+function test_route_rule_ship_days(tc)
+%%%%%Two ships crossing the same cell every week make a route under ship_days
+%%%%%but not under unique_ships (the Hawaii neighbor-island case).
+[ship_days,max_year_ships]=rule_counts();
+p=struct('route_rule','ship_days','min_unique_ships',4,'min_ship_days',6);
+mask=route_source_mask_rev1(ship_days,max_year_ships,p);
+verifyEqual(tc,mask,ship_days>=6);
+verifyTrue(tc,mask(2,1));         %%%%%2 ships, 104 ship-days
+verifyFalse(tc,mask(3,1));        %%%%%5 ships, 5 ship-days
+verifyFalse(tc,mask(1,2));        %%%%%5 ship-days, one below the cutoff
+verifyTrue(tc,mask(2,2));         %%%%%exactly 6 ship-days
+end
+
+function test_route_rule_rejects_unknown(tc)
+[ship_days,max_year_ships]=rule_counts();
+p=struct('route_rule','ship_day','min_unique_ships',4,'min_ship_days',6);
+verifyError(tc,@() route_source_mask_rev1(ship_days,max_year_ships,p),'shipgis:rule');
+verifyError(tc,@() route_source_mask_rev1(ship_days,max_year_ships(1,:),p),'shipgis:size');
+end
+
+function test_extra_source_cells(tc)
+R=tc.TestData.R;
+csv_path=fullfile(tc.TestData.folder,'extra_ok.csv');
+idx=[1; 57; prod(R.RasterSize); 57];   %%%%%first, last, and a repeat
+writematrix(idx,csv_path);
+mask=read_extra_cells_rev1(csv_path,R);
+verifyEqual(tc,size(mask),R.RasterSize);
+verifyEqual(tc,nnz(mask),3);
+verifyEqual(tc,find(mask),unique(idx));
+end
+
+function test_extra_source_rejects_other_grid(tc)
+R=tc.TestData.R;
+bad={prod(R.RasterSize)+1, 0, 12.5};   %%%%%past the last cell, zero, not whole
+for k=1:numel(bad)
+    csv_path=fullfile(tc.TestData.folder,sprintf('extra_bad_%d.csv',k));
+    writematrix([1; bad{k}],csv_path);
+    verifyError(tc,@() read_extra_cells_rev1(csv_path,R),'shipgis:extra');
+end
+end
+
+function test_fairways_empty_download(tc)
+%%%%%NOAA returns an empty FeatureCollection (no THEMELAYER column) for the
+%%%%%Hawaii and Puerto Rico grids; the loader must return an empty mask.
+R=tc.TestData.R;
+data_dir=fullfile(tc.TestData.folder,'fairways_empty');
+mkdir(data_dir);
+name=sprintf('fairways_rev1_%g_%g_%g_%g.geojson',R.LatitudeLimits,R.LongitudeLimits);
+writelines('{"type":"FeatureCollection","features":[]}',fullfile(data_dir,name));
+[mask,GT]=load_shipping_fairways_rev1(R,data_dir);
+verifyEqual(tc,size(mask),R.RasterSize);
+verifyFalse(tc,any(mask,'all'));
+verifyEqual(tc,height(GT),0);
+end
+
+function test_fairways_cache_is_per_grid(tc)
+%%%%%A cached file for one grid must not be read for another grid.
+R=tc.TestData.R;
+data_dir=fullfile(tc.TestData.folder,'fairways_grid');
+mkdir(data_dir);
+square=['{"type":"FeatureCollection","features":[{"type":"Feature","properties":' ...
+    '{"THEMELAYER":"Shipping Fairways Lanes and Zones","OBJNAM":"test"},"geometry":' ...
+    '{"type":"Polygon","coordinates":[[[-79.5,30.5],[-78.5,30.5],[-78.5,31.5],[-79.5,31.5],[-79.5,30.5]]]}}]}'];
+writelines('{"type":"FeatureCollection","features":[]}',fullfile(data_dir,'fairways_rev1.geojson'));   %%%%%the lower-48 name, empty
+name=sprintf('fairways_rev1_%g_%g_%g_%g.geojson',R.LatitudeLimits,R.LongitudeLimits);
+writelines(square,fullfile(data_dir,name));
+mask=load_shipping_fairways_rev1(R,data_dir);
+cell_area=areamat(mask,R,wgs84Ellipsoid('km'));
+square_area=areaquad(30.5,-79.5,31.5,-78.5,wgs84Ellipsoid('km'));
+verifyEqual(tc,cell_area,square_area,'RelTol',0.03);   %%%%%within 3% (edge cells)
+end
+
+function [ship_days,max_year_ships]=rule_counts()
+%%%%%Rows: cells; values chosen to sit on both sides of each cutoff.
+ship_days     =[0 5 ; 104 6 ; 5 40];
+max_year_ships=[0 3 ; 2   4 ; 5  1];
+end
+
 function [p,R]=synthetic_days(tc,tag)
 %%%%%Two synthetic daily CSVs under the shared names, so no download happens.
 R=tc.TestData.R;
