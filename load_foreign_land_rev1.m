@@ -2,12 +2,15 @@ function foreign_poly=load_foreign_land_rev1(R,data_dir)
 %load_foreign_land_rev1  Land of other countries inside raster R, as a polyshape.
 %
 %   foreign_poly=load_foreign_land_rev1(R,data_dir) downloads (once, into
-%   DATA_DIR) Natural Earth 1:10m Admin 0 countries (public domain,
+%   DATA_DIR) Natural Earth 1:10m Admin 0 countries without boundary lakes
+%   (public domain,
 %   https://www.naturalearthdata.com), keeps every country except the
 %   United States and its territories whose outline touches the grid, and returns their union
 %   as a planar polyshape (x = lon, y = lat). shipping_zone_rev1 subtracts
 %   it from the zones so that foreign land (Vancouver, Tijuana, Havana) isn't
-%   counted as ship water (review CA-3).
+%   counted as ship water (review CA-3). The file without boundary lakes
+%   keeps the Canadian half of the Great Lakes and border rivers as water, so
+%   route cells there stay in the zones (round-two review R2MET-2).
 %
 %   Built-ins: websave, unzip, readgeotable, geotable2table, polyshape, union.
 
@@ -16,7 +19,7 @@ arguments
     data_dir (1,:) char
 end
 
-stem='ne_10m_admin_0_countries';
+stem='ne_10m_admin_0_countries_lakes';
 shp_path=fullfile(data_dir,stem,[stem '.shp']);
 if ~isfile(shp_path)
     zip_path=fullfile(data_dir,[stem '.zip']);

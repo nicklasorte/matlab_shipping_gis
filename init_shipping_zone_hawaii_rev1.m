@@ -11,7 +11,7 @@
 %%%%%break and only three ports connect (route_rules.json). Ship-days (distinct ships
 %%%%%per sampled day, summed over the 104 days, at least 6) connects
 %%%%%Kahului and Nawiliwili too. The value 6 best reproduces the lower-48
-%%%%%network (Jaccard 0.81); see python/ship_route_rules.py and
+%%%%%network (Jaccard 0.80 for 2024-2025); see python/ship_route_rules.py and
 %%%%%docs/plans/alaska_hawaii_plan_rev1.md.
 %%%%%
 %%%%%Maps are drawn in Python (python/ship_hawaii_figures.py) because the

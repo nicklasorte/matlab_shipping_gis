@@ -6,7 +6,7 @@
 %%%%%(2024-2025), ship filter, route rule (4 distinct ships in one year, 2
 %%%%%within 50 km of deep-draft ports), zone method, and band distances as
 %%%%%the lower 48. Traffic here is dense enough for the lower-48 rule (median
-%%%%%61 large ships a day); python/ship_route_rules.py compares the rules.
+%%%%%58 large ships a day); python/ship_route_rules.py compares the rules.
 %%%%%
 %%%%%Maps are drawn in Python (python/ship_prusvi_figures.py).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

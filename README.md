@@ -153,7 +153,7 @@ The code works in pieces so a full year fits on a laptop:
 To process days in parallel, start a pool and set `p.parallel_flag=1`. Each
 worker needs about 2 GB of disk while it works.
 
-## Results, 2024–2025 (lower 48, `shore` mode)
+## Results, 2024–2025 (lower 48, `ships` mode)
 
 104 AIS days (the first 52 Wednesdays of 2024 and of 2025; set in `period_rev1.m` and `python/ship_period.py`). Until November 12, 2026, the analysis used 2023–2024; those outputs stay in `outputs/2023_2024/`. 2023 and January–June 2026 are held out as stability checks (`python/ship_year_stability.py`). The grid covers 22–50° N and
 66–130° W, which takes in the Florida Straits and waters well off the West
@@ -163,9 +163,9 @@ Coast.
 | --- | --- |
 | AIS cells, 4 or more large ships in a year (tug-barges near the coast included) | 658,865 |
 | Port approaches, 2 or more ships within 50 km of 73 deep-draft ports and 25 km of the coastline | 11,682 |
-| NOAA fairways and traffic separation schemes not already AIS cells | 15,765 |
+| NOAA fairways and traffic separation schemes not already AIS cells (U.S. side only) | 13,964 |
 | S-band racons not already route cells | 13 |
-| Total | 686,325 |
+| Total | 684,524 |
 
 | Distance | U.S. land in zone |
 | --- | --- |
@@ -207,7 +207,7 @@ Step 4 matches the day caches exactly (1,080,250 and 1,347,288 reports;
 
 ## Figures
 
-The 2023–2024 maps are in `docs/`:
+The maps below are from the earlier 2023–2024 shore-mode run; the current maps are in `outputs/2024_2025/`:
 
 - [Large-ship routes, no buffer](docs/shipping_zone_2023_2024_routes_map.png)
 - [New Orleans to Baton Rouge routes, no buffer](docs/shipping_zone_2023_2024_new_orleans_baton_rouge_routes_map.png)

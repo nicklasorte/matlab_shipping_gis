@@ -230,21 +230,21 @@
   }
  ],
  "stability": {
-  "full_route_cells": 674685,
-  "half_route_cells_min": 333284,
-  "half_route_cells_max": 386159,
-  "half_route_cells_median": 352546.5,
-  "full_cells_in_fewer_than_90pct_of_halves": 475378,
-  "full_cells_in_fewer_than_90pct_share": 0.7046
+  "full_route_cells": 670572,
+  "half_route_cells_min": 329154,
+  "half_route_cells_max": 382344,
+  "half_route_cells_median": 348334.0,
+  "full_cells_in_fewer_than_90pct_of_halves": 474414,
+  "full_cells_in_fewer_than_90pct_share": 0.7075
  },
  "length": [
   {
    "length_cutoff_m": 100,
-   "distinct_ships": 15713,
-   "route_cells": 674685,
-   "land_25km_km2": 300406,
-   "land_50km_km2": 639699,
-   "land_100km_km2": 1266625,
+   "distinct_ships": 15713.0,
+   "route_cells": 670572.0,
+   "land_25km_km2": 295750.0,
+   "land_50km_km2": 631505.0,
+   "land_100km_km2": 1254018.0,
    "ships_change_pct": 0.0,
    "route_cells_change_pct": 0.0,
    "land_25km_change_pct": 0.0,
@@ -253,29 +253,29 @@
   },
   {
    "length_cutoff_m": 80,
-   "distinct_ships": 16094,
-   "route_cells": 691551,
-   "land_25km_km2": 334913,
-   "land_50km_km2": 706208,
-   "land_100km_km2": 1400999,
+   "distinct_ships": 16094.0,
+   "route_cells": 687438.0,
+   "land_25km_km2": 334215.0,
+   "land_50km_km2": 705845.0,
+   "land_100km_km2": 1400951.0,
    "ships_change_pct": 2.4,
    "route_cells_change_pct": 2.5,
-   "land_25km_change_pct": 11.5,
-   "land_50km_change_pct": 10.4,
-   "land_100km_change_pct": 10.6
+   "land_25km_change_pct": 13.0,
+   "land_50km_change_pct": 11.8,
+   "land_100km_change_pct": 11.7
   },
   {
    "length_cutoff_m": 120,
-   "distinct_ships": 15341,
-   "route_cells": 662269,
-   "land_25km_km2": 289698,
-   "land_50km_km2": 625866,
-   "land_100km_km2": 1250462,
+   "distinct_ships": 15341.0,
+   "route_cells": 658418.0,
+   "land_25km_km2": 289162.0,
+   "land_50km_km2": 625201.0,
+   "land_100km_km2": 1249857.0,
    "ships_change_pct": -2.4,
    "route_cells_change_pct": -1.8,
-   "land_25km_change_pct": -3.6,
-   "land_50km_change_pct": -2.2,
-   "land_100km_change_pct": -1.3
+   "land_25km_change_pct": -2.2,
+   "land_50km_change_pct": -1.0,
+   "land_100km_change_pct": -0.3
   }
  ]
 }

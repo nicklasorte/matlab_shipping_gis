@@ -243,3 +243,13 @@ decided on the recommendation below and applied; the paper is at doc revision
   approaches; the threshold sweep and a no-coast-limit variant were added. The
   baseline is 670,572 cells (AIS plus port approaches; MATLAB 670,547).
 - **Held-out capture** measures against the AIS route cells, unchanged.
+
+## Round two
+
+A second agent review of the revised paper (doc revision 329) is in
+`round2/findings_r2.md`, with the four agent reports. Its fixes were applied
+through doc revision 371, the stability and length tests were rerun on the
+fixed network (land varies by 1.0% to 2.1% across 200 random halves; 120 m
+changes land by −0.3% to −2.2%, 80 m by +11.7% to +13.0%), and the Word copy
+was rebuilt with Caption styles. Items left for the next Mac zone run and for
+Nick's edit pass are listed at the end of that file.

@@ -56,11 +56,15 @@ def put_images(doc, images):
         blob = images.get(norm(alt))
         if blob is None:
             # Alt texts edited since the last copy: fall back to the longest shared prefix.
-            key = max(images, key=lambda k: len(os.path.commonprefix([k, norm(alt)])))
-            if len(os.path.commonprefix([key, norm(alt)])) < 40:
+            # Refuse ties (sibling figures share long prefixes) and log every fallback.
+            score = {k: len(os.path.commonprefix([k, norm(alt)])) for k in images}
+            best = max(score.values())
+            keys = [k for k, v in score.items() if v == best]
+            if best < 40 or len(keys) > 1:
                 missing.append(alt[:80])
                 continue
-            blob = images[key]
+            print(f"fallback match ({best} chars): {alt[:60]!r} -> {keys[0][:60]!r}")
+            blob = images[keys[0]]
         for r in list(p.runs):
             r._r.getparent().remove(r._r)
         run = p.add_run()
@@ -124,8 +128,9 @@ def captions(doc):
             continue
         kind, app, num, suffix = m.groups()
         first = p.runs[0]
-        if suffix:
-            # A-4b, A-4c: Caption style only; a SEQ field would renumber them on update.
+        if suffix and suffix != "a":
+            # A-4b, A-4c: Caption style only; a SEQ field would renumber them on update
+            # (A-4a carries the SEQ field for the group).
             p.style = style
             n += 1
             continue
