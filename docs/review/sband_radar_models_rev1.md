@@ -112,3 +112,33 @@ rows are there so the photo coding can tell the two bands apart.
 | `fcc_id` | FCC equipment authorization, where found (JRC NKE-2632: CKENKE2632) |
 | `product_page_url`, `datasheet_url` | Maker page and the specification source (a ";" separates two sources) |
 | `confidence`, `note` | High means frequency and power were quoted from the maker's specifications; medium means band and power were confirmed; low means a dealer page with conflicting figures |
+
+### RF characteristics (added November 13, 2026)
+
+These were filled where a source gives them; blank means not found yet. Values
+are copied from the cited `rf_source_url`. The JRC values come from JRC's FCC
+filing (FCC ID CKENKE2632), which gives the full specifications for each
+scanner.
+
+| Column | Meaning |
+| --- | --- |
+| `h_beamwidth_deg`, `v_beamwidth_deg` | Antenna 3 dB beamwidths; S-band 1.8–2.7° horizontal and 25–26° vertical |
+| `sidelobe_within_10deg_db`, `sidelobe_outside_10deg_db` | Antenna sidelobe levels relative to the main beam |
+| `polarization` | Horizontal for every model that states it |
+| `antenna_gain_db` | Only Raytheon Anschütz states it: 28 dB for its 12 ft S-band antenna |
+| `rotation_rpm` | 21–27 rpm standard; 42–48 rpm for high-speed craft |
+| `pulse_prf_pairs_us_hz` | Pulse width (µs) / repetition frequency (Hz). Solid-state rows give the short pulse, the long modulated pulse in parentheses, and the PRF. |
+| `pulse_compression` | Solid-state long-pulse details (JRC: 4.6–18.3 µs, 8 MHz deviation; SharpEye: 660:1) |
+| `max_duty_cycle_pct` | Derived: the largest pulse width × PRF among the listed pairs. Magnetrons are about 0.065–0.075%; JRC solid-state is about 2.1%, which matches its stated average power (5.8 W of 250 W peak). |
+| `average_power_w` | Average power where stated |
+| `if_mhz`, `if_bandwidth_mhz`, `noise_figure_db` | Receiver data, used for receiver-side interference analysis |
+| `rf_source_url`, `rf_note` | Source and caveats (unmapped tables, inferred values) |
+
+Main points for the EMC analysis:
+
+- **Magnetron S-band radars:** 30 kW peak, about 0.07% duty cycle, about
+  20 W average.
+- **Solid-state S-band radars:** 200–250 W peak, with long frequency-modulated
+  pulses at about 2% duty cycle and about 5 W average.
+- **Both:** horizontal polarization, about a 2° by 25° beam, sidelobes at
+  −26 dB to −30 dB, and turning at about 24 rpm.
