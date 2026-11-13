@@ -35,7 +35,18 @@ query={'where','1=1','geometry',envelope,'geometryType','esriGeometryEnvelope','
     'spatialRel','esriSpatialRelIntersects'};
 opts=weboptions('Timeout',300);
 if ~isfile(cache_path)
-    num_expected=fetch_with_retry(@() webread(url,query{:},'returnCountOnly','true','f','json',opts)).count;
+    num_expected=[];
+    for try_idx=1:5   %%%%%the service sometimes answers with an error object instead of a count
+        reply=fetch_with_retry(@() webread(url,query{:},'returnCountOnly','true','f','json',opts));
+        if isstruct(reply) && isfield(reply,'count')
+            num_expected=reply.count;
+            break
+        end
+        pause(10);
+    end
+    if isempty(num_expected)
+        error('shipgis:fairways','NOAA did not return a feature count for the fairway layer.');
+    end
     page_size=500;
     pages={};
     for offset=0:page_size:max(num_expected-1,0)
