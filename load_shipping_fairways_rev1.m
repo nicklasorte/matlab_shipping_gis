@@ -45,7 +45,7 @@ if ~isfile(cache_path)
             'orderByFields','OBJECTID','resultOffset',offset,'resultRecordCount',page_size,'f','geojson',opts));
         G=readgeotable(page_path);
         if ismember('THEMELAYER',G.Properties.VariableNames)
-            pages{end+1}=G(:,{'THEMELAYER','OBJNAM','Shape'}); %#ok<AGROW> few pages
+            pages{end+1}=G(:,{'Shape','THEMELAYER','OBJNAM'}); %#ok<AGROW> few pages; Shape first keeps it a geotable
         end
         clear cleanup_page
     end
@@ -61,6 +61,9 @@ if ~isfile(cache_path)
 end
 S=load(cache_path,'GT');
 GT=S.GT;
+if ~isempty(GT) && ismember('Shape',GT.Properties.VariableNames) && ~isgeotable(GT)
+    GT=movevars(GT,'Shape','Before',1);   %%%%%a geotable has Shape as its first variable
+end
 if isempty(GT) || ~ismember('THEMELAYER',GT.Properties.VariableNames)   %%%%%no features in the grid
     fairway_mask=false(R.RasterSize);
     return

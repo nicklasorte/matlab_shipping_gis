@@ -4,7 +4,7 @@ function foreign_poly=load_foreign_land_rev1(R,data_dir)
 %   foreign_poly=load_foreign_land_rev1(R,data_dir) downloads (once, into
 %   DATA_DIR) Natural Earth 1:10m Admin 0 countries (public domain,
 %   https://www.naturalearthdata.com), keeps every country except the
-%   United States whose outline touches the grid, and returns their union
+%   United States and its territories whose outline touches the grid, and returns their union
 %   as a planar polyshape (x = lon, y = lat). shipping_zone_rev1 subtracts
 %   it from the zones so that foreign land (Vancouver, Tijuana, Havana) isn't
 %   counted as ship water (review CA-3).
@@ -25,7 +25,7 @@ if ~isfile(shp_path)
     delete(zip_path);
 end
 S=readgeotable(shp_path);
-S=S(string(S.ADM0_A3)~="USA",:);
+S=S(string(S.SOVEREIGNT)~="United States of America",:);   %%%%%keeps Puerto Rico, the USVI, and other U.S. territories (Natural Earth lists them as their own units)
 T=geotable2table(S,["Lat","Lon"]);
 lat_lo=cellfun(@min,T.Lat); lat_hi=cellfun(@max,T.Lat);
 lon_lo=cellfun(@min,T.Lon); lon_hi=cellfun(@max,T.Lon);
