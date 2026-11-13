@@ -1,0 +1,15 @@
+START alaska_base Fri Nov 13 18:20:25 EST 2026
+END alaska_base rc=0 Fri Nov 13 18:22:05 EST 2026
+START alaska_nosat Fri Nov 13 18:22:05 EST 2026
+END alaska_nosat rc=0 Fri Nov 13 18:23:31 EST 2026
+START alaska_x0.5 Fri Nov 13 18:23:31 EST 2026
+END alaska_x0.5 rc=0 Fri Nov 13 18:24:59 EST 2026
+START alaska_x2 Fri Nov 13 18:24:59 EST 2026
+END alaska_x2 rc=0 Fri Nov 13 18:26:25 EST 2026
+START hawaii Fri Nov 13 18:26:25 EST 2026
+END hawaii rc=0 Fri Nov 13 18:26:36 EST 2026
+START prusvi Fri Nov 13 18:26:36 EST 2026
+END prusvi rc=0 Fri Nov 13 18:26:49 EST 2026
+START lower48 Fri Nov 13 18:26:49 EST 2026
+END lower48 rc=0 Fri Nov 13 18:31:37 EST 2026
+ALLDONE

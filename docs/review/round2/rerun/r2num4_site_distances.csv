@@ -1,0 +1,5 @@
+site,lat,lon,dir,km_to_route,km_ais_only,in_route,in_25km_zone
+Lahaina harbor,20.87114,-156.6784,output_hawaii,18.2439480476434,18.2439480476434,0,1
+Port Allen,21.9033333333333,-159.591666666667,output_hawaii,24.608507407013,24.608507407013,0,0
+Vieques Sound (33 CFR 110.245 Area 2 center),18.1966666666667,-65.435,output_prusvi,18.5679958865263,18.5679958865263,0,1
+Red Dog Dock,67.57581,-164.06439,output_alaska,0,5.83672892885174,1,1

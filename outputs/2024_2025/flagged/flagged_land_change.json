@@ -1,0 +1,20 @@
+{
+ "note": "Direct-distance land metric (python/review_stress.py land_in_zone), AIS route cells only (viz_cells.npz route_cells) minus dropped_cells_conus.csv; review R2NUM-5",
+ "lower48": {
+  "25": {
+   "land_km2_committed": 286109,
+   "land_km2_without_flagged": 285716,
+   "change_pct": -0.137
+  },
+  "50": {
+   "land_km2_committed": 620264,
+   "land_km2_without_flagged": 619066,
+   "change_pct": -0.193
+  },
+  "100": {
+   "land_km2_committed": 1245932,
+   "land_km2_without_flagged": 1244332,
+   "change_pct": -0.128
+  }
+ }
+}
