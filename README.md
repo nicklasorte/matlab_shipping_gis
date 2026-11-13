@@ -392,18 +392,36 @@ grid of 51–72° N, 180–129° W (stopping at 180° keeps polygons and KML who
 | Result | Value |
 | --- | --- |
 | Route cells from ship tracks (ship-days ≥ 6) | 26,983 |
-| Plus NOAA charted lanes | 23,444 (total 50,427) |
-| Deep-draft ports reached | Anchorage (0.3 km), Valdez (3.0 km) |
-| Land within 25 / 50 / 100 km | 156,250 km² (10%) / 232,003 km² (15%) / 373,112 km² (24%) |
+| Plus NOAA charted lanes | 23,444 |
+| Plus satellite-AIS lanes (Kapsar hexagons, 2018–2019) | 318,134 water cells from 400 hexagons |
+| Deep-draft ports reached | Anchorage (0.3 km), Valdez (0.6 km) |
+| Land within 25 / 50 / 100 km | 179,047 km² (12%) / 261,953 km² (17%) / 409,521 km² (27%) |
 
 Shore receivers miss the lanes far offshore: in the satellite-based North
 Pacific and Arctic dataset (Kapsar and others, 2022), 83% of the busiest
 hexagons hold no route cell, and 95% of those are more than 74 km from shore
-(`python/check_alaska_kapsar.py`).
+(`python/check_alaska_kapsar.py`). `python/alaska_satellite_lanes.py` adds the
+busy hexagons as ship water (`p.extra_source_csv`): cargo plus tanker operating
+days of at least 272 over 2018–2019, the cutoff that best matches the
+shore-receiver routes within 74 km of shore (Jaccard index 0.57).
 
-Run: `python3 python/alaska_grid_to_180.py` (caches for the 180° grid), then
+Run: `python3 python/alaska_grid_to_180.py` (caches for the 180° grid),
+`python3 python/alaska_satellite_lanes.py`, then
 `init_shipping_zone_alaska_rev1` in MATLAB (outputs in `outputs/2018_2019/alaska/`),
 `python3 python/ship_alaska_routes.py`, and `python3 python/ship_alaska_figures.py`.
+
+## Puerto Rico and the U.S. Virgin Islands
+
+Same sample (2024–2025), filter, route rule, and zones as the lower 48.
+
+| Result | Value |
+| --- | --- |
+| Route cells | 43,845 (41,237 ship tracks, 2,608 port approaches) |
+| Ports on the route network | San Juan, Guaynabo, Ponce, Yabucoa, Charlotte Amalie, Limetree Bay, Frederiksted (Mayaguez 30 km away) |
+| Land within 25 / 50 / 100 km | 9,583 km² (96%) / 9,970 km² / 9,970 km² |
+
+Run: `init_shipping_zone_prusvi_rev1` in MATLAB (outputs in
+`outputs/2024_2025/prusvi/`), then `python3 python/ship_prusvi_figures.py`.
 
 ## Data in the repo
 

@@ -284,8 +284,12 @@ Puerto Rico and the U.S. Virgin Islands.
   plus 23,444 charted-lane cells. Kapsar satellite check: near-shore routes
   agree; offshore lanes beyond receiver range are missing. Section 5 of the
   paper.
-- **Open:** whether to add Kapsar's offshore lanes to the Alaska routes; whether
-  to add Puerto Rico and the U.S. Virgin Islands to the paper.
+- **Alaska satellite lanes (added, Nick's choice):** 400 Kapsar hexagons at or
+  above 272 cargo plus tanker operating days (cutoff matched to the shore
+  routes near shore, Jaccard 0.57) added as ship water; zones now 12%, 17%, and
+  27% of the land east of 180°.
+- **Puerto Rico and the U.S. Virgin Islands (added, Nick's choice):** lower-48
+  rule on 2024–2025; Section 6 of the paper.
 
 ## Data validity
 
