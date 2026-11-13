@@ -1,0 +1,76 @@
+{
+ "capture": [
+  {
+   "area": "Lower 48",
+   "year": 2023,
+   "days": 52,
+   "cell_visits": 11310483,
+   "share_on_route_cell": 0.7705,
+   "share_within_25km": 0.9799,
+   "share_within_50km": 0.9908,
+   "share_within_100km": 0.9962,
+   "visits_beyond_100km": 42933,
+   "cells_beyond_100km": 40686
+  },
+  {
+   "area": "Lower 48",
+   "year": 2026,
+   "days": 25,
+   "cell_visits": 5670512,
+   "share_on_route_cell": 0.7814,
+   "share_within_25km": 0.9788,
+   "share_within_50km": 0.9896,
+   "share_within_100km": 0.9948,
+   "visits_beyond_100km": 29444,
+   "cells_beyond_100km": 28151
+  },
+  {
+   "area": "Hawaii",
+   "year": 2023,
+   "days": 52,
+   "cell_visits": 101820,
+   "share_on_route_cell": 0.5295,
+   "share_within_25km": 0.8243,
+   "share_within_50km": 0.8898,
+   "share_within_100km": 0.9565,
+   "visits_beyond_100km": 4428,
+   "cells_beyond_100km": 4202
+  },
+  {
+   "area": "Hawaii",
+   "year": 2026,
+   "days": 25,
+   "cell_visits": 54720,
+   "share_on_route_cell": 0.4486,
+   "share_within_25km": 0.8139,
+   "share_within_50km": 0.8796,
+   "share_within_100km": 0.9444,
+   "visits_beyond_100km": 3040,
+   "cells_beyond_100km": 3004
+  },
+  {
+   "area": "Puerto Rico and USVI",
+   "year": 2023,
+   "days": 52,
+   "cell_visits": 479518,
+   "share_on_route_cell": 0.7298,
+   "share_within_25km": 0.9995,
+   "share_within_50km": 1.0,
+   "share_within_100km": 1.0,
+   "visits_beyond_100km": 0,
+   "cells_beyond_100km": 0
+  },
+  {
+   "area": "Puerto Rico and USVI",
+   "year": 2026,
+   "days": 25,
+   "cell_visits": 235915,
+   "share_on_route_cell": 0.7444,
+   "share_within_25km": 0.9998,
+   "share_within_50km": 1.0,
+   "share_within_100km": 1.0,
+   "visits_beyond_100km": 0,
+   "cells_beyond_100km": 0
+  }
+ ]
+}
