@@ -26,7 +26,8 @@
 %%%%%Sensitivity to the satellite cutoff: set lane_suffix before running,
 %%%%%for example  matlab -batch "lane_suffix='_x0.5'; init_shipping_zone_alaska_rev1"
 %%%%%reads satellite_lane_cells_x0.5.csv (half the cutoff) and adds the
-%%%%%suffix to the output names.
+%%%%%suffix to the output names. lane_suffix='_nosat' leaves the satellite
+%%%%%lanes out (review R2OPP-1).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clearvars -except lane_suffix
 clc;
@@ -66,6 +67,9 @@ p.port_relax_km=0;
 %%%%%%%%%%days reach the cutoff that best matches the shore-receiver routes near
 %%%%%%%%%%shore (python/alaska_satellite_lanes.py). '' leaves them out.
 p.extra_source_csv=fullfile(pwd,'outputs','2018_2019','alaska',['satellite_lane_cells' lane_suffix '.csv']);
+if strcmp(lane_suffix,'_nosat')   %%%%%sensitivity run without satellite lanes (review R2OPP-1)
+    p.extra_source_csv='';
+end
 
 %%%%%%%%%%Fairways, TSS lanes, and S-band racons (NOAA ENC Direct)
 p.include_fairways=true;
