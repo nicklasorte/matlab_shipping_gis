@@ -1,0 +1,5 @@
+port,lat,lon,gap_to_ship_cell_km,reached,on_route_network,type,rank,total_tons,foreign_tons,in_25km_zone,in_50km_zone,in_100km_zone
+"San Juan, PR",18.43278,-66.09668,0.303881960472105,1,1,C,50,9337163,4725376,1,1,1
+"Ponce Port Authority, PR",17.97861,-66.621,0.583197165559412,1,1,C,108,2127875,2127875,1,1,1
+"Guaynabo, PR",18.43022,-66.11114,0.669560646026316,1,1,C,109,2042067,1793073,1,1,1
+"Yabucoa, PR",18.05174,-65.83623,0.385114035407614,1,1,C,121,1806066,1806066,1,1,1

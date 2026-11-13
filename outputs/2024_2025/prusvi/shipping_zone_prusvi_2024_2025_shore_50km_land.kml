@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>shipping_zone_prusvi_2024_2025_shore_50km_land</name>
+    <Folder>
+      <name>shore mode, 50 km (U.S. land only)</name>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 1</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -64.798645,18.328249,0 -64.780482,18.310883,0 -64.772938,18.320904,0 -64.765394,18.311562,0 -64.765692,18.322687,0 -64.75962,18.316238,0 -64.74804,18.324584,0 -64.733906,18.314988,0 -64.720718,18.318892,0 -64.721308,18.307578,0 -64.705323,18.309055,0 -64.703118,18.298203,0 -64.697382,18.32203,0 -64.716056,18.344974,0 -64.70516,18.3407,0 -64.70411,18.353996,0 -64.691332,18.356673,0 -64.692772,18.340147,0 -64.681173,18.346763,0 -64.670941,18.330116,0 -64.666145,18.337727,0 -64.662089,18.33399,0 -64.66301,18.344959,0 -64.67853,18.347745,0 -64.691256,18.361112,0 -64.737588,18.364249,0 -64.733962,18.36987,0 -64.748836,18.372905,0 -64.744554,18.357512,0 -64.777704,18.35356,0 -64.780458,18.346016,0 -64.786244,18.353118,0 -64.798645,18.328249,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 2</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -64.832977,18.307213,0 -64.826232,18.312544,0 -64.832283,18.314479,0 -64.832977,18.307213,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 3</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -64.903557,17.680425,0 -64.900605,17.674678,0 -64.885035,17.685722,0 -64.843518,17.687363,0 -64.838987,17.67999,0 -64.784628,17.696476,0 -64.765292,17.690359,0 -64.771149,17.709016,0 -64.763315,17.69663,0 -64.745885,17.701797,0 -64.741905,17.695778,0 -64.733,17.704463,0 -64.71776,17.699069,0 -64.609632,17.733175,0 -64.602391,17.745789,0 -64.577208,17.745836,0 -64.565912,17.756221,0 -64.584047,17.760885,0 -64.601781,17.754356,0 -64.615006,17.761065,0 -64.679296,17.760669,0 -64.699468,17.745442,0 -64.73136,17.762329,0 -64.749024,17.783442,0 -64.758902,17.768079,0 -64.761227,17.781108,0 -64.778877,17.783846,0 -64.836517,17.761545,0 -64.872356,17.771036,0 -64.89403,17.747359,0 -64.883639,17.708003,0 -64.903557,17.680425,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 4</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -64.916591,18.40507,0 -64.904853,18.388743,0 -64.903137,18.400141,0 -64.916591,18.40507,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 5</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -64.96089,18.31373,0 -64.95555,18.306607,0 -64.951346,18.319655,0 -64.941006,18.317629,0 -64.945904,18.329254,0 -64.96089,18.31373,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 6</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -65.041584,18.353356,0 -65.026462,18.341304,0 -64.987662,18.35007,0 -64.97575,18.339429,0 -64.983722,18.33543,0 -64.972139,18.330181,0 -64.963895,18.335083,0 -64.962364,18.324569,0 -64.952331,18.33485,0 -64.927415,18.340283,0 -64.919384,18.334796,0 -64.922893,18.319784,0 -64.905855,18.311085,0 -64.889998,18.313448,0 -64.877998,18.302809,0 -64.870403,18.306818,0 -64.882426,18.316542,0 -64.872768,18.313389,0 -64.867176,18.321351,0 -64.845271,18.311759,0 -64.836815,18.315983,0 -64.84238,18.322965,0 -64.831837,18.324768,0 -64.854094,18.32234,0 -64.844976,18.330569,0 -64.867856,18.346193,0 -64.863467,18.350318,0 -64.88938,18.354217,0 -64.891584,18.3625,0 -64.914058,18.365599,0 -64.93726,18.381498,0 -64.922064,18.366345,0 -64.927294,18.358823,0 -64.95206,18.376213,0 -64.951917,18.369183,0 -64.989898,18.371616,0 -64.994395,18.361321,0 -65.006005,18.367802,0 -65.041584,18.353356,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 7</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -65.085362,18.336817,0 -65.073888,18.341559,0 -65.07556,18.346723,0 -65.085362,18.336817,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 8</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -65.237728,18.321184,0 -65.230091,18.310837,0 -65.221077,18.311575,0 -65.222775,18.318483,0 -65.237728,18.321184,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 9</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -65.266694,18.341634,0 -65.256592,18.333174,0 -65.246134,18.33622,0 -65.266694,18.341634,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 10</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -65.338387,18.310236,0 -65.33145,18.296202,0 -65.328621,18.305157,0 -65.329645,18.315859,0 -65.338387,18.310236,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 11</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -65.341496,18.347145,0 -65.287304,18.278247,0 -65.28077,18.288385,0 -65.30233,18.309526,0 -65.279308,18.30683,0 -65.27634,18.296208,0 -65.263507,18.295776,0 -65.26314,18.289726,0 -65.256179,18.293792,0 -65.258663,18.308227,0 -65.244642,18.304488,0 -65.251276,18.317497,0 -65.291149,18.335246,0 -65.295818,18.330415,0 -65.310571,18.33726,0 -65.319026,18.329196,0 -65.341496,18.347145,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 12</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -65.577015,18.119722,0 -65.569445,18.091991,0 -65.532844,18.080144,0 -65.479753,18.09657,0 -65.456654,18.095616,0 -65.451826,18.086564,0 -65.441544,18.095151,0 -65.448234,18.104648,0 -65.440331,18.104295,0 -65.437441,18.091527,0 -65.423243,18.096137,0 -65.436643,18.106408,0 -65.432067,18.112486,0 -65.418849,18.101408,0 -65.409269,18.113881,0 -65.376909,18.107386,0 -65.373487,18.124161,0 -65.361873,18.130666,0 -65.352917,18.125178,0 -65.340363,18.119763,0 -65.352512,18.113918,0 -65.346418,18.11103,0 -65.334447,18.125276,0 -65.307564,18.127778,0 -65.308426,18.134595,0 -65.294664,18.127807,0 -65.268436,18.136237,0 -65.288468,18.14803,0 -65.302927,18.141222,0 -65.395965,18.162302,0 -65.436128,18.157964,0 -65.446529,18.147002,0 -65.544524,18.119996,0 -65.577015,18.119722,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 13</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -65.5995,18.255629,0 -65.597905,18.247743,0 -65.582781,18.248302,0 -65.58561,18.256473,0 -65.5995,18.255629,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 14</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -66.529902,17.883959,0 -66.50958,17.899339,0 -66.521821,17.898435,0 -66.529902,17.883959,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 15</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -67.271223,18.362513,0 -67.236441,18.301441,0 -67.19556,18.289707,0 -67.174169,18.244792,0 -67.173218,18.226733,0 -67.153315,18.206046,0 -67.157132,18.192682,0 -67.185266,18.164908,0 -67.176783,18.150411,0 -67.186528,18.136633,0 -67.18225,18.109979,0 -67.199394,18.091108,0 -67.196016,18.072781,0 -67.184063,18.069995,0 -67.196721,18.066011,0 -67.199269,18.046651,0 -67.209816,18.036242,0 -67.181023,18.030726,0 -67.171792,18.021401,0 -67.174407,18.011004,0 -67.212806,17.992007,0 -67.212744,17.952635,0 -67.194609,17.948834,0 -67.194406,17.932813,0 -67.183438,17.93097,0 -67.191889,17.953616,0 -67.174169,17.966244,0 -67.157439,17.955042,0 -67.102911,17.946296,0 -67.090565,17.95164,0 -67.08797,17.965584,0 -67.07722,17.958521,0 -67.075849,17.972495,0 -67.01987,17.968082,0 -67.013873,17.974525,0 -67.002988,17.96068,0 -67.004341,17.970983,0 -66.986802,17.970567,0 -66.979834,17.951441,0 -66.95618,17.939173,0 -66.95724,17.931422,0 -66.92413,17.926674,0 -66.919886,17.933279,0 -66.932531,17.939934,0 -66.909274,17.952403,0 -66.931217,17.961612,0 -66.925211,17.973153,0 -66.90555,17.9643,0 -66.902501,17.94906,0 -66.8713,17.952262,0 -66.863643,17.945684,0 -66.85494,17.956591,0 -66.836074,17.950598,0 -66.787271,17.972727,0 -66.783661,17.98546,0 -66.805745,17.97507,0 -66.805936,17.985078,0 -66.798474,17.982011,0 -66.797552,17.995208,0 -66.767464,18.006869,0 -66.755295,18.001025,0 -66.755281,17.987067,0 -66.763235,17.983183,0 -66.756566,17.975739,0 -66.746367,17.990264,0 -66.725262,17.99213,0 -66.673782,17.967079,0 -66.627506,17.982748,0 -66.613313,17.963252,0 -66.595797,17.97048,0 -66.579019,17.961722,0 -66.505053,17.987127,0 -66.464695,17.990886,0 -66.386202,17.938208,0 -66.37617,17.955747,0 -66.37029,17.951175,0 -66.368213,17.96141,0 -66.361383,17.958388,0 -66.36381,17.967356,0 -66.329931,17.978452,0 -66.316815,17.976725,0 -66.296315,17.958674,0 -66.292679,17.962786,0 -66.288297,17.94264,0 -66.272174,17.947251,0 -66.257676,17.93685,0 -66.206667,17.963151,0 -66.175308,17.948715,0 -66.183594,17.93874,0 -66.212987,17.94345,0 -66.199622,17.929603,0 -66.193417,17.937571,0 -66.162169,17.932305,0 -66.157993,17.938086,0 -66.155765,17.929201,0 -66.080844,17.966716,0 -66.047483,17.953194,0 -66.016431,17.980035,0 -65.993851,17.978678,0 -65.977452,17.9676,0 -65.969608,17.973931,0 -65.916368,17.976192,0 -65.894501,17.991112,0 -65.884956,17.988712,0 -65.869251,18.006896,0 -65.83508,18.013859,0 -65.83043,18.030519,0 -65.83825,18.054005,0 -65.818651,18.062925,0 -65.801733,18.058716,0 -65.799725,18.07942,0 -65.788021,18.091679,0 -65.766867,18.149282,0 -65.742867,18.16427,0 -65.733354,18.181802,0 -65.718021,18.190012,0 -65.692434,18.178929,0 -65.690818,18.196056,0 -65.665148,18.206895,0 -65.632758,18.200569,0 -65.628679,18.207824,0 -65.635615,18.207199,0 -65.639154,18.228204,0 -65.627891,18.235531,0 -65.615794,18.227273,0 -65.61099,18.211576,0 -65.603283,18.230186,0 -65.590348,18.228147,0 -65.609432,18.251193,0 -65.606409,18.261756,0 -65.625176,18.256545,0 -65.631371,18.26826,0 -65.625605,18.28085,0 -65.636246,18.288436,0 -65.625289,18.303673,0 -65.626765,18.331728,0 -65.63596,18.347956,0 -65.620048,18.366156,0 -65.618436,18.387502,0 -65.633208,18.369681,0 -65.643457,18.378469,0 -65.653918,18.365253,0 -65.674962,18.362605,0 -65.70864,18.371801,0 -65.723524,18.389362,0 -65.743097,18.380365,0 -65.77267,18.401409,0 -65.770432,18.413106,0 -65.796105,18.404438,0 -65.789576,18.421274,0 -65.814779,18.409387,0 -65.836983,18.432048,0 -65.877504,18.437598,0 -65.897114,18.451071,0 -65.925878,18.444987,0 -65.979344,18.459454,0 -65.992308,18.460165,0 -66.001113,18.447005,0 -66.023155,18.443889,0 -66.038898,18.454271,0 -66.12403,18.471557,0 -66.117601,18.460643,0 -66.10444,18.462864,0 -66.101179,18.451763,0 -66.081664,18.443825,0 -66.107757,18.427517,0 -66.110845,18.443301,0 -66.128755,18.442556,0 -66.140537,18.464329,0 -66.173021,18.450952,0 -66.183702,18.459465,0 -66.184263,18.475641,0 -66.193968,18.465797,0 -66.220123,18.466093,0 -66.26956,18.480069,0 -66.289607,18.471968,0 -66.335459,18.484545,0 -66.378417,18.488185,0 -66.381522,18.482895,0 -66.39827,18.492584,0 -66.438313,18.48593,0 -66.449483,18.471052,0 -66.466359,18.469023,0 -66.561229,18.489952,0 -66.578544,18.484352,0 -66.621441,18.493081,0 -66.672902,18.489417,0 -66.683826,18.481161,0 -66.700162,18.482715,0 -66.709911,18.471951,0 -66.739262,18.473957,0 -66.789603,18.492918,0 -66.901649,18.483267,0 -66.97567,18.491108,0 -67.019411,18.510971,0 -67.090469,18.516023,0 -67.137804,18.507569,0 -67.166205,18.484642,0 -67.168702,18.463613,0 -67.156818,18.439939,0 -67.157294,18.417841,0 -67.193957,18.393068,0 -67.271223,18.362513,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 16</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -67.487426,18.385737,0 -67.479051,18.379176,0 -67.473555,18.383868,0 -67.487426,18.385737,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <Snippet maxLines="0"> </Snippet>
+        <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;shore mode, 50 km (U.S. land only)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+        <name>Part 17</name>
+        <Style>
+          <LineStyle>
+            <color>ff000000</color>
+          </LineStyle>
+          <PolyStyle>
+            <color>591a54d9</color>
+            <fill>1</fill>
+            <outline>1</outline>
+          </PolyStyle>
+        </Style>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates> -67.944691,18.084593,0 -67.920328,18.064144,0 -67.882181,18.054767,0 -67.845795,18.082177,0 -67.845578,18.101876,0 -67.861027,18.121869,0 -67.887504,18.112523,0 -67.913249,18.118958,0 -67.933023,18.112538,0 -67.944691,18.084593,0</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

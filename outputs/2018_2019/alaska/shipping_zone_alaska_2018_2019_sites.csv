@@ -11,13 +11,13 @@ racon,"",54.3359514,-130.9352274,0,NaN,0,1,1,1,chart wavelength 0.03-X
 racon,"",57.7387872,-152.4299214,0,NaN,0,1,1,1,chart wavelength 0.03-X
 racon,"",60.8389997,-146.8839617,0,NaN,0,1,1,1,chart wavelength 0.03-X
 racon,"",71.0562821999993,-154.7304375,0,NaN,0,0,0,0,chart wavelength 0.03-X
-named_port,"Valdez, AK",61.12473,-146.3464,0,3.0185801248468,0,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Valdez, AK",61.12473,-146.3464,0,0.612874435748519,1,1,1,1,required deep-draft port (p.check_ports)
 named_port,"Port of Alaska (Anchorage), AK",61.23778,-149.895,0,0.30912232304937,1,1,1,1,required deep-draft port (p.check_ports)
-named_port,"Nikiski, AK",60.74793,-151.3144,0,6.82245001375858,0,1,1,1,required deep-draft port (p.check_ports)
-named_port,"Unalaska (Dutch Harbor), AK",53.89419,-166.54992,0,0.992201566466043,1,1,1,1,required deep-draft port (p.check_ports)
-named_port,"Kivalina, AK",67.72677,-164.52689,0,22.0582745456489,0,1,1,1,required deep-draft port (p.check_ports)
-usace_principal_port,"Valdez, AK",61.12473,-146.3464,0,3.0185801248468,1,1,1,1,type C; rank 25; foreign tons 2093485
+named_port,"Nikiski, AK",60.74793,-151.3144,0,0.32742881016706,1,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Unalaska (Dutch Harbor), AK",53.89419,-166.54992,0,0.334724579933526,1,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Kivalina, AK",67.72677,-164.52689,0,11.9013542054886,0,1,1,1,required deep-draft port (p.check_ports)
+usace_principal_port,"Valdez, AK",61.12473,-146.3464,0,0.612874435748519,1,1,1,1,type C; rank 25; foreign tons 2093485
 usace_principal_port,"Port of Alaska, AK",61.23778,-149.895,0,0.30912232304937,1,1,1,1,type C; rank 92; foreign tons 1340710
-usace_principal_port,"Nikiski, AK",60.74793,-151.3144,0,6.82245001375858,0,1,1,1,type C; rank 96; foreign tons 363685
-usace_principal_port,"Unalaska Island, AK",53.89419,-166.54992,0,0.992201566466043,1,1,1,1,type C; rank 141; foreign tons 974564
-usace_principal_port,"Kivalina, AK",67.72677,-164.52689,0,22.0582745456489,0,1,1,1,type C; rank 144; foreign tons 16240
+usace_principal_port,"Nikiski, AK",60.74793,-151.3144,0,0.32742881016706,1,1,1,1,type C; rank 96; foreign tons 363685
+usace_principal_port,"Unalaska Island, AK",53.89419,-166.54992,0,0.334724579933526,1,1,1,1,type C; rank 141; foreign tons 974564
+usace_principal_port,"Kivalina, AK",67.72677,-164.52689,0,11.9013542054886,0,1,1,1,type C; rank 144; foreign tons 16240
