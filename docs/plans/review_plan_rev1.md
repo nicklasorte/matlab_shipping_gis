@@ -13,9 +13,13 @@ and is out of scope.
 
 ## Summary
 
-- The review has four stages. Agents run the first three: reproduce,
-  trace the numbers, and attack the method. Stage 4 is Nick's own review
-  and sign-off. No one else reviews the paper.
+- The review has six stages. Agents run the first five: reproduce, trace
+  the numbers, attack the method, stress the results, and check the
+  deliverables. Stage 6 is Nick's own review and sign-off. No one else
+  reviews the paper.
+- Because agents replace the human reviewers, the plan also tests the
+  agents: errors are planted in a copy of the paper to measure what the
+  agents catch, and a second agent confirms each finding before it counts.
 - The paper changed a lot in one day: the analysis years moved to
   2024–2025, and Hawaii, Alaska, and Puerto Rico and the U.S. Virgin
   Islands were added. Checks that passed on the earlier version don't
@@ -211,21 +215,127 @@ and a proposed fix. Run them in parallel.
 | RF reviewer | Check Sections 1.1 and 3 against public sources: SOLAS carriage rules, ITU-R M.1313 and M.1460 for maritime radars, and the NTIA spectrum reports on 2900–3100 MHz. Is a 100 m ship a fair stand-in for an S-band radar, and does the zone method give an EMC analysis what it needs? | RF engineer |
 | GIS reviewer | Check the distance method, projections, land and coastline layers, the 180° cut, and the 0.01° grid; recompute the Alaska and Hawaii land areas independently. | GIS analyst |
 | Style and Section 508 reviewer | Check the paper against Google developer documentation style and NTIA marking rules; check every figure for alt text, every table for headers, and figure colors for contrast. | Style and 508 reviewer |
-| Data-use reviewer | Check the MarineCadastre terms, the CC BY 4.0 attribution for the satellite dataset, and the NOAA and Census terms against how the paper cites them. Flag anything that needs counsel. | Counsel (first pass only) |
+| NOAA reviewer | Check the routes and data handling against NOAA's own public material: ENC Direct charted fairways, traffic separation schemes, anchorages, and racons (closes gap 10); the Coast Pilot's descriptions of port approaches for the 15 busiest ports and every Alaska, Hawaii, and Puerto Rico port; the NOAA AIS Vessel Transit Counts; and the MarineCadastre data notes on filtering, the Alaska cutoff after 2020, and known data faults. List each route the Coast Pilot describes that the network misses, and each network route no NOAA source supports. | NOAA Coast Survey and MarineCadastre staff |
+| Coast Guard reviewer | Check the routes against public Coast Guard material: the Port Access Route Studies (Atlantic coast, Bering Sea, Alaskan Arctic), Vessel Traffic Service areas, and Navigation Center AIS notes on receiver coverage and transponder errors. | Coast Guard waterways staff |
+| Federal operations reviewer | From public sources only (Navy homeports, charted operating areas and danger zones in 33 CFR Part 334, NOAA and Coast Guard ship homeports), list where ships with S-band radar operate with AIS off, and whether each place is inside a zone anyway. | Federal operations planner |
+| Decision reader | Read Sections 1 and 3 through 6 as a non-technical senior reader. For each section and figure, say in one sentence what it claims; flag any place the sentence differs from the paper's own headline, and any term used before it's defined. | Senior non-technical reader |
+| Data-use reviewer | Check the MarineCadastre terms, the CC BY 4.0 attribution for the satellite dataset, and the NOAA and Census terms against how the paper cites them. Check whether the repo's day caches, which hold ship IDs (MMSI) by cell, are fit to publish as they are. Flag anything that needs counsel. | Counsel (first pass only) |
 
 Then close gaps 4 through 13 above and record the result of each in
 `docs/review/findings_rev1.md`.
 
-Pass: every finding is fixed, disclosed in the paper with its effect on
-the zones, or marked for Nick's decision.
+#### Checks on the agents themselves
 
-Limits of agent review: the agents can't confirm routes from local
-knowledge, give a legal opinion, or make a policy call. The data-use
+Agents make confident mistakes and share blind spots, so three controls
+apply to every stage 3 review:
+
+1. **Planted errors.** Before the reviews run, make a copy of the paper
+   and repo with 20 planted errors of known kinds: wrong numbers, a figure
+   title that contradicts its data, a changed filter constant in the code,
+   a swapped projection, a broken cross-reference, a missing alt text.
+   Run the agents on the copy. Report the share caught by kind
+   (`docs/review/agent_calibration.md`). If the agents catch fewer than
+   80% of a kind, Nick knows to check that kind himself.
+2. **Confirm each finding.** A second agent that didn't raise the finding
+   tries to reproduce it from the repo. Only confirmed findings go in the
+   findings list; the rest are listed separately as unconfirmed.
+3. **A second model.** Run the method reviewer and the opposing reader a
+   second time on a different model, and merge the findings. Two models
+   are less likely to miss the same thing.
+
+After fixes, rerun the agent that raised each finding to confirm the fix,
+and rerun stage 1 so a fix doesn't break something else.
+
+Pass: every confirmed finding is fixed, disclosed in the paper with its
+effect on the zones, or marked for Nick's decision; the planted-error
+catch rates are reported.
+
+Limits of agent review: the agents work from public documents only. The
+NOAA, Coast Guard, and federal operations reviewers check the paper
+against what those agencies have published; they don't speak for the
+agencies. The agents can't confirm routes from local knowledge, give a
+legal opinion, or make a policy call. The data-use
 reviewer's findings are a first pass; anything it flags goes to Nick.
 
-### Stage 4: Nick's review and sign-off
+### Stage 4: Stress the results (about one day, automated)
 
-1. Nick reads the findings list, the numbers ledger summary, and the paper.
+Goal: show how much the zones depend on each choice and on the sample, so
+the paper can say how firm they are.
+
+1. **Clean-room rebuild.** An agent that sees only the paper's text, not
+   the code, writes its own route builder from Sections 1.4 and 1.5 and
+   runs it on the raw files for four days. If its cells differ from the
+   repo's, either the paper leaves out a step or the code does something
+   the paper doesn't say. This tests the paper as a specification.
+2. **One-at-a-time sensitivity.** Rebuild the lower-48 routes and the
+   50 km zone with each choice moved one step either way, and report the
+   change in route cells and in land inside the zone, as one ranked table:
+
+   | Choice | Value used | Also run |
+   | --- | --- | --- |
+   | Ship length cutoff | 100 m | 80 m, 120 m |
+   | Ships per cell per year | 4 | 3, 5 |
+   | Ship-days (Hawaii, Alaska) | 6 | 4, 8 |
+   | Port approach radius and count | 50 km, 2 ships | 25 km, 100 km; 3 ships |
+   | Tug-barge distance from coast | 25 km | none, 50 km |
+   | Shore link distance | 25 km | 10 km, 50 km |
+   | Grid cell | 0.01° | 0.02° |
+   | Alaska satellite cutoff | 272 operating days | half and double (done) |
+
+3. **Sampling stability (gap 6).** Rebuild the routes from 200 random
+   halves of the 104 days. Report the range of the route-cell count and of
+   the land in each zone, and map the cells that appear in fewer than 90%
+   of the rebuilds.
+4. **Held-out capture.** The existing stability check counts cells. Add
+   the test the zones are for: of all large-ship reports on the held-out
+   2023 and 2026 days, what share falls within 25, 50, and 100 km of the
+   2024–2025 routes, by area? Report the reports that fall outside, and
+   where they are.
+5. **Outside totals.** Compare the ship counts at the 15 busiest ports
+   with public port-call figures (U.S. Army Corps of Engineers vessel
+   entrances and clearances, and Maritime Administration vessel calls).
+   Ranks should agree; explain any port that moves more than three places.
+6. **Known-answer run.** Push a synthetic day through both pipelines: ten
+   made-up ships on straight tracks with known cells, including one
+   crossing 180°, one on the grid edge, and one with a planted position
+   jump. Both implementations must return exactly the known cells.
+7. **Flagged reports (gap 4).** Finish the rebuild without flagged
+   reports in every area and report the cells that drop out
+   (`python/ship_flagged_rebuild.py`; running November 12, 2026).
+
+Pass: the clean-room cells match the repo's on all four days, or each
+difference is traced to a sentence to fix; the known-answer run is exact;
+the sensitivity, stability, and capture tables are in the repo and the
+paper states the main result of each.
+
+### Stage 5: Check the deliverables (about half a day, automated)
+
+Goal: what leaves the repo works for the next user.
+
+1. **Zone files.** Open every shapefile, KML, and KMZ. Check that
+   geometry is valid, the coordinate system is stated, no polygon crosses
+   180°, the attribute names match the README, and the KML and shapefile
+   versions of each zone cover the same area to within 0.1%.
+2. **Hand-off to the EMC analysis.** List what Section 2 will need from
+   Sections 1 and 3 (route cells, zone polygons, ship counts by place, the
+   fixed S-band sites) and check that each exists as a file with units and
+   a description.
+3. **Sources.** For each row of `docs/plans/data_sources_register.csv`,
+   check that the link works, record the retrieval date, and store a
+   checksum of the downloaded file, so a later change at the source shows.
+4. **Word copy (gap 12).** Check each of the 56 figures against its
+   caption and alt text, the marking on every page, and table order.
+5. **Freeze.** Write a manifest of checksums for every output file, tag
+   the reviewed commit, and record the MATLAB, Python, and package
+   versions used.
+
+Pass: no invalid file; every hand-off item exists; the manifest and tag
+are in the repo.
+
+### Stage 6: Nick's review and sign-off
+
+1. Nick reads the findings list, the numbers ledger summary, the
+   planted-error catch rates, the stage 4 tables, and the paper.
 2. Nick decides the open choices below and any finding marked for him.
 3. Nick approves the paper for its next audience, or sends it back.
 
@@ -266,8 +376,9 @@ circular; the sensitivity table answers that.
 
 **Decided (Nick, November 12, 2026):** no external or other human
 reviewers. AI agents run stages 1 through 3, and Nick does the human
-review. The agent roles in stage 3 stand in for the RF, GIS, style, and
-data-use reviewers, within the limits stated there.
+review. The agent roles in stage 3 stand in for the RF, GIS, style,
+data-use, NOAA, Coast Guard, and federal operations reviewers, within the
+limits stated there.
 
 ### 3. MATLAB and Python agreement statement (gap 1)
 
@@ -332,8 +443,13 @@ The review is done when all of these are true:
   open for Alaska).
 - Stage 1 passes on a clean clone of the reviewed commit.
 - The numbers ledger has no open rows.
-- Every stage 3 finding and every gap from 4 through 13 is fixed,
-  disclosed, or decided by Nick.
+- Every confirmed stage 3 finding and every gap from 4 through 13 is
+  fixed, disclosed, or decided by Nick.
+- The planted-error catch rates are reported, and Nick has checked any
+  kind of error the agents caught less than 80% of the time.
+- Stage 4 passes, and the paper states the sensitivity, stability, and
+  held-out capture results.
+- Stage 5 passes, and the reviewed commit is tagged with its manifest.
 - The paper is marked DRAFT//PRE-DECISIONAL on every page and passes the
   Section 508 check.
 - Nick has signed off.
@@ -341,8 +457,15 @@ The review is done when all of these are true:
 ## Outputs of the review
 
 - `docs/review/numbers_ledger.csv`: the ledger.
-- `docs/review/findings_rev1.md`: each finding, which agent raised it, and
-  how it was resolved.
+- `docs/review/findings_rev1.md`: each confirmed finding, which agent
+  raised it, which agent confirmed it, and how it was resolved; unconfirmed
+  findings in a separate list.
+- `docs/review/agent_calibration.md`: the planted errors and the share
+  each agent caught.
+- `docs/review/sensitivity_rev1.csv`, `stability_rev1.csv`, and
+  `heldout_capture_rev1.csv`: the stage 4 tables.
+- `docs/review/manifest_rev1.csv`: checksums of every output at the
+  reviewed commit.
 - An updated working paper and Word copy, tagged in the repo with the
   reviewed commit.
 
@@ -350,5 +473,5 @@ The review is done when all of these are true:
 
 - The EMC analysis (Section 2) and the real zone distances.
 - Policy judgment on how the zones are used, legal opinions, and route
-  checks from local knowledge. Nick covers these in stage 4.
+  checks from local knowledge. Nick covers these in stage 6.
 - Data that isn't public or cleared.

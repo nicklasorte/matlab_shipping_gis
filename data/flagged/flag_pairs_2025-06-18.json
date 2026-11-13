@@ -1,0 +1,29 @@
+{
+ "day": "2025-06-18",
+ "reports": 940723,
+ "flagged_reports": 6262,
+ "conus": {
+  "pairs": 252975,
+  "flagged_only_pairs": 2427,
+  "flagged_only_cells": 2392,
+  "cache_pairs": 252975,
+  "pairs_not_in_cache": 0,
+  "cache_pairs_not_rebuilt": 0
+ },
+ "hawaii": {
+  "pairs": 1778,
+  "flagged_only_pairs": 0,
+  "flagged_only_cells": 0,
+  "cache_pairs": 1778,
+  "pairs_not_in_cache": 0,
+  "cache_pairs_not_rebuilt": 0
+ },
+ "prusvi": {
+  "pairs": 6996,
+  "flagged_only_pairs": 0,
+  "flagged_only_cells": 0,
+  "cache_pairs": 6996,
+  "pairs_not_in_cache": 0,
+  "cache_pairs_not_rebuilt": 0
+ }
+}
