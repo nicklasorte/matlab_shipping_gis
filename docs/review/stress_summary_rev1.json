@@ -184,5 +184,13 @@
    "land_50km_change_pct": 2.3,
    "land_100km_change_pct": 1.0
   }
- ]
+ ],
+ "stability": {
+  "full_route_cells": 674685,
+  "half_route_cells_min": 333284,
+  "half_route_cells_max": 386159,
+  "half_route_cells_median": 352546.5,
+  "full_cells_in_fewer_than_90pct_of_halves": 475378,
+  "full_cells_in_fewer_than_90pct_share": 0.7046
+ }
 }
