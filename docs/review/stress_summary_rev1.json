@@ -72,5 +72,117 @@
    "visits_beyond_100km": 0,
    "cells_beyond_100km": 0
   }
+ ],
+ "sensitivity": [
+  {
+   "variant": "Baseline",
+   "route_cells": 674685,
+   "land_25km_km2": 300406,
+   "land_50km_km2": 639699,
+   "land_100km_km2": 1266625,
+   "route_cells_change_pct": 0.0,
+   "land_25km_change_pct": 0.0,
+   "land_50km_change_pct": 0.0,
+   "land_100km_change_pct": 0.0
+  },
+  {
+   "variant": "Ships per cell per year = 3",
+   "route_cells": 977898,
+   "land_25km_km2": 314653,
+   "land_50km_km2": 664931,
+   "land_100km_km2": 1306112,
+   "route_cells_change_pct": 44.9,
+   "land_25km_change_pct": 4.7,
+   "land_50km_change_pct": 3.9,
+   "land_100km_change_pct": 3.1
+  },
+  {
+   "variant": "Ships per cell per year = 5",
+   "route_cells": 503094,
+   "land_25km_km2": 293118,
+   "land_50km_km2": 627501,
+   "land_100km_km2": 1259826,
+   "route_cells_change_pct": -25.4,
+   "land_25km_change_pct": -2.4,
+   "land_50km_change_pct": -1.9,
+   "land_100km_change_pct": -0.5
+  },
+  {
+   "variant": "No tug-barges",
+   "route_cells": 663839,
+   "land_25km_km2": 264972,
+   "land_50km_km2": 602110,
+   "land_100km_km2": 1237486,
+   "route_cells_change_pct": -1.6,
+   "land_25km_change_pct": -11.8,
+   "land_50km_change_pct": -5.9,
+   "land_100km_change_pct": -2.3
+  },
+  {
+   "variant": "Tug-barge distance = 50 km",
+   "route_cells": 680455,
+   "land_25km_km2": 310246,
+   "land_50km_km2": 651580,
+   "land_100km_km2": 1283438,
+   "route_cells_change_pct": 0.9,
+   "land_25km_change_pct": 3.3,
+   "land_50km_change_pct": 1.9,
+   "land_100km_change_pct": 1.3
+  },
+  {
+   "variant": "Port approach radius = 25 km",
+   "route_cells": 661906,
+   "land_25km_km2": 291881,
+   "land_50km_km2": 627348,
+   "land_100km_km2": 1254304,
+   "route_cells_change_pct": -1.9,
+   "land_25km_change_pct": -2.8,
+   "land_50km_change_pct": -1.9,
+   "land_100km_change_pct": -1.0
+  },
+  {
+   "variant": "Port approach radius = 100 km",
+   "route_cells": 719385,
+   "land_25km_km2": 318583,
+   "land_50km_km2": 665206,
+   "land_100km_km2": 1293166,
+   "route_cells_change_pct": 6.6,
+   "land_25km_change_pct": 6.1,
+   "land_50km_change_pct": 4.0,
+   "land_100km_change_pct": 2.1
+  },
+  {
+   "variant": "No port approaches",
+   "route_cells": 658867,
+   "land_25km_km2": 286109,
+   "land_50km_km2": 620264,
+   "land_100km_km2": 1245932,
+   "route_cells_change_pct": -2.3,
+   "land_25km_change_pct": -4.8,
+   "land_50km_change_pct": -3.0,
+   "land_100km_change_pct": -1.6
+  },
+  {
+   "variant": "Port approach ships = 3",
+   "route_cells": 665012,
+   "land_25km_km2": 289003,
+   "land_50km_km2": 623418,
+   "land_100km_km2": 1248332,
+   "route_cells_change_pct": -1.4,
+   "land_25km_change_pct": -3.8,
+   "land_50km_change_pct": -2.5,
+   "land_100km_change_pct": -1.4
+  },
+  {
+   "variant": "Grid cell = 0.02 degree",
+   "route_cells": 1402748,
+   "land_25km_km2": 315216,
+   "land_50km_km2": 654726,
+   "land_100km_km2": 1279002,
+   "route_cells_change_pct": 107.9,
+   "land_25km_change_pct": 4.9,
+   "land_50km_change_pct": 2.3,
+   "land_100km_change_pct": 1.0
+  }
  ]
 }
