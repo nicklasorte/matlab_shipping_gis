@@ -9,7 +9,6 @@ Usage (from the repo root):
 Writes docs/viz_python/ak01_routes and ak02_zones (PNG, PDF, SVG, alt text).
 """
 import csv
-import json
 import os
 import sys
 
