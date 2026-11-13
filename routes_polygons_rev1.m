@@ -81,8 +81,17 @@ for r0=row_starts
         if tile_poly.NumRegions==0
             continue
         end
-        [xb,yb]=boundary(tile_poly);
-        tile_rings{k}=[yb xb];
+        %%%%%Write each region's outer ring followed by its own holes, so readers
+        %%%%%that pair holes with the outer ring before them (shapely, GDAL) don't
+        %%%%%find orphaned holes (review CA-96).
+        regs=regions(tile_poly);
+        parts=cell(numel(regs),1);
+        for reg_idx=1:numel(regs)
+            [xr,yr]=boundary(regs(reg_idx));
+            parts{reg_idx}=[yr xr; NaN NaN];
+        end
+        rings=vertcat(parts{:});
+        tile_rings{k}=rings(1:end-1,:);
     end
 end
 tile_rings=tile_rings(~cellfun(@isempty,tile_rings));

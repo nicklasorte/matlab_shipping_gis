@@ -23,6 +23,7 @@ import sys
 
 import numpy as np
 import rasterio
+import rasterio.windows
 from pyproj import Transformer
 from rasterio.windows import from_bounds
 from scipy import ndimage
@@ -45,23 +46,30 @@ TO_M = Transformer.from_crs(4326, 3857, always_xy=True)
 
 
 def noaa_cells(grid):
-    """Max NOAA transits per 0.01-degree cell of the grid (None = lower 48)."""
+    """Max NOAA transits per 0.01-degree cell of the grid (None = lower 48), at full resolution.
+
+    Reads the 100 m raster in strips of 1,024 rows (the earlier version read the
+    800 m overview, which smooths narrow lanes; review CA-63).
+    """
     (la0, la1), (lo0, lo1) = cells.GRIDS[grid] if grid else (cells.LATLIM, cells.LONLIM)
     x0, y0 = TO_M.transform(lo0, la0)
     x1, y1 = TO_M.transform(lo1, la1)
-    with rasterio.open(TIF, overview_level=2) as r:   # factor 8 = 800 m
+    nr, nc = cells.grid_size(grid)
+    out = np.zeros(nr * nc + 1, np.int64)
+    with rasterio.open(TIF) as r:
         w = from_bounds(x0, y0, x1, y1, r.transform).round_offsets().round_lengths()
-        a = r.read(1, window=w)
-        tr = r.window_transform(w)
-    rows, cols = np.nonzero(a)
-    v = a[rows, cols].astype(np.int64)
-    lon, lat = TO_LL.transform(tr.c + (cols + 0.5) * tr.a, tr.f + (rows + 0.5) * tr.e)
-    row, col, ok = cells.discrete(lat, lon, grid)
-    nr = cells.grid_size(grid)[0]
-    cell = (row[ok] + (col[ok] - 1) * nr).astype(np.int64)
-    v = v[ok]
-    out = np.zeros(cell.max() + 1 if len(cell) else 1, np.int64)
-    np.maximum.at(out, cell, v)
+        for r_off in range(0, int(w.height), 1024):
+            sub = rasterio.windows.Window(w.col_off, w.row_off + r_off, w.width, min(1024, int(w.height) - r_off))
+            a = r.read(1, window=sub)
+            rows, cols = np.nonzero(a)
+            if not len(rows):
+                continue
+            tr = r.window_transform(sub)
+            v = a[rows, cols].astype(np.int64)
+            lon, lat = TO_LL.transform(tr.c + (cols + 0.5) * tr.a, tr.f + (rows + 0.5) * tr.e)
+            row, col, ok = cells.discrete(lat, lon, grid)
+            cell = (row[ok] + (col[ok] - 1) * nr).astype(np.int64)
+            np.maximum.at(out, cell, v[ok])
     c = np.nonzero(out)[0]
     return c, out[c]
 

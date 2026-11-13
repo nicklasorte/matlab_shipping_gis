@@ -9,15 +9,13 @@ maximum transit count in each of our 0.01-degree cells, and reports:
   - the share of NOAA's busiest cells that lie on or near our routes.
 
 Usage: python3 python/check_transit_counts.py   (needs data/ref/ais-transit-count-2024.tif)
-Writes outputs/2023_2024/qc/transit_count_check.json.
+Writes outputs/<period>/qc/transit_count_check.json.
 """
 import json
 import os
 import sys
 
 import numpy as np
-import rasterio
-from pyproj import Transformer
 from scipy.spatial import cKDTree
 from scipy.stats import spearmanr
 
@@ -25,31 +23,19 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, ".."))
 import ship_viz_products as vp  # noqa: E402
-import ais_cells_py_rev1 as cells  # noqa: E402
 
 ROOT = os.path.join(HERE, "..")
-TIF = os.path.join(ROOT, "data", "ref", "ais-transit-count-2024.tif")
-OUT = os.path.join(ROOT, "outputs", "2023_2024", "qc")
+sys.path.insert(0, HERE)
+import ship_period as PER  # noqa: E402  analysis years
+import ship_route_rules as rr  # noqa: E402
+
+OUT = os.path.join(ROOT, "outputs", PER.TAG, "qc")
 
 
 def main():
-    z = np.load(os.path.join(ROOT, "outputs", "2023_2024", "viz", "viz_cells.npz"))
+    z = np.load(os.path.join(ROOT, "outputs", PER.TAG, "viz", "viz_cells.npz"))
     route, bc, bs = z["route_cells"], z["both_cell"], z["both_ships"]
-    with rasterio.open(TIF, overview_level=2) as r:   # level 2 = factor 8 = 800 m
-        a = r.read(1)
-        tr = r.transform
-    rows, cols = np.nonzero(a)
-    v = a[rows, cols].astype(np.int64)
-    x = tr.c + (cols + 0.5) * tr.a
-    y = tr.f + (rows + 0.5) * tr.e
-    lon, lat = Transformer.from_crs(3857, 4326, always_xy=True).transform(x, y)
-    row, col, ok = cells.discrete(lat, lon)
-    cell = (row[ok] + (col[ok] - 1) * cells.NUM_ROW).astype(np.int64)
-    v = v[ok]
-    o = np.lexsort((-v, cell))
-    cell, v = cell[o], v[o]
-    first = np.r_[True, cell[1:] != cell[:-1]]
-    ncell, nmax = cell[first], v[first]          # max transits per our cell
+    ncell, nmax = rr.noaa_cells(None)   # max transits per our cell, full 100 m resolution (review CA-63)
     tmap = dict(zip(ncell.tolist(), nmax.tolist()))
     t_route = np.array([tmap.get(int(c), 0) for c in route])
     res = {"route_cells": int(len(route)),

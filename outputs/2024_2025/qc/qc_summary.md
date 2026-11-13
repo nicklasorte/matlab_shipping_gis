@@ -1,8 +1,8 @@
 | Area | Day | Ships | Bad MMSI | Bad IMO | Jumps | Shared MMSI | Inland off routes | Route cells only from flagged reports | Gate |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | Alaska to 180 | 2018-07-11 | 85 | 0.0% | 0.0% | 2.4% | 0.0% | 0.00% | 0 (0.000%) | pass |
-| Alaska to 180 | 2019-01-09 | 40 | 0.0% | 2.5% | 2.5% | 0.0% | 0.00% | 0 (0.000%) | bad IMO above lower 48 (1), no route cell affected |
-| Alaska to 180 | 2019-07-10 | 93 | 1.1% | 1.1% | 18.3% | 1.1% | 0.00% | 12 (0.044%) | bad MMSI above lower 48 (1); bad IMO above lower 48 (1); jumps above lower 48 (17), route cells affected |
+| Alaska to 180 | 2019-01-09 | 40 | 0.0% | 2.5% | 2.5% | 0.0% | 0.00% | 0 (0.000%) | bad IMO above the limit (1), no route cell affected |
+| Alaska to 180 | 2019-07-10 | 93 | 1.1% | 1.1% | 18.3% | 1.1% | 0.00% | 12 (0.044%) | bad MMSI above the limit (1); bad IMO above the limit (1); jumps above the limit (17), route cells affected |
 | Hawaii | 2024-01-10 | 19 | 0.0% | 0.0% | 0.0% | 0.0% | 0.00% | 0 (0.000%) | pass |
 | Hawaii | 2024-07-10 | 27 | 0.0% | 0.0% | 0.0% | 0.0% | 0.00% | 0 (0.000%) | pass |
 | Hawaii | 2025-01-08 | 20 | 0.0% | 0.0% | 0.0% | 0.0% | 0.00% | 0 (0.000%) | pass |

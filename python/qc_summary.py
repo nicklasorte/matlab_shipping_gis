@@ -1,10 +1,8 @@
 """Summarize the data-validity checks (ais_qc_day.py) for every area and day.
 
 Reads outputs/<period>/qc/ais_qc_*.json and outputs/2018_2019/qc/ais_qc_*.json,
-turns each check into a rate, and applies the gate from
-docs/plans/alaska_hawaii_plan_rev1.md: an area passes on a day when each
-rate is no worse than the lower-48 rate on the same-period days (the
-largest lower-48 value), or the count is zero.
+turns each check into a rate, and applies the gate: an area passes on a day when each rate is at or below a
+fixed limit (LIMITS below).
 
 Rates:
   bad_mmsi_pct          ships with a bad MMSI / ships
@@ -64,13 +62,20 @@ LABEL = {"bad_mmsi_pct": "bad MMSI", "bad_imo_pct": "bad IMO", "jump_pct": "jump
 def gate_text(r):
     if r.passes_gate:
         return "pass"
-    worse = "; ".join(f"{LABEL[c]} above lower 48 ({r['n_' + c]})" for c in r.worse_than_lower_48.split(","))
+    worse = "; ".join(f"{LABEL[c]} above the limit ({r['n_' + c]})" for c in r.worse_than_lower_48.split(","))
     return worse + (", no route cell affected" if r.no_route_effect else ", route cells affected")
+
+
+# Fixed gate limits (review CA-58: limits taken from the lower-48 days being
+# tested could never fail the lower 48). Set November 13, 2026, from the worst
+# lower-48 rate on the four 2024-2025 days checked, rounded up.
+LIMITS = pd.Series({"bad_mmsi_pct": 1.0, "bad_imo_pct": 1.0, "jump_pct": 15.0, "dup_mmsi_pct": 12.0,
+                    "inland_off_route_pct": 1.0, "flag_route_pct": 0.2})
 
 
 def main():
     t = pd.DataFrame(list(rows())).sort_values(["area", "day"]).reset_index(drop=True)
-    ref = t[t.area == "Lower 48 grid"][RATES].max()
+    ref = LIMITS
     t["passes_gate"] = [all(r[c] <= ref[c] + 1e-12 for c in RATES) for _, r in t.iterrows()]
     t["worse_than_lower_48"] = [",".join(c for c in RATES if r[c] > ref[c] + 1e-12) for _, r in t.iterrows()]
     # Small areas can exceed a lower-48 rate by one ship. The second test asks

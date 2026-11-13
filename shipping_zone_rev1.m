@@ -175,6 +175,22 @@ ais_mask=source_mask;   %%%%%AIS cells only, before fairways and racons
 %%%%%%%%%%2. Fairways and TSS lanes
 if p.include_fairways
     fairway_mask=load_shipping_fairways_rev1(R,p.data_dir);
+    %%%%%U.S. charts also show other countries' routing measures (traffic
+    %%%%%separation schemes off Cuba in the Old Bahama Channel). Keep only
+    %%%%%charted-lane cells nearer to U.S. land than to foreign land, an
+    %%%%%equidistance stand-in for the maritime boundary (no EEZ layer is used).
+    if ~isfield(p,'clip_foreign') || p.clip_foreign
+        foreign_mask=foreign_land_mask(R,p.data_dir,land_mask);
+        if any(foreign_mask,'all') && any(fairway_mask,'all')
+            cap_km=400;
+            d_us=distance_to_mask_km_rev1(land_mask,R,cap_km,p.block_rows);
+            d_foreign=distance_to_mask_km_rev1(foreign_mask,R,cap_km,p.block_rows);
+            foreign_side=fairway_mask & d_foreign<d_us;
+            disp_progress(sprintf('Fairway cells nearer foreign land than U.S. land dropped: %d',nnz(foreign_side)));
+            fairway_mask=fairway_mask & ~foreign_side;
+            clear d_us d_foreign foreign_side
+        end
+    end
     disp_progress(sprintf('Fairway cells: %d (%d not already AIS cells)',nnz(fairway_mask),nnz(fairway_mask & ~source_mask)));
     source_mask=source_mask | fairway_mask;
 end
@@ -435,4 +451,22 @@ end
 
 function disp_progress(msg)
 fprintf('%s  %s\n',string(datetime('now'),'HH:mm:ss'),msg);
+end
+
+function foreign_mask=foreign_land_mask(R,data_dir,land_mask)
+%%%%%Grid cells inside other countries' land (Natural Earth), never on Census U.S. land.
+foreign_poly=load_foreign_land_rev1(R,data_dir);
+foreign_mask=false(R.RasterSize);
+if foreign_poly.NumRegions==0
+    return
+end
+regs=regions(foreign_poly);
+for k=1:numel(regs)
+    [lon_b,lat_b]=boundary(regs(k));
+    [Z_sub,row_range,col_range]=rasterize_polygon_crop_rev1(lat_b,lon_b,R);
+    if ~isempty(Z_sub)
+        foreign_mask(row_range,col_range)=foreign_mask(row_range,col_range) | Z_sub;
+    end
+end
+foreign_mask=foreign_mask & ~land_mask;
 end
