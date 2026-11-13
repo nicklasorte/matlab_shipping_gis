@@ -84,12 +84,13 @@ Left out on purpose:
    grid cell to the nearest ship cell (spherical Earth, KD-tree search over
    the edge cells of the ship area).
 4. **Zone definition.** Choose one of two modes:
-   - `shore` (default): water within `shore_link_km` (25 km) of ship cells is
-     ship water. Land is measured from the Census coastline that faces ship
-     water. The zone runs from the ship water to X km inland. River ports that
-     the coastline layer omits, such as Baton Rouge and Portland, Oregon, are
-     covered because the distance to the ships themselves also counts.
-   - `ships`: the zone is everything within X km of a ship cell.
+   - `ships` (used for every area since the November 2026 review): the zone is
+     all U.S. land and water within X km of a route cell. Land of other
+     countries (Natural Earth 1:10m) is removed, and the land area is the area
+     of the clipped land polygon in an equal-area projection (EPSG:6933).
+   - `shore` (the earlier default): water within `shore_link_km` (25 km) of ship
+     cells is ship water, and land is measured from the Census coastline that
+     faces it, so land in an X km zone can be up to X + 25 km from a route.
 5. **Polygons.** The code contours the distance field at each distance with
    sub-cell interpolation, builds a `polyshape`, and clips a land-only copy to
    Census state boundaries.
@@ -161,24 +162,25 @@ Coast.
 | Route cells by source | Cells |
 | --- | --- |
 | AIS cells, 4 or more large ships in a year (tug-barges near the coast included) | 658,865 |
-| Port approaches, 2 or more ships within 50 km of 73 deep-draft ports | 15,782 |
-| NOAA fairways and traffic separation schemes not already AIS cells | 1,099 |
-| S-band racons not already route cells | 17 |
-| Total | 675,763 |
+| Port approaches, 2 or more ships within 50 km of 73 deep-draft ports and 25 km of the coastline | 11,682 |
+| NOAA fairways and traffic separation schemes not already AIS cells | 15,765 |
+| S-band racons not already route cells | 13 |
+| Total | 686,325 |
 
 | Distance | U.S. land in zone |
 | --- | --- |
-| 25 km | 404,668 km² |
-| 50 km | 730,157 km² |
-| 100 km | 1,335,776 km² |
+| 25 km | 301,168 km² |
+| 50 km | 638,688 km² |
+| 100 km | 1,261,529 km² |
 
 - Named ports: 24 of 24 reached by a continuous route, including Baltimore
   and Baton Rouge.
-- USACE Principal Ports: 69 of 73 deep-draft ports reached; 0 of 36 inland
-  river ports. Not reached: Portland, Oregon, and Illinois International
-  Port (the USACE reference points sit 5 and 12 km from the ship berths),
-  and Panama City and Searsport (thin approach traffic). All four are inside
-  the 25 km zone.
+- USACE Principal Ports: 70 of 73 deep-draft ports reached; 0 of 36 inland
+  river ports. Not on the network: Portland, Oregon, and Illinois
+  International Port (the USACE reference points sit 6 and 12 km from the
+  ship berths), and Searsport (its route cells don't connect to the open-water
+  lanes). Panama City now connects through the charted Gulf fairway. All three
+  are inside the 25 km zone.
 - Baton Rouge: 263 distinct large ships within 3 km on the sampled days
   (138 in 2024, 139 in 2025).
 - Vessel Traffic Service: 9 of 10 VTS areas are inside the 25 km zone;
@@ -244,7 +246,7 @@ Each band gets its own shapefile, KML, and KMZ
   feature per 1° tile), shapefile and KMZ. The KML is 42 MB, so only the KMZ
   (the same KML, zipped, 1.7 MB) is in the repo; a run writes both.
   `..._routes_ais_only` holds the AIS cells without fairways and racons.
-- `shipping_zone_2023_2024_shore_<X>km` and `..._land`: the zones for 25,
+- `shipping_zone_<period>_ships_<X>km` and `..._land`: the zones for 25,
   50, and 100 km (shapefile, KML, KMZ).
 - `shipping_zone_2023_2024_band_*`: the frequency-dependent zones.
 - `shipping_zone_2023_2024_sites.csv`: racons, VTS areas, named ports, and
