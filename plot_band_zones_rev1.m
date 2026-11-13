@@ -82,7 +82,7 @@ for b=1:num_band
     ax=nexttile(tl);
     hold(ax,'on');
     plot(ax,land_xy,'FaceColor',land_gray,'FaceAlpha',1,'EdgeColor','none');
-    plot(ax,g.water,'FaceColor',pale_blue,'FaceAlpha',1,'EdgeColor','none');
+    plot(ax,g.water,'FaceColor',pale_blue,'FaceAlpha',1,'EdgeColor',dark_blue,'LineWidth',0.3);   %%%%%outline: the pale fill is under 3:1 on gray (review CB-77)
     plot(ax,g.land,'FaceColor',light_blue,'FaceAlpha',1,'EdgeColor','none');
     plot(ax,sx/1e3,sy/1e3,'Color',line_gray,'LineWidth',0.25);
     axis(ax,'equal');

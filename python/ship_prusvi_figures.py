@@ -150,7 +150,7 @@ def pr_zones():
     ax.add_collection(PolyCollection(land_rings(), facecolor="white", edgecolor=page.theme.text, lw=0.5))
     for d in (100, 50, 25):
         ax.add_collection(PolyCollection(rings(os.path.join(HAW, f"{STEM}_ships_{d}km_land.shp")),
-                                         facecolor=cols[d], edgecolor="none", zorder=2))
+                                         facecolor=cols[d], edgecolor="#163353", lw=0.35, zorder=2))   # outline each tier: the light tints are under 3:1 (review CB-77)
     frame(page, ax)
     ports(page, ax, hollow=True)
     x0, y0 = km(-67.9, 17.75)
