@@ -1,0 +1,141 @@
+# Review findings: 2.7 GHz large-ship routes and zones working paper
+
+DRAFT//PRE-DECISIONAL
+
+Date: November 12, 2026. Reviewed paper: `paper_under_review.md` (doc revision
+132). Reviewed code: commit `2419e33` and later review commits on `main`.
+
+This file summarizes the AI-agent review (stages 1 through 5 of
+`docs/plans/review_plan_rev1.md`). The confirmed findings are in two tables:
+
+- `findings_method_rev1.md`: method, data, and domain findings (CA-1 to CA-102).
+- `findings_paper_rev1.md`: numbers, style, Section 508, data use, and outside
+  totals (CB-1 to CB-86).
+
+No paper or code change has been made from these findings yet. Nick decides
+what to apply (stage 6).
+
+## Summary
+
+- **The pipeline reproduces.** A clean copy rerun on the Mac gives identical
+  outputs in all four areas, a synthetic day with known answers is exact in both
+  MATLAB and Python, and an agent that saw only the paper rebuilt the cell and
+  ship pairs to within 0.06%. The method is documented well enough to rebuild.
+- **But the routes are incomplete in one place that matters.** The lower-48
+  charted-lane file is a stale 28-feature cache (NOAA's layer has 291), and a
+  misspelled theme name drops every traffic separation scheme. With the live
+  layer, about 11,900 charted-lane cells would be added, mostly in the Gulf, where
+  the paper reports 1,099 (CA-1, CA-2). This changes routes and zones and should
+  be fixed before anything else.
+- **The zone definition needs a decision.** In shore mode, land in a D km zone
+  can be up to D + 25 km from a route; foreign land counts as ship water in the
+  water-and-land files; and some coasts more than 25 km from routes get no
+  credit (CA-3 to CA-7). The `_land` files used for the areas are correct, but
+  the paper should define the zone exactly or switch modes.
+- **Most other findings are text.** 74 of 86 paper findings are confirmed, and
+  none changes a zone: stale or conflicting numbers (for example, 166,382 pairs,
+  the Mississippi route end, 1 in 11 against 1 in 12), missing sources, acronyms,
+  and figure citations.
+- **The stress tests show the zones are firm against most choices.** No single
+  choice moved the land in the 100 km zone by more than 3%. The 25 km zone is
+  most sensitive to the tug-barge rule (−12% without it) and the shore link
+  (−13% at 10 km, +11% at 50 km).
+
+## Counts
+
+| Table | Findings | Confirmed | Partly | Not confirmed | Can't check | Zone | Number | Wording |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Method, data, domain (CA) | 102 | 84 | 16 | 0 | 2 | 32 | 33 | 37 |
+| Paper and data use (CB) | 86 | 74 | 9 | 2 | 1 | 0 | 24 | 62 |
+| **Total** | **188** | **158** | **25** | **2** | **3** | **32** | **57** | **99** |
+
+| Action | CA | CB | Total |
+| --- | ---: | ---: | ---: |
+| Fix | 59 | 65 | 124 |
+| Disclose | 24 | 5 | 29 |
+| Nick decides | 19 | 16 | 35 |
+
+Some items appear in both tables (for example, the Mississippi route end and
+the 166,382 pair count); the totals count them twice.
+
+## Fix first (changes routes or zones)
+
+| ID | What | Effect |
+| --- | --- | --- |
+| CA-1 | Re-download the lower-48 charted lanes with paging and a count check; key the cache to the grid | About 8,800 new charted-lane cells in the lower 48 |
+| CA-2 | Fix the theme name so traffic separation schemes are kept | About 3,100 more |
+| CA-8 | Stop the 2-ship port-approach rule from running upriver of Baton Rouge | Route ends at 30.49° N, not 30.77° N |
+| CA-3 | Keep foreign land out of the water-and-land zone files | Vancouver, Toronto, Tijuana, and Havana leave the band files |
+| CA-33 | Report land areas from the polygons, not raster counts | Island areas fall by about 5–8% |
+| CA-36 | Fix and rerun the year-stability script on the 2024–2025 base | Section 1.3 and 4.1 stability numbers |
+
+After these, rerun the four zone runs, the Python products, and the Word
+copy, and rerun stage 1.
+
+## Decisions for Nick (judgment calls)
+
+The full list is in the Action column (35 rows). The main ones:
+
+1. **Zone definition** (CA-4 to CA-7): define shore mode exactly (D + 25 km),
+   add ships-mode areas, or set the shore link from the EMC analysis.
+2. **Band edges and the 2700–2900 MHz part of the study band** (CA-18, CA-20).
+3. **Alaska added lanes** (CA-11): refine the satellite cutoff between 211
+   and 659 operating days, and show tracks-only and tracks-plus-charted runs.
+4. **Hawaii and Puerto Rico harbor fairways** (CA-10): add ENC harbor-scale
+   fairways as route sources, or reword "no fairways."
+5. **Public repo contents** (CB data-use rows, flagged for counsel): Nick
+   decided on November 12, 2026, to leave the repo public as it is.
+
+## Stress tests (stage 4)
+
+| Test | Result | File |
+| --- | --- | --- |
+| Clean-room rebuild from the paper alone | 99.94–99.96% of pairs agree on four days; gaps in the paper's description listed | `agent_cleanroom.md`, `cleanroom_comparison_rev1.md` |
+| Known-answer synthetic day | Exact in Python and MATLAB | `tests/known_answer/`, `stage1_reproduce_rev1.md` |
+| One-at-a-time sensitivity (lower 48) | 100 km zone moves 3% or less for every choice; 25 km zone moves up to 12% | `sensitivity_rev1.csv`, below |
+| Shore link 10 and 50 km (MATLAB) | 25 km zone −12.6% and +11.1%; 100 km zone −2.3% and +2.7% | below |
+| Alaska satellite cutoff half and double | Land in zone +2–4% and −6–8% | `outputs/2018_2019/alaska/sensitivity/` |
+| Held-out capture (2023 and 2026 days) | Lower 48: 98% of large-ship cell visits within 25 km, 99.5% within 100 km. Puerto Rico and USVI: 99.95–100%. Hawaii: 81–82% within 25 km, 94–96% within 100 km | `heldout_capture_rev1.csv` |
+| Outside port totals | Top-15 ranks don't match public call counts (Spearman −0.09); all 73 ports 0.66; explained by gateway ports, overlapping 10 km circles, and reference points far from terminals | `agent_totals.md` |
+| Sampling stability (200 halves) | See `stability_rev1.csv` when complete | `stability_rev1.csv` |
+| Flagged reports removed | See `flagged_rebuild.json` when complete | `outputs/2024_2025/flagged/` |
+
+Sensitivity, lower 48 (direct-distance land metric; the changes, not the
+absolute areas, are what matter):
+
+| Choice | Route cells | Land 25 km | Land 50 km | Land 100 km |
+| --- | ---: | ---: | ---: | ---: |
+| 3 ships per cell per year (not 4) | +44.9% | +4.7% | +3.9% | +3.1% |
+| 5 ships per cell per year | −25.4% | −2.4% | −1.9% | −0.5% |
+| No tug-barges | −1.6% | −11.8% | −5.9% | −2.3% |
+| Tug-barge distance 50 km (not 25) | +0.9% | +3.3% | +1.9% | +1.3% |
+| Port approach radius 25 km (not 50) | −1.9% | −2.8% | −1.9% | −1.0% |
+| Port approach radius 100 km | +6.6% | +6.1% | +4.0% | +2.1% |
+| No port approaches | −2.3% | −4.8% | −3.0% | −1.6% |
+| Port approach needs 3 ships (not 2) | −1.4% | −3.8% | −2.5% | −1.4% |
+| Grid cell 0.02° (not 0.01°) | +107.9% | +4.9% | +2.3% | +1.0% |
+| Shore link 10 km (MATLAB, shore mode) | 0 | −12.6% | −6.0% | −2.3% |
+| Shore link 50 km (MATLAB, shore mode) | 0 | +11.1% | +7.0% | +2.7% |
+
+Not run: the 80 m and 120 m length cutoffs. The day caches are already cut at
+100 m, so these need all 104 raw days downloaded again (about 2 hours).
+
+## Agent calibration
+
+19 of 20 planted errors were caught by at least one agent; the miss was a
+projection swap in a data-check script (`agent_calibration.md`). Check
+projections by hand.
+
+## Deliverables (stage 5)
+
+See `deliverables_rev1.json`: zone-file validity and KML agreement, hand-off
+files, source checksums, and the Word copy check (the marking appears only on
+page 1 of the Word copy; CB style findings). The routes shapefiles hold invalid
+polygons (orphaned holes; CA-96). The output manifest is `manifest_rev1.csv`.
+Links: 0 broken, 2 changed, 16 not checkable from here (`agent_links.md`).
+
+## Mock rebuttal
+
+`mock_rebuttal_rev1.md` (fictional party) and the answer,
+`rebuttal_response_rev1.md`: of 20 arguments, 1 rebutted, 13 partly valid, and
+6 valid. The valid ones overlap the Fix-first and Decisions lists above.
