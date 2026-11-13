@@ -671876,11 +671876,6 @@
           </innerBoundaryIs>
           <innerBoundaryIs>
             <LinearRing>
-              <coordinates> -124.365,32,0 -124.37,31.995,0 -124.365,31.99,0 -124.36,31.995,0 -124.365,32,0</coordinates>
-            </LinearRing>
-          </innerBoundaryIs>
-          <innerBoundaryIs>
-            <LinearRing>
               <coordinates> -124.405,31.97,0 -124.41,31.965,0 -124.405,31.96,0 -124.4,31.965,0 -124.405,31.97,0</coordinates>
             </LinearRing>
           </innerBoundaryIs>
@@ -705279,11 +705274,6 @@
           </innerBoundaryIs>
           <innerBoundaryIs>
             <LinearRing>
-              <coordinates> -117.205,32,0 -117.21,31.995,0 -117.21,31.975,0 -117.205,31.97,0 -117.195,31.97,0 -117.19,31.975,0 -117.19,31.985,0 -117.205,32,0</coordinates>
-            </LinearRing>
-          </innerBoundaryIs>
-          <innerBoundaryIs>
-            <LinearRing>
               <coordinates> -117.195,31.43,0 -117.2,31.425,0 -117.2,31.415,0 -117.195,31.41,0 -117.19,31.415,0 -117.19,31.425,0 -117.195,31.43,0</coordinates>
             </LinearRing>
           </innerBoundaryIs>
@@ -715756,11 +715746,6 @@
           </innerBoundaryIs>
           <innerBoundaryIs>
             <LinearRing>
-              <coordinates> -79.535,32,0 -79.54,31.995,0 -79.535,31.99,0 -79.53,31.995,0 -79.535,32,0</coordinates>
-            </LinearRing>
-          </innerBoundaryIs>
-          <innerBoundaryIs>
-            <LinearRing>
               <coordinates> -79.535,31.84,0 -79.54,31.835,0 -79.535,31.83,0 -79.53,31.835,0 -79.535,31.84,0</coordinates>
             </LinearRing>
           </innerBoundaryIs>
@@ -715832,11 +715817,6 @@
           <innerBoundaryIs>
             <LinearRing>
               <coordinates> -79.515,31.51,0 -79.52,31.505,0 -79.515,31.5,0 -79.51,31.505,0 -79.515,31.51,0</coordinates>
-            </LinearRing>
-          </innerBoundaryIs>
-          <innerBoundaryIs>
-            <LinearRing>
-              <coordinates> -79.485,32,0 -79.49,31.995,0 -79.485,31.99,0 -79.48,31.995,0 -79.485,32,0</coordinates>
             </LinearRing>
           </innerBoundaryIs>
           <innerBoundaryIs>
@@ -911426,11 +911406,6 @@
           <innerBoundaryIs>
             <LinearRing>
               <coordinates> -126.185,34.95,0 -126.19,34.945,0 -126.185,34.94,0 -126.18,34.945,0 -126.185,34.95,0</coordinates>
-            </LinearRing>
-          </innerBoundaryIs>
-          <innerBoundaryIs>
-            <LinearRing>
-              <coordinates> -126.195,35,0 -126.2,34.995,0 -126.195,34.99,0 -126.19,34.995,0 -126.195,35,0</coordinates>
             </LinearRing>
           </innerBoundaryIs>
           <innerBoundaryIs>
