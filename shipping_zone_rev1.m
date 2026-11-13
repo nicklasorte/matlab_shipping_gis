@@ -243,6 +243,9 @@ land_poly=simplify_polyshape_rev1(land_poly,p.simplify_deg);
 foreign_poly=polyshape();
 if ~isfield(p,'clip_foreign') || p.clip_foreign
     foreign_poly=load_foreign_land_rev1(R,p.data_dir);
+    %%%%%Natural Earth's 1:10m border coast overlaps Census U.S. land at border
+    %%%%%rivers (the Detroit River, Niagara); keep every Census U.S. land area.
+    foreign_poly=subtract(foreign_poly,land_poly);
 end
 for dist_idx=1:num_dist
     d_km=p.distances_km(dist_idx);
