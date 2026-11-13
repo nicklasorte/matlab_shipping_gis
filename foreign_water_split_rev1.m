@@ -48,7 +48,8 @@ on_land=isinterior(L,plon,plat);
 
 %%%%%Nearest U.S. land and nearest foreign land, by chord distance in ECEF.
 [ulon,ulat]=vertices(opts.us_states_shp,"STUSPS",[],[yl(1) yl(2)],opts.search_km);
-[flon,flat]=vertices(opts.foreign_shp,"ADM0_A3","USA",[yl(1) yl(2)],opts.search_km);
+%%%%%Natural Earth gives U.S. territories their own ADM0 codes; none is foreign.
+[flon,flat]=vertices(opts.foreign_shp,"ADM0_A3",["USA" "PRI" "VIR" "GUM" "ASM" "MNP" "UMI"],[yl(1) yl(2)],opts.search_km);
 w=~on_land;
 P=xyz(plon(w),plat(w));
 [~,du]=knnsearch(xyz(ulon,ulat),P);
@@ -71,12 +72,12 @@ P=polyshape([G.Lon{:}],[G.Lat{:}],'Simplify',false,'KeepCollinearPoints',true);
 end
 
 function [lon,lat]=vertices(shp,field,drop,latlim,pad_km)
-%%%%%Polygon vertices from SHP (rows whose FIELD equals DROP removed), kept
+%%%%%Polygon vertices from SHP (rows whose FIELD is in DROP removed), kept
 %%%%%within PAD_KM (in latitude) of LATLIM. Longitude is not filtered, so the
 %%%%%180-degree meridian needs no special case.
 G=readgeotable(shp);
 if ~isempty(drop)
-    G=G(G.(field)~=drop,:);
+    G=G(~ismember(string(G.(field)),drop),:);
 end
 G=geotable2table(G,["Lat","Lon"]);
 lat=[G.Lat{:}]; lon=[G.Lon{:}];
