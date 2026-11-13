@@ -17,7 +17,10 @@ two things for each variant:
    2026 days (lower 48, Hawaii, Puerto Rico and USVI) within 25, 50, and
    100 km of the 2024-2025 routes.
 
-Usage: python3 python/review_stress.py [sensitivity|stability|capture|all]
+4. Length cutoff: the routes rebuilt from day caches at 80 m and 120 m
+   (python/build_length_variants.py), compared with 100 m.
+
+Usage: python3 python/review_stress.py [sensitivity|stability|capture|length|all]
 Writes docs/review/sensitivity_rev1.csv, stability_rev1.csv,
 heldout_capture_rev1.csv, and stress_summary_rev1.json.
 """
@@ -288,6 +291,40 @@ def capture():
     return rows
 
 
+def length_variants():
+    """Route cells and land in zone at 80, 100, and 120 m (lower 48)."""
+    import scipy.io
+    LV = os.path.join(ROOT, "data", "length_variants")
+    rows, base = [], None
+    for L in (100, 80, 120):
+        dd = []
+        for d in PER.days():
+            if L == 100:
+                m, t = vp.load_pairs(d, "main").reshape(-1, 2), vp.load_pairs(d, "towing").reshape(-1, 2)
+            else:
+                ld = lambda k: scipy.io.loadmat(os.path.join(LV, cells.cache_name(  # noqa: E731
+                    d.isoformat(), dict(cells.FILTERS[k], min_length_m=float(L)))))["pairs"].astype(np.int64).reshape(-1, 2)
+                m, t = ld("main"), ld("towing")
+            dd.append((d, m, t))
+        tow_d = tow_distance(dd)
+        per_day = day_sets(dd, BASE["tow_km"], tow_d)
+        ships = len(np.unique(np.concatenate([q[:, 1] for _, q in per_day])))
+        r = routes(per_day, BASE)
+        z = land_in_zone(r)
+        row = {"length_cutoff_m": L, "distinct_ships": int(ships), "route_cells": int(len(r)),
+               **{f"land_{k}km_km2": round(z[k]) for k in DIST}}
+        if base is None:
+            base = row
+        row["ships_change_pct"] = round(100 * (row["distinct_ships"] - base["distinct_ships"]) / base["distinct_ships"], 1)
+        row["route_cells_change_pct"] = round(100 * (row["route_cells"] - base["route_cells"]) / base["route_cells"], 1)
+        for k in DIST:
+            row[f"land_{k}km_change_pct"] = round(100 * (row[f"land_{k}km_km2"] - base[f"land_{k}km_km2"]) / base[f"land_{k}km_km2"], 1)
+        rows.append(row)
+        print(json.dumps(row), flush=True)
+    write_csv("length_sensitivity_rev1.csv", rows)
+    return rows
+
+
 def write_csv(name, rows):
     keys = list(dict.fromkeys(k for r in rows for k in r))
     with open(os.path.join(OUT, name), "w", newline="") as f:
@@ -302,6 +339,8 @@ def main(what):
     summ = json.load(open(summ_path)) if os.path.isfile(summ_path) else {}
     if what in ("capture", "all"):
         summ["capture"] = capture()
+    if what in ("length", "all"):
+        summ["length"] = length_variants()
     if what in ("sensitivity", "stability", "all"):
         dd = load_days(PER.days())
         tow_d = tow_distance(dd)

@@ -244,39 +244,40 @@ end
 end
 
 function test_fairways_empty_download(tc)
-%%%%%NOAA returns an empty FeatureCollection (no THEMELAYER column) for the
-%%%%%Hawaii and Puerto Rico grids; the loader must return an empty mask.
+%%%%%NOAA returns no features for the Hawaii and Puerto Rico grids; a cached
+%%%%%empty download must give an empty mask (and no new download).
 R=tc.TestData.R;
 data_dir=fullfile(tc.TestData.folder,'fairways_empty');
 mkdir(data_dir);
-name=sprintf('fairways_rev1_%g_%g_%g_%g.geojson',R.LatitudeLimits,R.LongitudeLimits);
-writelines('{"type":"FeatureCollection","features":[]}',fullfile(data_dir,name));
-[mask,GT]=load_shipping_fairways_rev1(R,data_dir);
+GT=table.empty; num_expected=0; %#ok<NASGU> saved below
+save(fullfile(data_dir,sprintf('fairways_rev2_%g_%g_%g_%g.mat',R.LatitudeLimits,R.LongitudeLimits)),'GT','num_expected');
+[mask,GT_out]=load_shipping_fairways_rev1(R,data_dir);
 verifyEqual(tc,size(mask),R.RasterSize);
 verifyFalse(tc,any(mask,'all'));
-verifyEqual(tc,height(GT),0);
+verifyEqual(tc,height(GT_out),0);
 end
 
 function test_fairways_cache_is_per_grid(tc)
-%%%%%A cached file for one grid must not be read for another grid.
+%%%%%The cache for this grid is read, not another grid's, and a kept theme is
+%%%%%rasterized: the mask covers the square plus at most one ring of edge cells.
 R=tc.TestData.R;
 data_dir=fullfile(tc.TestData.folder,'fairways_grid');
 mkdir(data_dir);
 square=['{"type":"FeatureCollection","features":[{"type":"Feature","properties":' ...
-    '{"THEMELAYER":"Shipping Fairways Lanes and Zones","OBJNAM":"test"},"geometry":' ...
+    '{"THEMELAYER":"Traffic Separation Schemes","OBJNAM":"test"},"geometry":' ...
     '{"type":"Polygon","coordinates":[[[-79.5,30.5],[-78.5,30.5],[-78.5,31.5],[-79.5,31.5],[-79.5,30.5]]]}}]}'];
-writelines('{"type":"FeatureCollection","features":[]}',fullfile(data_dir,'fairways_rev1.geojson'));   %%%%%the lower-48 name, empty
-name=sprintf('fairways_rev1_%g_%g_%g_%g.geojson',R.LatitudeLimits,R.LongitudeLimits);
-writelines(square,fullfile(data_dir,name));
+gj=fullfile(data_dir,'square.geojson');
+writelines(square,gj);
+GT=readgeotable(gj); num_expected=1; %#ok<NASGU> saved below
+save(fullfile(data_dir,sprintf('fairways_rev2_%g_%g_%g_%g.mat',R.LatitudeLimits,R.LongitudeLimits)),'GT','num_expected');
+GT=table.empty; num_expected=0; %#ok<NASGU> another grid's cache, empty
+save(fullfile(data_dir,'fairways_rev2_22_50_-130_-66.mat'),'GT','num_expected');
 mask=load_shipping_fairways_rev1(R,data_dir);
 cell_area=areamat(mask,R,wgs84Ellipsoid('km'));
 square_area=areaquad(30.5,-79.5,31.5,-78.5,wgs84Ellipsoid('km'));
-%%%%%The grid-specific file was read (not the empty lower-48 file), and the
-%%%%%mask covers the square plus at most the one-cell ring of edge cells that
-%%%%%rasterize_polygon_crop_rev1 keeps.
 ring_area=areaquad(30.5-R.CellExtentInLatitude,-79.5-R.CellExtentInLongitude, ...
     31.5+R.CellExtentInLatitude,-78.5+R.CellExtentInLongitude,wgs84Ellipsoid('km'));
-verifyGreaterThanOrEqual(tc,cell_area,square_area);
+verifyGreaterThanOrEqual(tc,cell_area,square_area);   %%%%%"Traffic Separation Schemes" is kept (review CA-2)
 verifyLessThanOrEqual(tc,cell_area,ring_area*(1+1e-9));
 end
 
