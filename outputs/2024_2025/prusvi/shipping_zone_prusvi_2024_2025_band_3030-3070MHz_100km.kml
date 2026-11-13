@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>shipping_zone_prusvi_2024_2025_band_3030-3070MHz_100km</name>
+    <Placemark>
+      <Snippet maxLines="0"> </Snippet>
+      <description>&lt;html&gt;&lt;table border="1"&gt;
+&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;3030-3070 MHz: 100 km zone (water + land)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;/html&gt;
+</description>
+      <name>3030-3070 MHz: 100 km zone (water + land)</name>
+      <Style>
+        <LineStyle>
+          <color>ff000000</color>
+        </LineStyle>
+        <PolyStyle>
+          <color>591a54d9</color>
+          <fill>1</fill>
+          <outline>1</outline>
+        </PolyStyle>
+      </Style>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates> -68.495,19.5,0 -68.495,16.5012598675465,0 -64.025,16.5011859265687,0 -64.0012017349982,16.505,0 -64,16.635,0 -64.005,19.5,0 -68.495,19.5,0</coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>
