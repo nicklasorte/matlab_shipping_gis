@@ -49,6 +49,11 @@ if ~isfile(geojson_path)
 end
 
 GT=readgeotable(geojson_path);
+if ~ismember('THEMELAYER',GT.Properties.VariableNames)   %%%%%no features in the grid (the file holds no attribute columns)
+    fairway_mask=false(R.RasterSize);
+    GT=GT([],:);
+    return
+end
 GT=GT(ismember(string(GT.THEMELAYER),theme_layers),:);
 
 %%%%%Rasterize: vec2mtx 'filled' returns 0 inside, 1 on the edge, 2 outside.

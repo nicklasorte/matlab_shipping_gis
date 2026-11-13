@@ -32,8 +32,9 @@ AK = os.path.join(ROOT, "outputs", "2018_2019", "alaska")
 STEM = "shipping_zone_alaska_2018_2019"
 GRID = "alaska180"
 TO = Transformer.from_crs(4326, 3338, always_xy=True)
-SRC = ("Source: NTIA analysis of MarineCadastre AIS (Coast Guard shore receivers), 104 sampled days in 2018 and 2019; "
-       "route cells crossed by large ships on at least 6 ship-days; Census 1:500,000 state outline. Analysis stops at 180 degrees.")
+SRC = ("Source: NTIA analysis of MarineCadastre AIS (Coast Guard shore receivers), 104 sampled days in 2018 and 2019, "
+       "route cells crossed by large ships on at least 6 ship-days; NOAA charted lanes; satellite-AIS cargo and tanker "
+       "hexagons from Kapsar and others (2022), CC BY 4.0; Census 1:500,000 state outline. Analysis stops at 180 degrees.")
 SHORT = {"Valdez, AK": "Valdez", "Port of Alaska, AK": "Anchorage", "Nikiski, AK": "Nikiski",
          "Unalaska Island, AK": "Dutch Harbor", "Kivalina, AK": "Kivalina"}
 OFFSET = {"Valdez": (8, -2), "Anchorage": (6, 6), "Nikiski": (-58, -4), "Dutch Harbor": (8, -10), "Kivalina": (8, -2)}
@@ -102,30 +103,32 @@ def ak_routes():
     r_, c_ = m["source_mask"].nonzero()
     nr = m["source_mask"].shape[0]
     route = np.sort(r_ + 1 + c_ * nr).astype(np.int64)
-    charted = np.setdiff1d(route, ais)
-    kc = json.load(open(os.path.join(AK, "kapsar_check.json")))
+    sat = np.loadtxt(os.path.join(AK, "satellite_lane_cells.csv"), dtype=np.int64)
+    charted = np.setdiff1d(np.setdiff1d(route, ais), sat)
+    sat = np.setdiff1d(sat, ais)
     page = OnePager(
         headline="Large-ship routes in Alaska run the Inside Passage, Cook Inlet, Prince William Sound, and Unimak "
-                 "Pass, but shore receivers miss the lanes far offshore",
-        subhead=f"Route cells east of 180°, 2018–2019: {len(ais):,} cells of about 1 km from ship tracks (ship-days "
-                f"rule, dark blue) and {len(charted):,} more from NOAA charted lanes (light blue); gray shows every cell a "
-                "large ship crossed",
+                 "Pass; satellite data add the great-circle lanes far offshore",
+        subhead=f"Route cells east of 180°, 2018–2019: {len(ais):,} cells of about 1 km from shore-received ship tracks "
+                f"(ship-days rule, blue), {len(charted):,} from NOAA charted lanes (light blue), and {len(sat):,} from "
+                "satellite-AIS hexagons (purple)",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),
         alt="Map of Alaska. Blue route cells follow the Inside Passage in Southeast Alaska, Cook Inlet to Anchorage, "
-            "Prince William Sound to Valdez, and Unimak Pass near Dutch Harbor; gray cells show patchy traffic "
-            "near shore. Few cells appear far offshore.")
+            "Prince William Sound to Valdez, and Unimak Pass near Dutch Harbor; purple satellite-AIS hexagons add a wide "
+            "band of lanes along and south of the Aleutians and patches in the Bering Sea.")
     ax = page.panel(0, grid=None)
     ax.add_collection(PolyCollection(rings(vf.STATES, "AK"), facecolor=page.theme.panel, edgecolor="white", lw=0.4))
     x, y = cells_xy(allc)
     ax.scatter(x, y, s=0.3, marker="s", lw=0, c=page.theme.grid, rasterized=True, zorder=1)
     x, y = cells_xy(charted)
     ax.scatter(x, y, s=0.9, marker="s", lw=0, c=page.theme.ramp[1], rasterized=True, zorder=2)
+    x, y = cells_xy(sat)
+    ax.scatter(x, y, s=0.9, marker="s", lw=0, c=page.theme.accent2, alpha=0.35, rasterized=True, zorder=2)
     x, y = cells_xy(ais)
     ax.scatter(x, y, s=0.9, marker="s", lw=0, c=page.theme.accent, rasterized=True, zorder=3)
     frame(page, ax)
     ports(page, ax)
-    page.note(ax, f"Satellite AIS: {100 * (1 - kc['kapsar_top10pct_with_our_route']):.0f}% of the busiest\n"
-                  "hexagons hold no route cell; most are\nmore than 74 km offshore",
+    page.note(ax, "Purple: busy satellite-AIS hexagons\n(Kapsar and others, 2022), beyond\nshore-receiver range",
               (250, 520), coords="data")
     vf.save(page, "ak01_routes")
 
