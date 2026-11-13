@@ -1,4 +1,4 @@
-"""Rebuild the AIS route cells without flagged reports (review plan, gap 4).
+"""Rebuild the AIS route cells without flagged reports (AIS errors on the checked days).
 
 For each area, the route rule runs twice on the same day caches: once as
 committed, and once with the (cell, MMSI) pairs that come only from flagged

@@ -23,7 +23,7 @@ is wider than a lane.
 Usage: python3 python/alaska_satellite_lanes.py [FACTOR]
 Writes outputs/2018_2019/alaska/satellite_lane_cells.csv and satellite_lanes.json.
 With FACTOR (for example 0.5 or 2), the cutoff is FACTOR times the best-match
-cutoff, for the sensitivity check in the review plan, and the files get the
+cutoff, for the cutoff sensitivity check in Section 5.3, and the files get the
 suffix _x<FACTOR> (satellite_lane_cells_x0.5.csv).
 """
 import json

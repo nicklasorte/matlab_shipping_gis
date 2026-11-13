@@ -48,7 +48,7 @@ weakly in the paper.
    position jumps and shared ship IDs rose in 2025 (14% of ships on
    2025-07-09), and on the worst day 915 route cells (0.14%) came only from
    flagged reports. Alaska showed a similar jump rate on one 2019 day. A
-   rebuild without flagged reports is planned for the review.
+   rebuild without flagged reports is running; its result will be added here.
 7. **No charted lanes or radar beacons were returned for Puerto Rico**, and
    no radar beacons for Hawaii or Alaska. We haven't yet confirmed against
    the charts that none exist.
