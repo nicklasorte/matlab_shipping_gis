@@ -7,9 +7,11 @@ two things for each variant:
                 choices, so they're left out here)
   land in zone  U.S. land within 25, 50, and 100 km of a route cell, on the
                 0.05-degree land grid of ship_geo_products.py, by direct
-                distance (the paper's zones use shore mode, so the absolute
-                areas differ from Section 3; the changes between variants are
-                what this measures)
+                distance (the paper's zones use the same distance rule but
+                clipped land polygons, so absolute areas differ slightly from
+                Section 3; the changes between variants are what this measures)
+Port approaches follow the fixed rule: within 50 km of a deep-draft port and
+25 km of the Census coastline.
 
 1. Sensitivity: each choice moved one step either way, one at a time.
 2. Stability: routes rebuilt from 200 random halves of the 104 days.
@@ -50,7 +52,7 @@ import ship_period as PER  # noqa: E402  analysis years
 OUT = os.path.join(ROOT, "docs", "review")
 DIST = (25, 50, 100)
 NR = vp.NR
-BASE = {"min_ships": 4, "tow_km": 25.0, "grid": 1, "port_km": 50.0, "port_ships": 2}
+BASE = {"min_ships": 4, "tow_km": 25.0, "grid": 1, "port_km": 50.0, "port_ships": 2, "port_coast_km": 25.0}
 
 
 # ---------- data ----------
@@ -142,9 +144,26 @@ def routes(per_day, p):
             plat, plon = deep_ports()
             tree = cKDTree(vp.ecef(plat, plon))
             dk = vp.chord_to_arc(tree.query(vp.ecef(la, lo))[0])
-            src = np.concatenate([src, cand[dk <= p["port_km"]]])
+            ok = dk <= p["port_km"]
+            if p.get("port_coast_km", 0) > 0:
+                # Same rule as the MATLAB run (CA-8): port approaches only
+                # within port_coast_km of the Census coastline.
+                ok &= coast_km(la, lo) <= p["port_coast_km"]
+            src = np.concatenate([src, cand[ok]])
     src = np.unique(src)
     return expand(src, f) if f > 1 else src
+
+
+COAST_TREE = None
+
+
+def coast_km(la, lo):
+    """Great-circle distance (km) to the nearest Census coastline cell."""
+    global COAST_TREE
+    if COAST_TREE is None:
+        cl, co = vp.cell_latlon(vp.coast_cells())
+        COAST_TREE = cKDTree(vp.ecef(cl, co))
+    return vp.chord_to_arc(COAST_TREE.query(vp.ecef(la, lo))[0])
 
 
 def coarse_latlon(coarse, f):
@@ -193,10 +212,12 @@ def land_in_zone(route):
 # ---------- 1. sensitivity ----------
 def sensitivity(day_data, tow_d):
     variants = [("Baseline", {})]
-    variants += [(f"Ships per cell per year = {v}", {"min_ships": v}) for v in (3, 5)]
+    # CA-14: threshold sweep from 2 to 8 ships.
+    variants += [(f"Ships per cell per year = {v}", {"min_ships": v}) for v in (2, 3, 5, 6, 8)]
     variants += [(f"Tug-barge distance = {v:g} km" if v else "No tug-barges", {"tow_km": v}) for v in (0.0, 50.0)]
     variants += [(f"Port approach radius = {v:g} km", {"port_km": v}) for v in (25.0, 100.0)]
     variants += [("No port approaches", {"port_km": 0.0}), ("Port approach ships = 3", {"port_ships": 3})]
+    variants += [("Port approaches without the 25 km coast limit", {"port_coast_km": 0.0})]
     variants += [("Grid cell = 0.02 degree", {"grid": 2})]
     rows, base = [], None
     cache = {}

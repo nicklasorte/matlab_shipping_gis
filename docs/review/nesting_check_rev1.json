@@ -1,0 +1,26 @@
+{
+ "Lower 48": {
+  "25_outside_50_km2": 16.873,
+  "25_area_km2": 4223277,
+  "50_outside_100_km2": 127.847,
+  "50_area_km2": 5370279
+ },
+ "Hawaii": {
+  "25_outside_50_km2": 0.0,
+  "25_area_km2": 95399,
+  "50_outside_100_km2": 0.0,
+  "50_area_km2": 156409
+ },
+ "Puerto Rico and USVI": {
+  "25_outside_50_km2": 29.539,
+  "25_area_km2": 153150,
+  "50_outside_100_km2": 0.0,
+  "50_area_km2": 157117
+ },
+ "Alaska": {
+  "25_outside_50_km2": 77.812,
+  "25_area_km2": 729382,
+  "50_outside_100_km2": 45.559,
+  "50_area_km2": 1131136
+ }
+}

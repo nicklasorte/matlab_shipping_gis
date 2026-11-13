@@ -12,8 +12,9 @@ This file summarizes the AI-agent review (stages 1 through 5 of
 - `findings_paper_rev1.md`: numbers, style, Section 508, data use, and outside
   totals (CB-1 to CB-86).
 
-No paper or code change has been made from these findings yet. Nick decides
-what to apply (stage 6).
+The fixes were applied on November 13, 2026, and every remaining item was
+closed the same day; see "Fixes applied" and "Closing the open items" at the
+end of this file.
 
 ## Summary
 
@@ -186,3 +187,59 @@ for contrast (CB-77); Word copy re-exported):
   styles (CB-73).
 - The Appendix A products and the stress tests ran on the network before the
   fixes; the paper quotes only their percentage changes.
+
+## Closing the open items (November 13, 2026, second pass)
+
+Nick asked to close the rest of the open items. Each "Nick decides" row was
+decided on the recommendation below and applied; the paper is at doc revision
+329 or later.
+
+### Method rows (CA)
+
+| Row | Decision | What changed |
+| --- | --- | --- |
+| CA-9 | Fix text | Section 1.5: the tug-barge rule drops river towboats more than 25 km from the coastline; Gulf Intracoastal Waterway and tidal-river towboats within 25 km still count. |
+| CA-10 | Fix text | Sections 4.1 and 6.1: "no fairways" now applies to the NOAA Marine Transportation and racon layers; harbor-scale charts show local fairways, which aren't used. |
+| CA-11 | Disclose | Section 5.3: added lanes make most of the Alaska route water (318,028 satellite and 16,750 charted-lane cells against 26,983 ship-track cells); calibration Jaccard 0.57; the search stepped from 272 to 659. The charted lanes are downloaded on each run with a count check, so no cache is committed. A finer cutoff search wasn't run; the half and double runs bound it. |
+| CA-12 | Disclose | Section 4.2: Hawaii year stability (63% and 56% inside, against 81% and 93% in the lower 48). Table 8's 1.00 was already marked as the reference. |
+| CA-13 | Fix text | Section 1.3: two years let a one-year route count (the union rule); an unusual year can add routes but not remove them. |
+| CA-14 | Analysis and disclose | Threshold sweep from 2 to 8 ships (`sensitivity_rev1.csv`): from 3 to 8 ships the 100 km land changes by +4% to −4%; at 2 ships +35%. Section 1.5 says four ships is a presence test, not an interference criterion. |
+| CA-15 | Analysis and disclose | With the 25 km coast limit the rule adds 11,682 cells (MATLAB) and 3% of the 25 km land; Searsport is still not connected. Panama City is now reached. |
+| CA-18, CA-19, CA-20 | Disclose | Section 3: the band-distance pairs are illustrative; no interference result supports 25, 50, or 100 km; 3030–3070 MHz is narrower than a 3020–3080 MHz radar channel; the zones cover only 2900–3100 MHz, and the EMC analysis must say whether zones extend below 2900 MHz. The lower-48 areas are now in Section 3. |
+| CA-26 | Disclose | Section 1.4: the exactly-100.0 m cluster isn't checked; the 120 m cutoff, which drops it, changes land by 1% to 4%. |
+| CA-32 | Disclose | Section 1.3: Wednesday-only sampling can catch or miss a weekly service; the held-out days are also Wednesdays (all 52 in 2023 and 25 in 2026 checked), so they don't test this. |
+| CA-37 | Analysis and disclose | Appendix A.2: 40% of Pacific route cells lie south of the U.S.-Mexico border (97,350 of 246,302); without them, the Pacific median is 83 km and the 90th percentile 385 km (with them, 132 and 608 km). |
+| CA-84 | Checked | `nesting_check_rev1.json`: the 25 km zone lies inside the 50 km zone and the 50 km inside the 100 km everywhere except open-water slivers at the grid edges (lower 48 17 and 128 km², Puerto Rico 30 km² at 25/50, Alaska 78 and 46 km², Hawaii none), at 22° N, 130° W, 66° W, 16.5° N, and 51° N. No land is involved. The paper's statement that a narrower zone sits inside a wider one holds for land. |
+| CA-97 | Disclose | Section 1.5: racons with no band in the chart data aren't added. |
+| CA-100 | Fix text | Section 1.2: 33 CFR 164.46 AIS carriage cited. |
+| CA-101 | Disclose | Section 4.2: the Hilo gap may be a receiver gap; receiver locations aren't published. |
+| CA-102 | Disclose | Section 1.10: other 33 CFR Part 334 areas may lie outside 25 km; not checked one by one. |
+
+### Paper rows (CB)
+
+| Row | Decision | What changed |
+| --- | --- | --- |
+| CB-15 | Fix text | Section 1.8: nearest-port counting (A.20) changes the ranking (Oakland out of the top 15, Mobile in). |
+| CB-26 | Placeholder | Section 2 now holds a bracketed note: the EMC analysis, the decision the zones feed, and its timing are to be written by Nick. |
+| CB-28 to CB-32 | Leave as is | Nick's decision: the repository stays public with the caches. |
+| CB-47 | Fix text | Sections 5.1 and 6: the rule choice rests on whether the lower-48 rule connects the ports and on how widely the traffic spreads, not on ships a day alone. |
+| CB-53 | Reading guide | Introduction: results-only readers can read Section 1.1 and then Sections 3 to 6. The tables stay in place so the method stays with its checks. |
+| CB-60 | Keep | Long alt texts describe maps that carry many places; Section 508 doesn't cap length. |
+| CB-61 | Keep | The figure images carry takeaway headlines, and each caption's first sentence names the figure. |
+| CB-63 | Keep | En dashes in the text; hyphens in alt text and image titles read the same to a screen reader. |
+| CB-64 | Keep | NTIA writes frequencies without a thousands separator (2900 MHz). |
+| CB-73 | Fixed | `python/word_copy_rev1.py` gives all 64 figure and table captions the Caption style with SEQ fields (A-4b and A-4c style only), so Word can build a list of figures. |
+| CB-76, CB-81, CB-82 | Keep | The light fills are the low end of sequential ramps or context marks, and every category that carries a message is labeled directly (WCAG 1.4.11 is met when the information is also given another way). Zone figures were already outlined (CB-77). |
+| CB-78 | Keep | The white tile labels are bold; at 4.48:1 they miss 4.5:1 by 0.02 and pass the 3:1 large-text level only above 14 pt. Accepted as a draft-stage item. |
+| CB-84 to CB-86 | Closed | Not confirmed or moot (current colors pass; the repository is public; three sites refuse automated requests). |
+
+### Results rerun on the fixed network
+
+- **Appendix A products** use the AIS route cells (`viz_cells.npz`), which the
+  fixes didn't change (the fixes changed port approaches, charted lanes, and the
+  zone definition). No Appendix A figure needed a rerun.
+- **Sensitivity** (`sensitivity_rev1.csv`) and **stability**
+  (`stability_rev1.csv`) were rerun with the 25 km coast limit on port
+  approaches; the threshold sweep and a no-coast-limit variant were added. The
+  baseline is 670,572 cells (AIS plus port approaches; MATLAB 670,547).
+- **Held-out capture** measures against the AIS route cells, unchanged.
