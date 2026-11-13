@@ -43,9 +43,12 @@ weakly in the paper.
    seasonal or one-off voyages, may be missed or included by chance. 81% of
    2023 route cells and 94% of 2026 route cells fall inside the 2024–2025
    network; Hawaii is less stable (56–63%).
-6. **AIS errors.** On the days we checked, a few reports jump position,
-   share a ship ID, or plot on land. They create a small number of route
-   cells on their own (see the validity results in the review plan).
+6. **AIS errors.** We checked four days in each 2024–2025 area and three
+   Alaska days. Errors are rare in Hawaii and Puerto Rico. In the lower 48,
+   position jumps and shared ship IDs rose in 2025 (14% of ships on
+   2025-07-09), and on the worst day 915 route cells (0.14%) came only from
+   flagged reports. Alaska showed a similar jump rate on one 2019 day. A
+   rebuild without flagged reports is planned for the review.
 7. **No charted lanes or radar beacons were returned for Puerto Rico**, and
    no radar beacons for Hawaii or Alaska. We haven't yet confirmed against
    the charts that none exist.

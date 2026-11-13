@@ -19,9 +19,10 @@ and is out of scope.
   2024–2025, and Hawaii, Alaska, and Puerto Rico and the U.S. Virgin
   Islands were added. Checks that passed on the earlier version don't
   automatically cover the new one.
-- Twelve known gaps are listed below. Three should be fixed before any
-  reviewer reads the paper, because they are claims the paper makes that
-  haven't been re-verified.
+- Thirteen known gaps are listed below. The three to fix before any
+  reviewer reads the paper were worked on November 12, 2026: two are
+  closed, and one (data validity) is closed except for one Alaska day.
+  See "Pre-review fixes."
 - The review ends when every exit criterion in this plan is met and Nick
   signs off. Automated checks and agent reviews don't count as approval.
 
@@ -46,17 +47,17 @@ a conclusion or embarrass the paper.
 
 ### Fix before any reviewer reads the paper
 
-| # | Gap | Why it matters | Action |
+| # | Gap | Why it matters | Status |
 | --- | --- | --- | --- |
-| 1 | The MATLAB versions of the Appendix A figures (`init_ship_viz_rev1`, `init_ship_geo_rev1`, `init_ship_corridors_rev1`, `init_port_share_rev1`) weren't rerun after the move to 2024–2025. | Appendix A says each figure was computed twice, in MATLAB and in Python. For 2024–2025 that is true only for the routes, zones, and filter tables. | Rerun the four scripts on the Mac and compare with the Python products, or change the sentence. |
-| 2 | The MATLAB test suite (`test_shipping_zone_rev1.m`) wasn't rerun after four code changes: the route-rule option, the extra ship-water input, the grid-aware land mask, and the fairway loader. | A regression in shared code would affect every area. | Run the suite. Add tests for the ship-days rule, the extra-source input, and an empty fairway file. |
-| 3 | The data-validity checks (`python/ais_qc_day.py`) ran on one 2023 day and one 2024 day in the lower 48, and one day in Hawaii. They haven't run on 2025, Alaska 2018–2019, or Puerto Rico. | The gate in `alaska_hawaii_plan_rev1.md` requires two passing days per area before numbers go in the paper. Alaska and Puerto Rico numbers are in the paper without it. | Run two days per area and year. Extend the on-land check beyond the lower 48. |
+| 1 | The MATLAB versions of the Appendix A figures weren't rerun after the move to 2024–2025. | Appendix A says each figure was computed twice. | **Closed.** Rerun and compared; the sentence now names the two corridors where the implementations differ. |
+| 2 | The MATLAB test suite wasn't rerun after four code changes. | A regression in shared code would affect every area. | **Closed.** 18 of 18 tests pass, including the parallel and two-session tests and 7 new tests. |
+| 3 | The data-validity checks hadn't run on 2025, Alaska, or Puerto Rico. | The gate requires two passing days per area. | **Closed except Alaska.** Lower 48, Hawaii, and Puerto Rico pass on four days each. Alaska passes on one of three days; see below. |
 
 ### Investigate during the review
 
 | # | Gap | Action |
 | --- | --- | --- |
-| 4 | On 2024-07-10, 288 route cells came only from reports flagged as position jumps or shared ship IDs, and 99 ships had a possible shared ID. | Rebuild the routes with flagged reports removed and count the cells that drop out. |
+| 4 | Flagged reports (position jumps and shared ship IDs) are rising in the lower 48: ships with a jump went from 0.5% on 2024-01-10 to 14.2% on 2025-07-09, and route cells made only by flagged reports from 21 to 915 a day. Alaska shows the same on 2019-07-10. | Rebuild the routes with flagged reports removed, for every area, and count the cells that drop out. Find out whether the 2025 rise comes from the data provider (for example, merged receiver feeds) or from real errors. |
 | 5 | Great Lakes ports rank low on ship counts against tonnage. Lakers without IMO numbers may be filtered out. | Count ships 100 m or longer with no IMO number on the Great Lakes. |
 | 6 | Sampling stability hasn't been tested within a year. | Rebuild the routes from 52 of the 104 days and report the overlap. |
 | 7 | Hawaii routes shift between years: 56–63% of the held-out years' routes fall inside the 2024–2025 network. | Compare the zones, not the cells, across years. If the zones are stable, say so in Section 4. |
@@ -65,6 +66,7 @@ a conclusion or embarrass the paper.
 | 10 | NOAA returned no charted lanes or racons for the Puerto Rico grid, and no racons for Hawaii or Alaska. | Confirm against the charts that none exist, so an empty download isn't mistaken for no features. |
 | 11 | On Mobile Bay, more ships are counted at the head port than at the entrance (104%). | Check whether the entrance window is too narrow, and whether other corridors' shares are biased the same way. |
 | 12 | The Word copy is assembled by matching figures to alt text. | Check each of the 56 figures against its caption in the Word file. |
+| 13 | On the James River and the Calcasieu Ship Channel, the MATLAB and Python least-cost paths differ by about 1 km in length, and the entrance and head counts differ by up to 9% (Calcasieu ships entering: 661 against 608). The continuation curves differ more near the entrance (James, 10% of the way up: 78% of ships continue in MATLAB against 36% in Python). | Find which cells the paths split at and why (a tie in cost, or a one-ship difference in a cell). Decide whether the paths should be fixed by hand for these two corridors. |
 
 ### Disclosed limits (confirm the wording is strong enough)
 
@@ -73,6 +75,80 @@ a conclusion or embarrass the paper.
 - Navy ships often turn AIS off.
 - The zone distances are examples until the EMC analysis sets them.
 - The western Aleutians, Guam, and American Samoa aren't analyzed.
+
+## Pre-review fixes (November 12, 2026)
+
+### Gap 1: MATLAB Appendix A rerun
+
+The four MATLAB scripts ran on the Mac on the 2024–2025 caches
+(`outputs/2024_2025/viz_matlab/appendix_a_run.log`), and
+`python/compare_matlab_python_appA.py` compared the 13 tables with the
+Python ones. A value counts as different only when it differs by more than
+half a unit in the last digit Python printed, because Python rounds some
+columns for the paper.
+
+| Result | Tables |
+| --- | --- |
+| Identical | `geo_ports`, `geo_hex_types`, `port_share`, `port_share_complex`, `viz_mississippi` |
+| One grid-cell boundary difference (one ship on one row or day) | `geo_hex` (1 hexagon), `geo_profile` (1 bin), `viz_daily` (one ship on 4 of 104 days), `viz_sites` (one route distance) |
+| Different on two corridors | `corridor_summary`, `corridor_profile`, `corridor_continuation`, `corridor_marks`: James River and Calcasieu Ship Channel only (gap 13). Three other corridors place a landmark up to 0.9 km apart along the path, with the same counts. |
+
+The one-cell differences are the known boundary difference between the
+two implementations (658,865 against 658,867 AIS route cells). The working
+paper's Appendix A sentence now says the two agree to within one grid cell
+except on those two corridors, and that the paper reports the Python
+values. The doc and the Word copy were both updated.
+
+### Gap 2: MATLAB test suite
+
+`runtests('test_shipping_zone_rev1')` on the Mac with a two-worker pool:
+18 passed, 0 failed, 0 filtered (`outputs/2024_2025/viz_matlab/test_suite_run.log`).
+The route rule and the extra-cell reader moved into their own functions
+(`route_source_mask_rev1.m`, `read_extra_cells_rev1.m`) so they can be
+tested without a full run; `shipping_zone_rev1.m` calls them and its
+behavior is unchanged. New tests:
+
+- The default and explicit `unique_ships` rule, and the `ship_days` rule on
+  both sides of each cutoff.
+- An unknown rule name and mismatched array sizes raise errors.
+- The extra-cell CSV: first cell, last cell, and a repeat are read
+  correctly; an index past the last cell, zero, or a fraction raises
+  `shipgis:extra`.
+- An empty NOAA fairway download returns an empty mask.
+- The fairway cache is read per grid, not from the lower-48 file, and the
+  rasterized square covers the polygon plus at most one ring of edge cells.
+
+Code Analyzer reports no messages on the changed files.
+
+### Gap 3: data-validity checks
+
+`python/ais_qc_day.py` now runs every check in every area, including the
+on-land check in each area's own equal-area projection (EPSG:5070 for the
+lower 48, ESRI:102007 for Hawaii, EPSG:32161 for Puerto Rico and the USVI,
+EPSG:3338 for Alaska), and tests flagged reports against each area's own
+route cells. `python/qc_summary.py` turns the checks into rates and applies
+the gate: each rate no worse than the worst lower-48 day.
+
+| Area | Days checked | Result |
+| --- | --- | --- |
+| Lower 48 | 2024-01-10, 2024-07-10, 2025-01-08, 2025-07-09 | Reference for the gate. Error rates rise in 2025 (gap 4). |
+| Hawaii | Same four days | Pass on all four; no errors of any kind. |
+| Puerto Rico and USVI | Same four days | Pass on all four. |
+| Alaska to 180° | 2018-07-11, 2019-01-09, 2019-07-10 | Pass on 2018-07-11. On 2019-01-09, one ship of 40 fails the IMO check digit (no route cell affected). On 2019-07-10, 17 of 93 ships have a position jump and 12 route cells (0.044%) come only from flagged reports, the same share as the lower 48 on 2024-07-10. |
+
+Full table: `outputs/2024_2025/qc/qc_summary.md`.
+
+Alaska therefore meets the gate's two-day rule only if Nick accepts a
+one-ship IMO error on 2019-01-09 as a pass (it doesn't change any route
+cell, because the filter needs an IMO number but doesn't use it). The
+2019-07-10 jumps should be folded into gap 4's rebuild. Disclose in
+Section 5 that Alaska's error rates on one summer day were above the lower
+48's.
+
+On-land reports on route cells (Hawaii: about 450 a day; lower 48: about
+160,000 to 190,000 a day) are ships in harbors and rivers that the
+1:500,000 shoreline closes, not errors. No area has reports inland off the
+routes except the lower 48 (0.4% to 0.7% of reports, 9 to 19 ships a day).
 
 ## Stages
 
@@ -159,19 +235,106 @@ the specific questions above. Ask for comments in the working paper doc.
 
 ## Decisions for Nick
 
-1. Confirm or change the Alaska ship-days rule and the satellite cutoff
-   (gaps 8 and 9).
-2. Decide who the stage 4 reviewers are, and whether outside agencies see
-   the paper at this stage.
-3. Decide whether the paper should state the MATLAB and Python agreement
-   only for what was rerun, or wait for the full MATLAB rerun (gap 1).
-4. Decide whether Table 4 keeps its number (stage 2).
+Each decision has a recommendation. They are recommendations only; Nick
+decides.
+
+### 1. Alaska route rule and satellite cutoff (gaps 8 and 9)
+
+Options:
+
+- **A. Keep both as they are** (six ship-days; satellite cutoff of 272
+  cargo and tanker operating days over 24 months), and report the zones at
+  two other satellite cutoffs.
+- B. Use the lower-48 rule (four distinct ships in one year) for Alaska.
+- C. Drop the satellite lanes and show only shore-based routes, with the
+  gap disclosed.
+
+**Recommendation: A.** The ship-days rule is the same one Hawaii uses, and
+it was calibrated against the lower-48 network rather than tuned to Alaska
+(Jaccard index 0.81 for 2023–2024 and 0.80 for 2024–2025). Option B drops
+lanes that a few dedicated ships run every week, which is the Alaska
+pattern (19,142 cells under four ships against 26,983 under six ship-days).
+Option C leaves most of the Gulf of Alaska and Bering Sea great-circle
+traffic out: 83% of the busiest satellite hexagons hold no shore-based
+route, and 95% of those are more than 74 km from shore. The satellite
+cutoff is the weakest link (Jaccard index 0.57), so the paper should show
+how much the Alaska zones change at a lower and a higher cutoff (for
+example, half and double) before reviewers see it. Against A: the cutoff
+was chosen by best fit to the shore routes, which a reviewer may see as
+circular; the sensitivity table answers that.
+
+### 2. Stage 4 reviewers and outside agencies
+
+Options:
+
+- **A. Internal reviewers first** (RF engineer on the study, a GIS
+  analyst, the NTIA style and Section 508 reviewer, and counsel for data
+  use), then one maritime contact at the Coast Guard or NOAA Coast Survey
+  once internal comments are resolved.
+- B. Send to internal and outside reviewers at the same time.
+- C. Internal review only at this stage.
+
+**Recommendation: A.** The internal reviewers can fix the problems that
+would cost credibility outside, such as data-use terms and marking, at no
+risk. The maritime check is the one no internal reviewer can do (are the
+routes where ships sail, and what does AIS miss), so it should come before
+the paper is used, but with a cleaner draft. Ask the maritime contact for
+a technical check of Sections 4–6 and the route maps only, under the
+DRAFT//PRE-DECISIONAL marking. Against A: it adds about a week. Option C
+leaves the routes unchecked by anyone who knows the waters.
+
+### 3. MATLAB and Python agreement statement (gap 1)
+
+Options:
+
+- **A. Rerun the MATLAB Appendix A products** for 2024–2025 and keep the
+  sentence if they agree.
+- B. Narrow the sentence to the products that were rerun.
+
+**Recommendation: A, done.** The four MATLAB scripts were rerun on
+2024–2025 before the review (see "Pre-review fixes" below), so the sentence
+can stay as written if the comparison holds. Two independent
+implementations that agree are one of the strongest checks the paper has,
+and narrowing the sentence would give it up.
+
+### 4. Table numbering (stage 2)
+
+Options:
+
+- **A. Renumber the tables** in order of appearance: Tables 5–7 (ports and
+  corridors) become Tables 4–6, and the current Table 4 (zone distance for
+  each frequency range) becomes Table 7.
+- B. Keep the numbers.
+
+**Recommendation: A.** NTIA and Section 508 practice is to number tables
+in the order they appear, and a reader who meets Table 5 before Table 4
+will look for a missing table. It is a mechanical change; do it in the
+numbers-ledger pass so every cross-reference is checked at the same time.
+
+### 5. Alaska data-validity gate (gap 3)
+
+Options:
+
+- **A. Accept Alaska as passing,** counting the one-ship IMO error on
+  2019-01-09 as a pass, disclose the 2019-07-10 jump rate in Section 5,
+  and include Alaska in gap 4's rebuild without flagged reports.
+- B. Hold the Alaska numbers out of the paper until a rebuild without
+  flagged reports shows the routes don't change.
+
+**Recommendation: A.** The IMO error touches one ship and no route cell.
+The 2019-07-10 flagged reports make 12 route cells (0.044%), the same share
+as the lower 48 on a day that passed. Holding Alaska out would drop the
+only area where the zones depend on satellite data, which reviewers most
+need to see. Against A: the gate was written as a strict two-day rule, and
+accepting a near-miss loosens it after the fact; the disclosure and the
+gap 4 rebuild are the safeguard.
 
 ## Exit criteria
 
 The review is done when all of these are true:
 
-- Gaps 1 through 3 are fixed.
+- Gaps 1 through 3 are fixed (done November 12, 2026, with decision 5
+  open for Alaska).
 - Stage 1 passes on a clean clone of the reviewed commit.
 - The numbers ledger has no open rows.
 - Every stage 3 finding and every gap from 4 through 12 is fixed or

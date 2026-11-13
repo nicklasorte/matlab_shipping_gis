@@ -325,6 +325,12 @@ or Hawaii numbers go into the paper only after they pass the gate below.
 
 Hawaii passed every check on 2024-07-10.
 
+**Update, November 12, 2026:** the checks now run in every area, with the
+on-land test in each area's own projection. Results for four 2024–2025
+days per area and three Alaska days are in `outputs/2024_2025/qc/qc_summary.md`
+and summarized under "Pre-review fixes" in `review_plan_rev1.md`. Hawaii
+and Puerto Rico pass on all four days; Alaska passes on one of three.
+
 **What this means:** errors touch a small share of ships, and the route rule
 (at least four distinct ships per cell) absorbs most of them, because one bad
 transmitter adds one ship to a cell. The 288 route cells made only by flagged

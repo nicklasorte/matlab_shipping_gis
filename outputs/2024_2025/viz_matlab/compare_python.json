@@ -1,0 +1,294 @@
+{
+ "corridor_continuation.csv": {
+  "rows_matlab": 3015,
+  "rows_python": 3015,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "frac_to_head": 0.0,
+   "ships_beyond": 1.8823529411764706,
+   "share_beyond": 0.42681028037383195
+  },
+  "rows_beyond_rounding": {
+   "frac_to_head": 0,
+   "ships_beyond": 78,
+   "share_beyond": 383
+  },
+  "max_rel_diff_any": 1.8823529411764706,
+  "cells_beyond_rounding": 461
+ },
+ "corridor_marks.csv": {
+  "rows_matlab": 47,
+  "rows_python": 47,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "lat": 0.0,
+   "lon": 0.0,
+   "km": 0.19137585964488224,
+   "off_path_km": 0.04478032093352996
+  },
+  "rows_beyond_rounding": {
+   "lat": 0,
+   "lon": 0,
+   "km": 7,
+   "off_path_km": 0
+  },
+  "max_rel_diff_any": 0.19137585964488224,
+  "cells_beyond_rounding": 7
+ },
+ "corridor_profile.csv": {
+  "rows_matlab": 547,
+  "rows_python": 546,
+  "columns_only_matlab": [],
+  "columns_only_python": []
+ },
+ "corridor_summary.csv": {
+  "rows_matlab": 15,
+  "rows_python": 15,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "length_km": 0.018631020444380725,
+   "bin_km": 0.0,
+   "ships_entrance": 0.022004889975550123,
+   "ships_head": 0.0,
+   "ships_head_y0": 0.0,
+   "ships_head_y1": 0.0,
+   "share_head": 0.011499999999999955,
+   "ships_entering": 0.08717105263157894,
+   "share_reaching_head": 0.027786686838123964
+  },
+  "rows_beyond_rounding": {
+   "length_km": 2,
+   "bin_km": 0,
+   "ships_entrance": 2,
+   "ships_head": 0,
+   "ships_head_y0": 0,
+   "ships_head_y1": 0,
+   "share_head": 1,
+   "ships_entering": 2,
+   "share_reaching_head": 2
+  },
+  "max_rel_diff_any": 0.08717105263157894,
+  "cells_beyond_rounding": 9
+ },
+ "geo_hex.csv": {
+  "rows_matlab": 7678,
+  "rows_python": 7678,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "q": 0.0,
+   "r": 0.0,
+   "x_km": 0.000432359436241876,
+   "y_km": 0.0,
+   "ships": 0.0025252525252525255
+  },
+  "rows_beyond_rounding": {
+   "q": 0,
+   "r": 0,
+   "x_km": 0,
+   "y_km": 0,
+   "ships": 1
+  },
+  "max_rel_diff_any": 0.0025252525252525255,
+  "cells_beyond_rounding": 1
+ },
+ "geo_hex_types.csv": {
+  "rows_matlab": 36621,
+  "rows_python": 36621,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "q": 0.0,
+   "r": 0.0,
+   "x_km": 0.000432359436241876,
+   "y_km": 0.0,
+   "ships": 0.0
+  },
+  "rows_beyond_rounding": {
+   "q": 0,
+   "r": 0,
+   "x_km": 0,
+   "y_km": 0,
+   "ships": 0
+  },
+  "max_rel_diff_any": 0.000432359436241876,
+  "cells_beyond_rounding": 0
+ },
+ "geo_ports.csv": {
+  "rows_matlab": 73,
+  "rows_python": 73,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "lat": 0.0,
+   "lon": 0.0,
+   "rank": 0.0,
+   "ships": 0.0,
+   "cargo": 0.0,
+   "tanker": 0.0,
+   "passenger": 0.0,
+   "government": 0.0
+  },
+  "rows_beyond_rounding": {
+   "lat": 0,
+   "lon": 0,
+   "rank": 0,
+   "ships": 0,
+   "cargo": 0,
+   "tanker": 0,
+   "passenger": 0,
+   "government": 0
+  },
+  "max_rel_diff_any": 0.0,
+  "cells_beyond_rounding": 0
+ },
+ "geo_profile.csv": {
+  "rows_matlab": 108,
+  "rows_python": 108,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "from_deg": 0.0,
+   "to_deg": 0.0,
+   "ships": 0.0017985611510791368
+  },
+  "rows_beyond_rounding": {
+   "from_deg": 0,
+   "to_deg": 0,
+   "ships": 1
+  },
+  "max_rel_diff_any": 0.0017985611510791368,
+  "cells_beyond_rounding": 1
+ },
+ "port_share.csv": {
+  "rows_matlab": 73,
+  "rows_python": 73,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "lat": 0.0,
+   "lon": 0.0,
+   "rank": 0.0,
+   "ships": 0.0,
+   "ships_y0": 0.0,
+   "ships_y1": 0.0,
+   "share": 4.982866357500226e-06,
+   "cargo": 0.0,
+   "tanker": 0.0,
+   "passenger": 0.0,
+   "government": 0.0
+  },
+  "rows_beyond_rounding": {
+   "lat": 0,
+   "lon": 0,
+   "rank": 0,
+   "ships": 0,
+   "ships_y0": 0,
+   "ships_y1": 0,
+   "share": 0,
+   "cargo": 0,
+   "tanker": 0,
+   "passenger": 0,
+   "government": 0
+  },
+  "max_rel_diff_any": 4.982866357500226e-06,
+  "cells_beyond_rounding": 0
+ },
+ "port_share_complex.csv": {
+  "rows_matlab": 56,
+  "rows_python": 56,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "ships": 0.0,
+   "visits": 0.0,
+   "share": 4.982866357500226e-06
+  },
+  "rows_beyond_rounding": {
+   "ships": 0,
+   "visits": 0,
+   "share": 0
+  },
+  "max_rel_diff_any": 4.982866357500226e-06,
+  "cells_beyond_rounding": 0
+ },
+ "viz_daily.csv": {
+  "rows_matlab": 104,
+  "rows_python": 104,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "year": 0.0,
+   "ships": 0.0005757052389176742,
+   "pacific": 0.0,
+   "gulf": 0.0012121212121212121,
+   "atlantic": 0.0017094017094017094,
+   "great_lakes": 0.0,
+   "baltimore": 0.0
+  },
+  "rows_beyond_rounding": {
+   "year": 0,
+   "ships": 4,
+   "pacific": 0,
+   "gulf": 3,
+   "atlantic": 1,
+   "great_lakes": 0,
+   "baltimore": 0
+  },
+  "max_rel_diff_any": 0.0017094017094017094,
+  "cells_beyond_rounding": 8
+ },
+ "viz_mississippi.csv": {
+  "rows_matlab": 72,
+  "rows_python": 72,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [],
+  "max_rel_diff": {
+   "river_km_from": 0.0,
+   "river_km_to": 0.0,
+   "ships": 0.0
+  },
+  "rows_beyond_rounding": {
+   "river_km_from": 0,
+   "river_km_to": 0,
+   "ships": 0
+  },
+  "max_rel_diff_any": 0.0,
+  "cells_beyond_rounding": 0
+ },
+ "viz_sites.csv": {
+  "rows_matlab": 244,
+  "rows_python": 244,
+  "columns_only_matlab": [],
+  "columns_only_python": [],
+  "text_columns_differing": [
+   "name"
+  ],
+  "max_rel_diff": {
+   "lat": 0.0,
+   "lon": 0.0,
+   "route_km": 0.02495939934874038
+  },
+  "rows_beyond_rounding": {
+   "lat": 0,
+   "lon": 0,
+   "route_km": 1
+  },
+  "max_rel_diff_any": 0.02495939934874038,
+  "cells_beyond_rounding": 1
+ }
+}
