@@ -1,0 +1,968 @@
+{
+ "handoff": {
+  "Lower 48": {
+   "routes polygons": true,
+   "band zones table": true,
+   "fixed S-band sites": true,
+   "port check": true,
+   "25 km zone": true,
+   "100 km zone": true,
+   "run log": true
+  },
+  "Hawaii": {
+   "routes polygons": true,
+   "band zones table": true,
+   "fixed S-band sites": true,
+   "port check": true,
+   "25 km zone": true,
+   "100 km zone": true,
+   "run log": true
+  },
+  "Puerto Rico and USVI": {
+   "routes polygons": true,
+   "band zones table": true,
+   "fixed S-band sites": true,
+   "port check": true,
+   "25 km zone": true,
+   "100 km zone": true,
+   "run log": true
+  },
+  "Alaska": {
+   "routes polygons": true,
+   "band zones table": true,
+   "fixed S-band sites": true,
+   "port check": true,
+   "25 km zone": true,
+   "100 km zone": true,
+   "run log": true
+  },
+  "README describes zone files": true
+ },
+ "word": {
+  "pictures": 56,
+  "pictures_without_alt_text": 0,
+  "figure_captions": 56,
+  "table_captions_in_order": true,
+  "table_numbers": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "sections": 1,
+  "sections_marked_header_and_footer": 0,
+  "text_placeholders_for_missing_images": 0
+ },
+ "versions": {
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "pandas": "3.0.5",
+  "scipy": "1.18.1",
+  "shapely": "2.2.0",
+  "pyproj": "3.8.0",
+  "matlab": "R2025b (from the run logs)"
+ },
+ "shapes": [
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_band_2900-3000MHz_25km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 856308.0,
+   "kml_area_km2": 873075.9,
+   "kml_area_diff_pct": 1.958
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_band_3000-3030MHz_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 1264975.3,
+   "kml_area_km2": 1265503.0,
+   "kml_area_diff_pct": 0.042
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_band_3030-3070MHz_100km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 2035039.7,
+   "kml_area_km2": 2075089.3,
+   "kml_area_diff_pct": 1.968
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_band_3070-3100MHz_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 1264975.3,
+   "kml_area_km2": 1265503.0,
+   "kml_area_diff_pct": 0.042
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_routes.shp",
+   "features": 174,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_reason": "Nested shells[-136.005 56.99]",
+   "invalid_features": 4,
+   "crosses_180": false,
+   "area_km2": 258651.9,
+   "kml_area_km2": 259825.1,
+   "kml_area_diff_pct": 0.454
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_routes_ais_only.shp",
+   "features": 98,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_reason": "Nested shells[-136.005 56.99]",
+   "invalid_features": 5,
+   "crosses_180": false,
+   "area_km2": 18031.4,
+   "kml_area_km2": 19042.0,
+   "kml_area_diff_pct": 5.605
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_100km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 2035039.7,
+   "kml_area_km2": 2075089.3,
+   "kml_area_diff_pct": 1.968
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_100km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 392857.4,
+   "kml_area_km2": 392857.4,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_25km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 856308.0,
+   "kml_area_km2": 873075.9,
+   "kml_area_diff_pct": 1.958
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_25km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 166983.2,
+   "kml_area_km2": 167047.5,
+   "kml_area_diff_pct": 0.039
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 1264975.3,
+   "kml_area_km2": 1265503.0,
+   "kml_area_diff_pct": 0.042
+  },
+  {
+   "file": "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_50km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 248597.6,
+   "kml_area_km2": 249125.2,
+   "kml_area_diff_pct": 0.212
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_band_2900-3000MHz_25km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 107097.9,
+   "kml_area_km2": 107097.9,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_band_3000-3030MHz_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 166079.4,
+   "kml_area_km2": 166079.4,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_band_3030-3070MHz_100km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 279190.4,
+   "kml_area_km2": 279190.4,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_band_3070-3100MHz_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 166079.4,
+   "kml_area_km2": 166079.4,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_routes.shp",
+   "features": 19,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_reason": "Nested shells[-157.95 20.995]",
+   "invalid_features": 4,
+   "crosses_180": false,
+   "area_km2": 8263.5,
+   "kml_area_km2": 9791.0,
+   "kml_area_diff_pct": 18.485
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_routes_ais_only.shp",
+   "features": 19,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_reason": "Nested shells[-157.95 20.995]",
+   "invalid_features": 4,
+   "crosses_180": false,
+   "area_km2": 8263.5,
+   "kml_area_km2": 9791.0,
+   "kml_area_diff_pct": 18.485
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_shore_100km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 279190.4,
+   "kml_area_km2": 279190.4,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_shore_100km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 16716.9,
+   "kml_area_km2": 16716.9,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_shore_25km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 107097.9,
+   "kml_area_km2": 107097.9,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_shore_25km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 11644.3,
+   "kml_area_km2": 11644.3,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_shore_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 166079.4,
+   "kml_area_km2": 166079.4,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_shore_50km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 15947.5,
+   "kml_area_km2": 15947.5,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_band_2900-3000MHz_25km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 156237.4,
+   "kml_area_km2": 157036.0,
+   "kml_area_diff_pct": 0.511
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_band_3000-3030MHz_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 157853.8,
+   "kml_area_km2": 157853.8,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_band_3030-3070MHz_100km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 157962.1,
+   "kml_area_km2": 157962.1,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_band_3070-3100MHz_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 157853.8,
+   "kml_area_km2": 157853.8,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_routes.shp",
+   "features": 15,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_reason": "Nested shells[-66.505 16.73]",
+   "invalid_features": 10,
+   "crosses_180": false,
+   "area_km2": 50705.2,
+   "kml_area_km2": 63380.9,
+   "kml_area_diff_pct": 24.999
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_routes_ais_only.shp",
+   "features": 15,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_reason": "Nested shells[-66.505 16.73]",
+   "invalid_features": 10,
+   "crosses_180": false,
+   "area_km2": 50705.2,
+   "kml_area_km2": 63380.9,
+   "kml_area_diff_pct": 24.999
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_shore_100km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 157962.1,
+   "kml_area_km2": 157962.1,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_shore_100km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 9277.6,
+   "kml_area_km2": 9277.6,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_shore_25km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 156237.4,
+   "kml_area_km2": 157036.0,
+   "kml_area_diff_pct": 0.511
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_shore_25km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 8878.3,
+   "kml_area_km2": 9676.9,
+   "kml_area_diff_pct": 8.995
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_shore_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 157853.8,
+   "kml_area_km2": 157853.8,
+   "kml_area_diff_pct": -0.0
+  },
+  {
+   "file": "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_shore_50km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 9277.6,
+   "kml_area_km2": 9277.6,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_band_2900-3000MHz_25km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 4493220.2,
+   "kml_area_km2": 4797028.6,
+   "kml_area_diff_pct": 6.761
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_band_3000-3030MHz_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 5693620.9,
+   "kml_area_km2": 5897265.8,
+   "kml_area_diff_pct": 3.577
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_band_3030-3070MHz_100km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 7158788.7,
+   "kml_area_km2": 7195353.0,
+   "kml_area_diff_pct": 0.511
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_band_3070-3100MHz_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 5693620.9,
+   "kml_area_km2": 5897265.8,
+   "kml_area_diff_pct": 3.577
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_routes.shp",
+   "features": 590,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_reason": "Nested shells[-111.62 22.995]",
+   "invalid_features": 153,
+   "crosses_180": false,
+   "area_km2": 670118.9
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_routes_ais_only.shp",
+   "features": 590,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_reason": "Nested shells[-111.62 22.995]",
+   "invalid_features": 153,
+   "crosses_180": false,
+   "area_km2": 669057.0
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_shore_100km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 7158788.7,
+   "kml_area_km2": 7195353.0,
+   "kml_area_diff_pct": 0.511
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_shore_100km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 1312877.8,
+   "kml_area_km2": 1312877.8,
+   "kml_area_diff_pct": 0.0
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_shore_25km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 4493220.2,
+   "kml_area_km2": 4797028.6,
+   "kml_area_diff_pct": 6.761
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_shore_25km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 387127.7,
+   "kml_area_km2": 395994.4,
+   "kml_area_diff_pct": 2.29
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_shore_50km.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 5693620.9,
+   "kml_area_km2": 5897265.8,
+   "kml_area_diff_pct": 3.577
+  },
+  {
+   "file": "outputs/2024_2025/shipping_zone_2024_2025_shore_50km_land.shp",
+   "features": 1,
+   "fields": [
+    "Name"
+   ],
+   "prj_wgs84": true,
+   "invalid_features": 0,
+   "crosses_180": false,
+   "area_km2": 711593.2,
+   "kml_area_km2": 711593.2,
+   "kml_area_diff_pct": 0.0
+  }
+ ],
+ "sources": [
+  {
+   "file": "data/ais_vessels_2024_4days.csv",
+   "bytes": 872966,
+   "sha256": "2b1c7433f25e7b615f6855e3280386a5e81d1d936e3d3cf8eb38278286a2088e"
+  },
+  {
+   "file": "data/cb_2023_us_state_500k/cb_2023_us_state_500k.cpg",
+   "bytes": 5,
+   "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+  },
+  {
+   "file": "data/cb_2023_us_state_500k/cb_2023_us_state_500k.dbf",
+   "bytes": 9058,
+   "sha256": "7dacbc91d3b1264dbb5f87e953cf998dd6d66a6ed3213e8c3a2da6b0c2f1511f"
+  },
+  {
+   "file": "data/cb_2023_us_state_500k/cb_2023_us_state_500k.prj",
+   "bytes": 165,
+   "sha256": "0b9041e921d9ebb43247d314608fe9e38a0b008ee793067fc1806199ea1fb9dd"
+  },
+  {
+   "file": "data/cb_2023_us_state_500k/cb_2023_us_state_500k.shp",
+   "bytes": 4579236,
+   "sha256": "5ab16009ac3be5093302530a9f6b70099c0a981065730a85176560d8cc4e6b16"
+  },
+  {
+   "file": "data/cb_2023_us_state_500k/cb_2023_us_state_500k.shp.ea.iso.xml",
+   "bytes": 16296,
+   "sha256": "f764ff3fbeafe5c525c14d35f36824f77a878205678752a9417ebaccb05d5a3d"
+  },
+  {
+   "file": "data/cb_2023_us_state_500k/cb_2023_us_state_500k.shp.iso.xml",
+   "bytes": 44850,
+   "sha256": "fde2dc0d4f5b201ed882babcf6d3d92fbf0dcbbef4c5a907af7330561cce1683"
+  },
+  {
+   "file": "data/cb_2023_us_state_500k/cb_2023_us_state_500k.shx",
+   "bytes": 548,
+   "sha256": "08f716b26a28eb2df97c1b9a2dee94ca2e2123d2459c14a4a383e5abb816b97f"
+  },
+  {
+   "file": "data/fairways_rev1.geojson",
+   "bytes": 226990,
+   "sha256": "7332683e92a36326f2275f024a7910ae4c9acd88600f77494531915ea1df33e4"
+  },
+  {
+   "file": "data/racons/enc_approach_rtpbcn.geojson",
+   "bytes": 6985,
+   "sha256": "4f8d3dddc317de6975eeee0a49e1c27e29f28a4cfa9b3fe9860d3e504e11c22c"
+  },
+  {
+   "file": "data/racons/enc_coastal_rtpbcn.geojson",
+   "bytes": 10247,
+   "sha256": "6bc5d834e80bfd4cf1afd3f7ecb1113507dba038e46964920eb41c0f8e4fb65d"
+  },
+  {
+   "file": "data/racons/enc_general_rtpbcn.geojson",
+   "bytes": 8484,
+   "sha256": "6156452254318711f531726e9fe06cc2a06d12605d3fc211421831327ec8f209"
+  },
+  {
+   "file": "data/ref/ais-transit-count-2024.tif",
+   "bytes": 465949438,
+   "sha256": "c6d599a1813da07a0349376313ffcfc9bcf82076e2abf33e4ea6a4c4bb1d5307"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_01.zip",
+   "bytes": 434361,
+   "sha256": "25f4d14f22bb6406c81206a93a55cbdf6886b545aae302113d4931cb8bfe5749"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_02.zip",
+   "bytes": 450311,
+   "sha256": "08a7bac0cac8fd73f4bd66e17d195c1f1506e093a31cc130118e96eb24bdff93"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_03.zip",
+   "bytes": 471393,
+   "sha256": "32abde02e1d4c400758a328bcfe18c288c015abc265185f9ee22eaddf349f478"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_04.zip",
+   "bytes": 505326,
+   "sha256": "4327188a612d72a08e673b1b987d689ef4fc4fd413e8333a843f5c29103066c8"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_05.zip",
+   "bytes": 516965,
+   "sha256": "ddb6aec98814d6ed96673f9db6d1b717a2238328429a9d3c76fa5060fdf05b33"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_06.zip",
+   "bytes": 556812,
+   "sha256": "1c849f88c081d8dfec5a876404c20971df4c44c52fc1abc0181fff9c7862cf55"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_07.zip",
+   "bytes": 627337,
+   "sha256": "d19269c8cdd8a435ec8865af03dce08e11d4ce21e2dd24fcaf8e44b7b5a75156"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_08.zip",
+   "bytes": 653752,
+   "sha256": "7320a6a2208e9f1ecb250575cfb1f8192864815e565adb5e8b29025bf7c1702c"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_09.zip",
+   "bytes": 634707,
+   "sha256": "bab04444d13d120ff703c2f3b3caa982733cf04686fafdc8c6ca2a7d18bf6ff0"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_10.zip",
+   "bytes": 602215,
+   "sha256": "cef7f2f797f47ec612fde04148fb3d265b35fa8871f53484c7507881924b9231"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_11.zip",
+   "bytes": 542998,
+   "sha256": "3814873fdba1158fe84a14a416440f16569e6d30b650de72c04eacca4f649df1"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2018_12.zip",
+   "bytes": 476525,
+   "sha256": "b70827fe05ccdd8b68cd784e4128093099673207568fbd526c54d247ac6128f1"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_01.zip",
+   "bytes": 465749,
+   "sha256": "74adfb12924279b4f57f0145eafc14ed43995c962702de6fad4a55a5650840d4"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_02.zip",
+   "bytes": 471302,
+   "sha256": "e91188dbc93b8b9cbeec188320ca20054d938b0e96a4f7ae01f558e1fd9ec5f6"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_03.zip",
+   "bytes": 506550,
+   "sha256": "374c522e7ecbfd346b1e6d563f9214d1906b471d363f8b8ca66f4df8c584a3bd"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_04.zip",
+   "bytes": 473866,
+   "sha256": "88d617bf81631093238207d2d19a0b3b0b589b0b9175552dea3434b19f0e1d71"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_05.zip",
+   "bytes": 499542,
+   "sha256": "cdc01c125b833141ee6167c67110c7beb11377929bd4ef215f896a1bf30328ba"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_06.zip",
+   "bytes": 555378,
+   "sha256": "07133b3a3cd0a7b81cc4bd5fa88694cfaade1555fa9d886cc58a43a919aa5358"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_07.zip",
+   "bytes": 627389,
+   "sha256": "824164fa33bb7f3a4bc54d614b29cf9b84c594c014ab448d063ccdfdf55ac37d"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_08.zip",
+   "bytes": 659502,
+   "sha256": "9528fcbcf413590b05d18d5398958080a9f969e8b4c242807cbcd5926076b6dd"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_09.zip",
+   "bytes": 644646,
+   "sha256": "cf79c2a0ff7f9cdc1de98f38905d360bcd27c548d4c7ffc7decce7edc2ba88a3"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_10.zip",
+   "bytes": 607960,
+   "sha256": "401d9c3e2961496ba93bb8adaf0e0cab500ac1cf3b483d857cdedc9a77558376"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_11.zip",
+   "bytes": 529020,
+   "sha256": "979a48ce2451014c7cead23cbdfd715aaba5e27d7c8cebb5050bd4c7aa282c4d"
+  },
+  {
+   "file": "data/ref/kapsar_hex/SpeedHex_2019_12.zip",
+   "bytes": 488014,
+   "sha256": "e788cc256c721abd05fe9fb56e29b4dac59cef7b3d9a90a5a7a2b4dad2f08477"
+  },
+  {
+   "file": "data/ref/kapsar_hex/hex.xml",
+   "bytes": 2207742,
+   "sha256": "3a282f1eedff55899665ce2749e1658bd1ef4d0cdf6eee39a432e70760dc996d"
+  },
+  {
+   "file": "data/ref/kapsar_hex/list.txt",
+   "bytes": 1608,
+   "sha256": "9a1f8c0b66b14198ce64f73cf0c45d35aea6531672217fdad30eae35f3463d1e"
+  },
+  {
+   "file": "data/tl_2023_us_coastline/tl_2023_us_coastline.cpg",
+   "bytes": 5,
+   "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+  },
+  {
+   "file": "data/tl_2023_us_coastline/tl_2023_us_coastline.dbf",
+   "bytes": 449114,
+   "sha256": "bb98824cb57ad3704af62b3bb56a905fb8be3cad3160727f89fdc8752b65ae46"
+  },
+  {
+   "file": "data/tl_2023_us_coastline/tl_2023_us_coastline.prj",
+   "bytes": 165,
+   "sha256": "0b9041e921d9ebb43247d314608fe9e38a0b008ee793067fc1806199ea1fb9dd"
+  },
+  {
+   "file": "data/tl_2023_us_coastline/tl_2023_us_coastline.shp",
+   "bytes": 25432532,
+   "sha256": "eb0f30b1b6554d9982b22a7e0d89ac27e0b5eea963408f77d104f4966bd581b8"
+  },
+  {
+   "file": "data/tl_2023_us_coastline/tl_2023_us_coastline.shp.ea.iso.xml",
+   "bytes": 6740,
+   "sha256": "d2dcb12dbae63627bfd915a17f96fbded29ca3b24b128807b11c4f7da6024aa9"
+  },
+  {
+   "file": "data/tl_2023_us_coastline/tl_2023_us_coastline.shp.iso.xml",
+   "bytes": 42033,
+   "sha256": "32e8f7c7fc985db0be5a1c3d8a1b75032ef2178f188b26d4a28049236ccea3d3"
+  },
+  {
+   "file": "data/tl_2023_us_coastline/tl_2023_us_coastline.shx",
+   "bytes": 33988,
+   "sha256": "9625e172c23bceecdad8bbf7fa461e8ec31dcc105aca4e96d31c16c3f2ddcf35"
+  },
+  {
+   "file": "data/usace_principal_ports.csv",
+   "bytes": 9415,
+   "sha256": "f73eea6bad280913723ac93657e99fc663ddeeec6aedb7280f800fcab0e9d868"
+  },
+  {
+   "file": "data/wikidata_imo_gt_len.csv",
+   "bytes": 1856992,
+   "sha256": "623b56f67f41cbcfc0009d3a4bff8e5c2db40cd58e7cbd81ff1814039685175e"
+  }
+ ],
+ "manifest_files": 667,
+ "shape_files_failing": [
+  "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_band_2900-3000MHz_25km.shp",
+  "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_band_3030-3070MHz_100km.shp",
+  "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_routes.shp",
+  "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_routes_ais_only.shp",
+  "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_100km.shp",
+  "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_25km.shp",
+  "outputs/2018_2019/alaska/shipping_zone_alaska_2018_2019_shore_50km_land.shp",
+  "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_routes.shp",
+  "outputs/2024_2025/hawaii/shipping_zone_hawaii_2024_2025_routes_ais_only.shp",
+  "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_band_2900-3000MHz_25km.shp",
+  "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_routes.shp",
+  "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_routes_ais_only.shp",
+  "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_shore_25km.shp",
+  "outputs/2024_2025/prusvi/shipping_zone_prusvi_2024_2025_shore_25km_land.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_band_2900-3000MHz_25km.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_band_3000-3030MHz_50km.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_band_3030-3070MHz_100km.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_band_3070-3100MHz_50km.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_routes.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_routes_ais_only.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_shore_100km.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_shore_25km.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_shore_25km_land.shp",
+  "outputs/2024_2025/shipping_zone_2024_2025_shore_50km.shp"
+ ]
+}
