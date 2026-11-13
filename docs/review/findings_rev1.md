@@ -165,18 +165,24 @@ the text, and run the 80 m and 120 m cutoffs. Results: `fix_results_rev1.md`.
   +10% to +12%, from river cruise vessels on the Columbia, Snake, and upper
   Mississippi (`length_sensitivity_rev1.csv`).
 
-Still open:
+Still open after the follow-up on November 13, 2026 (the items below were
+done that day: charted lanes kept only on the U.S. side by an equidistance
+test, which drops 3,427 lower-48 and 6,800 Alaska charted-lane cells and
+changes no land area beyond rounding; fixed QC gate limits (CA-58); transit
+counts read at full 100 m resolution, with Table 8's NOAA row now at 8
+transits, 18,267 cells, Jaccard 0.40 (CA-63); Table 8 gained the 3-ship row
+and marks 1.00 as the reference (CA-12, CA-92); route rings written outer
+ring first (CA-96, partly: 149 of 591 lower-48 tiles still hold rings that
+touch at a cell corner, which OGC tools call invalid; GIS tools draw them
+correctly, and shapely.make_valid repairs them); new Section 1.2 source rows
+and A.21 items; MarineCadastre links (CB-40, CB-42); zone figures outlined
+for contrast (CB-77); Word copy re-exported):
 
 - Every "Nick decides" row except the zone definition (CA-9 to CA-15, CA-18 to
   CA-20, CA-26, CA-32, CA-37, CA-97, CA-100; CB-15, CB-26, CB-28 to CB-32,
   CB-47, CB-53, CB-60, CB-61, CB-63, CB-64, CB-84 to CB-86).
-- CA-58 (fixed QC gate limits), CA-63 (transit counts at full resolution and
-  Table 8 rerun), CA-96 (invalid route polygons), CA-84 (check the new zones
-  nest), CA-101 and CA-102 (can't check).
-- In the doc by hand: link URLs (CB-40, CB-42), new Section 1.2 source rows and
-  A.21 items (Kapsar, Natural Earth, NOAA Transit Counts), figure colors
-  (CB-76 to CB-82), Caption style (CB-73).
+- CA-84 (check the new zones nest), CA-101 and CA-102 (can't check).
+- Figure colors in Appendix A (CB-76, CB-78, CB-81, CB-82) and Word Caption
+  styles (CB-73).
 - The Appendix A products and the stress tests ran on the network before the
   fixes; the paper quotes only their percentage changes.
-- Clipping charted lanes to U.S. waters (Old Bahama Channel schemes are in the
-  route water).
