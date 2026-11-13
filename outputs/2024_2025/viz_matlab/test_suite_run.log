@@ -3,30 +3,31 @@ Connected to parallel pool with 2 workers.
 Running test_shipping_zone_rev1
 .........WARNING: package sun.awt.X11 not in java.desktop
 WARNING: package sun.awt.X11 not in java.desktop
-. ........
+. .........
 Done test_shipping_zone_rev1
 __________
 
                                       Name                                      Passed    Failed    Incomplete    Duration       Details   
     ________________________________________________________________________    ______    ______    __________    _________    ____________
 
-    {'test_shipping_zone_rev1/test_url_patterns'                           }    true      false       false         0.10062    {1×1 struct}
-    {'test_shipping_zone_rev1/test_filter_both_column_styles'              }    true      false       false         0.63543    {1×1 struct}
-    {'test_shipping_zone_rev1/test_chunked_read_matches_single_read'       }    true      false       false         0.33716    {1×1 struct}
-    {'test_shipping_zone_rev1/test_distance_block_size_invariant'          }    true      false       false        0.072054    {1×1 struct}
-    {'test_shipping_zone_rev1/test_distance_edge_sources_match_brute_force'}    true      false       false         0.24103    {1×1 struct}
-    {'test_shipping_zone_rev1/test_distance_matches_geodesic'              }    true      false       false        0.024392    {1×1 struct}
-    {'test_shipping_zone_rev1/test_contour_area_of_disk'                   }    true      false       false          0.3879    {1×1 struct}
-    {'test_shipping_zone_rev1/test_rasterize_crop_square'                  }    true      false       false        0.098092    {1×1 struct}
-    {'test_shipping_zone_rev1/test_routes_polygons_cover_cells'            }    true      false       false         0.68595    {1×1 struct}
-    {'test_shipping_zone_rev1/test_parallel_equals_serial'                 }    true      false       false          3.7394    {1×1 struct}
-    {'test_shipping_zone_rev1/test_two_sessions_same_cache'                }    true      false       false         0.37156    {1×1 struct}
-    {'test_shipping_zone_rev1/test_route_rule_unique_ships_default'        }    true      false       false       0.0089828    {1×1 struct}
-    {'test_shipping_zone_rev1/test_route_rule_ship_days'                   }    true      false       false       0.0052468    {1×1 struct}
-    {'test_shipping_zone_rev1/test_route_rule_rejects_unknown'             }    true      false       false         0.10532    {1×1 struct}
-    {'test_shipping_zone_rev1/test_extra_source_cells'                     }    true      false       false         0.63868    {1×1 struct}
-    {'test_shipping_zone_rev1/test_extra_source_rejects_other_grid'        }    true      false       false         0.17497    {1×1 struct}
-    {'test_shipping_zone_rev1/test_fairways_empty_download'                }    true      false       false        0.094145    {1×1 struct}
-    {'test_shipping_zone_rev1/test_fairways_cache_is_per_grid'             }    true      false       false         0.22811    {1×1 struct}
+    {'test_shipping_zone_rev1/test_url_patterns'                           }    true      false       false        0.092851    {1×1 struct}
+    {'test_shipping_zone_rev1/test_filter_both_column_styles'              }    true      false       false         0.50415    {1×1 struct}
+    {'test_shipping_zone_rev1/test_chunked_read_matches_single_read'       }    true      false       false         0.29073    {1×1 struct}
+    {'test_shipping_zone_rev1/test_distance_block_size_invariant'          }    true      false       false        0.066095    {1×1 struct}
+    {'test_shipping_zone_rev1/test_distance_edge_sources_match_brute_force'}    true      false       false         0.21217    {1×1 struct}
+    {'test_shipping_zone_rev1/test_distance_matches_geodesic'              }    true      false       false        0.021269    {1×1 struct}
+    {'test_shipping_zone_rev1/test_contour_area_of_disk'                   }    true      false       false         0.34861    {1×1 struct}
+    {'test_shipping_zone_rev1/test_rasterize_crop_square'                  }    true      false       false        0.086088    {1×1 struct}
+    {'test_shipping_zone_rev1/test_routes_polygons_cover_cells'            }    true      false       false         0.50771    {1×1 struct}
+    {'test_shipping_zone_rev1/test_parallel_equals_serial'                 }    true      false       false          2.7446    {1×1 struct}
+    {'test_shipping_zone_rev1/test_two_sessions_same_cache'                }    true      false       false         0.30756    {1×1 struct}
+    {'test_shipping_zone_rev1/test_route_rule_unique_ships_default'        }    true      false       false       0.0069801    {1×1 struct}
+    {'test_shipping_zone_rev1/test_route_rule_ship_days'                   }    true      false       false       0.0041944    {1×1 struct}
+    {'test_shipping_zone_rev1/test_route_rule_rejects_unknown'             }    true      false       false        0.088263    {1×1 struct}
+    {'test_shipping_zone_rev1/test_extra_source_cells'                     }    true      false       false         0.53138    {1×1 struct}
+    {'test_shipping_zone_rev1/test_extra_source_rejects_other_grid'        }    true      false       false         0.14967    {1×1 struct}
+    {'test_shipping_zone_rev1/test_fairways_empty_download'                }    true      false       false        0.071324    {1×1 struct}
+    {'test_shipping_zone_rev1/test_fairways_cache_is_per_grid'             }    true      false       false         0.32995    {1×1 struct}
+    {'test_shipping_zone_rev1/test_polygon_area_matches_quadrangle'        }    true      false       false         0.10448    {1×1 struct}
 
 Parallel pool using the 'Processes' profile is shutting down.

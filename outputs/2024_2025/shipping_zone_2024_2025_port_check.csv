@@ -1,5 +1,5 @@
 port,lat,lon,gap_to_ship_cell_km,reached,on_route_network,in_25km_zone,in_50km_zone,in_100km_zone
-"Baton Rouge, LA",30.44,-91.2,0.734073264434692,1,1,1,1,1
+"Baton Rouge, LA",30.44,-91.2,0.734073264435581,1,1,1,1,1
 "New Orleans, LA",29.95,-90.06,0.735637107148066,1,1,1,1,1
 "Houston, TX",29.73,-95.27,0.736333179588941,1,1,1,1,1
 "Corpus Christi, TX",27.81,-97.4,0.742243498552795,1,1,1,1,1

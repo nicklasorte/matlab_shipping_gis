@@ -3,7 +3,7 @@ named_port,"San Juan, PR",18.43278,-66.09668,0,0.303881960472105,1,1,1,1,require
 named_port,"Ponce, PR",17.97861,-66.621,0,0.583197165559412,1,1,1,1,required deep-draft port (p.check_ports)
 named_port,"Guaynabo, PR",18.43022,-66.11114,0,0.669560646026316,1,1,1,1,required deep-draft port (p.check_ports)
 named_port,"Yabucoa, PR",18.05174,-65.83623,0,0.385114035407614,1,1,1,1,required deep-draft port (p.check_ports)
-named_port,"Mayaguez, PR",18.205,-67.16,0,29.6792295553294,0,1,1,1,required deep-draft port (p.check_ports)
+named_port,"Mayaguez, PR",18.205,-67.16,0,29.6792295553294,0,0,1,1,required deep-draft port (p.check_ports)
 named_port,"Charlotte Amalie (St. Thomas), VI",18.335,-64.93,0,0.527750472297459,1,1,1,1,required deep-draft port (p.check_ports)
 named_port,"Limetree Bay (St. Croix), VI",17.69,-64.75,0,0.767898384819716,1,1,1,1,required deep-draft port (p.check_ports)
 named_port,"Frederiksted (St. Croix), VI",17.715,-64.885,0,0,1,1,1,1,required deep-draft port (p.check_ports)
