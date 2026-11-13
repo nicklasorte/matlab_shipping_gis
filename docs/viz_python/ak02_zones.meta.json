@@ -23,7 +23,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of Alaska with land near the coast shaded by zone: 12% within 25 km, 17% within 50 km, and 27% within 100 km of large-ship water, concentrated in Southeast Alaska, Southcentral Alaska, and the Alaska Peninsula.",
+  "alt": "Map of Alaska with land near the coast shaded by zone: 7% within 25 km, 14% within 50 km, and 23% within 100 km of large-ship water, concentrated in Southeast Alaska, Southcentral Alaska, and the Alaska Peninsula.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/ak02_zones.png",

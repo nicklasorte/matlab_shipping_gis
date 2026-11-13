@@ -122,13 +122,13 @@ def haw_zones():
     import scipy.io
     m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     zs = m["zone"]
-    land_total = float(next(z.land_area_km2 for z in zs if z.distance_km == 100))
+    land_total = isl.land_total_km2("hawaii")   # polygon land, same footing as the zone areas (review CA-33)
     for z in zs:
-        shares[int(z.distance_km)] = (float(z.land_area_km2), float(z.land_area_km2) / land_total)
+        shares[int(z.distance_km)] = (float(z.land_area_km2), min(1.0, float(z.land_area_km2) / land_total))
     page = OnePager(
         headline=f"A 50 km zone would cover {100 * shares[50][1]:.0f}% of Hawaii's land, and a 25 km zone "
                  f"{100 * shares[25][1]:.0f}%",
-        subhead="Land within each distance of large-ship water (distance from large-ship water, same method as the lower 48); the 100 km "
+        subhead="Land within each distance of the route cells (same method as the lower 48); the 100 km "
                 "zone covers all of the main islands",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),
         alt=f"Map of the main Hawaiian Islands with land shaded by zone: the 25 km zone covers "

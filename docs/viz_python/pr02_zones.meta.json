@@ -23,7 +23,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of Puerto Rico and the U.S. Virgin Islands with land shaded by zone: 96% within 25 km, 100% within 50 km, and 100% within 100 km of large-ship water.",
+  "alt": "Map of Puerto Rico and the U.S. Virgin Islands with land shaded by zone: 78% within 25 km, 100% within 50 km, and 100% within 100 km of large-ship water.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/pr02_zones.png",

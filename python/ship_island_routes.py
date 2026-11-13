@@ -159,3 +159,29 @@ def run(grid):
 if __name__ == "__main__":
     for g in sys.argv[1:] or ["hawaii", "prusvi"]:
         run(g)
+
+
+def land_total_km2(grid):
+    """U.S. land in the grid (Census 1:500,000 states clipped to the grid box), geodesic km2.
+
+    The denominator for the zone shares, on the same footing as the zone land
+    areas, which come from clipped polygons (review CA-33).
+    """
+    from pyproj import Geod
+    from shapely.geometry import box, shape as _shape
+    import shapefile as _shapefile
+    (la0, la1), (lo0, lo1) = cells.GRIDS[grid]
+    if lo1 > 180:
+        raise ValueError("land_total_km2 needs a grid in -180..180 longitude")
+    sf = _shapefile.Reader(os.path.join(ROOT, "data", "cb_2023_us_state_500k", "cb_2023_us_state_500k.shp"))
+    clip = box(lo0, la0, lo1, la1)
+    geod = Geod(ellps="WGS84")
+    total = 0.0
+    for s in sf.shapes():
+        x0, y0, x1, y1 = s.bbox
+        if x1 < lo0 or x0 > lo1 or y1 < la0 or y0 > la1:
+            continue
+        g = _shape(s.__geo_interface__).buffer(0).intersection(clip)
+        if not g.is_empty:
+            total += abs(geod.geometry_area_perimeter(g)[0]) / 1e6
+    return total

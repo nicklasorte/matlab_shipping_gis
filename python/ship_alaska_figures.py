@@ -135,18 +135,11 @@ def ak_routes():
 def ak_zones():
     m = scipy.io.loadmat(os.path.join(AK, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     zs = {int(z.distance_km): float(z.land_area_km2) for z in m["zone"]}
-    R = m["R"]
-    land = m["land_mask"].astype(bool)
-    # Total U.S. land in the grid from the same cells (spherical cell areas, as the zone areas)
-    nr, nc = land.shape
-    lat = 51 + 0.01 * (np.arange(nr) + 0.5)
-    cell_km2 = (np.pi / 180 * 6371.0088) ** 2 * 0.01 * 0.01 * np.cos(np.radians(lat))
-    total = float((land * cell_km2[:, None]).sum())
-    del R
+    total = isl.land_total_km2(GRID)   # polygon land, same footing as the zone areas (review CA-33)
     page = OnePager(
         headline=f"A 25 km zone would cover {100 * zs[25] / total:.0f}% of Alaska's land east of 180°, a 50 km "
                  f"zone {100 * zs[50] / total:.0f}%, and a 100 km zone {100 * zs[100] / total:.0f}%",
-        subhead="Land within each distance of large-ship water (distance from large-ship water, same method as the lower 48), 2018–2019 "
+        subhead="Land within each distance of the route cells (same method as the lower 48), 2018–2019 "
                 "routes; the interior stays outside every zone",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),
         alt=f"Map of Alaska with land near the coast shaded by zone: {100 * zs[25] / total:.0f}% within 25 km, "
