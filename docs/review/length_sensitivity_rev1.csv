@@ -1,0 +1,4 @@
+length_cutoff_m,distinct_ships,route_cells,land_25km_km2,land_50km_km2,land_100km_km2,ships_change_pct,route_cells_change_pct,land_25km_change_pct,land_50km_change_pct,land_100km_change_pct
+100,15713,674685,300406,639699,1266625,0.0,0.0,0.0,0.0,0.0
+80,16094,691551,334913,706208,1400999,2.4,2.5,11.5,10.4,10.6
+120,15341,662269,289698,625866,1250462,-2.4,-1.8,-3.6,-2.2,-1.3

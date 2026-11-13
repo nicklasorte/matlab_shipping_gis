@@ -192,5 +192,46 @@
   "half_route_cells_median": 352546.5,
   "full_cells_in_fewer_than_90pct_of_halves": 475378,
   "full_cells_in_fewer_than_90pct_share": 0.7046
- }
+ },
+ "length": [
+  {
+   "length_cutoff_m": 100,
+   "distinct_ships": 15713,
+   "route_cells": 674685,
+   "land_25km_km2": 300406,
+   "land_50km_km2": 639699,
+   "land_100km_km2": 1266625,
+   "ships_change_pct": 0.0,
+   "route_cells_change_pct": 0.0,
+   "land_25km_change_pct": 0.0,
+   "land_50km_change_pct": 0.0,
+   "land_100km_change_pct": 0.0
+  },
+  {
+   "length_cutoff_m": 80,
+   "distinct_ships": 16094,
+   "route_cells": 691551,
+   "land_25km_km2": 334913,
+   "land_50km_km2": 706208,
+   "land_100km_km2": 1400999,
+   "ships_change_pct": 2.4,
+   "route_cells_change_pct": 2.5,
+   "land_25km_change_pct": 11.5,
+   "land_50km_change_pct": 10.4,
+   "land_100km_change_pct": 10.6
+  },
+  {
+   "length_cutoff_m": 120,
+   "distinct_ships": 15341,
+   "route_cells": 662269,
+   "land_25km_km2": 289698,
+   "land_50km_km2": 625866,
+   "land_100km_km2": 1250462,
+   "ships_change_pct": -2.4,
+   "route_cells_change_pct": -1.8,
+   "land_25km_change_pct": -3.6,
+   "land_50km_change_pct": -2.2,
+   "land_100km_change_pct": -1.3
+  }
+ ]
 }
