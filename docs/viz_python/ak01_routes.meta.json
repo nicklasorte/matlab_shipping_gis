@@ -24,7 +24,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of Alaska. Blue route cells follow the Inside Passage in Southeast Alaska, Cook Inlet to Anchorage, Prince William Sound to Valdez, and Unimak Pass near Dutch Harbor; gray cells show patchy traffic near shore. Few cells appear far offshore.",
+  "alt": "Map of Alaska. Blue route cells follow the Inside Passage in Southeast Alaska, Cook Inlet to Anchorage, Prince William Sound to Valdez, and Unimak Pass near Dutch Harbor; purple satellite-AIS hexagons add a wide band of lanes along and south of the Aleutians and patches in the Bering Sea.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/ak01_routes.png",

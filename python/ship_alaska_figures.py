@@ -127,7 +127,7 @@ def ak_routes():
     ax.scatter(x, y, s=0.9, marker="s", lw=0, c=page.theme.accent, rasterized=True, zorder=3)
     frame(page, ax)
     ports(page, ax)
-    page.note(ax, "Purple: busy satellite-AIS hexagons\n(Kapsar and others, 2022), beyond\nshore-receiver range",
+    page.note(ax, "Purple: busiest satellite-AIS\nhexagons (Kapsar and others,\n2022), cargo and tankers",
               (250, 520), coords="data")
     vf.save(page, "ak01_routes")
 
