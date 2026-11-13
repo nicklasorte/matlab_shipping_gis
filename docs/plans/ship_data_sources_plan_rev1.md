@@ -131,7 +131,7 @@ in the data.
 
 ## Outputs
 
-- `data/sband_radar_models.csv` (A2), `data/sband_truth_ships.csv` (A1 and A3),
+- `data/ship_radar_models.csv` (A2), `data/sband_truth_ships.csv` (A1 and A3),
   and `data/psix_gt_kept_ships.csv` (A6).
 - `python/sband_carriage_rate.py` and `sband_carriage_rate_rev1.m`, in both
   languages per the repo convention.

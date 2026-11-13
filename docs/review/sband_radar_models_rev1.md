@@ -2,7 +2,7 @@
 
 DRAFT//PRE-DECISIONAL
 
-Date: November 13, 2026. Data: `data/sband_radar_models.csv`. Plan step A2 of
+Date: November 13, 2026. Data: `data/ship_radar_models.csv` (S-band models plus X-band models for comparison). Plan step A2 of
 `docs/plans/ship_data_sources_plan_rev1.md`. Public manufacturer and dealer
 pages only; each row cites its source.
 
@@ -90,3 +90,25 @@ found, so Koden isn't in the table.
 - [Kelvin Hughes SharpEye S-band (Mackay copy)](https://static.mackaycomm.com/wp-content/uploads/2021/08/Kelvin-Hughes-CMS-navigation-radar-s-band.pdf),
   [Hensoldt commercial S-band radar](https://hensoldt.net/products/92/commercial-s-band-radar-kelvin-hughes-sharpeye-radar)
 - [NAVI-RADAR 4000 S-band (dealer page)](https://cirspb.ru/en/equipment-and-service/rls/Navi-Radar-4000S)
+
+## Columns in `data/ship_radar_models.csv`
+
+The file holds 34 rows: 22 S-band models and 12 X-band models. The X-band
+rows are there so the photo coding can tell the two bands apart.
+
+| Column | Meaning and how it helps match ship data |
+| --- | --- |
+| `manufacturer`, `model`, `variants` | Maker and model; `variants` lists display sizes and black-box (`-BB`) versions of the same radar |
+| `band`, `in_2900_3100_mhz` | S or X; whether the radar transmits in the paper's band |
+| `freq_spec` | Frequency as the source states it, quoted |
+| `freq_low_mhz`, `freq_high_mhz`, `center_mhz` | Numeric range, for overlap with the zone frequency ranges (Table 7) |
+| `emission_class` | ITU class of emission: P0N is a plain pulse (magnetron or solid-state); Q0N is a pulse with modulation inside it (solid-state) |
+| `peak_power_w`, `transmitter` | Peak power and magnetron or solid-state, for the EMC analysis |
+| `antenna_ft`, `antenna_m`, `antenna_unit` | Antenna length and part number |
+| `photo_code_by_antenna` | How the photo coders (plan step A3) should code an antenna of that length: 10 ft or longer is S-band, 8–9.9 ft is unclear, and under 8 ft is X-band |
+| `imo_category`, `ship_size_hint` | Radar performance category, which ties to ship size: CAT 1 for 10,000 GT or more, CAT 2 for 500 to 10,000 GT, CAT 3 for under 500 GT. Use it to match radar class to the AIS ship size. |
+| `solas_role` | Which SOLAS carriage rule the radar meets |
+| `status` | Current or legacy; legacy models are still found on older ships |
+| `fcc_id` | FCC equipment authorization, where found (JRC NKE-2632: CKENKE2632) |
+| `product_page_url`, `datasheet_url` | Maker page and the specification source (a ";" separates two sources) |
+| `confidence`, `note` | High means frequency and power were quoted from the maker's specifications; medium means band and power were confirmed; low means a dealer page with conflicting figures |
