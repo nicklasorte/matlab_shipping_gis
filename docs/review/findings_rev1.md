@@ -139,3 +139,44 @@ Links: 0 broken, 2 changed, 16 not checkable from here (`agent_links.md`).
 `mock_rebuttal_rev1.md` (fictional party) and the answer,
 `rebuttal_response_rev1.md`: of 20 arguments, 1 rebutted, 13 partly valid, and
 6 valid. The valid ones overlap the Fix-first and Decisions lists above.
+
+## Fixes applied (November 13, 2026)
+
+Nick asked to apply the fixes, take the zone-definition recommendation, fix
+the text, and run the 80 m and 120 m cutoffs. Results: `fix_results_rev1.md`.
+
+- **Code:** charted lanes downloaded in pages with a count check and the
+  traffic separation scheme theme kept (CA-1, CA-2); port approaches limited to
+  25 km of the coastline (CA-8); zones measured from the route cells ("ships"
+  mode) with foreign land removed (CA-3 to CA-7); land areas from polygons
+  (CA-33); ESRI .prj (CA-85); NaN MMSI dropped in MATLAB (CA-79); racon retry
+  (CA-90); year-stability day list (CA-36); comments (CA-72, CA-86). 19 of 19
+  MATLAB tests pass; Code Analyzer is clean.
+- **Reruns:** all four zone runs (Mac, commit `034709a`), island figures,
+  year stability, and the Word copy.
+- **Zone decision:** zones now mean U.S. land and water within D km of a route
+  cell. Lower-48 land in zone: 301,168 / 638,688 / 1,261,529 km² at 25 / 50 /
+  100 km (shore mode gave 404,668 / 730,157 / 1,335,776 on a cell basis).
+- **Paper:** 133 text edits (all Fix and Disclose rows except those listed
+  below), Tables 3, 5, 6, 7, eight captions, eight figures, the A.8 length
+  paragraph, and the Figure 6 and 10 caption sentences. The Word copy was
+  re-exported with all 56 figures and the marking in its header and footer.
+- **Length cutoff:** at 120 m, land in zone changes by −1% to −4%; at 80 m by
+  +10% to +12%, from river cruise vessels on the Columbia, Snake, and upper
+  Mississippi (`length_sensitivity_rev1.csv`).
+
+Still open:
+
+- Every "Nick decides" row except the zone definition (CA-9 to CA-15, CA-18 to
+  CA-20, CA-26, CA-32, CA-37, CA-97, CA-100; CB-15, CB-26, CB-28 to CB-32,
+  CB-47, CB-53, CB-60, CB-61, CB-63, CB-64, CB-84 to CB-86).
+- CA-58 (fixed QC gate limits), CA-63 (transit counts at full resolution and
+  Table 8 rerun), CA-96 (invalid route polygons), CA-84 (check the new zones
+  nest), CA-101 and CA-102 (can't check).
+- In the doc by hand: link URLs (CB-40, CB-42), new Section 1.2 source rows and
+  A.21 items (Kapsar, Natural Earth, NOAA Transit Counts), figure colors
+  (CB-76 to CB-82), Caption style (CB-73).
+- The Appendix A products and the stress tests ran on the network before the
+  fixes; the paper quotes only their percentage changes.
+- Clipping charted lanes to U.S. waters (Old Bahama Channel schemes are in the
+  route water).

@@ -8,7 +8,7 @@
 %%%%%
 %%%%%Why: a few dedicated ships serve the neighbor islands. Under the
 %%%%%lower-48 rule (4 distinct ships in one year) the inter-island lanes
-%%%%%break and only Honolulu and Kalaeloa connect. Ship-days (distinct ships
+%%%%%break and only three ports connect (route_rules.json). Ship-days (distinct ships
 %%%%%per sampled day, summed over the 104 days, at least 6) connects
 %%%%%Kahului and Nawiliwili too. The value 6 best reproduces the lower-48
 %%%%%network (Jaccard 0.81); see python/ship_route_rules.py and
