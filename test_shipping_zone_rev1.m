@@ -271,7 +271,13 @@ writelines(square,fullfile(data_dir,name));
 mask=load_shipping_fairways_rev1(R,data_dir);
 cell_area=areamat(mask,R,wgs84Ellipsoid('km'));
 square_area=areaquad(30.5,-79.5,31.5,-78.5,wgs84Ellipsoid('km'));
-verifyEqual(tc,cell_area,square_area,'RelTol',0.03);   %%%%%within 3% (edge cells)
+%%%%%The grid-specific file was read (not the empty lower-48 file), and the
+%%%%%mask covers the square plus at most the one-cell ring of edge cells that
+%%%%%rasterize_polygon_crop_rev1 keeps.
+ring_area=areaquad(30.5-R.CellExtentInLatitude,-79.5-R.CellExtentInLongitude, ...
+    31.5+R.CellExtentInLatitude,-78.5+R.CellExtentInLongitude,wgs84Ellipsoid('km'));
+verifyGreaterThanOrEqual(tc,cell_area,square_area);
+verifyLessThanOrEqual(tc,cell_area,ring_area*(1+1e-9));
 end
 
 function [ship_days,max_year_ships]=rule_counts()

@@ -1,0 +1,28 @@
+{
+ "day": "2019-01-09",
+ "large_ship_reports": 816785,
+ "route_cells_from": {
+  "Alaska to 180": "outputs/2018_2019/alaska/alaska_rule_cells.npz:ship_days_6"
+ },
+ "Alaska to 180": {
+  "reports": 14440,
+  "ships": 40,
+  "ships_bad_mmsi": 0,
+  "ships_length_over_400m": 0,
+  "ships_imo_bad_check_digit": 1,
+  "ships_with_imo": 40,
+  "reports_implied_speed_over_50kn": 1,
+  "ships_with_jump": 1,
+  "reports_sog_over_40kn": 3,
+  "ships_possible_duplicate_mmsi": 0,
+  "reports_on_land_2km": 91,
+  "reports_on_land_2km_great_lakes": 0,
+  "reports_on_land_2km_on_route_cells": 91,
+  "reports_on_land_2km_off_routes": 0,
+  "ships_on_land_2km_off_routes": 0,
+  "cells_only_from_flagged_reports": 1,
+  "of_which_route_cells": 0,
+  "route_cells": 26983,
+  "reports_outside_day": 0
+ }
+}
