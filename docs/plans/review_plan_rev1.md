@@ -61,7 +61,7 @@ a conclusion or embarrass the paper.
 | 5 | Great Lakes ports rank low on ship counts against tonnage. Lakers without IMO numbers may be filtered out. | Count ships 100 m or longer with no IMO number on the Great Lakes. |
 | 6 | Sampling stability hasn't been tested within a year. | Rebuild the routes from 52 of the 104 days and report the overlap. |
 | 7 | Hawaii routes shift between years: 56–63% of the held-out years' routes fall inside the 2024–2025 network. | Compare the zones, not the cells, across years. If the zones are stable, say so in Section 4. |
-| 8 | Alaska's satellite cutoff matches the shore-based routes only moderately (Jaccard index 0.57), and the hexagons are about 27 km across. | Report the zones at two other cutoffs to show how sensitive they are. |
+| 8 | Alaska's satellite cutoff matches the shore-based routes only moderately (Jaccard index 0.57), and the hexagons are about 27 km across. | **Done.** At half the cutoff, land in the 25, 50, and 100 km zones grows by 4.2%, 3.4%, and 2.0%; at double, it shrinks by 8.0%, 7.3%, and 5.7%. All five ports stay in the 25 km zone. Added to Section 5.3. Table: `outputs/2018_2019/alaska/sensitivity/alaska_cutoff_sensitivity.csv`. |
 | 9 | Alaska's ship-days rule and the satellite cutoff rule were analyst choices, not decisions Nick made in advance. | Nick confirms or changes them. |
 | 10 | NOAA returned no charted lanes or racons for the Puerto Rico grid, and no racons for Hawaii or Alaska. | Confirm against the charts that none exist, so an empty download isn't mistaken for no features. |
 | 11 | On Mobile Bay, more ships are counted at the head port than at the entrance (104%). | Check whether the entrance window is too narrow, and whether other corridors' shares are biased the same way. |
@@ -187,8 +187,9 @@ Goal: every number in the paper has a source.
 
 Pass: every row has a source and matches; no orphan numbers.
 
-Known item for this stage: Section 3 comes before Section 4, but Table 4
-appears after Tables 5 through 7. Decide whether to renumber.
+Tables were renumbered in order of appearance on November 12, 2026 (old
+Tables 5–7 are now 4–6; the zone-distance table is now Table 7). Check the
+new numbers in the ledger.
 
 ### Stage 3: Attack the method (about one day)
 
@@ -235,8 +236,8 @@ the specific questions above. Ask for comments in the working paper doc.
 
 ## Decisions for Nick
 
-Each decision has a recommendation. They are recommendations only; Nick
-decides.
+Each decision has a recommendation. Nick asked on November 12, 2026, to
+apply them; what was done is under "Applied" in each decision.
 
 ### 1. Alaska route rule and satellite cutoff (gaps 8 and 9)
 
@@ -263,6 +264,9 @@ example, half and double) before reviewers see it. Against A: the cutoff
 was chosen by best fit to the shore routes, which a reviewer may see as
 circular; the sensitivity table answers that.
 
+**Applied:** both rules kept; the half and double runs are in Section 5.3
+(zones change by 2–8%).
+
 ### 2. Stage 4 reviewers and outside agencies
 
 Options:
@@ -283,6 +287,9 @@ a technical check of Sections 4–6 and the route maps only, under the
 DRAFT//PRE-DECISIONAL marking. Against A: it adds about a week. Option C
 leaves the routes unchecked by anyone who knows the waters.
 
+**Applied:** stage 4 order set as above. Names still to be filled in by
+Nick.
+
 ### 3. MATLAB and Python agreement statement (gap 1)
 
 Options:
@@ -297,6 +304,9 @@ can stay as written if the comparison holds. Two independent
 implementations that agree are one of the strongest checks the paper has,
 and narrowing the sentence would give it up.
 
+**Applied:** the sentence names the two corridors where the two differ
+(gap 13).
+
 ### 4. Table numbering (stage 2)
 
 Options:
@@ -310,6 +320,8 @@ Options:
 in the order they appear, and a reader who meets Table 5 before Table 4
 will look for a missing table. It is a mechanical change; do it in the
 numbers-ledger pass so every cross-reference is checked at the same time.
+
+**Applied:** renumbered in the doc and the Word copy (12 references).
 
 ### 5. Alaska data-validity gate (gap 3)
 
@@ -328,6 +340,10 @@ only area where the zones depend on satellite data, which reviewers most
 need to see. Against A: the gate was written as a strict two-day rule, and
 accepting a near-miss loosens it after the fact; the disclosure and the
 gap 4 rebuild are the safeguard.
+
+**Applied:** Alaska accepted. The disclosure goes into Section 5.3 with the
+gap 4 rebuild result, which is running (`python/flagged_pairs_day.py` on
+all 208 sample days, then `python/ship_flagged_rebuild.py`).
 
 ## Exit criteria
 

@@ -1,0 +1,4 @@
+cutoff_factor,cutoff_operating_days,hexagons_kept,satellite_cells,jaccard_near_shore,land_25km_km2,change_25km_pct,land_50km_km2,change_50km_pct,land_100km_km2,change_100km_pct
+0.5,136.0,633,535470,0.463,186483,4.2,270966,3.4,417631,2.0
+1.0,271.9,400,334651,0.571,179047,0.0,261953,0.0,409521,0.0
+2.0,543.8,304,255565,0.464,164690,-8.0,242718,-7.3,386045,-5.7
