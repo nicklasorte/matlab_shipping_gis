@@ -161,7 +161,7 @@ usace_principal_port,"Memphis-Shelby County Port, TN",35.18177,-90.06198,0,514.1
 usace_principal_port,"Joliet Regional Port, IL",41.51573,-88.08984,0,45.1462357331439,0,0,1,1,"type I; rank 54; foreign tons 0"
 usace_principal_port,"PortMiami, FL",25.78286,-80.18164,0,0.412069463600119,1,1,1,1,"type C; rank 55; foreign tons 8207427"
 usace_principal_port,"E Iowa and W Illinois, IA IL",41.77875,-90.25201,0,219.677359389543,0,0,0,0,"type I; rank 56; foreign tons 0"
-usace_principal_port,"Detroit-Wayne County Port, MI",42.26909,-83.10959,0,0.591172646965453,1,0,0,0,"type L; rank 57; foreign tons 2449402"
+usace_principal_port,"Detroit-Wayne County Port, MI",42.26909,-83.10959,0,0.591172646965453,1,1,1,1,"type L; rank 57; foreign tons 2449402"
 usace_principal_port,"New Haven, CT",41.29883,-72.90473,0,0.426474064031062,1,1,1,1,"type C; rank 58; foreign tons 3315987"
 usace_principal_port,"Louisville-Jefferson Port, KY",38.26147,-85.76099,0,393.21932716523,0,0,0,0,"type I; rank 59; foreign tons 0"
 usace_principal_port,"Nashville, TN",36.16513,-86.77467,0,595.02734988035,0,0,0,0,"type I; rank 60; foreign tons 0"
