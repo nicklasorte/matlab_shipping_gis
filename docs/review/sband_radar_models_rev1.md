@@ -57,7 +57,10 @@ found, so Koden isn't in the table.
 
 ## Gaps for the next pass
 
-- Frequencies for Furuno FAR-2338S, FAR-3230S, and FAR-3230S-SSD, JRC
+- Frequencies for Furuno FAR-2338S-NXT and FAR-3230S-SSD (the FAR-2338S and
+  FAR-3230S frequencies are now inferred from the FAR-2238S, because Furuno
+  Norway's tables list the same transceiver, RTR-107, and antenna; they are
+  marked as inferred in the CSV), JRC
   JMR-9300, Sperry VisionMaster FT and BridgeMaster E, and Raytheon Anschütz
   Synapsis. The Furuno brochures and manuals are on hosts this session can't
   reach (furuno.com/files); a person can download them, or dealer copies may

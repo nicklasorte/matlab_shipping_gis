@@ -8,12 +8,12 @@ its source and quotes the text it relies on.
 
 ## What's in the table
 
-The table has 24 rows for 17 research and survey ships, one row per radar. Ships
+The table has 25 rows for 18 research and survey ships, one row per radar. Ships
 come from the UNOLS fleet and the NOAA fleet.
 
 | Result | Ships |
 | --- | --- |
-| S-band radar confirmed by a source | Sally Ride, Roger Revelle, Ronald H. Brown, Okeanos Explorer, Henry B. Bigelow, Atlantis, Thomas Jefferson, Oscar Dyson (8) |
+| S-band radar confirmed by a source | Sally Ride, Roger Revelle, Ronald H. Brown, Okeanos Explorer, Henry B. Bigelow, Atlantis, Thomas Jefferson, Oscar Dyson, Gordon Gunter (9) |
 | Only an X-band radar listed | Sikuliaq (1) |
 | A radar listed with no make, model or band, or none listed | Thomas G. Thompson, Kilo Moana, Bell M. Shimada, Marcus G. Langseth, Neil Armstrong, Healy, Reuben Lasker, Fairweather (8) |
 
@@ -24,11 +24,13 @@ bot check).
 ## Findings
 
 1. **Research and survey ships carry S-band radars below the length proxy.**
-   Six of the eight S-band ships have a published length: Atlantis and Ronald H.
-   Brown at 83.5 m, Okeanos Explorer at 68.3 m, Henry B. Bigelow and Oscar Dyson
-   at 63.6 m, and Thomas Jefferson at 63.4 m. All six are under the 100 m cutoff in Section 1.4, so the proxy misses them.
-2. **Three carry S-band below 3,000 GT.** Henry B. Bigelow (2,479 GT), Okeanos
-   Explorer (2,062 GT), and Thomas Jefferson (1,466 GT) are under the SOLAS threshold for a required S-band
+   Eight of the nine S-band ships have a published length: Atlantis and Ronald H.
+   Brown at 83.5 m, Roger Revelle at 83.3 m, Okeanos Explorer and Gordon Gunter
+   at 68.3 m, Henry B. Bigelow and Oscar Dyson at 63.6 m, and Thomas Jefferson
+   at 63.4 m. All eight are under the 100 m cutoff in Section 1.4, so the proxy misses them.
+2. **Four carry S-band below 3,000 GT.** Henry B. Bigelow (2,479 GT), Okeanos
+   Explorer (2,062 GT), Gordon Gunter (1,904 GT), and Thomas Jefferson (1,466 GT)
+   are under the SOLAS threshold for a required S-band
    radar, so these were fitted by choice or by owner specification.
 3. **A radar model may not say which band it is.** Okeanos Explorer's page lists
    Furuno FAR 2837S and FAR 2827X with no bands; the band comes from the model
@@ -46,6 +48,12 @@ bot check).
   S-band.
 - **Atlantis's S-band model is printed "2835X".** The page labels it S-band.
   The model string may be a typo; the band label is the stated fact.
+- **Two tonnage measures.** `gross_tonnage` is the IRVSI figure (GRT).
+  `gt_itc_unols` is the UNOLS ITC gross tonnage, the measure SOLAS uses. They
+  can differ a lot: Kilo Moana is 1,407 GRT but 3,060 ITC, and Atlantis is
+  3,200 GRT but 3,304 ITC. Use the ITC column for the 3,000 GT test where it
+  exists. Roger Revelle (3,180 ITC) and Thomas G. Thompson (3,058 ITC) are
+  above 3,000 by ITC.
 - **A missing radar is not an absent radar.** Sikuliaq's page lists only an
   X-band radar. Eight pages list no radar at all or no band.
 - **Blank cells mean not found.** IMO and MMSI are filled only where a page gave
@@ -60,13 +68,12 @@ inside the kept AIS set and whether the length proxy keeps them.
 
 ## Next
 
-- Add the other NOAA and UNOLS ships (Gordon Gunter, Rainier, Pisces, Nancy
-  Foster, Hugh R. Sharp) from operator handbooks; some are on sites this
+- Add the other NOAA and UNOLS ships (Rainier, Pisces, Nancy Foster, Hugh R.
+  Sharp) from operator handbooks; some are on sites this
   session can't reach.
 - Add the Corps dredges from the Corps fleet listing, which a person can
   download.
-- Fill lengths and tonnage for Sally Ride and Roger Revelle from the UNOLS
-  vessel specifications.
+- Find length and tonnage for Sally Ride (not in the UNOLS vessel specifications).
 
 ## Sources
 
@@ -89,5 +96,6 @@ inside the kept AIS set and whether the length proxy keeps them.
 - [Sikuliaq scientific equipment](https://ops.sikuliaq.alaska.edu/shipboard-services/equipment-and-instrumentation/scientific-equipment),
   [Sikuliaq specifications](https://www.sikuliaq.alaska.edu/ops/skq_specs.html)
 - [Langseth specs](https://lamont.columbia.edu/research-divisions/marine-large-programs/office-marine-operations/langseth)
+- [UNOLS vessel specifications (August 2015)](https://www.unols.org/sites/default/files/VesselSpecs_18Aug15.pdf), [Gordon Gunter (IRVSI)](https://www.researchvessels.org/ship_info_display.asp?shipID=240)
 - [WHOI R/V Atlantis navigation equipment](https://whoi.edu/what-we-do/explore/ships/ships-atlantis/ships-atlantis-scientific-equipment/ships-atlantis-scientific-equipment-navigation-equipment)
 - [R/V Neil Armstrong fact sheet](https://www.whoi.edu/wp-content/uploads/2026/09/RVArmstrong-fact-sheetV2.pdf)
