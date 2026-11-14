@@ -271,12 +271,13 @@ end
 %%%%%stay zone sources, so U.S. land in the zones doesn't change.
 %%%%%Built-ins considered: an EEZ polygon (option 3, needs a new input layer).
 if isfield(p,'clip_water_foreign_side') && p.clip_water_foreign_side && foreign_poly.NumRegions>0
-    if ~exist('foreign_mask','var')
-        foreign_mask=foreign_land_mask(R,p.data_dir,land_mask);
-    end
     cap_km=p.clip_water_cap_km;
+    %%%%%Foreign land past the grid edge counts too (the Dominican Republic
+    %%%%%beyond 68.5 W, Russia west of 180), so distances to foreign land run
+    %%%%%to the country outline vertices, not to a mask clipped to the grid.
+    [~,f_lat,f_lon]=load_foreign_land_rev1(R,p.data_dir,cap_km);
     d_us=distance_to_mask_km_rev1(land_mask,R,cap_km,p.block_rows);
-    d_foreign=distance_to_mask_km_rev1(foreign_mask,R,cap_km,p.block_rows);
+    d_foreign=distance_to_points_km_rev1(f_lat,f_lon,R,cap_km,p.block_rows);
     %%%%%Region where d_foreign-d_us <= 0 is foreign land or foreign-side water;
     %%%%%cells beyond cap_km of both get equal distances and stay U.S.-side.
     side_km=d_foreign-d_us;
@@ -285,8 +286,8 @@ if isfield(p,'clip_water_foreign_side') && p.clip_water_foreign_side && foreign_
     foreign_side_poly=simplify_polyshape_rev1(foreign_side_poly,p.simplify_deg);
     foreign_side_poly=subtract(foreign_side_poly,land_poly);   %%%%%never cut U.S. land
     foreign_poly=union(foreign_poly,foreign_side_poly);
-    disp_progress(sprintf('Foreign-side water clip: equidistance line from %d foreign-land cells (distances to %g km)',nnz(foreign_mask),cap_km));
-    clear d_us d_foreign side_km foreign_side_poly
+    disp_progress(sprintf('Foreign-side water clip: equidistance line from %d foreign outline vertices (distances to %g km)',numel(f_lat),cap_km));
+    clear d_us d_foreign side_km foreign_side_poly f_lat f_lon
 end
 for dist_idx=1:num_dist
     d_km=p.distances_km(dist_idx);
