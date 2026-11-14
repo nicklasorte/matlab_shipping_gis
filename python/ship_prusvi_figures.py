@@ -134,7 +134,7 @@ def pr_routes():
 def pr_zones():
     m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     zs = {int(z.distance_km): float(z.land_area_km2) for z in m["zone"]}
-    total = isl.land_total_km2("prusvi")   # polygon land, same footing as the zone areas (review CA-33)
+    total = isl.land_total_km2("prusvi", os.path.join(HAW, f"{STEM}_ships_rev1.mat"))   # polygon land, same footing as the zone areas (review CA-33)
     sh = {d: min(1.0, zs[d] / total) for d in zs}   # simplified zone outlines can exceed the total by a hair
     page = OnePager(
         headline=f"A 25 km zone would cover {100 * sh[25]:.0f}% of the land of Puerto Rico and the U.S. Virgin Islands, and "

@@ -254,6 +254,11 @@ warn_state=warning('off','MATLAB:polyshape:repairedBySimplify');
 cleanup_warn=onCleanup(@() warning(warn_state));
 %%%%%Fewer vertices: simplify the land outline once and each zone outline
 land_poly=simplify_polyshape_rev1(land_poly,p.simplify_deg);
+%%%%%U.S. land in the grid on the same footing as the zone land areas (the same
+%%%%%simplified polygon, EPSG:6933), the denominator for zone land shares
+%%%%%(review R2MET-6, R3NUM-9).
+grid_land_area_km2=polyshape_area_km2_rev1(land_poly);
+disp_progress(sprintf('U.S. land in the grid: %.0f km^2 (simplified Census polygon, EPSG:6933)',grid_land_area_km2));
 %%%%%Other countries' land is taken out of every zone (review CA-3); the zones
 %%%%%then hold U.S. land and water only.
 foreign_poly=polyshape();
@@ -322,6 +327,7 @@ for dist_idx=1:num_dist
 end
 
 result.R=R;
+result.grid_land_area_km2=grid_land_area_km2;
 result.source_mask=source_mask;
 result.ship_days=ship_days;
 result.unique_ships=unique_ships;

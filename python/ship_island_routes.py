@@ -161,7 +161,20 @@ if __name__ == "__main__":
         run(g)
 
 
-def land_total_km2(grid):
+def land_total_km2(grid, mat_path=None):
+    """Denominator for zone land shares. When MAT_PATH (a zone run's *_ships_rev1.mat)
+    holds grid_land_area_km2, use it: the same simplified polygon and projection
+    as the zone land areas (review R2MET-6). Otherwise fall back to the Census
+    polygon below."""
+    if mat_path and os.path.isfile(mat_path):
+        import scipy.io as _sio
+        m = _sio.loadmat(mat_path, squeeze_me=True, struct_as_record=False, variable_names=["grid_land_area_km2"])
+        if "grid_land_area_km2" in m:
+            return float(m["grid_land_area_km2"])
+    return land_total_census_km2(grid)
+
+
+def land_total_census_km2(grid):
     """U.S. land in the grid (Census 1:500,000 states clipped to the grid box), geodesic km2.
 
     The denominator for the zone shares, on the same footing as the zone land

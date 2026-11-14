@@ -1,0 +1,55 @@
+{
+ "note": "Jaccard index near shore (within 74 km) between Kapsar hexagons at or above each cutoff and hexagons holding ship-track route cells (review R3OPP-11)",
+ "cutoffs": {
+  "272": {
+   "jaccard_near_shore": 0.571,
+   "hexagons_kept": 400,
+   "hexagons_kept_beyond_shore_range": 290
+  },
+  "300": {
+   "jaccard_near_shore": 0.573,
+   "hexagons_kept": 377,
+   "hexagons_kept_beyond_shore_range": 273
+  },
+  "350": {
+   "jaccard_near_shore": 0.542,
+   "hexagons_kept": 356,
+   "hexagons_kept_beyond_shore_range": 260
+  },
+  "400": {
+   "jaccard_near_shore": 0.519,
+   "hexagons_kept": 341,
+   "hexagons_kept_beyond_shore_range": 250
+  },
+  "450": {
+   "jaccard_near_shore": 0.51,
+   "hexagons_kept": 329,
+   "hexagons_kept_beyond_shore_range": 241
+  },
+  "500": {
+   "jaccard_near_shore": 0.493,
+   "hexagons_kept": 314,
+   "hexagons_kept_beyond_shore_range": 230
+  },
+  "550": {
+   "jaccard_near_shore": 0.464,
+   "hexagons_kept": 303,
+   "hexagons_kept_beyond_shore_range": 225
+  },
+  "600": {
+   "jaccard_near_shore": 0.46,
+   "hexagons_kept": 284,
+   "hexagons_kept_beyond_shore_range": 208
+  },
+  "650": {
+   "jaccard_near_shore": 0.453,
+   "hexagons_kept": 268,
+   "hexagons_kept_beyond_shore_range": 193
+  },
+  "659": {
+   "jaccard_near_shore": 0.447,
+   "hexagons_kept": 266,
+   "hexagons_kept_beyond_shore_range": 192
+  }
+ }
+}

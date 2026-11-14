@@ -24,7 +24,9 @@ Usage: python3 python/alaska_satellite_lanes.py [FACTOR]
 Writes outputs/2018_2019/alaska/satellite_lane_cells.csv and satellite_lanes.json.
 With FACTOR (for example 0.5 or 2), the cutoff is FACTOR times the best-match
 cutoff, for the cutoff sensitivity check in Section 5.3, and the files get the
-suffix _x<FACTOR> (satellite_lane_cells_x0.5.csv).
+suffix _x<FACTOR> (satellite_lane_cells_x0.5.csv). "beyond" keeps only the
+hexagons beyond shore-receiver range (suffix _beyond, review R3OPP-1); "sweep"
+writes the Jaccard index at cutoffs from 300 to 650 days (review R3OPP-11).
 """
 import json
 import os
@@ -54,7 +56,7 @@ TO_LL = Transformer.from_crs(3338, 4326, always_xy=True)
 TO_AK = Transformer.from_crs(4326, 3338, always_xy=True)
 
 
-def main(factor=None):
+def main(factor=None, beyond_only=False, sweep=False):
     polys, ops, _ = kc.read_hex()
     hid = list(polys)
     kap = np.array([ops[h] for h in hid], float)
@@ -83,9 +85,25 @@ def main(factor=None):
         jac.append((a & b).sum() / max(1, (a | b).sum()))
     jac = np.array(jac)
     T_best = float(cands[np.argmax(jac)])
+    if sweep:
+        # Review R3OPP-11: the candidate list jumps from 272 to 659 days; test between.
+        grid_t = [T_best] + list(range(300, 651, 50)) + [float(cands[cands > T_best].min())]
+        rows = {}
+        for t in grid_t:
+            a, b = near & (kap >= t), near & has
+            rows[f"{t:.0f}"] = {"jaccard_near_shore": round(float((a & b).sum() / max(1, (a | b).sum())), 3),
+                                "hexagons_kept": int((in_grid & (kap >= t)).sum()),
+                                "hexagons_kept_beyond_shore_range": int((in_grid & (kap >= t) & ~near).sum())}
+        with open(os.path.join(AK, "satellite_cutoff_sweep_rev1.json"), "w") as f:
+            json.dump({"note": "Jaccard index near shore (within 74 km) between Kapsar hexagons at or above each cutoff and hexagons holding ship-track route cells (review R3OPP-11)",
+                       "cutoffs": rows}, f, indent=1)
+        print(json.dumps(rows, indent=1))
+        return
     T = T_best if factor is None else T_best * factor
-    sfx = "" if factor is None else f"_x{factor:g}"
+    sfx = ("" if factor is None else f"_x{factor:g}") + ("_beyond" if beyond_only else "")
     keep = in_grid & (kap >= T)
+    if beyond_only:
+        keep &= ~near   # review R3OPP-1: only hexagons the shore receivers can't see
     # Water cells inside the kept hexagons
     sf = shapefile.Reader(vp.os.path.join(ROOT, "data", "cb_2023_us_state_500k", "cb_2023_us_state_500k.shp"))
     land = unary_union([shape(s.__geo_interface__) for s, r in zip(sf.shapes(), sf.records()) if r["STUSPS"] == "AK"])
@@ -122,4 +140,7 @@ def main(factor=None):
 
 
 if __name__ == "__main__":
-    main(float(sys.argv[1]) if len(sys.argv) > 1 else None)
+    # python3 python/alaska_satellite_lanes.py [FACTOR] [beyond] [sweep]
+    args = sys.argv[1:]
+    fac = next((float(a) for a in args if a.replace(".", "", 1).isdigit()), None)
+    main(fac, beyond_only="beyond" in args, sweep="sweep" in args)

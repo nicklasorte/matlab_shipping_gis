@@ -122,7 +122,7 @@ def haw_zones():
     import scipy.io
     m = scipy.io.loadmat(os.path.join(HAW, f"{STEM}_ships_rev1.mat"), squeeze_me=True, struct_as_record=False)
     zs = m["zone"]
-    land_total = isl.land_total_km2("hawaii")   # polygon land, same footing as the zone areas (review CA-33)
+    land_total = isl.land_total_km2("hawaii", os.path.join(HAW, f"{STEM}_ships_rev1.mat"))   # polygon land, same footing as the zone areas (review CA-33)
     for z in zs:
         shares[int(z.distance_km)] = (float(z.land_area_km2), min(1.0, float(z.land_area_km2) / land_total))
     page = OnePager(

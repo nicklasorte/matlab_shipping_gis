@@ -51,6 +51,7 @@ step_reports=zeros(num_step,1);
 step_mmsi=cell(num_step,1);
 final_type=zeros(0,2);   %%%%%[mmsi vessel_type] after step 5
 final_rows=zeros(0,1);   %%%%%vessel_type per kept report (for report counts by group)
+length_type=zeros(0,2);  %%%%%[mmsi vessel_type] after step 3 (type and length), for ships by group before the IMO test (review R2NUM-6)
 while hasdata(ds)
     T=read(ds);
     T=renamevars(T,src_names,out_names);
@@ -69,6 +70,7 @@ while hasdata(ds)
         step_mmsi{s}=unique([step_mmsi{s}; T.mmsi(keep(:,s))]);
     end
     final_type=unique([final_type; [T.mmsi(keep(:,5)) T.vessel_type(keep(:,5))]],'rows');
+    length_type=unique([length_type; [T.mmsi(keep(:,3)) T.vessel_type(keep(:,3))]],'rows');
     final_rows=[final_rows; T.vessel_type(keep(:,5))]; %#ok<AGROW> chunk count unknown
 end
 step_ships=cellfun(@numel,step_mmsi);
@@ -88,5 +90,8 @@ ship_group=group_of(final_type(:,2));
 ship_main=accumarray(ship_idx,ship_group,[numel(mmsi_u) 1],@mode);
 ships_by=accumarray(ship_main,1,[numel(groups) 1]);
 reports_by=accumarray(group_of(final_rows),1,[numel(groups) 1]);
-by_type=table(groups,ships_by,reports_by,'VariableNames',{'group','ships','reports'});
+[mmsi_l,~,len_idx]=unique(length_type(:,1));
+len_main=accumarray(len_idx,group_of(length_type(:,2)),[numel(mmsi_l) 1],@mode);
+ships_len=accumarray(len_main(len_main>0),1,[numel(groups) 1]);
+by_type=table(groups,ships_by,reports_by,ships_len,'VariableNames',{'group','ships','reports','ships_after_length_step'});
 end

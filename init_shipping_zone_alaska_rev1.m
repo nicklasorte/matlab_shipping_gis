@@ -35,8 +35,8 @@ if ~exist('lane_suffix','var')
     lane_suffix='';
 end
 lane_suffix=char(lane_suffix);
-if ~ismember(lane_suffix,{'','_x0.5','_x2','_nosat'})
-    error('shipgis:lanesuffix','lane_suffix must be '''', ''_x0.5'', ''_x2'', or ''_nosat''.');
+if ~ismember(lane_suffix,{'','_x0.5','_x2','_nosat','_beyond'})
+    error('shipgis:lanesuffix','lane_suffix must be '''', ''_x0.5'', ''_x2'', ''_beyond'', or ''_nosat''.');
 end
 
 %%%%%%%%%%Grid: Alaska east of 180 degrees
