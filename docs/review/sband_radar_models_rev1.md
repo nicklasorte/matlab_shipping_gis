@@ -29,28 +29,31 @@ found, so Koden isn't in the table.
    3020–3080 MHz.**
    - Magnetron models: 3050 MHz ±30 MHz (Furuno) or ±20 MHz (JRC, Kongsberg,
      Wärtsilä).
-   - Solid-state models: fixed channels, 3035–3075 MHz (Furuno NXT and JRC).
-   - Kelvin Hughes SharpEye: eight selectable channels across the whole
-     2900–3100 MHz band.
+   - Solid-state models: fixed channels, 3035–3079 MHz (Furuno NXT to
+     3078.75 MHz; JRC to about 3073 MHz with its 8 MHz long-pulse deviation).
+   - Kelvin Hughes SharpEye: 8 selectable channels within 2.9–3.1 GHz (the
+     channel frequencies aren't published).
 
    So the 3030–3070 MHz example band in Table 7 holds most ship radars' center
    frequencies, but not the ±30 MHz magnetron tolerance or SharpEye's channels.
    This bears on review item CA-18.
-2. **Solid-state S-band radars run at 200–250 W peak, against 30 kW for
-   magnetrons.** The makers rate the two as performing alike. The EMC analysis
+2. **Solid-state S-band radars run at 200–250 W peak, against 30 kW for IMO
+   magnetrons (60 kW for Furuno's FAR-2268DS fishing radar).** The makers rate the two as performing alike. The EMC analysis
    needs both emitter types, because their spectra and peak powers differ.
 3. **Antenna length doesn't separate the bands cleanly.**
    - Most S-band antennas are 12 ft (3.7 m), and SharpEye's is 12 ft 9 in
      (3.9 m).
-   - Some aren't: JRC's solid-state JMR-9282-S uses an 8 ft antenna, and
-     Furuno's older FR-2135S offered 9 ft.
-   - X-band antennas run 4–9 ft (Furuno 4, 6.5, and 8 ft; JRC and others up to
-     9 ft).
+   - Some are shorter: JRC's solid-state JMR-9282-S uses an 8 ft antenna,
+     Furuno's FR-2135S offered 9 ft, and Furuno sells 8 and 10 ft S-band
+     radiators for non-IMO installations.
+   - Most X-band antennas run 4–9 ft, but Furuno's FAR-2258 fishing radar
+     offers a 10 ft X-band radiator (XN30AF).
 
-   So the photo-coding step (A3) can count a 12 ft or longer antenna as S-band.
-   An 8–9 ft antenna can't be coded from length alone, and A3's protocol must
-   allow "unclear". The plan's line "about 3.7 m against 1.8–2.4 m" is
-   corrected below.
+   **Photo-coding rule (one rule, used in the CSV and the protocol):** 12 ft or
+   longer is S-band; 8 to 11.9 ft is unclear; under 8 ft is X-band. Length here
+   is the nominal radiator length; JRC's FCC filing gives swing circles a little
+   longer (2.77 m for its 8 ft scanner, 4.0 m for its 12 ft scanners).
+   Corrected after the round-three data review (R3DAT-1, R3DAT-2).
 4. **Makers share scanners.** Kongsberg's S-band scanner carries JRC's code
    (NKE-1130-12S/KM), so counting by brand overstates the number of distinct
    radar designs.
@@ -96,7 +99,8 @@ found, so Koden isn't in the table.
 
 ## Columns in `data/ship_radar_models.csv`
 
-The file holds 34 rows: 22 S-band models and 12 X-band models. The X-band
+The file holds 36 rows: 23 S-band models, 1 ITU generic S-band row, and 12
+X-band models. The X-band
 rows are there so the photo coding can tell the two bands apart.
 
 | Column | Meaning and how it helps match ship data |
@@ -108,7 +112,7 @@ rows are there so the photo coding can tell the two bands apart.
 | `emission_class` | ITU class of emission: P0N is a plain pulse (magnetron or solid-state); Q0N is a pulse with modulation inside it (solid-state) |
 | `peak_power_w`, `transmitter` | Peak power and magnetron or solid-state, for the EMC analysis |
 | `antenna_ft`, `antenna_m`, `antenna_unit` | Antenna length and part number |
-| `photo_code_by_antenna` | How the photo coders (plan step A3) should code an antenna of that length: 10 ft or longer is S-band, 8–9.9 ft is unclear, and under 8 ft is X-band |
+| `photo_code_by_antenna` | How the photo coders (plan step A3) should code an antenna of that length: 12 ft or longer is S-band, 8–11.9 ft is unclear, and under 8 ft is X-band |
 | `imo_category`, `ship_size_hint` | Radar performance category, which ties to ship size: CAT 1 for 10,000 GT or more, CAT 2 for 500 to 10,000 GT, CAT 3 for under 500 GT. Use it to match radar class to the AIS ship size. |
 | `solas_role` | Which SOLAS carriage rule the radar meets |
 | `status` | Current or legacy; legacy models are still found on older ships |
@@ -128,23 +132,23 @@ scanner.
 | `h_beamwidth_deg`, `v_beamwidth_deg` | Antenna 3 dB beamwidths; S-band 1.8–2.7° horizontal and 25–26° vertical |
 | `sidelobe_within_10deg_db`, `sidelobe_outside_10deg_db` | Antenna sidelobe levels relative to the main beam |
 | `polarization` | Horizontal for every model that states it |
-| `antenna_gain_db` | Only Raytheon Anschütz states it: 28 dB for its 12 ft S-band antenna |
+| `antenna_gain_db` | Only Raytheon Anschütz states it for a model (28 dB for its 12 ft S-band antenna); ITU-R M.1460-1 gives 26–28 dB |
 | `rotation_rpm` | 21–27 rpm standard; 42–48 rpm for high-speed craft |
 | `pulse_prf_pairs_us_hz` | Pulse width (µs) / repetition frequency (Hz). Solid-state rows give the short pulse, the long modulated pulse in parentheses, and the PRF. |
 | `pulse_compression` | Solid-state long-pulse details (JRC: 4.6–18.3 µs, 8 MHz deviation; SharpEye: 660:1) |
-| `max_duty_cycle_pct` | Derived: the largest pulse width × PRF among the listed pairs. Magnetrons are about 0.065–0.075%; JRC solid-state is about 2.1%, which matches its stated average power (5.8 W of 250 W peak). |
+| `max_duty_cycle_pct` | Derived: the largest pulse width × PRF among the listed pairs. Magnetrons are about 0.065–0.075%; JRC solid-state is about 2.1%, which is consistent with its stated average power (5.8 W or lower, against 250 W peak). Some Furuno pairs are constructed from unpaired brochure lists (see `rf_note`). |
 | `average_power_w` | Average power where stated |
 | `if_mhz`, `if_bandwidth_mhz`, `noise_figure_db` | Receiver data, used for receiver-side interference analysis |
 | `rf_source_url`, `rf_note` | Source and caveats (unmapped tables, inferred values) |
 
 Main points for the EMC analysis:
 
-- **Magnetron S-band radars:** 30 kW peak, about 0.07% duty cycle, about
-  20 W average.
+- **Magnetron S-band radars:** 30 kW peak for IMO radars (60 kW for one
+  Furuno fishing radar), about 0.07% duty cycle, about 20 W average.
 - **Solid-state S-band radars:** 200–250 W peak, with long frequency-modulated
   pulses at about 2% duty cycle and about 5 W average.
 - **Both:** horizontal polarization, about a 2° by 25° beam, sidelobes at
-  −26 dB to −30 dB, and turning at about 24 rpm.
+  −24 dB to −30 dB, and turning at about 24 rpm.
 
 ### Antenna and scan modes (added November 13, 2026)
 
@@ -153,8 +157,8 @@ Main points for the EMC analysis:
 | `antenna_type` | Slotted waveguide array. Furuno states it; ITU-R M.1460 calls it typical, and rows marked "typical" rely on that. |
 | `antenna_options` | Radiators and antenna units sold for the model, and rotation options |
 | `scan_mode` | All ship navigation radars found turn mechanically through 360° with a fixed fan beam about 25° tall. None scans in elevation. |
-| `sector_blanking` | IMO radars installed from July 1, 2008, must be able to mute transmission over a preset sector (MSC.192(79) 7.3). The sector is set at installation, often toward the ship's own structure or another radar. Legacy models aren't confirmed. |
-| `frequency_channels` | Magnetrons transmit at one frequency within their tolerance, not selectable. Solid-state radars use fixed or selectable channels: Furuno NXT two, JRC by option, SharpEye eight. |
+| `sector_blanking` | MSC.192(79) 7.3 calls for a facility to mute transmission over a preset sector, set up on installation; the resolution recommends that governments apply it to radars installed on or after July 1, 2008, and type approval makes it standard. Where the sector points isn't specified. Legacy models aren't confirmed. |
+| `frequency_channels` | Magnetrons transmit at one frequency within their tolerance, not selectable. Solid-state radars use fixed or selectable channels: Furuno NXT two, JRC by option, SharpEye eight (frequencies not published). |
 | `roll_pitch_performance` | IMO radars must detect normally at roll or pitch up to ±10°. With a 25° beam, the main beam tilts with the ship. |
 | `detection_reference_height_m` | IMO detection tests assume an antenna 15 m above the sea; real masts vary. |
 | `protection_criterion` | I/N of −6 dB for these radars (ITU-R M.1460, aggregate) |
@@ -171,6 +175,6 @@ radars in this band, to use where a model value is blank:
 - More than 300,000 units worldwide (2006).
 
 Furuno's current installation manual also lists 8 ft and 10 ft S-band radiators
-(SN24CF and SN30CF) for installations that aren't IMO type-approved. That
-strengthens the photo-coding rule: antennas shorter than 10 ft are "unclear",
-not X-band.
+(SN24CF and SN30CF) for installations that aren't IMO type-approved, and a 10 ft
+X-band radiator (XN30AF) for the FAR-2258 fishing radar. So an antenna shorter
+than 12 ft is "unclear", whichever band its length suggests.

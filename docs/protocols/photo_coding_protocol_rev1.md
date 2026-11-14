@@ -38,9 +38,9 @@ photo shows an antenna, not whether it radiates.
 
 | Code | Meaning |
 | --- | --- |
-| `S` | A rotating antenna 10 ft (3 m) or longer, about 3.7 m for most S-band units, with the long slotted bar of an S-band radiator |
+| `S` | A rotating antenna 12 ft (3.7 m) or longer, the length of most S-band units |
 | `X_only` | Only rotating antennas shorter than 8 ft (2.4 m) |
-| `unclear` | Antenna length between 8 and 10 ft, or the length can't be judged |
+| `unclear` | Antenna length from 8 to under 12 ft, or the length can't be judged |
 | `no_radar` | The mast is clear and shows no rotating antenna |
 | `no_photo` | No usable photo found |
 
@@ -48,18 +48,24 @@ Rules:
 
 - Judge length against something of known size, such as the window height or a
   person on deck, or the deckhouse width.
-- Most S-band antennas are 12 ft (3.7 m). Some S-band antennas are 8 or 9 ft, so
-  that length is `unclear`, not `X_only`
-  (`docs/review/sband_radar_models_rev1.md`).
+- Most S-band antennas are 12 ft (3.7 m). Some S-band antennas are 8 to 10 ft,
+  and one Furuno fishing radar has a 10 ft X-band antenna, so 8 to 11.9 ft is
+  `unclear` (`docs/review/sband_radar_models_rev1.md`, corrected after review
+  R3DAT-1).
 - A ship with two rotating antennas gets `S` if either is S-band by these rules.
 - A small, fast-turning dome or a closed radome is not coded `S`.
 - Record the number of rotating antennas seen and a one-line note.
 
 ## Coding sheet
 
-`python/photo_sample_draw_rev1.py` writes one sheet per coder with these columns:
-`imo`, `mmsi`, `name`, `ship_group`, `second_coder`, `photo_url`, `photo_date`,
-`antennas_seen`, `code`, `note`. The coder fills the last six.
+`python/photo_sample_draw_rev1.py` writes one sheet per coder (`coder_a.csv`,
+`coder_b.csv`) with these columns: `imo`, `mmsi`, `name`, `photo_url`,
+`photo_date`, `antennas_seen`, `code`, `note`. The coder fills the last five.
+A separate `key.csv` holds each ship's group and second-coder flag; the person
+running the coding keeps it, so neither coder sees the group or which ships are
+double-coded. The draw sorts ships by IMO number first, so the same ships and
+seed give the same sample in any input order, and it stops on blank IMO numbers
+or a ship listed under two groups.
 
 ## Checks
 
