@@ -20,7 +20,15 @@ land (an equidistance line) counts as U.S.-side; the rest is foreign-side. The
 equidistance line is the rule the zone code already uses to drop charted lanes
 nearer foreign land. Negotiated boundaries depart from it (the Great Lakes, the
 Strait of Juan de Fuca, the Gulf of Maine, and the Gulf of Mexico), so these are
-estimates. The sampled land matches the paper's land areas to within 0.3%.
+estimates. The Python land (cell centres) matches the paper's land areas to
+within 0.3%, so the table uses the Python numbers.
+
+**Cross-check.** The MATLAB version counts a grid cell when the polygon touches
+it, so its areas run higher (lower-48 land +13%, small islands more). The
+foreign share of water agrees with Python to within 0.6 percentage points in
+every region and distance (lower 48: 37.0%, 39.7%, 42.4%; Puerto Rico and USVI:
+20.2%, 20.4%; Alaska: 5.8%, 7.1%, 8.4%), and the foreign-water areas agree to
+within 3% in the lower 48 and Puerto Rico and USVI and 8% in Alaska.
 
 | Region | Zone | Land | U.S.-side water | Foreign-side water | Foreign share of water |
 | --- | --- | ---: | ---: | ---: | ---: |

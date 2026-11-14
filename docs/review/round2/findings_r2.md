@@ -52,7 +52,7 @@ partly answered, and 4 still standing (6, 9, 10, 13); after the fixes below, 13
 | R2NUM-7, R2NUM-8, R2NUM-9 | Fixed: 76% to 84%; "about 2%"; 99.5% to 99.6% and 99.95% to 99.98%. |
 | R2NUM-10 | Fixed: 54 a day throughout. |
 | R2NUM-11, R2NUM-12 | Open (figure-level): A.3 range from MATLAB vs Python; Figure A-18 Mississippi label. |
-| R2MET-1 | Disclosed (Section 3). Clipping water to U.S. jurisdiction needs an EEZ layer; Nick decides. |
+| R2MET-1 | Disclosed (Section 3). Measured for the decision: foreign-side water is 36–42% of lower-48 zone water, 20% in Puerto Rico and USVI, 5–8% in Alaska, 0 in Hawaii (`foreign_water_decision_rev1.md`); land is unaffected by any clipping option. Nick decides. |
 | R2MET-2 | Closed on the Mac rerun: land unchanged in all regions; Canadian Great Lakes water now inside the lower-48 zones (+1.3% to +1.5% zone area). |
 | R2MET-3 | Fixed: 3.1 says the comparison includes the route fixes. |
 | R2MET-5 | Disclosed: "land" includes inland lakes (3.1 item 4). |
