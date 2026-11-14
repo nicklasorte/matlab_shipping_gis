@@ -1,0 +1,10 @@
+ship,mmsi,share_in_25km_zone,share_in_50km_zone,share_in_100km_zone
+Sally Ride,369140000,0.96029,0.99709,1.0
+Roger Revelle,367800100,0.94535,0.95321,0.95321
+Ronald H. Brown,368996000,1.0,1.0,1.0
+Okeanos Explorer,369888000,0.87827,0.90323,0.92724
+Henry B. Bigelow,369991000,0.9866,0.99314,0.99314
+Atlantis,367241000,0.94515,0.97728,0.98188
+Thomas Jefferson,369958000,0.99804,1.0,1.0
+Oscar Dyson,368926382,0.929,0.929,0.929
+Gordon Gunter,303913000,0.98356,0.9883,0.99348

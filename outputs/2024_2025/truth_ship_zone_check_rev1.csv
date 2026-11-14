@@ -1,0 +1,10 @@
+ship,mmsi,ais_imo,ais_vessel_type,ais_length_m,ais_name,filter_result,days_sampled,days_seen,reports,share_in_25km_zone,share_in_50km_zone,share_in_100km_zone,share_within_25km_of_l48_route,days_in_25km_zone,underway_reports,underway_share_in_25km_zone,underway_outside_25km_in_grid,underway_outside_grids,underway_share_in_100km_zone,lat_range,lon_range
+Sally Ride,369140000,IMO9695171,90,75,SALLY RIDE,dropped: length,104,77,46431,0.959,0.997,1.0,0.957,74,19944,0.954,917,0,1.0,30.9 to 47.1,-128.2 to -117.2
+Roger Revelle,367800100,IMO9075228,90,84,ROGER REVELLE,dropped: length,104,53,29405,0.943,0.952,0.952,0.974,49,6783,0.828,1113,56,0.862,18.2 to 41.6,-122.3 to -63.0
+Ronald H. Brown,368996000,IMO9105786,90,83,RONALD H BROWN,dropped: length,104,16,6600,1.0,1.0,1.0,1.0,16,357,1.0,0,0,1.0,29.8 to 30.4,-89.1 to -88.1
+Okeanos Explorer,369888000,IMO8835114,90,68,OKEANOS EXPLORER,dropped: length,104,59,28448,0.878,0.903,0.926,0.264,52,7271,0.581,2426,621,0.769,12.0 to 38.1,-161.4 to 145.8
+Henry B. Bigelow,369991000,IMO9349057,90,64,HENRY B BIGELOW,dropped: length,104,103,60464,0.986,0.993,0.993,0.993,102,24423,0.974,625,0,0.989,32.9 to 44.1,-80.0 to -66.4
+Atlantis,367241000,IMO9105798,99,83,ATLANTIS,dropped: length,104,57,24560,0.944,0.977,0.982,0.946,49,4266,0.805,522,312,0.926,32.0 to 48.0,-131.5 to -117.2
+Thomas Jefferson,369958000,IMO8892033,33,64,THOMAS JEFFERSON,dropped: length,104,104,61259,0.998,1.0,1.0,0.998,104,34056,0.996,134,0,1.0,24.2 to 43.6,-94.8 to -67.8
+Oscar Dyson,368926382,IMO9270335,90,64,OSCAR DYSON NOAA,dropped: length,104,10,5465,0.928,0.928,0.928,1.0,10,1608,0.756,393,0,0.756,30.3 to 49.8,-126.2 to -91.2
+Gordon Gunter,303913000,IMO8835255,90,68,GORDON GUNTER,dropped: length,104,81,30345,0.983,0.988,0.993,0.968,81,6391,0.951,313,0,0.98,18.0 to 32.9,-95.0 to -66.6

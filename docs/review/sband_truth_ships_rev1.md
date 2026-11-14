@@ -78,14 +78,47 @@ bot check).
   direct fetch on November 13, 2026; the values were read from a fetched copy.
   Some pages are old (Thomas G. Thompson 2005, Kilo Moana 2009).
 
-## Matching to AIS
+## Matching to AIS (done November 13, 2026)
 
-The AIS data held in the repo is cell counts, not per-ship records, so the match
-to AIS ships runs on the Mac. Use IMO number first (Atlantis, Ronald H. Brown,
-Henry B. Bigelow, Gordon Gunter, and Healy from primary pages; Sally Ride,
-Okeanos Explorer, and Thomas Jefferson from secondary sites), then call sign,
-then name. Report which of these ships fall
-inside the kept AIS set and whether the length proxy keeps them.
+Each S-band ship was found in the AIS data: seven by IMO number in the 2024
+vessel list (`data/ais_vessels_2024_4days.csv`) and two, Roger Revelle and Ronald
+H. Brown, by MMSI from secondary vessel-tracking sites, confirmed because the
+ships report their own IMO number and name in AIS. Their reports on the 104
+route days of 2024 and 2025 were pulled from the MarineCadastre daily files on
+the Mac (`python/truth_ship_tracks.sh`; extracts in
+`data/truth_tracks_2024_2025/`, 292,977 reports) and checked with
+`python/truth_ship_zone_check.py` and its MATLAB twin
+`truth_ship_zone_check_rev1.m` (results agree to within 0.3 percentage points;
+`outputs/2024_2025/truth_ship_zone_check_rev1.csv`).
+
+| Ship | AIS type | AIS length | Filter | Days seen | Reports in 25 km zone | Underway reports in 25 km zone |
+| --- | ---: | ---: | --- | ---: | ---: | ---: |
+| Sally Ride | 90 | 75 m | dropped: length | 77 | 96% | 95% |
+| Roger Revelle | 90 | 84 m | dropped: length | 53 | 94% | 83% |
+| Ronald H. Brown | 90 | 83 m | dropped: length | 16 | 100% | 100% |
+| Okeanos Explorer | 90 | 68 m | dropped: length | 59 | 88% | 58% |
+| Henry B. Bigelow | 90 | 64 m | dropped: length | 103 | 99% | 97% |
+| Atlantis | 99 | 83 m | dropped: length | 57 | 94% | 81% |
+| Thomas Jefferson | 33 | 64 m | dropped: length | 104 | 100% | 100% |
+| Oscar Dyson | 90 | 64 m | dropped: length | 10 | 93% | 76% |
+| Gordon Gunter | 90 | 68 m | dropped: length | 81 | 98% | 95% |
+
+Findings:
+
+1. **The length test alone drops all nine.** Each reports an IMO number and a
+   kept vessel type (90 or 99, other; 33, dredging or underwater operations), so
+   only the 100 m length test removes them. None contributes to the routes.
+2. **They sail inside the zones anyway.** Of their 105,099 underway reports
+   (over 3 knots), 93% fall inside the 25 km zone of some region; 6% are inside
+   an analysis grid but outside the 25 km zone, and 1% outside every grid
+   (Okeanos Explorer near Guam and the Pacific islands; Atlantis and Revelle on
+   transits). Counting reports at the pier, which sit inside the zones, the
+   shares are 88% to 100% by ship. Leaving these ships out changes little about
+   where the zones are.
+3. **Limits.** AIS shore receivers see ships near the coast, so offshore work is
+   undercounted and the in-zone shares are biased high. Oscar Dyson works mostly
+   in Alaska, which MarineCadastre leaves out of its files since 2021, so its 10
+   days are transits. Ronald H. Brown's 16 days are mostly at its home port.
 
 ## Next
 
