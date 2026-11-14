@@ -1,0 +1,8 @@
+mmsi,psix_vessel_id,value,tonnage_type,unit
+303031000,667071,41995,Convention (Subpart B),Short Ton
+303031000,667071,85387,Convention (Subpart B),Long Ton
+303031000,667071,31769,Displacement,Ton
+303031000,667071,141740,Dead Weight,Ton
+303104000,53002,12981,Convention (Subpart B),Short Ton
+303104000,53002,29823,Convention (Subpart B),Long Ton
+303104000,53002,48855,Dead Weight,Ton

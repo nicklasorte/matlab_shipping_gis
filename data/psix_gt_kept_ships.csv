@@ -1,0 +1,4 @@
+mmsi,imo,name,call_sign,psix_vessel_id,psix_name,gt_psix,nt_psix,regulatory_gt_psix,match
+303031000,IMO9244063,POLAR ADVENTURE,WAZV,667071,POLAR ADVENTURE,85387,41995,,call sign and name
+303104000,IMO7816551,SEABULK CHALLENGE,KNJL,53002,CHALLENGE,29823,12981,,call sign only
+303105000,IMO7816549,ELATION,WDM9584,,,,,,not found
