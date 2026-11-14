@@ -1,4 +1,4 @@
-function [S]=truth_ship_zone_check_rev1(tracks_dir,repo_dir)
+function [S]=truth_ship_zone_check_rev1(tracks_dir,repo_dir,zone_set)
 %truth_ship_zone_check_rev1  Where the S-band research ships sail, and whether the ship filter keeps them.
 %
 %   S=truth_ship_zone_check_rev1(tracks_dir,repo_dir) reads the per-day AIS
@@ -8,6 +8,8 @@ function [S]=truth_ship_zone_check_rev1(tracks_dir,repo_dir)
 %   length), which large-ship filter step drops it (Section 1.4: vessel type,
 %   length of 100 m or more, IMO number), days and reports seen, and the share
 %   of reports inside the clipped 25, 50, and 100 km zones of any region.
+%   ZONE_SET 'committed' (default) reads the zone files in outputs/; 'run'
+%   reads the folders a fresh zone run writes (output, output_hawaii, ...).
 %   MATLAB twin of python/truth_ship_zone_check.py (the Python version also
 %   reports distance to lower-48 route cells).
 %
@@ -19,6 +21,7 @@ function [S]=truth_ship_zone_check_rev1(tracks_dir,repo_dir)
 arguments
     tracks_dir (1,:) char
     repo_dir (1,:) char = pwd
+    zone_set (1,:) char {mustBeMember(zone_set,{'committed','run'})} = 'committed'
 end
 
 ships=table(["369140000";"367800100";"368996000";"369888000";"369991000";"367241000";"369958000";"368926382";"303913000"], ...
@@ -47,6 +50,9 @@ zone_dirs={fullfile(repo_dir,'outputs','2024_2025'),'shipping_zone_2024_2025';
     fullfile(repo_dir,'outputs','2024_2025','hawaii'),'shipping_zone_hawaii_2024_2025';
     fullfile(repo_dir,'outputs','2024_2025','prusvi'),'shipping_zone_prusvi_2024_2025';
     fullfile(repo_dir,'outputs','2018_2019','alaska'),'shipping_zone_alaska_2018_2019'};
+if strcmp(zone_set,'run')
+    zone_dirs(:,1)={fullfile(repo_dir,'output');fullfile(repo_dir,'output_hawaii');fullfile(repo_dir,'output_prusvi');fullfile(repo_dir,'output_alaska')};
+end
 dist_list=[25 50 100];
 in_zone=false(height(T),numel(dist_list));
 for j=1:numel(dist_list)

@@ -9,7 +9,9 @@ for each ship:
     the kept list, length of 100 m or more, IMO number required),
   - the days and reports seen, and the share of reports inside the clipped
     25, 50, and 100 km zones of any region (lower 48, Hawaii, Puerto Rico and
-    USVI, Alaska) and within 25 km of a lower-48 AIS route cell.
+    USVI, Alaska) and within 25 km of a lower-48 AIS route cell, for all
+    reports and for reports underway (speed over 3 knots), since a ship at its
+    home pier reports all day from inside a zone.
 
 Usage: python3 python/truth_ship_zone_check.py <tracks_dir>
 Writes outputs/2024_2025/truth_ship_zone_check_rev1.csv.
@@ -40,6 +42,8 @@ SHIPS = {
 }
 KEPT_TYPES = set([0, 33, 35, 55] + list(range(60, 90)) + list(range(90, 100)))
 NO_IMO_TYPES = {35, 55}
+GRIDS = [(22, 50, -130, -66), (17, 24, -162, -153), (16.5, 19.5, -68.5, -64), (51, 72, -180, -129)]
+UNDERWAY_KN = 3.0   # speed over ground above which a report counts as underway, not at the dock or on station
 ZONES = [
     ("outputs/2024_2025", "shipping_zone_2024_2025"),
     ("outputs/2024_2025/hawaii", "shipping_zone_hawaii_2024_2025"),
@@ -78,7 +82,7 @@ def main(tracks_dir):
     days = [os.path.basename(f)[7:17] for f in files]
     T = pd.concat([pd.read_csv(f, dtype=str).assign(day=d) for f, d in zip(files, days)], ignore_index=True)
     T.columns = [c.lower() for c in T.columns]
-    for c in ("latitude", "longitude", "length", "vessel_type"):
+    for c in ("latitude", "longitude", "length", "vessel_type", "sog"):
         T[c] = pd.to_numeric(T[c], errors="coerce")
     T = T[T.mmsi.isin(SHIPS)].copy()
     lat, lon = T.latitude.to_numpy(), T.longitude.to_numpy()
@@ -88,6 +92,9 @@ def main(tracks_dir):
     rl, ro = vp.cell_latlon(z["route_cells"])
     d = vp.chord_to_arc(cKDTree(vp.ecef(rl, ro)).query(vp.ecef(lat, lon))[0])
     T["km_to_l48_route"] = d
+    T["in_grid"] = np.zeros(len(T), bool)
+    for a, b, c, e in GRIDS:
+        T["in_grid"] |= (lat >= a) & (lat <= b) & (lon >= c) & (lon <= e)
     rows = []
     for mmsi, ship in SHIPS.items():
         S = T[T.mmsi == mmsi]
@@ -103,6 +110,11 @@ def main(tracks_dir):
             share_in_100km_zone=round(S.in_100km_zone.mean(), 3),
             share_within_25km_of_l48_route=round((S.km_to_l48_route <= 25).mean(), 3),
             days_in_25km_zone=S[S.in_25km_zone].day.nunique(),
+            underway_reports=int((S.sog > UNDERWAY_KN).sum()),
+            underway_share_in_25km_zone=round(S[S.sog > UNDERWAY_KN].in_25km_zone.mean(), 3) if (S.sog > UNDERWAY_KN).any() else np.nan,
+            underway_outside_25km_in_grid=int(((S.sog > UNDERWAY_KN) & ~S.in_25km_zone & S.in_grid).sum()),
+            underway_outside_grids=int(((S.sog > UNDERWAY_KN) & ~S.in_grid).sum()),
+            underway_share_in_100km_zone=round(S[S.sog > UNDERWAY_KN].in_100km_zone.mean(), 3) if (S.sog > UNDERWAY_KN).any() else np.nan,
             lat_range=f"{S.latitude.min():.1f} to {S.latitude.max():.1f}",
             lon_range=f"{S.longitude.min():.1f} to {S.longitude.max():.1f}"))
     out = pd.DataFrame(rows)
