@@ -1,17 +1,17 @@
-group,ships,reports,day
-"Cargo (70-79)",946,599582,10-Jul-2024
-"Tanker (80-89)",635,336300,10-Jul-2024
-"Passenger (60-69)",90,61976,10-Jul-2024
-"Towing (31, 32, 52)",237,198698,10-Jul-2024
-"Military (35)",15,9465,10-Jul-2024
-"Law enforcement (55)",2,712,10-Jul-2024
-"Dredging (33)",8,6980,10-Jul-2024
-"Other and unknown (0, 90-99)",47,24276,10-Jul-2024
-"Cargo (70-79)",936,516832,09-Jul-2025
-"Tanker (80-89)",563,267538,09-Jul-2025
-"Passenger (60-69)",81,53911,09-Jul-2025
-"Towing (31, 32, 52)",235,188190,09-Jul-2025
-"Military (35)",13,5794,09-Jul-2025
-"Law enforcement (55)",5,1883,09-Jul-2025
-"Dredging (33)",6,5131,09-Jul-2025
-"Other and unknown (0, 90-99)",47,20432,09-Jul-2025
+group,ships,reports,ships_after_length_step,day
+"Cargo (70-79)",946,599582,1052,10-Jul-2024
+"Tanker (80-89)",635,336300,715,10-Jul-2024
+"Passenger (60-69)",90,61976,108,10-Jul-2024
+"Towing (31, 32, 52)",237,198698,761,10-Jul-2024
+"Military (35)",15,9465,24,10-Jul-2024
+"Law enforcement (55)",2,712,3,10-Jul-2024
+"Dredging (33)",8,6980,18,10-Jul-2024
+"Other and unknown (0, 90-99)",47,24276,73,10-Jul-2024
+"Cargo (70-79)",936,516832,1010,09-Jul-2025
+"Tanker (80-89)",563,267538,607,09-Jul-2025
+"Passenger (60-69)",81,53911,102,09-Jul-2025
+"Towing (31, 32, 52)",235,188190,761,09-Jul-2025
+"Military (35)",13,5794,13,09-Jul-2025
+"Law enforcement (55)",5,1883,6,09-Jul-2025
+"Dredging (33)",6,5131,16,09-Jul-2025
+"Other and unknown (0, 90-99)",47,20432,68,09-Jul-2025
