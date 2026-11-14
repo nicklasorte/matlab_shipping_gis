@@ -5,5 +5,7 @@
   "25": 3.86,
   "50": 8.18,
   "100": 16.17
- }
+ },
+ "rerun_grid_land_km2_20261114": 7804530,
+ "rerun_note": "shipping_zone_rev1.m now logs grid_land_area_km2 from the simplified Census polygon (outputs/rerun_logs_20261114/lower48.log); shares with it: 3.86, 8.18, 16.16 (review R4NUM-10)"
 }

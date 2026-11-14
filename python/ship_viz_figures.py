@@ -198,13 +198,14 @@ def fig_sweep():
     rec = np.array([float(r["recall"]) for r in rows]) * 100
     i100 = int(np.argmin(abs(cut - 100)))
     page = OnePager(
-        headline=f"At 100 m, the length test is right {prec[i100]:.1f}% of the time and keeps {rec[i100]:.1f}% of big ships",
-        subhead="Length cutoff tested against registry gross tonnage (3,000 GT, the SOLAS size for a 3 GHz radar), "
+        headline=f"At 100 m, {prec[i100]:.1f}% of kept ships are 3,000 GT or more, and {rec[i100]:.1f}% of those ships are kept",
+        subhead="Length cutoff tested against Wikidata gross tonnage (3,000 GT, the SOLAS size for a 3 GHz radar), "
                 "4,129 cargo, tanker, and passenger ships",
         source="Source: NTIA analysis of MarineCadastre AIS (four days in 2024) matched by IMO number to Wikidata gross tonnage.",
         theme="ntia", layout="hero", size=(11, 6.8),
         alt="Line chart of two measures against the length cutoff from 50 to 200 m: the share of kept ships "
-            "that are 3,000 GT or more rises, the share of 3,000 GT ships kept falls, and they cross near 100 m.")
+            "that are 3,000 GT or more rises, the share of 3,000 GT ships kept falls, and they cross near 90 m; at 100 m "
+            "the shares are 99.6% and 98.1%.")
     ax = page.panel(0)
     ax.plot(cut, prec, color=page.theme.context, lw=2)
     ax.plot(cut, rec, color=page.theme.accent, lw=2.4)

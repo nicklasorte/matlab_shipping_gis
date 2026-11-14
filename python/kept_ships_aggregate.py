@@ -14,14 +14,17 @@ days, weighted by reports; blanks and IMO0000000 don't count. Writes:
                                    length_m, days_seen, attr_days
   data/kept_ships_photo_frame.csv  the photo-sampling frame: one row per IMO
                                    number (imo, mmsi, name, ship_group); ships
-                                   without an IMO number (military, law
-                                   enforcement) are left out, and an IMO seen
+                                   without a valid IMO number (military, law
+                                   enforcement, and placeholders such as
+                                   0000001 that fail the check digit) are
+                                   left out, and an IMO seen
                                    under two MMSI numbers keeps the one seen
                                    on more days
 Stops if an MMSI in the list has no attribute row on any day.
 """
 import glob
 import os
+import re
 import sys
 
 import pandas as pd
@@ -36,6 +39,13 @@ def weighted_mode(df, col):
     w = d.groupby(["mmsi", col], as_index=False)["reports"].sum()
     w = w.sort_values(["mmsi", "reports", col], ascending=[True, False, True])
     return w.drop_duplicates("mmsi").set_index("mmsi")[col]
+
+
+def imo_valid(imo):
+    """IMO ship number check: seven digits, the last equal to the sum of the first six times 7..2, mod 10."""
+    if not isinstance(imo, str) or not re.fullmatch(r"\d{7}", imo) or imo == "0000000":
+        return False
+    return sum(int(d) * w for d, w in zip(imo[:6], range(7, 1, -1))) % 10 == int(imo[6])
 
 
 def main(attr_dir):
@@ -58,6 +68,7 @@ def main(attr_dir):
     out.to_csv(os.path.join(ROOT, "data", "kept_ships_2024_2025.csv"), index=False)
     frame = out[out["imo"].notna()].copy()
     frame["imo"] = frame["imo"].str.replace("IMO", "", regex=False).str.strip()
+    frame = frame[frame["imo"].map(imo_valid)]          # check digit; drops placeholders such as 0000001
     frame["days_seen_n"] = pd.to_numeric(frame["days_seen"], errors="coerce")
     frame = frame.sort_values(["imo", "days_seen_n", "mmsi"], ascending=[True, False, True]).drop_duplicates("imo")
     frame[["imo", "mmsi", "name", "ship_group"]].to_csv(os.path.join(ROOT, "data", "kept_ships_photo_frame.csv"), index=False)

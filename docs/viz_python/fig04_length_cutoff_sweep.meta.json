@@ -23,7 +23,7 @@
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Line chart of two measures against the length cutoff from 50 to 200 m: the share of kept ships that are 3,000 GT or more rises, the share of 3,000 GT ships kept falls, and they cross near 100 m.",
+  "alt": "Line chart of two measures against the length cutoff from 50 to 200 m: the share of kept ships that are 3,000 GT or more rises, the share of 3,000 GT ships kept falls, and they cross near 90 m; at 100 m the shares are 99.6% and 98.1%.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/fig04_length_cutoff_sweep.png",

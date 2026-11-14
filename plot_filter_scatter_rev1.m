@@ -60,7 +60,7 @@ ylim(ax,y_lim);
 yticks(ax,[1e2 1e3 1e4 1e5]);
 yticklabels(ax,{'100','1,000','10,000','100,000'});
 xlabel(ax,'Length reported in AIS (m)','Color',dark_blue);
-ylabel(ax,'Registry gross tonnage (log scale)','Color',dark_blue);
+ylabel(ax,'Wikidata gross tonnage (log scale)','Color',dark_blue);
 
 %%%%%Line labels
 text(ax,L_cut+4,1.4e2,sprintf('%g m length filter',L_cut),'Color',dark_blue,'FontName',font_name, ...
