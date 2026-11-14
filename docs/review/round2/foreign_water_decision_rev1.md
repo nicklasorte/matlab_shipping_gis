@@ -81,3 +81,7 @@ This is a policy call: whether the zones describe where ships operate, or where
 the United States would apply a rule. The analysis can support any option. A
 recommendation, if wanted: option 3 for published files, with the unclipped
 files kept in the repo as the analysis record.
+
+## Decision
+
+Nick chose option 2 on November 13, 2026. See "Water clip" in `findings_r2.md`.

@@ -52,7 +52,7 @@ partly answered, and 4 still standing (6, 9, 10, 13); after the fixes below, 13
 | R2NUM-7, R2NUM-8, R2NUM-9 | Fixed: 76% to 84%; "about 2%"; 99.5% to 99.6% and 99.95% to 99.98%. |
 | R2NUM-10 | Fixed: 54 a day throughout. |
 | R2NUM-11, R2NUM-12 | Open (figure-level): A.3 range from MATLAB vs Python; Figure A-18 Mississippi label. |
-| R2MET-1 | Disclosed (Section 3). Measured for the decision: foreign-side water is 36–42% of lower-48 zone water, 20% in Puerto Rico and USVI, 5–8% in Alaska, 0 in Hawaii (`foreign_water_decision_rev1.md`); land is unaffected by any clipping option. Nick decides. |
+| R2MET-1 | Closed: Nick chose option 2 (November 13, 2026). Zone water nearer foreign land than U.S. land is clipped (`p.clip_water_foreign_side`); all four regions rerun on the Mac; land unchanged; foreign-side water left in the zones is under 1% of zone water (`rerun/clip/foreign_water_after_clip.csv`). |
 | R2MET-2 | Closed on the Mac rerun: land unchanged in all regions; Canadian Great Lakes water now inside the lower-48 zones (+1.3% to +1.5% zone area). |
 | R2MET-3 | Fixed: 3.1 says the comparison includes the route fixes. |
 | R2MET-5 | Disclosed: "land" includes inland lakes (3.1 item 4). |
@@ -136,3 +136,23 @@ matches the paper's 0.13–0.19%.
 Still open: R2NUM-6 (the 2025 funnel comparison needs a full raw day on the
 Mac), R2NUM-11 and R2NUM-12 (figure level), R2MET-6, and Nick's decisions
 (R2MET-1, R2OPP-7).
+
+## Water clip (November 13, 2026)
+
+Nick chose option 2 of `foreign_water_decision_rev1.md`: clip zone water at the
+equidistance line between U.S. and foreign land. The zone code
+(`shipping_zone_rev1`) now builds that line from distances to Census U.S. land
+and to Natural Earth foreign outlines (vertices past the grid edge included, so
+the Dominican Republic and Russia count), out to 2,500 km, and subtracts the
+foreign side from every written zone. Route cells and racons in foreign water
+stay zone sources.
+
+Rerun on the Mac (logs in `rerun/clip/`): U.S. land in every zone is unchanged
+in all four regions. Foreign-side water left in the zones, measured with
+`foreign_water_split_rev1`: 0.4% of lower-48 zone water, 0.8% in Puerto Rico and
+USVI, 0.1% in Alaska, and none in Hawaii; the remainder is grid cells the
+boundary touches. Three Canadian racons (Strait of Juan de Fuca, Strait of
+Georgia, Lake Superior) now fall outside the zones; the Strait of Georgia racon
+is S-band and stays a zone source. The lower-48 zones keep 0.5 to 0.7 million
+km² of U.S.-side water more than 200 nautical miles from U.S. land (option 4
+would cut it).

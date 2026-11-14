@@ -86,8 +86,11 @@ Left out on purpose:
 4. **Zone definition.** Choose one of two modes:
    - `ships` (used for every area since the November 2026 review): the zone is
      all U.S. land and water within X km of a route cell. Land of other
-     countries (Natural Earth 1:10m) is removed, and the land area is the area
-     of the clipped land polygon in an equal-area projection (EPSG:6933).
+     countries (Natural Earth 1:10m) is removed, and so is water nearer foreign
+     land than U.S. land (`p.clip_water_foreign_side`, an equidistance stand-in
+     for the maritime boundary; review R2MET-1). Route cells in foreign water
+     stay zone sources, so the clip doesn't change land. The land area is the
+     area of the clipped land polygon in an equal-area projection (EPSG:6933).
    - `shore` (the earlier default): water within `shore_link_km` (25 km) of ship
      cells is ship water, and land is measured from the Census coastline that
      faces it, so land in an X km zone can be up to X + 25 km from a route.
