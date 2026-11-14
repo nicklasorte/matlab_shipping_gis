@@ -81,6 +81,8 @@ p.make_figure=false;
 
 %%%%%%%%%%Output size
 p.simplify_deg=0.005;
+p.clip_water_foreign_side=true; %%%%%drop zone water nearer foreign land than U.S. land (review R2MET-1, option 2); routes stay sources
+p.clip_water_cap_km=2500;      %%%%%distances out to 2,500 km so far-offshore water is judged; farther from both counts as U.S.-side
 p.routes_simplify_deg=0;
 p.kmz=true;
 p.save_grids=true;        %%%%%small grid; keep it for the Python cross-check

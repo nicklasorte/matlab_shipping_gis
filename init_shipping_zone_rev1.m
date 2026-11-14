@@ -136,6 +136,8 @@ end
 
 %%%%%%%%%%Output size
 p.simplify_deg=0.005;     %%%%%drop polygon vertices within 0.005 deg (about 0.5 km); 0 keeps all
+p.clip_water_foreign_side=true; %%%%%drop zone water nearer foreign land than U.S. land (review R2MET-1, option 2); routes stay sources
+p.clip_water_cap_km=2500;      %%%%%distances out to 2,500 km so far-offshore water is judged; farther from both counts as U.S.-side
 p.routes_simplify_deg=0; %%%%%routes file: 0 keeps exact cell edges (single cells survive)
 p.kmz=true;               %%%%%also write a KMZ next to each KML (about 5x smaller)
 p.save_grids=false;       %%%%%true also saves the full-size grids in the .mat (tens of MB)

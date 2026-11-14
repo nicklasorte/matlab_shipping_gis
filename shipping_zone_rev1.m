@@ -263,6 +263,31 @@ if ~isfield(p,'clip_foreign') || p.clip_foreign
     %%%%%rivers (the Detroit River, Niagara); keep every Census U.S. land area.
     foreign_poly=subtract(foreign_poly,land_poly);
 end
+%%%%%Water nearer foreign land than U.S. land is also taken out (review
+%%%%%R2MET-1, option 2, chosen November 13, 2026): an equidistance stand-in
+%%%%%for the maritime boundary, the same rule as the charted-lane filter above
+%%%%%but with distances out to p.clip_water_cap_km so far-offshore water is
+%%%%%judged too. Only the written zones change; route cells in foreign water
+%%%%%stay zone sources, so U.S. land in the zones doesn't change.
+%%%%%Built-ins considered: an EEZ polygon (option 3, needs a new input layer).
+if isfield(p,'clip_water_foreign_side') && p.clip_water_foreign_side && foreign_poly.NumRegions>0
+    if ~exist('foreign_mask','var')
+        foreign_mask=foreign_land_mask(R,p.data_dir,land_mask);
+    end
+    cap_km=p.clip_water_cap_km;
+    d_us=distance_to_mask_km_rev1(land_mask,R,cap_km,p.block_rows);
+    d_foreign=distance_to_mask_km_rev1(foreign_mask,R,cap_km,p.block_rows);
+    %%%%%Region where d_foreign-d_us <= 0 is foreign land or foreign-side water;
+    %%%%%cells beyond cap_km of both get equal distances and stay U.S.-side.
+    side_km=d_foreign-d_us;
+    side_km(d_us>cap_km & d_foreign>cap_km)=1;   %%%%%beyond cap_km of both: U.S.-side
+    foreign_side_poly=field_to_zone_polyshape_rev1(side_km,R,0);
+    foreign_side_poly=simplify_polyshape_rev1(foreign_side_poly,p.simplify_deg);
+    foreign_side_poly=subtract(foreign_side_poly,land_poly);   %%%%%never cut U.S. land
+    foreign_poly=union(foreign_poly,foreign_side_poly);
+    disp_progress(sprintf('Foreign-side water clip: equidistance line from %d foreign-land cells (distances to %g km)',nnz(foreign_mask),cap_km));
+    clear d_us d_foreign side_km foreign_side_poly
+end
 for dist_idx=1:num_dist
     d_km=p.distances_km(dist_idx);
     zone_poly=field_to_zone_polyshape_rev1(dist_field_km,R,d_km);
