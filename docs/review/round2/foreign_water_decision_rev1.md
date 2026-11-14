@@ -21,7 +21,7 @@ equidistance line is the rule the zone code already uses to drop charted lanes
 nearer foreign land. Negotiated boundaries depart from it (the Great Lakes, the
 Strait of Juan de Fuca, the Gulf of Maine, and the Gulf of Mexico), so these are
 estimates. The Python land (cell centres) matches the paper's land areas to
-within 0.3%, so the table uses the Python numbers.
+within 0.2% in the lower 48 and 0.8% elsewhere, so the table uses the Python numbers.
 
 **Cross-check.** The MATLAB version counts a grid cell when the polygon touches
 it, so its areas run higher (lower-48 land +13%, small islands more). The
@@ -85,3 +85,5 @@ files kept in the repo as the analysis record.
 ## Decision
 
 Nick chose option 2 on November 13, 2026. See "Water clip" in `findings_r2.md`.
+
+Round three added a 200 nautical mile cap: water more than 200 nautical miles from every coast now stays in the zones. With it, the clip removes 32% to 34% of lower-48 zone water (`outputs/foreign_water_clip_effect_rev1.csv`); the table above is the uncapped pre-clip estimate.

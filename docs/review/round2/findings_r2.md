@@ -151,8 +151,10 @@ Rerun on the Mac (logs in `rerun/clip/`): U.S. land in every zone is unchanged
 in all four regions. Foreign-side water left in the zones, measured with
 `foreign_water_split_rev1`: 0.4% of lower-48 zone water, 0.8% in Puerto Rico and
 USVI, 0.1% in Alaska, and none in Hawaii; the remainder is grid cells the
-boundary touches. Three Canadian racons (Strait of Juan de Fuca, Strait of
-Georgia, Lake Superior) now fall outside the zones; the Strait of Georgia racon
-is S-band and stays a zone source. The lower-48 zones keep 0.5 to 0.7 million
+boundary touches. Six Canadian racons (five in the Salish Sea, one in Lake
+Superior) now fall outside the zones; one, in the Strait of Georgia, is S-band
+and stays a zone source. The lower-48 zones keep 0.5 to 0.7 million
 km² of U.S.-side water more than 200 nautical miles from U.S. land (option 4
 would cut it).
+
+Superseded in part by round three (`../round3/findings_r3.md`): the clip now stops at 200 nautical miles, so high seas stay in the zones.
