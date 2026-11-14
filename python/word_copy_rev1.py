@@ -9,7 +9,10 @@ placeholder paragraphs. This script:
   3. gives every figure and table caption the Caption style and turns its number
      into a SEQ field, so Word can build a list of figures and tables (review CB-73).
 
-Usage: python3 python/word_copy_rev1.py <export.docx> <previous.docx> <out.docx>
+Usage: python3 python/word_copy_rev1.py <export.docx> <previous.docx> <out.docx> ["<alt prefix>=<image file>" ...]
+
+Each optional "<alt prefix>=<image file>" pair puts that file in for the figure whose
+alt text starts with the prefix (for figures regenerated since the previous copy).
 """
 import copy
 import io
@@ -46,14 +49,15 @@ def previous_images(path):
     return out
 
 
-def put_images(doc, images):
+def put_images(doc, images, overrides=None):
+    overrides = overrides or {}
     missing = []
     for p in doc.paragraphs:
         m = PLACEHOLDER.match(p.text.strip())
         if not m:
             continue
         alt = m.group(1)
-        blob = images.get(norm(alt))
+        blob = next((b for k, b in overrides.items() if norm(alt).startswith(k)), None) or images.get(norm(alt))
         if blob is None:
             # Alt texts edited since the last copy: fall back to the longest shared prefix.
             # Refuse ties (sibling figures share long prefixes) and log every fallback.
@@ -160,9 +164,14 @@ def captions(doc):
     return n
 
 
-def main(export, previous, out):
+def main(export, previous, out, *pairs):
     doc = Document(export)
-    missing = put_images(doc, previous_images(previous))
+    overrides = {}
+    for pair in pairs:
+        prefix, path = pair.split("=", 1)
+        with open(path, "rb") as f:
+            overrides[norm(prefix)] = f.read()
+    missing = put_images(doc, previous_images(previous), overrides)
     for sec in doc.sections:
         mark_section(sec)
     n = captions(doc)
@@ -173,4 +182,4 @@ def main(export, previous, out):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:4])
+    main(*sys.argv[1:])

@@ -48,6 +48,41 @@ without Nick's answer.
 | D5 | Scope of Section 2 (CB-26) | (a) leave a placeholder; (b) add an "inputs the EMC analysis needs" section from this repo (workstream E) | (b). It turns the paper's open end into a specified handoff. |
 | D6 | Carriage rate (plan A3) | (a) run the photo coding (needs two human coders); (b) state the S-band share as an assumption, as now | (a) if Section 1.1 must defend the "every ship of 3,000 GT or more carries one" assumption; otherwise (b). |
 
+## Status, November 14, 2026 (after running P1 to P10 and C1 to C7)
+
+Decisions applied on the recommendations, all reversible, pending Nick's read:
+
+- **D1 (a)** applied: "Gulf of America" for the U.S. part (doc rev 395).
+- **D2** open. P8 shows that the 110 near-shore hexagons supply almost all of
+  the satellite lanes' effect on land: with only the 290 beyond 74 km, Alaska
+  land is 90,926 / 181,074 / 318,352 km², within 4 km² of no satellite lanes
+  at 25 and 50 km. Recommendation now leans (b), since (a) adds land where the
+  paper calls ship tracks complete; (a) stays in the paper until Nick decides.
+  Both readings are in 5.3.
+- **D3 (a)** kept: equidistance. P10 skipped.
+- **D4 (a)** kept: file names unchanged.
+- **D5** not applied (workstream E waits for Nick).
+- **D6 (a)** prepared: sample drawn; coding needs two human coders.
+
+| Step | Result |
+| --- | --- |
+| P2 | Done (rev 395). |
+| P3 | 34 style suggestions laid in the doc for R2STY-6 to 8, 12 to 15, 17, 18, 20 to 23, 25, plus 4 from round four. Not suggestible (image alt text and the byline chips) were fixed as plain edits or left for Nick: byline date chip. |
+| P4 | Done: Figure A-18 labels use head-port distance; A.3 range names the program (rev 398). |
+| P5 | Done: the 2025 funnel equals the cached counts (1,101,052 reports, 2,017 ships; inside grid 1,059,711 and 1,886). 761 towing ships after the length step is now sourced (`ais_filter_by_type.csv`, both days). "15 inland river ports" and "166,382 pairs" dropped. |
+| P6 | Done: shares use the simplified Census polygon in each grid (lower 48 7,804,530; Hawaii 16,725; Puerto Rico and USVI 9,278; Alaska 1,520,713 km²). No share exceeds 100%. Hawaii 50 km changed from 85% to 84%; Figure 6 replaced. |
+| P7 | Done in rev 396 (the 0.23 Spearman figure is Alaska's, in 5.3; Hawaii held-out capture is in 4.2). |
+| P8 | Done: cutoff sweep flat from 272 to 300 (Jaccard 0.571 to 0.573), 0.45 by 650; beyond-range run as above; added to 5.3. |
+| P9 | Done: four blind agents, 72 findings; `docs/review/round4/findings_r4.md`. Open items listed there. |
+| P10 | Skipped (D3 a). |
+| C1 | Done: `data/kept_ships_2024_2025.csv`, 16,085 ships (equals the cache count); photo frame of 15,110 ships with a valid IMO number. |
+| C2 | Done: 300-ship sample, 60 double-coded (seed 20261114). Sheets are on the Mac in `ship_rerun_pack/photo_sample/`, not in the public repo, so coders stay blind. |
+| C3 | Waiting for two human coders. |
+| C4 | Estimator written and tested (`python/sband_carriage_rate.py`, `sband_carriage_rate_rev1.m`; Python and MATLAB agree to 5e-5); `docs/review/sband_carriage_rev1.md`. Runs once C3 is coded. |
+| C5 | PSIX is reachable through its public SOAP service; `python/psix_gt_kept_ships.py` looks up the 789 U.S.-flag kept ships by call sign (`data/psix_gt_kept_ships.csv`). |
+| C6 | Blocked: no reachable public page names the radar band for Rainier, Pisces, Nancy Foster, or Hugh R. Sharp (archived NOAA spec pages don't render; current pages omit radar). Corps dredge list still needs Nick's download. |
+| C7 | Coast Guard equipment list reached through CGMIX: its 472 mutual-recognition entries hold no radars, so it can't close the model list. EU MED database, Furuno NXT/SSD, and Wärtsilä still need Nick's downloads. |
+
 ## Workstream P: finish the paper
 
 | ID | Step | Owner | Inputs | Outputs | Check | Effort |
