@@ -17,7 +17,11 @@ function T=foreign_water_split_rev1(zone_shp,land_shp,opts)
 %   Juan de Fuca, the Great Lakes, and the Gulf of Maine) depart from it, so the
 %   split is an estimate for a decision, not a boundary product.
 %
-%   Built-ins: readgeotable, geotable2table, polyshape/isinterior, knnsearch
+%   A grid cell counts when the zone (or land) polygon touches it, so areas run
+%   slightly above the polygon areas; the Python twin samples cell centres.
+%
+%   Built-ins: readgeotable, geotable2table, georefcells, vec2mtx (through
+%   rasterize_polygon_crop_rev1), knnsearch
 %   (Statistics and Machine Learning) on unit-sphere ECEF points; chord length
 %   ranks neighbours the same as arc length and converts exactly.
 %   Considered: clipping to an EEZ polygon (needs a layer not in the repo and
@@ -33,18 +37,24 @@ arguments
 end
 
 R=6371.0088;   %%%%%IUGG mean Earth radius, km
-Z=polygon_lonlat(zone_shp);
-L=polygon_lonlat(land_shp);
+[zlat,zlon]=polygon_latlon(zone_shp);
+[llat,llon]=polygon_latlon(land_shp);
 
-%%%%%Grid over the zone's bounding box (cell centres).
-[xl,yl]=boundingbox(Z);
-lon=(floor(xl(1)/opts.step_deg)*opts.step_deg+opts.step_deg/2):opts.step_deg:xl(2);
-lat=(floor(yl(1)/opts.step_deg)*opts.step_deg+opts.step_deg/2):opts.step_deg:yl(2);
-[LON,LAT]=meshgrid(lon,lat);
-in_zone=isinterior(Z,LON(:),LAT(:));
-plon=LON(in_zone); plat=LAT(in_zone);
-cell_km2=(opts.step_deg*pi/180*R)^2*cosd(plat);
-on_land=isinterior(L,plon,plat);
+%%%%%Raster over the zone's bounding box; a cell is in the zone (or on land)
+%%%%%when the polygon touches it (rasterize_polygon_crop_rev1, vec2mtx fill).
+%%%%%isinterior on millions of points against the full polygon took more than
+%%%%%10 minutes for the lower-48 25 km zone; the fill takes seconds.
+step=opts.step_deg;
+lat0=floor(min(zlat)/step)*step; lon0=floor(min(zlon)/step)*step;
+num_row=ceil((max(zlat)-lat0)/step); num_col=ceil((max(zlon)-lon0)/step);
+Rg=georefcells(lat0+[0 num_row*step],lon0+[0 num_col*step],[num_row num_col]);
+in_zone=full_mask(zlat,zlon,Rg);
+on_land=full_mask(llat,llon,Rg) & in_zone;
+[row,col]=find(in_zone);
+plat=lat0+(row-0.5)*step; plon=lon0+(col-0.5)*step;
+cell_km2=(step*pi/180*R)^2*cosd(plat);
+on_land=on_land(in_zone);
+yl=[min(zlat) max(zlat)];
 
 %%%%%Nearest U.S. land and nearest foreign land, by chord distance in ECEF.
 [ulon,ulat]=vertices(opts.us_states_shp,"STUSPS",[],[yl(1) yl(2)],opts.search_km);
@@ -66,9 +76,22 @@ T=table(string(zone_shp),sum(cell_km2),sum(cell_km2(on_land)),sum(a(du<=df)),sum
 T.foreign_share_of_water=T.foreign_water_km2/(T.us_water_km2+T.foreign_water_km2);
 end
 
-function P=polygon_lonlat(shp)
+function [lat,lon]=polygon_latlon(shp)
+%%%%%All rows of SHP as one NaN-separated polygon (parts and holes kept).
 G=geotable2table(readgeotable(shp),["Lat","Lon"]);
-P=polyshape([G.Lon{:}],[G.Lat{:}],'Simplify',false,'KeepCollinearPoints',true);
+lat=[]; lon=[];
+for k=1:height(G)
+    lat=[lat; G.Lat{k}(:); NaN]; %#ok<AGROW>
+    lon=[lon; G.Lon{k}(:); NaN]; %#ok<AGROW>
+end
+end
+
+function M=full_mask(lat,lon,Rg)
+M=false(Rg.RasterSize);
+[sub,rr,cc]=rasterize_polygon_crop_rev1(lat,lon,Rg);
+if ~isempty(sub)
+    M(rr,cc)=sub;
+end
 end
 
 function [lon,lat]=vertices(shp,field,drop,latlim,pad_km)
