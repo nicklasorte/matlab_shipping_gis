@@ -87,8 +87,10 @@ Left out on purpose:
    - `ships` (used for every area since the November 2026 review): the zone is
      all U.S. land and water within X km of a route cell. Land of other
      countries (Natural Earth 1:10m) is removed, and so is water nearer foreign
-     land than U.S. land (`p.clip_water_foreign_side`, an equidistance stand-in
-     for the maritime boundary; review R2MET-1). Route cells in foreign water
+     land than U.S. land within 200 nautical miles (`p.clip_water_foreign_side`,
+     `p.clip_water_cap_km`; an equidistance stand-in for the maritime boundary,
+     review R2MET-1 and R3COD-1). High seas, more than 200 nautical miles from
+     every coast, stay in the zones. Route cells in foreign water
      stay zone sources, so the clip doesn't change land. The land area is the
      area of the clipped land polygon in an equal-area projection (EPSG:6933).
    - `shore` (the earlier default): water within `shore_link_km` (25 km) of ship
