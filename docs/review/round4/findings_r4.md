@@ -55,7 +55,7 @@ Nick's call), **Noted** (no change).
 
 | ID | Disposition |
 | --- | --- |
-| R4OPP-1 | Fixed (disclosure): 1.5 says the tug-barge rule is a protective choice, not a carriage rule, and the 100 m test wasn't checked for towing types. |
+| R4OPP-1 | Fixed (disclosure): 1.5 says the tug-barge rule is a protective choice, not a carriage rule, and PSIX tonnage now shows none of 159 U.S.-flag towing vessels is 3,000 GT or more (`docs/review/psix_gt_check_rev1.md`). Whether to keep the rule is Nick's call. |
 | R4OPP-2 | Open: compute the Great Lakes share of the lower-48 zone land (reviewer's estimate about a quarter). |
 | R4OPP-3 | Open: population in the zones (Census blocks); Nick's call whether the paper should report it. |
 | R4OPP-4 | Open: zones from underway reports only (over 3 knots). |

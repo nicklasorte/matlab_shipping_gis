@@ -79,7 +79,7 @@ Decisions applied on the recommendations, all reversible, pending Nick's read:
 | C2 | Done: 300-ship sample, 60 double-coded (seed 20261114). Sheets are on the Mac in `ship_rerun_pack/photo_sample/`, not in the public repo, so coders stay blind. |
 | C3 | Waiting for two human coders. |
 | C4 | Estimator written and tested (`python/sband_carriage_rate.py`, `sband_carriage_rate_rev1.m`; Python and MATLAB agree to 5e-5); `docs/review/sband_carriage_rev1.md`. Runs once C3 is coded. |
-| C5 | PSIX is reachable through its public SOAP service; `python/psix_gt_kept_ships.py` looks up the 789 U.S.-flag kept ships by call sign (`data/psix_gt_kept_ships.csv`). |
+| C5 | Done: PSIX reached through its public SOAP service; 474 of 789 U.S.-flag kept ships have gross tonnage. None of 159 U.S.-flag towing vessels is 3,000 GT or more; 91% of other kept types are. Added to Section 1.5. `docs/review/psix_gt_check_rev1.md`. |
 | C6 | Blocked: no reachable public page names the radar band for Rainier, Pisces, Nancy Foster, or Hugh R. Sharp (archived NOAA spec pages don't render; current pages omit radar). Corps dredge list still needs Nick's download. |
 | C7 | Coast Guard equipment list reached through CGMIX: its 472 mutual-recognition entries hold no radars, so it can't close the model list. EU MED database, Furuno NXT/SSD, and Wärtsilä still need Nick's downloads. |
 

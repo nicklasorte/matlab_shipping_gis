@@ -6,3 +6,2208 @@ mmsi,psix_vessel_id,value,tonnage_type,unit
 303104000,53002,12981,Convention (Subpart B),Short Ton
 303104000,53002,29823,Convention (Subpart B),Long Ton
 303104000,53002,48855,Dead Weight,Ton
+303189000,34118,24319,Convention (Subpart B),Short Ton
+303189000,34118,40085,Convention (Subpart B),Long Ton
+303189000,34118,67099,Displacement,Ton
+303189000,34118,51101,Dead Weight,Ton
+303210000,862068,48205,Convention (Subpart B),Short Ton
+303210000,862068,60979,Convention (Subpart B),Long Ton
+303210000,862068,10956,Dead Weight,Ton
+303210000,862068,230390,Displacement,Ton
+303270000,1086216,29433,Convention (Subpart B),Long Ton
+303270000,1086216,14107,Convention (Subpart B),Short Ton
+303270000,1086216,51662,Dead Weight,Ton
+303270000,1086216,62036,Displacement,Ton
+303294000,722960,56439,Convention (Subpart B),Short Ton
+303294000,722960,193049,Dead Weight,Ton
+303294000,722960,220966,Displacement,Ton
+303294000,722960,110693,Convention (Subpart B),Long Ton
+303340000,1275090,40883,Convention (Subpart B),Short Ton
+303340000,1275090,75015,Convention (Subpart B),Long Ton
+303340000,1275090,87500,Displacement,Ton
+303340000,1275090,59400,Dead Weight,Ton
+303348100,61654,4389,Regulatory (Subpart C or D),Short Ton
+303348100,61654,14245,Displacement,Ton
+303348100,61654,7191,Regulatory (Subpart C or D),Long Ton
+303352000,802276,82794,Simplified,Long Ton
+303352000,802276,48047,Simplified,Short Ton
+303352000,802276,82794,Convention (Subpart B),Long Ton
+303352000,802276,48047,Convention (Subpart B),Short Ton
+303352000,802276,122833,Displacement,Ton
+303352000,802276,93559,Dead Weight,Ton
+303422000,744195,5654,Dead Weight,Ton
+303422000,744195,11154,Displacement,Ton
+303422000,744195,9926,Regulatory (Subpart C or D),Long Ton
+303422000,744195,2977,Regulatory (Subpart C or D),Short Ton
+303520000,409027,27375,Dead Weight,Ton
+303520000,409027,16771,Convention (Subpart B),Long Ton
+303520000,409027,5031,Convention (Subpart B),Short Ton
+303553000,1275196,5011,Convention (Subpart B),Long Ton
+303553000,1275196,1503,Convention (Subpart B),Short Ton
+303582000,413307,41,Simplified,Long Ton
+303582000,413307,37,Simplified,Short Ton
+303584000,805521,12538,Convention (Subpart B),Short Ton
+303584000,805521,25324,Convention (Subpart B),Long Ton
+303606000,370029,181,Regulatory (Subpart C or D),Long Ton
+303606000,370029,646,Convention (Subpart B),Long Ton
+303606000,370029,123,Regulatory (Subpart C or D),Short Ton
+303606000,370029,193,Convention (Subpart B),Short Ton
+303656000,815494,110693,Convention (Subpart B),Long Ton
+303656000,815494,56439,Convention (Subpart B),Short Ton
+303656000,815494,193048,Dead Weight,Ton
+303656000,815494,220966,Displacement,Ton
+303657000,1097015,74642,Convention (Subpart B),Long Ton
+303657000,1097015,44243,Convention (Subpart B),Short Ton
+303657000,1097015,111460,Displacement,Ton
+303668000,806775,285,Convention (Subpart B),Short Ton
+303668000,806775,168,Regulatory (Subpart C or D),Short Ton
+303668000,806775,950,Convention (Subpart B),Long Ton
+303668000,806775,248,Regulatory (Subpart C or D),Long Ton
+303829025,1770690,46574,Dead Weight,Ton
+303829025,1770690,16719,Convention (Subpart B),Short Ton
+303829025,1770690,50110,Convention (Subpart B),Long Ton
+303829026,1768850,17210,Convention (Subpart B),Short Ton
+303829026,1768850,50722,Convention (Subpart B),Long Ton
+303829026,1768850,45200,Dead Weight,Ton
+303829046,1770691,16719,Convention (Subpart B),Short Ton
+303829046,1770691,46634,Dead Weight,Ton
+303829046,1770691,50110,Convention (Subpart B),Long Ton
+303829082,51597,6534,Convention (Subpart B),Short Ton
+303829082,51597,21782,Convention (Subpart B),Long Ton
+303829082,51597,14836,Dead Weight,Ton
+303845000,492326,72737,Convention (Subpart B),Long Ton
+303845000,492326,21821,Convention (Subpart B),Short Ton
+303845000,492326,21821,Dead Weight,Ton
+303849000,274218,25742,Convention (Subpart B),Long Ton
+303849000,274218,20706,Regulatory (Subpart C or D),Long Ton
+303849000,274218,8992,Convention (Subpart B),Short Ton
+303849000,274218,18987,Regulatory (Subpart C or D),Short Ton
+303849000,274218,27811,Dead Weight,Ton
+303890000,1287,69365,Convention (Subpart B),Long Ton
+303890000,1287,20809,Convention (Subpart B),Short Ton
+303890000,1287,29151,Dead Weight,Ton
+303890000,1287,58255,Displacement,Ton
+303902000,28166,4725,Convention (Subpart B),Short Ton
+303902000,28166,15752,Convention (Subpart B),Long Ton
+303923000,387205,7142,Convention (Subpart B),Short Ton
+303923000,387205,22425,Convention (Subpart B),Long Ton
+303924000,384859,7142,Convention (Subpart B),Short Ton
+303924000,384859,22425,Convention (Subpart B),Long Ton
+303924000,384859,20062,Dead Weight,Ton
+303925000,410762,1278,Convention (Subpart B),Short Ton
+303925000,410762,4260,Convention (Subpart B),Long Ton
+303932000,387208,36090,Regulatory (Subpart C or D),Short Ton
+303932000,387208,51960,Regulatory (Subpart C or D),Long Ton
+303932000,387208,53652,Displacement,Long Ton
+303932000,387208,31355,Dead Weight,Long Ton
+303940000,227729,36090,Convention (Subpart B),Short Ton
+303940000,227729,51960,Convention (Subpart B),Long Ton
+303940000,227729,32772,Dead Weight,Long Ton
+303940000,227729,53652,Displacement,Long Ton
+303943000,228566,39889,Convention (Subpart B),Long Ton
+303943000,228566,36836,Dead Weight,Ton
+303943000,228566,51836,Displacement,Ton
+303943000,228566,13505,Convention (Subpart B),Short Ton
+303944000,228302,28397,Regulatory (Subpart C or D),Short Ton
+303944000,228302,32700,Dead Weight,Ton
+303944000,228302,13505,Convention (Subpart B),Short Ton
+303944000,228302,37812,Regulatory (Subpart C or D),Long Ton
+303944000,228302,51007,Displacement,Long Ton
+303944000,228302,39889,Convention (Subpart B),Long Ton
+303945000,228301,13505,Convention (Subpart B),Short Ton
+303945000,228301,28412,Regulatory (Subpart C or D),Short Ton
+303945000,228301,39889,Convention (Subpart B),Long Ton
+303945000,228301,37815,Regulatory (Subpart C or D),Long Ton
+303945000,228301,31931,Dead Weight,Ton
+338009000,916754,59250,Convention (Subpart B),Long Ton
+338009000,916754,17550,Dead Weight,Ton
+338009000,916754,59700,Displacement,Ton
+338009000,916754,17775,Convention (Subpart B),Short Ton
+338058000,944515,72118,Convention (Subpart B),Long Ton
+338058000,944515,34059,Convention (Subpart B),Short Ton
+338058000,944515,30386,Dead Weight,Ton
+338058000,944515,53529,Displacement,Ton
+338064000,1166440,1393,Convention (Subpart B),Short Ton
+338064000,1166440,4645,Convention (Subpart B),Long Ton
+338066000,1639159,234,Convention (Subpart B),Short Ton
+338066000,1639159,197,Regulatory (Subpart C or D),Short Ton
+338066000,1639159,782,Convention (Subpart B),Long Ton
+338066000,1639159,291,Regulatory (Subpart C or D),Long Ton
+338071000,1098084,74642,Convention (Subpart B),Long Ton
+338071000,1098084,44243,Convention (Subpart B),Short Ton
+338071000,1098084,111460,Displacement,Ton
+338078000,1101111,74642,Convention (Subpart B),Long Ton
+338078000,1101111,44243,Convention (Subpart B),Short Ton
+338078000,1101111,111460,Displacement,Ton
+338078000,1101111,84700,Dead Weight,Ton
+338110000,1078554,49828,Dead Weight,Ton
+338110000,1078554,60379,Displacement,Ton
+338110000,1078554,29801,Convention (Subpart B),Long Ton
+338110000,1078554,11028,Convention (Subpart B),Short Ton
+338121000,1421383,51374,Dead Weight,Metric Ton
+338121000,1421383,72678,Displacement,Metric Ton
+338121000,1421383,36922,Simplified,Short Ton
+338121000,1421383,46153,Simplified,Long Ton
+338121000,1421383,59522,Convention (Subpart B),Long Ton
+338121000,1421383,32119,Convention (Subpart B),Short Ton
+338131000,445675,682,Convention (Subpart B),Long Ton
+338131000,445675,195,Regulatory (Subpart C or D),Long Ton
+338131000,445675,204,Convention (Subpart B),Short Ton
+338131000,445675,133,Regulatory (Subpart C or D),Short Ton
+338145000,997028,61328,Convention (Subpart B),Long Ton
+338145000,997028,23559,Convention (Subpart B),Short Ton
+338145000,997028,22144,Dead Weight,Ton
+338145000,997028,40947,Displacement,Ton
+338158000,1303216,49828,Dead Weight,Ton
+338158000,1303216,11028,Convention (Subpart B),Short Ton
+338158000,1303216,29801,Convention (Subpart B),Long Ton
+338188000,1268961,12581,Convention (Subpart B),Short Ton
+338188000,1268961,29923,Convention (Subpart B),Long Ton
+338188000,1268961,49151,Dead Weight,Ton
+338203000,1347970,212,Convention (Subpart B),Short Ton
+338203000,1347970,213,Regulatory (Subpart C or D),Short Ton
+338203000,1347970,708,Convention (Subpart B),Long Ton
+338203000,1347970,297,Regulatory (Subpart C or D),Long Ton
+338217000,22092,50601,Dead Weight,Ton
+338217000,22092,16811,Convention (Subpart B),Short Ton
+338217000,22092,28836,Convention (Subpart B),Long Ton
+338219000,22091,50601,Dead Weight,Ton
+338219000,22091,16811,Convention (Subpart B),Short Ton
+338219000,22091,28836,Convention (Subpart B),Long Ton
+338221000,932661,11926,Convention (Subpart B),Short Ton
+338221000,932661,29242,Convention (Subpart B),Long Ton
+338221000,932661,46801,Dead Weight,Ton
+338227000,1303219,29801,Convention (Subpart B),Long Ton
+338227000,1303219,11028,Convention (Subpart B),Short Ton
+338227000,1303219,60379,Displacement,Ton
+338227000,1303219,49828,Dead Weight,Ton
+338241000,1101093,74642,Convention (Subpart B),Long Ton
+338241000,1101093,44243,Convention (Subpart B),Short Ton
+338273000,1159011,9490,Dead Weight,Metric Ton
+338273000,1159011,16355,Displacement,Metric Ton
+338273000,1159011,3804,Convention (Subpart B),Short Ton
+338273000,1159011,12679,Convention (Subpart B),Long Ton
+338293000,1273603,4327,Dead Weight,Metric Ton
+338293000,1273603,2294,Convention (Subpart B),Short Ton
+338293000,1273603,7647,Convention (Subpart B),Long Ton
+338295000,1547905,499,Convention (Subpart B),Long Ton
+338295000,1547905,275,Regulatory (Subpart C or D),Long Ton
+338295000,1547905,149,Convention (Subpart B),Short Ton
+338295000,1547905,187,Regulatory (Subpart C or D),Short Ton
+338302000,1268962,49151,Dead Weight,Ton
+338302000,1268962,12581,Convention (Subpart B),Short Ton
+338302000,1268962,29923,Convention (Subpart B),Long Ton
+338305000,1324423,212,Convention (Subpart B),Short Ton
+338305000,1324423,213,Regulatory (Subpart C or D),Short Ton
+338305000,1324423,708,Convention (Subpart B),Long Ton
+338305000,1324423,297,Regulatory (Subpart C or D),Long Ton
+338343000,198993,100,Regulatory (Subpart C or D),Short Ton
+338343000,198993,116,Convention (Subpart B),Short Ton
+338343000,198993,147,Regulatory (Subpart C or D),Long Ton
+338343000,198993,389,Convention (Subpart B),Long Ton
+338371000,20283,85387,Convention (Subpart B),Long Ton
+338371000,20283,41995,Convention (Subpart B),Short Ton
+338371000,20283,173509,Displacement,Ton
+338371000,20283,141740,Dead Weight,Ton
+338403000,1101124,74642,Convention (Subpart B),Long Ton
+338403000,1101124,44243,Convention (Subpart B),Short Ton
+338403000,1101124,84783,Dead Weight,Ton
+338418000,1101120,74642,Convention (Subpart B),Long Ton
+338418000,1101120,44243,Convention (Subpart B),Short Ton
+338446000,485424,329,Convention (Subpart B),Short Ton
+338446000,485424,1099,Convention (Subpart B),Long Ton
+338447000,874118,678,Regulatory (Subpart C or D),Short Ton
+338447000,874118,662,Convention (Subpart B),Short Ton
+338447000,874118,997,Regulatory (Subpart C or D),Long Ton
+338447000,874118,2209,Convention (Subpart B),Long Ton
+338474000,1098081,74642,Convention (Subpart B),Long Ton
+338474000,1098081,44243,Convention (Subpart B),Short Ton
+338474000,1098081,94480,Dead Weight,Ton
+338474000,1098081,120331,Displacement,Ton
+338492000,873476,28618,Convention (Subpart B),Short Ton
+338492000,873476,61260,Convention (Subpart B),Long Ton
+338492000,873476,43347,Displacement,Ton
+338492000,873476,22820,Dead Weight,Ton
+338495000,195860,389,Convention (Subpart B),Long Ton
+338495000,195860,147,Regulatory (Subpart C or D),Long Ton
+338495000,195860,116,Convention (Subpart B),Short Ton
+338495000,195860,100,Regulatory (Subpart C or D),Short Ton
+338500000,1176712,35879,Convention (Subpart B),Short Ton
+338500000,1176712,62318,Convention (Subpart B),Long Ton
+338500000,1176712,115000,Dead Weight,Ton
+338504000,967865,1567,Regulatory (Subpart C or D),Long Ton
+338504000,967865,2164,Convention (Subpart B),Long Ton
+338504000,967865,1066,Regulatory (Subpart C or D),Short Ton
+338504000,967865,649,Convention (Subpart B),Short Ton
+338525000,1097100,74642,Convention (Subpart B),Long Ton
+338525000,1097100,44243,Convention (Subpart B),Short Ton
+338525000,1097100,84704,Dead Weight,Ton
+338531000,200696,107,Regulatory (Subpart C or D),Long Ton
+338531000,200696,389,Convention (Subpart B),Long Ton
+338531000,200696,73,Regulatory (Subpart C or D),Short Ton
+338531000,200696,116,Convention (Subpart B),Short Ton
+338545000,1427842,1358,Convention (Subpart B),Long Ton
+338545000,1427842,760,Regulatory (Subpart C or D),Long Ton
+338545000,1427842,407,Convention (Subpart B),Short Ton
+338545000,1427842,517,Regulatory (Subpart C or D),Short Ton
+338566000,1266088,3240,Convention (Subpart B),Short Ton
+338566000,1266088,8646,Dead Weight,Ton
+338566000,1266088,11963,Displacement,Ton
+338566000,1266088,6368,Convention (Subpart B),Long Ton
+338616000,988340,312,Convention (Subpart B),Short Ton
+338616000,988340,178,Regulatory (Subpart C or D),Short Ton
+338616000,988340,1040,Convention (Subpart B),Long Ton
+338616000,988340,263,Regulatory (Subpart C or D),Long Ton
+338617000,1171586,29242,Convention (Subpart B),Long Ton
+338617000,1171586,46697,Dead Weight,Ton
+338617000,1171586,11926,Convention (Subpart B),Short Ton
+338619000,932890,19535,Convention (Subpart B),Short Ton
+338619000,932890,57280,Convention (Subpart B),Long Ton
+338679000,1305227,75015,Convention (Subpart B),Long Ton
+338679000,1305227,40883,Convention (Subpart B),Short Ton
+338679000,1305227,84270,Dead Weight,Metric Ton
+338679000,1305227,112570,Displacement,Metric Ton
+338703000,202546,116,Convention (Subpart B),Short Ton
+338703000,202546,73,Regulatory (Subpart C or D),Short Ton
+338703000,202546,389,Convention (Subpart B),Long Ton
+338703000,202546,107,Regulatory (Subpart C or D),Long Ton
+338708000,439637,195,Regulatory (Subpart C or D),Long Ton
+338708000,439637,682,Convention (Subpart B),Long Ton
+338708000,439637,133,Regulatory (Subpart C or D),Short Ton
+338708000,439637,204,Convention (Subpart B),Short Ton
+338721000,2799,2137,Convention (Subpart B),Long Ton
+338721000,2799,714,Convention (Subpart B),Short Ton
+338721000,2799,4864,Displacement,Ton
+338721000,2799,2874,Dead Weight,Ton
+338760000,1227807,11025,Convention (Subpart B),Short Ton
+338760000,1227807,36751,Convention (Subpart B),Long Ton
+338760000,1227807,33106,Dead Weight,Ton
+338765000,7096,201,Regulatory (Subpart C or D),Short Ton
+338765000,7096,306,Convention (Subpart B),Short Ton
+338765000,7096,296,Regulatory (Subpart C or D),Long Ton
+338765000,7096,1020,Convention (Subpart B),Long Ton
+338789000,1227808,33106,Dead Weight,Ton
+338789000,1227808,31252,Simplified,Long Ton
+338789000,1227808,36912,Convention (Subpart B),Long Ton
+338789000,1227808,25002,Simplified,Short Ton
+338789000,1227808,11073,Convention (Subpart B),Short Ton
+338794000,906880,72118,Convention (Subpart B),Long Ton
+338794000,906880,34059,Convention (Subpart B),Short Ton
+338794000,906880,101966,Displacement,Ton
+338794000,906880,30383,Dead Weight,Ton
+338796000,1425661,51374,Dead Weight,Metric Ton
+338796000,1425661,72678,Displacement,Metric Ton
+338796000,1425661,32119,Convention (Subpart B),Short Ton
+338796000,1425661,59522,Convention (Subpart B),Long Ton
+338806000,1286,69365,Convention (Subpart B),Long Ton
+338806000,1286,20890,Convention (Subpart B),Short Ton
+338806000,1286,58255,Displacement,Ton
+338806000,1286,29151,Dead Weight,Ton
+338815000,492323,72737,Convention (Subpart B),Long Ton
+338815000,492323,21821,Convention (Subpart B),Short Ton
+338815000,492323,21821,Dead Weight,Ton
+338846000,1285,69365,Convention (Subpart B),Long Ton
+338846000,1285,20809,Convention (Subpart B),Short Ton
+338846000,1285,33681,Dead Weight,Ton
+338846000,1285,62833,Displacement,Ton
+338860000,480088,6914,Convention (Subpart B),Short Ton
+338860000,480088,13066,Convention (Subpart B),Long Ton
+338860000,480088,20567,Dead Weight,Ton
+338860000,480088,25766,Displacement,Ton
+338864000,35214,24319,Convention (Subpart B),Short Ton
+338864000,35214,40085,Convention (Subpart B),Long Ton
+338864000,35214,51048,Dead Weight,Ton
+338864000,35214,67099,Displacement,Ton
+338866000,330980,1247,Regulatory (Subpart C or D),Long Ton
+338866000,330980,848,Regulatory (Subpart C or D),Short Ton
+338879000,1275579,12581,Convention (Subpart B),Short Ton
+338879000,1275579,29923,Convention (Subpart B),Long Ton
+338879000,1275579,49151,Dead Weight,Ton
+338899000,870714,316,Regulatory (Subpart C or D),Short Ton
+338899000,870714,315,Convention (Subpart B),Short Ton
+338899000,870714,465,Regulatory (Subpart C or D),Long Ton
+338899000,870714,1052,Convention (Subpart B),Long Ton
+338899000,870714,786,Dead Weight,Long Ton
+338902000,492320,72737,Convention (Subpart B),Long Ton
+338902000,492320,21821,Convention (Subpart B),Short Ton
+338902000,492320,26287,Dead Weight,Ton
+338919000,45599,13886,Convention (Subpart B),Long Ton
+338919000,45599,4165,Convention (Subpart B),Short Ton
+338924075,1852313,0,Simplified,Long Ton
+338924075,1852313,51055,Convention (Subpart B),Long Ton
+338924075,1852313,0,Simplified,Short Ton
+338924075,1852313,17158,Convention (Subpart B),Short Ton
+338924264,1473700,49850,Displacement,Ton
+338924264,1473700,13376,Convention (Subpart B),Short Ton
+338924264,1473700,44589,Convention (Subpart B),Long Ton
+338924264,1473700,32342,Dead Weight,Metric Ton
+338929000,502200,69365,Convention (Subpart B),Long Ton
+338929000,502200,20890,Convention (Subpart B),Short Ton
+338929000,502200,29151,Dead Weight,Ton
+338929000,502200,58255,Displacement,Ton
+338931000,480830,21821,Convention (Subpart B),Short Ton
+338931000,480830,72737,Convention (Subpart B),Long Ton
+338931000,480830,36245,Dead Weight,Ton
+338947000,458276,36797,Regulatory (Subpart C or D),Long Ton
+338947000,458276,48800,Displacement,Ton
+338947000,458276,22725,Regulatory (Subpart C or D),Short Ton
+338973000,268174,20925,Regulatory (Subpart C or D),Short Ton
+338973000,268174,23000,Displacement,Ton
+338973000,268174,29921,Regulatory (Subpart C or D),Long Ton
+338997000,41463,6036,Regulatory (Subpart C or D),Long Ton
+338997000,41463,4008,Regulatory (Subpart C or D),Short Ton
+338997000,41463,9720,Displacement,Ton
+366102000,1041328,19535,Convention (Subpart B),Short Ton
+366102000,1041328,57030,Convention (Subpart B),Long Ton
+366206000,222090,10559,Convention (Subpart B),Short Ton
+366206000,222090,27209,Convention (Subpart B),Long Ton
+366206000,222090,12902,Regulatory (Subpart C or D),Long Ton
+366206000,222090,7393,Regulatory (Subpart C or D),Short Ton
+366206000,222090,20304,Dead Weight,Ton
+366221000,48727,19172,Dead Weight,Ton
+366221000,48727,7603,Regulatory (Subpart C or D),Short Ton
+366221000,48727,9255,Convention (Subpart B),Short Ton
+366221000,48727,13155,Regulatory (Subpart C or D),Long Ton
+366221000,48727,30852,Convention (Subpart B),Long Ton
+366231000,472060,627,Convention (Subpart B),Short Ton
+366231000,472060,2092,Convention (Subpart B),Long Ton
+366231000,472060,3292,Dead Weight,Ton
+366231000,472060,4854,Displacement,Ton
+366235000,248446,8815,Convention (Subpart B),Short Ton
+366235000,248446,29386,Convention (Subpart B),Long Ton
+366235000,248446,13212,Regulatory (Subpart C or D),Long Ton
+366235000,248446,9287,Regulatory (Subpart C or D),Short Ton
+366238710,98699,125,Regulatory (Subpart C or D),Short Ton
+366238710,98699,117,Convention (Subpart B),Short Ton
+366238710,98699,185,Regulatory (Subpart C or D),Long Ton
+366238710,98699,393,Convention (Subpart B),Long Ton
+366273000,932654,11926,Convention (Subpart B),Short Ton
+366273000,932654,29242,Convention (Subpart B),Long Ton
+366273000,932654,46817,Dead Weight,Ton
+366273000,932654,56242,Displacement,Ton
+366341000,870754,315,Convention (Subpart B),Short Ton
+366341000,870754,786,Dead Weight,Ton
+366341000,870754,316,Regulatory (Subpart C or D),Short Ton
+366341000,870754,1052,Convention (Subpart B),Long Ton
+366341000,870754,465,Regulatory (Subpart C or D),Long Ton
+366359000,1485468,967,Convention (Subpart B),Long Ton
+366359000,1485468,499,Regulatory (Subpart C or D),Long Ton
+366359000,1485468,290,Convention (Subpart B),Short Ton
+366359000,1485468,340,Regulatory (Subpart C or D),Short Ton
+366418000,1317053,112683,Displacement,Ton
+366418000,1317053,44706,Convention (Subpart B),Short Ton
+366418000,1317053,75579,Convention (Subpart B),Long Ton
+366451000,88380,16959,Regulatory (Subpart C or D),Long Ton
+366451000,88380,16808,Convention (Subpart B),Long Ton
+366451000,88380,11567,Regulatory (Subpart C or D),Short Ton
+366451000,88380,9439,Convention (Subpart B),Short Ton
+366451000,88380,15140,Dead Weight,Ton
+366451000,88380,32005,Displacement,Ton
+366479000,450909,26188,Convention (Subpart B),Short Ton
+366479000,450909,47144,Dead Weight,Ton
+366479000,450909,72708,Convention (Subpart B),Long Ton
+366495000,1041059,11926,Convention (Subpart B),Short Ton
+366495000,1041059,29234,Convention (Subpart B),Long Ton
+366495000,1041059,56163,Displacement,Metric Ton
+366495000,1041059,46287,Dead Weight,Metric Ton
+366503000,46306,23255,Regulatory (Subpart C or D),Long Ton
+366503000,46306,22960,Convention (Subpart B),Long Ton
+366503000,46306,14436,Regulatory (Subpart C or D),Short Ton
+366503000,46306,6888,Convention (Subpart B),Short Ton
+366503000,46306,15694,Dead Weight,Ton
+366503000,46306,23800,Displacement,Ton
+366508000,1041056,11926,Convention (Subpart B),Short Ton
+366508000,1041056,29242,Convention (Subpart B),Long Ton
+366508000,1041056,46666,Dead Weight,Ton
+366516370,105833,114,Convention (Subpart B),Short Ton
+366516370,105833,216,Regulatory (Subpart C or D),Short Ton
+366516370,105833,382,Convention (Subpart B),Long Ton
+366516370,105833,295,Regulatory (Subpart C or D),Long Ton
+366516380,203640,541,Dead Weight,Long Ton
+366516380,203640,164,Regulatory (Subpart C or D),Short Ton
+366516380,203640,127,Convention (Subpart B),Short Ton
+366516380,203640,243,Regulatory (Subpart C or D),Long Ton
+366516380,203640,425,Convention (Subpart B),Long Ton
+366539000,1041057,11926,Convention (Subpart B),Short Ton
+366539000,1041057,29242,Convention (Subpart B),Long Ton
+366539000,1041057,46656,Dead Weight,Ton
+366551000,263378,20522,Regulatory (Subpart C or D),Short Ton
+366551000,263378,11480,Convention (Subpart B),Short Ton
+366551000,263378,30642,Regulatory (Subpart C or D),Long Ton
+366551000,263378,31920,Convention (Subpart B),Long Ton
+366551000,263378,36004,Dead Weight,Ton
+366557000,257231,7854,Convention (Subpart B),Short Ton
+366557000,257231,14112,Regulatory (Subpart C or D),Short Ton
+366557000,257231,20965,Convention (Subpart B),Long Ton
+366557000,257231,19311,Regulatory (Subpart C or D),Long Ton
+366557000,257231,20883,Dead Weight,Ton
+366562000,54148,12310,Convention (Subpart B),Short Ton
+366562000,54148,31126,Regulatory (Subpart C or D),Short Ton
+366562000,54148,41036,Convention (Subpart B),Long Ton
+366562000,54148,40627,Regulatory (Subpart C or D),Long Ton
+366562000,54148,35101,Dead Weight,Ton
+366562522,467685,12689,Convention (Subpart B),Long Ton
+366562522,467685,3926,Regulatory (Subpart C or D),Long Ton
+366562522,467685,5426,Convention (Subpart B),Short Ton
+366562522,467685,2066,Regulatory (Subpart C or D),Short Ton
+366562522,467685,1393,Dead Weight,Ton
+366563000,54338,31126,Regulatory (Subpart C or D),Short Ton
+366563000,54338,12310,Convention (Subpart B),Short Ton
+366563000,54338,40627,Regulatory (Subpart C or D),Long Ton
+366563000,54338,41036,Convention (Subpart B),Long Ton
+366563000,54338,35101,Dead Weight,Ton
+366565000,45167,17128,Regulatory (Subpart C or D),Long Ton
+366565000,45167,16808,Convention (Subpart B),Long Ton
+366565000,45167,12081,Regulatory (Subpart C or D),Short Ton
+366565000,45167,16222,Dead Weight,Ton
+366565000,45167,32005,Displacement,Ton
+366565000,45167,9439,Convention (Subpart B),Short Ton
+366574000,46269,17902,Regulatory (Subpart C or D),Long Ton
+366574000,46269,17821,Convention (Subpart B),Long Ton
+366574000,46269,12901,Regulatory (Subpart C or D),Short Ton
+366574000,46269,5510,Convention (Subpart B),Short Ton
+366574000,46269,17600,Dead Weight,Ton
+366574000,46269,31500,Displacement,Ton
+366575000,47379,12460,Regulatory (Subpart C or D),Short Ton
+366575000,47379,5510,Convention (Subpart B),Short Ton
+366575000,47379,31500,Displacement,Ton
+366575000,47379,17932,Regulatory (Subpart C or D),Long Ton
+366575000,47379,17821,Convention (Subpart B),Long Ton
+366576000,368156,10846,Convention (Subpart B),Short Ton
+366576000,368156,32664,Convention (Subpart B),Long Ton
+366576000,368156,28555,Dead Weight,Ton
+366629000,51858,13355,Convention (Subpart B),Short Ton
+366629000,51858,34077,Convention (Subpart B),Long Ton
+366629000,51858,40238,Dead Weight,Ton
+366670000,248447,13167,Regulatory (Subpart C or D),Long Ton
+366670000,248447,29386,Convention (Subpart B),Long Ton
+366670000,248447,9200,Regulatory (Subpart C or D),Short Ton
+366670000,248447,8815,Convention (Subpart B),Short Ton
+366695940,109837,184,Regulatory (Subpart C or D),Short Ton
+366695940,109837,271,Regulatory (Subpart C or D),Long Ton
+366698000,248442,13211,Regulatory (Subpart C or D),Long Ton
+366698000,248442,29386,Convention (Subpart B),Long Ton
+366698000,248442,9287,Regulatory (Subpart C or D),Short Ton
+366698000,248442,8815,Convention (Subpart B),Short Ton
+366709000,1047213,1567,Regulatory (Subpart C or D),Long Ton
+366709000,1047213,2164,Convention (Subpart B),Long Ton
+366709000,1047213,1066,Regulatory (Subpart C or D),Short Ton
+366709000,1047213,649,Convention (Subpart B),Short Ton
+366709770,53350,1772,Regulatory (Subpart C or D),Short Ton
+366709770,53350,2578,Convention (Subpart B),Short Ton
+366709770,53350,2477,Regulatory (Subpart C or D),Long Ton
+366709770,53350,6472,Convention (Subpart B),Long Ton
+366709780,47347,1198,Regulatory (Subpart C or D),Short Ton
+366709780,47347,3246,Regulatory (Subpart C or D),Long Ton
+366710820,228703,2477,Regulatory (Subpart C or D),Long Ton
+366710820,228703,1772,Regulatory (Subpart C or D),Short Ton
+366716000,248443,29386,Convention (Subpart B),Long Ton
+366716000,248443,13214,Regulatory (Subpart C or D),Long Ton
+366716000,248443,24106,Dead Weight,Ton
+366716000,248443,8815,Convention (Subpart B),Short Ton
+366716000,248443,9289,Regulatory (Subpart C or D),Short Ton
+366734000,48943,20683,Dead Weight,Ton
+366734000,48943,17021,Regulatory (Subpart C or D),Short Ton
+366734000,48943,9255,Convention (Subpart B),Short Ton
+366734000,48943,23382,Regulatory (Subpart C or D),Long Ton
+366734000,48943,30852,Convention (Subpart B),Long Ton
+366749710,467684,3926,Regulatory (Subpart C or D),Long Ton
+366749710,467684,12689,Convention (Subpart B),Long Ton
+366749710,467684,2066,Regulatory (Subpart C or D),Short Ton
+366749710,467684,5426,Convention (Subpart B),Short Ton
+366749710,467684,1393,Dead Weight,Ton
+366758000,52069,13982,Convention (Subpart B),Short Ton
+366758000,52069,28219,Convention (Subpart B),Long Ton
+366758000,52069,30415,Dead Weight,Ton
+366759130,467685,12689,Convention (Subpart B),Long Ton
+366759130,467685,3926,Regulatory (Subpart C or D),Long Ton
+366759130,467685,5426,Convention (Subpart B),Short Ton
+366759130,467685,2066,Regulatory (Subpart C or D),Short Ton
+366759130,467685,1393,Dead Weight,Ton
+366771000,800854,59705,Convention (Subpart B),Long Ton
+366771000,800854,17912,Convention (Subpart B),Short Ton
+366771000,800854,31368,Displacement,Ton
+366771000,800854,15821,Dead Weight,Ton
+366772750,45711,2705,Regulatory (Subpart C or D),Long Ton
+366772750,45711,1115,Regulatory (Subpart C or D),Short Ton
+366772760,455057,5426,Convention (Subpart B),Short Ton
+366772760,455057,2066,Regulatory (Subpart C or D),Short Ton
+366772760,455057,12689,Convention (Subpart B),Long Ton
+366772760,455057,3926,Regulatory (Subpart C or D),Long Ton
+366772760,455057,1393,Dead Weight,Ton
+366772780,47442,1198,Regulatory (Subpart C or D),Short Ton
+366772780,47442,3246,Regulatory (Subpart C or D),Long Ton
+366772960,52063,1756,Regulatory (Subpart C or D),Short Ton
+366772960,52063,2476,Regulatory (Subpart C or D),Long Ton
+366772980,52039,1755,Regulatory (Subpart C or D),Short Ton
+366772980,52039,2475,Regulatory (Subpart C or D),Long Ton
+366772990,45535,2704,Regulatory (Subpart C or D),Long Ton
+366772990,45535,1214,Regulatory (Subpart C or D),Short Ton
+366773000,227864,10183,Convention (Subpart B),Short Ton
+366773000,227864,8856,Regulatory (Subpart C or D),Short Ton
+366773000,227864,33170,Dead Weight,Ton
+366773000,227864,33652,Convention (Subpart B),Long Ton
+366773000,227864,15632,Regulatory (Subpart C or D),Long Ton
+366773040,52198,1739,Regulatory (Subpart C or D),Short Ton
+366773040,52198,2469,Regulatory (Subpart C or D),Long Ton
+366773070,53349,1772,Regulatory (Subpart C or D),Short Ton
+366773070,53349,2477,Regulatory (Subpart C or D),Long Ton
+366778000,51596,8098,Regulatory (Subpart C or D),Short Ton
+366778000,51596,6498,Convention (Subpart B),Short Ton
+366778000,51596,13097,Regulatory (Subpart C or D),Long Ton
+366778000,51596,21661,Convention (Subpart B),Long Ton
+366778000,51596,15175,Dead Weight,Ton
+366779000,49145,13155,Regulatory (Subpart C or D),Long Ton
+366779000,49145,19124,Dead Weight,Ton
+366779000,49145,7506,Regulatory (Subpart C or D),Short Ton
+366791000,52526,40238,Dead Weight,Ton
+366791000,52526,12100,Convention (Subpart B),Short Ton
+366791000,52526,36653,Convention (Subpart B),Long Ton
+366792180,97795,133,Regulatory (Subpart C or D),Short Ton
+366792180,97795,196,Regulatory (Subpart C or D),Long Ton
+366793000,257233,14112,Regulatory (Subpart C or D),Short Ton
+366793000,257233,7805,Convention (Subpart B),Short Ton
+366793000,257233,19311,Regulatory (Subpart C or D),Long Ton
+366793000,257233,20965,Convention (Subpart B),Long Ton
+366793000,257233,20883,Dead Weight,Ton
+366794000,257232,7805,Convention (Subpart B),Short Ton
+366794000,257232,20883,Dead Weight,Ton
+366794000,257232,14112,Regulatory (Subpart C or D),Short Ton
+366794000,257232,20965,Convention (Subpart B),Long Ton
+366794000,257232,19311,Regulatory (Subpart C or D),Long Ton
+366806920,23678,169,Regulatory (Subpart C or D),Short Ton
+366806920,23678,101,Convention (Subpart B),Short Ton
+366806920,23678,248,Regulatory (Subpart C or D),Long Ton
+366806920,23678,337,Convention (Subpart B),Long Ton
+366816020,29674,163,Simplified,Long Ton
+366816020,29674,130,Simplified,Short Ton
+366826940,36114,279,Regulatory (Subpart C or D),Long Ton
+366826940,36114,359,Convention (Subpart B),Long Ton
+366826940,36114,190,Regulatory (Subpart C or D),Short Ton
+366826940,36114,107,Convention (Subpart B),Short Ton
+366832740,38577,258,Convention (Subpart B),Short Ton
+366832740,38577,196,Regulatory (Subpart C or D),Long Ton
+366832740,38577,133,Regulatory (Subpart C or D),Short Ton
+366832740,38577,863,Convention (Subpart B),Long Ton
+366838000,225752,21782,Convention (Subpart B),Long Ton
+366838000,225752,6534,Convention (Subpart B),Short Ton
+366838000,225752,15075,Dead Weight,Ton
+366839000,224578,9370,Convention (Subpart B),Short Ton
+366839000,224578,31236,Convention (Subpart B),Long Ton
+366841000,224579,9370,Convention (Subpart B),Short Ton
+366841000,224579,22735,Dead Weight,Ton
+366841000,224579,31236,Convention (Subpart B),Long Ton
+366842000,225916,31236,Convention (Subpart B),Long Ton
+366842000,225916,9370,Convention (Subpart B),Short Ton
+366842960,39728,277,Regulatory (Subpart C or D),Long Ton
+366842960,39728,330,Convention (Subpart B),Long Ton
+366842960,39728,188,Regulatory (Subpart C or D),Short Ton
+366842960,39728,99,Convention (Subpart B),Short Ton
+366843420,511977,133,Regulatory (Subpart C or D),Short Ton
+366843420,511977,258,Convention (Subpart B),Short Ton
+366843420,511977,196,Regulatory (Subpart C or D),Long Ton
+366843420,511977,863,Convention (Subpart B),Long Ton
+366846000,1065835,29433,Convention (Subpart B),Long Ton
+366846000,1065835,14107,Convention (Subpart B),Short Ton
+366846000,1065835,51711,Dead Weight,Ton
+366856070,562686,306,Convention (Subpart B),Long Ton
+366856070,562686,221,Regulatory (Subpart C or D),Long Ton
+366856070,562686,91,Convention (Subpart B),Short Ton
+366856070,562686,150,Regulatory (Subpart C or D),Short Ton
+366856460,562687,306,Convention (Subpart B),Long Ton
+366856460,562687,221,Regulatory (Subpart C or D),Long Ton
+366856460,562687,91,Convention (Subpart B),Short Ton
+366856460,562687,150,Regulatory (Subpart C or D),Short Ton
+366862710,585424,345,Regulatory (Subpart C or D),Long Ton
+366862710,585424,414,Convention (Subpart B),Long Ton
+366862710,585424,235,Regulatory (Subpart C or D),Short Ton
+366862710,585424,124,Convention (Subpart B),Short Ton
+366862820,588228,200,Simplified,Long Ton
+366862820,588228,160,Simplified,Short Ton
+366872660,598818,188,Regulatory (Subpart C or D),Short Ton
+366872660,598818,99,Convention (Subpart B),Short Ton
+366872660,598818,277,Regulatory (Subpart C or D),Long Ton
+366872660,598818,330,Convention (Subpart B),Long Ton
+366873000,480079,6004,Convention (Subpart B),Short Ton
+366873000,480079,14120,Convention (Subpart B),Long Ton
+366873000,480079,17525,Dead Weight,Ton
+366873000,480079,23647,Displacement,Ton
+366874960,374978,117,Simplified,Short Ton
+366874960,374978,146,Simplified,Long Ton
+366875000,718645,288,Regulatory (Subpart C or D),Long Ton
+366875000,718645,760,Convention (Subpart B),Long Ton
+366875000,718645,203,Regulatory (Subpart C or D),Short Ton
+366875000,718645,228,Convention (Subpart B),Short Ton
+366879000,276323,7176,Regulatory (Subpart C or D),Long Ton
+366879000,276323,4180,Regulatory (Subpart C or D),Short Ton
+366884140,447069,495,Convention (Subpart B),Long Ton
+366884140,447069,176,Regulatory (Subpart C or D),Long Ton
+366884140,447069,148,Convention (Subpart B),Short Ton
+366884140,447069,120,Regulatory (Subpart C or D),Short Ton
+366891140,613793,196,Regulatory (Subpart C or D),Long Ton
+366891140,613793,133,Regulatory (Subpart C or D),Short Ton
+366891140,613793,863,Convention (Subpart B),Long Ton
+366891140,613793,258,Convention (Subpart B),Short Ton
+366892660,618325,130,Simplified,Short Ton
+366892660,618325,163,Simplified,Long Ton
+366893910,42072,8018,Regulatory (Subpart C or D),Long Ton
+366893910,42072,5452,Regulatory (Subpart C or D),Short Ton
+366904000,870758,316,Regulatory (Subpart C or D),Short Ton
+366904000,870758,315,Convention (Subpart B),Short Ton
+366904000,870758,786,Dead Weight,Ton
+366904000,870758,465,Regulatory (Subpart C or D),Long Ton
+366904000,870758,1052,Convention (Subpart B),Long Ton
+366904880,49140,29629,Regulatory (Subpart C or D),Short Ton
+366904880,49140,34728,Regulatory (Subpart C or D),Long Ton
+366904890,43688,16284,Regulatory (Subpart C or D),Long Ton
+366904890,43688,11079,Regulatory (Subpart C or D),Short Ton
+366904910,42766,11949,Regulatory (Subpart C or D),Long Ton
+366904910,42766,8940,Regulatory (Subpart C or D),Short Ton
+366904930,43683,12292,Regulatory (Subpart C or D),Long Ton
+366904930,43683,7370,Regulatory (Subpart C or D),Short Ton
+366904940,52647,32580,Regulatory (Subpart C or D),Short Ton
+366904940,52647,36360,Regulatory (Subpart C or D),Long Ton
+366904950,42287,14671,Regulatory (Subpart C or D),Long Ton
+366904950,42287,11428,Regulatory (Subpart C or D),Short Ton
+366905890,48757,60335,Dead Weight,Ton
+366905890,48757,29629,Regulatory (Subpart C or D),Short Ton
+366905890,48757,34728,Regulatory (Subpart C or D),Long Ton
+366906610,49320,33534,Regulatory (Subpart C or D),Short Ton
+366906610,49320,35923,Regulatory (Subpart C or D),Long Ton
+366914210,47925,1416,Regulatory (Subpart C or D),Short Ton
+366914210,47925,1237,Convention (Subpart B),Short Ton
+366914210,47925,2108,Regulatory (Subpart C or D),Long Ton
+366914210,47925,4126,Convention (Subpart B),Long Ton
+366919640,143860,178,Regulatory (Subpart C or D),Short Ton
+366919640,143860,262,Regulatory (Subpart C or D),Long Ton
+366920340,499780,257,Convention (Subpart B),Short Ton
+366920340,499780,135,Regulatory (Subpart C or D),Short Ton
+366920340,499780,858,Convention (Subpart B),Long Ton
+366920340,499780,198,Regulatory (Subpart C or D),Long Ton
+366921420,667048,99,Convention (Subpart B),Short Ton
+366921420,667048,188,Regulatory (Subpart C or D),Short Ton
+366921420,667048,330,Convention (Subpart B),Long Ton
+366921420,667048,277,Regulatory (Subpart C or D),Long Ton
+366926920,119441,423,Convention (Subpart B),Long Ton
+366926920,119441,294,Regulatory (Subpart C or D),Long Ton
+366926920,119441,127,Convention (Subpart B),Short Ton
+366926920,119441,200,Regulatory (Subpart C or D),Short Ton
+366926990,663016,144,Simplified,Long Ton
+366926990,663016,115,Simplified,Short Ton
+366929710,43795,5366,Regulatory (Subpart C or D),Long Ton
+366929710,43795,5841,Convention (Subpart B),Long Ton
+366929710,43795,3897,Regulatory (Subpart C or D),Short Ton
+366929710,43795,2739,Convention (Subpart B),Short Ton
+366930730,49779,29412,Regulatory (Subpart C or D),Short Ton
+366930730,49779,34568,Regulatory (Subpart C or D),Long Ton
+366934050,481752,119,Simplified,Short Ton
+366934050,481752,149,Simplified,Long Ton
+366935060,501489,149,Simplified,Long Ton
+366935060,501489,119,Simplified,Short Ton
+366935390,487530,79,Convention (Subpart B),Short Ton
+366935390,487530,265,Convention (Subpart B),Long Ton
+366937490,140238,198,Regulatory (Subpart C or D),Long Ton
+366937490,140238,138,Regulatory (Subpart C or D),Short Ton
+366937490,140238,198,Displacement,Ton
+366938710,51147,15396,Regulatory (Subpart C or D),Long Ton
+366938710,51147,11245,Regulatory (Subpart C or D),Short Ton
+366938730,50383,33534,Regulatory (Subpart C or D),Short Ton
+366938730,50383,35923,Regulatory (Subpart C or D),Long Ton
+366938730,50383,62161,Dead Weight,Ton
+366938760,48342,8036,Regulatory (Subpart C or D),Short Ton
+366938760,48342,23857,Dead Weight,Ton
+366938760,48342,11619,Regulatory (Subpart C or D),Long Ton
+366938770,47963,10348,Regulatory (Subpart C or D),Short Ton
+366938770,47963,0,Dead Weight,Ton
+366938770,47963,14499,Regulatory (Subpart C or D),Long Ton
+366938780,47659,13862,Regulatory (Subpart C or D),Long Ton
+366938780,47659,9712,Regulatory (Subpart C or D),Short Ton
+366948020,662923,99,Regulatory (Subpart C or D),Long Ton
+366948020,662923,327,Convention (Subpart B),Long Ton
+366948020,662923,68,Regulatory (Subpart C or D),Short Ton
+366948020,662923,98,Convention (Subpart B),Short Ton
+366948190,674200,52085,Convention (Subpart B),Short Ton
+366948190,674200,110693,Convention (Subpart B),Long Ton
+366948190,674200,220966,Displacement,Ton
+366948190,674200,193050,Dead Weight,Ton
+366950740,422353,3735,Convention (Subpart B),Short Ton
+366950740,422353,4815,Displacement,Ton
+366950740,422353,3612,Regulatory (Subpart C or D),Short Ton
+366950740,422353,10159,Convention (Subpart B),Long Ton
+366950740,422353,3707,Regulatory (Subpart C or D),Long Ton
+366952340,723052,157,Regulatory (Subpart C or D),Short Ton
+366952340,723052,232,Regulatory (Subpart C or D),Long Ton
+366952790,676224,2623,Regulatory (Subpart C or D),Long Ton
+366952790,676224,5901,Convention (Subpart B),Long Ton
+366952790,676224,1783,Regulatory (Subpart C or D),Short Ton
+366952790,676224,1770,Convention (Subpart B),Short Ton
+366953860,112752,528,Regulatory (Subpart C or D),Short Ton
+366953860,112752,776,Regulatory (Subpart C or D),Long Ton
+366953920,156042,800,Regulatory (Subpart C or D),Long Ton
+366953920,156042,367,Regulatory (Subpart C or D),Short Ton
+366958910,132807,307,Regulatory (Subpart C or D),Long Ton
+366958910,132807,209,Regulatory (Subpart C or D),Short Ton
+366961220,118215,101,Regulatory (Subpart C or D),Short Ton
+366961220,118215,149,Regulatory (Subpart C or D),Long Ton
+366961280,118589,149,Regulatory (Subpart C or D),Long Ton
+366961280,118589,101,Regulatory (Subpart C or D),Short Ton
+366962000,482429,11125,Convention (Subpart B),Short Ton
+366962000,482429,30415,Convention (Subpart B),Long Ton
+366962000,482429,46069,Dead Weight,Ton
+366963010,185779,596,Regulatory (Subpart C or D),Long Ton
+366963010,185779,405,Regulatory (Subpart C or D),Short Ton
+366971330,51984,34620,Regulatory (Subpart C or D),Long Ton
+366971330,51984,28553,Regulatory (Subpart C or D),Short Ton
+366971330,51984,74190,Dead Weight,Ton
+366971330,51984,73792,Displacement,Ton
+366971350,42744,12341,Regulatory (Subpart C or D),Long Ton
+366971350,42744,9372,Regulatory (Subpart C or D),Short Ton
+366971350,42744,27128,Dead Weight,Ton
+366971360,42779,15179,Regulatory (Subpart C or D),Long Ton
+366971360,42779,11330,Regulatory (Subpart C or D),Short Ton
+366971370,50032,30690,Regulatory (Subpart C or D),Short Ton
+366971370,50032,35592,Regulatory (Subpart C or D),Long Ton
+366971370,50032,74811,Dead Weight,Ton
+366972000,240799,4699,Regulatory (Subpart C or D),Short Ton
+366972000,240799,7248,Regulatory (Subpart C or D),Long Ton
+366972000,240799,7409,Dead Weight,Ton
+366972000,240799,14000,Displacement,Ton
+366972020,42783,12341,Regulatory (Subpart C or D),Long Ton
+366972020,42783,9372,Regulatory (Subpart C or D),Short Ton
+366972020,42783,26700,Dead Weight,Ton
+366982000,229061,10614,Regulatory (Subpart C or D),Long Ton
+366982000,229061,8135,Regulatory (Subpart C or D),Short Ton
+366983440,471641,802,Regulatory (Subpart C or D),Short Ton
+366983440,471641,1179,Regulatory (Subpart C or D),Long Ton
+366984350,138371,890,Regulatory (Subpart C or D),Short Ton
+366984350,138371,1309,Regulatory (Subpart C or D),Long Ton
+366984440,288316,730,Regulatory (Subpart C or D),Long Ton
+366984440,288316,497,Regulatory (Subpart C or D),Short Ton
+366984540,329067,198,Regulatory (Subpart C or D),Long Ton
+366984540,329067,472,Convention (Subpart B),Long Ton
+366984540,329067,135,Regulatory (Subpart C or D),Short Ton
+366984540,329067,141,Convention (Subpart B),Short Ton
+366985000,464635,69365,Convention (Subpart B),Long Ton
+366985000,464635,20809,Convention (Subpart B),Short Ton
+366985000,464635,29151,Dead Weight,Ton
+366985000,464635,58255,Displacement,Ton
+366987000,47384,32295,Dead Weight,Ton
+366987000,47384,17949,Convention (Subpart B),Short Ton
+366987000,47384,48904,Convention (Subpart B),Long Ton
+366987000,47384,55355,Displacement,Long Ton
+366988190,95294,414,Regulatory (Subpart C or D),Short Ton
+366988190,95294,609,Regulatory (Subpart C or D),Long Ton
+366989930,250515,317,Regulatory (Subpart C or D),Long Ton
+366989930,250515,248,Regulatory (Subpart C or D),Short Ton
+366991420,1605592,71666,Dead Weight,Metric Ton
+366991420,1605592,59138,Displacement,Metric Ton
+366991420,1605592,20706,Convention (Subpart B),Short Ton
+366991420,1605592,69022,Convention (Subpart B),Long Ton
+366991421,1605594,69022,Convention (Subpart B),Long Ton
+366991421,1605594,71666,Dead Weight,Ton
+366991421,1605594,59138,Displacement,Ton
+366991421,1605594,20706,Convention (Subpart B),Short Ton
+366991519,1611813,25985,Convention (Subpart B),Long Ton
+366991519,1611813,7795,Convention (Subpart B),Short Ton
+366994450,647914,80439,Convention (Subpart B),Long Ton
+366994450,647914,50632,Convention (Subpart B),Short Ton
+366994450,647914,45400,Displacement,Ton
+366994450,647914,8260,Dead Weight,Ton
+366995640,213622,646,Regulatory (Subpart C or D),Long Ton
+366995640,213622,442,Regulatory (Subpart C or D),Short Ton
+366995960,210992,646,Regulatory (Subpart C or D),Long Ton
+366995960,210992,442,Regulatory (Subpart C or D),Short Ton
+366996040,234206,405,Regulatory (Subpart C or D),Short Ton
+366996040,234206,596,Regulatory (Subpart C or D),Long Ton
+366997690,450203,124,Simplified,Short Ton
+366997690,450203,155,Simplified,Long Ton
+366997750,726827,124,Simplified,Short Ton
+366997750,726827,155,Simplified,Long Ton
+366997760,167405,93,Regulatory (Subpart C or D),Short Ton
+366997760,167405,137,Regulatory (Subpart C or D),Long Ton
+366997830,173554,108,Regulatory (Subpart C or D),Short Ton
+366997830,173554,160,Regulatory (Subpart C or D),Long Ton
+366997840,478152,91,Simplified,Short Ton
+366997840,478152,114,Simplified,Long Ton
+366997920,726826,124,Simplified,Short Ton
+366997920,726826,155,Simplified,Long Ton
+366998040,660173,124,Simplified,Short Ton
+366998040,660173,155,Simplified,Long Ton
+366998110,138168,178,Regulatory (Subpart C or D),Short Ton
+366998110,138168,262,Regulatory (Subpart C or D),Long Ton
+366998170,164515,244,Convention (Subpart B),Short Ton
+366998170,164515,109,Regulatory (Subpart C or D),Short Ton
+366998170,164515,815,Convention (Subpart B),Long Ton
+366998170,164515,161,Regulatory (Subpart C or D),Long Ton
+367002660,209230,815,Convention (Subpart B),Long Ton
+367002660,209230,161,Regulatory (Subpart C or D),Long Ton
+367002660,209230,244,Convention (Subpart B),Short Ton
+367002660,209230,109,Regulatory (Subpart C or D),Short Ton
+367003380,726146,20705,Convention (Subpart B),Short Ton
+367003380,726146,37548,Convention (Subpart B),Long Ton
+367003380,726146,24800,Displacement,Ton
+367003380,726146,12700,Dead Weight,Ton
+367003390,494902,124,Simplified,Short Ton
+367003390,494902,124,Simplified,Long Ton
+367003490,417733,156,Simplified,Long Ton
+367003490,417733,125,Simplified,Short Ton
+367003520,27567,81,Convention (Subpart B),Short Ton
+367003520,27567,128,Regulatory (Subpart C or D),Short Ton
+367003520,27567,273,Convention (Subpart B),Long Ton
+367003520,27567,189,Regulatory (Subpart C or D),Long Ton
+367003630,472159,112,Simplified,Short Ton
+367003630,472159,140,Simplified,Long Ton
+367003810,36506,111,Simplified,Long Ton
+367003810,36506,89,Simplified,Short Ton
+367003870,581556,193,Regulatory (Subpart C or D),Long Ton
+367003870,581556,263,Convention (Subpart B),Long Ton
+367003870,581556,131,Regulatory (Subpart C or D),Short Ton
+367003870,581556,78,Convention (Subpart B),Short Ton
+367005260,606712,115,Simplified,Short Ton
+367005260,606712,144,Simplified,Long Ton
+367005470,156804,92,Regulatory (Subpart C or D),Short Ton
+367005470,156804,136,Regulatory (Subpart C or D),Long Ton
+367005580,109082,158,Regulatory (Subpart C or D),Short Ton
+367005580,109082,232,Regulatory (Subpart C or D),Long Ton
+367006540,208640,199,Regulatory (Subpart C or D),Long Ton
+367006540,208640,419,Convention (Subpart B),Long Ton
+367006540,208640,135,Regulatory (Subpart C or D),Short Ton
+367006540,208640,125,Convention (Subpart B),Short Ton
+367006570,204836,118,Convention (Subpart B),Short Ton
+367006570,204836,135,Regulatory (Subpart C or D),Short Ton
+367006570,204836,394,Convention (Subpart B),Long Ton
+367006570,204836,199,Regulatory (Subpart C or D),Long Ton
+367017940,734891,159,Simplified,Long Ton
+367017940,734891,159,Simplified,Short Ton
+367017960,734890,159,Simplified,Long Ton
+367017960,734890,127,Simplified,Short Ton
+367030830,731238,109,Simplified,Short Ton
+367030830,731238,136,Simplified,Long Ton
+367041550,193222,529,Regulatory (Subpart C or D),Long Ton
+367041550,193222,263,Regulatory (Subpart C or D),Short Ton
+367049000,245108,32903,Regulatory (Subpart C or D),Long Ton
+367049000,245108,44543,Convention (Subpart B),Long Ton
+367049000,245108,25384,Regulatory (Subpart C or D),Short Ton
+367049000,245108,14461,Convention (Subpart B),Short Ton
+367049000,245108,26523,Dead Weight,Ton
+367050160,54889,35652,Regulatory (Subpart C or D),Long Ton
+367050160,54889,33263,Regulatory (Subpart C or D),Short Ton
+367050550,46882,29918,Regulatory (Subpart C or D),Short Ton
+367050550,46882,32930,Regulatory (Subpart C or D),Long Ton
+367050550,46882,59174,Dead Weight,Ton
+367054000,453786,12,Simplified,Short Ton
+367054000,453786,13,Simplified,Long Ton
+367057620,218378,589,Regulatory (Subpart C or D),Short Ton
+367057620,218378,867,Regulatory (Subpart C or D),Long Ton
+367057650,150491,785,Regulatory (Subpart C or D),Short Ton
+367057650,150491,1155,Regulatory (Subpart C or D),Long Ton
+367061190,777259,115,Simplified,Short Ton
+367061190,777259,144,Simplified,Long Ton
+367061610,426584,170,Regulatory (Subpart C or D),Short Ton
+367061610,426584,175,Convention (Subpart B),Short Ton
+367061610,426584,250,Regulatory (Subpart C or D),Long Ton
+367061610,426584,585,Convention (Subpart B),Long Ton
+367067110,755556,41995,Convention (Subpart B),Short Ton
+367067110,755556,85387,Convention (Subpart B),Long Ton
+367067110,755556,141740,Dead Weight,Ton
+367073820,429662,135,Regulatory (Subpart C or D),Short Ton
+367073820,429662,177,Convention (Subpart B),Short Ton
+367073820,429662,199,Regulatory (Subpart C or D),Long Ton
+367073820,429662,591,Convention (Subpart B),Long Ton
+367074840,746026,283,Convention (Subpart B),Long Ton
+367074840,746026,185,Regulatory (Subpart C or D),Long Ton
+367074840,746026,84,Convention (Subpart B),Short Ton
+367074840,746026,126,Regulatory (Subpart C or D),Short Ton
+367082220,42568,11701,Regulatory (Subpart C or D),Long Ton
+367082220,42568,7148,Regulatory (Subpart C or D),Short Ton
+367082230,48812,10805,Regulatory (Subpart C or D),Short Ton
+367082230,48812,14956,Regulatory (Subpart C or D),Long Ton
+367087140,801385,9641,Convention (Subpart B),Long Ton
+367087140,801385,2892,Convention (Subpart B),Short Ton
+367087240,271706,1129,Regulatory (Subpart C or D),Long Ton
+367087240,271706,833,Regulatory (Subpart C or D),Short Ton
+367093000,761081,57280,Convention (Subpart B),Long Ton
+367093000,761081,19535,Convention (Subpart B),Short Ton
+367093000,761081,37885,Displacement,Ton
+367093000,761081,21081,Dead Weight,Ton
+367095660,806671,105,Simplified,Short Ton
+367095660,806671,131,Simplified,Long Ton
+367102000,1268963,12581,Convention (Subpart B),Short Ton
+367102000,1268963,29923,Convention (Subpart B),Long Ton
+367102000,1268963,49151,Dead Weight,Ton
+367102610,140064,258,Regulatory (Subpart C or D),Short Ton
+367102610,140064,380,Regulatory (Subpart C or D),Long Ton
+367109000,849758,29242,Convention (Subpart B),Long Ton
+367109000,849758,45800,Dead Weight,Ton
+367109000,849758,11926,Convention (Subpart B),Short Ton
+367118980,824440,150,Simplified,Long Ton
+367118980,824440,120,Simplified,Short Ton
+367120990,49632,33263,Regulatory (Subpart C or D),Short Ton
+367120990,49632,35652,Regulatory (Subpart C or D),Long Ton
+367120990,49632,80908,Dead Weight,Ton
+367121010,54909,35923,Regulatory (Subpart C or D),Long Ton
+367121010,54909,33534,Regulatory (Subpart C or D),Short Ton
+367121040,50260,8105,Regulatory (Subpart C or D),Short Ton
+367121040,50260,11688,Regulatory (Subpart C or D),Long Ton
+367125000,865740,22271,Dead Weight,Ton
+367125000,865740,40947,Displacement,Ton
+367125000,865740,61321,Convention (Subpart B),Long Ton
+367125000,865740,23567,Convention (Subpart B),Short Ton
+367127050,824237,127,Simplified,Long Ton
+367127050,824237,102,Simplified,Short Ton
+367134000,878766,46808,Dead Weight,Ton
+367134000,878766,29242,Convention (Subpart B),Long Ton
+367134000,878766,11926,Convention (Subpart B),Short Ton
+367139590,802583,759,Convention (Subpart B),Long Ton
+367139590,802583,215,Regulatory (Subpart C or D),Long Ton
+367139590,802583,227,Convention (Subpart B),Short Ton
+367139590,802583,146,Regulatory (Subpart C or D),Short Ton
+367141000,1092216,12513,Convention (Subpart B),Long Ton
+367141000,1092216,3754,Convention (Subpart B),Short Ton
+367141000,1092216,13500,Displacement,Ton
+367141430,131973,240,Regulatory (Subpart C or D),Long Ton
+367141430,131973,163,Regulatory (Subpart C or D),Short Ton
+367141680,726115,7026,Convention (Subpart B),Short Ton
+367141680,726115,11652,Convention (Subpart B),Long Ton
+367144000,48007,5331,Displacement,Long Ton
+367144000,48007,2683,Regulatory (Subpart C or D),Short Ton
+367144000,48007,4932,Convention (Subpart B),Short Ton
+367144000,48007,3946,Regulatory (Subpart C or D),Long Ton
+367144000,48007,13009,Convention (Subpart B),Long Ton
+367145380,853587,66,Regulatory (Subpart C or D),Short Ton
+367145380,853587,98,Regulatory (Subpart C or D),Long Ton
+367145440,857267,95,Regulatory (Subpart C or D),Long Ton
+367145440,857267,64,Regulatory (Subpart C or D),Short Ton
+367145680,434725,328,Convention (Subpart B),Long Ton
+367145680,434725,98,Convention (Subpart B),Short Ton
+367145680,434725,89,Regulatory (Subpart C or D),Short Ton
+367145680,434725,131,Regulatory (Subpart C or D),Long Ton
+367152730,53451,232,Regulatory (Subpart C or D),Long Ton
+367152730,53451,157,Regulatory (Subpart C or D),Short Ton
+367153580,127064,189,Regulatory (Subpart C or D),Long Ton
+367153580,127064,555,Convention (Subpart B),Long Ton
+367153580,127064,128,Regulatory (Subpart C or D),Short Ton
+367153580,127064,166,Convention (Subpart B),Short Ton
+367159020,173355,163,Convention (Subpart B),Short Ton
+367159020,173355,169,Regulatory (Subpart C or D),Short Ton
+367159020,173355,544,Convention (Subpart B),Long Ton
+367159020,173355,249,Regulatory (Subpart C or D),Long Ton
+367161150,870002,90,Convention (Subpart B),Short Ton
+367161150,870002,181,Regulatory (Subpart C or D),Short Ton
+367161150,870002,301,Convention (Subpart B),Long Ton
+367161150,870002,266,Regulatory (Subpart C or D),Long Ton
+367164650,871347,120,Simplified,Short Ton
+367164650,871347,150,Simplified,Long Ton
+367167000,45706,24471,Regulatory (Subpart C or D),Long Ton
+367167000,45706,19156,Regulatory (Subpart C or D),Short Ton
+367167000,45706,13411,Dead Weight,Metric Ton
+367167000,45706,26573,Displacement,Metric Ton
+367167020,796515,302,Convention (Subpart B),Long Ton
+367167020,796515,189,Regulatory (Subpart C or D),Long Ton
+367167020,796515,90,Convention (Subpart B),Short Ton
+367167020,796515,128,Regulatory (Subpart C or D),Short Ton
+367185000,47270,30576,Regulatory (Subpart C or D),Short Ton
+367185000,47270,23755,Dead Weight,Ton
+367185000,47270,48525,Regulatory (Subpart C or D),Long Ton
+367185000,47270,55350,Displacement,Long Ton
+367190000,47639,55355,Displacement,Long Ton
+367190000,47639,48143,Regulatory (Subpart C or D),Long Ton
+367190000,47639,25573,Dead Weight,Ton
+367190000,47639,30026,Regulatory (Subpart C or D),Short Ton
+367212000,231983,4778,Convention (Subpart B),Short Ton
+367212000,231983,15929,Convention (Subpart B),Long Ton
+367212000,231983,14934,Regulatory (Subpart C or D),Long Ton
+367212000,231983,6320,Regulatory (Subpart C or D),Short Ton
+367212000,231983,6963,Dead Weight,Ton
+367212000,231983,12400,Displacement,Ton
+367219000,374914,27955,Dead Weight,Ton
+367219000,374914,42383,Displacement,Ton
+367219000,374914,8992,Convention (Subpart B),Short Ton
+367219000,374914,18987,Regulatory (Subpart C or D),Short Ton
+367219000,374914,25742,Convention (Subpart B),Long Ton
+367219000,374914,20706,Regulatory (Subpart C or D),Long Ton
+367220000,313345,8992,Convention (Subpart B),Short Ton
+367220000,313345,18987,Regulatory (Subpart C or D),Short Ton
+367220000,313345,27671,Dead Weight,Ton
+367220000,313345,42383,Displacement,Ton
+367220000,313345,25742,Convention (Subpart B),Long Ton
+367220000,313345,20706,Regulatory (Subpart C or D),Long Ton
+367221000,313341,18987,Regulatory (Subpart C or D),Short Ton
+367221000,313341,8992,Convention (Subpart B),Short Ton
+367221000,313341,27671,Dead Weight,Ton
+367221000,313341,42383,Displacement,Ton
+367221000,313341,20706,Regulatory (Subpart C or D),Long Ton
+367221000,313341,25742,Convention (Subpart B),Long Ton
+367255000,272536,9779,Convention (Subpart B),Long Ton
+367255000,272536,2933,Convention (Subpart B),Short Ton
+367276000,995261,43758,Convention (Subpart B),Long Ton
+367276000,995261,13127,Convention (Subpart B),Short Ton
+367303000,1395329,99,Convention (Subpart B),Short Ton
+367303000,1395329,78,Regulatory (Subpart C or D),Short Ton
+367303000,1395329,332,Convention (Subpart B),Long Ton
+367303000,1395329,115,Regulatory (Subpart C or D),Long Ton
+367314490,195315,89,Regulatory (Subpart C or D),Long Ton
+367314490,195315,73,Regulatory (Subpart C or D),Short Ton
+367320160,925255,195,Regulatory (Subpart C or D),Long Ton
+367320160,925255,431,Convention (Subpart B),Long Ton
+367320160,925255,133,Regulatory (Subpart C or D),Short Ton
+367320160,925255,129,Convention (Subpart B),Short Ton
+367320890,88215,652,Regulatory (Subpart C or D),Long Ton
+367320890,88215,442,Regulatory (Subpart C or D),Short Ton
+367326880,930436,328,Convention (Subpart B),Short Ton
+367326880,930436,526,Regulatory (Subpart C or D),Short Ton
+367326880,930436,1094,Convention (Subpart B),Long Ton
+367326880,930436,774,Regulatory (Subpart C or D),Long Ton
+367332910,868830,64,Regulatory (Subpart C or D),Short Ton
+367332910,868830,95,Regulatory (Subpart C or D),Long Ton
+367332930,868831,64,Regulatory (Subpart C or D),Short Ton
+367332930,868831,95,Regulatory (Subpart C or D),Long Ton
+367336000,870678,316,Regulatory (Subpart C or D),Short Ton
+367336000,870678,312,Convention (Subpart B),Short Ton
+367336000,870678,465,Regulatory (Subpart C or D),Long Ton
+367336000,870678,1043,Convention (Subpart B),Long Ton
+367336000,870678,820,Dead Weight,Long Ton
+367336000,870678,1844,Displacement,Long Ton
+367336380,936428,499,Convention (Subpart B),Long Ton
+367336380,936428,223,Regulatory (Subpart C or D),Long Ton
+367336380,936428,149,Convention (Subpart B),Short Ton
+367336380,936428,151,Regulatory (Subpart C or D),Short Ton
+367337450,395961,87,Convention (Subpart B),Short Ton
+367337450,395961,292,Convention (Subpart B),Long Ton
+367337960,921405,919,Regulatory (Subpart C or D),Long Ton
+367337960,921405,1348,Convention (Subpart B),Long Ton
+367337960,921405,625,Regulatory (Subpart C or D),Short Ton
+367337960,921405,404,Convention (Subpart B),Short Ton
+367340990,47568,9639,Regulatory (Subpart C or D),Long Ton
+367340990,47568,5700,Regulatory (Subpart C or D),Short Ton
+367341010,47709,9639,Regulatory (Subpart C or D),Long Ton
+367341010,47709,5700,Regulatory (Subpart C or D),Short Ton
+367341190,936474,99,Regulatory (Subpart C or D),Long Ton
+367341190,936474,327,Convention (Subpart B),Long Ton
+367341190,936474,67,Regulatory (Subpart C or D),Short Ton
+367341190,936474,98,Convention (Subpart B),Short Ton
+367342960,927559,29527,Convention (Subpart B),Long Ton
+367342960,927559,12859,Convention (Subpart B),Short Ton
+367342960,927559,48633,Dead Weight,Ton
+367342960,927559,48300,Displacement,Ton
+367348000,259967,26523,Dead Weight,Ton
+367348000,259967,32903,Regulatory (Subpart C or D),Long Ton
+367348000,259967,44543,Convention (Subpart B),Long Ton
+367348000,259967,25384,Regulatory (Subpart C or D),Short Ton
+367348000,259967,14461,Convention (Subpart B),Short Ton
+367349860,943440,264,Regulatory (Subpart C or D),Long Ton
+367349860,943440,689,Convention (Subpart B),Long Ton
+367349860,943440,180,Regulatory (Subpart C or D),Short Ton
+367349860,943440,206,Convention (Subpart B),Short Ton
+367353070,894031,29606,Convention (Subpart B),Long Ton
+367353070,894031,26464,Simplified,Long Ton
+367353070,894031,12859,Convention (Subpart B),Short Ton
+367353070,894031,21171,Simplified,Short Ton
+367353080,894029,29527,Convention (Subpart B),Long Ton
+367353080,894029,12859,Convention (Subpart B),Short Ton
+367353090,894027,48569,Dead Weight,Ton
+367353090,894027,16628,Displacement,Ton
+367353090,894027,29527,Convention (Subpart B),Long Ton
+367353090,894027,12859,Convention (Subpart B),Short Ton
+367353110,894026,48599,Dead Weight,Ton
+367353110,894026,29527,Convention (Subpart B),Long Ton
+367353110,894026,12859,Convention (Subpart B),Short Ton
+367361960,921406,919,Regulatory (Subpart C or D),Long Ton
+367361960,921406,1348,Convention (Subpart B),Long Ton
+367361960,921406,625,Regulatory (Subpart C or D),Short Ton
+367361960,921406,404,Convention (Subpart B),Short Ton
+367362010,921408,1348,Convention (Subpart B),Long Ton
+367362010,921408,919,Regulatory (Subpart C or D),Long Ton
+367362010,921408,404,Convention (Subpart B),Short Ton
+367362010,921408,625,Regulatory (Subpart C or D),Short Ton
+367362960,949544,156,Simplified,Long Ton
+367362960,949544,125,Simplified,Short Ton
+367370000,267947,25384,Regulatory (Subpart C or D),Short Ton
+367370000,267947,14461,Convention (Subpart B),Short Ton
+367370000,267947,26949,Dead Weight,Ton
+367370000,267947,4611,Displacement,Ton
+367370000,267947,32903,Regulatory (Subpart C or D),Long Ton
+367370000,267947,44543,Convention (Subpart B),Long Ton
+367370780,938301,223,Regulatory (Subpart C or D),Long Ton
+367370780,938301,499,Convention (Subpart B),Long Ton
+367370780,938301,151,Regulatory (Subpart C or D),Short Ton
+367370780,938301,149,Convention (Subpart B),Short Ton
+367371000,249382,14461,Convention (Subpart B),Short Ton
+367371000,249382,25384,Regulatory (Subpart C or D),Short Ton
+367371000,249382,44543,Convention (Subpart B),Long Ton
+367371000,249382,32903,Regulatory (Subpart C or D),Long Ton
+367371000,249382,26523,Dead Weight,Ton
+367371410,88014,651,Regulatory (Subpart C or D),Long Ton
+367371410,88014,442,Regulatory (Subpart C or D),Short Ton
+367371510,129971,367,Regulatory (Subpart C or D),Short Ton
+367371510,129971,539,Regulatory (Subpart C or D),Long Ton
+367371790,953662,99,Regulatory (Subpart C or D),Long Ton
+367371790,953662,327,Convention (Subpart B),Long Ton
+367371790,953662,67,Regulatory (Subpart C or D),Short Ton
+367371790,953662,98,Convention (Subpart B),Short Ton
+367381000,878765,46809,Dead Weight,Ton
+367381000,878765,29242,Convention (Subpart B),Long Ton
+367381000,878765,11926,Convention (Subpart B),Short Ton
+367384000,265629,32903,Regulatory (Subpart C or D),Long Ton
+367384000,265629,44543,Convention (Subpart B),Long Ton
+367384000,265629,26523,Dead Weight,Ton
+367384000,265629,25384,Regulatory (Subpart C or D),Short Ton
+367384000,265629,14461,Convention (Subpart B),Short Ton
+367390130,971785,627,Convention (Subpart B),Long Ton
+367390130,971785,191,Regulatory (Subpart C or D),Long Ton
+367390130,971785,188,Convention (Subpart B),Short Ton
+367390130,971785,120,Regulatory (Subpart C or D),Short Ton
+367398790,995816,585,Regulatory (Subpart C or D),Long Ton
+367398790,995816,778,Convention (Subpart B),Long Ton
+367398790,995816,398,Regulatory (Subpart C or D),Short Ton
+367398790,995816,233,Convention (Subpart B),Short Ton
+367399980,989205,494,Convention (Subpart B),Long Ton
+367399980,989205,190,Regulatory (Subpart C or D),Long Ton
+367399980,989205,148,Convention (Subpart B),Short Ton
+367399980,989205,129,Regulatory (Subpart C or D),Short Ton
+367400420,497736,1122,Convention (Subpart B),Short Ton
+367400420,497736,1084,Regulatory (Subpart C or D),Short Ton
+367400420,497736,3743,Convention (Subpart B),Long Ton
+367400420,497736,1595,Regulatory (Subpart C or D),Long Ton
+367402950,132400,237,Regulatory (Subpart C or D),Long Ton
+367402950,132400,161,Regulatory (Subpart C or D),Short Ton
+367409290,173981,197,Regulatory (Subpart C or D),Short Ton
+367409290,173981,135,Convention (Subpart B),Short Ton
+367409290,173981,276,Regulatory (Subpart C or D),Long Ton
+367409290,173981,451,Convention (Subpart B),Long Ton
+367409290,173981,54051,Displacement,Ton
+367409290,173981,451,Dead Weight,Long Ton
+367415160,1001855,223,Regulatory (Subpart C or D),Long Ton
+367415160,1001855,499,Convention (Subpart B),Long Ton
+367415160,1001855,151,Regulatory (Subpart C or D),Short Ton
+367415160,1001855,149,Convention (Subpart B),Short Ton
+367416750,1016502,499,Convention (Subpart B),Long Ton
+367416750,1016502,223,Regulatory (Subpart C or D),Long Ton
+367416750,1016502,149,Convention (Subpart B),Short Ton
+367416750,1016502,151,Regulatory (Subpart C or D),Short Ton
+367420350,205417,1079,Regulatory (Subpart C or D),Long Ton
+367420350,205417,734,Regulatory (Subpart C or D),Short Ton
+367422000,1324886,44706,Convention (Subpart B),Short Ton
+367422000,1324886,112683,Displacement,Ton
+367422000,1324886,75579,Convention (Subpart B),Long Ton
+367423260,1033746,64,Regulatory (Subpart C or D),Short Ton
+367423260,1033746,95,Regulatory (Subpart C or D),Long Ton
+367428330,1012803,191,Regulatory (Subpart C or D),Long Ton
+367428330,1012803,627,Convention (Subpart B),Long Ton
+367428330,1012803,130,Regulatory (Subpart C or D),Short Ton
+367428330,1012803,188,Convention (Subpart B),Short Ton
+367430980,380752,3094,Convention (Subpart B),Short Ton
+367430980,380752,7881,Dead Weight,Long Ton
+367430980,380752,12552,Displacement,Long Ton
+367430980,380752,5984,Convention (Subpart B),Long Ton
+367431620,1041451,67,Regulatory (Subpart C or D),Short Ton
+367431620,1041451,98,Convention (Subpart B),Short Ton
+367431620,1041451,99,Regulatory (Subpart C or D),Long Ton
+367431620,1041451,327,Convention (Subpart B),Long Ton
+367435750,1024596,198,Regulatory (Subpart C or D),Long Ton
+367435750,1024596,676,Convention (Subpart B),Long Ton
+367435750,1024596,93,Regulatory (Subpart C or D),Short Ton
+367435750,1024596,202,Convention (Subpart B),Short Ton
+367438000,671400,14558,Convention (Subpart B),Short Ton
+367438000,671400,32575,Convention (Subpart B),Long Ton
+367445000,894995,216,Regulatory (Subpart C or D),Long Ton
+367445000,894995,689,Convention (Subpart B),Long Ton
+367445000,894995,146,Regulatory (Subpart C or D),Short Ton
+367445000,894995,206,Convention (Subpart B),Short Ton
+367450000,616352,3655,Convention (Subpart B),Short Ton
+367450000,616352,9200,Dead Weight,Metric Ton
+367450000,616352,12184,Convention (Subpart B),Long Ton
+367452180,1057681,119,Regulatory (Subpart C or D),Short Ton
+367452180,1057681,122,Convention (Subpart B),Short Ton
+367452180,1057681,175,Regulatory (Subpart C or D),Long Ton
+367452180,1057681,408,Convention (Subpart B),Long Ton
+367453420,1061744,180,Regulatory (Subpart C or D),Short Ton
+367453420,1061744,206,Convention (Subpart B),Short Ton
+367453420,1061744,264,Regulatory (Subpart C or D),Long Ton
+367453420,1061744,689,Convention (Subpart B),Long Ton
+367455580,482430,11125,Convention (Subpart B),Short Ton
+367455580,482430,30415,Convention (Subpart B),Long Ton
+367455580,482430,46069,Dead Weight,Ton
+367455770,457024,30415,Convention (Subpart B),Long Ton
+367455770,457024,11125,Convention (Subpart B),Short Ton
+367455770,457024,46095,Dead Weight,Ton
+367455770,457024,56993,Displacement,Ton
+367456810,131296,194,Regulatory (Subpart C or D),Short Ton
+367456810,131296,286,Regulatory (Subpart C or D),Long Ton
+367456820,618792,151,Simplified,Short Ton
+367456820,618792,189,Simplified,Long Ton
+367456830,603552,151,Simplified,Short Ton
+367456830,603552,189,Simplified,Long Ton
+367456860,259350,193,Regulatory (Subpart C or D),Long Ton
+367456860,259350,131,Regulatory (Subpart C or D),Short Ton
+367456870,618794,151,Simplified,Short Ton
+367456870,618794,189,Simplified,Long Ton
+367456960,144810,328,Regulatory (Subpart C or D),Short Ton
+367456960,144810,483,Regulatory (Subpart C or D),Long Ton
+367457000,486882,11071,Convention (Subpart B),Short Ton
+367457000,486882,30770,Convention (Subpart B),Long Ton
+367457000,486882,45671,Dead Weight,Ton
+367466650,1077107,270,Convention (Subpart B),Long Ton
+367466650,1077107,99,Regulatory (Subpart C or D),Long Ton
+367466650,1077107,81,Convention (Subpart B),Short Ton
+367466650,1077107,72,Regulatory (Subpart C or D),Short Ton
+367469290,1099397,499,Convention (Subpart B),Long Ton
+367469290,1099397,223,Regulatory (Subpart C or D),Long Ton
+367469290,1099397,149,Convention (Subpart B),Short Ton
+367469290,1099397,151,Regulatory (Subpart C or D),Short Ton
+367480250,57879,524,Regulatory (Subpart C or D),Long Ton
+367480250,57879,356,Regulatory (Subpart C or D),Short Ton
+367480260,198626,339,Regulatory (Subpart C or D),Short Ton
+367480260,198626,297,Convention (Subpart B),Short Ton
+367480260,198626,498,Regulatory (Subpart C or D),Long Ton
+367480260,198626,993,Convention (Subpart B),Long Ton
+367481310,1107416,182,Regulatory (Subpart C or D),Short Ton
+367481310,1107416,276,Convention (Subpart B),Short Ton
+367481310,1107416,267,Regulatory (Subpart C or D),Long Ton
+367481310,1107416,920,Convention (Subpart B),Long Ton
+367484250,1112916,368,Convention (Subpart B),Long Ton
+367484250,1112916,287,Regulatory (Subpart C or D),Long Ton
+367484250,1112916,110,Convention (Subpart B),Short Ton
+367484250,1112916,195,Regulatory (Subpart C or D),Short Ton
+367487570,149766,118,Regulatory (Subpart C or D),Short Ton
+367487570,149766,174,Regulatory (Subpart C or D),Long Ton
+367493000,1319970,2611,Convention (Subpart B),Long Ton
+367493000,1319970,1170,Regulatory (Subpart C or D),Long Ton
+367493000,1319970,783,Convention (Subpart B),Short Ton
+367493000,1319970,796,Regulatory (Subpart C or D),Short Ton
+367493740,1112246,299,Convention (Subpart B),Long Ton
+367493740,1112246,230,Regulatory (Subpart C or D),Long Ton
+367493740,1112246,89,Convention (Subpart B),Short Ton
+367493740,1112246,156,Regulatory (Subpart C or D),Short Ton
+367496470,1105042,191,Regulatory (Subpart C or D),Long Ton
+367496470,1105042,659,Convention (Subpart B),Long Ton
+367496470,1105042,130,Regulatory (Subpart C or D),Short Ton
+367496470,1105042,197,Convention (Subpart B),Short Ton
+367501540,1107417,276,Convention (Subpart B),Short Ton
+367501540,1107417,182,Regulatory (Subpart C or D),Short Ton
+367501540,1107417,920,Convention (Subpart B),Long Ton
+367501540,1107417,267,Regulatory (Subpart C or D),Long Ton
+367506740,1157313,202,Regulatory (Subpart C or D),Short Ton
+367506740,1157313,116,Convention (Subpart B),Short Ton
+367506740,1157313,297,Regulatory (Subpart C or D),Long Ton
+367506740,1157313,387,Convention (Subpart B),Long Ton
+367509840,1160184,149,Simplified,Short Ton
+367509840,1160184,186,Simplified,Long Ton
+367515280,930844,119,Simplified,Short Ton
+367515280,930844,149,Simplified,Long Ton
+367516950,496619,108,Regulatory (Subpart C or D),Short Ton
+367516950,496619,117,Convention (Subpart B),Short Ton
+367516950,496619,149,Regulatory (Subpart C or D),Long Ton
+367516950,496619,392,Convention (Subpart B),Long Ton
+367516950,496619,407,Dead Weight,Long Ton
+367518920,1119196,12837,Convention (Subpart B),Short Ton
+367518920,1119196,30718,Convention (Subpart B),Long Ton
+367518920,1119196,49035,Dead Weight,Ton
+367525740,1162319,117,Convention (Subpart B),Short Ton
+367525740,1162319,219,Regulatory (Subpart C or D),Short Ton
+367525740,1162319,391,Convention (Subpart B),Long Ton
+367525740,1162319,322,Regulatory (Subpart C or D),Long Ton
+367532810,138302,468,Regulatory (Subpart C or D),Short Ton
+367532810,138302,590,Regulatory (Subpart C or D),Long Ton
+367532830,101347,716,Regulatory (Subpart C or D),Short Ton
+367532830,101347,1053,Regulatory (Subpart C or D),Long Ton
+367532840,86245,879,Regulatory (Subpart C or D),Long Ton
+367532840,86245,597,Regulatory (Subpart C or D),Short Ton
+367532910,244999,785,Regulatory (Subpart C or D),Long Ton
+367532910,244999,534,Regulatory (Subpart C or D),Short Ton
+367533040,258198,514,Regulatory (Subpart C or D),Long Ton
+367533040,258198,349,Regulatory (Subpart C or D),Short Ton
+367533170,258461,349,Regulatory (Subpart C or D),Short Ton
+367533170,258461,514,Regulatory (Subpart C or D),Long Ton
+367533180,241277,619,Regulatory (Subpart C or D),Short Ton
+367533180,241277,684,Regulatory (Subpart C or D),Long Ton
+367533710,201955,117,Regulatory (Subpart C or D),Long Ton
+367533710,201955,79,Regulatory (Subpart C or D),Short Ton
+367535950,1172923,6089,Convention (Subpart B),Short Ton
+367535950,1172923,15549,Convention (Subpart B),Long Ton
+367535950,1172923,19382,Dead Weight,Ton
+367535950,1172923,28300,Displacement,Ton
+367539090,1179832,188,Convention (Subpart B),Short Ton
+367539090,1179832,135,Regulatory (Subpart C or D),Short Ton
+367539090,1179832,628,Convention (Subpart B),Long Ton
+367539090,1179832,199,Regulatory (Subpart C or D),Long Ton
+367541740,1174012,117,Convention (Subpart B),Short Ton
+367541740,1174012,219,Regulatory (Subpart C or D),Short Ton
+367541740,1174012,391,Convention (Subpart B),Long Ton
+367541740,1174012,322,Regulatory (Subpart C or D),Long Ton
+367546910,120585,242,Regulatory (Subpart C or D),Long Ton
+367546910,120585,164,Regulatory (Subpart C or D),Short Ton
+367549830,1216805,188,Convention (Subpart B),Short Ton
+367549830,1216805,135,Regulatory (Subpart C or D),Short Ton
+367549830,1216805,628,Convention (Subpart B),Long Ton
+367549830,1216805,199,Regulatory (Subpart C or D),Long Ton
+367556370,591527,94,Simplified,Short Ton
+367556370,591527,118,Simplified,Long Ton
+367556630,1217351,294,Regulatory (Subpart C or D),Long Ton
+367556630,1217351,949,Convention (Subpart B),Long Ton
+367556630,1217351,200,Regulatory (Subpart C or D),Short Ton
+367556630,1217351,284,Convention (Subpart B),Short Ton
+367556640,1217347,294,Regulatory (Subpart C or D),Long Ton
+367556640,1217347,949,Convention (Subpart B),Long Ton
+367556640,1217347,200,Regulatory (Subpart C or D),Short Ton
+367556640,1217347,284,Convention (Subpart B),Short Ton
+367557410,1107415,126,Simplified,Short Ton
+367557410,1107415,158,Simplified,Long Ton
+367563930,1225517,130,Regulatory (Subpart C or D),Short Ton
+367563930,1225517,197,Convention (Subpart B),Short Ton
+367563930,1225517,191,Regulatory (Subpart C or D),Long Ton
+367563930,1225517,659,Convention (Subpart B),Long Ton
+367568460,609126,1693,Convention (Subpart B),Short Ton
+367568460,609126,1079,Regulatory (Subpart C or D),Short Ton
+367568460,609126,3725,Convention (Subpart B),Long Ton
+367568460,609126,1587,Regulatory (Subpart C or D),Long Ton
+367570840,1223795,126,Convention (Subpart B),Short Ton
+367570840,1223795,240,Regulatory (Subpart C or D),Short Ton
+367570840,1223795,421,Convention (Subpart B),Long Ton
+367570840,1223795,353,Regulatory (Subpart C or D),Long Ton
+367575520,1176631,1283,Convention (Subpart B),Short Ton
+367575520,1176631,3835,Convention (Subpart B),Long Ton
+367577620,1171340,96,Simplified,Short Ton
+367577620,1171340,121,Simplified,Long Ton
+367578740,511295,67965,Dead Weight,Ton
+367578740,511295,92439,Displacement,Ton
+367578740,511295,65792,Convention (Subpart B),Long Ton
+367578740,511295,36412,Convention (Subpart B),Short Ton
+367579920,1240179,149,Simplified,Short Ton
+367579920,1240179,187,Simplified,Long Ton
+367583480,1055285,260,Regulatory (Subpart C or D),Long Ton
+367583480,1055285,342,Convention (Subpart B),Long Ton
+367583480,1055285,177,Regulatory (Subpart C or D),Short Ton
+367583480,1055285,102,Convention (Subpart B),Short Ton
+367586890,218703,126,Regulatory (Subpart C or D),Short Ton
+367586890,218703,181,Convention (Subpart B),Short Ton
+367586890,218703,169,Dead Weight,Ton
+367586890,218703,184,Regulatory (Subpart C or D),Long Ton
+367586890,218703,606,Convention (Subpart B),Long Ton
+367586910,175499,182,Regulatory (Subpart C or D),Long Ton
+367586910,175499,439,Convention (Subpart B),Long Ton
+367586910,175499,124,Regulatory (Subpart C or D),Short Ton
+367586910,175499,131,Convention (Subpart B),Short Ton
+367588290,190783,140,Simplified,Long Ton
+367588290,190783,112,Simplified,Short Ton
+367590780,1267110,135,Regulatory (Subpart C or D),Short Ton
+367590780,1267110,188,Convention (Subpart B),Short Ton
+367590780,1267110,199,Regulatory (Subpart C or D),Long Ton
+367590780,1267110,628,Convention (Subpart B),Long Ton
+367594190,1253239,68,Regulatory (Subpart C or D),Short Ton
+367594190,1253239,81,Convention (Subpart B),Short Ton
+367594190,1253239,99,Regulatory (Subpart C or D),Long Ton
+367594190,1253239,270,Convention (Subpart B),Long Ton
+367594470,1266597,73,Convention (Subpart B),Short Ton
+367594470,1266597,129,Regulatory (Subpart C or D),Short Ton
+367594470,1266597,246,Convention (Subpart B),Long Ton
+367594470,1266597,190,Regulatory (Subpart C or D),Long Ton
+367595460,1270250,177,Simplified,Long Ton
+367595460,1270250,142,Simplified,Short Ton
+367596830,1176637,1283,Convention (Subpart B),Short Ton
+367596830,1176637,3835,Convention (Subpart B),Long Ton
+367596830,1176637,6040,Dead Weight,Ton
+367601620,1274685,169,Simplified,Short Ton
+367601620,1274685,212,Simplified,Long Ton
+367606000,903600,50686,Convention (Subpart B),Long Ton
+367606000,903600,29491,Convention (Subpart B),Short Ton
+367608470,1274252,201,Regulatory (Subpart C or D),Short Ton
+367608470,1274252,117,Convention (Subpart B),Short Ton
+367608470,1274252,296,Regulatory (Subpart C or D),Long Ton
+367608470,1274252,392,Convention (Subpart B),Long Ton
+367611060,1275109,130,Convention (Subpart B),Short Ton
+367611060,1275109,125,Regulatory (Subpart C or D),Short Ton
+367611060,1275109,434,Convention (Subpart B),Long Ton
+367611060,1275109,184,Regulatory (Subpart C or D),Long Ton
+367611420,617340,1963,Convention (Subpart B),Short Ton
+367611420,617340,201,Regulatory (Subpart C or D),Short Ton
+367611420,617340,5975,Convention (Subpart B),Long Ton
+367611420,617340,29188,Displacement,Long Ton
+367611420,617340,296,Regulatory (Subpart C or D),Long Ton
+367612310,1216104,1388,Convention (Subpart B),Short Ton
+367612310,1216104,4627,Convention (Subpart B),Long Ton
+367612470,1176640,1283,Convention (Subpart B),Short Ton
+367612470,1176640,3835,Convention (Subpart B),Long Ton
+367612470,1176640,6148,Dead Weight,Ton
+367612520,1216208,1283,Convention (Subpart B),Short Ton
+367612520,1216208,3835,Convention (Subpart B),Long Ton
+367612530,1216209,1283,Convention (Subpart B),Short Ton
+367612530,1216209,3835,Convention (Subpart B),Long Ton
+367613940,1277399,142,Simplified,Short Ton
+367613940,1277399,177,Simplified,Long Ton
+367620140,236331,141,Regulatory (Subpart C or D),Long Ton
+367620140,236331,96,Regulatory (Subpart C or D),Short Ton
+367628660,494514,8672,Convention (Subpart B),Short Ton
+367628660,494514,22878,Dead Weight,Ton
+367628660,494514,30835,Displacement,Ton
+367628660,494514,16856,Convention (Subpart B),Long Ton
+367633000,1260482,29923,Convention (Subpart B),Long Ton
+367633000,1260482,12581,Convention (Subpart B),Short Ton
+367633000,1260482,49151,Dead Weight,Ton
+367635000,1646199,149,Convention (Subpart B),Short Ton
+367635000,1646199,170,Regulatory (Subpart C or D),Short Ton
+367635000,1646199,499,Convention (Subpart B),Long Ton
+367635000,1646199,251,Regulatory (Subpart C or D),Long Ton
+367637310,1310970,200,Regulatory (Subpart C or D),Short Ton
+367637310,1310970,115,Convention (Subpart B),Short Ton
+367637310,1310970,295,Regulatory (Subpart C or D),Long Ton
+367637310,1310970,384,Convention (Subpart B),Long Ton
+367637760,1306912,100,Convention (Subpart B),Short Ton
+367637760,1306912,163,Regulatory (Subpart C or D),Short Ton
+367637760,1306912,334,Convention (Subpart B),Long Ton
+367637760,1306912,245,Regulatory (Subpart C or D),Long Ton
+367638040,110294,674,Regulatory (Subpart C or D),Long Ton
+367638040,110294,458,Regulatory (Subpart C or D),Short Ton
+367643740,1285084,1749,Convention (Subpart B),Short Ton
+367643740,1285084,5830,Convention (Subpart B),Long Ton
+367643740,1285084,5131,Dead Weight,Long Ton
+367643760,1270811,5257,Convention (Subpart B),Long Ton
+367643760,1270811,1697,Convention (Subpart B),Short Ton
+367646810,1309099,133,Regulatory (Subpart C or D),Short Ton
+367646810,1309099,149,Convention (Subpart B),Short Ton
+367646810,1309099,195,Regulatory (Subpart C or D),Long Ton
+367646810,1309099,497,Convention (Subpart B),Long Ton
+367649320,1226796,3055,Regulatory (Subpart C or D),Short Ton
+367649320,1226796,3633,Convention (Subpart B),Short Ton
+367649320,1226796,3525,Regulatory (Subpart C or D),Long Ton
+367649320,1226796,9292,Convention (Subpart B),Long Ton
+367649320,1226796,3258,Displacement,Ton
+367654520,1321617,178,Simplified,Short Ton
+367654520,1321617,222,Simplified,Long Ton
+367656160,1219378,189,Simplified,Long Ton
+367656160,1219378,151,Simplified,Short Ton
+367658140,1327646,634,Convention (Subpart B),Long Ton
+367658140,1327646,199,Regulatory (Subpart C or D),Long Ton
+367658140,1327646,190,Convention (Subpart B),Short Ton
+367658140,1327646,135,Regulatory (Subpart C or D),Short Ton
+367661180,1327400,142,Simplified,Short Ton
+367661180,1327400,177,Simplified,Long Ton
+367661820,1328802,129,Simplified,Short Ton
+367661820,1328802,161,Simplified,Long Ton
+367665030,1327583,6242,Convention (Subpart B),Short Ton
+367665030,1327583,29987,Displacement,Ton
+367665030,1327583,18410,Convention (Subpart B),Long Ton
+367665030,1327583,19833,Dead Weight,Ton
+367668760,117305,827,Regulatory (Subpart C or D),Long Ton
+367668760,117305,563,Regulatory (Subpart C or D),Short Ton
+367668810,138586,364,Regulatory (Subpart C or D),Short Ton
+367668810,138586,536,Regulatory (Subpart C or D),Long Ton
+367675880,1331076,151,Simplified,Short Ton
+367675880,1331076,189,Simplified,Long Ton
+367677130,1309101,497,Convention (Subpart B),Long Ton
+367677130,1309101,195,Regulatory (Subpart C or D),Long Ton
+367677130,1309101,149,Convention (Subpart B),Short Ton
+367677130,1309101,133,Regulatory (Subpart C or D),Short Ton
+367677560,1275578,12581,Convention (Subpart B),Short Ton
+367677560,1275578,29923,Convention (Subpart B),Long Ton
+367677560,1275578,49151,Dead Weight,Ton
+367680760,1318079,120,Simplified,Short Ton
+367680760,1318079,150,Simplified,Long Ton
+367681460,1331596,156,Simplified,Short Ton
+367681460,1331596,195,Simplified,Long Ton
+367688000,755588,56439,Convention (Subpart B),Short Ton
+367688000,755588,110693,Convention (Subpart B),Long Ton
+367688000,755588,193049,Dead Weight,Ton
+367688000,755588,220966,Displacement,Ton
+367690000,812795,1348,Convention (Subpart B),Long Ton
+367690000,812795,1248,Regulatory (Subpart C or D),Long Ton
+367690000,812795,404,Convention (Subpart B),Short Ton
+367690000,812795,848,Regulatory (Subpart C or D),Short Ton
+367690570,1352603,104,Convention (Subpart B),Short Ton
+367690570,1352603,348,Convention (Subpart B),Long Ton
+367702110,155616,533,Regulatory (Subpart C or D),Long Ton
+367702110,155616,362,Regulatory (Subpart C or D),Short Ton
+367702240,906343,527,Convention (Subpart B),Long Ton
+367702240,906343,158,Convention (Subpart B),Short Ton
+367703000,878764,45800,Dead Weight,Ton
+367703000,878764,29242,Convention (Subpart B),Long Ton
+367703000,878764,11926,Convention (Subpart B),Short Ton
+367707480,1372599,713,Convention (Subpart B),Long Ton
+367707480,1372599,273,Regulatory (Subpart C or D),Long Ton
+367707480,1372599,213,Convention (Subpart B),Short Ton
+367707480,1372599,185,Regulatory (Subpart C or D),Short Ton
+367707490,1323239,1763,Convention (Subpart B),Long Ton
+367707490,1323239,299,Regulatory (Subpart C or D),Long Ton
+367707490,1323239,528,Convention (Subpart B),Short Ton
+367707490,1323239,203,Regulatory (Subpart C or D),Short Ton
+367709350,95958,104,Regulatory (Subpart C or D),Short Ton
+367709350,95958,153,Regulatory (Subpart C or D),Long Ton
+367711140,1047442,30241,Convention (Subpart B),Long Ton
+367711140,1047442,14686,Convention (Subpart B),Short Ton
+367711140,1047442,50326,Dead Weight,Metric Ton
+367711140,1047442,62174,Displacement,Metric Ton
+367712660,1330973,9199,Convention (Subpart B),Long Ton
+367712660,1330973,3694,Regulatory (Subpart C or D),Long Ton
+367712660,1330973,3323,Convention (Subpart B),Short Ton
+367712660,1330973,3070,Regulatory (Subpart C or D),Short Ton
+367721220,1335047,19834,Dead Weight,Metric Ton
+367721220,1335047,18410,Convention (Subpart B),Long Ton
+367721220,1335047,6242,Convention (Subpart B),Short Ton
+367721220,1335047,29987,Displacement,Ton
+367728240,994262,313,Regulatory (Subpart C or D),Long Ton
+367728240,994262,472,Convention (Subpart B),Long Ton
+367728240,994262,212,Regulatory (Subpart C or D),Short Ton
+367728240,994262,141,Convention (Subpart B),Short Ton
+367728680,1050988,313,Regulatory (Subpart C or D),Long Ton
+367728680,1050988,472,Convention (Subpart B),Long Ton
+367728680,1050988,212,Regulatory (Subpart C or D),Short Ton
+367728680,1050988,141,Convention (Subpart B),Short Ton
+367728690,974584,313,Regulatory (Subpart C or D),Long Ton
+367728690,974584,472,Convention (Subpart B),Long Ton
+367728690,974584,212,Regulatory (Subpart C or D),Short Ton
+367728690,974584,141,Convention (Subpart B),Short Ton
+367728850,1383472,190,Convention (Subpart B),Short Ton
+367728850,1383472,135,Regulatory (Subpart C or D),Short Ton
+367728850,1383472,634,Convention (Subpart B),Long Ton
+367728850,1383472,199,Regulatory (Subpart C or D),Long Ton
+367728870,1372600,514,Dead Weight,Long Ton
+367728870,1372600,213,Convention (Subpart B),Short Ton
+367728870,1372600,185,Regulatory (Subpart C or D),Short Ton
+367728870,1372600,713,Convention (Subpart B),Long Ton
+367728870,1372600,273,Regulatory (Subpart C or D),Long Ton
+367729220,160821,292,Regulatory (Subpart C or D),Long Ton
+367729220,160821,199,Regulatory (Subpart C or D),Short Ton
+367740050,1393296,105,Convention (Subpart B),Short Ton
+367740050,1393296,354,Convention (Subpart B),Long Ton
+367740790,1309097,149,Convention (Subpart B),Short Ton
+367740790,1309097,177,Regulatory (Subpart C or D),Short Ton
+367740790,1309097,497,Convention (Subpart B),Long Ton
+367740790,1309097,261,Regulatory (Subpart C or D),Long Ton
+367759000,858534,29491,Convention (Subpart B),Short Ton
+367759000,858534,50686,Convention (Subpart B),Long Ton
+367759000,858534,61454,Dead Weight,Ton
+367764520,1423234,151,Simplified,Short Ton
+367764520,1423234,189,Simplified,Long Ton
+367770980,1424483,149,Convention (Subpart B),Short Ton
+367770980,1424483,133,Regulatory (Subpart C or D),Short Ton
+367770980,1424483,497,Convention (Subpart B),Long Ton
+367770980,1424483,195,Regulatory (Subpart C or D),Long Ton
+367771000,870757,315,Convention (Subpart B),Short Ton
+367771000,870757,316,Regulatory (Subpart C or D),Short Ton
+367771000,870757,786,Dead Weight,Ton
+367771000,870757,1052,Convention (Subpart B),Long Ton
+367771000,870757,465,Regulatory (Subpart C or D),Long Ton
+367772590,1429405,100,Convention (Subpart B),Short Ton
+367772590,1429405,226,Regulatory (Subpart C or D),Short Ton
+367772590,1429405,334,Convention (Subpart B),Long Ton
+367772590,1429405,279,Regulatory (Subpart C or D),Long Ton
+367775000,903593,50686,Convention (Subpart B),Long Ton
+367775000,903593,29491,Convention (Subpart B),Short Ton
+367775000,903593,61454,Dead Weight,Ton
+367781000,1317056,112683,Displacement,Ton
+367781000,1317056,44706,Convention (Subpart B),Short Ton
+367781000,1317056,75579,Convention (Subpart B),Long Ton
+367781630,1278328,11339,Convention (Subpart B),Short Ton
+367781630,1278328,37462,Convention (Subpart B),Long Ton
+367782370,1097227,17538,Convention (Subpart B),Long Ton
+367782370,1097227,5261,Convention (Subpart B),Short Ton
+367782370,1097227,10025,Dead Weight,Ton
+367782370,1097227,19470,Displacement,Ton
+367793450,1436722,332,Convention (Subpart B),Long Ton
+367793450,1436722,115,Regulatory (Subpart C or D),Long Ton
+367793450,1436722,99,Convention (Subpart B),Short Ton
+367793450,1436722,78,Regulatory (Subpart C or D),Short Ton
+367796070,1437038,99,Regulatory (Subpart C or D),Long Ton
+367796070,1437038,68,Regulatory (Subpart C or D),Short Ton
+367799380,1278329,11339,Convention (Subpart B),Short Ton
+367799380,1278329,37462,Convention (Subpart B),Long Ton
+367801000,431322,35058,Convention (Subpart B),Long Ton
+367801000,431322,10517,Convention (Subpart B),Short Ton
+367801000,431322,41325,Displacement,Ton
+367801000,431322,29218,Dead Weight,Ton
+367802000,431323,35058,Convention (Subpart B),Long Ton
+367802000,431323,10517,Convention (Subpart B),Short Ton
+367802000,431323,41325,Displacement,Ton
+367802000,431323,29218,Dead Weight,Ton
+367816000,54331,45481,Dead Weight,Ton
+367816000,54331,19058,Convention (Subpart B),Short Ton
+367816000,54331,35958,Regulatory (Subpart C or D),Short Ton
+367816000,54331,63527,Convention (Subpart B),Long Ton
+367816000,54331,54367,Regulatory (Subpart C or D),Long Ton
+367819000,29867,72977,Convention (Subpart B),Long Ton
+367819000,29867,21893,Convention (Subpart B),Short Ton
+367819000,29867,35950,Dead Weight,Ton
+367819000,29867,69968,Displacement,Ton
+367832000,396632,67671,Convention (Subpart B),Long Ton
+367832000,396632,20301,Convention (Subpart B),Short Ton
+367832000,396632,55460,Displacement,Ton
+367832000,396632,32411,Dead Weight,Ton
+367833000,47213,30026,Regulatory (Subpart C or D),Short Ton
+367833000,47213,18017,Convention (Subpart B),Short Ton
+367833000,47213,25407,Dead Weight,Ton
+367833000,47213,61987,Displacement,Ton
+367833000,47213,48143,Regulatory (Subpart C or D),Long Ton
+367833000,47213,48632,Convention (Subpart B),Long Ton
+367834000,396631,20301,Convention (Subpart B),Short Ton
+367834000,396631,32411,Dead Weight,Ton
+367834000,396631,65000,Displacement,Ton
+367834000,396631,67671,Convention (Subpart B),Long Ton
+367840000,831780,43758,Convention (Subpart B),Long Ton
+367840000,831780,13177,Convention (Subpart B),Short Ton
+367840000,831780,19583,Dead Weight,Ton
+367851000,380627,3798,Convention (Subpart B),Short Ton
+367851000,380627,12663,Convention (Subpart B),Long Ton
+367852000,995262,43758,Convention (Subpart B),Long Ton
+367852000,995262,13127,Convention (Subpart B),Short Ton
+367852000,995262,19583,Dead Weight,Ton
+367861000,374936,26415,Dead Weight,Ton
+367861000,374936,42383,Displacement,Ton
+367861000,374936,7722,Convention (Subpart B),Short Ton
+367861000,374936,18034,Regulatory (Subpart C or D),Short Ton
+367861000,374936,25742,Convention (Subpart B),Long Ton
+367861000,374936,22125,Regulatory (Subpart C or D),Long Ton
+367862000,272044,25742,Convention (Subpart B),Long Ton
+367862000,272044,20706,Regulatory (Subpart C or D),Long Ton
+367862000,272044,8992,Convention (Subpart B),Short Ton
+367862000,272044,18987,Regulatory (Subpart C or D),Short Ton
+367862000,272044,27671,Dead Weight,Ton
+367862000,272044,42383,Displacement,Ton
+367863000,374934,26415,Dead Weight,Ton
+367863000,374934,42383,Displacement,Ton
+367863000,374934,18034,Regulatory (Subpart C or D),Short Ton
+367863000,374934,7722,Convention (Subpart B),Short Ton
+367863000,374934,22125,Regulatory (Subpart C or D),Long Ton
+367863000,374934,25742,Convention (Subpart B),Long Ton
+367865000,313343,8992,Convention (Subpart B),Short Ton
+367865000,313343,18987,Regulatory (Subpart C or D),Short Ton
+367865000,313343,27671,Dead Weight,Ton
+367865000,313343,42383,Displacement,Ton
+367865000,313343,25742,Convention (Subpart B),Long Ton
+367865000,313343,20706,Regulatory (Subpart C or D),Long Ton
+367866000,313342,8992,Convention (Subpart B),Short Ton
+367866000,313342,18987,Regulatory (Subpart C or D),Short Ton
+367866000,313342,27671,Dead Weight,Ton
+367866000,313342,42383,Displacement,Ton
+367866000,313342,25742,Convention (Subpart B),Long Ton
+367866000,313342,20706,Regulatory (Subpart C or D),Long Ton
+367932000,272052,20706,Regulatory (Subpart C or D),Long Ton
+367932000,272052,25742,Convention (Subpart B),Long Ton
+367932000,272052,18987,Regulatory (Subpart C or D),Short Ton
+367932000,272052,8992,Convention (Subpart B),Short Ton
+367932000,272052,27671,Dead Weight,Ton
+367932000,272052,42383,Displacement,Ton
+367978000,322259,10930,Regulatory (Subpart C or D),Long Ton
+367978000,322259,12659,Convention (Subpart B),Long Ton
+367978000,322259,4189,Regulatory (Subpart C or D),Short Ton
+367978000,322259,3797,Convention (Subpart B),Short Ton
+367978000,322259,6864,Dead Weight,Ton
+367978000,322259,16278,Displacement,Ton
+368004000,486881,11071,Convention (Subpart B),Short Ton
+368004000,486881,30770,Convention (Subpart B),Long Ton
+368004000,486881,45656,Dead Weight,Ton
+368004310,178333,402,Regulatory (Subpart C or D),Short Ton
+368004310,178333,592,Regulatory (Subpart C or D),Long Ton
+368006870,1431462,497,Convention (Subpart B),Long Ton
+368006870,1431462,195,Regulatory (Subpart C or D),Long Ton
+368006870,1431462,149,Convention (Subpart B),Short Ton
+368006870,1431462,133,Regulatory (Subpart C or D),Short Ton
+368006870,1431462,430,Dead Weight,Ton
+368009000,476323,166,Regulatory (Subpart C or D),Short Ton
+368009000,476323,175,Convention (Subpart B),Short Ton
+368009000,476323,597,Displacement,Ton
+368009000,476323,245,Regulatory (Subpart C or D),Long Ton
+368009000,476323,585,Convention (Subpart B),Long Ton
+368010420,800284,472,Convention (Subpart B),Long Ton
+368010420,800284,213,Regulatory (Subpart C or D),Long Ton
+368010420,800284,141,Convention (Subpart B),Short Ton
+368010420,800284,145,Regulatory (Subpart C or D),Short Ton
+368013040,1431464,497,Convention (Subpart B),Long Ton
+368013040,1431464,195,Regulatory (Subpart C or D),Long Ton
+368013040,1431464,149,Convention (Subpart B),Short Ton
+368013040,1431464,133,Regulatory (Subpart C or D),Short Ton
+368013860,1273655,5743,Convention (Subpart B),Long Ton
+368013860,1273655,1722,Convention (Subpart B),Short Ton
+368020980,1377921,497,Convention (Subpart B),Long Ton
+368020980,1377921,284,Regulatory (Subpart C or D),Long Ton
+368020980,1377921,149,Convention (Subpart B),Short Ton
+368020980,1377921,193,Regulatory (Subpart C or D),Short Ton
+368020980,1377921,40420,Dead Weight,Long Ton
+368025250,1377922,497,Convention (Subpart B),Long Ton
+368025250,1377922,284,Regulatory (Subpart C or D),Long Ton
+368025250,1377922,149,Convention (Subpart B),Short Ton
+368025250,1377922,193,Regulatory (Subpart C or D),Short Ton
+368026000,512999,69365,Convention (Subpart B),Long Ton
+368026000,512999,20890,Convention (Subpart B),Short Ton
+368026000,512999,29151,Dead Weight,Ton
+368026000,512999,58255,Displacement,Ton
+368027230,1384292,3323,Convention (Subpart B),Short Ton
+368027230,1384292,3070,Regulatory (Subpart C or D),Short Ton
+368027230,1384292,9199,Convention (Subpart B),Long Ton
+368027230,1384292,3694,Regulatory (Subpart C or D),Long Ton
+368044470,623753,157,Regulatory (Subpart C or D),Short Ton
+368044470,623753,232,Regulatory (Subpart C or D),Long Ton
+368046350,1434845,5048,Convention (Subpart B),Long Ton
+368046350,1434845,96,Regulatory (Subpart C or D),Long Ton
+368046350,1434845,1638,Convention (Subpart B),Short Ton
+368046350,1434845,96,Regulatory (Subpart C or D),Short Ton
+368053000,870090,95,Simplified,Long Ton
+368053000,870090,76,Simplified,Short Ton
+368055190,1525598,299,Dead Weight,Ton
+368055190,1525598,120,Convention (Subpart B),Short Ton
+368055190,1525598,203,Regulatory (Subpart C or D),Short Ton
+368055190,1525598,403,Convention (Subpart B),Long Ton
+368055190,1525598,299,Regulatory (Subpart C or D),Long Ton
+368058040,1016461,144,Simplified,Long Ton
+368058040,1016461,115,Simplified,Short Ton
+368064180,1377923,149,Convention (Subpart B),Short Ton
+368064180,1377923,193,Regulatory (Subpart C or D),Short Ton
+368064180,1377923,497,Convention (Subpart B),Long Ton
+368064180,1377923,284,Regulatory (Subpart C or D),Long Ton
+368077970,1273711,142,Simplified,Short Ton
+368077970,1273711,177,Simplified,Long Ton
+368078680,1544767,398,Convention (Subpart B),Long Ton
+368078680,1544767,299,Regulatory (Subpart C or D),Long Ton
+368078680,1544767,119,Convention (Subpart B),Short Ton
+368078680,1544767,244,Regulatory (Subpart C or D),Short Ton
+368086880,458797,440,Convention (Subpart B),Long Ton
+368086880,458797,92,Regulatory (Subpart C or D),Long Ton
+368086880,458797,132,Convention (Subpart B),Short Ton
+368086880,458797,62,Regulatory (Subpart C or D),Short Ton
+368086880,458797,355,Dead Weight,Ton
+368086880,458797,783,Displacement,Ton
+368097560,1032264,115,Simplified,Short Ton
+368097560,1032264,144,Simplified,Long Ton
+368098000,53843,3853,Regulatory (Subpart C or D),Short Ton
+368098000,53843,2771,Convention (Subpart B),Short Ton
+368098000,53843,7110,Regulatory (Subpart C or D),Long Ton
+368098000,53843,8432,Convention (Subpart B),Long Ton
+368099010,185484,268,Regulatory (Subpart C or D),Long Ton
+368099010,185484,182,Regulatory (Subpart C or D),Short Ton
+368108000,205172,16,Simplified,Long Ton
+368108000,205172,14,Simplified,Short Ton
+368112080,1577398,183,Simplified,Long Ton
+368112080,1577398,281,Convention (Subpart B),Long Ton
+368112080,1577398,84,Convention (Subpart B),Short Ton
+368112080,1577398,147,Simplified,Short Ton
+368113730,1492550,652,Dead Weight,Ton
+368113730,1492550,299,Convention (Subpart B),Short Ton
+368113730,1492550,182,Regulatory (Subpart C or D),Short Ton
+368113730,1492550,999,Convention (Subpart B),Long Ton
+368113730,1492550,268,Regulatory (Subpart C or D),Long Ton
+368126620,1602877,356,Convention (Subpart B),Short Ton
+368126620,1602877,1188,Convention (Subpart B),Long Ton
+368127000,1176709,35879,Convention (Subpart B),Short Ton
+368127000,1176709,62318,Convention (Subpart B),Long Ton
+368127000,1176709,115000,Dead Weight,Ton
+368134130,1469751,337,Simplified,Long Ton
+368134130,1469751,269,Simplified,Short Ton
+368136890,1335201,177,Simplified,Long Ton
+368136890,1335201,142,Simplified,Short Ton
+368140750,1432188,142,Simplified,Short Ton
+368140750,1432188,177,Simplified,Long Ton
+368143050,1401245,2375,Convention (Subpart B),Short Ton
+368143050,1401245,3175,Regulatory (Subpart C or D),Short Ton
+368143050,1401245,5919,Convention (Subpart B),Long Ton
+368143050,1401245,4669,Regulatory (Subpart C or D),Long Ton
+368146000,255068,131,Convention (Subpart B),Long Ton
+368146000,255068,39,Convention (Subpart B),Short Ton
+368160000,1497509,16803,Convention (Subpart B),Long Ton
+368160000,1497509,8648,Convention (Subpart B),Short Ton
+368160000,1497509,22749,Dead Weight,Metric Ton
+368163250,1219380,400,Convention (Subpart B),Short Ton
+368163250,1219380,1335,Convention (Subpart B),Long Ton
+368167350,1001198,1095,Convention (Subpart B),Long Ton
+368167350,1001198,774,Regulatory (Subpart C or D),Long Ton
+368167350,1001198,328,Convention (Subpart B),Short Ton
+368167350,1001198,526,Regulatory (Subpart C or D),Short Ton
+368170010,1608629,126,Convention (Subpart B),Short Ton
+368170010,1608629,129,Regulatory (Subpart C or D),Short Ton
+368170010,1608629,423,Convention (Subpart B),Long Ton
+368170010,1608629,295,Regulatory (Subpart C or D),Long Ton
+368171000,1388701,1026,Convention (Subpart B),Long Ton
+368171000,1388701,296,Regulatory (Subpart C or D),Long Ton
+368171000,1388701,307,Convention (Subpart B),Short Ton
+368171000,1388701,201,Regulatory (Subpart C or D),Short Ton
+368173000,1384818,81,Convention (Subpart B),Short Ton
+368173000,1384818,68,Regulatory (Subpart C or D),Short Ton
+368173000,1384818,270,Convention (Subpart B),Long Ton
+368173000,1384818,99,Regulatory (Subpart C or D),Long Ton
+368181750,137952,446,Convention (Subpart B),Long Ton
+368181750,137952,199,Regulatory (Subpart C or D),Long Ton
+368181750,137952,133,Convention (Subpart B),Short Ton
+368181750,137952,136,Regulatory (Subpart C or D),Short Ton
+368183000,54911,12158,Regulatory (Subpart C or D),Long Ton
+368183000,54911,11106,Regulatory (Subpart C or D),Short Ton
+368193830,1551716,109,Convention (Subpart B),Short Ton
+368193830,1551716,108,Regulatory (Subpart C or D),Short Ton
+368193830,1551716,364,Convention (Subpart B),Long Ton
+368193830,1551716,158,Regulatory (Subpart C or D),Long Ton
+368199000,1377967,13454,Convention (Subpart B),Short Ton
+368199000,1377967,29801,Convention (Subpart B),Long Ton
+368199000,1377967,49828,Dead Weight,Ton
+368200390,1219382,400,Convention (Subpart B),Short Ton
+368200390,1219382,1335,Convention (Subpart B),Long Ton
+368202000,48473,16138,Dead Weight,Ton
+368202000,48473,11399,Regulatory (Subpart C or D),Short Ton
+368202000,48473,20612,Convention (Subpart B),Short Ton
+368202000,48473,17527,Regulatory (Subpart C or D),Long Ton
+368202000,48473,31515,Convention (Subpart B),Long Ton
+368205140,1603793,99,Regulatory (Subpart C or D),Long Ton
+368205140,1603793,99,Regulatory (Subpart C or D),Short Ton
+368205140,1603793,1518,Convention (Subpart B),Short Ton
+368205140,1603793,2184,Displacement,Long Ton
+368205140,1603793,5062,Convention (Subpart B),Long Ton
+368244910,1459736,365,Convention (Subpart B),Long Ton
+368244910,1459736,109,Convention (Subpart B),Short Ton
+368247000,870708,316,Regulatory (Subpart C or D),Short Ton
+368247000,870708,312,Convention (Subpart B),Short Ton
+368247000,870708,820,Dead Weight,Ton
+368247000,870708,465,Regulatory (Subpart C or D),Long Ton
+368247000,870708,1043,Convention (Subpart B),Long Ton
+368250000,471032,3790,Convention (Subpart B),Short Ton
+368250000,471032,7354,Regulatory (Subpart C or D),Short Ton
+368250000,471032,12635,Convention (Subpart B),Long Ton
+368250000,471032,9978,Regulatory (Subpart C or D),Long Ton
+368251670,1591729,12332,Regulatory (Subpart C or D),Short Ton
+368251670,1591729,15507,Regulatory (Subpart C or D),Long Ton
+368261060,1700194,5134,Convention (Subpart B),Long Ton
+368261060,1700194,86,Regulatory (Subpart C or D),Long Ton
+368261060,1700194,1540,Convention (Subpart B),Short Ton
+368261060,1700194,86,Regulatory (Subpart C or D),Short Ton
+368271250,365287,101,Convention (Subpart B),Short Ton
+368271250,365287,59,Regulatory (Subpart C or D),Short Ton
+368271250,365287,337,Convention (Subpart B),Long Ton
+368271250,365287,84,Regulatory (Subpart C or D),Long Ton
+368278590,1644753,12141,Convention (Subpart B),Long Ton
+368278590,1644753,3642,Convention (Subpart B),Short Ton
+368278830,354376,144,Convention (Subpart B),Short Ton
+368278830,354376,56,Regulatory (Subpart C or D),Short Ton
+368278830,354376,482,Convention (Subpart B),Long Ton
+368278830,354376,83,Regulatory (Subpart C or D),Long Ton
+368282680,1725766,528,Convention (Subpart B),Long Ton
+368282680,1725766,158,Convention (Subpart B),Short Ton
+368282680,1725766,195,Regulatory (Subpart C or D),Long Ton
+368282680,1725766,133,Regulatory (Subpart C or D),Short Ton
+368286770,139036,214,Regulatory (Subpart C or D),Long Ton
+368286770,139036,145,Regulatory (Subpart C or D),Short Ton
+368286790,88957,201,Regulatory (Subpart C or D),Long Ton
+368286790,88957,136,Regulatory (Subpart C or D),Short Ton
+368286840,117903,149,Regulatory (Subpart C or D),Long Ton
+368286840,117903,101,Regulatory (Subpart C or D),Short Ton
+368287020,370701,177,Convention (Subpart B),Short Ton
+368287020,370701,135,Regulatory (Subpart C or D),Short Ton
+368287020,370701,591,Convention (Subpart B),Long Ton
+368287020,370701,199,Regulatory (Subpart C or D),Long Ton
+368289330,1762461,102,Convention (Subpart B),Short Ton
+368289330,1762461,212,Regulatory (Subpart C or D),Short Ton
+368289330,1762461,342,Convention (Subpart B),Long Ton
+368289330,1762461,311,Regulatory (Subpart C or D),Long Ton
+368293190,1725431,178,Simplified,Short Ton
+368293190,1725431,222,Simplified,Long Ton
+368295000,1041058,11926,Convention (Subpart B),Short Ton
+368295000,1041058,29242,Convention (Subpart B),Long Ton
+368295000,1041058,46666,Dead Weight,Ton
+368296000,1228311,149,Convention (Subpart B),Short Ton
+368296000,1228311,62,Regulatory (Subpart C or D),Short Ton
+368296000,1228311,497,Convention (Subpart B),Long Ton
+368296000,1228311,91,Regulatory (Subpart C or D),Long Ton
+368296000,1228311,650,Dead Weight,Ton
+368296000,1228311,1198,Displacement,Ton
+368305000,740193,14558,Convention (Subpart B),Short Ton
+368305000,740193,32575,Convention (Subpart B),Long Ton
+368305000,740193,38369,Dead Weight,Ton
+368305000,740193,51816,Displacement,Ton
+368307130,1768717,119,Convention (Subpart B),Short Ton
+368307130,1768717,398,Convention (Subpart B),Long Ton
+368309590,1459740,109,Convention (Subpart B),Short Ton
+368309590,1459740,365,Convention (Subpart B),Long Ton
+368323790,1788770,365,Convention (Subpart B),Long Ton
+368323790,1788770,109,Convention (Subpart B),Short Ton
+368324460,796559,2994,Convention (Subpart B),Long Ton
+368324460,796559,1148,Convention (Subpart B),Short Ton
+368324460,796559,4759,Dead Weight,Long Ton
+368324580,1788781,365,Convention (Subpart B),Long Ton
+368324580,1788781,109,Convention (Subpart B),Short Ton
+368359000,1317057,85326,Dead Weight,Ton
+368359000,1317057,112683,Displacement,Ton
+368359000,1317057,44706,Convention (Subpart B),Short Ton
+368359000,1317057,75579,Convention (Subpart B),Long Ton
+368365180,357335,66,Regulatory (Subpart C or D),Short Ton
+368365180,357335,83,Convention (Subpart B),Short Ton
+368365180,357335,98,Regulatory (Subpart C or D),Long Ton
+368365180,357335,279,Convention (Subpart B),Long Ton
+368398460,1537130,9719,Convention (Subpart B),Long Ton
+368398460,1537130,4208,Convention (Subpart B),Short Ton
+368398460,1537130,11819,Dead Weight,Metric Ton
+368398460,1537130,12050,Displacement,Metric Ton
+368400000,930239,1797,Convention (Subpart B),Short Ton
+368400000,930239,7181,Displacement,Long Ton
+368400000,930239,2819,Dead Weight,Long Ton
+368400000,930239,5993,Convention (Subpart B),Long Ton
+368411250,1458404,50118,Dead Weight,Ton
+368411250,1458404,60496,Displacement,Ton
+368411250,1458404,29416,Convention (Subpart B),Long Ton
+368411250,1458404,13872,Convention (Subpart B),Short Ton
+368413000,870711,315,Convention (Subpart B),Short Ton
+368413000,870711,316,Regulatory (Subpart C or D),Short Ton
+368413000,870711,820,Dead Weight,Ton
+368413000,870711,1052,Convention (Subpart B),Long Ton
+368413000,870711,465,Regulatory (Subpart C or D),Long Ton
+368430000,1701228,343,Convention (Subpart B),Long Ton
+368430000,1701228,297,Regulatory (Subpart C or D),Long Ton
+368430000,1701228,102,Convention (Subpart B),Short Ton
+368430000,1701228,217,Regulatory (Subpart C or D),Short Ton
+368444000,1136502,74255,Convention (Subpart B),Long Ton
+368444000,1136502,26747,Convention (Subpart B),Short Ton
+368444000,1136502,55721,Displacement,Ton
+368444000,1136502,31143,Dead Weight,Ton
+368445000,979250,46666,Dead Weight,Ton
+368445000,979250,29242,Convention (Subpart B),Long Ton
+368445000,979250,11926,Convention (Subpart B),Short Ton
+368468000,1014869,600,Dead Weight,Ton
+368468000,1014869,689,Convention (Subpart B),Long Ton
+368468000,1014869,264,Regulatory (Subpart C or D),Long Ton
+368468000,1014869,206,Convention (Subpart B),Short Ton
+368468000,1014869,180,Regulatory (Subpart C or D),Short Ton
+368473000,1028717,19535,Convention (Subpart B),Short Ton
+368473000,1028717,57030,Convention (Subpart B),Long Ton
+368504000,125501,235,Convention (Subpart B),Long Ton
+368504000,125501,191,Regulatory (Subpart C or D),Long Ton
+368504000,125501,70,Convention (Subpart B),Short Ton
+368504000,125501,130,Regulatory (Subpart C or D),Short Ton
+368515000,870755,316,Regulatory (Subpart C or D),Short Ton
+368515000,870755,315,Convention (Subpart B),Short Ton
+368515000,870755,786,Dead Weight,Ton
+368515000,870755,465,Regulatory (Subpart C or D),Long Ton
+368515000,870755,1052,Convention (Subpart B),Long Ton
+368520000,1757068,64,Simplified,Short Ton
+368520000,1757068,80,Simplified,Long Ton
+368589000,1017817,46666,Dead Weight,Ton
+368589000,1017817,29234,Regulatory (Subpart C or D),Long Ton
+368589000,1017817,29242,Convention (Subpart B),Long Ton
+368589000,1017817,11926,Regulatory (Subpart C or D),Short Ton
+368589000,1017817,11926,Convention (Subpart B),Short Ton
+368684000,1752124,5333,Dead Weight,Ton
+368684000,1752124,9155,Displacement,Ton
+368684000,1752124,1694,Convention (Subpart B),Short Ton
+368684000,1752124,5321,Regulatory (Subpart C or D),Short Ton
+368684000,1752124,5649,Convention (Subpart B),Long Ton
+368684000,1752124,6267,Regulatory (Subpart C or D),Long Ton
+368707000,443610,21815,Convention (Subpart B),Short Ton
+368707000,443610,26287,Dead Weight,Ton
+368707000,443610,72718,Convention (Subpart B),Long Ton
+368784000,1437884,58107,Convention (Subpart B),Long Ton
+368784000,1437884,20397,Dead Weight,Ton
+368784000,1437884,37938,Displacement,Ton
+368784000,1437884,20581,Convention (Subpart B),Short Ton
+368808000,46492,22960,Convention (Subpart B),Long Ton
+368808000,46492,6888,Convention (Subpart B),Short Ton
+368808000,46492,27980,Displacement,Ton
+368836000,464628,69365,Convention (Subpart B),Long Ton
+368836000,464628,20809,Convention (Subpart B),Short Ton
+368836000,464628,58255,Displacement,Ton
+368836000,464628,29151,Dead Weight,Ton
+368850000,48525,9255,Convention (Subpart B),Short Ton
+368850000,48525,17021,Regulatory (Subpart C or D),Short Ton
+368850000,48525,30852,Convention (Subpart B),Long Ton
+368850000,48525,23382,Regulatory (Subpart C or D),Long Ton
+368883000,254723,3367,Regulatory (Subpart C or D),Long Ton
+368883000,254723,972,Regulatory (Subpart C or D),Short Ton
+368920000,465351,4201,Convention (Subpart B),Long Ton
+368920000,465351,1260,Convention (Subpart B),Short Ton
+368920000,465351,2328,Dead Weight,Ton
+368922000,248450,29386,Convention (Subpart B),Long Ton
+368922000,248450,13083,Regulatory (Subpart C or D),Long Ton
+368922000,248450,8815,Convention (Subpart B),Short Ton
+368922000,248450,9129,Regulatory (Subpart C or D),Short Ton
+368926087,1377331,71925,Dead Weight,Ton
+368926087,1377331,60521,Displacement,Ton
+368926087,1377331,66870,Convention (Subpart B),Long Ton
+368926087,1377331,66870,Regulatory (Subpart C or D),Long Ton
+368926087,1377331,20061,Convention (Subpart B),Short Ton
+368926087,1377331,20061,Regulatory (Subpart C or D),Short Ton
+368926390,1425956,66878,Convention (Subpart B),Long Ton
+368926390,1425956,20063,Convention (Subpart B),Short Ton
+368926390,1425956,71954,Dead Weight,Ton
+368926390,1425956,37023,Displacement,Ton
+368926485,1423537,44589,Convention (Subpart B),Long Ton
+368926485,1423537,13376,Convention (Subpart B),Short Ton
+368926485,1423537,32342,Dead Weight,Metric Ton
+368949000,44969,14001,Regulatory (Subpart C or D),Long Ton
+368949000,44969,15018,Convention (Subpart B),Long Ton
+368949000,44969,9851,Dual (D),Long Ton
+368949000,44969,9489,Regulatory (Subpart C or D),Short Ton
+368949000,44969,6613,Convention (Subpart B),Short Ton
+368949000,44969,5798,Dual (D),Short Ton
+368949000,44969,19780,Dead Weight,Ton
+368949000,44969,31500,Displacement,Ton
+368952000,51597,6534,Convention (Subpart B),Short Ton
+368952000,51597,21782,Convention (Subpart B),Long Ton
+368952000,51597,14836,Dead Weight,Ton
+368989000,47637,48524,Regulatory (Subpart C or D),Long Ton
+368989000,47637,49267,Convention (Subpart B),Long Ton
+368989000,47637,55355,Displacement,Long Ton
+368989000,47637,30576,Regulatory (Subpart C or D),Short Ton
+368989000,47637,18314,Convention (Subpart B),Short Ton
+368989000,47637,32295,Dead Weight,Ton
+368991000,47385,17949,Convention (Subpart B),Short Ton
+368991000,47385,25915,Dead Weight,Ton
+368991000,47385,48904,Convention (Subpart B),Long Ton
+368991000,47385,55355,Displacement,Long Ton
+368992000,47443,30026,Regulatory (Subpart C or D),Short Ton
+368992000,47443,51792,Displacement,Ton
+368992000,47443,22279,Dead Weight,Ton
+368992000,47443,18072,Convention (Subpart B),Short Ton
+368992000,47443,48142,Regulatory (Subpart C or D),Long Ton
+368992000,47443,48635,Convention (Subpart B),Long Ton
+369006000,488816,27,Simplified,Short Ton
+369006000,488816,31,Simplified,Long Ton
+369010000,52447,1043,Convention (Subpart B),Short Ton
+369010000,52447,3479,Convention (Subpart B),Long Ton
+369020000,1317330,354,Convention (Subpart B),Short Ton
+369020000,1317330,180,Regulatory (Subpart C or D),Short Ton
+369020000,1317330,1180,Convention (Subpart B),Long Ton
+369020000,1317330,266,Regulatory (Subpart C or D),Long Ton
+369037000,1303221,11028,Convention (Subpart B),Short Ton
+369037000,1303221,49828,Dead Weight,Ton
+369037000,1303221,29801,Convention (Subpart B),Long Ton
+369040000,1375811,49828,Dead Weight,Ton
+369040000,1375811,29801,Convention (Subpart B),Long Ton
+369040000,1375811,11028,Convention (Subpart B),Short Ton
+369042000,1377969,49828,Dead Weight,Ton
+369042000,1377969,29801,Convention (Subpart B),Long Ton
+369042000,1377969,13454,Convention (Subpart B),Short Ton
+369043000,1377968,29801,Convention (Subpart B),Long Ton
+369043000,1377968,13454,Convention (Subpart B),Short Ton
+369043000,1377968,49828,Dead Weight,Ton
+369109000,1047215,1567,Regulatory (Subpart C or D),Long Ton
+369109000,1047215,2164,Convention (Subpart B),Long Ton
+369109000,1047215,1066,Regulatory (Subpart C or D),Short Ton
+369109000,1047215,649,Convention (Subpart B),Short Ton
+369113000,1380759,212,Convention (Subpart B),Short Ton
+369113000,1380759,213,Regulatory (Subpart C or D),Short Ton
+369113000,1380759,708,Convention (Subpart B),Long Ton
+369113000,1380759,297,Regulatory (Subpart C or D),Long Ton
+369134000,360766,13201,Convention (Subpart B),Long Ton
+369134000,360766,3960,Convention (Subpart B),Short Ton
+369142000,1275580,12581,Convention (Subpart B),Short Ton
+369142000,1275580,29923,Convention (Subpart B),Long Ton
+369142000,1275580,49094,Dead Weight,Metric Ton
+369155000,1403741,599,Dead Weight,Ton
+369155000,1403741,766,Convention (Subpart B),Long Ton
+369155000,1403741,273,Regulatory (Subpart C or D),Long Ton
+369155000,1403741,229,Convention (Subpart B),Short Ton
+369155000,1403741,186,Regulatory (Subpart C or D),Short Ton
+369207000,1414028,48409,Convention (Subpart B),Long Ton
+369207000,1414028,19111,Convention (Subpart B),Short Ton
+369209000,1425715,48409,Convention (Subpart B),Long Ton
+369209000,1425715,20384,Convention (Subpart B),Short Ton
+369215000,1317052,112683,Displacement,Ton
+369215000,1317052,44706,Convention (Subpart B),Short Ton
+369215000,1317052,75579,Convention (Subpart B),Long Ton
+369222000,1429798,20581,Convention (Subpart B),Short Ton
+369222000,1429798,58107,Convention (Subpart B),Long Ton
+369225000,1275837,29923,Convention (Subpart B),Long Ton
+369225000,1275837,49045,Dead Weight,Ton
+369225000,1275837,12581,Convention (Subpart B),Short Ton
+369246000,1096974,80503,Convention (Subpart B),Long Ton
+369246000,1096974,50098,Convention (Subpart B),Short Ton
+369246000,1096974,92991,Dead Weight,Ton
+369246000,1096974,121278,Displacement,Ton
+369262000,1403734,766,Convention (Subpart B),Long Ton
+369262000,1403734,274,Regulatory (Subpart C or D),Long Ton
+369262000,1403734,229,Convention (Subpart B),Short Ton
+369262000,1403734,186,Regulatory (Subpart C or D),Short Ton
+369272000,606925,41995,Convention (Subpart B),Short Ton
+369272000,606925,85387,Convention (Subpart B),Long Ton
+369272000,606925,141740,Dead Weight,Ton
+369285000,613195,35825,Regulatory (Subpart C or D),Long Ton
+369285000,613195,65314,Convention (Subpart B),Long Ton
+369285000,613195,32666,Regulatory (Subpart C or D),Short Ton
+369285000,613195,28348,Convention (Subpart B),Short Ton
+369296000,618474,11149,Convention (Subpart B),Short Ton
+369296000,618474,32827,Convention (Subpart B),Long Ton
+369305000,1128470,2274,Convention (Subpart B),Short Ton
+369305000,1128470,7581,Convention (Subpart B),Long Ton
+369309000,1097098,92991,Dead Weight,Ton
+369309000,1097098,121278,Displacement,Ton
+369309000,1097098,50098,Convention (Subpart B),Short Ton
+369309000,1097098,80503,Convention (Subpart B),Long Ton
+369344000,660221,17820,Convention (Subpart B),Short Ton
+369344000,660221,51812,Dead Weight,Ton
+369344000,660221,60878,Displacement,Ton
+369344000,660221,28762,Convention (Subpart B),Long Ton
+369355000,1486054,45645,Convention (Subpart B),Long Ton
+369355000,1486054,45397,Regulatory (Subpart C or D),Long Ton
+369355000,1486054,16599,Convention (Subpart B),Short Ton
+369355000,1486054,34725,Regulatory (Subpart C or D),Short Ton
+369357000,1521707,45645,Convention (Subpart B),Long Ton
+369357000,1521707,45397,Regulatory (Subpart C or D),Long Ton
+369357000,1521707,16599,Convention (Subpart B),Short Ton
+369357000,1521707,34725,Regulatory (Subpart C or D),Short Ton
+369460000,1164656,2934,Convention (Subpart B),Short Ton
+369460000,1164656,9781,Convention (Subpart B),Long Ton
+369462000,1168197,18355,Convention (Subpart B),Short Ton
+369462000,1168197,61185,Convention (Subpart B),Long Ton
+369468000,722205,32690,Convention (Subpart B),Long Ton
+369499000,831770,43758,Convention (Subpart B),Long Ton
+369499000,831770,13127,Convention (Subpart B),Short Ton
+369499000,831770,41000,Displacement,Ton
+369499000,831770,18973,Dead Weight,Ton
+369526000,1379836,395,Convention (Subpart B),Short Ton
+369526000,1379836,799,Regulatory (Subpart C or D),Short Ton
+369526000,1379836,1317,Convention (Subpart B),Long Ton
+369526000,1379836,1175,Regulatory (Subpart C or D),Long Ton
+369540000,37602,173509,Displacement,Ton
+369540000,37602,141740,Dead Weight,Ton
+369540000,37602,85387,Convention (Subpart B),Long Ton
+369540000,37602,41995,Convention (Subpart B),Short Ton
+369543000,217330,10,Simplified,Short Ton
+369543000,217330,12,Simplified,Long Ton
+369567000,510918,285,Convention (Subpart B),Short Ton
+369567000,510918,157,Regulatory (Subpart C or D),Short Ton
+369567000,510918,950,Convention (Subpart B),Long Ton
+369567000,510918,787,Dead Weight,Long Ton
+369567000,510918,1703,Displacement,Long Ton
+369567000,510918,232,Regulatory (Subpart C or D),Long Ton
+369580000,510923,285,Convention (Subpart B),Short Ton
+369580000,510923,157,Regulatory (Subpart C or D),Short Ton
+369580000,510923,950,Convention (Subpart B),Long Ton
+369580000,510923,915,Displacement,Long Ton
+369580000,510923,232,Regulatory (Subpart C or D),Long Ton
+369701000,568186,28348,Convention (Subpart B),Short Ton
+369701000,568186,32666,Regulatory (Subpart C or D),Short Ton
+369701000,568186,65314,Convention (Subpart B),Long Ton
+369701000,568186,35825,Regulatory (Subpart C or D),Long Ton
+369702000,591158,265,Regulatory (Subpart C or D),Long Ton
+369702000,591158,963,Convention (Subpart B),Long Ton
+369702000,591158,180,Regulatory (Subpart C or D),Short Ton
+369702000,591158,288,Convention (Subpart B),Short Ton
+369703000,589566,180,Regulatory (Subpart C or D),Short Ton
+369703000,589566,288,Convention (Subpart B),Short Ton
+369703000,589566,265,Regulatory (Subpart C or D),Long Ton
+369703000,589566,963,Convention (Subpart B),Long Ton
+369818000,447069,495,Convention (Subpart B),Long Ton
+369818000,447069,176,Regulatory (Subpart C or D),Long Ton
+369818000,447069,148,Convention (Subpart B),Short Ton
+369818000,447069,120,Regulatory (Subpart C or D),Short Ton
+369854000,598787,41000,Displacement,Ton
+369854000,598787,18973,Dead Weight,Ton
+369854000,598787,43758,Convention (Subpart B),Long Ton
+369855000,598795,13127,Convention (Subpart B),Short Ton
+369855000,598795,18973,Dead Weight,Ton
+369855000,598795,41000,Displacement,Ton
+369855000,598795,43758,Convention (Subpart B),Long Ton
+369886000,831773,43758,Convention (Subpart B),Long Ton
+369886000,831773,13127,Convention (Subpart B),Short Ton
+369886000,831773,41000,Displacement,Ton
+369886000,831773,19329,Dead Weight,Ton
+369887000,745626,5565,Convention (Subpart B),Long Ton
+369887000,745626,5915,Dead Weight,Long Ton
+369887000,745626,10804,Displacement,Long Ton
+369887000,745626,1669,Convention (Subpart B),Short Ton
+369914055,1473701,32342,Dead Weight,Metric Ton
+369914055,1473701,49850,Displacement,Ton
+369914055,1473701,13376,Convention (Subpart B),Short Ton
+369914055,1473701,44589,Convention (Subpart B),Long Ton
+369914056,1605577,43713,Convention (Subpart B),Long Ton
+369914056,1605577,32667,Dead Weight,Ton
+369914056,1605577,43713,Displacement,Ton
+369914056,1605577,13113,Convention (Subpart B),Short Ton
+369914057,1605585,43713,Convention (Subpart B),Long Ton
+369914057,1605585,32667,Dead Weight,Ton
+369914057,1605585,43713,Displacement,Ton
+369914057,1605585,13113,Convention (Subpart B),Short Ton
+369928000,1074514,13127,Convention (Subpart B),Short Ton
+369928000,1074514,43758,Convention (Subpart B),Long Ton
+369928000,1074514,19583,Dead Weight,Ton
