@@ -6,7 +6,10 @@ land if inside the zone's *_land.shp polygon, else water. Water nearer U.S. land
 (Census cb_2023 states) than foreign land (Natural Earth 1:10m countries without
 boundary lakes, the United States and its territories removed) is U.S.-side; the rest is foreign-side. Water more
 than 370.4 km (200 nmi) from U.S. land is also flagged. The equidistance line
-stands in for the maritime boundary, as in the zone code's charted-lane rule.
+stands in for the maritime boundary, as in the zone code's water clip. Water
+more than 200 nmi from every coast is high seas, a class of its own (as in the
+zone code, it is never foreign-side). foreign_share_of_water is foreign-side
+water over all water.
 
 Usage: python3 python/foreign_water_split.py [ne_countries_lakes.shp] [committed|run] [out_stem]
 "committed" (default) reads the zone files in outputs/; "run" reads output*/.
@@ -28,6 +31,7 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 R = 6371.0088
 STEP = 0.02
 PAD_KM = 800
+HIGH_SEAS_KM = 370.4   # 200 nautical miles
 # Natural Earth gives U.S. territories their own ADM0 codes; none is foreign.
 US_ADM0 = ("USA", "PRI", "VIR", "GUM", "ASM", "MNP", "UMI")
 RUN_DIRS = {"Lower 48": "output", "Hawaii": "output_hawaii",
@@ -86,15 +90,17 @@ def split(zone_shp, land_shp, ne):
     else:
         df, j = np.full(len(du), np.inf), np.zeros(len(du), int)
     aw = a[~land]
-    fo_mask = du > df
-    us, fo = aw[~fo_mask].sum(), aw[fo_mask].sum()
+    high = (du > HIGH_SEAS_KM) & (df > HIGH_SEAS_KM)       # beyond 200 nmi of every coast
+    fo_mask = (du > df) & ~high
+    us, fo = aw[~fo_mask & ~high].sum(), aw[fo_mask].sum()
     by_country = {}
     if fo_mask.any():
         cc = fcode[j[fo_mask]]
         for c in np.unique(cc):
             by_country[str(c)] = float(aw[fo_mask][cc == c].sum())
     return dict(total_km2=a.sum(), land_km2=a[land].sum(), us_water_km2=us, foreign_water_km2=fo,
-                beyond_200nmi_km2=aw[du > 370.4].sum(), foreign_share_of_water=fo / (us + fo) if us + fo else 0.0), by_country
+                high_seas_km2=aw[high].sum(), beyond_200nmi_km2=aw[du > HIGH_SEAS_KM].sum(),
+                foreign_share_of_water=fo / aw.sum() if aw.sum() else 0.0), by_country
 
 
 def main(ne=os.path.join(ROOT, "data", "ne_10m_admin_0_countries_lakes", "ne_10m_admin_0_countries_lakes.shp"),

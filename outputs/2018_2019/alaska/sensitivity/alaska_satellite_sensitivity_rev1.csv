@@ -1,0 +1,5 @@
+run,land_25km_km2,land_50km_km2,land_100km_km2,change_25km_pct,change_50km_pct,change_100km_pct,source_log
+satellite lanes at 272 operating days (paper),112426,210895,353639,0.0,0.0,0.0,docs/review/round3/rerun/alaska.log
+no satellite lanes,90923,181070,316800,-19.1,-14.1,-10.4,docs/review/round3/rerun/alaska_nosat.log
+"half the cutoff (136 days, 633 hexagons)",123628,221715,367178,10.0,5.1,3.8,docs/review/round3/rerun/alaska_x0.5.log
+"double the cutoff (544 days, 304 hexagons)",100013,192746,330144,-11.0,-8.6,-6.6,docs/review/round3/rerun/alaska_x2.log

@@ -1,0 +1,9 @@
+{
+ "note": "Census cb_2023_us_state_500k land inside the lower-48 analysis grid (22-50 N, 130-66 W), EPSG:6933 area; computed for review R3NUM-9",
+ "census_land_km2": 7803930,
+ "zone_land_share_pct": {
+  "25": 3.86,
+  "50": 8.18,
+  "100": 16.17
+ }
+}

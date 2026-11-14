@@ -1,0 +1,28 @@
+region,distance_km,country,foreign_water_km2,share_of_foreign
+Lower 48,25,MEX,2736,0.7642
+Lower 48,25,CAN,560,0.1564
+Lower 48,25,BHS,185,0.0517
+Lower 48,25,CUB,99,0.0277
+Lower 48,50,MEX,2762,0.7592
+Lower 48,50,CAN,575,0.1579
+Lower 48,50,BHS,202,0.0556
+Lower 48,50,CUB,99,0.0273
+Lower 48,100,MEX,2779,0.7588
+Lower 48,100,CAN,582,0.1588
+Lower 48,100,BHS,202,0.0552
+Lower 48,100,CUB,99,0.0271
+Puerto Rico and USVI,25,DOM,103,0.5648
+Puerto Rico and USVI,25,VGB,70,0.3834
+Puerto Rico and USVI,25,VEN,9,0.0518
+Puerto Rico and USVI,50,DOM,113,0.5862
+Puerto Rico and USVI,50,VGB,70,0.3645
+Puerto Rico and USVI,50,VEN,9,0.0492
+Puerto Rico and USVI,100,DOM,113,0.5862
+Puerto Rico and USVI,100,VGB,70,0.3645
+Puerto Rico and USVI,100,VEN,9,0.0492
+Alaska,25,RUS,115,0.7321
+Alaska,25,CAN,42,0.2679
+Alaska,50,CAN,140,0.5198
+Alaska,50,RUS,130,0.4802
+Alaska,100,CAN,204,0.5675
+Alaska,100,RUS,156,0.4325

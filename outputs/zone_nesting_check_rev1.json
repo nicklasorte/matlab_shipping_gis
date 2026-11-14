@@ -1,0 +1,53 @@
+{
+ "note": "Area of each narrower zone outside the next wider zone, clipped zone files, EPSG:6933 (review R3NUM-15)",
+ "regions": {
+  "lower48": {
+   "25_outside_50": {
+    "total_km2": 5.7,
+    "largest_km2": 4.3,
+    "pieces": 28
+   },
+   "50_outside_100": {
+    "total_km2": 0.0,
+    "largest_km2": 0.0,
+    "pieces": 8
+   }
+  },
+  "hawaii": {
+   "25_outside_50": {
+    "total_km2": 0,
+    "largest_km2": 0,
+    "pieces": 0
+   },
+   "50_outside_100": {
+    "total_km2": 0,
+    "largest_km2": 0,
+    "pieces": 0
+   }
+  },
+  "prusvi": {
+   "25_outside_50": {
+    "total_km2": 29.9,
+    "largest_km2": 29.8,
+    "pieces": 3
+   },
+   "50_outside_100": {
+    "total_km2": 0.0,
+    "largest_km2": 0.0,
+    "pieces": 3
+   }
+  },
+  "alaska": {
+   "25_outside_50": {
+    "total_km2": 78.7,
+    "largest_km2": 78.3,
+    "pieces": 12
+   },
+   "50_outside_100": {
+    "total_km2": 45.9,
+    "largest_km2": 45.7,
+    "pieces": 14
+   }
+  }
+ }
+}

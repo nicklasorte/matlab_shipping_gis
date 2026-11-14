@@ -6,8 +6,10 @@ function T=foreign_water_split_rev1(zone_shp,land_shp,opts)
 %     land           inside the zone's land polygon (LAND_SHP, the *_land.shp file)
 %     us_water       water nearer U.S. land than foreign land (equidistance line)
 %     foreign_water  water nearer foreign land than U.S. land
-%   and, as an overlay on the two water classes, beyond_200nmi: water more than
-%   200 nautical miles (370.4 km) from U.S. land.
+%   high_seas      water more than 200 nautical miles from every coast (never
+%                  foreign-side, as in the zone code's clip)
+%   and, as an overlay, beyond_200nmi: water more than 200 nautical miles
+%   (370.4 km) from U.S. land.
 %   Returns a one-row table of areas in km^2 (each point carries the area of its
 %   grid cell, step^2 * cos(lat)).
 %
@@ -71,9 +73,12 @@ else
     df=2*earth_radius_km*asin(min(df/2,1));
 end
 a=cell_km2(w);
-T=table(string(zone_shp),sum(cell_km2),sum(cell_km2(on_land)),sum(a(du<=df)),sum(a(du>df)),sum(a(du>370.4)), ...
-    'VariableNames',["zone_file","total_km2","land_km2","us_water_km2","foreign_water_km2","beyond_200nmi_km2"]);
-T.foreign_share_of_water=T.foreign_water_km2/(T.us_water_km2+T.foreign_water_km2);
+high_seas_km=370.4;                       %%%%%200 nautical miles
+high=du>high_seas_km & df>high_seas_km;   %%%%%beyond 200 nmi of every coast: never foreign-side
+fo=du>df & ~high;
+T=table(string(zone_shp),sum(cell_km2),sum(cell_km2(on_land)),sum(a(~fo & ~high)),sum(a(fo)),sum(a(high)),sum(a(du>high_seas_km)), ...
+    'VariableNames',["zone_file","total_km2","land_km2","us_water_km2","foreign_water_km2","high_seas_km2","beyond_200nmi_km2"]);
+T.foreign_share_of_water=T.foreign_water_km2/sum(a);
 end
 
 function [lat,lon]=polygon_latlon(shp)
