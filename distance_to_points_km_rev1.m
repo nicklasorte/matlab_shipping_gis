@@ -23,6 +23,7 @@ earth_radius_km=6371.0088; %%%%%IUGG mean Earth radius
 dist_km=2*max_km*ones(R.RasterSize);
 ok=~isnan(lat) & ~isnan(lon);
 if ~any(ok)
+    warning('shipgis:nopoints','distance_to_points_km_rev1: no valid points; every cell is set to 2*max_km.');
     return
 end
 if ~strcmp(R.ColumnsStartFrom,'south') || ~strcmp(R.RowsStartFrom,'west')

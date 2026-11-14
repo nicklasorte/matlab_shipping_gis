@@ -34,6 +34,10 @@ clc;
 if ~exist('lane_suffix','var')
     lane_suffix='';
 end
+lane_suffix=char(lane_suffix);
+if ~ismember(lane_suffix,{'','_x0.5','_x2','_nosat'})
+    error('shipgis:lanesuffix','lane_suffix must be '''', ''_x0.5'', ''_x2'', or ''_nosat''.');
+end
 
 %%%%%%%%%%Grid: Alaska east of 180 degrees
 p.latlim=[51 72];
@@ -105,7 +109,7 @@ p.make_figure=false;
 %%%%%%%%%%Output size
 p.simplify_deg=0.005;
 p.clip_water_foreign_side=true; %%%%%drop zone water nearer foreign land than U.S. land (review R2MET-1, option 2); routes stay sources
-p.clip_water_cap_km=2500;      %%%%%distances out to 2,500 km so far-offshore water is judged; farther from both counts as U.S.-side
+p.clip_water_cap_km=370.4;     %%%%%200 nautical miles: water farther than this from both U.S. and foreign land is high seas and stays in the zone (review R3COD-1)
 p.routes_simplify_deg=0;
 p.kmz=true;
 p.save_grids=true;
@@ -117,3 +121,4 @@ p.ais_read_rows=1e6;
 p.block_rows=200;
 
 result=shipping_zone_rev1(p);
+clear lane_suffix   %%%%%so a later plain run in the same session doesn't reuse the suffix (review R3COD-13)

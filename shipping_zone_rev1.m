@@ -265,9 +265,12 @@ if ~isfield(p,'clip_foreign') || p.clip_foreign
 end
 %%%%%Water nearer foreign land than U.S. land is also taken out (review
 %%%%%R2MET-1, option 2, chosen November 13, 2026): an equidistance stand-in
-%%%%%for the maritime boundary, the same rule as the charted-lane filter above
-%%%%%but with distances out to p.clip_water_cap_km so far-offshore water is
-%%%%%judged too. Only the written zones change; route cells in foreign water
+%%%%%for the maritime boundary. Distances run out to p.clip_water_cap_km
+%%%%%(200 nautical miles), so water beyond that distance of every coast (high
+%%%%%seas) stays in the zone whichever coast is nearer (review R3COD-1).
+%%%%%Equidistance departs from settled lines (the 1984 Gulf of Maine line,
+%%%%%the 1990 U.S.-Russia line) and from unresolved claims; see the paper,
+%%%%%Section 3. Only the written zones change: route cells in foreign water
 %%%%%stay zone sources, so U.S. land in the zones doesn't change.
 %%%%%Built-ins considered: an EEZ polygon (option 3, needs a new input layer).
 if isfield(p,'clip_water_foreign_side') && p.clip_water_foreign_side && foreign_poly.NumRegions>0
@@ -276,18 +279,14 @@ if isfield(p,'clip_water_foreign_side') && p.clip_water_foreign_side && foreign_
     %%%%%beyond 68.5 W, Russia west of 180), so distances to foreign land run
     %%%%%to the country outline vertices, not to a mask clipped to the grid.
     [~,f_lat,f_lon]=load_foreign_land_rev1(R,p.data_dir,cap_km);
-    d_us=distance_to_mask_km_rev1(land_mask,R,cap_km,p.block_rows);
-    d_foreign=distance_to_points_km_rev1(f_lat,f_lon,R,cap_km,p.block_rows);
-    %%%%%Region where d_foreign-d_us <= 0 is foreign land or foreign-side water;
-    %%%%%cells beyond cap_km of both get equal distances and stay U.S.-side.
-    side_km=d_foreign-d_us;
-    side_km(d_us>cap_km & d_foreign>cap_km)=1;   %%%%%beyond cap_km of both: U.S.-side
-    foreign_side_poly=field_to_zone_polyshape_rev1(side_km,R,0);
+    foreign_side_poly=foreign_side_polygon_rev1(land_mask,f_lat,f_lon,R,cap_km,p.block_rows);
     foreign_side_poly=simplify_polyshape_rev1(foreign_side_poly,p.simplify_deg);
     foreign_side_poly=subtract(foreign_side_poly,land_poly);   %%%%%never cut U.S. land
     foreign_poly=union(foreign_poly,foreign_side_poly);
     disp_progress(sprintf('Foreign-side water clip: equidistance line from %d foreign outline vertices (distances to %g km)',numel(f_lat),cap_km));
-    clear d_us d_foreign side_km foreign_side_poly f_lat f_lon
+    clear foreign_side_poly f_lat f_lon
+elseif isfield(p,'clip_water_foreign_side') && p.clip_water_foreign_side
+    disp_progress('Foreign-side water clip: no foreign land in the grid, nothing clipped');
 end
 for dist_idx=1:num_dist
     d_km=p.distances_km(dist_idx);

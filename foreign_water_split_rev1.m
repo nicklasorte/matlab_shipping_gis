@@ -36,7 +36,7 @@ arguments
     opts.search_km (1,1) double=800
 end
 
-R=6371.0088;   %%%%%IUGG mean Earth radius, km
+earth_radius_km=6371.0088;   %%%%%IUGG mean Earth radius
 [zlat,zlon]=polygon_latlon(zone_shp);
 [llat,llon]=polygon_latlon(land_shp);
 
@@ -52,7 +52,7 @@ in_zone=full_mask(zlat,zlon,Rg);
 on_land=full_mask(llat,llon,Rg) & in_zone;
 [row,col]=find(in_zone);
 plat=lat0+(row-0.5)*step; plon=lon0+(col-0.5)*step;
-cell_km2=(step*pi/180*R)^2*cosd(plat);
+cell_km2=(step*pi/180*earth_radius_km)^2*cosd(plat);
 on_land=on_land(in_zone);
 yl=[min(zlat) max(zlat)];
 
@@ -63,12 +63,12 @@ yl=[min(zlat) max(zlat)];
 w=~on_land;
 P=xyz(plon(w),plat(w));
 [~,du]=knnsearch(xyz(ulon,ulat),P);
-du=2*R*asin(min(du/2,1));                       %%%%%chord on the unit sphere -> arc km
+du=2*earth_radius_km*asin(min(du/2,1));                       %%%%%chord on the unit sphere -> arc km
 if isempty(flon)
     df=inf(size(du));
 else
     [~,df]=knnsearch(xyz(flon,flat),P);
-    df=2*R*asin(min(df/2,1));
+    df=2*earth_radius_km*asin(min(df/2,1));
 end
 a=cell_km2(w);
 T=table(string(zone_shp),sum(cell_km2),sum(cell_km2(on_land)),sum(a(du<=df)),sum(a(du>df)),sum(a(du>370.4)), ...

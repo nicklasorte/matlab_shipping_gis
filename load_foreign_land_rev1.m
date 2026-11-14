@@ -22,7 +22,7 @@ function [foreign_poly,vert_lat,vert_lon]=load_foreign_land_rev1(R,data_dir,pad_
 arguments
     R (1,1) map.rasterref.GeographicCellsReference
     data_dir (1,:) char
-    pad_km (1,1) double = 0
+    pad_km (1,1) double {mustBeNonnegative} = 0
 end
 
 stem='ne_10m_admin_0_countries_lakes';
