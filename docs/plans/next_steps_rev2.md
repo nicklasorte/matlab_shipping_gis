@@ -60,6 +60,11 @@ option has its own run and zone files.
     and VTS radar-site layers), R4MET-5 port-connectivity test.
   - The MATLAB twin of `decision_table.py` isn't written; the table only
     parses logs and the population CSV, which MATLAB already checks.
+- **Round five (November 17, afternoon).** Four blind agents reviewed doc
+  revision 616 (`docs/review/round5/`). Exact fixes went in at revisions 617
+  to 629, including a deep-draft ports column in Table 8, the Great Lakes
+  layer definition, and the PEA denominator. Dispositions, Nick's calls, and
+  the open rerun and code list are in `docs/review/round5/findings_r5.md`.
 - **Running.** Nothing.
 
 ## The goal of this phase

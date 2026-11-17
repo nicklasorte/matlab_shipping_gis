@@ -104,8 +104,9 @@ def haw_routes():
                 "gray shows every cell a large ship crossed",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),
         alt="Map of the main Hawaiian Islands. Gray dots show every cell a large ship crossed; blue route cells "
-            "connect Honolulu and Kalaeloa with Kahului, Nawiliwili, and Hilo and run northeast toward the "
-            "mainland. Kawaihae is off the routes.")
+            "connect Honolulu and Kalaeloa with Kahului and Nawiliwili, circle the Big Island toward Hilo, and "
+            "run northeast toward the mainland. Hilo (5.0 km from the nearest route cell) and Kawaihae are off "
+            "the routes.")
     ax = page.panel(0, grid=None)
     ax.add_collection(PolyCollection(rings(vf.STATES, "HI"), facecolor=page.theme.panel, edgecolor="white", lw=0.5))
     x, y = cells_xy(allc)
