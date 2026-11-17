@@ -46,6 +46,9 @@ comp=short;
 comp(tf)=cx.complex(j(tf));
 coast=coast_region(pp.lat,pp.lon);
 coast(pp.type=="L")="Great Lakes";
+%%%%%The coast boxes put northeast Florida (Jacksonville) in the Gulf; north of
+%%%%%27 N the Gulf coast lies west of 82 W, so ports east of it are Atlantic (review R4NUM-6).
+coast(coast=="Gulf" & pp.lat>27 & pp.lon>-82)="Atlantic";
 num_port=height(pp);
 tree=KDTreeSearcher(xyz(pp.lat,pp.lon));
 chord=2*earth_km*sin(port_km/(2*earth_km));

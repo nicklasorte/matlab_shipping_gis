@@ -35,13 +35,19 @@ if ~exist('lane_suffix','var')
     lane_suffix='';
 end
 lane_suffix=char(lane_suffix);
-if ~ismember(lane_suffix,{'','_x0.5','_x2','_nosat','_beyond'})
-    error('shipgis:lanesuffix','lane_suffix must be '''', ''_x0.5'', ''_x2'', ''_beyond'', or ''_nosat''.');
+if ~ismember(lane_suffix,{'','_x0.5','_x2','_nosat','_beyond','_all400','_west180'})
+    error('shipgis:lanesuffix','lane_suffix must be '''', ''_all400'', ''_x0.5'', ''_x2'', ''_beyond'', ''_nosat'', or ''_west180''.');
 end
 
 %%%%%%%%%%Grid: Alaska east of 180 degrees
 p.latlim=[51 72];
 p.lonlim=[-180 -129];
+%%%%%lane_suffix='_west180': the western Aleutians, 172 E to 180 (decision D11,
+%%%%%review R4OPP-13). Day caches come from python/alaska_grid_west_of_180.py.
+%%%%%Sources east of 180 aren't counted for land west of it, or the reverse.
+if strcmp(lane_suffix,'_west180')
+    p.lonlim=[172 180];
+end
 p.cells_per_degree=100;
 
 %%%%%%%%%%AIS sample: the first 52 Wednesdays of 2018 and of 2019
@@ -70,9 +76,23 @@ p.port_relax_km=0;
 %%%%%%%%%%2022), added as ship water: hexagons whose cargo plus tanker operating
 %%%%%%%%%%days reach the cutoff that best matches the shore-receiver routes near
 %%%%%%%%%%shore (python/alaska_satellite_lanes.py). '' leaves them out.
-p.extra_source_csv=fullfile(pwd,'outputs','2018_2019','alaska',['satellite_lane_cells' lane_suffix '.csv']);
-if strcmp(lane_suffix,'_nosat')   %%%%%sensitivity run without satellite lanes (review R2OPP-1)
-    p.extra_source_csv='';
+%%%%%Decision D2 (November 17, 2026): the base run keeps only the 290 hexagons
+%%%%%beyond shore-receiver range (satellite_lane_cells_beyond.csv); '_all400'
+%%%%%keeps all 400 (the base before D2). '_x0.5' and '_x2' scale the cutoff on
+%%%%%all hexagons, as in the earlier sensitivity runs.
+switch lane_suffix
+    case {'','_beyond'}
+        sat_file='satellite_lane_cells_beyond.csv';
+    case '_all400'
+        sat_file='satellite_lane_cells.csv';
+    case {'_x0.5','_x2'}
+        sat_file=['satellite_lane_cells' lane_suffix '.csv'];
+    otherwise   %%%%%'_nosat' (review R2OPP-1) and '_west180' (no hexagons processed west of 180)
+        sat_file='';
+end
+p.extra_source_csv='';
+if ~isempty(sat_file)
+    p.extra_source_csv=fullfile(pwd,'outputs','2018_2019','alaska',sat_file);
 end
 
 %%%%%%%%%%Fairways, TSS lanes, and S-band racons (NOAA ENC Direct)
@@ -93,6 +113,9 @@ p.check_ports=table( ...
     [61.12473;61.23778;60.74793;53.89419;67.72677], ...
     [-146.3464;-149.895;-151.3144;-166.54992;-164.52689], ...
     'VariableNames',{'name','lat','lon'});
+if strcmp(lane_suffix,'_west180')   %%%%%no checked ports west of 180
+    p.check_ports=p.check_ports([],:);
+end
 p.principal_ports=true;
 p.principal_ports_gap_km=5;
 p.check_vts=table(strings(0,1),zeros(0,1),zeros(0,1),'VariableNames',{'name','lat','lon'});

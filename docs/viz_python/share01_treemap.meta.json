@@ -86,15 +86,15 @@
     },
     {
       "severity": "error",
+      "message": "Text 'Beaumont 1.2%' has contrast 1.00:1; needs 4.5:1."
+    },
+    {
+      "severity": "error",
       "message": "Text 'Baton Rouge 0.9%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",
       "message": "Text 'Tampa 0.8%' has contrast 1.00:1; needs 4.5:1."
-    },
-    {
-      "severity": "error",
-      "message": "Text 'Jackson County 0.8%' has contrast 1.00:1; needs 4.5:1."
     },
     {
       "severity": "error",

@@ -245,8 +245,13 @@ if isfield(p,'exclude_source_box') && ~isempty(p.exclude_source_box)
     lat_c=R.LatitudeLimits(1)+R.CellExtentInLatitude*((1:R.RasterSize(1))'-0.5);
     lon_c=R.LongitudeLimits(1)+R.CellExtentInLongitude*((1:R.RasterSize(2))-0.5);
     in_box=(lat_c>=b(1) & lat_c<=b(2)) & (lon_c>=b(3) & lon_c<=b(4));
-    disp_progress(sprintf('Source cells removed inside [%g %g %g %g]: %d',b,nnz(source_mask & in_box)));
-    source_mask=source_mask & ~in_box;
+    if isfield(p,'keep_only_box') && p.keep_only_box   %%%%%Great Lakes layer: keep only the sources inside the box
+        disp_progress(sprintf('Source cells kept inside [%g %g %g %g]: %d',b,nnz(source_mask & in_box)));
+        source_mask=source_mask & in_box;
+    else
+        disp_progress(sprintf('Source cells removed inside [%g %g %g %g]: %d',b,nnz(source_mask & in_box)));
+        source_mask=source_mask & ~in_box;
+    end
     result.excluded_source_cells=nnz(in_box);
     clear in_box lat_c lon_c
 end

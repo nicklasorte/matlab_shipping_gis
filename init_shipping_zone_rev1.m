@@ -145,6 +145,9 @@ if exist('decision_variant','var') && ~isempty(decision_variant)
             p.year_combine='both';
         case 'no_great_lakes'    %%%%%R2: routes in the Great Lakes and St. Lawrence box aren't zone sources (R4OPP-2)
             p.exclude_source_box=[41.0 49.5 -92.5 -74.5];
+        case 'great_lakes_only'  %%%%%D8: the Great Lakes layer, zones from routes inside the box only
+            p.exclude_source_box=[41.0 49.5 -92.5 -74.5];
+            p.keep_only_box=true;
         case 'underway'          %%%%%R4: reports over 3 knots only (R4OPP-4); rebuilds the day caches
             p.filt.min_sog_kn=3;
             p.filt_towing.min_sog_kn=3;

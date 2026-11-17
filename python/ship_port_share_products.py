@@ -50,6 +50,9 @@ def main():
     plon = np.array([float(r["lon"]) for r in pp])
     coast = vp.coast_region(plat, plon)
     coast = np.where(np.array([r["type"] == "L" for r in pp]), "Great Lakes", coast)
+    # The coast boxes put northeast Florida (Jacksonville) in the Gulf; north of 27 N the
+    # Gulf coast lies west of 82 W, so ports east of it are Atlantic (review R4NUM-6).
+    coast = np.where((coast == "Gulf") & (plat > 27) & (plon > -82), "Atlantic", coast)
     ptree = cKDTree(vp.ecef(plat, plon))
     chord = 2 * vp.R_EARTH * np.sin(PORT_KM / (2 * vp.R_EARTH))
 

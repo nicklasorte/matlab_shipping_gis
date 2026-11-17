@@ -47,7 +47,7 @@ port,short,complex,coast,lat,lon,rank,ships,ships_y0,ships_y1,share,cargo,tanker
 "Stockton, CA",Stockton,Stockton,Pacific,37.9527,-121.3156,78,186,96,101,0.00469,139,47,0,0
 "Port of Providence, RI",Providence,Providence,Atlantic,41.81178,-71.39844,63,178,96,104,0.00448,86,82,0,0
 "Anacortes, WA",Anacortes,Anacortes,Pacific,48.49594,-122.59961,65,174,100,110,0.00438,17,131,9,0
-"Jacksonville, FL",Jacksonville,Jacksonville,Gulf,30.32276,-81.66513,38,173,99,115,0.00436,127,28,0,0
+"Jacksonville, FL",Jacksonville,Jacksonville,Atlantic,30.32276,-81.66513,38,173,99,115,0.00436,127,28,0,0
 "New Haven, CT",New Haven,New Haven,Atlantic,41.29883,-72.90473,58,173,97,97,0.00436,70,73,0,0
 "Calhoun Port Authority, TX",Calhoun,Calhoun,Gulf,28.62939,-96.59232,77,158,83,88,0.00398,17,135,0,0
 "Morehead City, NC",Morehead City,Morehead City,Atlantic,34.71693,-76.72421,123,149,75,92,0.00375,140,6,0,1
