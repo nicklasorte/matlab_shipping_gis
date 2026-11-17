@@ -1,7 +1,8 @@
 # CLAUDE.md
 
 Instructions for Claude sessions (Claude Code or chat) working in this repo.
-Read this first, then `docs/plans/next_steps_rev1.md` for current status.
+Read this first, then `docs/plans/next_steps_rev2.md` (current plan) and the
+Status section of `docs/plans/next_steps_rev1.md` (phase 1 results).
 
 ## What this repo is
 
@@ -13,7 +14,8 @@ Word copy is `docs/2.7GHz_Routes_and_Zones_Sections_DRAFT.docx`.
 
 ## Start of every session
 
-1. Read the "Status" section of `docs/plans/next_steps_rev1.md`: open
+1. Read `docs/plans/next_steps_rev2.md` and the "Status" section of
+   `docs/plans/next_steps_rev1.md`: open
    decisions (D1 to D6), done and open steps, what's running.
 2. Check open review items in `docs/review/round4/findings_r4.md` (and earlier
    rounds under `docs/review/`) before changing method or text, so you don't
@@ -23,7 +25,7 @@ Word copy is `docs/2.7GHz_Routes_and_Zones_Sections_DRAFT.docx`.
 
 ## End of every session
 
-Update the Status section of `docs/plans/next_steps_rev1.md` (what changed,
+Update the status in `docs/plans/next_steps_rev2.md` (what changed,
 latest commit, open decisions, anything still running), commit, and push.
 That file is the handoff between sessions and between Claude Code and chat.
 
@@ -83,7 +85,8 @@ That file is the handoff between sessions and between Claude Code and chat.
 
 | Path | What |
 | --- | --- |
-| `docs/plans/next_steps_rev1.md` | Plan, decisions, and status (the handoff) |
+| `docs/plans/next_steps_rev2.md` | Current plan and decisions (the handoff) |
+| `docs/plans/next_steps_rev1.md` | Phase 1 plan and results |
 | `docs/review/` | Review rounds 1 to 4, findings, and dispositions |
 | `docs/protocols/` | Photo-coding protocol for the S-band carriage rate |
 | `data/` | Inputs: truth ships, radar models, kept-ship list, PSIX tonnage |
