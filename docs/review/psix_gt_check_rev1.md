@@ -36,6 +36,15 @@ Section 1.5 now states it (doc revision 520). The cargo, tanker, and passenger
 shares are close to the Wikidata check in Section 1.4 for the U.S.-flag subset,
 an independent registry source.
 
+## Second pass by name (plan step C8, November 17, 2026)
+
+`python/psix_gt_by_name.py` looked up by vessel name the 126 ships the call-sign
+pass didn't match or found ambiguous, keeping a candidate only when exactly one
+U.S.-flag PSIX vessel has the same name. It matched 33 more (5 with the same call
+sign). With them, 493 of 789 ships have a PSIX gross tonnage, and among ships
+matched by name: towing vessels 0 of 164 at 3,000 GT or more (median 497 GT);
+all other kept types 224 of 246 (91%). Section 1.5 uses these counts.
+
 ## Limits
 
 - U.S.-flag ships only (789 of 16,085 kept ships), and a fifth of them didn't
