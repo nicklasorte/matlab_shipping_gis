@@ -68,8 +68,8 @@ Left out on purpose:
 
 ## Method
 
-1. **Large-ship cells.** The code samples one AIS day per week for 2023 and
-   2024 (104 days). It reads each daily MarineCadastre file in chunks,
+1. **Large-ship cells.** The code samples one AIS day per week for 2024 and
+   2025 (104 days; `period_rev1.m`). Alaska uses 2018 and 2019. It reads each daily MarineCadastre file in chunks,
    applies the filter, and bins positions onto a 0.01° grid (about 1 km). A
    cell becomes a ship cell when at least four distinct ships report in it in
    one calendar year; each year is counted on its own, and a cell that passes
@@ -207,12 +207,12 @@ day per year (`outputs/2023_2024/ais_filter_funnel.csv` and
 
 Step 4 matches the day caches exactly (1,080,250 and 1,347,288 reports;
 1,805 and 2,184 ships), and the caches were built by a separate program
-(`ais_cells_py_rev1.py`). That program also reproduces the MATLAB cache for
-2024-01-03 cell for cell (166,382 pairs).
+(`ais_cells_py_rev1.py`). An earlier test (January 3, 2024) found
+the two programs matched cell for cell; that test predates the current caches.
 
 ## Figures
 
-The maps below are from the earlier 2023–2024 shore-mode run; the current maps are in `outputs/2024_2025/`:
+The maps below are archived from the earlier 2023–2024 shore-mode run and don't reflect the current method; the current maps are in `outputs/2024_2025/` and `docs/viz_python/`:
 
 - [Large-ship routes, no buffer](docs/shipping_zone_2023_2024_routes_map.png)
 - [New Orleans to Baton Rouge routes, no buffer](docs/shipping_zone_2023_2024_new_orleans_baton_rouge_routes_map.png)
