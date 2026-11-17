@@ -193,3 +193,10 @@ phase:
   pass, plus zone runs).
 - **Scope:** R1 adds population but not auction value or household counts;
   those belong to the wider study.
+
+## Status update, November 17 (rerun setup)
+
+- Code for the round-five reruns is committed: commit stamp in every run log (`git_commit_stamp_rev1.m`), two-box Great Lakes mask reaching Montreal (`box_mask_rev1.m`), by-ship Great Lakes split (`ship_split_by_box_rev1.m`; `decision_variant` `lakers_only` and `no_lakers`), tests (MATLAB and Python twin `python/ship_split.py`). Python tests pass (15).
+- Batch driver: `scripts/run_rerun_batch_rev1.sh` (base, all variants, Hawaii, Puerto Rico, Alaska five suffixes). Not yet run: the Mac did not answer on November 17. Still to add after the zone runs: foreign-water split, stress outputs to `outputs/`, GT check, sites check.
+- Open: MATLAB tests and `checkcode` on the Mac; the Mac clone is behind and has modified tracked files that need checking before checkout.
+- Note: the `no_great_lakes` and `great_lakes_only` variants now use the two-box constant, so Table 8 rows change on rerun.
