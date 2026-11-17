@@ -20,8 +20,8 @@ verifyEqual(tc,C.max_year_ships(:)',[4 2 4 1]);
 verifyEqual(tc,C.min_year_ships(:)',[0 2 3 1]);
 verifyEqual(tc,C.unique_ships(:)',[4 2 4 1]);
 verifyEqual(tc,C.ship_days(:)',[4 4 7 3]);
-%%%%%Four ships in either year: cells 1 and 3. In both years: cell 3 only.
-p.min_unique_ships=4;
+%%%%%Three ships in either year: cells 1 and 3. In both years: cell 3 only.
+p.min_unique_ships=3;
 either=route_source_mask_rev1(C.ship_days,C.max_year_ships,p);
 both=route_source_mask_rev1(C.ship_days,C.min_year_ships,p);
 verifyEqual(tc,either(:)',logical([1 0 1 0]));
