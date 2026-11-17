@@ -102,7 +102,7 @@ def ak_routes():
     r_, c_ = m["source_mask"].nonzero()
     nr = m["source_mask"].shape[0]
     route = np.sort(r_ + 1 + c_ * nr).astype(np.int64)
-    sat = np.loadtxt(os.path.join(AK, "satellite_lane_cells.csv"), dtype=np.int64)
+    sat = np.loadtxt(os.path.join(AK, "satellite_lane_cells_beyond.csv"), dtype=np.int64)   # decision D2: hexagons beyond shore range only
     charted = np.setdiff1d(np.setdiff1d(route, ais), sat)
     sat = np.setdiff1d(sat, ais)
     page = OnePager(
@@ -110,11 +110,11 @@ def ak_routes():
                  "Pass; satellite data add the great-circle lanes far offshore",
         subhead=f"Route cells east of 180°, 2018–2019: {len(ais):,} cells of about 1 km from shore-received ship tracks "
                 f"(ship-days rule, blue), {len(charted):,} from NOAA charted lanes (light blue), and {len(sat):,} from "
-                "satellite-AIS hexagons (purple)",
+                "satellite-AIS hexagons beyond shore-receiver range (purple)",
         source=SRC, theme="ntia", layout="hero", size=(11, 8.2),
         alt="Map of Alaska. Blue route cells follow the Inside Passage in Southeast Alaska, Cook Inlet to Anchorage, "
-            "Prince William Sound to Valdez, and Unimak Pass near Dutch Harbor; purple satellite-AIS hexagons add a wide "
-            "band of lanes along and south of the Aleutians and patches in the Bering Sea.")
+            "Prince William Sound to Valdez, and Unimak Pass near Dutch Harbor; purple satellite-AIS hexagons beyond "
+            "shore-receiver range add a wide band of lanes along and south of the Aleutians and the Alaska Peninsula.")
     ax = page.panel(0, grid=None)
     ax.add_collection(PolyCollection(rings(vf.STATES, "AK"), facecolor=page.theme.panel, edgecolor="white", lw=0.4))
     x, y = cells_xy(allc)
@@ -127,7 +127,7 @@ def ak_routes():
     ax.scatter(x, y, s=0.9, marker="s", lw=0, c=page.theme.accent, rasterized=True, zorder=3)
     frame(page, ax)
     ports(page, ax)
-    page.note(ax, "Purple: busiest satellite-AIS\nhexagons (Kapsar and others,\n2022), cargo and tankers",
+    page.note(ax, "Purple: busiest satellite-AIS\nhexagons beyond 74 km of shore\n(Kapsar and others, 2022)",
               (250, 520), coords="data")
     vf.save(page, "ak01_routes")
 
