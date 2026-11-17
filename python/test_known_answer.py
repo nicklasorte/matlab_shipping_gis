@@ -96,8 +96,13 @@ def main():
     flagged_ok = bool(f[jump_idx].all()) and int(f.sum()) >= 1
     print(f"jump flagged: {flagged_ok} ({int(f.sum())} reports flagged)")
     ok &= flagged_ok
-    sys.exit(0 if ok else 1)
+    return ok
+
+
+def test_known_answer():
+    """pytest entry point (review R4MET-14): every expected pair and the planted jump."""
+    assert main()
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(0 if main() else 1)

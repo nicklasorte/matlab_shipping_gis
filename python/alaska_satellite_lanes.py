@@ -56,6 +56,32 @@ TO_LL = Transformer.from_crs(3338, 4326, always_xy=True)
 TO_AK = Transformer.from_crs(4326, 3338, always_xy=True)
 
 
+def best_cutoff(kap, near, has):
+    """Cutoff whose busy hexagons best match the route hexagons near shore.
+
+    Candidates are 37 quantiles (5% to 95%) of the nonzero operating days near
+    shore; the score is the Jaccard index near shore between hexagons at or
+    above the cutoff and hexagons holding ship-track route cells. Returns the
+    best cutoff, the candidates, and their scores (ties go to the lowest).
+    """
+    cands = np.unique(np.quantile(kap[near & (kap > 0)], np.linspace(0.05, 0.95, 37)))
+    jac = []
+    for t in cands:
+        a, b = near & (kap >= t), near & has
+        jac.append((a & b).sum() / max(1, (a | b).sum()))
+    jac = np.array(jac)
+    return float(cands[np.argmax(jac)]), cands, jac
+
+
+def select_hexagons(kap, in_grid, near, cutoff, beyond_only=False):
+    """Hexagons kept as satellite lanes: in the grid and at or above the cutoff;
+    with beyond_only (decision D2, review R3OPP-1), only those beyond shore range."""
+    keep = in_grid & (kap >= cutoff)
+    if beyond_only:
+        keep &= ~near
+    return keep
+
+
 def main(factor=None, beyond_only=False, sweep=False):
     polys, ops, _ = kc.read_hex()
     hid = list(polys)
@@ -78,13 +104,7 @@ def main(factor=None, beyond_only=False, sweep=False):
     shore_km = vp.chord_to_arc(tree.query(vp.ecef(lat_c, lon_c))[0])
     near = in_grid & (shore_km <= SHORE_RANGE_KM)
     # Cutoff: best Jaccard match near shore
-    cands = np.unique(np.quantile(kap[near & (kap > 0)], np.linspace(0.05, 0.95, 37)))
-    jac = []
-    for t in cands:
-        a, b = near & (kap >= t), near & has
-        jac.append((a & b).sum() / max(1, (a | b).sum()))
-    jac = np.array(jac)
-    T_best = float(cands[np.argmax(jac)])
+    T_best, cands, jac = best_cutoff(kap, near, has)
     if sweep:
         # Review R3OPP-11: the candidate list jumps from 272 to 659 days; test between.
         grid_t = [T_best] + list(range(300, 651, 50)) + [float(cands[cands > T_best].min())]
@@ -101,9 +121,7 @@ def main(factor=None, beyond_only=False, sweep=False):
         return
     T = T_best if factor is None else T_best * factor
     sfx = ("" if factor is None else f"_x{factor:g}") + ("_beyond" if beyond_only else "")
-    keep = in_grid & (kap >= T)
-    if beyond_only:
-        keep &= ~near   # review R3OPP-1: only hexagons the shore receivers can't see
+    keep = select_hexagons(kap, in_grid, near, T, beyond_only)
     # Water cells inside the kept hexagons
     sf = shapefile.Reader(vp.os.path.join(ROOT, "data", "cb_2023_us_state_500k", "cb_2023_us_state_500k.shp"))
     land = unary_union([shape(s.__geo_interface__) for s, r in zip(sf.shapes(), sf.records()) if r["STUSPS"] == "AK"])
