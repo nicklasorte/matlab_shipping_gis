@@ -43,6 +43,15 @@ arguments
 end
 
 disp_progress('shipping_zone_rev1: start');
+%%%%%Name the code that makes this run (review R5MET-3).
+stamp=git_commit_stamp_rev1();
+result.code_commit=stamp.commit;
+result.code_dirty=stamp.dirty;
+if stamp.dirty
+    disp_progress(sprintf('Code commit: %s (tracked files differ from it, or git did not run)',stamp.commit));
+else
+    disp_progress(sprintf('Code commit: %s (clean)',stamp.commit));
+end
 for folder={p.data_dir,p.out_dir}
     if ~isfolder(folder{1})
         mkdir(folder{1});
@@ -101,6 +110,18 @@ if isfield(p,'filt_towing') && ~isempty(p.filt_towing)
     result.towing_cells=nnz(tow_cells);
     disp_progress(sprintf('Tug-barges: %d cells within %g km of the coastline',nnz(tow_cells),p.towing_coast_km));
     clear near_coast tow_cells
+end
+
+%%%%%Optional ship split (decision runs lakers_only and no_lakers, review R5MET-1):
+%%%%%keep only ships that were never seen outside p.ship_split_box ("inside_only"),
+%%%%%or only ships seen outside it at least once ("seen_outside").
+if isfield(p,'ship_split_box') && ~isempty(p.ship_split_box)
+    split_box_mask=box_mask_rev1(R,p.ship_split_box);
+    [cell_pairs,split_info]=ship_split_by_box_rev1(cell_pairs,split_box_mask,p.ship_split_keep);
+    result.ship_split=split_info;
+    disp_progress(sprintf('Ship split (%s): %d ships, %d never seen outside the box, %d seen outside',p.ship_split_keep, ...
+        split_info.num_ships,split_info.num_inside_only,split_info.num_seen_outside));
+    clear split_box_mask
 end
 
 %%%%%Merge days one at a time so memory holds one running set, not all days.
@@ -217,19 +238,17 @@ end
 %%%%%%%%%%2c. Optional source exclusion box (decision run R2: zones from routes
 %%%%%%%%%%outside the Great Lakes). p.exclude_source_box=[lat_min lat_max lon_min lon_max].
 if isfield(p,'exclude_source_box') && ~isempty(p.exclude_source_box)
-    b=p.exclude_source_box;
-    lat_c=R.LatitudeLimits(1)+R.CellExtentInLatitude*((1:R.RasterSize(1))'-0.5);
-    lon_c=R.LongitudeLimits(1)+R.CellExtentInLongitude*((1:R.RasterSize(2))-0.5);
-    in_box=(lat_c>=b(1) & lat_c<=b(2)) & (lon_c>=b(3) & lon_c<=b(4));
+    b=p.exclude_source_box;   %%%%%one box, or one row per box
+    in_box=box_mask_rev1(R,b);
     if isfield(p,'keep_only_box') && p.keep_only_box   %%%%%Great Lakes layer: keep only the sources inside the box
-        disp_progress(sprintf('Source cells kept inside [%g %g %g %g]: %d',b,nnz(source_mask & in_box)));
+        disp_progress(sprintf('Source cells kept inside %d box(es): %d',size(b,1),nnz(source_mask & in_box)));
         source_mask=source_mask & in_box;
     else
-        disp_progress(sprintf('Source cells removed inside [%g %g %g %g]: %d',b,nnz(source_mask & in_box)));
+        disp_progress(sprintf('Source cells removed inside %d box(es): %d',size(b,1),nnz(source_mask & in_box)));
         source_mask=source_mask & ~in_box;
     end
     result.excluded_source_cells=nnz(in_box);
-    clear in_box lat_c lon_c
+    clear in_box
 end
 
 %%%%%%%%%%3. Distance field (Census land and coastline as the land/water reference)

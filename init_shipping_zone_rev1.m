@@ -137,18 +137,31 @@ end
 %%%%%%%%%%Decision-table runs (docs/plans/next_steps_rev2.md, workstream R):
 %%%%%%%%%%set decision_variant before running, for example
 %%%%%%%%%%  matlab -batch "decision_variant='no_tug'; init_shipping_zone_rev1"
+%%%%%%%%%%Great Lakes and St. Lawrence boxes, [lat_min lat_max lon_min lon_max] per row. Row 1 is the
+%%%%%%%%%%lakes and the river to 74.5 W; row 2 carries the river from there to the lower exit of the
+%%%%%%%%%%St. Lambert Lock at Montreal (about 73.52 W), the SOLAS V Reg. 1.2 limit, north of 44.9 N so the
+%%%%%%%%%%Hudson River stays outside.
+great_lakes_boxes=[41.0 49.5 -92.5 -74.5; 44.9 49.5 -74.5 -73.5];
 if exist('decision_variant','var') && ~isempty(decision_variant)
     switch decision_variant
         case 'no_tug'            %%%%%R3: tug-barge rule off (review R4OPP-1)
             p.filt_towing=[];
         case 'both_years'        %%%%%R5: a cell must meet the threshold in both years (R4OPP-7)
             p.year_combine='both';
-        case 'no_great_lakes'    %%%%%R2: routes in the Great Lakes and St. Lawrence box aren't zone sources (R4OPP-2)
-            p.exclude_source_box=[41.0 49.5 -92.5 -74.5];
-        case 'great_lakes_only'  %%%%%D8: the Great Lakes layer, zones from routes inside the box only
-            p.exclude_source_box=[41.0 49.5 -92.5 -74.5];
+        case 'no_great_lakes'    %%%%%R2: routes in the Great Lakes and St. Lawrence boxes aren't zone sources (R4OPP-2)
+            p.exclude_source_box=great_lakes_boxes;
+        case 'great_lakes_only'  %%%%%D8: the Great Lakes layer by area, zones from routes inside the boxes only
+            p.exclude_source_box=great_lakes_boxes;
             p.keep_only_box=true;
-        case 'underway'          %%%%%R4: reports over 3 knots only (R4OPP-4); rebuilds the day caches
+        case 'lakers_only'       %%%%%R5MET-1: the Great Lakes layer by ship: ships never seen outside the boxes, AIS cells only
+            p.ship_split_box=great_lakes_boxes;
+            p.ship_split_keep="inside_only";
+            p.include_fairways=false;
+            p.include_racons=false;
+        case 'no_lakers'         %%%%%R5MET-1: everything except lakers: ships seen outside the boxes, charted lanes kept
+            p.ship_split_box=great_lakes_boxes;
+            p.ship_split_keep="seen_outside";
+        case 'underway'          %%%%%R4: reports of 3 knots or more only (R4OPP-4); rebuilds the day caches
             p.filt.min_sog_kn=3;
             p.filt_towing.min_sog_kn=3;
         otherwise
@@ -174,6 +187,7 @@ p.ais_read_rows=1e6;      %%%%%AIS rows per read chunk (about 150 MB each)
 p.block_rows=200;         %%%%%grid rows per distance-query block
 
 result=shipping_zone_rev1(p);
+clear decision_variant shore_link_override   %%%%%R5MET-18: a later run in the same session starts from the base
 
 %%%%%%%%%%Example: tract centroids inside the 50 km land zone, using
 %%%%%%%%%%find_points_inside_contour_two_step_rev2 from Basic_Functions:

@@ -34,3 +34,24 @@ def test_jaccard():
     a = np.array([1, 2, 3, 4])
     b = np.array([3, 4, 5])
     assert abs(rr.jaccard(a, b) - 2 / 5) < 1e-12
+
+
+def test_box_mask_two_boxes():
+    import ship_split as ss
+    # 1 cell per degree, lat 40 to 44, lon -80 to -76; centers at x.5.
+    m = ss.box_mask([40, 44], [-80, -76], 1, [[40, 41, -80, -79], [43, 44, -77, -76]])
+    assert m.shape == (4, 4)
+    assert m.sum() == 2 and m[0, 0] and m[3, 3]
+
+
+def test_ship_split_semantics():
+    import ship_split as ss
+    inbox = np.array([True, True, False, False])
+    day1 = np.array([[0, 1], [1, 1], [2, 2], [0, 3]])   # ship 1 inside only; 2 outside; 3 inside
+    day2 = np.array([[3, 3]])                            # ship 3 seen outside on day 2
+    ins, info = ss.ship_split([day1, day2], inbox, "inside_only")
+    assert sorted(set(np.concatenate(ins)[:, 1].tolist())) == [1]
+    assert (info["num_ships"], info["num_inside_only"], info["num_seen_outside"]) == (3, 1, 2)
+    out, _ = ss.ship_split([day1, day2], inbox, "seen_outside")
+    assert sorted(set(np.concatenate(out)[:, 1].tolist())) == [2, 3]
+    assert len(out[0]) == 2                              # ship 3 keeps its inside pair too

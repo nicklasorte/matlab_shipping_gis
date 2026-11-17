@@ -77,3 +77,33 @@ v=P.Vertices(~isnan(P.Vertices(:,1)),:);
 d=distance(lat0,lon0,v(:,2),v(:,1),[6371.0088 0]);
 verifyLessThan(tc,max(abs(d-100)),0.05);
 end
+
+function test_box_mask_two_boxes(tc)
+%%%%%One cell per degree, lat 40 to 44, lon -80 to -76; two boxes pick the two corner cells.
+R=georefcells([40 44],[-80 -76],[1 1]);
+m=box_mask_rev1(R,[40 41 -80 -79; 43 44 -77 -76]);
+verifyEqual(tc,nnz(m),2);
+verifyTrue(tc,m(1,1)&&m(4,4));
+verifyError(tc,@() box_mask_rev1(R,[41 40 -80 -79]),'shipgis:box');
+end
+
+function test_ship_split_semantics(tc)
+%%%%%Cells 1 and 2 are inside, 3 and 4 outside. Ship 1 stays inside; ship 2 is outside;
+%%%%%ship 3 is inside on day 1 and outside on day 2, so it is a "seen outside" ship.
+in_box=logical([1 1 0 0]);
+day1=[1 1;2 1;3 2;1 3];
+day2=[4 3];
+[ins,info]=ship_split_by_box_rev1({day1;day2},in_box,"inside_only");
+verifyEqual(tc,unique(vertcat(ins{:}),'rows'),[1 1;2 1]);
+verifyEqual(tc,[info.num_ships info.num_inside_only info.num_seen_outside],[3 1 2]);
+[out,~]=ship_split_by_box_rev1({day1;day2},in_box,"seen_outside");
+verifyEqual(tc,sortrows(vertcat(out{:})),sortrows([3 2;1 3;4 3]));
+end
+
+function test_git_commit_stamp(tc)
+%%%%%Run in the repository: a 40-character hash, and no error when git is missing.
+S=git_commit_stamp_rev1();
+verifyTrue(tc,S.ok);
+verifyEqual(tc,strlength(S.commit),40);
+verifyWarning(tc,@() git_commit_stamp_rev1(tempdir),'shipgis:git');
+end
