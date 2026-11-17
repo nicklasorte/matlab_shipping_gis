@@ -1,0 +1,42 @@
+{
+ "note": "Values cited in the paper with no other output file (plan step T3)",
+ "gt_check_section_1_4_and_1_6": {
+  "matched_ships": 4269,
+  "median_abs_length_difference_m": 0.1,
+  "large_ships_dropped": 75,
+  "dropped_share_87_to_99_m": 0.507,
+  "dropped_median_length_m": 87.0,
+  "caveat": "This Python match is looser than check_gt_proxy_rev1.m (4,269 matched ships against the paper's 4,129, and 75 large ships dropped against 72); the cited median (0.1 m) and the share at 87-99 m (about half) hold on both."
+ },
+ "route_cell_groups_appendix_a6": {
+  "all_route_cells": {
+   "cells": 658867,
+   "groups": 28849,
+   "share_in_groups_of_5_or_fewer": 0.0653,
+   "largest_group_share": 0.3491
+  },
+  "one_year_cells": {
+   "cells": 322498,
+   "groups": 44586,
+   "share_in_groups_of_5_or_fewer": 0.2029,
+   "largest_group_share": 0.139
+  }
+ },
+ "corridor_head_port_km_table_6": {
+  "houston": 91.7,
+  "columbia": 174.1,
+  "delaware": 214.3,
+  "chesapeake": 290.6,
+  "james": 122.5,
+  "hudson": 248.1,
+  "sacramento": 156.1,
+  "stockton": 145.0,
+  "savannah": 39.3,
+  "sabine": 76.2,
+  "calcasieu": 57.8,
+  "mobile": 55.2,
+  "stjohns": 31.3,
+  "capefear": 42.9,
+  "mississippi": 355.9
+ }
+}
