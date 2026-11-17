@@ -1,13 +1,15 @@
 """Population in each zone (plan step R1, review R4OPP-3).
 
-Usage: python3 python/zone_population.py [zone_root] [tag]
+Usage: python3 python/zone_population.py [zone_root] [tag] [region] [stem]
 
 Counts the 2020 Census population whose block-group center of population lies
 inside each zone polygon, for each region and distance (25, 50, 100 km).
 Input: data/ref/CenPop2020_Mean_BG.txt (Census Bureau, 2020 Centers of
 Population by block group, https://www2.census.gov/geo/docs/reference/cenpop2020/blkgrp/).
 Zone shapefiles are read from zone_root (default: the repo's outputs/ folders);
-tag names the run in the output (default "base").
+tag names the run in the output (default "base"); region and stem limit the
+run to one region and override its file stem (for decision-table runs, for
+example lower48 shipping_zone_2024_2025_no_tug).
 
 A block group counts wholly in or wholly out by its population center, so
 results are approximate at zone edges (block groups are small where people
@@ -57,12 +59,14 @@ def zone(path):
     return unary_union([shape(s.__geo_interface__).buffer(0) for s in sf.shapes()])
 
 
-def main(zone_root=None, tag="base", regions=None):
+def main(zone_root=None, tag="base", region=None, stem_override=None):
     bg = load_blockgroups()
     rows = []
     for name, folder, stem, grid, states in REGIONS:
-        if regions and name not in regions:
+        if region and name != region:
             continue
+        if stem_override:
+            stem = stem_override
         sub = in_region(bg, grid, states)
         total = int(sub.POPULATION.sum())
         lon, lat = sub.LONGITUDE.to_numpy(), sub.LATITUDE.to_numpy()
@@ -85,4 +89,5 @@ def main(zone_root=None, tag="base", regions=None):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:3])
+    args = sys.argv[1:]
+    main(args[0] if len(args) > 0 and args[0] else None, *(args[1:4]))
