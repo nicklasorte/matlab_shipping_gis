@@ -111,6 +111,7 @@ ship_days=zeros(R.RasterSize);
 unique_ships=zeros(R.RasterSize);          %%%%%distinct ships over all days
 max_year_ships=zeros(R.RasterSize);        %%%%%largest per-year distinct-ship count
 day_year=year(ais_days(:));
+min_year_ships=inf(R.RasterSize);          %%%%%smallest per-year count (decision run R5, p.year_combine='both')
 all_mmsi=zeros(0,2);
 for yr=unique(day_year)'
     cell_mmsi=zeros(0,2);
@@ -126,13 +127,26 @@ for yr=unique(day_year)'
     if isempty(cell_mmsi)
         continue
     end
-    max_year_ships=max(max_year_ships,reshape(accumarray(cell_mmsi(:,1),1,[num_cell 1]),R.RasterSize));
+    year_count=reshape(accumarray(cell_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
+    max_year_ships=max(max_year_ships,year_count);
+    min_year_ships=min(min_year_ships,year_count);
     all_mmsi=unique([all_mmsi; cell_mmsi],'rows');
 end
 if ~isempty(all_mmsi)
     unique_ships=reshape(accumarray(all_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
 end
-clear cell_mmsi all_mmsi
+clear cell_mmsi all_mmsi year_count
+min_year_ships(isinf(min_year_ships))=0;
+%%%%%Year combination: 'either' (default; a cell counts when any one year meets
+%%%%%the threshold) or 'both' (every year must; decision run R5, review R4OPP-7).
+year_combine='either';
+if isfield(p,'year_combine')
+    year_combine=validatestring(p.year_combine,{'either','both'});
+end
+if strcmp(year_combine,'both')
+    max_year_ships=min_year_ships;   %%%%%the threshold tests below then require every year
+    disp_progress('Year combination: both years must meet each ship threshold');
+end
 %%%%%Route rule: 'unique_ships' (default) or 'ship_days' (route_source_mask_rev1).
 source_mask=route_source_mask_rev1(ship_days,max_year_ships,p);
 route_rule='unique_ships';
@@ -224,12 +238,30 @@ if isfield(p,'include_racons') && p.include_racons
     writetable(result.racons,fullfile(p.out_dir,sprintf('%s_racons.csv',p.out_name)));
 end
 
+%%%%%%%%%%2c. Optional source exclusion box (decision run R2: zones from routes
+%%%%%%%%%%outside the Great Lakes). p.exclude_source_box=[lat_min lat_max lon_min lon_max].
+if isfield(p,'exclude_source_box') && ~isempty(p.exclude_source_box)
+    b=p.exclude_source_box;
+    lat_c=R.LatitudeLimits(1)+R.CellExtentInLatitude*((1:R.RasterSize(1))'-0.5);
+    lon_c=R.LongitudeLimits(1)+R.CellExtentInLongitude*((1:R.RasterSize(2))-0.5);
+    in_box=(lat_c>=b(1) & lat_c<=b(2)) & (lon_c>=b(3) & lon_c<=b(4));
+    disp_progress(sprintf('Source cells removed inside [%g %g %g %g]: %d',b,nnz(source_mask & in_box)));
+    source_mask=source_mask & ~in_box;
+    result.excluded_source_cells=nnz(in_box);
+    clear in_box lat_c lon_c
+end
+
 %%%%%%%%%%3. Distance field (Census land and coastline as the land/water reference)
 %%%%%(land_mask, land_poly, coast_mask from census_reference_rev1 above)
 max_km=max(p.distances_km);
+%%%%%Compute true distances a few cells past the largest zone distance, so the
+%%%%%contour at max_km interpolates between true values on both sides instead
+%%%%%of toward the 2*max cap (review R4MET-1: the 100 km boundary sat about
+%%%%%half a cell short). 5 km is over four 0.01-degree cells at any latitude.
+contour_margin_km=5;
 switch p.zone_mode
     case 'ships'
-        dist_field_km=distance_to_mask_km_rev1(source_mask,R,max_km,p.block_rows);
+        dist_field_km=distance_to_mask_km_rev1(source_mask,R,max_km+contour_margin_km,p.block_rows);
     case 'shore'
         dist_ship_km=distance_to_mask_km_rev1(source_mask,R,max_km+p.shore_link_km,p.block_rows);
         %%%%%Ship water: non-land within shore_link_km of a ship cell

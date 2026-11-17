@@ -9,7 +9,7 @@
 %%%%%Requires: Mapping Toolbox, Statistics and Machine Learning Toolbox,
 %%%%%and the zstd command-line tool for 2024+ AIS files.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clearvars -except shore_link_override   %%%%%set shore_link_override (km) before running for the review sensitivity runs
+clearvars -except shore_link_override decision_variant   %%%%%set shore_link_override (km) or decision_variant before running for sensitivity runs
 clc;
 
 %%%%%%%%%%Grid (lower 48 plus the Great Lakes and coastal waters)
@@ -131,6 +131,28 @@ p.make_figure=true;
 if exist('shore_link_override','var')   %%%%%review sensitivity run: other shore link, own output names, no figure
     p.shore_link_km=shore_link_override;
     p.out_name=sprintf('%s_shorelink%gkm',p.out_name,shore_link_override);
+    p.make_figure=false;
+end
+
+%%%%%%%%%%Decision-table runs (docs/plans/next_steps_rev2.md, workstream R):
+%%%%%%%%%%set decision_variant before running, for example
+%%%%%%%%%%  matlab -batch "decision_variant='no_tug'; init_shipping_zone_rev1"
+if exist('decision_variant','var') && ~isempty(decision_variant)
+    switch decision_variant
+        case 'no_tug'            %%%%%R3: tug-barge rule off (review R4OPP-1)
+            p.filt_towing=[];
+        case 'both_years'        %%%%%R5: a cell must meet the threshold in both years (R4OPP-7)
+            p.year_combine='both';
+        case 'no_great_lakes'    %%%%%R2: routes in the Great Lakes and St. Lawrence box aren't zone sources (R4OPP-2)
+            p.exclude_source_box=[41.0 49.5 -92.5 -74.5];
+        case 'underway'          %%%%%R4: reports over 3 knots only (R4OPP-4); rebuilds the day caches
+            p.filt.min_sog_kn=3;
+            p.filt_towing.min_sog_kn=3;
+        otherwise
+            error('shipgis:variant','Unknown decision_variant ''%s''.',decision_variant);
+    end
+    p.out_name=sprintf('%s_%s',p.out_name,decision_variant);
+    p.out_dir=fullfile(pwd,'output_decision');
     p.make_figure=false;
 end
 
