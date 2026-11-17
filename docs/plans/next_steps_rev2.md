@@ -24,6 +24,44 @@ called workstream V).
 - Every distance is still an example. Section 2 (EMC analysis) is a
   placeholder.
 
+## Status, November 17 (end of session)
+
+Nick asked to run this plan (except Section 2, D5, on hold) and to apply the
+recommendations. Decisions applied are recorded in
+`docs/plans/decision_memo_rev1.md`; Nick can reverse any of them, since each
+option has its own run and zone files.
+
+- **Done.**
+  - R0: 100 km boundary fix; lower 48 100 km land 1,264,979 km² (+0.27%);
+    25 and 50 km unchanged in every region.
+  - R1 to R4 and R8 runs, all in `outputs/rerun_logs_20261117/`, with zone
+    files in `outputs/2024_2025/decision/` and the summary in
+    `outputs/decision_table_rev1.csv`.
+  - D2 applied (Alaska 90,926 / 181,074 / 319,271 km²), D7 kept with both
+    results, D8 Great Lakes layer reported, D9 population reported, D10 kept
+    ships at anchor and at the berth (under-way-only run 2% / 1% / 1% less
+    land), D11 closed (no 2018–2019 reports west of 180°).
+  - Population (`outputs/zone_population_rev1.csv`, Python and MATLAB agree on
+    the base rows) and PEA coverage (`outputs/zone_population_pea_rev1.csv`).
+  - T: `test_route_rules_rev1.m` and `python/test_route_rules.py`.
+  - S: Appendix B (S-band equipment), receiver coverage (R7), PSIX carriage
+    numbers (C8), population text, Alaska D2 text, Table 8 (decision table) in
+    Section 3.1; the Hawaii table is now Table 9. Paper at doc revision 616.
+  - V1 baseline manifest: `docs/review/round5/v1_baseline/`.
+  - Round-four dispositions updated in `docs/review/round4/findings_r4.md`.
+  - Word copy rebuilt from doc revision 616 with the regenerated share figures
+    (A-35 to A-44).
+- **Open.**
+  - D5 (Section 2) on hold.
+  - V2 claims ledger; V3 to V5 blind review of the frozen state.
+  - Style items R4STY-18, 22, 23, 24, and 26; 38 style suggestions and the
+    November 17 suggestions wait in the doc for Nick.
+  - R4OPP-6 (reach from a satellite lane centerline), R4OPP-15 and 16 (Navy
+    and VTS radar-site layers), R4MET-5 port-connectivity test.
+  - The MATLAB twin of `decision_table.py` isn't written; the table only
+    parses logs and the population CSV, which MATLAB already checks.
+- **Running.** Nothing.
+
 ## The goal of this phase
 
 Turn the paper's open choices into a decision table: for each contested
@@ -41,8 +79,8 @@ state, and hand the EMC team a specified set of inputs.
 | D7 | Tug-barge rule: keep, drop, or keep as a labeled sensitivity | PSIX result; run R3 | Report both; make the no-tug-barge zones the base case only if the EMC team agrees tugs don't carry S-band |
 | D8 | Great Lakes: in the base zones or a separately labeled layer | Run R2 | Separate layer, since no carriage rule supports it |
 | D9 | Report population as well as land | Run R1 | Yes; land area alone invites attack from both sides |
-| D10 | Ships at the berth and at anchor: count as sources or not | Run R4 | Decide after R4; the EMC team's view of radar use in port matters |
-| D11 | Extend Alaska west of 180° | Run R8 | Yes, if R8 shows the code handles the date line cleanly |
+| D10 | Ships at the berth and at anchor: count as sources or not | Run R4 (done) | Applied: keep them; under-way-only zones are 2% / 1% / 1% smaller |
+| D11 | Extend Alaska west of 180° | Run R8 (done) | Closed: the 2018–2019 files hold no reports west of 180° |
 
 D1, D3, D4, and D6 stand as recorded in the phase 1 plan.
 

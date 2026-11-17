@@ -17,10 +17,10 @@ The EMC section (decision D5) is on hold at Nick's request.
 | --- | --- | --- | --- |
 | D2 | Alaska satellite hexagons | Keep only the 290 beyond 74 km | Land 90,926 / 181,074 / 319,271 km², against 112,426 / 210,895 / 354,593 with all 400; people in the 25 km zone 438,787 against 481,884 |
 | D7 | Tug-barge rule | Keep in the base; report the run without it | Without it: land -10% / -4% / -2%; 2.2 million fewer people at 25 km |
-| D8 | Great Lakes | Report as a separate layer | Routes outside the Great Lakes give 227,267 / 469,257 / 921,475 km²; the Great Lakes add the rest of the base land (24% / 27% / 27%) |
+| D8 | Great Lakes | Report as a separate layer | Routes outside the Great Lakes give 227,267 / 469,257 / 921,475 km² (25% / 27% / 27% less than the base); the Great Lakes layer alone gives 74,385 / 172,315 / 356,112 km² |
 | D9 | Population | Report people next to land | Lower 48: 100.3 / 138.8 / 175.9 million (30% / 42% / 53%) |
-| D10 | Ships at the berth and at anchor | Decide after the underway-only run | See D10 below |
-| D11 | Western Aleutians | Add as a separate grid, 172 E to 180 | See D11 below |
+| D10 | Ships at the berth and at anchor | Keep them in the base; report the under-way-only run | Under way only: land -2% / -1% / -1%; 0.8 million fewer people at 25 km |
+| D11 | Western Aleutians | Not built: the 2018-2019 files hold no reports west of 180 | None |
 | D5 | Section 2, inputs for the EMC analysis | On hold | None |
 
 ## D2: Alaska satellite hexagons
@@ -53,7 +53,7 @@ The EMC section (decision D5) is on hold at Nick's request.
 - **For dropping it.** No carriage rule supports it, and it is the single
   largest choice in the 25 km zone.
 - **Applied:** kept in the base, with the no-tug-barge result printed next to
-  it (Section 1.5 and Table 9). Moving it out of the base waits on the EMC
+  it (Section 1.5 and Table 8). Moving it out of the base waits on the EMC
   team's view of what towing vessels transmit.
 
 ## D8: Great Lakes
@@ -63,10 +63,13 @@ The EMC section (decision D5) is on hold at Nick's request.
   show that?
 - **What the runs show.** The Great Lakes and St. Lawrence routes account for
   about a quarter of the lower-48 zone land and 15% of its people at 25 km
-  (100.3 million in the base against 84.9 million without them).
+  (100.3 million in the base against 84.9 million without them). The Great
+  Lakes layer alone holds 74,385 / 172,315 / 356,112 km² of land and 15.4 /
+  24.1 / 33.5 million people. The two layers overlap near the St. Lawrence, so
+  their land adds to slightly more than the combined zones.
 - **Applied:** the paper reports the lower-48 zones in two layers, routes
   outside the Great Lakes and the Great Lakes layer, with the combined zones as
-  the total (Section 3, Table 9). The zone files keep the combined zones; the
+  the total (Section 3.1, Table 8). The zone files keep the combined zones; the
   Great Lakes layer has its own files.
 
 ## D9: Population
@@ -79,12 +82,27 @@ The EMC section (decision D5) is on hold at Nick's request.
 
 ## D10: Ships at the berth and at anchor
 
-Pending the underway-only run (reports over 3 knots). See the decision table
-when the run finishes.
+- **Question.** The ship filter keeps reports at any speed, so ships at anchor
+  and at the berth make route cells. Should the base count only ships under way?
+- **What the run shows.** Counting only reports over 3 knots (main and towing
+  filters; per-day caches rebuilt) gives 295,536 / 629,253 / 1,254,285 km² of
+  land, 1.9% / 1.5% / 0.8% less than the base, and 99.4 million people in the
+  25 km zone against 100.3 million. AIS source cells fall from 658,865 (base
+  log) to 646,530.
+- **For keeping them.** Radars often run at anchor (anchor watch) and some run
+  at the berth; dropping them removes protection for little change.
+- **For dropping them.** A stationary ship's radar is more often off, and berth
+  cells inflate the port areas.
+- **Applied:** kept in the base. The under-way-only run is in Table 8 of the
+  paper and the Section 1.10 limitation now cites it.
 
 ## D11: Western Aleutians
 
-Pending the 172 E to 180 run. See the decision table when the run finishes.
+The 2018-2019 per-day caches built for 172 E to 180 held no ship-day pairs: the
+MarineCadastre files for those years carry no reports west of 180 in this grid
+(`outputs/rerun_logs_20261117/alaska_west180.log`). No western grid was built,
+and the `west180` option was removed from `init_shipping_zone_alaska_rev1.m`.
+The paper keeps its statement that the grid stops at 180 and why.
 
 ## Checks
 

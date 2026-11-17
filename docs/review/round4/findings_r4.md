@@ -36,11 +36,11 @@ Nick's call), **Noted** (no change).
 
 | ID | Disposition |
 | --- | --- |
-| R4MET-1 | Open: the distance field stops at 100 km, so the 100 km boundary may sit about half a cell short (reviewer's estimate 0.3% to 0.5% of the 100 km land). Needs a code change and rerun. |
+| R4MET-1 | Fixed November 17 (R0): the field runs 5 km past the largest distance; the 100 km land rose 0.27% (lower 48 1,264,979 km²) and 25 and 50 km didn't change. Known-answer test in `test_route_rules_rev1.m`. |
 | R4MET-2 | Fixed: the 2-cell MATLAB/Python gap is now attributed to the tug-barge coastline band. |
 | R4MET-3 | Fixed: 5.1 says 272 is the best of a coarse search; 5.3 says 300 matches marginally better. |
 | R4MET-4 | Fixed: 1.5 says tug-barge tracks more than 25 km offshore are dropped. |
-| R4MET-5 | Open: add automated tests for the port-approach rule, tug-barge band, per-year union, port connectivity, and satellite selection. |
+| R4MET-5 | Fixed in part November 17: `test_route_rules_rev1.m` (6 tests) and `python/test_route_rules.py` cover the per-year union, both-years and ship-days rules, port-approach rule, tug-barge band, and the 100 km boundary; satellite selection is split into tested functions. Port connectivity still has no test. |
 | R4MET-6 to 14 | Noted; R4MET-9 (about 2,200 km² of Alaska land west of 180° in the denominator) and R4MET-14 (funnel cross-check not run in code) go to the next code pass. |
 
 ## Style and Section 508
@@ -55,19 +55,19 @@ Nick's call), **Noted** (no change).
 
 | ID | Disposition |
 | --- | --- |
-| R4OPP-1 | Fixed (disclosure): 1.5 says the tug-barge rule is a protective choice, not a carriage rule, and PSIX tonnage now shows none of 159 U.S.-flag towing vessels is 3,000 GT or more (`docs/review/psix_gt_check_rev1.md`). Whether to keep the rule is Nick's call. |
-| R4OPP-2 | Open: compute the Great Lakes share of the lower-48 zone land (reviewer's estimate about a quarter). |
-| R4OPP-3 | Open: population in the zones (Census blocks); Nick's call whether the paper should report it. |
-| R4OPP-4 | Open: zones from underway reports only (over 3 knots). |
+| R4OPP-1 | Fixed (disclosure; decision D7 November 17: kept in the base, no-tug-barge run in Table 8): 1.5 says the tug-barge rule is a protective choice, not a carriage rule, and PSIX tonnage now shows none of 159 U.S.-flag towing vessels is 3,000 GT or more (`docs/review/psix_gt_check_rev1.md`). Whether to keep the rule is Nick's call. |
+| R4OPP-2 | Fixed November 17 (D8): 25% / 27% / 27% of the base land; the Great Lakes layer is reported separately in Section 3.1 and Table 8. |
+| R4OPP-3 | Fixed November 17 (D9): population by 2020 block-group centers in Sections 3 to 6 and Table 8; PEA coverage in Section 3.1. |
+| R4OPP-4 | Fixed November 17 (D10): land 2% / 1% / 1% smaller; base keeps ships at anchor and at the berth (Section 1.10, Table 8). |
 | R4OPP-5 | Fixed in part: 5.3 states the beyond-range result and both readings; the choice is decision D2. |
 | R4OPP-6 | Open: report how far a "25 km" zone reaches from a satellite lane centerline. |
-| R4OPP-7 | Open: zones on both-year cells only (reviewer's estimate 6%, 6%, 3% smaller). |
+| R4OPP-7 | Fixed November 17: 6% / 5% / 3% smaller (Table 8). |
 | R4OPP-8 | Noted: answered. |
 | R4OPP-9 | Fixed: 1.10 says half-samples always give less land, so zones from every day would likely be larger. |
 | R4OPP-10 | Fixed: 1.10 no longer calls fishing vessels non-SOLAS. |
 | R4OPP-11 | Fixed: 1.10 gives the ship-by-ship range (58% to 100%). |
-| R4OPP-12 | Open: over half of lower-48 route cells lie beyond the Coast Guard's stated receive reach; the 2024–2025 files likely include a long-range source. Check the MarineCadastre metadata and correct 1.2 and 1.10. |
-| R4OPP-13 | Open: western Aleutians (cell files for 172° E exist). |
+| R4OPP-12 | Fixed November 17: 52% of route cells lie beyond 50 nmi; 1.2 and 1.10 now describe the receiver coverage (`docs/review/ais_source_check_rev1.md`). Original item: over half of lower-48 route cells lie beyond the Coast Guard's stated receive reach; the 2024–2025 files likely include a long-range source. Check the MarineCadastre metadata and correct 1.2 and 1.10. |
+| R4OPP-13 | Closed November 17 (D11): the 2018–2019 files hold no reports west of 180°, so no western grid can be built from them. |
 | R4OPP-14 | Noted: Hawaii cutoff 6 against 5; disclosed. |
 | R4OPP-15, 16 | Open: public Navy and VTS radar-site layers. |
 | R4OPP-17 | Suggested: the racon sentence now cites the Coast Guard (most racons also work in 2900–3100 MHz). |

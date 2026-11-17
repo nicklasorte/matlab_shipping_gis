@@ -1,0 +1,12 @@
+run,region,description,decision_or_finding,source_log,land_25km_km2,population_25km,land_50km_km2,population_50km,land_100km_km2,population_100km,land_change_25km_pct,land_change_50km_pct,land_change_100km_pct
+lower48,lower48,"Base: lower 48, current method",,outputs/rerun_logs_20261117/lower48.log,301168,100256837,638688,138773271,1264979,175877373,,,
+no_tug,lower48,Tug-barge rule off,"D7, R4OPP-1",outputs/rerun_logs_20261117/no_tug.log,271130,98044031,610518,137352696,1238588,174335894,-10.0,-4.4,-2.1
+both_years,lower48,Cell must meet the ship threshold in both years,R4OPP-7,outputs/rerun_logs_20261117/both_years.log,283712,98076646,606417,136966405,1228527,174198700,-5.8,-5.1,-2.9
+no_great_lakes,lower48,Without Great Lakes and St. Lawrence routes,"D8, R4OPP-2",outputs/rerun_logs_20261117/no_great_lakes.log,227267,84858106,469257,114767885,921475,142574802,-24.5,-26.5,-27.2
+great_lakes_only,lower48,Great Lakes and St. Lawrence routes only (the Great Lakes layer),"D8, R4OPP-2",outputs/rerun_logs_20261117/great_lakes_only.log,74385,15413109,172315,24078126,356112,33532834,-75.3,-73.0,-71.8
+underway,lower48,Reports over 3 knots only (ships under way),"D10, R4OPP-4",outputs/rerun_logs_20261117/underway.log,295536,99407850,629253,138262672,1254285,175780231,-1.9,-1.5,-0.8
+hawaii,hawaii,Base: Hawaii,,outputs/rerun_logs_20261117/hawaii.log,7869,1362395,14132,1446208,16717,1455271,,,
+prusvi,prusvi,Base: Puerto Rico and USVI,,outputs/rerun_logs_20261117/prusvi.log,7211,2854762,9278,3285874,9278,3285874,,,
+alaska_d2,alaska,Base after D2: satellite hexagons beyond 74 km only (290),"D2, R3OPP-1",outputs/rerun_logs_20261117/alaska_d2.log,90926,438787,181074,529208,319271,581484,,,
+alaska,alaska,All 400 satellite hexagons (base before D2),D2,outputs/rerun_logs_20261117/alaska.log,112426,481884,210895,569710,354593,583988,23.6,16.5,11.1
+alaska_nosat,alaska,No satellite hexagons,R2OPP-1,outputs/rerun_logs_20261117/alaska_nosat.log,90923,,181070,,317670,,-0.0,-0.0,-0.5

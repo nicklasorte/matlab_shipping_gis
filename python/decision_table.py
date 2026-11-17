@@ -15,7 +15,10 @@ import sys
 import pandas as pd
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-# run log name -> (region, base run, description, decision or finding)
+# run log name -> (region, base run, description, decision or finding).
+# alaska.log is the all-400-hexagon run (made before D2 changed the Alaska
+# default); alaska_west180 is left out because the 2018-2019 files hold no
+# reports west of 180 (D11).
 RUNS = {
     "lower48": ("lower48", "lower48", "Base: lower 48, current method", ""),
     "no_tug": ("lower48", "lower48", "Tug-barge rule off", "D7, R4OPP-1"),
@@ -26,10 +29,10 @@ RUNS = {
     "hawaii": ("hawaii", "hawaii", "Base: Hawaii", ""),
     "prusvi": ("prusvi", "prusvi", "Base: Puerto Rico and USVI", ""),
     "alaska_d2": ("alaska", "alaska_d2", "Base after D2: satellite hexagons beyond 74 km only (290)", "D2, R3OPP-1"),
-    "alaska_all400": ("alaska", "alaska_d2", "All 400 satellite hexagons (base before D2)", "D2"),
+    "alaska": ("alaska", "alaska_d2", "All 400 satellite hexagons (base before D2)", "D2"),
     "alaska_nosat": ("alaska", "alaska_d2", "No satellite hexagons", "R2OPP-1"),
-    "alaska_west180": ("alaska_west", "alaska_west180", "Western Aleutians, 172 E to 180 (separate grid)", "D11, R4OPP-13"),
 }
+POP_TAG = {"alaska": "alaska_all400"}  # population tag when it differs from the log name
 LAND = re.compile(r"(\d+) km: \d+ regions, U\.S\. land in zone (\d+) km\^2")
 
 
@@ -63,11 +66,14 @@ def main(log_dir):
             if base in land and base != run and km in land[base]:
                 row[f"land_change_{km}km_pct"] = round(100 * (land[run][km] / land[base][km] - 1), 1)
             if not pop.empty:
-                hit = pop[(pop.run == run) & (pop.distance_km == km)]
+                hit = pop[(pop.run == POP_TAG.get(run, run)) & (pop.distance_km == km)]
                 if len(hit):
                     row[f"population_{km}km"] = int(hit.population.iloc[0])
         rows.append(row)
     out = pd.DataFrame(rows)
+    for km in (25, 50, 100):
+        if f"population_{km}km" in out:
+            out[f"population_{km}km"] = out[f"population_{km}km"].astype("Int64")
     out.to_csv(os.path.join(ROOT, "outputs", "decision_table_rev1.csv"), index=False)
     print(out.drop(columns=["source_log", "description"]).to_string(index=False))
 

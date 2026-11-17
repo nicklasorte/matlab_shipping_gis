@@ -1,0 +1,11 @@
+END lower48 rc=0 Tue Nov 17 07:53:54 EST 2026
+END hawaii rc=0 Tue Nov 17 07:54:07 EST 2026
+END prusvi rc=0 Tue Nov 17 07:54:20 EST 2026
+END alaska rc=0 Tue Nov 17 07:56:54 EST 2026
+END alaska_beyond rc=0 Tue Nov 17 07:59:41 EST 2026
+END alaska_nosat rc=0 Tue Nov 17 08:02:12 EST 2026
+END no_tug rc=0 Tue Nov 17 08:06:31 EST 2026
+END both_years rc=0 Tue Nov 17 08:11:51 EST 2026
+END no_great_lakes rc=0 Tue Nov 17 08:20:11 EST 2026
+END underway rc=0 Tue Nov 17 09:39:52 EST 2026
+ALLDONE

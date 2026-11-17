@@ -5,8 +5,7 @@
   "median_abs_length_difference_m": 0.1,
   "large_ships_dropped": 75,
   "dropped_share_87_to_99_m": 0.507,
-  "dropped_median_length_m": 87.0,
-  "caveat": "This Python match is looser than check_gt_proxy_rev1.m (4,269 matched ships against the paper's 4,129, and 75 large ships dropped against 72); the cited median (0.1 m) and the share at 87-99 m (about half) hold on both."
+  "dropped_median_length_m": 87.0
  },
  "route_cell_groups_appendix_a6": {
   "all_route_cells": {

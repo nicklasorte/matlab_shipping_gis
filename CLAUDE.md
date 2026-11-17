@@ -71,10 +71,16 @@ That file is the handoff between sessions and between Claude Code and chat.
 - **Zone runs:** `init_shipping_zone_rev1.m` (lower 48),
   `init_shipping_zone_hawaii_rev1.m`, `init_shipping_zone_prusvi_rev1.m`,
   `init_shipping_zone_alaska_rev1.m` (`lane_suffix`: `''`, `'_x0.5'`, `'_x2'`,
-  `'_nosat'`, `'_beyond'`). Land areas in the paper: lower 48 301,168 /
-  638,688 / 1,261,529 km²; Hawaii 7,869 / 14,132 / 16,717; Puerto Rico and USVI
-  7,211 / 9,278 / 9,278; Alaska 112,426 / 210,895 / 353,639 (25 / 50 / 100 km).
-  A rerun that changes these needs a reason and a paper update.
+  `'_nosat'`, `'_all400'`; `''` is the D2 base with the 290 satellite hexagons
+  beyond 74 km). Lower-48 method variants: `decision_variant` in
+  `init_shipping_zone_rev1.m` (`no_tug`, `both_years`, `no_great_lakes`,
+  `great_lakes_only`, `underway`), written to `output_decision/`. Land areas in
+  the paper (after the R0 boundary fix): lower 48 301,168 / 638,688 /
+  1,264,979 km²; Hawaii 7,869 / 14,132 / 16,717; Puerto Rico and USVI 7,211 /
+  9,278 / 9,278; Alaska 90,926 / 181,074 / 319,271 (25 / 50 / 100 km). A rerun
+  that changes these needs a reason and a paper update. The decision table is
+  `outputs/decision_table_rev1.csv` (`python3 python/decision_table.py
+  outputs/rerun_logs_20261117`).
 - **AIS:** MarineCadastre daily `.csv.zst`, 104 Wednesdays (52 each in 2024
   and 2025; Alaska uses 2018–2019). Large AIS downloads and MATLAB runs happen
   on Nick's Mac (`~/github-runs/matlab_shipping_gis`).
