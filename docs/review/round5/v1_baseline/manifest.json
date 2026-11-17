@@ -1,5 +1,5 @@
 {
- "commit": "d0e930453197925caffa806833f595e0a84de535",
+ "commit": "6832d1fae0b823983eade6e160b267a323bea153",
  "python": "3.13.18",
  "packages": {
   "numpy": "2.5.3",
@@ -3947,6 +3947,362 @@
    "sha256": "b3cb7a297156fdecd0770fc16ce9d1e19879b65a1f983c80cd0180cb1000a2ee",
    "bytes": 488
   },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_band_zones.csv": {
+   "sha256": "08511f72d64f941d7cdc6261d71563a9396225cb99bb1d59ef63bab1df2f0b56",
+   "bytes": 345
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_100km.dbf": {
+   "sha256": "b8d3f94b7ef7a6c8763fec9790d4aa76340efa537b6716b73fc7591666ff5822",
+   "bytes": 105
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_100km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_100km.shp": {
+   "sha256": "ff6c45d3ca0db438d3313015f1dc56114284d7e3e02102ca10eec3f1dcb3494a",
+   "bytes": 37952
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_100km.shx": {
+   "sha256": "a6c50ecdbc67842680b7eac998f511a3e1679a08ef68f16e43c6ba4e5d8d4981",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_25km.dbf": {
+   "sha256": "77ec7b2c68ee9669fd2f9a03f90ab76aa226a1d9cd8c6fa818b65db7f0258bdd",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_25km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_25km.shp": {
+   "sha256": "c0cd8e60cde4754e5b18144e6a6098177ede01183468a4dbc988005150098548",
+   "bytes": 86468
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_25km.shx": {
+   "sha256": "2555fbe79d8d4a1d9fc5b8d696d7b6c2fc936f73e78ec6ceba1f9645de1d6f50",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_50km.dbf": {
+   "sha256": "dde03b07d64f94d734cafe7a7838805c69ffaa5d22be4a65f8b49b664aabd503",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_50km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_50km.shp": {
+   "sha256": "9ffac385bf4450ee8e4693d9ac491297aaea2406f4be0c15ce8b7ad6d5da5ede",
+   "bytes": 52264
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_both_years_ships_50km.shx": {
+   "sha256": "c2a4a8a56e14b7ad14d5230c52e167c3666b79c5b6ce91aba3d8c21a5b52fb8f",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_band_zones.csv": {
+   "sha256": "ef1d78371f59b86443bc8a289c2e67c0a912f27991094c749fa6c7b28002c92e",
+   "bytes": 369
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_100km.dbf": {
+   "sha256": "b8d3f94b7ef7a6c8763fec9790d4aa76340efa537b6716b73fc7591666ff5822",
+   "bytes": 105
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_100km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_100km.shp": {
+   "sha256": "b4626eebc08b762d6dced6576b19f2f52850aea00997cc200e7b0088d7255cca",
+   "bytes": 12036
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_100km.shx": {
+   "sha256": "a9c183c0bfabd70d62ed01e39f962162e4be95722dbe3e5a1a79016611dea345",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_100km_land.dbf": {
+   "sha256": "44f80aaf1010a45cf9ef0f493176ccd1ad6ff5d63070b2f173b2318d96e55dec",
+   "bytes": 102
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_100km_land.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_100km_land.shp": {
+   "sha256": "d58980380ee26e94ea24425457249e7f30a8b63f64ba11724fd7129e703b5ce3",
+   "bytes": 41120
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_100km_land.shx": {
+   "sha256": "321d9a44a761ed6769721c4941eb618681f300f4c99cb1b6e1995496ba100e37",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_25km.dbf": {
+   "sha256": "77ec7b2c68ee9669fd2f9a03f90ab76aa226a1d9cd8c6fa818b65db7f0258bdd",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_25km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_25km.shp": {
+   "sha256": "a9603c99479bf0a15cf05ca22633c5fa57fd5a075a36370c061ee23748da2cf7",
+   "bytes": 14164
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_25km.shx": {
+   "sha256": "e287f97660e1a3a27479244777f5671ced543e46126e23ee8ea846924e0c7b25",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_25km_land.dbf": {
+   "sha256": "72478bef53f51609a8960a5e9d7a340a62298090a2706e9936683620f0efe6ae",
+   "bytes": 101
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_25km_land.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_25km_land.shp": {
+   "sha256": "0e4c99490497cd9242b820adabed08b16dbe2c3f3f4f3bc3e6374538d7acd3cf",
+   "bytes": 39396
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_25km_land.shx": {
+   "sha256": "89c11ae0055c79cd524543bf23427d82492fa2770712f86e9645a04dc5eb463d",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_50km.dbf": {
+   "sha256": "dde03b07d64f94d734cafe7a7838805c69ffaa5d22be4a65f8b49b664aabd503",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_50km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_50km.shp": {
+   "sha256": "79bc24d0e63315abb796267eab40be29323f79a117b427068bd0e3c3dee21615",
+   "bytes": 12336
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_50km.shx": {
+   "sha256": "8069cd6b74f24c81102a269e94d6b1fc6082a1f9ea75d6de7ba2f8f9449d5931",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_50km_land.dbf": {
+   "sha256": "3fc142a3ee83e2f05f3bda77575777b7134f3beaa4021e881c6cf2337f28ae97",
+   "bytes": 101
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_50km_land.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_50km_land.shp": {
+   "sha256": "05f6971d3242bb4d733ea05ed23cd2f084addbc9aeb4a0be2a111b38214d3e1b",
+   "bytes": 41352
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_great_lakes_only_ships_50km_land.shx": {
+   "sha256": "4a0eb310c3d681fea54b5b2996ff57973fabe2daf2f41514957e8b4b5d9fcf05",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_band_zones.csv": {
+   "sha256": "38e02d90dd39a77253f0ec2408558585a229bb701d9b34451951e5df3861032b",
+   "bytes": 361
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_100km.dbf": {
+   "sha256": "b8d3f94b7ef7a6c8763fec9790d4aa76340efa537b6716b73fc7591666ff5822",
+   "bytes": 105
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_100km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_100km.shp": {
+   "sha256": "6440c2c563113e71f111685762f3db7a029c5eab4edb40e7f327e3f88357b000",
+   "bytes": 33052
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_100km.shx": {
+   "sha256": "947fb0aa1c67788f18923780139a238373c9cd9df6772dbe2aad6663dcfbd0fa",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_25km.dbf": {
+   "sha256": "77ec7b2c68ee9669fd2f9a03f90ab76aa226a1d9cd8c6fa818b65db7f0258bdd",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_25km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_25km.shp": {
+   "sha256": "61107ea8dab25f3c4bcf0e45f0783e0015ab1623d9c12a011ad398bf03ca9435",
+   "bytes": 90920
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_25km.shx": {
+   "sha256": "e2fb1deed537d3b743b9cf4c6479a46da81437d71f6226a5245b5df969b97e8c",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_50km.dbf": {
+   "sha256": "dde03b07d64f94d734cafe7a7838805c69ffaa5d22be4a65f8b49b664aabd503",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_50km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_50km.shp": {
+   "sha256": "efbcf55deb3c5e8b3b1424a367221a083aa78608d4ab2648bb0f9ec3801ea188",
+   "bytes": 47860
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_great_lakes_ships_50km.shx": {
+   "sha256": "7b1a04c9c22f3370abaa81426321b339e82e13c6d5b614d2f2d92feddf143c90",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_band_zones.csv": {
+   "sha256": "15c313a337a81ff2247c547e8a5dcc64d188112ed57bb2b2fcece11291580977",
+   "bytes": 329
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_100km.dbf": {
+   "sha256": "b8d3f94b7ef7a6c8763fec9790d4aa76340efa537b6716b73fc7591666ff5822",
+   "bytes": 105
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_100km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_100km.shp": {
+   "sha256": "975bafa0d20197df111838c9d546000307a8c6e5287e8ec1e4585eaf2a8ff27d",
+   "bytes": 43372
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_100km.shx": {
+   "sha256": "68c4643fb979aee20597438c31676f30b79eb65a252e1858772bf1672db233c9",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_25km.dbf": {
+   "sha256": "77ec7b2c68ee9669fd2f9a03f90ab76aa226a1d9cd8c6fa818b65db7f0258bdd",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_25km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_25km.shp": {
+   "sha256": "de5409a7a741c904af7ebe0de69186bada233817a073bd8aa2500040d2e6d976",
+   "bytes": 104620
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_25km.shx": {
+   "sha256": "3bc139d7ef434a9c138dda787a1cbd30596e5fcd888395bac527782b982b6511",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_50km.dbf": {
+   "sha256": "dde03b07d64f94d734cafe7a7838805c69ffaa5d22be4a65f8b49b664aabd503",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_50km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_50km.shp": {
+   "sha256": "c29284731478bd05d95c44cc00eb4dba7b23ecec38db3abb72dcc6bc7600ac86",
+   "bytes": 59300
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_no_tug_ships_50km.shx": {
+   "sha256": "c23dea66d2fe7cf3d3dbc15f129d39e8bd44ef46d39d3e35fa710ea1299985c4",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_band_zones.csv": {
+   "sha256": "ad8e71071ea4b1f867fd049de4dfb5fefc01349aae4aada5bcf6d329acced5f1",
+   "bytes": 337
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_100km.dbf": {
+   "sha256": "b8d3f94b7ef7a6c8763fec9790d4aa76340efa537b6716b73fc7591666ff5822",
+   "bytes": 105
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_100km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_100km.shp": {
+   "sha256": "cec861c6f07099d2d6549f9f89ee97ff5bd654cd2d815427eaeb9dc149774fb7",
+   "bytes": 42624
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_100km.shx": {
+   "sha256": "9c4346f6b562b1ee16fa100491ea3ec4cd2206eada73d1b76359244dc031ef65",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_100km_land.dbf": {
+   "sha256": "44f80aaf1010a45cf9ef0f493176ccd1ad6ff5d63070b2f173b2318d96e55dec",
+   "bytes": 102
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_100km_land.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_100km_land.shp": {
+   "sha256": "d5fde077513bd9b09c371da855c3612082a146ed83481cd01bf2c1268138bcc7",
+   "bytes": 188940
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_100km_land.shx": {
+   "sha256": "008e14965aa40a0338d022de88dbbfc31ddccd5c2395157a1dc7de581d945924",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_25km.dbf": {
+   "sha256": "77ec7b2c68ee9669fd2f9a03f90ab76aa226a1d9cd8c6fa818b65db7f0258bdd",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_25km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_25km.shp": {
+   "sha256": "41ea17413ca3160b2e16e4388fae67ebac36e4b10e12d1e5c34d37f6d1ef18af",
+   "bytes": 103936
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_25km.shx": {
+   "sha256": "df81027a6485577c9de153e56da63abab3156f7543f922b1ef0afd0c20d7e6a9",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_25km_land.dbf": {
+   "sha256": "72478bef53f51609a8960a5e9d7a340a62298090a2706e9936683620f0efe6ae",
+   "bytes": 101
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_25km_land.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_25km_land.shp": {
+   "sha256": "cacd533307d0ed90b6735db40e1b0dbda712ee1dc467a8e0be2925723f4b4149",
+   "bytes": 166056
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_25km_land.shx": {
+   "sha256": "10e50da2f76bb465321bca8ddd1d38b6603ed77a743db47f71b9ae5b7953cc59",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_50km.dbf": {
+   "sha256": "dde03b07d64f94d734cafe7a7838805c69ffaa5d22be4a65f8b49b664aabd503",
+   "bytes": 104
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_50km.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_50km.shp": {
+   "sha256": "c05190c57aaf5c8a5608e80e34f40689dc309f1ed522eec25e8eae77d636272b",
+   "bytes": 58388
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_50km.shx": {
+   "sha256": "314edbe5c6e2955a77886d1085b46a24625fc42d1a385076fb9f48197e1fd4eb",
+   "bytes": 108
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_50km_land.dbf": {
+   "sha256": "3fc142a3ee83e2f05f3bda77575777b7134f3beaa4021e881c6cf2337f28ae97",
+   "bytes": 101
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_50km_land.prj": {
+   "sha256": "4e0fe7f616bb23140c8fc3a9f2154ce5149f4c9cad0d0e65c261558f5cad8e33",
+   "bytes": 146
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_50km_land.shp": {
+   "sha256": "f917c604f719604b8645df5cf05a2ed967f257aa68cb072ec032be2c8ebe2b61",
+   "bytes": 185396
+  },
+  "outputs/2024_2025/decision/shipping_zone_2024_2025_underway_ships_50km_land.shx": {
+   "sha256": "fc7c9992b6cdee763db25c987ef3ea568986598f3ad2c606e8282f8faf94cf35",
+   "bytes": 108
+  },
   "outputs/2024_2025/flagged/dropped_cells_alaska180.csv": {
    "sha256": "be1cbafd6e5806994478e6ce425aebc0c363afd7c9b016213138f038a7531d99",
    "bytes": 92
@@ -5211,6 +5567,10 @@
    "sha256": "34bcdacb591e40f9311b43967ddd5c0f05e2fb302dc6896c48847c94f8e7be82",
    "bytes": 16357
   },
+  "outputs/decision_table_rev1.csv": {
+   "sha256": "ded7b2b29ec1c27132646b0f9bef71ecd3f4d1c7ac77482975ea9bd3be55b350",
+   "bytes": 1989
+  },
   "outputs/foreign_water_clip_effect_rev1.csv": {
    "sha256": "7caad2c351d2cdd96e3d4c49e22b8596442c6f78a965a3eb2017b0aeb631315c",
    "bytes": 946
@@ -5266,6 +5626,66 @@
   "outputs/rerun_logs_20261114/prusvi.log": {
    "sha256": "17d2d45d9effce2c31de9da5ec8157e11f320126b91197c5b840b244e60c498b",
    "bytes": 9469
+  },
+  "outputs/rerun_logs_20261117/alaska.log": {
+   "sha256": "b2856054208aa33cd25ff145ca903376f6f2b0def9f099a759c5299a9b0cf557",
+   "bytes": 9440
+  },
+  "outputs/rerun_logs_20261117/alaska_beyond.log": {
+   "sha256": "72eca353cb51f370ee7907c143d760f330cda55b16ba6e130b463e14ddecc878",
+   "bytes": 9463
+  },
+  "outputs/rerun_logs_20261117/alaska_d2.log": {
+   "sha256": "accf0cc5eb5e6fe6448e455ca39491127ec0709b9137e1c29a9bb1fd9863ac27",
+   "bytes": 9463
+  },
+  "outputs/rerun_logs_20261117/alaska_nosat.log": {
+   "sha256": "55a723ba92a87a3636582192c975465d8f8825fff0e382c25a13d83f453bd502",
+   "bytes": 9393
+  },
+  "outputs/rerun_logs_20261117/alaska_west180.log": {
+   "sha256": "aa50c546f6ad8f79617d229e90a427b847ad91e8d5537835377069c7345d878b",
+   "bytes": 9724
+  },
+  "outputs/rerun_logs_20261117/both_years.log": {
+   "sha256": "94145112793128aeb810b20291f452eed05ceaae54f7951f1071a5b507f63e98",
+   "bytes": 12238
+  },
+  "outputs/rerun_logs_20261117/great_lakes_only.log": {
+   "sha256": "5e3c7dadede98448d278c9e9ea83e9d59f21d8e7d9949d131c3df6a3145124e3",
+   "bytes": 12705
+  },
+  "outputs/rerun_logs_20261117/hawaii.log": {
+   "sha256": "e26f2476befe71f3f9ddbeedfcb8a83a99fe084f8ebb882a760db59d4edc33e6",
+   "bytes": 9174
+  },
+  "outputs/rerun_logs_20261117/lower48.log": {
+   "sha256": "52c273aebdd2d249dbebd3e27d5c57f74b3633ddcec629f412e7a1c4a8a9d662",
+   "bytes": 12151
+  },
+  "outputs/rerun_logs_20261117/no_great_lakes.log": {
+   "sha256": "eb73f2f47dafd0d6d4b0649d5fba177d9700a5b99b3dedac354050767e6c05aa",
+   "bytes": 12097
+  },
+  "outputs/rerun_logs_20261117/no_tug.log": {
+   "sha256": "b6359ae8c3744a90f528f01337a3a7ae983b83412cd368734cabbffecf888189",
+   "bytes": 11596
+  },
+  "outputs/rerun_logs_20261117/prusvi.log": {
+   "sha256": "5ba564c71464f6286fd8b31f1f8c07eed8201a5df5f21cfd3eb26d644867fc2b",
+   "bytes": 9469
+  },
+  "outputs/rerun_logs_20261117/status.log": {
+   "sha256": "95340351c8ece6086c0a20312b44e28943c48a0cbd8152b941aaafac2cff6c5b",
+   "bytes": 486
+  },
+  "outputs/rerun_logs_20261117/status3.log": {
+   "sha256": "4824f46a42a5692675fc3183bd4c65d2af7266b225b927d3786ad84e5ad0afae",
+   "bytes": 164
+  },
+  "outputs/rerun_logs_20261117/underway.log": {
+   "sha256": "cf742272d1b14aeb45cbd8b4d3f2d5c0c8981749bb8c214ce653ff1875de3a03",
+   "bytes": 11749
   },
   "outputs/zone_nesting_check_rev1.json": {
    "sha256": "95a4ed55e9d1b2f18b53af37b07e73d29adb713f11002874480fc95f09b69296",
