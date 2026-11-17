@@ -107,36 +107,12 @@ end
 %%%%%Distinct ships are counted per calendar year, and a cell counts when
 %%%%%any one year reaches the threshold (union of years). Pooling two years
 %%%%%would double the one-off visitors and loosen the threshold.
-ship_days=zeros(R.RasterSize);
-unique_ships=zeros(R.RasterSize);          %%%%%distinct ships over all days
-max_year_ships=zeros(R.RasterSize);        %%%%%largest per-year distinct-ship count
 day_year=year(ais_days(:));
-min_year_ships=inf(R.RasterSize);          %%%%%smallest per-year count (decision run R5, p.year_combine='both')
-all_mmsi=zeros(0,2);
-for yr=unique(day_year)'
-    cell_mmsi=zeros(0,2);
-    for day_idx=find(day_year==yr)'
-        day_pairs=cell_pairs{day_idx};
-        cell_pairs{day_idx}=[];
-        if isempty(day_pairs)
-            continue
-        end
-        ship_days=ship_days+reshape(accumarray(day_pairs(:,1),1,[num_cell 1]),R.RasterSize);
-        cell_mmsi=unique([cell_mmsi; day_pairs],'rows');
-    end
-    if isempty(cell_mmsi)
-        continue
-    end
-    year_count=reshape(accumarray(cell_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
-    max_year_ships=max(max_year_ships,year_count);
-    min_year_ships=min(min_year_ships,year_count);
-    all_mmsi=unique([all_mmsi; cell_mmsi],'rows');
-end
-if ~isempty(all_mmsi)
-    unique_ships=reshape(accumarray(all_mmsi(:,1),1,[num_cell 1]),R.RasterSize);
-end
-clear cell_mmsi all_mmsi year_count
-min_year_ships(isinf(min_year_ships))=0;
+C=route_year_counts_rev1(cell_pairs,day_year,R.RasterSize);
+clear cell_pairs
+ship_days=C.ship_days; unique_ships=C.unique_ships;
+max_year_ships=C.max_year_ships; min_year_ships=C.min_year_ships;
+clear C
 %%%%%Year combination: 'either' (default; a cell counts when any one year meets
 %%%%%the threshold) or 'both' (every year must; decision run R5, review R4OPP-7).
 year_combine='either';
@@ -167,7 +143,7 @@ if isfield(p,'port_relax_km') && p.port_relax_km>0
     port_mask=false(R.RasterSize);
     port_mask(sub2ind(R.RasterSize,port_row(in_grid),port_col(in_grid)))=true;
     near_port=distance_to_mask_km_rev1(port_mask,R,p.port_relax_km,p.block_rows)<=p.port_relax_km;
-    relaxed=near_port & ~source_mask & max_year_ships>=p.port_min_unique_ships;
+    relaxed=port_relax_cells_rev1(source_mask,max_year_ships,near_port,true(R.RasterSize),p.port_min_unique_ships);
     %%%%%Approaches only: with p.port_relax_coast_km set, a relaxed cell must lie
     %%%%%within that distance of the Census coastline, so the rule can't extend a
     %%%%%route upriver past a port (it made the Mississippi route above Baton
