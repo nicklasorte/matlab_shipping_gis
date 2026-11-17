@@ -7,7 +7,7 @@ This appendix gives the technical parameters of the S-band navigation radars tha
 S-band ship radars use one of two transmitters, and the two differ by more than a factor of 100 in peak power:
 
 - **Magnetron radars** transmit short, high-power pulses on one frequency that the magnetron sets, anywhere within a tolerance around 3050 MHz. Of the 23 models, 12 use a magnetron; for 5 of them the data sheet doesn't name the transmitter, and the type follows from the peak power and pulses.
-- **Solid-state radars** transmit at less than 1% of a magnetron's peak power. They make up for it with long pulses of 4.6 µs to 18.3 µs, against 1.2 µs at most for magnetron radars, and a frequency sweep inside each long pulse (pulse compression). They work on two to eight selectable channels. Of the 23 models, 9 are solid-state. Two models don't state a transmitter.
+- **Solid-state radars** transmit at less than 1% of a magnetron's peak power. They make up for it with long pulses of 4.6 µs to 18.3 µs, against 1.2 µs at most for magnetron radars, and a frequency sweep inside each long pulse (pulse compression). They work on two to eight channels, fixed by option or selectable. Of the 23 models, 9 are solid-state. Two models don't state a transmitter.
 
 No public source gives the share of ships fitted with each kind. ITU-R M.1460-1 (2006) describes magnetron radars only.
 
@@ -17,19 +17,19 @@ Table B-1 summarizes the parameters by transmitter type. Ranges cover the models
 
 | Parameter | Magnetron radars (12 models) | Solid-state radars (9 models) | ITU-R M.1460-1 range |
 | --- | --- | --- | --- |
-| Frequency | 3050 MHz ± 20 MHz or ± 30 MHz, one frequency per magnetron | 3035 MHz to 3074 MHz on two selectable channels; one model 2900 MHz to 3100 MHz on eight | 3020 MHz to 3080 MHz |
+| Frequency | 3050 MHz ± 20 MHz or ± 30 MHz, one frequency per magnetron | 3035 MHz to 3074 MHz nominal, on two channels; one model 2900 MHz to 3100 MHz on eight | 3020 MHz to 3080 MHz |
 | Peak power | 30 kW (one model 60 kW) | 200 W to 250 W | 30 kW to 75 kW |
 | Pulse length | 0.06 µs to 1.2 µs | 0.07 µs to 1.14 µs short pulse, plus a 4.6 µs to 18.3 µs long pulse swept over 8 MHz | 0.05 µs to 1.2 µs |
 | Pulse repetition frequency | 500 Hz to 3,000 Hz | 640 Hz to 2,280 Hz | 375 Hz to 4,000 Hz |
 | Maximum duty cycle | 0.065% to 0.075% | 2.1% | Not given |
-| Average power | About 20 W (30 kW at 0.065% to 0.072%, computed) | 5.8 W or less | Not given |
-| Antenna length | 12 ft (3.7 m); 9 ft and 10 ft options | 12 ft (3.7 m); 8 ft (2.4 m) on some models | Not given |
+| Average power | About 20 W (30 kW at 0.065% to 0.075%, computed) | 5.8 W or less (data sheet) | Not given |
+| Antenna length | 12 ft (3.7 m); 9 ft and 10 ft options | 8 ft (2.4 m) to 12.8 ft (3.9 m); most 12 ft (3.7 m) | Not given |
 | Horizontal beamwidth | 1.8° to 2.3° | 1.8° to 2.7° | 1.0° to 4.0° |
 | Vertical beamwidth | 25° to 26° | 25° | 24° to 30° |
 | Sidelobes, within 10° of the main beam | -24 dB to -26 dB | -24 dB to -26 dB | -23 dB to -28 dB |
 | Sidelobes, beyond 10° | -30 dB | -30 dB | -31 dB to -32 dB |
 | Antenna gain | 28 dBi (one model states it) | Not stated | 26 dBi to 28 dBi |
-| Rotation rate | 21 rpm to 27 rpm; 42 rpm to 45 rpm for fast craft | 24 rpm; 48 rpm for fast craft | 20 rpm to 60 rpm |
+| Rotation rate | 21 rpm to 27 rpm; 42 rpm to 45 rpm for fast craft | 24 rpm; 42 rpm to 48 rpm for fast craft | 20 rpm to 60 rpm |
 | Polarization | Horizontal | Horizontal | Horizontal (predominant) |
 | Receiver IF bandwidth | 3 MHz to 40 MHz, narrower for longer pulses | 20 MHz to 30 MHz | 6 MHz to 28 MHz short pulse; 2.5 MHz to 6 MHz medium and long pulse |
 | Receiver noise figure | 4 dB to 7.5 dB | 4 dB or less | 3 dB to 8.5 dB |
