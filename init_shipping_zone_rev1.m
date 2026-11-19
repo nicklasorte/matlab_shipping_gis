@@ -66,6 +66,10 @@ p.include_fairways=true;
 
 %%%%%%%%%%Racons (radar beacons) from NOAA charts as fixed S-band sites
 p.include_racons=true;
+%%%%%St. Lawrence below Sorel, Canadian waters our AIS doesn't reach (decision D12, November 19, 2026):
+%%%%%DFO 2024 cargo + tanker density and World Bank commercial density cells, calibrated against
+%%%%%our route cells (python/st_lawrence_dfo.py, python/st_lawrence_route.py). '' turns it off.
+p.extra_source_csv=fullfile(pwd,'outputs','foreign_waterways','st_lawrence_lower48_cells_rev1.csv');
 p.racon_bands="S";        %%%%%"S": racons charted with the 0.10 m (S-band) wavelength; "all": every racon
 
 %%%%%%%%%%Zone definition
@@ -158,9 +162,12 @@ if exist('decision_variant','var') && ~isempty(decision_variant)
             p.ship_split_keep="inside_only";
             p.include_fairways=false;
             p.include_racons=false;
+            p.extra_source_csv='';
         case 'no_lakers'         %%%%%R5MET-1: everything except lakers: ships seen outside the boxes, charted lanes kept
             p.ship_split_box=great_lakes_boxes;
             p.ship_split_keep="seen_outside";
+        case 'no_st_lawrence'    %%%%%D12: without the St. Lawrence cells (the zones before November 19, 2026)
+            p.extra_source_csv='';
         case 'underway'          %%%%%R4: reports of 3 knots or more only (R4OPP-4); rebuilds the day caches
             p.filt.min_sog_kn=3;
             p.filt_towing.min_sog_kn=3;

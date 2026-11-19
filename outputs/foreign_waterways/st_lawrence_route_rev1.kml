@@ -13,6 +13,9 @@
     <Schema id="st_lawrence_route_rev1.schema">
       <SimpleField name="source" type="string"/>
     </Schema>
+    <Schema id="st_lawrence_route_rev1.schema">
+      <SimpleField name="source" type="string"/>
+    </Schema>
     <Document id="st_lawrence_route_rev1">
       <name>st_lawrence_route_rev1</name>
       <Placemark id="st_lawrence_route_rev1.1">

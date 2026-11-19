@@ -12,8 +12,9 @@ and the Strait of Belle Isle, and to water connected to Quebec City. The result 
 whether these cells become zone sources is decision D12.
 
 Usage: python3 python/st_lawrence_route.py <dfo_tif_dir_or_clip> <wb_clip_tif> <natural_earth_dir>
-Writes outputs/foreign_waterways/st_lawrence_route_rev1.{shp,...,kml} and
-st_lawrence_route_summary_rev1.json.
+Writes outputs/foreign_waterways/st_lawrence_route_rev1.{shp,...,kml},
+st_lawrence_route_summary_rev1.json, and st_lawrence_lower48_cells_rev1.csv (zone sources
+for init_shipping_zone_rev1.m, p.extra_source_csv).
 """
 import json
 import os
@@ -111,6 +112,17 @@ def main(dfo_dir, wb_tif, ne_dir):
                 wb_threshold_positions=round(t_wb, 1), wb_jaccard_vs_ais_and_dfo=round(j_wb, 3),
                 cells_ais=int((src == 1).sum()), cells_dfo=int((src == 2).sum()), cells_wb=int((src == 3).sum()),
                 continuous_lake_ontario_to_cabot_strait=continuous)
+    # Zone sources for the lower-48 run (p.extra_source_csv): DFO and World Bank cells inside the
+    # lower-48 grid (lat 22 to 50, lon -130 to -66, 0.01 deg), as 1-based column-major linear
+    # indices from the south-west cell (read_extra_cells_rev1.m). Our AIS cells are already sources.
+    ii, jj = np.nonzero((src == 2) | (src == 3))
+    clat, clon = LAT1 - D * (ii + 0.5), LON0 + D * (jj + 0.5)
+    ok = (clat > 22) & (clat < 50) & (clon > -130) & (clon < -66)
+    rr = np.rint((clat[ok] - 22) / D - 0.5).astype(int)
+    cc = np.rint((clon[ok] + 130) / D - 0.5).astype(int)
+    lin = np.unique(rr + 1 + cc * 2800)
+    np.savetxt(os.path.join(OUT, "st_lawrence_lower48_cells_rev1.csv"), lin, fmt="%d")
+    summ["lower48_extra_source_cells"] = int(lin.size)
     json.dump(summ, open(os.path.join(OUT, "st_lawrence_route_summary_rev1.json"), "w"), indent=1)
     print(json.dumps(summ, indent=1))
 

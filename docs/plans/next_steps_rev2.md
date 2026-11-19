@@ -85,7 +85,7 @@ state, and hand the EMC team a specified set of inputs.
 | D8 | Great Lakes: in the base zones or a separately labeled layer | Run R2 | Separate layer, since no carriage rule supports it |
 | D9 | Report population as well as land | Run R1 | Yes; land area alone invites attack from both sides |
 | D10 | Ships at the berth and at anchor: count as sources or not | Run R4 (done) | Applied: keep them; under-way-only zones are 2% / 1% / 1% smaller |
-| D12 | Add large-ship sources in foreign water near U.S. land (St. Lawrence, Chatham Sound, Fundy)? | Plan `foreign_waterways_plan_rev1.md` (steps F1 to F7) | Open |
+| D12 | Add large-ship sources in foreign water near U.S. land (St. Lawrence, Chatham Sound, Fundy)? | Plan `foreign_waterways_plan_rev1.md` (steps F1 to F7) | St. Lawrence: added to the lower-48 base (Nick, November 19). Chatham Sound and Fundy: open |
 | D11 | Extend Alaska west of 180° | Run R8 (done) | Closed: the 2018–2019 files hold no reports west of 180° |
 
 D1, D3, D4, and D6 stand as recorded in the phase 1 plan.
@@ -206,3 +206,9 @@ phase:
 
 - New plan `docs/plans/foreign_waterways_plan_rev1.md` (D12, steps F1 to F7) for ships in foreign water near U.S. land. Screen committed (`python/foreign_waterway_screen.py`, `outputs/foreign_waterways/`): the St. Lawrence below Sorel would add about 5,100 km² of Maine to the 100 km zone; Chatham Sound and Portland Canal about 2,300 km² to the Alaska 25 km zone; Fundy under 100 km².
 - The rerun batch (November 17) has still not run; the Mac was unreachable.
+
+## Status update, November 19 (St. Lawrence added)
+
+- Nick: add the St. Lawrence data and show it on the lower-48 figure. `init_shipping_zone_rev1.m` now sets `p.extra_source_csv` to `outputs/foreign_waterways/st_lawrence_lower48_cells_rev1.csv` (12,403 DFO and World Bank cells inside the grid); `decision_variant='no_st_lawrence'` reproduces the old zones. Added to the rerun batch.
+- Paper (rev 631): Figure 1 replaced with `docs/viz_python/fig01_routes_lower48_rev1.png` (`python/fig01_routes_lower48.py`, the whole route to Cabot Strait); caption, Section 1.10 bullet, and two Section 1.2 data rows added. Section 3, Table 8, Figure 4, and the land areas in CLAUDE.md change after the Mac rerun.
+- To do: `python/decision_table.py` RUNS entry for `no_st_lawrence`; MATLAB twin of the St. Lawrence scripts; Word copy rebuild; intro sentence in Section 1 (blocked by a pending suggestion).

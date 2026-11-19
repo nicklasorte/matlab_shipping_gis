@@ -22,7 +22,7 @@ run() {  # run <log name> <matlab code>
 }
 say "COMMIT $COMMIT"
 run lower48        "init_shipping_zone_rev1"
-for v in no_tug both_years no_great_lakes great_lakes_only underway no_lakers lakers_only; do
+for v in no_tug both_years no_great_lakes great_lakes_only underway no_lakers lakers_only no_st_lawrence; do
   run "$v" "decision_variant='$v'; init_shipping_zone_rev1"
 done
 run hawaii "init_shipping_zone_hawaii_rev1"
