@@ -27,6 +27,7 @@ for v in no_tug both_years no_great_lakes great_lakes_only underway no_lakers la
 done
 run hawaii "init_shipping_zone_hawaii_rev1"
 run prusvi "init_shipping_zone_prusvi_rev1"
+run guam "init_shipping_zone_guam_rev1"   # new region (D13); first run builds the Guam day caches
 run alaska_d2 "lane_suffix=''; init_shipping_zone_alaska_rev1"
 for s in _all400 _nosat _x0.5 _x2; do
   run "alaska${s}" "lane_suffix='$s'; init_shipping_zone_alaska_rev1"

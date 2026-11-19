@@ -86,7 +86,7 @@ state, and hand the EMC team a specified set of inputs.
 | D9 | Report population as well as land | Run R1 | Yes; land area alone invites attack from both sides |
 | D10 | Ships at the berth and at anchor: count as sources or not | Run R4 (done) | Applied: keep them; under-way-only zones are 2% / 1% / 1% smaller |
 | D12 | Add large-ship sources in foreign water near U.S. land (St. Lawrence, Chatham Sound, Fundy)? | Plan `foreign_waterways_plan_rev1.md` (steps F1 to F7) | St. Lawrence: added to the lower-48 base (Nick, November 19). Chatham Sound and Fundy: open |
-| D13 | Guam alone, or Guam and the Northern Mariana Islands as one region? | Plan `guam_plan_rev1.md` (steps G1 to G7) | Open; recommendation: one region |
+| D13 | Guam alone, or Guam and the Northern Mariana Islands as one region? | Plan `guam_plan_rev1.md` (steps G1 to G7) | Decided: one region, Guam and the Northern Mariana Islands (Nick, November 19) |
 | D11 | Extend Alaska west of 180° | Run R8 (done) | Closed: the 2018–2019 files hold no reports west of 180° |
 
 D1, D3, D4, and D6 stand as recorded in the phase 1 plan.
@@ -214,3 +214,4 @@ phase:
 - Paper (rev 631): Figure 1 replaced with `docs/viz_python/fig01_routes_lower48_rev1.png` (`python/fig01_routes_lower48.py`, the whole route to Cabot Strait); caption, Section 1.10 bullet, and two Section 1.2 data rows added. Section 3, Table 8, Figure 4, and the land areas in CLAUDE.md change after the Mac rerun.
 - To do: `python/decision_table.py` RUNS entry for `no_st_lawrence`; MATLAB twin of the St. Lawrence scripts; Word copy rebuild; intro sentence in Section 1 (blocked by a pending suggestion).
 - Guam plan written (`docs/plans/guam_plan_rev1.md`); first step G1 needs the Mac.
+- D13 decided: Guam and CNMI as one region. `init_shipping_zone_guam_rev1.m` written (grid 12 N to 21.5 N, 143.5 E to 147 E; ship-days rule pending G3; port positions for Apra, Tinian, and Rota marked TODO against the World Port Index) and added to the rerun batch.

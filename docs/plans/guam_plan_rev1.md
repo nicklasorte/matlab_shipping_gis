@@ -26,9 +26,10 @@ as Hawaii and Puerto Rico and the U.S. Virgin Islands.
   commercial Port of Guam and Naval Base Guam. Navy ships often run with AIS
   off (Section 1.10), so the AIS routes undercount Navy radar use.
 
-## Decision for Nick
+## Decision
 
-**D13: Guam alone, or Guam and CNMI together?** Recommendation: one region,
+**D13 (decided November 19, 2026): one region, Guam and the Northern Mariana
+Islands.** The reasoning: one region,
 "Guam and the Northern Mariana Islands," like Puerto Rico and the U.S. Virgin
 Islands. The zones overlap at 100 km anyway, Saipan and Tinian have
 deep-draft ports, and the same run covers both. The paper can still report
