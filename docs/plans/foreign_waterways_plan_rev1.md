@@ -136,3 +136,9 @@ the islands analysis calibrated the NOAA transit counts (rule C in
 - `python/st_lawrence_dfo.py`: Cargo + Tanker threshold 26 tracks a year per cell; Jaccard 0.614 on the calibration area, 0.378 on the Gulf of Maine hold-out, where DFO marks about twice as many cells as our AIS (83% of our route cells found). Outputs in `outputs/foreign_waterways/st_lawrence_*_rev1.*`.
 - Result is insensitive to the threshold: 5,581 / 5,407 / 5,336 / 5,313 / 5,209 km² of new U.S. land in the 100 km zone at 1, 2, 5, 10, 30 times the threshold; none in the 25 km zone; 24 km² in the 50 km zone at 1 times only (low-traffic cells off Rivière-du-Loup).
 - Next: MATLAB twin (Mac), `p.external_source_mask` in `shipping_zone_rev1` (F5), then a stamped run with Census land and population (F6). D12 is still Nick's call.
+
+## Status, November 19: full St. Lawrence route layer (display)
+
+- `python/st_lawrence_route.py` joins our AIS route cells (Lake Ontario to Sorel), World Bank commercial density (Montreal to Québec City, where DFO has no data; threshold Jaccard 0.636 against AIS and DFO cells), and DFO 2024 cargo + tanker at 26 tracks a year (Québec City through the Gulf to Cabot Strait). Continuous from Lake Ontario to Cabot Strait.
+- Outputs: `outputs/foreign_waterways/st_lawrence_route_rev1.{shp,kml}`, `st_lawrence_route_summary_rev1.json`, map `st_lawrence_route_map_rev1.png` (`python/st_lawrence_route_map.py`).
+- Display layer only. Zone sources from it wait on D12.

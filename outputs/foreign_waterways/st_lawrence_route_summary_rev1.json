@@ -1,0 +1,9 @@
+{
+ "dfo_threshold_tracks_per_year": 26.0,
+ "wb_threshold_positions": 28571624.0,
+ "wb_jaccard_vs_ais_and_dfo": 0.636,
+ "cells_ais": 1555,
+ "cells_dfo": 37954,
+ "cells_wb": 608,
+ "continuous_lake_ontario_to_cabot_strait": true
+}
