@@ -1,0 +1,12 @@
+{
+ "threshold_tracks_per_day_km2": 0.071,
+ "threshold_tracks_per_year": 26.0,
+ "jaccard_calibration": 0.614,
+ "jaccard_holdout": 0.378,
+ "calibration_cells": 102270,
+ "calibration_route_cells": 28496,
+ "holdout_dfo_cells": 5051,
+ "holdout_route_cells": 2493,
+ "holdout_both": 2070,
+ "dfo_source": "DFO Vessel Density Mapping of 2024 AIS Data in the Northwest Atlantic, Cargo + Tanker"
+}

@@ -128,3 +128,11 @@ the islands analysis calibrated the NOAA transit counts (rule C in
   https://datacatalog.worldbank.org/search/dataset/0037580
 - NOAA, *Nationwide Automatic Identification System 2025*:
   https://www.fisheries.noaa.gov/inport/item/77594
+
+## Status, November 19: St. Lawrence data in hand (F3, F4 done in Python)
+
+- DFO 2024 GeoTIFFs downloaded (`data/external/README_dfo_vessel_density_rev1.md`, SHA-256 recorded; data not committed).
+- Coverage: DFO starts at Québec City. Our AIS ends near Sorel. The reach between is 97 km to 148 km from U.S. land, so it doesn't matter.
+- `python/st_lawrence_dfo.py`: Cargo + Tanker threshold 26 tracks a year per cell; Jaccard 0.614 on the calibration area, 0.378 on the Gulf of Maine hold-out, where DFO marks about twice as many cells as our AIS (83% of our route cells found). Outputs in `outputs/foreign_waterways/st_lawrence_*_rev1.*`.
+- Result is insensitive to the threshold: 5,581 / 5,407 / 5,336 / 5,313 / 5,209 km² of new U.S. land in the 100 km zone at 1, 2, 5, 10, 30 times the threshold; none in the 25 km zone; 24 km² in the 50 km zone at 1 times only (low-traffic cells off Rivière-du-Loup).
+- Next: MATLAB twin (Mac), `p.external_source_mask` in `shipping_zone_rev1` (F5), then a stamped run with Census land and population (F6). D12 is still Nick's call.

@@ -1,0 +1,6 @@
+threshold_times,tracks_per_year,source_cells,new_us_land_km2_25,new_us_land_km2_50,new_us_land_km2_100
+1,26,3845,0,24,5581
+2,52,2990,0,0,5407
+5,130,2326,0,0,5336
+10,260,2077,0,0,5313
+30,780,1612,0,0,5209
