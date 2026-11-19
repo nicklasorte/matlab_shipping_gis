@@ -1,0 +1,252 @@
+waterway,lat,lon,us_km,route_km,in_lower48_grid
+St. Lawrence (Montreal to Sept-Iles),45.5,-73.55,55.159,1.659,True
+St. Lawrence (Montreal to Sept-Iles),45.539,-73.519,59.435,0.09,True
+St. Lawrence (Montreal to Sept-Iles),45.577,-73.488,63.71,0.963,True
+St. Lawrence (Montreal to Sept-Iles),45.616,-73.456,67.985,2.1,True
+St. Lawrence (Montreal to Sept-Iles),45.654,-73.425,72.26,2.263,True
+St. Lawrence (Montreal to Sept-Iles),45.693,-73.394,76.533,3.114,True
+St. Lawrence (Montreal to Sept-Iles),45.732,-73.362,80.803,2.69,True
+St. Lawrence (Montreal to Sept-Iles),45.77,-73.331,85.072,2.149,True
+St. Lawrence (Montreal to Sept-Iles),45.809,-73.3,89.341,1.058,True
+St. Lawrence (Montreal to Sept-Iles),45.847,-73.268,93.607,0.959,True
+St. Lawrence (Montreal to Sept-Iles),45.886,-73.237,97.874,5.482,True
+St. Lawrence (Montreal to Sept-Iles),45.924,-73.205,102.14,10.344,True
+St. Lawrence (Montreal to Sept-Iles),45.963,-73.173,106.406,15.253,True
+St. Lawrence (Montreal to Sept-Iles),46.001,-73.142,110.671,20.175,True
+St. Lawrence (Montreal to Sept-Iles),46.04,-73.11,114.936,25.102,True
+St. Lawrence (Montreal to Sept-Iles),46.065,-73.063,117.701,29.471,True
+St. Lawrence (Montreal to Sept-Iles),46.09,-73.015,120.467,33.901,True
+St. Lawrence (Montreal to Sept-Iles),46.115,-72.968,123.225,38.372,True
+St. Lawrence (Montreal to Sept-Iles),46.14,-72.921,125.983,42.87,True
+St. Lawrence (Montreal to Sept-Iles),46.165,-72.873,128.739,47.388,True
+St. Lawrence (Montreal to Sept-Iles),46.19,-72.826,131.495,51.92,True
+St. Lawrence (Montreal to Sept-Iles),46.215,-72.778,134.248,56.464,True
+St. Lawrence (Montreal to Sept-Iles),46.24,-72.731,136.999,61.016,True
+St. Lawrence (Montreal to Sept-Iles),46.265,-72.683,139.746,65.575,True
+St. Lawrence (Montreal to Sept-Iles),46.29,-72.635,142.489,70.139,True
+St. Lawrence (Montreal to Sept-Iles),46.315,-72.588,145.231,74.708,True
+St. Lawrence (Montreal to Sept-Iles),46.34,-72.54,147.97,79.28,True
+St. Lawrence (Montreal to Sept-Iles),46.36,-72.485,148.877,83.914,True
+St. Lawrence (Montreal to Sept-Iles),46.38,-72.429,148.127,88.565,True
+St. Lawrence (Montreal to Sept-Iles),46.4,-72.374,147.528,93.231,True
+St. Lawrence (Montreal to Sept-Iles),46.419,-72.318,147.085,97.91,True
+St. Lawrence (Montreal to Sept-Iles),46.439,-72.263,146.797,102.601,True
+St. Lawrence (Montreal to Sept-Iles),46.459,-72.207,146.665,107.302,True
+St. Lawrence (Montreal to Sept-Iles),46.479,-72.152,146.691,112.011,True
+St. Lawrence (Montreal to Sept-Iles),46.498,-72.096,143.276,116.728,True
+St. Lawrence (Montreal to Sept-Iles),46.518,-72.04,139.594,121.451,True
+St. Lawrence (Montreal to Sept-Iles),46.538,-71.984,135.982,126.18,True
+St. Lawrence (Montreal to Sept-Iles),46.557,-71.929,132.445,130.915,True
+St. Lawrence (Montreal to Sept-Iles),46.577,-71.873,128.99,135.654,True
+St. Lawrence (Montreal to Sept-Iles),46.597,-71.817,125.624,140.398,True
+St. Lawrence (Montreal to Sept-Iles),46.616,-71.761,122.353,145.145,True
+St. Lawrence (Montreal to Sept-Iles),46.636,-71.705,119.187,149.896,True
+St. Lawrence (Montreal to Sept-Iles),46.655,-71.649,115.929,154.65,True
+St. Lawrence (Montreal to Sept-Iles),46.675,-71.593,112.701,159.406,True
+St. Lawrence (Montreal to Sept-Iles),46.694,-71.537,109.589,164.166,True
+St. Lawrence (Montreal to Sept-Iles),46.713,-71.481,106.601,168.928,True
+St. Lawrence (Montreal to Sept-Iles),46.733,-71.425,103.567,173.692,True
+St. Lawrence (Montreal to Sept-Iles),46.752,-71.369,100.54,178.458,True
+St. Lawrence (Montreal to Sept-Iles),46.771,-71.313,97.655,183.224,True
+St. Lawrence (Montreal to Sept-Iles),46.791,-71.256,94.925,187.992,True
+St. Lawrence (Montreal to Sept-Iles),46.81,-71.2,91.417,192.761,True
+St. Lawrence (Montreal to Sept-Iles),46.831,-71.15,88.133,197.243,True
+St. Lawrence (Montreal to Sept-Iles),46.853,-71.1,84.954,201.725,True
+St. Lawrence (Montreal to Sept-Iles),46.874,-71.05,81.806,206.208,True
+St. Lawrence (Montreal to Sept-Iles),46.895,-71.0,78.692,210.69,True
+St. Lawrence (Montreal to Sept-Iles),46.916,-70.95,75.712,215.173,True
+St. Lawrence (Montreal to Sept-Iles),46.938,-70.9,72.885,219.655,True
+St. Lawrence (Montreal to Sept-Iles),46.959,-70.85,70.231,224.138,True
+St. Lawrence (Montreal to Sept-Iles),46.98,-70.8,67.77,228.62,True
+St. Lawrence (Montreal to Sept-Iles),47.014,-70.757,66.731,233.365,True
+St. Lawrence (Montreal to Sept-Iles),47.047,-70.715,66.042,238.117,True
+St. Lawrence (Montreal to Sept-Iles),47.081,-70.672,65.46,242.873,True
+St. Lawrence (Montreal to Sept-Iles),47.115,-70.63,64.874,247.637,True
+St. Lawrence (Montreal to Sept-Iles),47.148,-70.587,64.285,252.408,True
+St. Lawrence (Montreal to Sept-Iles),47.182,-70.544,63.694,257.186,True
+St. Lawrence (Montreal to Sept-Iles),47.215,-70.501,63.102,261.97,True
+St. Lawrence (Montreal to Sept-Iles),47.249,-70.458,62.501,266.76,True
+St. Lawrence (Montreal to Sept-Iles),47.283,-70.416,61.898,271.555,True
+St. Lawrence (Montreal to Sept-Iles),47.316,-70.373,61.293,276.356,True
+St. Lawrence (Montreal to Sept-Iles),47.35,-70.329,60.682,281.162,True
+St. Lawrence (Montreal to Sept-Iles),47.383,-70.286,60.072,285.973,True
+St. Lawrence (Montreal to Sept-Iles),47.417,-70.243,59.45,290.788,True
+St. Lawrence (Montreal to Sept-Iles),47.45,-70.2,58.828,295.608,True
+St. Lawrence (Montreal to Sept-Iles),47.486,-70.161,58.619,300.322,True
+St. Lawrence (Montreal to Sept-Iles),47.522,-70.122,58.405,305.043,True
+St. Lawrence (Montreal to Sept-Iles),47.557,-70.083,58.191,309.772,True
+St. Lawrence (Montreal to Sept-Iles),47.593,-70.044,57.964,314.507,True
+St. Lawrence (Montreal to Sept-Iles),47.629,-70.005,57.738,319.249,True
+St. Lawrence (Montreal to Sept-Iles),47.665,-69.966,57.508,323.997,True
+St. Lawrence (Montreal to Sept-Iles),47.7,-69.926,57.274,328.75,True
+St. Lawrence (Montreal to Sept-Iles),47.736,-69.887,57.052,333.509,True
+St. Lawrence (Montreal to Sept-Iles),47.772,-69.848,57.128,338.274,True
+St. Lawrence (Montreal to Sept-Iles),47.807,-69.808,57.514,343.043,True
+St. Lawrence (Montreal to Sept-Iles),47.843,-69.769,58.27,347.818,True
+St. Lawrence (Montreal to Sept-Iles),47.879,-69.729,59.43,352.597,True
+St. Lawrence (Montreal to Sept-Iles),47.914,-69.69,60.97,357.381,True
+St. Lawrence (Montreal to Sept-Iles),47.95,-69.65,62.786,362.169,True
+St. Lawrence (Montreal to Sept-Iles),47.978,-69.601,63.788,365.378,True
+St. Lawrence (Montreal to Sept-Iles),48.005,-69.551,65.128,366.052,True
+St. Lawrence (Montreal to Sept-Iles),48.032,-69.502,66.786,366.786,True
+St. Lawrence (Montreal to Sept-Iles),48.06,-69.452,68.74,367.582,True
+St. Lawrence (Montreal to Sept-Iles),48.087,-69.402,70.964,368.439,True
+St. Lawrence (Montreal to Sept-Iles),48.115,-69.353,73.434,369.355,True
+St. Lawrence (Montreal to Sept-Iles),48.142,-69.303,76.111,370.332,True
+St. Lawrence (Montreal to Sept-Iles),48.169,-69.253,78.945,371.367,True
+St. Lawrence (Montreal to Sept-Iles),48.197,-69.203,81.962,372.462,True
+St. Lawrence (Montreal to Sept-Iles),48.224,-69.153,85.142,373.614,True
+St. Lawrence (Montreal to Sept-Iles),48.251,-69.103,88.467,374.825,True
+St. Lawrence (Montreal to Sept-Iles),48.279,-69.053,91.923,376.092,True
+St. Lawrence (Montreal to Sept-Iles),48.306,-69.003,95.494,377.416,True
+St. Lawrence (Montreal to Sept-Iles),48.333,-68.953,99.168,378.796,True
+St. Lawrence (Montreal to Sept-Iles),48.36,-68.903,102.935,380.232,True
+St. Lawrence (Montreal to Sept-Iles),48.387,-68.853,106.783,381.722,True
+St. Lawrence (Montreal to Sept-Iles),48.415,-68.802,110.678,383.266,True
+St. Lawrence (Montreal to Sept-Iles),48.442,-68.752,114.573,384.864,True
+St. Lawrence (Montreal to Sept-Iles),48.469,-68.702,118.467,386.514,True
+St. Lawrence (Montreal to Sept-Iles),48.496,-68.651,122.362,388.217,True
+St. Lawrence (Montreal to Sept-Iles),48.523,-68.601,126.269,389.971,True
+St. Lawrence (Montreal to Sept-Iles),48.55,-68.55,130.232,391.776,True
+St. Lawrence (Montreal to Sept-Iles),48.58,-68.5,134.494,393.927,True
+St. Lawrence (Montreal to Sept-Iles),48.609,-68.451,138.482,396.128,True
+St. Lawrence (Montreal to Sept-Iles),48.639,-68.401,141.51,398.377,True
+St. Lawrence (Montreal to Sept-Iles),48.668,-68.352,144.642,400.674,True
+St. Lawrence (Montreal to Sept-Iles),48.698,-68.302,147.871,403.017,True
+St. Lawrence (Montreal to Sept-Iles),48.727,-68.252,151.191,405.407,True
+St. Lawrence (Montreal to Sept-Iles),48.757,-68.202,154.596,407.842,True
+St. Lawrence (Montreal to Sept-Iles),48.786,-68.152,158.081,410.321,True
+St. Lawrence (Montreal to Sept-Iles),48.815,-68.102,161.64,412.844,True
+St. Lawrence (Montreal to Sept-Iles),48.845,-68.052,165.269,415.41,True
+St. Lawrence (Montreal to Sept-Iles),48.874,-68.002,168.963,418.018,True
+St. Lawrence (Montreal to Sept-Iles),48.904,-67.952,172.718,420.668,True
+St. Lawrence (Montreal to Sept-Iles),48.933,-67.902,176.531,423.357,True
+St. Lawrence (Montreal to Sept-Iles),48.962,-67.851,180.397,426.087,True
+St. Lawrence (Montreal to Sept-Iles),48.992,-67.801,184.313,428.855,True
+St. Lawrence (Montreal to Sept-Iles),49.021,-67.75,188.247,431.662,True
+St. Lawrence (Montreal to Sept-Iles),49.05,-67.7,192.194,434.506,True
+St. Lawrence (Montreal to Sept-Iles),49.08,-67.65,196.265,437.49,True
+St. Lawrence (Montreal to Sept-Iles),49.11,-67.6,200.375,440.509,True
+St. Lawrence (Montreal to Sept-Iles),49.14,-67.551,204.522,443.563,True
+St. Lawrence (Montreal to Sept-Iles),49.17,-67.501,208.703,445.937,True
+St. Lawrence (Montreal to Sept-Iles),49.2,-67.451,212.917,448.268,True
+St. Lawrence (Montreal to Sept-Iles),49.23,-67.401,217.162,450.641,True
+St. Lawrence (Montreal to Sept-Iles),49.26,-67.351,221.435,453.055,True
+St. Lawrence (Montreal to Sept-Iles),49.29,-67.3,225.736,455.51,True
+St. Lawrence (Montreal to Sept-Iles),49.32,-67.25,230.062,458.006,True
+St. Lawrence (Montreal to Sept-Iles),49.35,-67.2,234.413,460.54,True
+St. Lawrence (Montreal to Sept-Iles),49.386,-67.164,239.112,464.031,True
+St. Lawrence (Montreal to Sept-Iles),49.423,-67.128,243.817,467.545,True
+St. Lawrence (Montreal to Sept-Iles),49.459,-67.092,248.525,471.082,True
+St. Lawrence (Montreal to Sept-Iles),49.496,-67.056,253.238,474.642,True
+St. Lawrence (Montreal to Sept-Iles),49.532,-67.02,257.955,478.224,True
+St. Lawrence (Montreal to Sept-Iles),49.569,-66.984,262.675,481.827,True
+St. Lawrence (Montreal to Sept-Iles),49.605,-66.948,267.399,485.452,True
+St. Lawrence (Montreal to Sept-Iles),49.642,-66.912,272.127,489.097,True
+St. Lawrence (Montreal to Sept-Iles),49.678,-66.876,276.857,492.762,True
+St. Lawrence (Montreal to Sept-Iles),49.714,-66.84,281.591,496.446,True
+St. Lawrence (Montreal to Sept-Iles),49.751,-66.803,286.327,500.15,True
+St. Lawrence (Montreal to Sept-Iles),49.787,-66.767,291.066,503.873,True
+St. Lawrence (Montreal to Sept-Iles),49.823,-66.73,295.808,507.615,True
+St. Lawrence (Montreal to Sept-Iles),49.86,-66.694,300.552,511.374,True
+St. Lawrence (Montreal to Sept-Iles),49.896,-66.657,305.298,515.151,True
+St. Lawrence (Montreal to Sept-Iles),49.932,-66.621,310.047,518.945,True
+St. Lawrence (Montreal to Sept-Iles),49.969,-66.584,314.798,522.756,True
+St. Lawrence (Montreal to Sept-Iles),50.005,-66.547,319.551,526.583,False
+St. Lawrence (Montreal to Sept-Iles),50.041,-66.511,324.306,530.427,False
+St. Lawrence (Montreal to Sept-Iles),50.078,-66.474,329.062,534.286,False
+St. Lawrence (Montreal to Sept-Iles),50.114,-66.437,333.821,538.161,False
+St. Lawrence (Montreal to Sept-Iles),50.15,-66.4,338.581,542.051,False
+Bay of Fundy to Saint John,44.4,-66.6,53.331,0.0,True
+Bay of Fundy to Saint John,44.438,-66.577,51.289,0.0,True
+Bay of Fundy to Saint John,44.477,-66.554,49.591,2.023,True
+Bay of Fundy to Saint John,44.515,-66.531,48.227,4.458,True
+Bay of Fundy to Saint John,44.554,-66.508,46.974,7.007,True
+Bay of Fundy to Saint John,44.592,-66.485,46.115,9.361,True
+Bay of Fundy to Saint John,44.631,-66.462,45.681,10.485,True
+Bay of Fundy to Saint John,44.669,-66.439,45.618,9.579,True
+Bay of Fundy to Saint John,44.708,-66.416,46.027,8.775,True
+Bay of Fundy to Saint John,44.746,-66.393,46.895,8.242,True
+Bay of Fundy to Saint John,44.785,-66.37,48.198,7.429,True
+Bay of Fundy to Saint John,44.823,-66.346,49.902,6.053,True
+Bay of Fundy to Saint John,44.862,-66.323,51.968,5.79,True
+Bay of Fundy to Saint John,44.9,-66.3,54.195,5.494,True
+Bay of Fundy to Saint John,44.938,-66.269,56.706,4.103,True
+Bay of Fundy to Saint John,44.975,-66.238,59.506,2.977,True
+Bay of Fundy to Saint John,45.013,-66.207,62.556,2.093,True
+Bay of Fundy to Saint John,45.05,-66.175,65.82,0.668,True
+Bay of Fundy to Saint John,45.088,-66.144,69.269,0.319,True
+Bay of Fundy to Saint John,45.125,-66.113,72.877,0.0,True
+Bay of Fundy to Saint John,45.163,-66.081,76.62,0.0,True
+Bay of Fundy to Saint John,45.2,-66.05,80.481,0.0,True
+Bay of Fundy to Saint John,45.22,-66.053,81.148,0.0,True
+Bay of Fundy to Saint John,45.24,-66.057,81.871,0.107,True
+Bay of Fundy to Saint John,45.26,-66.06,82.648,0.321,True
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.4,-130.85,40.688,7.959,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.383,-130.783,42.629,7.059,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.367,-130.716,44.092,4.329,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.35,-130.65,45.993,3.208,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.333,-130.583,48.282,6.373,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.317,-130.517,50.906,9.538,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.3,-130.45,53.815,5.208,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.34,-130.465,49.273,6.771,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.38,-130.48,44.735,9.853,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.42,-130.495,40.2,7.035,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.46,-130.51,35.671,4.596,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.5,-130.525,31.151,2.357,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.54,-130.54,26.644,0.259,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.58,-130.555,22.156,1.69,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.62,-130.57,17.699,3.624,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.66,-130.585,13.265,6.122,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.7,-130.6,8.953,8.094,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.736,-130.559,7.843,7.859,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.773,-130.519,5.336,8.176,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.809,-130.478,3.56,8.609,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.846,-130.437,2.341,9.418,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.882,-130.397,1.032,10.212,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.918,-130.356,0.0,9.954,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.955,-130.315,0.355,10.492,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,54.991,-130.274,0.572,8.739,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.027,-130.232,0.847,8.17,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.064,-130.191,1.811,9.99,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.1,-130.15,2.481,13.393,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.142,-130.142,1.382,18.003,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.183,-130.134,0.0,22.637,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.225,-130.125,0.0,27.283,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.267,-130.117,0.0,31.936,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.308,-130.109,0.0,36.592,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.35,-130.1,0.0,41.252,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.392,-130.092,0.0,45.156,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.433,-130.084,0.0,43.371,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.475,-130.075,1.229,42.013,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.517,-130.067,2.978,41.143,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.558,-130.058,5.529,40.793,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.6,-130.05,5.75,40.974,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.64,-130.044,5.299,41.524,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.68,-130.038,5.927,42.539,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.72,-130.031,7.791,43.987,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.76,-130.025,8.62,45.827,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.8,-130.019,6.036,48.014,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.84,-130.013,3.867,50.485,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.88,-130.006,1.986,53.19,False
+Chatham Sound to Prince Rupert and Portland Canal to Stewart,55.92,-130.0,1.046,56.121,False
+Gulf of California north (Puerto Penasco),31.0,-113.8,123.517,263.01,True
+Gulf of California north (Puerto Penasco),31.033,-113.772,119.143,266.616,True
+Gulf of California north (Puerto Penasco),31.067,-113.745,114.769,270.251,True
+Gulf of California north (Puerto Penasco),31.1,-113.717,110.395,273.913,True
+Gulf of California north (Puerto Penasco),31.133,-113.689,106.021,277.601,True
+Gulf of California north (Puerto Penasco),31.167,-113.661,101.646,281.314,True
+Gulf of California north (Puerto Penasco),31.2,-113.634,97.272,285.051,True
+Gulf of California north (Puerto Penasco),31.233,-113.606,92.898,288.812,True
+Gulf of California north (Puerto Penasco),31.267,-113.578,88.524,292.595,True
+Gulf of California north (Puerto Penasco),31.3,-113.55,84.15,296.399,True
+Ensenada approach,31.6,-117.0,103.936,1.803,True
+Ensenada approach,31.628,-116.959,101.183,3.567,True
+Ensenada approach,31.656,-116.918,98.45,1.34,True
+Ensenada approach,31.683,-116.877,95.721,0.0,True
+Ensenada approach,31.711,-116.836,92.995,0.0,True
+Ensenada approach,31.739,-116.795,90.27,0.0,True
+Ensenada approach,31.767,-116.754,87.546,0.0,True
+Ensenada approach,31.795,-116.712,84.826,0.0,True
+Ensenada approach,31.822,-116.671,82.107,0.0,True
+Ensenada approach,31.85,-116.63,79.389,0.0,True

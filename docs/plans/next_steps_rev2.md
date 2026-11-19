@@ -85,6 +85,7 @@ state, and hand the EMC team a specified set of inputs.
 | D8 | Great Lakes: in the base zones or a separately labeled layer | Run R2 | Separate layer, since no carriage rule supports it |
 | D9 | Report population as well as land | Run R1 | Yes; land area alone invites attack from both sides |
 | D10 | Ships at the berth and at anchor: count as sources or not | Run R4 (done) | Applied: keep them; under-way-only zones are 2% / 1% / 1% smaller |
+| D12 | Add large-ship sources in foreign water near U.S. land (St. Lawrence, Chatham Sound, Fundy)? | Plan `foreign_waterways_plan_rev1.md` (steps F1 to F7) | Open |
 | D11 | Extend Alaska west of 180° | Run R8 (done) | Closed: the 2018–2019 files hold no reports west of 180° |
 
 D1, D3, D4, and D6 stand as recorded in the phase 1 plan.
@@ -200,3 +201,8 @@ phase:
 - Batch driver: `scripts/run_rerun_batch_rev1.sh` (base, all variants, Hawaii, Puerto Rico, Alaska five suffixes). Not yet run: the Mac did not answer on November 17. Still to add after the zone runs: foreign-water split, stress outputs to `outputs/`, GT check, sites check.
 - Open: MATLAB tests and `checkcode` on the Mac; the Mac clone is behind and has modified tracked files that need checking before checkout.
 - Note: the `no_great_lakes` and `great_lakes_only` variants now use the two-box constant, so Table 8 rows change on rerun.
+
+## Status update, November 19 (foreign waterways)
+
+- New plan `docs/plans/foreign_waterways_plan_rev1.md` (D12, steps F1 to F7) for ships in foreign water near U.S. land. Screen committed (`python/foreign_waterway_screen.py`, `outputs/foreign_waterways/`): the St. Lawrence below Sorel would add about 5,100 km² of Maine to the 100 km zone; Chatham Sound and Portland Canal about 2,300 km² to the Alaska 25 km zone; Fundy under 100 km².
+- The rerun batch (November 17) has still not run; the Mac was unreachable.
