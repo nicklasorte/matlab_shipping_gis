@@ -2,8 +2,7 @@
 
 DRAFT//PRE-DECISIONAL
 
-Date: November 17, 2026. For: Nick LaSorte. Data: `outputs/decision_table_rev1.csv`,
-`outputs/zone_population_rev1.csv`, `outputs/zone_population_pea_rev1.csv`, and the
+Date: November 17, 2026. For: Nick LaSorte. Data: `outputs/decision_table_rev1.csv` and the
 run logs in `outputs/rerun_logs_20261117/`. Plan: `docs/plans/next_steps_rev2.md`.
 
 Nick asked on November 17 to apply the recommendations in the phase 2 plan.
@@ -18,7 +17,7 @@ The EMC section (decision D5) is on hold at Nick's request.
 | D2 | Alaska satellite hexagons | Keep only the 290 beyond 74 km | Land 90,926 / 181,074 / 319,271 km², against 112,426 / 210,895 / 354,593 with all 400; people in the 25 km zone 438,787 against 481,884 |
 | D7 | Tug-barge rule | Keep in the base; report the run without it | Without it: land -10% / -4% / -2%; 2.2 million fewer people at 25 km |
 | D8 | Great Lakes | Report as a separate layer | Routes outside the Great Lakes give 227,267 / 469,257 / 921,475 km² (25% / 27% / 27% less than the base); the Great Lakes layer alone gives 74,385 / 172,315 / 356,112 km² |
-| D9 | Population | Report people next to land | Lower 48: 100.3 / 138.8 / 175.9 million (30% / 42% / 53%) |
+| D9 | Population | Dropped November 20 | Land only |
 | D10 | Ships at the berth and at anchor | Keep them in the base; report the under-way-only run | Under way only: land -2% / -1% / -1%; 0.8 million fewer people at 25 km |
 | D11 | Western Aleutians | Not built: the 2018-2019 files hold no reports west of 180 | None |
 | D5 | Section 2, inputs for the EMC analysis | On hold | None |
@@ -74,11 +73,7 @@ The EMC section (decision D5) is on hold at Nick's request.
 
 ## D9: Population
 
-- **Applied:** population next to land in Sections 3 to 6, from 2020 Census
-  block-group centers of population. Python and MATLAB agree on all 12 base
-  rows. By license area, the 25 km zone reaches 85 of the 412 Partial
-  Economic Areas (PEAs) and covers more than half the people in 44; at 100 km,
-  131 and 92 (`outputs/zone_population_pea_rev1.csv`).
+- **Reversed November 20:** the paper reports land only. The population and PEA runs were removed from the repository.
 
 ## D10: Ships at the berth and at anchor
 

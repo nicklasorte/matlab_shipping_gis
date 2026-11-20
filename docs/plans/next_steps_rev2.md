@@ -38,11 +38,9 @@ option has its own run and zone files.
     files in `outputs/2024_2025/decision/` and the summary in
     `outputs/decision_table_rev1.csv`.
   - D2 applied (Alaska 90,926 / 181,074 / 319,271 km²), D7 kept with both
-    results, D8 Great Lakes layer reported, D9 population reported, D10 kept
+    results, D8 Great Lakes layer reported, D9 population (later dropped), D10 kept
     ships at anchor and at the berth (under-way-only run 2% / 1% / 1% less
     land), D11 closed (no 2018–2019 reports west of 180°).
-  - Population (`outputs/zone_population_rev1.csv`, Python and MATLAB agree on
-    the base rows) and PEA coverage (`outputs/zone_population_pea_rev1.csv`).
   - T: `test_route_rules_rev1.m` and `python/test_route_rules.py`.
   - S: Appendix B (S-band equipment), receiver coverage (R7), PSIX carriage
     numbers (C8), population text, Alaska D2 text, Table 8 (decision table) in
@@ -220,7 +218,7 @@ phase:
 
 - Mac link restored. Clone synced to `fc2f4b2` (earlier edits: stash `mac_dirty_20261120`, patch `~/github-runs/mac_dirty_20261120.patch`; 13 untracked files moved to `~/github-runs/mac_untracked_20261120/`). MATLAB tests pass (26 passed, 2 filtered for no parallel pool; 3 water-clip tests pass); `checkcode` has one unused-variable message in `shipping_zone_rev1.m` (`num_cell`, left alone).
 - `scripts/run_rerun_batch_rev1.sh` started at 06:59 AM on the Mac; logs in `outputs/rerun_logs_20261120/`.
-- Nick: no population. D9 is reversed. The paper (rev 643) no longer reports people or PEA coverage: the Section 3 sentences, the three People columns and note of Table 8, and the people shares for Hawaii, Alaska, and Puerto Rico are removed. One sentence in the Section 1.10 carriage bullet (under-way-only run, "0.8 million fewer people") sits inside a pending suggestion and still needs the words removed. Population runs (R1) are no longer needed; `outputs/zone_population*.csv` stay as history but nothing in the paper cites them. `python/decision_table.py` skips population when the file is absent.
+- Nick: no population. D9 is reversed. The paper (rev 643) no longer reports people or PEA coverage: the Section 3 sentences, the three People columns and note of Table 8, and the people shares for Hawaii, Alaska, and Puerto Rico are removed. One sentence in the Section 1.10 carriage bullet (under-way-only run, "0.8 million fewer people") sits inside a pending suggestion and still needs the words removed. Population runs (R1) are no longer needed; The population scripts, CSVs, and Census inputs were deleted from the repo on November 20 (history stays in git).
 
 ## Status update, November 20 (rerun done, paper updated)
 
