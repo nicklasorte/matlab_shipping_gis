@@ -221,3 +221,11 @@ phase:
 - Mac link restored. Clone synced to `fc2f4b2` (earlier edits: stash `mac_dirty_20261120`, patch `~/github-runs/mac_dirty_20261120.patch`; 13 untracked files moved to `~/github-runs/mac_untracked_20261120/`). MATLAB tests pass (26 passed, 2 filtered for no parallel pool; 3 water-clip tests pass); `checkcode` has one unused-variable message in `shipping_zone_rev1.m` (`num_cell`, left alone).
 - `scripts/run_rerun_batch_rev1.sh` started at 06:59 AM on the Mac; logs in `outputs/rerun_logs_20261120/`.
 - Nick: no population. D9 is reversed. The paper (rev 643) no longer reports people or PEA coverage: the Section 3 sentences, the three People columns and note of Table 8, and the people shares for Hawaii, Alaska, and Puerto Rico are removed. One sentence in the Section 1.10 carriage bullet (under-way-only run, "0.8 million fewer people") sits inside a pending suggestion and still needs the words removed. Population runs (R1) are no longer needed; `outputs/zone_population*.csv` stay as history but nothing in the paper cites them. `python/decision_table.py` skips population when the file is absent.
+
+## Status update, November 20 (rerun done, paper updated)
+
+- Batch finished at 9:07 AM at commit `fc2f4b2`; logs in `outputs/rerun_logs_20261120/`, decision table rebuilt (`d99f232`, land only).
+- Lower-48 base with the St. Lawrence: 301,161 / 638,713 / 1,270,233 km² (25 / 50 / 100 km). `no_st_lawrence` reproduces the old 301,168 / 638,688 / 1,264,979. Hawaii, Puerto Rico and USVI, and Alaska (D2 base and sensitivity runs) match the paper exactly. New by-ship Great Lakes runs: `no_lakers` 274,252 / 593,462 / 1,225,522; `lakers_only` 73,547 / 171,755 / 357,185.
+- Guam and CNMI: 531 / 647 / 647 km² of 1,019 km² in the grid; only Apra Harbor connects under the ship-days rule of 6 (Saipan, Tinian, Rota don't). Step G3 (route rule) is Nick's call.
+- Paper (rev 655): Figure 4 image, Section 3 land figures, Table 8 (new numbers plus three new rows), Great Lakes layer wording (two boxes), and the St. Lawrence bullet updated. Population removed (see above).
+- Still open: Section 1.10 carriage-bullet sentence (blocked by suggestion), Guam G1 in-grid counts and G3, remaining R5 items, Word copy rebuild, MATLAB twins of the St. Lawrence scripts.
