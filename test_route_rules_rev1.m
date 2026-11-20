@@ -80,7 +80,7 @@ end
 
 function test_box_mask_two_boxes(tc)
 %%%%%One cell per degree, lat 40 to 44, lon -80 to -76; two boxes pick the two corner cells.
-R=georefcells([40 44],[-80 -76],[1 1]);
+R=georefcells([40 44],[-80 -76],[4 4]);
 m=box_mask_rev1(R,[40 41 -80 -79; 43 44 -77 -76]);
 verifyEqual(tc,nnz(m),2);
 verifyTrue(tc,m(1,1)&&m(4,4));
