@@ -83,7 +83,7 @@ state, and hand the EMC team a specified set of inputs.
 | D5 | Section 2: placeholder or "inputs the EMC analysis needs" | Workstream E | Write the inputs section |
 | D7 | Tug-barge rule: keep, drop, or keep as a labeled sensitivity | PSIX result; run R3 | Report both; make the no-tug-barge zones the base case only if the EMC team agrees tugs don't carry S-band |
 | D8 | Great Lakes: in the base zones or a separately labeled layer | Run R2 | Separate layer, since no carriage rule supports it |
-| D9 | Report population as well as land | Run R1 | Yes; land area alone invites attack from both sides |
+| D9 | Report population as well as land | Run R1 | Reversed by Nick on November 20: the paper reports land only; population and PEA coverage are removed |
 | D10 | Ships at the berth and at anchor: count as sources or not | Run R4 (done) | Applied: keep them; under-way-only zones are 2% / 1% / 1% smaller |
 | D12 | Add large-ship sources in foreign water near U.S. land (St. Lawrence, Chatham Sound, Fundy)? | Plan `foreign_waterways_plan_rev1.md` (steps F1 to F7) | St. Lawrence: added to the lower-48 base (Nick, November 19). Chatham Sound and Fundy: open |
 | D13 | Guam alone, or Guam and the Northern Mariana Islands as one region? | Plan `guam_plan_rev1.md` (steps G1 to G7) | Decided: one region, Guam and the Northern Mariana Islands (Nick, November 19) |
@@ -215,3 +215,9 @@ phase:
 - To do: `python/decision_table.py` RUNS entry for `no_st_lawrence`; MATLAB twin of the St. Lawrence scripts; Word copy rebuild; intro sentence in Section 1 (blocked by a pending suggestion).
 - Guam plan written (`docs/plans/guam_plan_rev1.md`); first step G1 needs the Mac.
 - D13 decided: Guam and CNMI as one region. `init_shipping_zone_guam_rev1.m` written (grid 12 N to 21.5 N, 143.5 E to 147 E; ship-days rule pending G3; port positions for Apra, Tinian, and Rota marked TODO against the World Port Index) and added to the rerun batch.
+
+## Status update, November 20 (rerun started; population dropped)
+
+- Mac link restored. Clone synced to `fc2f4b2` (earlier edits: stash `mac_dirty_20261120`, patch `~/github-runs/mac_dirty_20261120.patch`; 13 untracked files moved to `~/github-runs/mac_untracked_20261120/`). MATLAB tests pass (26 passed, 2 filtered for no parallel pool; 3 water-clip tests pass); `checkcode` has one unused-variable message in `shipping_zone_rev1.m` (`num_cell`, left alone).
+- `scripts/run_rerun_batch_rev1.sh` started at 06:59 AM on the Mac; logs in `outputs/rerun_logs_20261120/`.
+- Nick: no population. D9 is reversed. The paper (rev 643) no longer reports people or PEA coverage: the Section 3 sentences, the three People columns and note of Table 8, and the people shares for Hawaii, Alaska, and Puerto Rico are removed. One sentence in the Section 1.10 carriage bullet (under-way-only run, "0.8 million fewer people") sits inside a pending suggestion and still needs the words removed. Population runs (R1) are no longer needed; `outputs/zone_population*.csv` stay as history but nothing in the paper cites them. `python/decision_table.py` skips population when the file is absent.

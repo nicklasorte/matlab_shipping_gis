@@ -33,7 +33,7 @@ Islands.** The reasoning: one region,
 "Guam and the Northern Mariana Islands," like Puerto Rico and the U.S. Virgin
 Islands. The zones overlap at 100 km anyway, Saipan and Tinian have
 deep-draft ports, and the same run covers both. The paper can still report
-land and people for each.
+land for each.
 
 ## Steps
 
@@ -42,7 +42,7 @@ land and people for each.
 | G1 | Count large-ship reports (current filter, 100 m and up) in the box 12.5° N to 21° N, 144° E to 146.5° E in the 104 sampled 2024–2025 days; check the coordinates are east longitudes as expected and see where reception ends | Reports and ships per day; coverage map | Mac |
 | G2 | `init_shipping_zone_guam_rev1.m` from the Hawaii one: grid 12.5° N to 21° N, 144° E to 146.5° E at 0.01°; ports Apra Harbor (Guam), Saipan, Tinian, Rota; Census GU and MP land | Init file, run log with commit stamp | Cloud, then Mac |
 | G3 | Route rule: compare the lower-48 rule (4 ships a year), ship-days calibrated on the lower 48 (as Hawaii), and NOAA transit counts; check every port connects | `outputs/2024_2025/guam/route_rules.json`, a Table 9-style comparison | Mac and Cloud (`python/ship_route_rules.py` gains a Guam grid) |
-| G4 | Run zones (25, 50, 100 km); land areas for Guam and CNMI separately; population from the 2020 Census Island Areas data (Guam and CNMI aren't in the standard block-group files, so check what geography is published) | Zone files, areas, population | Mac |
+| G4 | Run zones (25, 50, 100 km); land areas for Guam and CNMI separately (no population; dropped November 20) | Zone files, areas | Mac |
 | G5 | Held-out days (2023 and 2026 Wednesdays): share of large-ship visits within 25 km and 100 km of a route cell | Capture shares | Mac |
 | G6 | Figures (routes; land by zone), Python and MATLAB versions agreeing; paper Section 7 (data, rule, routes and zones, limits including Navy traffic) | Figures with alt text; doc section; Word copy | Cloud |
 | G7 | Blind review of the new section (numbers, method, style), as in earlier rounds | Findings and dispositions | Cloud |

@@ -91,7 +91,7 @@ the islands analysis calibrated the NOAA transit counts (rule C in
 | F3 | Download DFO 2024 (GeoTIFF) and the World Bank Commercial layer; check DFO's upriver extent | `data/external/` with a source README | Mac (large files) |
 | F4 | Calibrate and hold-out test the density threshold (Python and MATLAB) | Threshold, Jaccard on calibration and test areas | Cloud and Mac |
 | F5 | Add `p.external_source_mask` to `shipping_zone_rev1` with a test; a `decision_variant` `foreign_sources` (lower 48) and an Alaska equivalent | Code, tests | Cloud |
-| F6 | Run the variant on the commit stamped by the batch; zone areas, population, deep-draft ports | New Table 8 row; Alaska row | Mac |
+| F6 | Run the variant on the commit stamped by the batch; zone areas, deep-draft ports | New Table 8 row; Alaska row | Mac |
 | F7 | Paper: Section 3.1 coverage edge sentence (closes R5MET-4 either way), the new row, sources | Doc edits (sourced content as plain edits) | Cloud |
 
 ## Decision for Nick
@@ -135,7 +135,7 @@ the islands analysis calibrated the NOAA transit counts (rule C in
 - Coverage: DFO starts at Québec City. Our AIS ends near Sorel. The reach between is 97 km to 148 km from U.S. land, so it doesn't matter.
 - `python/st_lawrence_dfo.py`: Cargo + Tanker threshold 26 tracks a year per cell; Jaccard 0.614 on the calibration area, 0.378 on the Gulf of Maine hold-out, where DFO marks about twice as many cells as our AIS (83% of our route cells found). Outputs in `outputs/foreign_waterways/st_lawrence_*_rev1.*`.
 - Result is insensitive to the threshold: 5,581 / 5,407 / 5,336 / 5,313 / 5,209 km² of new U.S. land in the 100 km zone at 1, 2, 5, 10, 30 times the threshold; none in the 25 km zone; 24 km² in the 50 km zone at 1 times only (low-traffic cells off Rivière-du-Loup).
-- Next: MATLAB twin (Mac), `p.external_source_mask` in `shipping_zone_rev1` (F5), then a stamped run with Census land and population (F6). D12 is still Nick's call.
+- Next: MATLAB twin (Mac), `p.external_source_mask` in `shipping_zone_rev1` (F5), then a stamped run with Census land (F6). D12 is still Nick's call.
 
 ## Status, November 19: full St. Lawrence route layer (display)
 
