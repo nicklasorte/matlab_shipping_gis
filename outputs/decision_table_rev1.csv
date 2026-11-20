@@ -1,12 +1,18 @@
-run,region,description,decision_or_finding,source_log,land_25km_km2,population_25km,land_50km_km2,population_50km,land_100km_km2,population_100km,land_change_25km_pct,land_change_50km_pct,land_change_100km_pct
-lower48,lower48,"Base: lower 48, current method",,outputs/rerun_logs_20261117/lower48.log,301168,100256837,638688,138773271,1264979,175877373,,,
-no_tug,lower48,Tug-barge rule off,"D7, R4OPP-1",outputs/rerun_logs_20261117/no_tug.log,271130,98044031,610518,137352696,1238588,174335894,-10.0,-4.4,-2.1
-both_years,lower48,Cell must meet the ship threshold in both years,R4OPP-7,outputs/rerun_logs_20261117/both_years.log,283712,98076646,606417,136966405,1228527,174198700,-5.8,-5.1,-2.9
-no_great_lakes,lower48,Without Great Lakes and St. Lawrence routes,"D8, R4OPP-2",outputs/rerun_logs_20261117/no_great_lakes.log,227267,84858106,469257,114767885,921475,142574802,-24.5,-26.5,-27.2
-great_lakes_only,lower48,Great Lakes and St. Lawrence routes only (the Great Lakes layer),"D8, R4OPP-2",outputs/rerun_logs_20261117/great_lakes_only.log,74385,15413109,172315,24078126,356112,33532834,-75.3,-73.0,-71.8
-underway,lower48,Reports over 3 knots only (ships under way),"D10, R4OPP-4",outputs/rerun_logs_20261117/underway.log,295536,99407850,629253,138262672,1254285,175780231,-1.9,-1.5,-0.8
-hawaii,hawaii,Base: Hawaii,,outputs/rerun_logs_20261117/hawaii.log,7869,1362395,14132,1446208,16717,1455271,,,
-prusvi,prusvi,Base: Puerto Rico and USVI,,outputs/rerun_logs_20261117/prusvi.log,7211,2854762,9278,3285874,9278,3285874,,,
-alaska_d2,alaska,Base after D2: satellite hexagons beyond 74 km only (290),"D2, R3OPP-1",outputs/rerun_logs_20261117/alaska_d2.log,90926,438787,181074,529208,319271,581484,,,
-alaska,alaska,All 400 satellite hexagons (base before D2),D2,outputs/rerun_logs_20261117/alaska.log,112426,481884,210895,569710,354593,583988,23.6,16.5,11.1
-alaska_nosat,alaska,No satellite hexagons,R2OPP-1,outputs/rerun_logs_20261117/alaska_nosat.log,90923,,181070,,317670,,-0.0,-0.0,-0.5
+run,region,description,decision_or_finding,source_log,land_25km_km2,land_50km_km2,land_100km_km2,land_change_25km_pct,land_change_50km_pct,land_change_100km_pct
+lower48,lower48,"Base: lower 48, current method",,outputs/rerun_logs_20261120/lower48.log,301161,638713,1270233,,,
+no_tug,lower48,Tug-barge rule off,"D7, R4OPP-1",outputs/rerun_logs_20261120/no_tug.log,271127,610533,1243843,-10.0,-4.4,-2.1
+both_years,lower48,Cell must meet the ship threshold in both years,R4OPP-7,outputs/rerun_logs_20261120/both_years.log,283713,606450,1233871,-5.8,-5.1,-2.9
+no_great_lakes,lower48,Without Great Lakes and St. Lawrence routes,"D8, R4OPP-2",outputs/rerun_logs_20261120/no_great_lakes.log,226749,465747,917781,-24.7,-27.1,-27.7
+great_lakes_only,lower48,Great Lakes and St. Lawrence routes only (the Great Lakes layer),"D8, R4OPP-2",outputs/rerun_logs_20261120/great_lakes_only.log,74417,173019,359228,-75.3,-72.9,-71.7
+underway,lower48,Reports over 3 knots only (ships under way),"D10, R4OPP-4",outputs/rerun_logs_20261120/underway.log,295525,629288,1259563,-1.9,-1.5,-0.8
+no_lakers,lower48,Without ships seen only inside the Great Lakes box (by ship),"R5MET-1, R5OPP-2",outputs/rerun_logs_20261120/no_lakers.log,274252,593462,1225522,-8.9,-7.1,-3.5
+lakers_only,lower48,Only ships seen only inside the Great Lakes box (by ship),"R5MET-1, R5OPP-2",outputs/rerun_logs_20261120/lakers_only.log,73547,171755,357185,-75.6,-73.1,-71.9
+no_st_lawrence,lower48,Without the St. Lawrence cells from Canadian and World Bank density,D12,outputs/rerun_logs_20261120/no_st_lawrence.log,301168,638688,1264979,0.0,-0.0,-0.4
+alaska_all400,alaska,All 400 satellite hexagons,D2,outputs/rerun_logs_20261120/alaska_all400.log,112426,210895,354593,23.6,16.5,11.1
+alaska_x0.5,alaska,Satellite cutoff at half (all hexagons at or above it),R3OPP-1,outputs/rerun_logs_20261120/alaska_x0.5.log,123628,221715,368128,10.0,5.1,3.8
+alaska_x2,alaska,Satellite cutoff at double (all hexagons at or above it),R3OPP-1,outputs/rerun_logs_20261120/alaska_x2.log,100013,192746,331079,-11.0,-8.6,-6.6
+guam,guam,Base: Guam and the Northern Mariana Islands (ship-days rule),D13,outputs/rerun_logs_20261120/guam.log,531,647,647,,,
+hawaii,hawaii,Base: Hawaii,,outputs/rerun_logs_20261120/hawaii.log,7869,14132,16717,,,
+prusvi,prusvi,Base: Puerto Rico and USVI,,outputs/rerun_logs_20261120/prusvi.log,7211,9278,9278,,,
+alaska_d2,alaska,Base after D2: satellite hexagons beyond 74 km only (290),"D2, R3OPP-1",outputs/rerun_logs_20261120/alaska_d2.log,90926,181074,319271,,,
+alaska_nosat,alaska,No satellite hexagons,R2OPP-1,outputs/rerun_logs_20261120/alaska_nosat.log,90923,181070,317670,-0.0,-0.0,-0.5

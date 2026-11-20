@@ -1,0 +1,36 @@
+06:59:51 COMMIT fc2f4b2a49b5744ab77b44e2b601ad8ebeba90a8
+06:59:51 START lower48
+07:04:59 END lower48 (exit 0)
+07:04:59 START no_tug
+07:08:59 END no_tug (exit 0)
+07:08:59 START both_years
+07:12:55 END both_years (exit 0)
+07:12:55 START no_great_lakes
+07:18:05 END no_great_lakes (exit 0)
+07:18:05 START great_lakes_only
+07:21:29 END great_lakes_only (exit 0)
+07:21:29 START underway
+07:26:04 END underway (exit 0)
+07:26:04 START no_lakers
+07:30:29 END no_lakers (exit 0)
+07:30:29 START lakers_only
+07:32:25 END lakers_only (exit 0)
+07:32:25 START no_st_lawrence
+07:37:00 END no_st_lawrence (exit 0)
+07:37:00 START hawaii
+07:37:11 END hawaii (exit 0)
+07:37:11 START prusvi
+07:37:23 END prusvi (exit 0)
+07:37:23 START guam
+08:58:34 END guam (exit 0)
+08:58:34 START alaska_d2
+09:00:18 END alaska_d2 (exit 0)
+09:00:18 START alaska_all400
+09:02:05 END alaska_all400 (exit 0)
+09:02:05 START alaska_nosat
+09:03:50 END alaska_nosat (exit 0)
+09:03:50 START alaska_x0.5
+09:05:37 END alaska_x0.5 (exit 0)
+09:05:37 START alaska_x2
+09:07:24 END alaska_x2 (exit 0)
+09:07:24 ALLDONE (zone runs). Still to run by hand: foreign-water split, stress outputs, GT check, sites check.

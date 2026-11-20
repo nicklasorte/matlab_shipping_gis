@@ -1,11 +1,10 @@
-"""Build the decision table (plan workstream R) from zone-run logs and population.
+"""Build the decision table (plan workstream R) from zone-run logs (land only; population dropped November 20).
 
 Usage: python3 python/decision_table.py <log_dir>
 
 Reads "U.S. land in zone" lines from each run log in log_dir (written by the
-MATLAB zone runs) and the population rows in outputs/zone_population_rev1.csv,
-and writes outputs/decision_table_rev1.csv: one row per run and region with
-land and population at 25, 50, and 100 km and the change from the base run of
+MATLAB zone runs) and writes outputs/decision_table_rev1.csv: one row per run
+and region with land at 25, 50, and 100 km and the change from the base run of
 that region.
 """
 import os
@@ -26,13 +25,18 @@ RUNS = {
     "no_great_lakes": ("lower48", "lower48", "Without Great Lakes and St. Lawrence routes", "D8, R4OPP-2"),
     "great_lakes_only": ("lower48", "lower48", "Great Lakes and St. Lawrence routes only (the Great Lakes layer)", "D8, R4OPP-2"),
     "underway": ("lower48", "lower48", "Reports over 3 knots only (ships under way)", "D10, R4OPP-4"),
+    "no_lakers": ("lower48", "lower48", "Without ships seen only inside the Great Lakes box (by ship)", "R5MET-1, R5OPP-2"),
+    "lakers_only": ("lower48", "lower48", "Only ships seen only inside the Great Lakes box (by ship)", "R5MET-1, R5OPP-2"),
+    "no_st_lawrence": ("lower48", "lower48", "Without the St. Lawrence cells from Canadian and World Bank density", "D12"),
+    "alaska_all400": ("alaska", "alaska_d2", "All 400 satellite hexagons", "D2"),
+    "alaska_x0.5": ("alaska", "alaska_all400", "Satellite cutoff at half (all hexagons at or above it)", "R3OPP-1"),
+    "alaska_x2": ("alaska", "alaska_all400", "Satellite cutoff at double (all hexagons at or above it)", "R3OPP-1"),
+    "guam": ("guam", "guam", "Base: Guam and the Northern Mariana Islands (ship-days rule)", "D13"),
     "hawaii": ("hawaii", "hawaii", "Base: Hawaii", ""),
     "prusvi": ("prusvi", "prusvi", "Base: Puerto Rico and USVI", ""),
     "alaska_d2": ("alaska", "alaska_d2", "Base after D2: satellite hexagons beyond 74 km only (290)", "D2, R3OPP-1"),
-    "alaska": ("alaska", "alaska_d2", "All 400 satellite hexagons (base before D2)", "D2"),
     "alaska_nosat": ("alaska", "alaska_d2", "No satellite hexagons", "R2OPP-1"),
 }
-POP_TAG = {"alaska": "alaska_all400"}  # population tag when it differs from the log name
 LAND = re.compile(r"(\d+) km: \d+ regions, U\.S\. land in zone (\d+) km\^2")
 
 
@@ -51,10 +55,6 @@ def main(log_dir):
         p = os.path.join(log_dir, f"{run}.log")
         if os.path.exists(p):
             land[run] = land_from_log(p)
-    pop = pd.DataFrame()
-    pp = os.path.join(ROOT, "outputs", "zone_population_rev1.csv")
-    if os.path.exists(pp):
-        pop = pd.read_csv(pp)
     rows = []
     for run, (region, base, desc, ref) in RUNS.items():
         if run not in land or len(land[run]) < 3:
@@ -65,15 +65,8 @@ def main(log_dir):
             row[f"land_{km}km_km2"] = land[run][km]
             if base in land and base != run and km in land[base]:
                 row[f"land_change_{km}km_pct"] = round(100 * (land[run][km] / land[base][km] - 1), 1)
-            if not pop.empty:
-                hit = pop[(pop.run == POP_TAG.get(run, run)) & (pop.distance_km == km)]
-                if len(hit):
-                    row[f"population_{km}km"] = int(hit.population.iloc[0])
         rows.append(row)
     out = pd.DataFrame(rows)
-    for km in (25, 50, 100):
-        if f"population_{km}km" in out:
-            out[f"population_{km}km"] = out[f"population_{km}km"].astype("Int64")
     out.to_csv(os.path.join(ROOT, "outputs", "decision_table_rev1.csv"), index=False)
     print(out.drop(columns=["source_log", "description"]).to_string(index=False))
 
