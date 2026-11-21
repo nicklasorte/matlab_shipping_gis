@@ -30,7 +30,7 @@ LOG = os.path.join(ROOT, "outputs", "rerun_logs_20261121", "guam_cnmi_links.log"
 PORTS = {"Apra Harbor": (13.4437, 144.6667), "Rota": (14.1400, 145.1380),
          "Tinian": (14.9580, 145.6200), "Saipan": (15.2258, 145.7349)}
 SRC = (f"Source: NTIA analysis of MarineCadastre AIS, 104 sampled days in {PER.AND}; AIS route cells = large ships on "
-       "at least 6 ship-days; link cells are straight lines between harbors (an assumption); Census 2023 land.")
+       "at least six ship-days; link cells are straight lines between harbors (an assumption); Census 2023 land. Areas use Census polygons; the map shows 0.01° cells.")
 
 
 def load(name):
@@ -57,15 +57,18 @@ def main():
     src_g, _, _ = load("shipping_zone_guam_2024_2025_ships_rev1.mat")
     link = src_l & ~src_g
     a, tot = areas()
-    assert int(src_g.sum()) == 1468 and int(link.sum()) == 229, (src_g.sum(), link.sum())
+    txt = open(LOG).read()
+    n_src = int(re.search(r"AIS source cells \(ship_days rule\): (\d+)", txt).group(1))
+    n_new = int(re.search(r"Extra source cells: \d+ \((\d+) not already", txt).group(1))
+    assert int(src_g.sum()) == n_src and int(link.sum()) == n_new, (src_g.sum(), n_src, link.sum(), n_new)
     in25 = land & (dist <= 25)
     page = OnePager(
-        headline=f"With assumed links, the zones cover {a[25]:,.0f} km² of land in Guam and the Northern Mariana "
-                 f"Islands, {100 * a[25] / tot:.0f}% of the total",
+        headline=f"Zones cover {a[25]:,.0f}\u00a0km² of land in Guam and the Northern Mariana Islands with assumed links, "
+                 "and 531 to 647\u00a0km² without them",
         subhead="Large-ship route cells and land within 25 km of them; the 50 and 100 km zones cover the same land",
         source=SRC, theme="ntia", layout="hero", size=(8.5, 10.2),
-        alt=f"Map of Guam and the Northern Mariana Islands. Blue AIS route cells surround Guam and reach Apra Harbor; "
-            f"purple link cells run in straight lines from Apra Harbor to Rota, Tinian, and Saipan. Land within 25 km "
+        alt=f"Map of Guam and the Northern Mariana Islands. Blue AIS route cells fan west and northwest of Guam and reach Apra Harbor; "
+            f"one purple line of assumed link cells runs northeast from Apra Harbor through Rota and Tinian to Saipan. Land within 25 km "
             f"of a route cell is dark: {a[25]:,.0f} of {tot:,.0f} km² ({100 * a[25] / tot:.0f}%). Land outside the zone, "
             f"{tot - a[25]:,.0f} km², lies on islands north of 16 degrees north, which the map does not show.")
     ax = page.panel(0, grid=None)
@@ -75,12 +78,14 @@ def main():
     x, y = xy(in25)
     ax.scatter(x, y, s=1.6, marker="s", lw=0, c="#163353", rasterized=True, zorder=2)
     x, y = xy(src_g)
-    ax.scatter(x, y, s=0.6, marker="s", lw=0, c=th.accent, rasterized=True, zorder=3)
+    ax.scatter(x, y, s=3.0, marker="s", lw=0, c=th.accent, rasterized=True, zorder=3)
     x, y = xy(link)
-    ax.scatter(x, y, s=4, marker="s", lw=0, c="#7B3FA0", zorder=4)
+    ax.scatter(x, y, s=22, marker="s", lw=0, c="white", zorder=4)   # white halo: the link crosses dark land
+    ax.scatter(x, y, s=7, marker="s", lw=0, c="#7B3FA0", zorder=5)
     for n, (la, lo) in PORTS.items():
         ax.plot(lo, la, marker="o", ms=5, color=th.text, mfc="white", mec=th.text, zorder=6)
-        ax.annotate(n, (lo, la), xytext=(8, -3), textcoords="offset points", fontsize=9, color=th.text,
+        off, ha = ((-9, -14), "right") if n == "Apra Harbor" else ((9, -3), "left")
+        ax.annotate(n, (lo, la), xytext=off, ha=ha, textcoords="offset points", fontsize=10, color=th.text,
                     path_effects=[pe.withStroke(linewidth=3, foreground="white")], zorder=7)
     ax.set_xlim(143.6, 146.3)
     ax.set_ylim(12.6, 15.9)
@@ -89,10 +94,16 @@ def main():
     ax.set_yticks([])
     for sp in ax.spines.values():
         sp.set_visible(False)
-    ax.text(143.7, 15.75, "AIS route cells", color=th.accent, fontsize=10, fontweight="bold", ha="left")
-    ax.text(143.7, 15.55, "Link cells (assumed)", color="#7B3FA0", fontsize=10, fontweight="bold", ha="left")
-    ax.text(143.7, 15.35, f"Land within 25 km: {a[25]:,.0f} km²", color="#163353", fontsize=10, ha="left")
-    ax.text(143.7, 15.15, f"Land outside (north of 16° N, not shown): {tot - a[25]:,.0f} km²", color=th.text, fontsize=10, ha="left")
+    import matplotlib.patches as mp
+    from matplotlib.lines import Line2D
+    handles = [Line2D([0], [0], marker="s", ls="", ms=8, color=th.accent, label="AIS route cell (six or more ship-days)"),
+               Line2D([0], [0], marker="s", ls="", ms=8, color="#7B3FA0", label="Assumed link cell (not AIS)"),
+               mp.Patch(color="#163353", label=f"Land within 25 km of a route cell: {a[25]:,.0f} km²"),
+               mp.Patch(color="#8A8D91", label=f"Land outside (north of 16° N, not shown): {tot - a[25]:,.0f} km²")]
+    ax.legend(handles=handles, loc="upper left", frameon=False, fontsize=10, labelcolor=th.text, handletextpad=0.6)
+    xb, yb = 145.55, 12.8
+    ax.plot([xb, xb + 50 / (111.32 * np.cos(np.radians(14.2)))], [yb, yb], color=th.text, lw=2)
+    ax.text(xb + 25 / (111.32 * np.cos(np.radians(14.2))), yb + 0.05, "50 km", ha="center", fontsize=10, color=th.text)
     vf.save(page, "guam01_routes_zones")
 
 

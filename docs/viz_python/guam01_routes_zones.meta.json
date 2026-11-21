@@ -19,16 +19,26 @@
     "#163353",
     "#5674C4",
     "#7B3FA0",
-    "#8A8D91"
+    "#8A8D91",
+    "#FFFFFF"
   ],
   "accent": "#5674C4",
   "context": "#8A8D91",
-  "alt": "Map of Guam and the Northern Mariana Islands. Blue AIS route cells surround Guam and reach Apra Harbor; purple link cells run in straight lines from Apra Harbor to Rota, Tinian, and Saipan. Land within 25 km of a route cell is dark: 872 of 1,019 km\u00b2 (86%). Land outside the zone, 147 km\u00b2, lies on islands north of 16 degrees north, which the map does not show.",
+  "alt": "Map of Guam and the Northern Mariana Islands. Blue AIS route cells fan west and northwest of Guam and reach Apra Harbor; one purple line of assumed link cells runs northeast from Apra Harbor through Rota and Tinian to Saipan. Land within 25 km of a route cell is dark: 872 of 1,019 km\u00b2 (86%). Land outside the zone, 147 km\u00b2, lies on islands north of 16 degrees north, which the map does not show.",
   "alt_supplied": true,
   "files": {
     "png": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/guam01_routes_zones.png",
     "pdf": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/guam01_routes_zones.pdf",
     "svg": "/home/claude/matlab_shipping_gis/python/../docs/viz_python/guam01_routes_zones.svg"
   },
-  "lint": []
+  "lint": [
+    {
+      "severity": "advice",
+      "message": "A legend is present. Prefer direct labels on the marks."
+    },
+    {
+      "severity": "warn",
+      "message": "Mark color #FFFFFF has contrast 1.00:1; marks need 3:1."
+    }
+  ]
 }
