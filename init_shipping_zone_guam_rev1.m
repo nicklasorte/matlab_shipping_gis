@@ -33,8 +33,8 @@ if ~exist('ship_days_min','var')
     ship_days_min=6;
 end
 
-%%%%%%%%%%Grid: Guam and the Northern Mariana Islands (13.2 to 20.6 N, 144.6 to 146.1 E,
-%%%%%%%%%%Census 2023) with about 1 degree of approaches. East longitudes are positive.
+%%%%%%%%%%Grid: 12 to 21.5 N, 143.5 to 147 E: Guam and the Northern Mariana Islands
+%%%%%%%%%%(Census 2023, 13.2 to 20.6 N) with about 1 degree of approaches. East longitudes are positive.
 p.latlim=[12 21.5];
 p.lonlim=[143.5 147];
 p.cells_per_degree=100;   %%%%%0.01 deg, same as the lower 48

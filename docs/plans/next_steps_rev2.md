@@ -270,3 +270,6 @@ phase:
 - `python/guam_land_split.py` splits zone land at 13.9 N (total matches the stored area within 0.1 km2): with links Guam 562 / CNMI 310 km2 at 25, 50, and 100 km; without links Guam 531 / 562 / 562 and CNMI 0 / 85 / 85. Output `outputs/guam/guam_land_split_rev1.csv`, log `outputs/rerun_logs_20261121/guam_land_split.log`. Paper rev 679 (Section 7.2 split, 7.4 carriage pointer).
 - NGA World Port Index not reachable from the cloud (msi.nga.mil returns 503); needs the Pub 150 CSV attached or run on the Mac.
 - Python cross-check of zones needs the Census polygons and the MATLAB buffer method on the Mac; not done.
+
+- Nov 21 (later): `guam_cnmi_links_rev1.m` (MATLAB twin) and `test_guam_links_rev1.m` pass on the Mac and match the Python CSV exactly (231 cells); `checkcode` clean. Paper rev 680. Mac clone merged to the latest main (old sensitivity logs moved to `~/github-runs/mac_logs_20261121_old/`).
+- Still open: Python cross-check of zones, held-out days (G5) and G1 in-grid counts, NGA World Port Index check, snap link ends to water (needs rerun and Nick's OK), Word copy rebuild (last at rev 674), header grid comment in `init_shipping_zone_guam_rev1.m`.
