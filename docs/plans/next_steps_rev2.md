@@ -234,3 +234,10 @@ phase:
 - Land matches the paper: Hawaii 14,132 / 16,717 km² (50 / 100 km); Puerto Rico and USVI 9,278 km²; Alaska 181,074 / 319,271 km² (50 / 100 km).
 - Guam (new, D13): 531 / 647 / 647 km² at 25 / 50 / 100 km. Only 1 of 4 ports is reached; Saipan, Tinian and Rota have no route. The Guam route rule (G3) is still Nick's call.
 - Population code, data and outputs are deleted (`baea008`); the paper reports land only.
+
+## Status update, November 21 (Marianas, Figure 4 caption, Word copy)
+
+- The sampled AIS days hold no Saipan or Tinian lane (5 and 0 cells within 15 km; Rota 116 cells, at most 5 ship-days), so no ship-days threshold connects the Northern Mariana Islands.
+- Variant `cnmi_links=true` in `init_shipping_zone_guam_rev1.m` adds straight-line link cells Apra Harbor, Rota, Tinian, Saipan (`python/guam_cnmi_links.py`, 231 cells; a modeling assumption, not AIS). Run at `20ea349`: 4 of 4 ports connect; land in zone 872 km² at 25, 50 and 100 km (Guam only: 531 / 647 / 647). Log: `outputs/rerun_logs_20261121/guam_cnmi_links.log`.
+- Open (Nick): accept the link-cell assumption for the paper (G3), confirm harbor positions against the NGA World Port Index (G2), and a MATLAB twin of `guam_cnmi_links.py`.
+- Paper rev 659: Figure 4 caption notes the St. Lawrence cells. Word copy rebuilt from the rev 659 export (`docs/2.7GHz_Routes_and_Zones_Sections_DRAFT.docx`, Figure 4 new, 65 SEQ captions, 0 missing images).
