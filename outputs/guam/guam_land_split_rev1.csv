@@ -1,0 +1,7 @@
+run,distance_km,total_km2,guam_km2,cnmi_km2
+with_links,25,872.1,562.1,310.0
+with_links,50,872.1,562.1,310.0
+with_links,100,872.1,562.1,310.0
+without_links,25,531.4,531.4,0.0
+without_links,50,647.0,562.1,84.9
+without_links,100,647.0,562.1,84.9

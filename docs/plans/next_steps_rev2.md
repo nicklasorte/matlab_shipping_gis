@@ -264,3 +264,9 @@ phase:
 
 - `python/guam_route_rules.py` compares the Guam ship-days rule (6) with NOAA AIS Vessel Transit Counts 2025 (the 2024 file stops at 174 W; thresholds K = 6 and T = 8 come from the lower-48 calibration on the 2024 file). Result in `outputs/guam/guam_route_rules_rev1.json`, log `outputs/rerun_logs_20261121/guam_route_rules.log`. Jaccard 0.22 (Hawaii 0.25); NOAA also has no Saipan or Tinian lane. Paper rev 676 (Section 7.3 and 7.4). Word copy not rebuilt since rev 674.
 - Open: the lower-48 rule (4 ships in one year) can't be reproduced from the combined-years `unique_ships` grid; MATLAB twin of the link script and a Guam test; carriage statement; NGA World Port Index check; Word copy rebuild.
+
+## Status update, November 21 (Guam land split)
+
+- `python/guam_land_split.py` splits zone land at 13.9 N (total matches the stored area within 0.1 km2): with links Guam 562 / CNMI 310 km2 at 25, 50, and 100 km; without links Guam 531 / 562 / 562 and CNMI 0 / 85 / 85. Output `outputs/guam/guam_land_split_rev1.csv`, log `outputs/rerun_logs_20261121/guam_land_split.log`. Paper rev 679 (Section 7.2 split, 7.4 carriage pointer).
+- NGA World Port Index not reachable from the cloud (msi.nga.mil returns 503); needs the Pub 150 CSV attached or run on the Mac.
+- Python cross-check of zones needs the Census polygons and the MATLAB buffer method on the Mac; not done.
