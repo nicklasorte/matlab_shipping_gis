@@ -42,6 +42,8 @@ In the 104 sampled days, large-ship cells near Saipan number 5 within 15 km
 ship-days threshold connects Saipan or Tinian, so the "Add the Marianas"
 request needs a gap-filler for those lanes, like the St. Lawrence layer.
 
+**G3 (decided November 21, 2026): accept the straight-line link cells** (`cnmi_links=true`) so Saipan, Tinian, and Rota connect. The paper says they are an assumption, not AIS.
+
 ## Steps
 
 | Step | Work | Output | Where |

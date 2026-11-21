@@ -241,3 +241,8 @@ phase:
 - Variant `cnmi_links=true` in `init_shipping_zone_guam_rev1.m` adds straight-line link cells Apra Harbor, Rota, Tinian, Saipan (`python/guam_cnmi_links.py`, 231 cells; a modeling assumption, not AIS). Run at `20ea349`: 4 of 4 ports connect; land in zone 872 km² at 25, 50 and 100 km (Guam only: 531 / 647 / 647). Log: `outputs/rerun_logs_20261121/guam_cnmi_links.log`.
 - Open (Nick): accept the link-cell assumption for the paper (G3), confirm harbor positions against the NGA World Port Index (G2), and a MATLAB twin of `guam_cnmi_links.py`.
 - Paper rev 659: Figure 4 caption notes the St. Lawrence cells. Word copy rebuilt from the rev 659 export (`docs/2.7GHz_Routes_and_Zones_Sections_DRAFT.docx`, Figure 4 new, 65 SEQ captions, 0 missing images).
+
+## Status update, November 21 (Guam accepted, Section 7 written)
+
+- Nick accepted the link cells (G3). Paper rev 660 adds Section 7, Guam and the Northern Mariana Islands (872 km² at 25, 50, and 100 km; 531 / 647 / 647 without the links), before Appendix A. No map yet (G6).
+- Still open: G1 in-grid counts; G2 port positions against the NGA World Port Index; G5 held-out days; G6 map and the Python and MATLAB twins of the link-cell script; Guam and CNMI land split; Word copy rebuild for rev 660; blind review of Section 7 (G7).
