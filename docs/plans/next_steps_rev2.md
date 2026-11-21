@@ -248,3 +248,8 @@ phase:
 - Still open: G1 in-grid counts; G2 port positions against the NGA World Port Index; G5 held-out days; G6 map and the Python and MATLAB twins of the link-cell script; Guam and CNMI land split; Word copy rebuild for rev 660; blind review of Section 7 (G7).
 
 - Nov 21 (later): Guam map `python/ship_guam_figures.py` -> `docs/viz_python/guam01_routes_zones.*` (Figure 11, paper rev 662). Grids for the map are in `outputs/guam/*.mat`. Still open: MATLAB twin of the map and of `guam_cnmi_links.py` (G6), Word copy for rev 662, blind review of Section 7 (G7).
+
+## Status update, November 21 (round 6 review of Section 7)
+
+- Blind review of Section 7 done (`docs/review/round6/findings_r6.md`); fixes applied (paper rev 671). Word copy rebuilt at rev 671.
+- Open from round 6: threshold sensitivity (ship-days 3, 6, 12, with and without links), MATLAB twin of `guam_cnmi_links.py` and a Guam test, snap link ends to water, a carriage statement for Section 7, NGA World Port Index check, `init_shipping_zone_guam_rev1.m` header grid comment.
