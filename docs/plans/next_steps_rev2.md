@@ -246,3 +246,5 @@ phase:
 
 - Nick accepted the link cells (G3). Paper rev 660 adds Section 7, Guam and the Northern Mariana Islands (872 km² at 25, 50, and 100 km; 531 / 647 / 647 without the links), before Appendix A. No map yet (G6).
 - Still open: G1 in-grid counts; G2 port positions against the NGA World Port Index; G5 held-out days; G6 map and the Python and MATLAB twins of the link-cell script; Guam and CNMI land split; Word copy rebuild for rev 660; blind review of Section 7 (G7).
+
+- Nov 21 (later): Guam map `python/ship_guam_figures.py` -> `docs/viz_python/guam01_routes_zones.*` (Figure 11, paper rev 662). Grids for the map are in `outputs/guam/*.mat`. Still open: MATLAB twin of the map and of `guam_cnmi_links.py` (G6), Word copy for rev 662, blind review of Section 7 (G7).

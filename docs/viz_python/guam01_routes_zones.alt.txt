@@ -1,0 +1,1 @@
+Map of Guam and the Northern Mariana Islands. Blue AIS route cells surround Guam and reach Apra Harbor; purple link cells run in straight lines from Apra Harbor to Rota, Tinian, and Saipan. Land within 25 km of a route cell is dark: 872 of 1,019 km² (86%). Land outside the zone, 147 km², lies on islands north of 16 degrees north, which the map does not show.
