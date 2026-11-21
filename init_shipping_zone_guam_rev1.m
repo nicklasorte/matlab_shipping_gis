@@ -21,8 +21,13 @@
 %%%%%Maps are drawn in Python (to be written, plan step G6) because the
 %%%%%MATLAB map functions are set up for the lower-48 Albers projection.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clear;
+%%%%%cnmi_links=true (set before running) adds straight-line link cells Guam-Rota-Tinian-Saipan
+%%%%%(python/guam_cnmi_links.py), because the sampled AIS days hold no Saipan or Tinian lane.
+clearvars -except cnmi_links
 clc;
+if ~exist('cnmi_links','var')
+    cnmi_links=false;
+end
 
 %%%%%%%%%%Grid: Guam and the Northern Mariana Islands (13.2 to 20.6 N, 144.6 to 146.1 E,
 %%%%%%%%%%Census 2023) with about 1 degree of approaches. East longitudes are positive.
@@ -84,7 +89,14 @@ p.census_year=2023;
 %%%%%%%%%%Folders and names
 p.data_dir=fullfile(pwd,'data');
 p.out_dir=fullfile(pwd,'output_guam');
-p.out_name=['shipping_zone_guam_' per.tag];
+p.extra_source_csv='';
+name_tag='';
+if cnmi_links
+    p.extra_source_csv=fullfile(pwd,'outputs','guam','guam_cnmi_links_cells_rev1.csv');
+    name_tag='_cnmi_links';
+    p.out_dir=fullfile(pwd,'output_guam_cnmi_links');
+end
+p.out_name=['shipping_zone_guam' name_tag '_' per.tag];
 p.make_figure=false;
 
 %%%%%%%%%%Output size

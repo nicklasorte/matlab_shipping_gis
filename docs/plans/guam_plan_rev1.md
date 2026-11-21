@@ -35,6 +35,13 @@ Islands. The zones overlap at 100 km anyway, Saipan and Tinian have
 deep-draft ports, and the same run covers both. The paper can still report
 land for each.
 
+## Finding (November 21): the AIS sample has no Saipan or Tinian lane
+
+In the 104 sampled days, large-ship cells near Saipan number 5 within 15 km
+(at most 2 ship-days), near Tinian 0, and near Rota 116 (at most 5). No
+ship-days threshold connects Saipan or Tinian, so the "Add the Marianas"
+request needs a gap-filler for those lanes, like the St. Lawrence layer.
+
 ## Steps
 
 | Step | Work | Output | Where |
