@@ -253,3 +253,9 @@ phase:
 
 - Blind review of Section 7 done (`docs/review/round6/findings_r6.md`); fixes applied (paper rev 671). Word copy rebuilt at rev 671.
 - Open from round 6: threshold sensitivity (ship-days 3, 6, 12, with and without links), MATLAB twin of `guam_cnmi_links.py` and a Guam test, snap link ends to water, a carriage statement for Section 7, NGA World Port Index check, `init_shipping_zone_guam_rev1.m` header grid comment.
+
+## Status update, November 21 (Guam sensitivity run)
+
+- Ran Guam at 2, 3, 4, 6, 8 and 12 ship-days, with and without the links, at `b1333ed` (clean; `outputs/rerun_logs_20261121/guam_sensitivity/`, table in `outputs/guam/guam_sensitivity_rev1.csv`, `python/guam_sensitivity.py`). With the links, land is 872 km² at every threshold and distance; without them the 25 km zone is 474 to 847 km². Port check reads 0 of 4 at 8 and 12 ship-days (the route has under 2,000 cells and doesn't reach the grid edge).
+- Paper rev 674: new Section 7.3 and Table 10 (Limits is now 7.4); Word copy rebuilt at rev 674.
+- Open: comparison with the lower-48 rule and NOAA transit counts (G3), MATLAB twin of the link script, carriage statement, NGA World Port Index check.

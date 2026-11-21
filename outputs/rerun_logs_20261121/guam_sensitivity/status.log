@@ -1,0 +1,26 @@
+14:42:11 COMMIT b1333ed62e5077a019a7e8a0d13bd0cde210329a
+14:42:11 START sd2_links_false
+14:42:20 END sd2_links_false
+14:42:20 START sd2_links_true
+14:42:30 END sd2_links_true
+14:42:30 START sd3_links_false
+14:42:39 END sd3_links_false
+14:42:39 START sd3_links_true
+14:42:48 END sd3_links_true
+14:42:48 START sd4_links_false
+14:42:57 END sd4_links_false
+14:42:57 START sd4_links_true
+14:43:06 END sd4_links_true
+14:43:06 START sd6_links_false
+14:43:15 END sd6_links_false
+14:43:15 START sd6_links_true
+14:43:26 END sd6_links_true
+14:43:26 START sd8_links_false
+14:43:35 END sd8_links_false
+14:43:35 START sd8_links_true
+14:43:45 END sd8_links_true
+14:43:45 START sd12_links_false
+14:43:54 END sd12_links_false
+14:43:54 START sd12_links_true
+14:44:02 END sd12_links_true
+14:44:02 ALLDONE
