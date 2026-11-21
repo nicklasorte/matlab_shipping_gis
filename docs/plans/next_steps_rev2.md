@@ -273,3 +273,4 @@ phase:
 
 - Nov 21 (later): `guam_cnmi_links_rev1.m` (MATLAB twin) and `test_guam_links_rev1.m` pass on the Mac and match the Python CSV exactly (231 cells); `checkcode` clean. Paper rev 680. Mac clone merged to the latest main (old sensitivity logs moved to `~/github-runs/mac_logs_20261121_old/`).
 - Still open: Python cross-check of zones, held-out days (G5) and G1 in-grid counts, NGA World Port Index check, snap link ends to water (needs rerun and Nick's OK), Word copy rebuild (last at rev 674), header grid comment in `init_shipping_zone_guam_rev1.m`.
+- Nov 21 (later): Word copy rebuilt at paper rev 680 (67 SEQ captions, 0 missing images). Nick reviews before it leaves the repo.
