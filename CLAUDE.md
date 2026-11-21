@@ -77,7 +77,7 @@ That file is the handoff between sessions and between Claude Code and chat.
   `great_lakes_only`, `underway`), written to `output_decision/`. Land areas in
   the paper (after the R0 boundary fix): lower 48 301,161 / 638,713 /
   1,270,233 km² (with the St. Lawrence cells; 301,168 / 638,688 / 1,264,979 without them, `decision_variant='no_st_lawrence'`); Hawaii 7,869 / 14,132 / 16,717; Puerto Rico and USVI 7,211 /
-  9,278 / 9,278; Alaska 90,926 / 181,074 / 319,271 (25 / 50 / 100 km). A rerun
+  9,278 / 9,278; Alaska 90,926 / 181,074 / 319,271 (25 / 50 / 100 km); Guam and the Northern Mariana Islands 872 / 872 / 872 km² with `cnmi_links=true` (531 / 647 / 647 without). A rerun
   that changes these needs a reason and a paper update. The decision table is
   `outputs/decision_table_rev1.csv` (`python3 python/decision_table.py
   outputs/rerun_logs_20261120`).
