@@ -227,3 +227,10 @@ phase:
 - Guam and CNMI: 531 / 647 / 647 km² of 1,019 km² in the grid; only Apra Harbor connects under the ship-days rule of 6 (Saipan, Tinian, Rota don't). Step G3 (route rule) is Nick's call.
 - Paper (rev 655): Figure 4 image, Section 3 land figures, Table 8 (new numbers plus three new rows), Great Lakes layer wording (two boxes), and the St. Lawrence bullet updated. Population removed (see above).
 - Still open: Section 1.10 carriage-bullet sentence (blocked by suggestion), Guam G1 in-grid counts and G3, remaining R5 items, Word copy rebuild, MATLAB twins of the St. Lawrence scripts.
+
+## Status update, November 21 (regions rerun)
+
+- Reran Guam, Hawaii, Puerto Rico and USVI, and Alaska (base plus `_all400`, `_nosat`, `_x0.5`, `_x2`) at commit `baea008` (clean). Logs: `outputs/rerun_logs_20261120_regions/`.
+- Land matches the paper: Hawaii 14,132 / 16,717 km² (50 / 100 km); Puerto Rico and USVI 9,278 km²; Alaska 181,074 / 319,271 km² (50 / 100 km).
+- Guam (new, D13): 531 / 647 / 647 km² at 25 / 50 / 100 km. Only 1 of 4 ports is reached; Saipan, Tinian and Rota have no route. The Guam route rule (G3) is still Nick's call.
+- Population code, data and outputs are deleted (`baea008`); the paper reports land only.
