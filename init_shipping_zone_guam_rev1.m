@@ -23,10 +23,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%cnmi_links=true (set before running) adds straight-line link cells Guam-Rota-Tinian-Saipan
 %%%%%(python/guam_cnmi_links.py), because the sampled AIS days hold no Saipan or Tinian lane.
-clearvars -except cnmi_links
+%%%%%ship_days_min=N (set before running) changes the route threshold from 6 (sensitivity run, review R6MET-2).
+clearvars -except cnmi_links ship_days_min
 clc;
 if ~exist('cnmi_links','var')
     cnmi_links=false;
+end
+if ~exist('ship_days_min','var')
+    ship_days_min=6;
 end
 
 %%%%%%%%%%Grid: Guam and the Northern Mariana Islands (13.2 to 20.6 N, 144.6 to 146.1 E,
@@ -54,7 +58,7 @@ p.towing_coast_km=25;
 
 %%%%%%%%%%Route rule (the one change from the lower 48)
 p.route_rule='ship_days';
-p.min_ship_days=6;
+p.min_ship_days=ship_days_min;
 p.min_unique_ships=4;     %%%%%not used by the ship_days rule; kept for the record
 p.port_relax_km=0;        %%%%%off: ship-days already keeps thin port approaches
 
@@ -95,6 +99,10 @@ if cnmi_links
     p.extra_source_csv=fullfile(pwd,'outputs','guam','guam_cnmi_links_cells_rev1.csv');
     name_tag='_cnmi_links';
     p.out_dir=fullfile(pwd,'output_guam_cnmi_links');
+end
+if ship_days_min~=6
+    name_tag=[name_tag sprintf('_sd%d',ship_days_min)];
+    p.out_dir=[p.out_dir sprintf('_sd%d',ship_days_min)];
 end
 p.out_name=['shipping_zone_guam' name_tag '_' per.tag];
 p.make_figure=false;
