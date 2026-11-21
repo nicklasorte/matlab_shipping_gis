@@ -259,3 +259,8 @@ phase:
 - Ran Guam at 2, 3, 4, 6, 8 and 12 ship-days, with and without the links, at `b1333ed` (clean; `outputs/rerun_logs_20261121/guam_sensitivity/`, table in `outputs/guam/guam_sensitivity_rev1.csv`, `python/guam_sensitivity.py`). With the links, land is 872 km² at every threshold and distance; without them the 25 km zone is 474 to 847 km². Port check reads 0 of 4 at 8 and 12 ship-days (the route has under 2,000 cells and doesn't reach the grid edge).
 - Paper rev 674: new Section 7.3 and Table 10 (Limits is now 7.4); Word copy rebuilt at rev 674.
 - Open: comparison with the lower-48 rule and NOAA transit counts (G3), MATLAB twin of the link script, carriage statement, NGA World Port Index check.
+
+## Status update, November 21 (Guam NOAA comparison)
+
+- `python/guam_route_rules.py` compares the Guam ship-days rule (6) with NOAA AIS Vessel Transit Counts 2025 (the 2024 file stops at 174 W; thresholds K = 6 and T = 8 come from the lower-48 calibration on the 2024 file). Result in `outputs/guam/guam_route_rules_rev1.json`, log `outputs/rerun_logs_20261121/guam_route_rules.log`. Jaccard 0.22 (Hawaii 0.25); NOAA also has no Saipan or Tinian lane. Paper rev 676 (Section 7.3 and 7.4). Word copy not rebuilt since rev 674.
+- Open: the lower-48 rule (4 ships in one year) can't be reproduced from the combined-years `unique_ships` grid; MATLAB twin of the link script and a Guam test; carriage statement; NGA World Port Index check; Word copy rebuild.

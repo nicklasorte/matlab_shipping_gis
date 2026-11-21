@@ -1,0 +1,65 @@
+        That means the default return type will be a sparse array.
+        Unless you use * instead of @, ** for matrix power, or you depend
+        on 2D shapes from e.g. `A.sum(axis=0)` it may not matter to you.
+        https://docs.scipy.org/doc/scipy/reference/sparse.migration_to_sparray.html
+        
+  m = sio.loadmat(MAT)
+{
+ "base": {
+  "ship_days_cells": 1468,
+  "noaa_cells": 1215,
+  "jaccard": 0.222,
+  "ship_days_cells_in_noaa_T": 0.332,
+  "noaa_T_cells_in_ship_days": 0.402
+ },
+ "near_port_cells": {
+  "Apra Harbor": {
+   "ais_ship_days_ge1": 257,
+   "ais_max": 318,
+   "noaa_ge1": 404,
+   "noaa_max": 4549,
+   "noaa_ge_T": 349
+  },
+  "Rota": {
+   "ais_ship_days_ge1": 116,
+   "ais_max": 5,
+   "noaa_ge1": 275,
+   "noaa_max": 13,
+   "noaa_ge_T": 1
+  },
+  "Tinian": {
+   "ais_ship_days_ge1": 0,
+   "ais_max": 0,
+   "noaa_ge1": 0,
+   "noaa_max": 0,
+   "noaa_ge_T": 0
+  },
+  "Saipan": {
+   "ais_ship_days_ge1": 5,
+   "ais_max": 2,
+   "noaa_ge1": 9,
+   "noaa_max": 2,
+   "noaa_ge_T": 0
+  }
+ }
+}
+ship_days 2 10744 2 1 
+ship_days 3 5858 2 1 
+ship_days 4 3446 2 1 
+ship_days 6 1468 1 1 
+ship_days 8 828 1 1 
+ship_days 12 376 1 1 
+unique_ships 1 22156 3 2 
+unique_ships 2 9429 1 1 
+unique_ships 3 4287 1 1 
+unique_ships 4 2177 1 1 
+noaa 1 38314 2 2 0.038
+noaa 2 22444 2 2 0.065
+noaa 3 11416 2 2 0.119
+noaa 5 3216 2 1 0.242
+noaa 8 1215 2 1 0.222
+noaa 10 852 2 1 0.193
+noaa 15 469 1 1 0.122
+noaa 20 303 1 1 0.087
+noaa 30 157 1 1 0.052
+noaa 50 63 1 1 0.03

@@ -1,0 +1,519 @@
+{
+ "K": 6,
+ "T": 8,
+ "raster": "ais-transit-count-2025.tif",
+ "noaa_cells_ge1": 38314,
+ "base": {
+  "ship_days_cells": 1468,
+  "noaa_cells": 1215,
+  "jaccard": 0.222,
+  "ship_days_cells_in_noaa_T": 0.332,
+  "noaa_T_cells_in_ship_days": 0.402
+ },
+ "ship_days": {
+  "2": {
+   "route_cells": 10744,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 27.3,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 5.8,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "3": {
+   "route_cells": 5858,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 98.8,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 129.3,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "4": {
+   "route_cells": 3446,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 100.6,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 131.4,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "6": {
+   "route_cells": 1468,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 26.2,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 116.7,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 147.1,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "8": {
+   "route_cells": 828,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 61.6,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 161.6,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 192.6,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "12": {
+   "route_cells": 376,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 85.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 189.3,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 220.8,
+     "connected_to_hub": false
+    }
+   }
+  }
+ },
+ "unique_ships": {
+  "1": {
+   "route_cells": 22156,
+   "ports_within_2km": 3,
+   "ports_connected_to_hub": 2,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": true
+    },
+    "Tinian": {
+     "km": 18.2,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 0.1,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "2": {
+   "route_cells": 9429,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 9.1,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 28.3,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 5.8,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "3": {
+   "route_cells": 4287,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 19.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 98.8,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 129.3,
+     "connected_to_hub": false
+    }
+   }
+  },
+  "4": {
+   "route_cells": 2177,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 28.3,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 107.3,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 137.7,
+     "connected_to_hub": false
+    }
+   }
+  }
+ },
+ "noaa": {
+  "1": {
+   "route_cells": 38314,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 2,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": true
+    },
+    "Tinian": {
+     "km": 22.1,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 7.3,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.038
+  },
+  "2": {
+   "route_cells": 22444,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 2,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": true
+    },
+    "Tinian": {
+     "km": 27.0,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 7.3,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.065
+  },
+  "3": {
+   "route_cells": 11416,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 2,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": true
+    },
+    "Tinian": {
+     "km": 104.8,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 134.8,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.119
+  },
+  "5": {
+   "route_cells": 3216,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 104.8,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 136.9,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.242
+  },
+  "8": {
+   "route_cells": 1215,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 104.8,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 136.9,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.222
+  },
+  "10": {
+   "route_cells": 852,
+   "ports_within_2km": 2,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 0.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 104.8,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 136.9,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.193
+  },
+  "15": {
+   "route_cells": 469,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 21.4,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 123.6,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 155.2,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.122
+  },
+  "20": {
+   "route_cells": 303,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 28.7,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 131.5,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 163.2,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.087
+  },
+  "30": {
+   "route_cells": 157,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 54.9,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 158.7,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 190.4,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.052
+  },
+  "50": {
+   "route_cells": 63,
+   "ports_within_2km": 1,
+   "ports_connected_to_hub": 1,
+   "ports": {
+    "Apra Harbor": {
+     "km": 0.2,
+     "connected_to_hub": true
+    },
+    "Rota": {
+     "km": 71.5,
+     "connected_to_hub": false
+    },
+    "Tinian": {
+     "km": 175.6,
+     "connected_to_hub": false
+    },
+    "Saipan": {
+     "km": 207.3,
+     "connected_to_hub": false
+    }
+   },
+   "jaccard_with_ship_days_K": 0.03
+  }
+ },
+ "near_port_cells": {
+  "Apra Harbor": {
+   "ais_ship_days_ge1": 257,
+   "ais_max": 318,
+   "noaa_ge1": 404,
+   "noaa_max": 4549,
+   "noaa_ge_T": 349
+  },
+  "Rota": {
+   "ais_ship_days_ge1": 116,
+   "ais_max": 5,
+   "noaa_ge1": 275,
+   "noaa_max": 13,
+   "noaa_ge_T": 1
+  },
+  "Tinian": {
+   "ais_ship_days_ge1": 0,
+   "ais_max": 0,
+   "noaa_ge1": 0,
+   "noaa_max": 0,
+   "noaa_ge_T": 0
+  },
+  "Saipan": {
+   "ais_ship_days_ge1": 5,
+   "ais_max": 2,
+   "noaa_ge1": 9,
+   "noaa_max": 2,
+   "noaa_ge_T": 0
+  }
+ }
+}

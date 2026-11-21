@@ -42,6 +42,8 @@ In the 104 sampled days, large-ship cells near Saipan number 5 within 15 km
 ship-days threshold connects Saipan or Tinian, so the "Add the Marianas"
 request needs a gap-filler for those lanes, like the St. Lawrence layer.
 
+**G3 route-rule comparison (done November 21, 2026):** `python/guam_route_rules.py` applies K = 6 and T = 8 (lower-48 calibration) to Guam with the 2025 NOAA raster. Jaccard 0.22; NOAA shows no Saipan or Tinian lane either; no NOAA threshold reaches more than 2 of 4 ports. Output `outputs/guam/guam_route_rules_rev1.json`.
+
 **G3 (decided November 21, 2026): accept the straight-line link cells** (`cnmi_links=true`) so Saipan, Tinian, and Rota connect. The paper says they are an assumption, not AIS.
 
 ## Steps
