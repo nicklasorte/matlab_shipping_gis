@@ -274,3 +274,8 @@ phase:
 - Nov 21 (later): `guam_cnmi_links_rev1.m` (MATLAB twin) and `test_guam_links_rev1.m` pass on the Mac and match the Python CSV exactly (231 cells); `checkcode` clean. Paper rev 680. Mac clone merged to the latest main (old sensitivity logs moved to `~/github-runs/mac_logs_20261121_old/`).
 - Still open: Python cross-check of zones, held-out days (G5) and G1 in-grid counts, NGA World Port Index check, snap link ends to water (needs rerun and Nick's OK), Word copy rebuild (last at rev 674), header grid comment in `init_shipping_zone_guam_rev1.m`.
 - Nov 21 (later): Word copy rebuilt at paper rev 680 (67 SEQ captions, 0 missing images). Nick reviews before it leaves the repo.
+
+## Status update, November 22 (EMC working paper started)
+
+- New working paper (Claude Doc) "2.7 GHz study: NEXRAD and shipborne S-band radar EMC analysis": https://claude.ai/artifact/Dcc1nD6zP3u6KuDejA6B2d. Sections 1-4 and 6 written with public characteristics (NOAA ROC NEXRAD Technical Information; ITU-R M.1849-3; ITU-R M.1460-2). Results pending.
+- Plan: `docs/plans/emc_nexrad_ship_plan_rev1.md` (steps E1-E10, MATLAB with matlab_itm area mode; Python twin of FDR and link budget). Decisions for Nick listed there.
