@@ -281,3 +281,4 @@ phase:
 - Plan: `docs/plans/emc_nexrad_ship_plan_rev1.md` (steps E1-E10, MATLAB with matlab_itm area mode; Python twin of FDR and link budget). Decisions for Nick listed there.
 - Nov 22: scope set by Nick: NEXRAD assumed to tune 3020-3080 MHz (co-channel with ship radars), ITM area mode only. Plan and paper updated.
 - Nov 22: protection-level research done (paper Section 4): NEXRAD pulsed levels from M.1849-3 8.4.2 (+7.2 to +19.8 dB peak for magnetron ship radars, -6.0 to +0.2 dB for solid-state), ship radars -6 dB recommended with no effect to +30/+40 dB measured (M.1460-2 Annex 3). Outputs `outputs/emc/pulsed_in_criteria_rev1.csv`. Base-case choice is Nick's.
+- Nov 22: main beam to main beam coupling decided. radar_in simulation run (Mac, code 6694e30, results 509f7a4): supports NEXRAD base +7.2 dB for magnetrons (sim +7.5 dB at the governing case); no ship-radar detection loss to +70 dB from NEXRAD pulses. Paper Section 4.4.

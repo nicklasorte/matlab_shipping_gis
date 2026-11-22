@@ -17,6 +17,8 @@ analysis is in MATLAB (R2025b) with ITM area mode from
   frequency 3050 MHz; 3020 and 3080 MHz as checks. NEXRAD gain scaled from
   45.5 dB at 2850 MHz by 20 log10(f) to 46.1 dB at 3050 MHz (45.5 dB as a check).
 - ITM area mode only. No point-to-point paths in this analysis.
+- Antenna coupling: main beam to main beam only (peak gains); no sidelobe or scan statistic. Step E4 reduces to the peak gains.
+- Simulation check of the protection levels done (paper Section 4.4): radar_in `run_nexrad_ship_rev1.m`, results copied to `outputs/emc/radar_in_sim/`.
 
 ## Question and outputs
 
