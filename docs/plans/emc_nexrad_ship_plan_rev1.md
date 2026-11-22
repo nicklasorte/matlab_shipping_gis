@@ -90,8 +90,7 @@ N-units; coastal land paths with terrain irregularity 30 and 90 m.
 
 ## Decisions for Nick
 
-- NEXRAD protection criterion for the base case: -10 dB (M.1849-3, aggregate) or -6 dB.
-- Whether the ship radar's pulsed tolerance (M.1460-2 Annex 3) is a base case or a sensitivity case.
+- Protection levels (paper Section 4, November 22): proposed base NEXRAD = M.1849-3 Section 8.4.2 pulsed level per interferer mode (+7.2 dB peak I/N for a magnetron, -6.0 dB for solid-state Radar No. 3B), with -10 dB as sensitivity; ship radar = -6 dB (M.1460-2), with +30 dB (Annex 3 pulsed no-effect level) as sensitivity. Computed in `python/emc_pulsed_in.py` and `emc_pulsed_in_rev1.m` (agree to 0.05 dB; test `test_emc_pulsed_in_rev1.m`), output `outputs/emc/pulsed_in_criteria_rev1.csv`.
 - Representative ship radar: the IMO magnetron range (Table 4) as base, solid-state Radar No. 3B as a second case.
 
 ## Sources
