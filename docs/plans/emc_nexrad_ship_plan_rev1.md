@@ -10,6 +10,14 @@ and at frequency offsets, so that neither interferes with the other. The
 analysis is in MATLAB (R2025b) with ITM area mode from
 [matlab_itm](https://github.com/nicklasorte/matlab_itm).
 
+**Scope decisions (Nick, November 22, 2026):**
+
+- NEXRAD is assumed to tune anywhere in 3020-3080 MHz (its published range
+  is 2700-3000 MHz), so it can be co-channel with shipborne radars. Base
+  frequency 3050 MHz; 3020 and 3080 MHz as checks. NEXRAD gain scaled from
+  45.5 dB at 2850 MHz by 20 log10(f) to 46.1 dB at 3050 MHz (45.5 dB as a check).
+- ITM area mode only. No point-to-point paths in this analysis.
+
 ## Question and outputs
 
 For each direction (NEXRAD into ship, ship into NEXRAD):
@@ -50,7 +58,7 @@ stricter than -6 dB are used only when they come from ITU-R documents.
 | E3 | FDR `emc_fdr_rev1.m` per ITU-R SM.337 (numeric integration on a common frequency grid, `trapz`); FDR against offset 0-150 MHz for both directions | FDR curves; tests: FDR(0) of identical rectangular spectra = 0 dB, on-tune rejection = 10 log10(B_tx/B_rx) for a wide rectangular emission into a narrow rectangular filter |
 | E4 | Antenna gains `emc_antenna_gain_rev1.m` (ITU-R M.1851 patterns, horizontal and vertical); coupled gain at the horizon for NEXRAD's 0.5 deg tilt and the ship's fan beam; scan statistic by Monte Carlo over rotation phases (`RandStream`, one substream per draw) | Gain cases: main-main, main-side, distribution |
 | E5 | Needed loss `emc_link_budget_rev1.m` (equation in the paper, Section 4), peak power in the victim's bandwidth | Needed-loss table by case |
-| E6 | Separation `emc_separation_rev1.m`: solve `itm_area_rev1(h_tx, h_rx, d, 0, f, p, ...) = L_req` for d with `fzero` on 1-2,000 km (sea water: epsilon 81, sigma 5 S/m; climate 7, maritime temperate over sea; horizontal polarization; confidence 50%). Report "beyond 2,000 km" when the loss is not reached | Distance table and distance-against-offset curves |
+| E6 | Separation `emc_separation_rev1.m`: solve `itm_area_rev1(h_tx, h_rx, d, 0, f, p, ...) = L_req` for d with `fzero` on 1-2,000 km (f = 3050 MHz, with 3020 and 3080 MHz checks; sea water: epsilon 81, sigma 5 S/m; climate 7, maritime temperate over sea; horizontal polarization; confidence 50%). Report "beyond 2,000 km" when the loss is not reached | Distance table and distance-against-offset curves |
 | E7 | Driver `init_emc_nexrad_ship_rev1.m` (cases, sensitivity loops, writes `outputs/emc/` CSVs and a run log with the commit of this repo and of matlab_itm) | Outputs, `outputs/rerun_logs_<date>/emc_*.log` |
 | E8 | Python twin of E2, E3, and E5 (`python/emc_fdr.py`, `python/emc_link_budget.py`); agree with MATLAB within 0.01 dB. ITM itself is covered by matlab_itm's C++ match tests | Twin, comparison log |
 | E9 | Figures (MATLAB, NTIA style; alt text) and paper Section 5 | Figures, paper text |
@@ -76,9 +84,6 @@ N-units; coastal land paths with terrain irregularity 30 and 90 m.
 
 ## Later steps (not in this plan)
 
-- ITM point-to-point from each coastal NEXRAD to the shipping route cells in
-  this repo, so the distances become a list of NEXRAD sites with route cells
-  inside the needed separation.
 - Several ships near one NEXRAD (aggregate).
 - Feed the distance-against-offset curves to the retuning work
   (`2dot7_agent_retuning`).

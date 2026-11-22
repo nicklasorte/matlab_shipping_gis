@@ -279,3 +279,4 @@ phase:
 
 - New working paper (Claude Doc) "2.7 GHz study: NEXRAD and shipborne S-band radar EMC analysis": https://claude.ai/artifact/Dcc1nD6zP3u6KuDejA6B2d. Sections 1-4 and 6 written with public characteristics (NOAA ROC NEXRAD Technical Information; ITU-R M.1849-3; ITU-R M.1460-2). Results pending.
 - Plan: `docs/plans/emc_nexrad_ship_plan_rev1.md` (steps E1-E10, MATLAB with matlab_itm area mode; Python twin of FDR and link budget). Decisions for Nick listed there.
+- Nov 22: scope set by Nick: NEXRAD assumed to tune 3020-3080 MHz (co-channel with ship radars), ITM area mode only. Plan and paper updated.
