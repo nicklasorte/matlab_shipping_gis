@@ -1,0 +1,15 @@
+victim,victim_mode,interferer,pulse_us,prf_hz,duty_cycle_pct,f_c,peak_IN_dB,basis
+NEXRAD,NEXRAD short pulse (1.57 us gate),"Ship magnetron, shortest pulse",0.05,4000.0,0.02,0.00648,11.9,M.1849-3 8.4.2
+NEXRAD,NEXRAD short pulse (1.57 us gate),"Ship magnetron, longest pulse",1.2,375.0,0.045,0.00104,19.8,M.1849-3 8.4.2
+NEXRAD,NEXRAD short pulse (1.57 us gate),"Solid-state 3B, short (unmodulated)",0.1,83333.3,0.8333,0.13917,-1.4,M.1849-3 8.4.2
+NEXRAD,NEXRAD short pulse (1.57 us gate),"Solid-state 3B, medium (unmodulated)",5.0,15625.0,7.8125,0.10266,-0.1,M.1849-3 8.4.2
+NEXRAD,NEXRAD short pulse (1.57 us gate),"Solid-state 3B, long (unmodulated)",33.0,2739.7,9.0411,0.09471,0.2,M.1849-3 8.4.2
+NEXRAD,NEXRAD long pulse (4.71 us gate),"Ship magnetron, shortest pulse",0.05,4000.0,0.02,0.01904,7.2,M.1849-3 8.4.2
+NEXRAD,NEXRAD long pulse (4.71 us gate),"Ship magnetron, longest pulse",1.2,375.0,0.045,0.00222,16.5,M.1849-3 8.4.2
+NEXRAD,NEXRAD long pulse (4.71 us gate),"Solid-state 3B, short (unmodulated)",0.1,83333.3,0.8333,0.40083,-6.0,M.1849-3 8.4.2
+NEXRAD,NEXRAD long pulse (4.71 us gate),"Solid-state 3B, medium (unmodulated)",5.0,15625.0,7.8125,0.15172,-1.8,M.1849-3 8.4.2
+NEXRAD,NEXRAD long pulse (4.71 us gate),"Solid-state 3B, long (unmodulated)",33.0,2739.7,9.0411,0.10332,-0.1,M.1849-3 8.4.2
+Ship radar,IF 2.5-28 MHz (pulse not stretched),"NEXRAD short pulse, 1,304 Hz",1.57,1304.0,0.2047,,-6 (recommended); no effect to +30/+40 measured,M.1460-2 recommends 3; Annex 3 Table 10
+Ship radar,IF 2.5-28 MHz (pulse not stretched),"NEXRAD short pulse, 318 Hz",1.57,318.0,0.0499,,-6 (recommended); no effect to +30/+40 measured,M.1460-2 recommends 3; Annex 3 Table 10
+Ship radar,IF 2.5-28 MHz (pulse not stretched),"NEXRAD long pulse, 452 Hz",4.71,452.0,0.2129,,-6 (recommended); no effect to +30/+40 measured,M.1460-2 recommends 3; Annex 3 Table 10
+Ship radar,IF 2.5-28 MHz (pulse not stretched),"NEXRAD long pulse, 318 Hz",4.71,318.0,0.1498,,-6 (recommended); no effect to +30/+40 measured,M.1460-2 recommends 3; Annex 3 Table 10
