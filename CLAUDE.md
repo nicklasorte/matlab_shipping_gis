@@ -10,7 +10,9 @@ MATLAB (with Python twins) code that builds large-ship routes from public AIS
 data and draws frequency-dependent zones around them for the 2.7 GHz study
 (2900–3100 MHz, shipborne S-band radar). Regions: lower 48, Hawaii, Puerto Rico
 and the U.S. Virgin Islands, and Alaska. The working paper is a Claude Doc; the
-Word copy is `docs/2.7GHz_Routes_and_Zones_Sections_DRAFT.docx`.
+Word copy is `docs/2.7GHz_Routes_and_Zones_Sections_DRAFT.docx`. A separate EMC
+working paper (NEXRAD and shipborne S-band radars, ITM area mode) lives in
+`docs/emc/` (see `docs/emc/README.md`).
 
 ## Start of every session
 
