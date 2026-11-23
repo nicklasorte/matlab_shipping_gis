@@ -41,8 +41,9 @@ writetable(S, fullfile(out_dir, "cochannel_separation_rev1.csv"));
 
 %% ITM checks: loss against free space, and monotone trend
 lfs = 32.45 + 20*log10(P.analysis.f_mhz) + 20*log10(d_km);
-C = table(p_pct', min(L - lfs)', d_km(arrayfun(@(p) find(L(:, p) - lfs == min(L(:, p) - lfs), 1), 1:numel(p_pct)))', ...
-    L(end, :)', 'VariableNames', {'time_pct', 'min_loss_minus_free_space_db', 'at_km', 'loss_at_2000km_db'});
+[excess_min, idx] = min(L - lfs);
+C = table(p_pct(:), excess_min(:), d_km(idx(:)), L(end, :)', 'VariableNames', ...
+    {'time_pct', 'min_loss_minus_free_space_db', 'at_km', 'loss_at_2000km_db'});
 writetable(C, fullfile(out_dir, "cochannel_itm_check_rev1.csv"));
 disp(C)
 
