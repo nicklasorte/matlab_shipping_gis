@@ -231,6 +231,33 @@ Neither radar points its beam at the other for long, so the analysis treats the 
 - **Ship radars:** M.1851-2 rectangular-aperture fan beams with the beamwidths and sidelobes of M.1460-2 Table 4 (magnetron: 1.9° by 24°, sidelobes 23 dB down within 10° and 31 dB beyond) and Table 1 (Radar No. 3B: 2° by 26.5°, sidelobes 28 dB down), rotating.
 - **Takeoff angles:** on a sea path beyond the radio horizon (45 km for two 30 m antennas), energy leaves each antenna along its horizon ray, 0.15° below horizontal; inside the horizon, along the direct ray. NEXRAD's lowest cut is 0.5°, so even aimed along the path, its gain toward the ship is 6.8 dB below peak at 3050 MHz.
 
+**What mutual antenna gain is.** Each radar's antenna gain toward the other radar changes from moment to moment as the beams scan. The mutual antenna gain (MAG) is the sum of the two gains in dB at the same instant, each taken at its antenna's takeoff angle:
+
+```latex
+MAG(t) = G_N(t) + G_S(t)
+```
+
+Here G\_N(t) is NEXRAD's gain toward the ship and G\_S(t) is the ship antenna's gain toward NEXRAD, both in dBi. MAG takes the place of G\_t + G\_r in the link budget of Section 5, so the interference reaching the victim rises and falls with it. Main beam to main beam is the special case in which both gains sit at their peaks at the same moment, all the time: 46.1 + 28 = 74.1 dBi for NEXRAD and the IMO magnetron radar.
+
+**One antenna's gain over time.** A mechanically rotating antenna points uniformly in azimuth over each revolution, so the share of time its gain toward the other radar exceeds a value follows from its pattern alone: it is the share of the revolution during which the other radar sits in the part of the pattern above that value. NEXRAD also steps through elevation cuts, so each cut is weighted by how long the VCP dwells there, and at each gain the worst of the 216 modes is kept. Figure 2 (left) shows the result at 3050 MHz beyond the radio horizon:
+
+- **NEXRAD** sits at its far-sidelobe floor (6.1 dBi, 40 dB below peak) most of the time. Its gain toward the ship exceeds 17.1 dBi 1% of the time and 37.4 dBi 0.1% of the time. Its largest value along the horizon ray is 39.3 dBi, 6.8 dB below its 46.1 dBi peak, because its lowest cut points 0.65° above the ray.
+- **The magnetron fan beam** sits at its floor (-3.0 dBi, 31 dB below peak) most of the time. Its gain toward NEXRAD exceeds 14.8 dBi 1% of the time and 27.9 dBi 0.1% of the time; its 1.9° beam faces NEXRAD for about 0.5% of each revolution. The solid-state fan beam behaves almost the same (16.0 dBi and 27.5 dBi).
+
+**Combining the two antennas.** In the random mode of Rec. ITU-R M.2069-0, Annex 1, the two antennas point independently of each other. The share of time MAG exceeds a value is then the convolution of the two single-antenna distributions: every pairing of a NEXRAD gain g with a ship gain above m - g, weighted by how often that NEXRAD gain occurs:
+
+```latex
+P(MAG > m) = \sum_{g} p_N(g) \, P(G_S > m - g)
+```
+
+Here p\_N(g) is the share of time NEXRAD's gain equals g. The mutual\_antenna\_gain code (`gain_dist_table_rev1`, `mag_pair_cdf_rev1`) computes this exactly on a 0.05 dB grid, without Monte Carlo sampling, and rounds every gain up to the next grid point, so each percentile is conservative by at most 0.1 dB. The repository checks the result against a random-mode Monte Carlo run (`validate_mag_lookup_rev1`).
+
+**What the pair sees.** Figure 2 (right) gives the result. The NEXRAD-magnetron coupling exceeds 27.4 dBi 1% of the time, 35.9 dBi 0.1% of the time, and 45.0 dBi 0.01% of the time; its largest value is 67.3 dBi, with both beams aimed along the path. Main beam to main beam assumes 74.1 dBi all the time, 47 dB more than the level exceeded 1% of the time. For NEXRAD and the solid-state radar, the values are 28.0 dBi, 38.3 dBi, and 44.5 dBi, and 66.8 dBi at most. Because the coupling sets how often each level of interference occurs, rather than a fixed level, it can't enter the link budget as a single number of dB; the analysis combines its distribution with ITM's time variability instead.
+
+&#91;image: Two step charts on a logarithmic time axis at 3050 MHz, beyond the radio horizon. Left: the share of time each antenna's gain toward the other radar exceeds a value. NEXRAD stays at its 6.1 dBi floor most of the time, exceeds 17.1 dBi 1% of the time, and reaches at most 39.3 dBi; the magnetron and solid-state fan beams stay at their floors near -3 and -0.5 dBi and exceed about 15-16 dBi 1% of the time, up to their 28 and 27.5 dBi peaks. Right: the mutual antenna gain of each pair, the sum of the two gains, stays near its 3-6 dBi floor most of the time, exceeds about 27-28 dBi 1% of the time and 36-38 dBi 0.1% of the time, and reaches about 61 dBi at 0.001% of the time, far below the 74.1 dBi main beam to main beam sum marked by a dashed line.\]
+
+**Figure 2. Share of time each antenna's gain toward the other radar, and each pair's mutual antenna gain, exceeds a value, at 3050 MHz beyond the radio horizon.** Both antennas at their horizon-ray takeoff angles (-0.15°); NEXRAD the worst of its 216 VCP modes at each gain; ship antennas rotating. Ship gains include the antenna's peak gain (28 dBi magnetron, 27.5 dBi solid state). The dashed line is the main beam to main beam sum. Source: `outputs/emc/mag_components_3050_rev1.csv` (run log `outputs/rerun_logs_20261123/emc_mag_components.log`); code `emc_mag_components_rev1.m` and `plot_emc_mag_rev1.m`.
+
 The mutual antenna gain and the path loss vary independently, so the analysis combines them. At each distance, the share of time with interference is the sum, over the mutual antenna gain distribution, of the share of time that ITM's loss falls below the required loss with that gain (`emc_joint_rev1.m`, with ITM time percentages from 0.001% to 99.999%). Each separation is the largest distance at which that share exceeds 10%, 1%, or 0.1%.
 
 The strongest coupling, both beams aimed along the path in azimuth with NEXRAD at its lowest cut, would need 909 km for 50% of the time for NEXRAD into the magnetron radar (`coupling_envelope_rev1.csv`). It occurs too rarely to set the distance: the coupling comes within 38 dB of that peak only 0.1% of the time, because a 0.9° NEXRAD beam and a 1.9° ship beam seldom point at each other. NEXRAD's lowest cut matters most among the antenna inputs: at a site that scans down to 0.0°, its gain along the horizon ray is only 0.4 dB below peak instead of 6.8 dB (`coupling_sensitivity_rev1.csv`).
@@ -245,7 +272,7 @@ NEXRAD's tuned frequency is swept from 2800 to 3100 MHz in 5 MHz steps. Each shi
 
 &#91;image: Two line charts of separation distance for interference no more than 1% of the time against NEXRAD tuned frequency from 2800 to 3100 MHz, with both radars scanning and each ship radar at its closest tuning. Left, ship radar into NEXRAD at NEXRAD's pulsed level: magnetron radars need 224 km inside 3020-3080 MHz, 59 km at 3000 MHz, and less than 45 km below 2950 MHz; the solid-state radar forms a sawtooth between about 270 and 406 km from 2930 to 3070 MHz and falls to about 72 km below 2860 MHz. Right, NEXRAD into ship radar at -6 dB: 480 km (magnetron) inside the band, falling to 312 km at 3000 MHz and about 61-70 km below 2900 MHz; the solid-state sawtooth peaks at 608-612 km at each channel center and falls to about 71 km. Dashed lines show the other protection level. A shaded band marks 3020-3080 MHz and a dotted line marks 3000 MHz, the top of NEXRAD's published range.\]
 
-**Figure 2. Separation for interference no more than 1% of the time against NEXRAD tuned frequency, both radars scanning, ITM area mode.** Solid lines use each victim's base protection level; dashed lines use the other level. The shaded band is the magnetron tuning range. Source: `outputs/emc/stat_envelope_sweep_rev1.csv` (column `d_km_q1`); figure code `plot_emc_nexrad_sweep_rev1.m` (`coupling="q1"`).
+**Figure 3. Separation for interference no more than 1% of the time against NEXRAD tuned frequency, both radars scanning, ITM area mode.** Solid lines use each victim's base protection level; dashed lines use the other level. The shaded band is the magnetron tuning range. Source: `outputs/emc/stat_envelope_sweep_rev1.csv` (column `d_km_q1`); figure code `plot_emc_nexrad_sweep_rev1.m` (`coupling="q1"`).
 
 | NEXRAD frequency | Magnetron into NEXRAD (pulsed level) | Solid state into NEXRAD (pulsed level) | NEXRAD into magnetron (-6 dB) | NEXRAD into solid state (-6 dB) |
 | --- | --- | --- | --- | --- |
