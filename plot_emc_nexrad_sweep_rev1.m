@@ -4,12 +4,24 @@ function out = plot_emc_nexrad_sweep_rev1(opts)
 %   the mode pairs, each ship mode at its closest tuning) and writes docs/emc/fig_nexrad_sweep_rev1.png
 %   (300 dpi) and .pdf, with alt text in .alt.txt. The shaded band is the magnetron tuning range
 %   (3020-3080 MHz); the dotted line is the top of NEXRAD's published range (3000 MHz).
+%   opts.coupling: "main_beam" (default; nexrad_sweep_envelope_rev1.csv) or a level of coupling_envelope_rev1.csv
+%   ("peak", "p99.9", "p99", "p90"; init_emc_coupling_rev1), written to fig_nexrad_sweep_<level>_rev1.
 arguments
-    opts.out_base (1,1) string = fullfile(fileparts(mfilename("fullpath")), "docs", "emc", "fig_nexrad_sweep_rev1")
+    opts.coupling (1,1) string {mustBeMember(opts.coupling, ["main_beam", "peak", "p99.9", "p99", "p90"])} = "main_beam"
+    opts.out_base (1,1) string = ""
     opts.visible (1,1) string {mustBeMember(opts.visible, ["on", "off"])} = "off"
 end
 here = fileparts(mfilename("fullpath"));
-E = readtable(fullfile(here, "outputs", "emc", "nexrad_sweep_envelope_rev1.csv"), "TextType", "string");
+if opts.coupling == "main_beam"
+    E = readtable(fullfile(here, "outputs", "emc", "nexrad_sweep_envelope_rev1.csv"), "TextType", "string");
+    if opts.out_base == "", opts.out_base = fullfile(here, "docs", "emc", "fig_nexrad_sweep_rev1"); end
+else
+    E = readtable(fullfile(here, "outputs", "emc", "coupling_envelope_rev1.csv"), "TextType", "string");
+    E = E(E.coupling == opts.coupling, :);
+    if opts.out_base == ""
+        opts.out_base = fullfile(here, "docs", "emc", "fig_nexrad_sweep_" + replace(opts.coupling, ".", "_") + "_rev1");
+    end
+end
 panels = {"ship to NEXRAD", "Ship radar into NEXRAD", ["NEXRAD pulsed", "NEXRAD constant"], ["pulsed level", "-10 dB"]
           "NEXRAD to ship", "NEXRAD into ship radar", ["ship -6 dB", "ship 30 dB"], ["-6 dB", "+30 dB"]};
 gray = [0.541 0.553 0.569]; dark = [31 42 68] / 255;
@@ -47,15 +59,22 @@ end
 out = opts.out_base;
 exportgraphics(fig, out + ".png", Resolution=300);
 exportgraphics(fig, out + ".pdf", ContentType="vector");
-writelines(emc_sweep_alt(E), out + ".alt.txt");
+writelines(emc_sweep_alt(E, opts.coupling), out + ".alt.txt");
 close(fig);
 end
 
-function s = emc_sweep_alt(E)
+function s = emc_sweep_alt(E, coupling)
 % Alt text with the end-point values read from the envelope.
 v = @(d, sys, pr, f) round(E.d_km_p50(E.direction == d & E.system == sys & E.protection == pr & E.f_nexrad_mhz == f));
+if coupling == "main_beam"
+    cpl = 'main beam to main beam';
+elseif coupling == "peak"
+    cpl = 'both beams aimed along the path, NEXRAD at its lowest tilt seen along the horizon ray';
+else
+    cpl = sprintf('antenna coupling exceeded %g%%%% of the time with both radars scanning', 100 - str2double(extractAfter(coupling, "p")));
+end
 s = sprintf(['Two line charts of separation distance for 50%% of the time against NEXRAD tuned frequency from ' ...
-    '2800 to 3100 MHz, main beam to main beam, with each ship radar at its closest tuning. Left, ship radar into ' ...
+    '2800 to 3100 MHz, ' cpl ', with each ship radar at its closest tuning. Left, ship radar into ' ...
     'NEXRAD at NEXRAD''s pulsed protection level: magnetron radars need %d km at 2800 MHz and %d km at 3050 MHz; ' ...
     'the solid-state radar needs %d km and %d km. Right, NEXRAD into ship radar at -6 dB: %d km and %d km ' ...
     '(magnetron), %d km and %d km (solid state). Dashed lines show the other protection level. A shaded band ' ...
