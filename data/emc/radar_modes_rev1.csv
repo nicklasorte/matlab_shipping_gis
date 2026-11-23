@@ -1,17 +1,17 @@
-system,mode,pulse_us,prf_hz,peak_kw,gain_dbi,if_mhz,nf_db,tx_bw_mhz,otr_k,source,note
-magnetron,T4 shortest,0.05,4000,75,28,28,3,8,20,ITU-R M.1460-2 Table 4,IMO category; shortest pulse with highest PRF (note 1); widest IF and lowest NF paired as the strict case; 8 MHz published -3 dB emission bandwidth
-magnetron,T4 longest,1.2,375,75,28,2.5,3,0.833,20,ITU-R M.1460-2 Table 4,longest pulse with lowest PRF; narrowest IF; tx bandwidth 1/pulse width (derived)
-magnetron,A 0.08,0.08,2200,30,28,28,4,8,20,ITU-R M.1460-2 Table 5,gain not given (Table 4 maximum); tx bandwidth min(1/pulse width; 8 MHz)
-magnetron,A 0.30,0.30,2200,30,28,3,4,3.333,20,ITU-R M.1460-2 Table 5,gain from Table 4
-magnetron,A 0.60,0.60,1028,30,28,3,4,1.667,20,ITU-R M.1460-2 Table 5,gain from Table 4
-magnetron,A 1.2,1.2,600,30,28,3,4,0.833,20,ITU-R M.1460-2 Table 5,gain from Table 4
-magnetron,B 0.070,0.070,3100,30,28,22,5.5,8,20,ITU-R M.1460-2 Table 6,gain from Table 4
-magnetron,B 0.175,0.175,1550,30,28,22,5.5,5.714,20,ITU-R M.1460-2 Table 6,gain from Table 4
-magnetron,B 0.85,0.85,775,30,28,6,5.5,1.176,20,ITU-R M.1460-2 Table 6,gain from Table 4
-magnetron,B 1.0,1.0,390,30,28,6,5.5,1.0,20,ITU-R M.1460-2 Table 6,gain from Table 4
-magnetron,C 0.050,0.050,1800,30,28,20,4,8,20,ITU-R M.1460-2 Table 7,gain from Table 4
-magnetron,C 0.25,0.25,1800,30,28,20,4,4,20,ITU-R M.1460-2 Table 7,gain from Table 4
-magnetron,C 0.80,0.80,785,30,28,3,4,1.25,20,ITU-R M.1460-2 Table 7,gain from Table 4
-solid_state,3B 0.1,0.1,83333.33,170,27.5,15,3,10,20,ITU-R M.1460-2 Table 1 Radar No. 3B,unmodulated short pulse (PRI 12 us); NF not given (Table 4 minimum); IF paired in listed order
-solid_state,3B 5,5,15625,170,27.5,0.3,3,3,10,ITU-R M.1460-2 Table 1 Radar No. 3B,FM pulse (PRI 64 us); 3 MHz of the listed 15 or 3 MHz (smaller rejection); OTR K = 10 for a spread pulse; IF paired in listed order
-solid_state,3B 33,33,2739.73,170,27.5,0.045,3,3,10,ITU-R M.1460-2 Table 1 Radar No. 3B,FM pulse (PRI 365 us); 3 MHz; IF paired in listed order
+system,mode,pulse_us,prf_hz,peak_kw,gain_dbi,if_mhz,nf_db,tx_bw_mhz,otr_k,source,note,f_lo_mhz,f_hi_mhz,f_step_mhz,band_source
+magnetron,T4 shortest,0.05,4000,75,28,28,3,8,20,ITU-R M.1460-2 Table 4,IMO category; shortest pulse with highest PRF (note 1); widest IF and lowest NF paired as the strict case; 8 MHz published -3 dB emission bandwidth,3020,3080,0,M.1460-2 Table 4: 3020-3080 MHz
+magnetron,T4 longest,1.2,375,75,28,2.5,3,0.833,20,ITU-R M.1460-2 Table 4,longest pulse with lowest PRF; narrowest IF; tx bandwidth 1/pulse width (derived),3020,3080,0,M.1460-2 Table 4: 3020-3080 MHz
+magnetron,A 0.08,0.08,2200,30,28,28,4,8,20,ITU-R M.1460-2 Table 5,gain not given (Table 4 maximum); tx bandwidth min(1/pulse width; 8 MHz),3020,3080,0,Table 5: 3050 +/- 30 MHz
+magnetron,A 0.30,0.30,2200,30,28,3,4,3.333,20,ITU-R M.1460-2 Table 5,gain from Table 4,3020,3080,0,Table 5: 3050 +/- 30 MHz
+magnetron,A 0.60,0.60,1028,30,28,3,4,1.667,20,ITU-R M.1460-2 Table 5,gain from Table 4,3020,3080,0,Table 5: 3050 +/- 30 MHz
+magnetron,A 1.2,1.2,600,30,28,3,4,0.833,20,ITU-R M.1460-2 Table 5,gain from Table 4,3020,3080,0,Table 5: 3050 +/- 30 MHz
+magnetron,B 0.070,0.070,3100,30,28,22,5.5,8,20,ITU-R M.1460-2 Table 6,gain from Table 4,3040,3060,0,Table 6: 3050 +/- 10 MHz
+magnetron,B 0.175,0.175,1550,30,28,22,5.5,5.714,20,ITU-R M.1460-2 Table 6,gain from Table 4,3040,3060,0,Table 6: 3050 +/- 10 MHz
+magnetron,B 0.85,0.85,775,30,28,6,5.5,1.176,20,ITU-R M.1460-2 Table 6,gain from Table 4,3040,3060,0,Table 6: 3050 +/- 10 MHz
+magnetron,B 1.0,1.0,390,30,28,6,5.5,1.0,20,ITU-R M.1460-2 Table 6,gain from Table 4,3040,3060,0,Table 6: 3050 +/- 10 MHz
+magnetron,C 0.050,0.050,1800,30,28,20,4,8,20,ITU-R M.1460-2 Table 7,gain from Table 4,3040,3060,0,Table 7: 3050 +/- 10 MHz
+magnetron,C 0.25,0.25,1800,30,28,20,4,4,20,ITU-R M.1460-2 Table 7,gain from Table 4,3040,3060,0,Table 7: 3050 +/- 10 MHz
+magnetron,C 0.80,0.80,785,30,28,3,4,1.25,20,ITU-R M.1460-2 Table 7,gain from Table 4,3040,3060,0,Table 7: 3050 +/- 10 MHz
+solid_state,3B 0.1,0.1,83333.33,170,27.5,15,3,10,20,ITU-R M.1460-2 Table 1 Radar No. 3B,unmodulated short pulse (PRI 12 us); NF not given (Table 4 minimum); IF paired in listed order,2930,3070,20,Table 1: 8 channels of 20 MHz from 2920 to 3080 MHz (centers 2930-3070)
+solid_state,3B 5,5,15625,170,27.5,0.3,3,3,10,ITU-R M.1460-2 Table 1 Radar No. 3B,FM pulse (PRI 64 us); 3 MHz of the listed 15 or 3 MHz (smaller rejection); OTR K = 10 for a spread pulse; IF paired in listed order,2930,3070,20,Table 1: 8 channels of 20 MHz from 2920 to 3080 MHz (centers 2930-3070)
+solid_state,3B 33,33,2739.73,170,27.5,0.045,3,3,10,ITU-R M.1460-2 Table 1 Radar No. 3B,FM pulse (PRI 365 us); 3 MHz; IF paired in listed order,2930,3070,20,Table 1: 8 channels of 20 MHz from 2920 to 3080 MHz (centers 2930-3070)
