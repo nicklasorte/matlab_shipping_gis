@@ -1,0 +1,30 @@
+system,parameter,value,unit,low,high,source,table_or_page,note
+nexrad,peak_power_kw,750,kW,650,750,NOAA ROC NEXRAD Technical Information,Transmitter,at the transmitter measurement port
+nexrad,tx_line_loss_db,2.0,dB,1.5,2.5,NOAA ROC NEXRAD Technical Information,Transmitter,transmitter to antenna; depends on tower height
+nexrad,gain_dbi,46.1,dBi,45.5,46.1,NOAA ROC NEXRAD Technical Information,Antenna,45.5 dB at 2850 MHz with radome loss; scaled by 20*log10(3050/2850) = +0.59 dB (derived)
+nexrad,nf_db,2.6,dB,2.6,2.7,NOAA ROC NEXRAD Technical Information,Receiver,system noise figure; 2.7 dB in ITU-R M.1849-3 Table 6
+nexrad,rx_bw_short_khz,636,kHz,636,714,NOAA ROC NEXRAD Technical Information,Receiver,digital matched filter short pulse; 714 kHz IF in M.1849-3
+nexrad,rx_bw_long_khz,212,kHz,212,212,NOAA ROC NEXRAD Technical Information,Receiver,digital matched filter long pulse
+nexrad,rx_line_loss_db,0,dB,0,2.5,NOAA ROC NEXRAD Technical Information,Receiver,noise referenced at the antenna port (ROC MDS is at the antenna port) so no separate receive loss
+nexrad,pulse_short_us,1.57,us,1.52,1.62,NOAA ROC NEXRAD Technical Information,Transmitter,nominal midpoint
+nexrad,pulse_long_us,4.71,us,4.61,4.81,NOAA ROC NEXRAD Technical Information,Transmitter,nominal midpoint
+nexrad,prf_short_hz,1304,Hz,318,1304,NOAA ROC NEXRAD Technical Information,Transmitter,highest duty cycle
+nexrad,prf_long_hz,452,Hz,318,452,NOAA ROC NEXRAD Technical Information,Transmitter,highest duty cycle
+nexrad,tx_bw_short_mhz,0.6,MHz,0.6,0.637,ITU-R M.1849-3,Table 6 Radar 1,-3 dB emission bandwidth
+nexrad,tx_bw_long_mhz,0.212,MHz,0.204,0.212,derived,1/pulse width,no published -3 dB value for the long pulse
+nexrad,height_m,30,m,10,35,NOAA ROC NEXRAD Technical Information,Antenna,10 to 35 m above ground; 30 m base (Rep. ITU-R M.2136 Annex 1 test radar)
+nexrad,in_constant_db,-10,dB,-10,-10,ITU-R M.1849-3,recommends 2,constant interference; pulsed level from section 8.4.2
+ship,height_m,30,m,10,50,ITU-R M.1460-2,Table 4,typically 10 to 50 m; 30 m base
+ship,tx_line_loss_db,0,dB,0,0,not given,M.1460-2,no published value; 0 dB is the strict case
+ship,rx_line_loss_db,0,dB,0,0,not given,M.1460-2,no published value; 0 dB is the strict case
+ship,in_db,-6,dB,-6,-6,ITU-R M.1460-2,recommends 3,base protection level (Nick: base unless changed)
+ship,in_pulsed_db,30,dB,30,40,ITU-R M.1460-2,Annex 3 Table 10,lowest no-effect level measured for pulsed interference; sensitivity case
+analysis,f_mhz,3050,MHz,3020,3080,EMC working paper,Section 1,NEXRAD assumed to tune 3020-3080 MHz
+analysis,climate,7,code,5,7,ITM,radio climate,7 maritime temperate over sea; 5 continental temperate as sensitivity
+analysis,n0,301,N-units,301,350,ITM,surface refractivity,350 as sensitivity
+analysis,epsilon,81,-,81,81,ITM,ground constants,sea water
+analysis,sigma,5,S/m,5,5,ITM,ground constants,sea water
+analysis,delta_h_m,0,m,0,90,ITM,terrain irregularity,0 sea path; 30 and 90 coastal sensitivity
+analysis,polarization,0,code,0,0,ITM,polarization,horizontal (ship radars horizontal; NEXRAD dual)
+analysis,mdvar,13,code,13,13,ITM,mode of variability,broadcast without location variability (point-to-point convention in matlab_itm)
+analysis,confidence_pct,50,%,50,50,ITM,situation,
