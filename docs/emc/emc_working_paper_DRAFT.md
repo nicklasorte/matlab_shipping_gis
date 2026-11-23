@@ -165,7 +165,50 @@ Sensitivity cases vary one input at a time: the protection levels in Section 4.3
 
 ## 6. Results
 
-No results yet. The MATLAB analysis follows the plan in `docs/plans/emc_nexrad_ship_plan_rev1.md` in the `matlab_shipping_gis` repository. This section will hold the needed-loss table and separation distance against frequency offset for both directions.
+Co-channel and main beam to main beam, every pair of a NEXRAD and a ship radar needs hundreds of kilometers of separation: 382 to 1,125 km for 50% of the time, and up to 1,615 km for 0.1% of the time. NEXRAD interfering with the ship radar sets the longer distance for both ship radar types, at the ship radar's -6 dB protection level. These are first results for the co-channel case only; the frequency sweep comes next.
+
+### 6.1 Co-channel separation
+
+The analysis computes the required loss for every ship radar mode (13 magnetron modes from M.1460-2 Tables 4-7 and the 3 solid-state No. 3B modes) against NEXRAD's short and long pulses, in both directions: 64 pairs. On-tune rejection follows ITU-R SM.337-6, equation 6. The NEXRAD protection levels are the pulsed levels in Section 4.1; the ship radar level is -6 dB. ITM area mode uses the base settings in Section 5 at 3050 MHz, with 30 m antennas on both radars.
+
+The table gives the pair with the largest required loss for each direction and ship radar type:
+
+| Direction | Ship radar | Pair that sets the distance | Required loss | 50% of time | 10% | 1% | 0.1% |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Ship into NEXRAD | Magnetron | 1.2 µs, 375 Hz, 75 kW pulse into NEXRAD short pulse | 244.0 dB | 606 km | 746 km | 926 km | 1,061 km |
+| Ship into NEXRAD | Solid state | No. 3B 5 µs FM pulse into NEXRAD long pulse | 264.3 dB | 872 km | 1,021 km | 1,209 km | 1,349 km |
+| NEXRAD into ship | Magnetron | NEXRAD short pulse into the IMO radar's 2.5 MHz, 3 dB noise figure receiver | 273.9 dB | 1,003 km | 1,155 km | 1,346 km | 1,487 km |
+| NEXRAD into ship | Solid state | NEXRAD long pulse into No. 3B's 0.3 MHz receiver | 282.6 dB | 1,125 km | 1,279 km | 1,472 km | 1,615 km |
+
+Over all modes, the 50% distance is 382-606 km for magnetrons into NEXRAD, 639-872 km for the solid-state radar into NEXRAD, 840-1,003 km for NEXRAD into magnetron radars, and 889-1,125 km for NEXRAD into the solid-state radar. Distances are rounded to the nearest kilometer; no pair reached ITM's 1 km or 2,000 km limits.
+
+The solid-state radar needs more separation than a magnetron in both directions. Into NEXRAD, its 170 kW peak power and 8-9% duty cycle leave NEXRAD only -2 to 0 dB of pulsed tolerance, against +7 to +20 dB for a magnetron. As a victim, its 0.3 MHz receiver has low noise and passes all of NEXRAD's long pulse.
+
+### 6.2 Sensitivity
+
+For the four pairs in the table, one input changed at a time:
+
+| Change | Effect on the 50% distance |
+| --- | --- |
+| Ship radar protection +30 dB (pulsed tolerance) instead of -6 dB | NEXRAD into ship: 1,003 to 531 km (magnetron); 1,125 to 638 km (solid state) |
+| NEXRAD protection -10 dB (constant interference) instead of the pulsed level | Magnetron into NEXRAD: 606 to 1,003 km; solid state: 872 to 984 km |
+| Continental temperate climate instead of maritime over sea | 46-50 km shorter at 50% of time; 293-314 km shorter at 0.1% |
+| Surface refractivity 350 instead of 301 N-units | 44-60 km longer |
+| Antennas 10 m and 10 m, or 35 m and 50 m | Within 9 km |
+| 3020 or 3080 MHz instead of 3050 MHz | Within 2 km |
+| Coastal path, terrain irregularity 30 or 90 m | Within 3 km |
+| NEXRAD 650 kW, 2.5 dB line loss, 45.5 dB gain | 8-24 km shorter |
+| Ship line losses of 2 dB each way (assumed) | 25-28 km shorter |
+
+The protection levels move the distances far more than any propagation or equipment input does. The +30 dB ship tolerance comes from trials that found no effect at the highest level tested (Section 4.2); if accepted as the base, it roughly halves the distance in the direction that sets it.
+
+### 6.3 Checks
+
+- MATLAB and Python required losses agree to 0.01 dB for all 64 pairs (`test_emc_cochannel_rev1.m`), and a hand calculation of one pair (NEXRAD short pulse into the IMO radar's 2.5 MHz receiver, 273.87 dB) matches.
+- ITM area-mode loss falls below free-space loss by at most 0.4 dB at 50% of time and 3.2 dB at 0.1%, near 36 km, where the path passes from line of sight to diffraction. All separation distances are beyond 380 km, so this doesn't affect them.
+- matlab\_itm matches the NTIA C++ ITM to within 4 × 10^-13 dB (its own test suite); run at commit a59880a.
+
+Data: `outputs/emc/cochannel_required_loss_rev1.csv`, `cochannel_separation_rev1.csv`, `cochannel_sensitivity_rev1.csv`, and `cochannel_itm_check_rev1.csv` in matlab\_shipping\_gis; run log `outputs/rerun_logs_20261122/emc_cochannel.log` (code at 736171e). Parameters: `data/emc/radar_params_rev1.csv` and `radar_modes_rev1.csv`, each value with its source.
 
 ## 7. Limits and open questions
 
