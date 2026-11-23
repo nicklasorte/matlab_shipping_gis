@@ -36,3 +36,17 @@ nexrad,bpf_f3_mhz,25,MHz,25,25,NOAA ROC NEXRAD Technical Information,Receiver,fr
 nexrad,bpf_f4_mhz,100,MHz,100,100,NOAA ROC NEXRAD Technical Information,Receiver,front-end filter: 60 dB at +/-100 MHz; held at 60 dB beyond
 ship,if_floor_db,60,dB,60,60,ITU-R M.1460-2,Table 5 (Radar A),spurious response rejection 60 dB; used as the floor of every ship receiver's selectivity
 ship,if_poles,2,-,2,2,assumed,-,two-pole IF response (40 dB per decade) from the published 3 dB bandwidth; no published skirt
+nexrad,beamwidth_deg,0.925,deg,0.85,0.95,NOAA ROC NEXRAD Technical Information,Antenna,3 dB beamwidth at 2850 MHz; scaled by 2850/f in the coupling run (aperture fixed). NSSL 1998: 0.85-0.95 across the band
+nexrad,sidelobe_db,-29,dB,-40,-29,NOAA ROC NEXRAD Technical Information,Antenna,"First sidelobe specification, relative to peak, out to 10 deg; as in mutual_antenna_gain roc_spec"
+nexrad,far_sidelobe_db,-40,dB,-55,-29,NOAA ROC NEXRAD Technical Information,Antenna,"Sidelobe specification beyond 10 deg, relative to peak"
+nexrad,lowest_tilt_deg,0.5,deg,-0.5,0.5,NOAA ROC NEXRAD Technical Information; nexrad_vcp_rev1 (mutual_antenna_gain),VCP tables,Lowest elevation cut of every operational VCP; some sites scan lower (sensitivity)
+magnetron,az_bw_deg,1.9,deg,1.0,4.0,ITU-R M.1460-2,Table 4,"Horizontal 3 dB beamwidth, IMO category (1.0-4.0 deg); 1.9 deg with 24 deg vertical gives about 28 dBi"
+magnetron,el_bw_deg,24,deg,24,30,ITU-R M.1460-2,Table 4,Vertical 3 dB beamwidth (fan beam)
+magnetron,sidelobe_db,-23,dB,-28,-23,ITU-R M.1460-2,Table 4,Sidelobe attenuation within +/-10 deg (23-28 dB); the smaller attenuation is used
+magnetron,far_sidelobe_db,-31,dB,-32,-31,ITU-R M.1460-2,Table 4,Sidelobe attenuation outside +/-10 deg (31-32 dB)
+magnetron,tilt_deg,0,deg,0,0,ITU-R M.1460-2,Table 4,Fan beam aimed at the horizon (assumed)
+solid_state,az_bw_deg,2.0,deg,2.0,2.0,ITU-R M.1460-2,"Table 1, Radar No. 3B",2 deg in azimuth
+solid_state,el_bw_deg,26.5,deg,26.5,26.5,ITU-R M.1460-2,"Table 1, Radar No. 3B",26.5 deg in elevation
+solid_state,sidelobe_db,-28,dB,-28,-28,ITU-R M.1460-2,"Table 1, Radar No. 3B",1st sidelobe suppression at least 28 dB from peak
+solid_state,far_sidelobe_db,-28,dB,-28,-28,ITU-R M.1460-2,"Table 1, Radar No. 3B",Remote sidelobe suppression at least 28 dB from peak (bound used as the floor)
+solid_state,tilt_deg,0,deg,0,0,ITU-R M.1460-2,"Table 1, Radar No. 3B",Fan beam aimed at the horizon (assumed)
