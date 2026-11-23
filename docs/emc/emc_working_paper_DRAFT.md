@@ -12,6 +12,8 @@ The analysis runs both directions: NEXRAD into the ship radar, and the ship rada
 
 **Assumption: NEXRAD tunes 3020-3080 MHz.** NEXRAD's published tuning range is 2700-3000 MHz, and shipborne navigation radars in ITU-R M.1460 tune 3020-3080 MHz. This paper assumes NEXRAD can tune anywhere in 3020-3080 MHz, so the two radars can be co-channel. The analysis uses 3050 MHz as the base frequency and 3020 and 3080 MHz as the band edges. Only ITM area mode is used. All inputs are public; the analysis is done in MATLAB.
 
+Section 6.4 drops this assumption and sweeps NEXRAD's frequency from 2800 to 3100 MHz, with each ship radar tuned as close to NEXRAD as its published range allows.
+
 ## 2. NEXRAD (WSR-88D) characteristics
 
 NEXRAD is a 750 kW klystron radar with a 45.5 dBi pencil beam and a receiver about 636 kHz wide. The NOAA Radar Operations Center (ROC) publishes its specifications; Radar 1 in ITU-R M.1849-3 is the same system, and the two agree within 0.5 dB where both give a value. The analysis uses the ROC values and keeps the M.1849 values as a check.
@@ -46,7 +48,7 @@ The representative ship radar is the IMO-category magnetron radar in ITU-R M.146
 
 | Parameter | IMO category (M.1460-2, Table 4), minimum-maximum | Solid-state Radar No. 3B (M.1460-2, Table 1) |
 | --- | --- | --- |
-| Frequency | 3020-3080 MHz | 2900-3100 MHz, 8 channels |
+| Frequency | 3020-3080 MHz | 2900-3100 MHz overall; 8 channels of 20 MHz from 2920 to 3080 MHz |
 | Output device | Magnetron | Solid state |
 | Peak power | 30-75 kW | 170 kW; can be reduced to 0.033 kW |
 | Pulse width | 0.05-1.2 µs | 0.1, 5, and 33 µs |
@@ -167,6 +169,8 @@ Sensitivity cases vary one input at a time: the protection levels in Section 4.3
 
 Co-channel and main beam to main beam, every pair of a NEXRAD and a ship radar needs hundreds of kilometers of separation: 382 to 1,125 km for 50% of the time, and up to 1,615 km for 0.1% of the time. NEXRAD interfering with the ship radar sets the longer distance for both ship radar types, at the ship radar's -6 dB protection level. Frequency offset inside 3020-3080 MHz shortens the distances but doesn't remove them (Section 6.2).
 
+Accounting for how the antennas couple beyond the horizon, NEXRAD's 0.5° lowest cut takes 6.8 dB off main beam to main beam and shortens the distances by 81 to 96 km; with both radars scanning, that strongest coupling lasts only moments (Section 6.3). Sweeping NEXRAD from 2800 to 3100 MHz shows that the solid-state ship radar can be co-channel with NEXRAD even below 3000 MHz (Section 6.4).
+
 ### 6.1 Co-channel separation
 
 The analysis computes the required loss for every ship radar mode (13 magnetron modes from M.1460-2 Tables 4-7 and the 3 solid-state No. 3B modes) against NEXRAD's short and long pulses, in both directions: 64 pairs. On-tune rejection follows ITU-R SM.337-6, equation 6. The NEXRAD protection levels are the pulsed levels in Section 4.1; the ship radar level is -6 dB. ITM area mode uses the base settings in Section 5 at 3050 MHz, with 30 m antennas on both radars.
@@ -213,7 +217,52 @@ Three modeling choices shape the curves at large offsets:
 
 The NEXRAD receiver uses its matched filter and the ROC front-end filter points; the emissions use the trapezoidal-pulse envelope checked against the published spectrum points (Section 5). Data: `outputs/emc/offset_ofr_rev1.csv`, `offset_separation_rev1.csv` (every pair, offset, and time percentage), and `offset_envelope_rev1.csv`; run log `outputs/rerun_logs_20261122/emc_offset.log` (code at 8109a4e).
 
-### 6.3 Sensitivity
+### 6.3 Antenna coupling beyond the horizon
+
+The antennas' real coupling beyond the horizon shortens the co-channel distances by 81 to 96 km, and NEXRAD's scan makes even that coupling brief. On a sea path longer than the radio horizon (45 km for two 30 m antennas), energy leaves each antenna along its horizon ray, 0.15° below horizontal; the scattering volume is high because the earth curves away, not because the antennas look up. NEXRAD's lowest cut is 0.5°, so even with both beams aimed along the path in azimuth, NEXRAD couples about 0.65° off its beam axis, 6.8 dB below its peak gain at 3050 MHz. The ship's fan beam is 24-30° tall, so its loss on the horizon ray is negligible.
+
+The coupling comes from the mutual antenna gain model in nicklasorte/mutual\_antenna\_gain (commit 091b6b0), which follows Rec. ITU-R M.2069-0, Annex 1. NEXRAD uses the ROC pattern specification (Gaussian main beam, 0.925° beamwidth at 2850 MHz scaled with frequency, sidelobes 29 dB down to 10° and 40 dB down beyond) and scans all 216 of its VCP modes. The ship radars use M.1851-2 rectangular-aperture fan beams with the beamwidths and sidelobes of M.1460-2 Table 4 (magnetron: 1.9° by 24°, sidelobes 23 dB down within 10° and 31 dB beyond) and Table 1 (Radar No. 3B: 2° by 26.5°, sidelobes 28 dB down), rotating. Two kinds of level are reported: the peak coupling (both beams aimed along the path in azimuth, NEXRAD at its lowest cut), which replaces main beam to main beam as the bounding case; and the coupling exceeded a given share of the time with both radars scanning independently.
+
+| Direction, ship radar, victim protection level | Main beam to main beam | Peak coupling | Coupling exceeded 0.1% of the time | Exceeded 1% | Exceeded 10% |
+| --- | --- | --- | --- | --- | --- |
+| Ship into NEXRAD, magnetron, pulsed level | 606 km | 523 km | 199 km | 115 km | 62 km |
+| Ship into NEXRAD, magnetron, -10 dB | 1,003 km | 909 km | 504 km | 407 km | 173 km |
+| Ship into NEXRAD, solid state, pulsed level | 872 km | 781 km | 427 km | 318 km | 104 km |
+| Ship into NEXRAD, solid state, -10 dB | 984 km | 891 km | 522 km | 404 km | 188 km |
+| NEXRAD into ship, magnetron, -6 dB | 1,003 km | 909 km | 504 km | 407 km | 173 km |
+| NEXRAD into ship, magnetron, +30 dB | 531 km | 450 km | 141 km | 76 km | 58 km |
+| NEXRAD into ship, solid state, -6 dB | 1,125 km | 1,029 km | 647 km | 519 km | 279 km |
+| NEXRAD into ship, solid state, +30 dB | 638 km | 553 km | 248 km | 154 km | 67 km |
+
+**Table. Co-channel separation (3050 MHz) for 50% of the time by antenna coupling level.** Largest distance over the mode pairs of each row.
+
+The peak coupling sets the bounding distances: 909 km for NEXRAD into the magnetron radar and 1,029 km into the solid-state radar at the ship's -6 dB level (1,388 km and 1,515 km for 0.1% of the time). With both radars scanning, the coupling comes within 38 dB of the main-beam peak only 0.1% of the time, because a 0.9° NEXRAD beam and a 2° ship beam rarely point at each other. At the level exceeded 1% of the time, NEXRAD into the ship radar needs 407 km (magnetron) and 519 km (solid state). These time shares come from beam pointing alone, at ITM's median loss; the analysis doesn't combine the scan and propagation statistics.
+
+The 6.8 dB depends most on NEXRAD's lowest cut. At a site that scans down to 0.0°, the loss is only 0.4 dB (0.04 dB at -0.2°), so its distances return almost to main beam to main beam. A NEXRAD beamwidth of 0.85° or 0.95° gives 8.1 dB or 6.5 dB, and 50 m antennas give 7.8 dB.
+
+Data: `outputs/emc/coupling_levels_rev1.csv`, `coupling_separation_rev1.csv`, `coupling_envelope_rev1.csv`, and `coupling_sensitivity_rev1.csv`; code `init_emc_coupling_rev1.m` with `emc_coupling_rev1.m` and `emc_takeoff_angle_rev1.m` (commit 30ffe5f); run log `outputs/rerun_logs_20261123/emc_coupling.log`. Every distance in the table lies beyond the radio horizon, where the horizon-ray takeoff angle holds.
+
+### 6.4 Separation against NEXRAD frequency
+
+Below 3000 MHz, the top of NEXRAD's published range, the magnetron ship radars drop out quickly, but the solid-state radar doesn't, because its channels reach down to 2920 MHz. With peak coupling and 50% of the time, NEXRAD at 3000 MHz still needs 217 km from a magnetron radar interfering with it and 679 km to protect it; at 2900 MHz those fall to 65 km and 333 km. The solid-state radar needs 575 km and 720 km at 3000 MHz, and at 2930-2990 MHz, where NEXRAD sits on one of the radar's channel centers, it is co-channel again: 788 km into NEXRAD and 1,037 km into the ship radar.
+
+NEXRAD's tuned frequency is swept from 2800 to 3100 MHz in 5 MHz steps. Each ship radar mode sits at the tuning in its published range closest to NEXRAD, so each point is the worst case over ship tuning: the IMO magnetron and Radar A anywhere in 3020-3080 MHz, Radars B and C in 3040-3060 MHz, and the solid-state Radar No. 3B on the nearest of its eight 20 MHz channels from 2920 to 3080 MHz (M.1460-2 Table 1). The frequency offset sets the FDR as in Section 6.2, NEXRAD's gain scales as 20 log10(f), ITM runs at NEXRAD's frequency, and the coupling is the peak level of Section 6.3.
+
+&#91;image: Two line charts of separation distance for 50% of the time against NEXRAD tuned frequency from 2800 to 3100 MHz, with peak antenna coupling and each ship radar at its closest tuning. Left, ship radar into NEXRAD at NEXRAD's pulsed level: magnetron radars need 523 km inside 3020-3080 MHz, 217 km at 3000 MHz, and about 60-70 km below 2950 MHz; the solid-state radar forms a sawtooth between about 580 and 790 km from 2930 to 3070 MHz and falls to 334 km at 2800 MHz. Right, NEXRAD into ship radar at -6 dB: 909 km (magnetron) inside the band, falling to 238 km at 2800 MHz; the solid-state sawtooth peaks at 1,029-1,037 km at each channel center and falls to 324 km. Dashed lines show the other protection level. A shaded band marks 3020-3080 MHz and a dotted line marks 3000 MHz, the top of NEXRAD's published range.\]
+
+**Figure 2. Separation for 50% of the time against NEXRAD tuned frequency, peak antenna coupling, ITM area mode.** Solid lines use each victim's base protection level (NEXRAD's M.1849-3 pulsed level; the ship radar's -6 dB); dashed lines use the other level. The shaded band is the magnetron tuning range. Source: `outputs/emc/coupling_envelope_rev1.csv` (level `peak`); figure code `plot_emc_nexrad_sweep_rev1.m`.
+
+| NEXRAD frequency | Magnetron into NEXRAD (pulsed level) | Solid state into NEXRAD (pulsed level) | NEXRAD into magnetron (-6 dB) | NEXRAD into solid state (-6 dB) |
+| --- | --- | --- | --- | --- |
+| 2800 MHz | 58 km | 334 km | 238 km | 324 km |
+| 2900 MHz | 65 km | 466 km | 333 km | 503 km |
+| 2950 MHz (Radar No. 3B channel) | 72 km | 788 km | 429 km | 1,037 km |
+| 3000 MHz | 217 km | 575 km | 679 km | 720 km |
+| 3050 MHz (co-channel) | 523 km | 781 km | 909 km | 1,029 km |
+
+The solid-state curves form a sawtooth: distance peaks at each 20 MHz channel center and falls 5-10 MHz away. Below about 2850 MHz, NEXRAD into the solid-state radar stops falling at 324 km, the ship receiver's 60 dB selectivity floor (Section 6.2); magnetron into NEXRAD levels off near 60-80 km, just beyond the radio horizon. Data: `outputs/emc/nexrad_sweep_separation_rev1.csv` and `nexrad_sweep_envelope_rev1.csv` (main beam to main beam; run log `outputs/rerun_logs_20261123/emc_nexrad_sweep.log`, code at effd331) and the coupling files of Section 6.3. The main-beam version of Figure 2 is `docs/emc/fig_nexrad_sweep_rev1.png`.
+
+### 6.5 Sensitivity
 
 For the four co-channel pairs in the Section 6.1 table, one input changed at a time:
 
@@ -231,11 +280,12 @@ For the four co-channel pairs in the Section 6.1 table, one input changed at a t
 
 The protection levels move the distances far more than any propagation or equipment input does. The +30 dB ship tolerance comes from trials that found no effect at the highest level tested (Section 4.2); if accepted as the base, it roughly halves the distance in the direction that sets it.
 
-### 6.4 Checks
+### 6.6 Checks
 
 - MATLAB and Python required losses agree to 0.01 dB for all 64 pairs (`test_emc_cochannel_rev1.m`), and a hand calculation of one pair (NEXRAD short pulse into the IMO radar's 2.5 MHz receiver, 273.87 dB) matches. MATLAB and Python off-frequency rejection agree to 0.01 dB for all 64 pairs at all 136 offsets (`test_emc_offset_rev1.m`). The emission envelopes meet NEXRAD's published points (-20 dB at 2.3 MHz, -40 dB at 7.26 MHz, -80 dB at 62 MHz) and the magnetron's -20 dB point within 3 dB.
 - ITM area-mode loss falls below free-space loss by at most 0.4 dB at 50% of time and 3.2 dB at 0.1%, near 36 km, where the path passes from line of sight to diffraction. All separation distances are beyond 380 km, so this doesn't affect them.
 - matlab\_itm matches the NTIA C++ ITM to within 4 × 10^-13 dB (its own test suite); run at commit a59880a.
+- MATLAB and Python required losses after FDR agree to 0.01 dB for all 7,808 rows of the frequency sweep (`test_emc_nexrad_sweep_rev1.m`), and the peak coupling change agrees to 0.01 dB at all 61 frequencies (`test_emc_coupling_rev1.m`). All 18 EMC tests pass (logs in `outputs/rerun_logs_20261123/`).
 
 Data: `outputs/emc/cochannel_required_loss_rev1.csv`, `cochannel_separation_rev1.csv`, `cochannel_sensitivity_rev1.csv`, and `cochannel_itm_check_rev1.csv` in matlab\_shipping\_gis; run log `outputs/rerun_logs_20261122/emc_cochannel.log` (code at 736171e). Parameters: `data/emc/radar_params_rev1.csv` and `radar_modes_rev1.csv`, each value with its source.
 
@@ -247,6 +297,7 @@ Data: `outputs/emc/cochannel_required_loss_rev1.csv`, `cochannel_separation_rev1
 - **One interferer.** The analysis treats one ship and one NEXRAD; several ships near a coastal NEXRAD would add.
 - **Navy and other radiolocation radars** in 2900-3100 MHz are outside this paper.
 - **Open:** a published reference case to reproduce before the first new run.
+- **Antenna coupling.** Section 6.3 uses smooth-earth horizon rays and independent beam pointing (the M.2069-0 random mode). A site with a lower first cut, or real coastal terrain, changes the takeoff angles, and the time shares from scanning and from propagation aren't combined.
 
 ## Sources
 
