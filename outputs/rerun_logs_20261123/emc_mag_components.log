@@ -1,0 +1,7 @@
+COMMIT 58fcf6b (HEAD -> main, origin/main, origin/HEAD) EMC MAG components: isotropic helper rate off the ship rates
+
+mag_magnetron    max 67.30 | 10% 3.10 | 1% 27.35 | 0.1% 35.85 | 0.01% 45.00 | min 3.10
+mag_solid_state  max 66.80 | 10% 5.60 | 1% 27.95 | 0.1% 38.25 | 0.01% 44.50 | min 5.60
+magnetron        max 28.00 | 10% -3.00 | 1% 14.75 | 0.1% 27.90 | 0.01% 28.00 | min -3.00
+nexrad           max 39.30 | 10% 6.10 | 1% 17.10 | 0.1% 37.40 | 0.01% 39.30 | min 6.10
+solid_state      max 27.50 | 10% -0.50 | 1% 15.95 | 0.1% 27.45 | 0.01% 27.50 | min -0.50
