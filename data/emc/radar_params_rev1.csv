@@ -28,3 +28,11 @@ analysis,delta_h_m,0,m,0,90,ITM,terrain irregularity,0 sea path; 30 and 90 coast
 analysis,polarization,0,code,0,0,ITM,polarization,horizontal (ship radars horizontal; NEXRAD dual)
 analysis,mdvar,13,code,13,13,ITM,mode of variability,broadcast without location variability (point-to-point convention in matlab_itm)
 analysis,confidence_pct,50,%,50,50,ITM,situation,
+nexrad,rise_us,0.12,us,0.05,0.15,ITU-R M.1849-3,Table 6 Radar 1,pulse rise/fall time; ROC lists 0.15 us
+magnetron,rise_us,0.041,us,0.015,0.067,ITU-R M.1460-2,Table 4,mean of 0.015 us rise and 0.067 us fall; used for every magnetron mode
+nexrad,bpf_f1_mhz,0.35,MHz,0.35,0.35,NOAA ROC NEXRAD Technical Information,Receiver,front-end filter: 0.5 dB at +/-0.35 MHz
+nexrad,bpf_f2_mhz,10,MHz,10,10,NOAA ROC NEXRAD Technical Information,Receiver,front-end filter: 3 dB at +/-10 MHz
+nexrad,bpf_f3_mhz,25,MHz,25,25,NOAA ROC NEXRAD Technical Information,Receiver,front-end filter: 30 dB at +/-25 MHz
+nexrad,bpf_f4_mhz,100,MHz,100,100,NOAA ROC NEXRAD Technical Information,Receiver,front-end filter: 60 dB at +/-100 MHz; held at 60 dB beyond
+ship,if_floor_db,60,dB,60,60,ITU-R M.1460-2,Table 5 (Radar A),spurious response rejection 60 dB; used as the floor of every ship receiver's selectivity
+ship,if_poles,2,-,2,2,assumed,-,two-pole IF response (40 dB per decade) from the published 3 dB bandwidth; no published skirt
