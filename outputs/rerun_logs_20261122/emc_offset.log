@@ -1,0 +1,62 @@
+COMMIT 8109a4e (matlab_itm a59880a)
+       <strong>direction</strong>           <strong>system</strong>           <strong>protection</strong>        <strong>df_mhz</strong>    <strong>d_km_p50</strong>    <strong>d_km_p10</strong>    <strong>d_km_p1</strong>    <strong>d_km_p0_1</strong>
+    <strong>________________</strong>    <strong>_____________</strong>    <strong>_________________</strong>    <strong>______</strong>    <strong>________</strong>    <strong>________</strong>    <strong>_______</strong>    <strong>_________</strong>
+
+    "NEXRAD to ship"    "magnetron"      "ship -6 dB"            0         1003      1154.7     1345.7      1487.3  
+    "NEXRAD to ship"    "magnetron"      "ship -6 dB"           10       845.61      993.75     1181.4        1321  
+    "NEXRAD to ship"    "magnetron"      "ship -6 dB"           20       764.26       910.1     1095.5      1233.8  
+    "NEXRAD to ship"    "magnetron"      "ship -6 dB"           30       681.78      824.85     1007.5      1144.3  
+    "NEXRAD to ship"    "magnetron"      "ship -6 dB"           60       533.36      669.79     845.88      978.96  
+    "NEXRAD to ship"    "magnetron"      "ship -6 dB"          100       429.97      559.96     729.27      858.62  
+    "NEXRAD to ship"    "magnetron"      "ship -6 dB"          150       353.87      477.86     640.14      765.64  
+    "NEXRAD to ship"    "magnetron"      "ship 30 dB"            0       530.67      666.95     842.89      975.89  
+    "NEXRAD to ship"    "magnetron"      "ship 30 dB"           10        398.4      526.03     692.69       820.6  
+    "NEXRAD to ship"    "magnetron"      "ship 30 dB"           20       334.34      456.64      616.7      740.98  
+    "NEXRAD to ship"    "magnetron"      "ship 30 dB"           30       272.95      389.87     541.51      661.03  
+    "NEXRAD to ship"    "magnetron"      "ship 30 dB"           60       165.57      281.88     413.95      520.82  
+    "NEXRAD to ship"    "magnetron"      "ship 30 dB"          100       77.429      214.46     334.32      428.42  
+    "NEXRAD to ship"    "magnetron"      "ship 30 dB"          150       72.172      155.93     281.56       365.1  
+    "NEXRAD to ship"    "solid_state"    "ship -6 dB"            0       1124.9      1278.7     1471.8      1614.6  
+    "NEXRAD to ship"    "solid_state"    "ship -6 dB"           10       806.91      954.01     1140.6      1279.6  
+    "NEXRAD to ship"    "solid_state"    "ship -6 dB"           20       663.49      805.86     987.87      1124.3  
+    "NEXRAD to ship"    "solid_state"    "ship -6 dB"           30       575.35      713.92     892.16      1026.4  
+    "NEXRAD to ship"    "solid_state"    "ship -6 dB"           60       432.89      563.09     732.62      862.11  
+    "NEXRAD to ship"    "solid_state"    "ship -6 dB"          100       380.03       506.2     671.16      798.13  
+    "NEXRAD to ship"    "solid_state"    "ship -6 dB"          150       380.03       506.2     671.15      798.13  
+    "NEXRAD to ship"    "solid_state"    "ship 30 dB"            0        638.5      779.88      960.9      1096.7  
+    "NEXRAD to ship"    "solid_state"    "ship 30 dB"           10        367.5      492.65     656.36      782.65  
+    "NEXRAD to ship"    "solid_state"    "ship 30 dB"           20       259.78      375.66     525.16      643.45  
+    "NEXRAD to ship"    "solid_state"    "ship 30 dB"           30       197.08      310.71     448.71      559.81  
+    "NEXRAD to ship"    "solid_state"    "ship 30 dB"           60       77.711      216.37     336.44      430.94  
+    "NEXRAD to ship"    "solid_state"    "ship 30 dB"          100       74.022      179.39     299.18      386.33  
+    "NEXRAD to ship"    "solid_state"    "ship 30 dB"          150       74.022      179.39     299.18      386.33  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD constant"       0         1003      1154.7     1345.8      1487.4  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD constant"      10       660.63      802.89     984.78      1121.1  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD constant"      20       511.18      646.38      821.2       953.6  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD constant"      30       428.34      558.22      727.4      856.68  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD constant"      60       301.81      421.21     577.11      699.06  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD constant"     100       219.98      333.66     476.05      590.02  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD constant"     150       155.61      273.64     403.99      509.51  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"         0       606.46      746.47     926.14      1061.2  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"        10       399.06      526.74     693.46       821.4  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"        20       276.66      393.89      546.1      665.97  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"        30       211.86      325.37     466.22       579.2  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"        60       91.121      228.32     349.99      446.96  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"       100       72.207      156.46     281.89      365.49  
+    "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"       150       66.979      74.357      236.4      311.81  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD constant"       0       984.49      1135.8     1326.5      1467.9  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD constant"      10       767.18      913.11     1098.6        1237  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD constant"      20       684.87      828.05     1010.8      1147.7  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD constant"      30       639.43      780.84     961.91      1097.8  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD constant"      60        564.1      702.12     879.81      1013.8  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     100       510.43      645.58     820.37      952.74  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     150       469.07      601.72     773.88      904.81  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"         0       872.28      1021.1     1209.4      1349.3  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"        10        656.7      798.81     980.56      1116.8  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"        20       579.84      718.62     897.08      1031.5  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"        30       536.65      673.26     849.52      982.71  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"        60       465.42      597.83     769.75      900.54  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"       100       415.24      544.15     712.27      840.97  
+    "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"       150       376.99      502.92     667.57      794.38  
+
+init_emc_offset_rev1: done
