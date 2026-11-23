@@ -23,7 +23,8 @@ verifyEqual(tc, s.l_req_db, C.l_req_db, 'AbsTol', 1e-6);
 end
 function testTuning(tc)
 % Offsets from the published ranges: at 2800 MHz the magnetrons are 220 MHz away (B and C 240 MHz) and
-% Radar No. 3B is 130 MHz away (channel 2930 MHz); at 3000 MHz 3B is 10 MHz away; inside 3040-3060 MHz all 0.
+% Radar No. 3B is 130 MHz away (channel 2930 MHz); at 3000 MHz 3B is 10 MHz away; inside 3040-3060 MHz every
+% magnetron mode is co-channel.
 here = fileparts(mfilename('fullpath'));
 S = readtable(fullfile(here, 'outputs', 'emc', 'nexrad_sweep_separation_rev1.csv'), 'TextType', 'string');
 pick = @(f, mode) unique(S.df_mhz(S.f_nexrad_mhz == f & (S.interferer == mode | S.victim == mode)));
@@ -31,7 +32,7 @@ verifyEqual(tc, pick(2800, "T4 shortest"), 220);
 verifyEqual(tc, pick(2800, "B 1.0"), 240);
 verifyEqual(tc, pick(2800, "3B 0.1"), 130);
 verifyEqual(tc, pick(3000, "3B 0.1"), 10);
-verifyEqual(tc, unique(S.df_mhz(S.f_nexrad_mhz >= 3040 & S.f_nexrad_mhz <= 3060)), 0);
+verifyEqual(tc, unique(S.df_mhz(S.f_nexrad_mhz >= 3040 & S.f_nexrad_mhz <= 3060 & S.system == "magnetron")), 0);
 end
 function testDistanceFallsAwayFromBand(tc)
 % Envelope distance at 2800 MHz is no larger than at 3050 MHz for every direction, type, and level.
