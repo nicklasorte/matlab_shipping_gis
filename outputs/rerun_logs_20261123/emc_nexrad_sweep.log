@@ -1,0 +1,123 @@
+COMMIT effd331 (matlab_itm a59880a)
+    f_nexrad_mhz       direction           system           protection        d_km_p50    d_km_p10    d_km_p1    d_km_p0_1    df_min_mhz
+    ____________    ________________    _____________    _________________    ________    ________    _______    _________    __________
+
+        2800        "NEXRAD to ship"    "magnetron"      "ship -6 dB"          291.27      409.79     564.21      685.35         220    
+        2800        "NEXRAD to ship"    "magnetron"      "ship 30 dB"          67.724      75.345     240.99      317.03         220    
+        2800        "NEXRAD to ship"    "solid_state"    "ship -6 dB"          384.02      510.55     675.93      803.15         130    
+        2800        "NEXRAD to ship"    "solid_state"    "ship 30 dB"          74.705      182.45     302.06      389.73         130    
+        2800        "ship to NEXRAD"    "magnetron"      "NEXRAD constant"     87.414      226.02     347.36      443.81         220    
+        2800        "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"       62.255      69.555     197.98      271.53         220    
+        2800        "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     487.92      621.78     795.24       926.9         130    
+        2800        "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"       394.36      521.71     688.05       815.8         130    
+        2900        "NEXRAD to ship"    "magnetron"      "ship -6 dB"          397.41      524.98     691.58      819.47         120    
+        2900        "NEXRAD to ship"    "magnetron"      "ship 30 dB"           75.48      192.35     311.25      400.81         120    
+        2900        "NEXRAD to ship"    "solid_state"    "ship -6 dB"          578.09      716.81     895.22      1029.6          30    
+        2900        "NEXRAD to ship"    "solid_state"    "ship 30 dB"          199.01      312.67     451.03      562.39          30    
+        2900        "ship to NEXRAD"    "magnetron"      "NEXRAD constant"     193.76      307.58     444.93      555.61         120    
+        2900        "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"       70.186      77.953     262.26      341.95         120    
+        2900        "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     642.25      783.81     965.02        1101          30    
+        2900        "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"       539.33       676.1     852.55      985.84          30    
+        2950        "NEXRAD to ship"    "magnetron"      "ship -6 dB"          503.13      637.88     812.25      944.39          70    
+        2950        "NEXRAD to ship"    "magnetron"      "ship 30 dB"          140.09      261.87     389.76      493.22          70    
+        2950        "NEXRAD to ship"    "solid_state"    "ship -6 dB"            1127      1280.9     1474.1      1616.9           0    
+        2950        "NEXRAD to ship"    "solid_state"    "ship 30 dB"          640.36      781.84     962.96      1098.9           0    
+        2950        "ship to NEXRAD"    "magnetron"      "NEXRAD constant"     277.61      394.93      547.3      667.25          70    
+        2950        "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"        77.13      209.68     329.12      422.21          70    
+        2950        "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     986.57      1137.9     1328.7      1470.1           0    
+        2950        "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"        874.3      1023.2     1211.5      1351.6           0    
+        3000        "NEXRAD to ship"    "magnetron"      "ship -6 dB"          765.23      911.11     1096.5      1234.9          20    
+        3000        "NEXRAD to ship"    "magnetron"      "ship 30 dB"          335.07      457.44     617.59      741.92          20    
+        3000        "NEXRAD to ship"    "solid_state"    "ship -6 dB"          807.89      955.03     1141.7      1280.7          10    
+        3000        "NEXRAD to ship"    "solid_state"    "ship 30 dB"          368.26      493.48     657.27      783.61          10    
+        3000        "ship to NEXRAD"    "magnetron"      "NEXRAD constant"     512.04       647.3     822.18      954.61          20    
+        3000        "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"       277.34      394.63     546.95      666.88          20    
+        3000        "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     768.15      914.12     1099.6        1238          10    
+        3000        "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"       657.64      799.79     981.58      1117.9          10    
+        3020        "NEXRAD to ship"    "magnetron"      "ship -6 dB"          1003.6      1155.3     1346.4        1488           0    
+        3020        "NEXRAD to ship"    "magnetron"      "ship 30 dB"          531.19      667.51     843.48       976.5           0    
+        3020        "NEXRAD to ship"    "solid_state"    "ship -6 dB"           807.5      954.62     1141.3      1280.3          10    
+        3020        "NEXRAD to ship"    "solid_state"    "ship 30 dB"          367.96      493.14      656.9      783.22          10    
+        3020        "ship to NEXRAD"    "magnetron"      "NEXRAD constant"     1003.7      1155.3     1346.4        1488           0    
+        3020        "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"          607      747.04     926.75      1061.8           0    
+        3020        "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     767.76      913.72     1099.2      1237.6          10    
+        3020        "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"       657.26       799.4     981.17      1117.4          10    
+        3050        "NEXRAD to ship"    "magnetron"      "ship -6 dB"            1003      1154.7     1345.7      1487.3           0    
+        3050        "NEXRAD to ship"    "magnetron"      "ship 30 dB"          530.67      666.95     842.89      975.89           0    
+        3050        "NEXRAD to ship"    "solid_state"    "ship -6 dB"          1124.9      1278.7     1471.8      1614.6           0    
+        3050        "NEXRAD to ship"    "solid_state"    "ship 30 dB"           638.5      779.88      960.9      1096.7           0    
+        3050        "ship to NEXRAD"    "magnetron"      "NEXRAD constant"       1003      1154.7     1345.8      1487.4           0    
+        3050        "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"       606.46      746.47     926.14      1061.2           0    
+        3050        "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     984.49      1135.8     1326.5      1467.9           0    
+        3050        "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"       872.28      1021.1     1209.4      1349.3           0    
+        3100        "NEXRAD to ship"    "magnetron"      "ship -6 dB"           763.3      909.11     1094.5      1232.7          20    
+        3100        "NEXRAD to ship"    "magnetron"      "ship 30 dB"          333.62      455.85     615.82      740.05          20    
+        3100        "NEXRAD to ship"    "solid_state"    "ship -6 dB"          574.47      712.99     891.17      1025.4          30    
+        3100        "NEXRAD to ship"    "solid_state"    "ship 30 dB"          196.46      310.09     447.96      558.98          30    
+        3100        "ship to NEXRAD"    "magnetron"      "NEXRAD constant"     510.33      645.47     820.24       952.6          20    
+        3100        "ship to NEXRAD"    "magnetron"      "NEXRAD pulsed"          276      393.16     545.27      665.07          20    
+        3100        "ship to NEXRAD"    "solid_state"    "NEXRAD constant"     638.52      779.89      960.9      1096.7          30    
+        3100        "ship to NEXRAD"    "solid_state"    "NEXRAD pulsed"       535.79      672.34     848.55       981.7          30    
+
+init_emc_nexrad_sweep_rev1: done
+Running test_emc_nexrad_sweep_rev1
+..
+================================================================================
+Verification failed in test_emc_nexrad_sweep_rev1/testTuning.
+    ---------------------
+    Framework Diagnostic:
+    ---------------------
+    verifyEqual failed.
+    --> Sizes do not match.
+        
+        Actual size:
+             3     1
+        Expected size:
+             1     1
+    
+    Actual Value:
+         0
+         5
+        10
+    Expected Value:
+         0
+    ------------------
+    Stack Information:
+    ------------------
+    In /Users/nicklasorte/github-runs/matlab_shipping_gis/test_emc_nexrad_sweep_rev1.m (testTuning) at 34
+================================================================================
+..
+Done test_emc_nexrad_sweep_rev1
+__________
+
+Running test_emc_offset_rev1
+....
+Done test_emc_offset_rev1
+__________
+
+Running test_emc_cochannel_rev1
+....
+Done test_emc_cochannel_rev1
+__________
+
+Failure Summary:
+
+     Name                                   Failed  Incomplete  Reason(s)
+    ====================================================================================
+     test_emc_nexrad_sweep_rev1/testTuning    X                 Failed by verification.
+                                Name                                Passed    Failed    Incomplete    Duration      Details   
+    ____________________________________________________________    ______    ______    __________    ________    ____________
+
+    {'test_emc_nexrad_sweep_rev1/testMatchesPython'            }    true      false       false        0.43591    {1×1 struct}
+    {'test_emc_nexrad_sweep_rev1/testCoChannelAt3050'          }    true      false       false        0.13572    {1×1 struct}
+    {'test_emc_nexrad_sweep_rev1/testTuning'                   }    false     true        false        0.43718    {1×1 struct}
+    {'test_emc_nexrad_sweep_rev1/testDistanceFallsAwayFromBand'}    true      false       false       0.070689    {1×1 struct}
+    {'test_emc_offset_rev1/testEmissionMatchesPublishedPoints' }    true      false       false       0.015339    {1×1 struct}
+    {'test_emc_offset_rev1/testSelectivity'                    }    true      false       false       0.026625    {1×1 struct}
+    {'test_emc_offset_rev1/testOfrZeroOnTune'                  }    true      false       false       0.035261    {1×1 struct}
+    {'test_emc_offset_rev1/testMatchesPython'                  }    true      false       false        0.11513    {1×1 struct}
+    {'test_emc_cochannel_rev1/testOtr'                         }    true      false       false       0.012102    {1×1 struct}
+    {'test_emc_cochannel_rev1/testHandCase'                    }    true      false       false        0.11315    {1×1 struct}
+    {'test_emc_cochannel_rev1/testMatchesPython'               }    true      false       false        0.12649    {1×1 struct}
+    {'test_emc_cochannel_rev1/testSeparation'                  }    true      false       false       0.012093    {1×1 struct}
+

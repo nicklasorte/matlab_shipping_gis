@@ -1,0 +1,19 @@
+COMMIT 8d6a69f (HEAD -> main, origin/main, origin/HEAD) EMC sweep test: only magnetron modes are always co-channel at 3040-3060 MHz
+                                <strong>Name</strong>                                <strong>Passed</strong>    <strong>Failed</strong>    <strong>Incomplete</strong>    <strong>Duration</strong>       <strong>Details</strong>   
+    <strong>____________________________________________________________</strong>    <strong>______</strong>    <strong>______</strong>    <strong>__________</strong>    <strong>_________</strong>    <strong>____________</strong>
+
+    {'test_emc_nexrad_sweep_rev1/testMatchesPython'            }    true      false       false         0.34281    {1×1 struct}
+    {'test_emc_nexrad_sweep_rev1/testCoChannelAt3050'          }    true      false       false         0.13433    {1×1 struct}
+    {'test_emc_nexrad_sweep_rev1/testTuning'                   }    true      false       false        0.098664    {1×1 struct}
+    {'test_emc_nexrad_sweep_rev1/testDistanceFallsAwayFromBand'}    true      false       false        0.063645    {1×1 struct}
+    {'test_emc_offset_rev1/testEmissionMatchesPublishedPoints' }    true      false       false        0.014834    {1×1 struct}
+    {'test_emc_offset_rev1/testSelectivity'                    }    true      false       false        0.055383    {1×1 struct}
+    {'test_emc_offset_rev1/testOfrZeroOnTune'                  }    true      false       false        0.064077    {1×1 struct}
+    {'test_emc_offset_rev1/testMatchesPython'                  }    true      false       false          0.1172    {1×1 struct}
+    {'test_emc_cochannel_rev1/testOtr'                         }    true      false       false        0.014502    {1×1 struct}
+    {'test_emc_cochannel_rev1/testHandCase'                    }    true      false       false         0.12991    {1×1 struct}
+    {'test_emc_cochannel_rev1/testMatchesPython'               }    true      false       false         0.12699    {1×1 struct}
+    {'test_emc_cochannel_rev1/testSeparation'                  }    true      false       false       0.0092019    {1×1 struct}
+    {'test_emc_pulsed_in_rev1/testMatchesPython'               }    true      false       false        0.051546    {1×1 struct}
+    {'test_emc_pulsed_in_rev1/testDutyCycleLimit'              }    true      false       false        0.010334    {1×1 struct}
+
