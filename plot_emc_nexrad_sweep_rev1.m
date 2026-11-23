@@ -28,7 +28,7 @@ gray = [0.541 0.553 0.569]; dark = [31 42 68] / 255;
 y_top = 1400;
 fig = figure(Visible=opts.visible, Units="inches", Position=[1 1 8.5 4.4], Color="w");
 theme(fig, "light");   % R2025b follows the desktop theme; figures for the paper are always light
-pos = [0.08 0.13 0.286 0.77; 0.543 0.13 0.286 0.77];   % room at the right of each panel for end labels
+pos = [0.075 0.13 0.27 0.77; 0.57 0.13 0.27 0.77];   % room at the right of each panel for end labels
 for p = 1:2
     ax = axes(fig, Position=pos(p, :));
     hold(ax, "on");
