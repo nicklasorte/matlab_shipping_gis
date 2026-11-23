@@ -27,7 +27,7 @@ panels = {"ship to NEXRAD", "Ship radar into NEXRAD", ["NEXRAD pulsed", "NEXRAD 
           "NEXRAD to ship", "NEXRAD into ship radar", ["ship -6 dB", "ship 30 dB"], ["-6 dB", "+30 dB"]};
 fig = figure(Visible=opts.visible, Units="inches", Position=[1 1 8.5 4.4], Color="w");
 theme(fig, "light");   % R2025b follows the desktop theme; figures for the paper are always light
-pos = [0.08 0.13 0.286 0.77; 0.543 0.13 0.286 0.77];   % room at the right of each panel for end labels
+pos = [0.075 0.13 0.27 0.77; 0.57 0.13 0.27 0.77];   % room at the right of each panel for end labels
 for p = 1:2
     ax = axes(fig, Position=pos(p, :));
     hold(ax, "on");
@@ -57,7 +57,6 @@ exportgraphics(fig, out + ".pdf", ContentType="vector");
 writelines("Two line charts of separation distance against frequency offset from 0 to " + ...
     "150 MHz, " + cpl + ", ship radar into NEXRAD (left) and NEXRAD into ship radar (right), for " + ...
     "magnetron and solid-state ship radars at both protection levels of each victim. A dotted line marks " + ...
-    "60 MHz, the widest offset inside 3020-3080 MHz. Values: outputs/emc/" + ...
-    string(ycol) + " column of the envelope file.", out + ".alt.txt");
+    "60 MHz, the widest offset inside 3020-3080 MHz. Values: column " + ycol + " of the envelope CSV in outputs/emc.", out + ".alt.txt");
 close(fig);
 end
