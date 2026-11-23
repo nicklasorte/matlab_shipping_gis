@@ -9,7 +9,7 @@ function C = emc_mag_components_rev1(P, modes, f_mhz)
 %     "mag_solid_state"  mutual antenna gain NEXRAD-solid state
 %   Gains are absolute (dBi): the ship curves add the largest mode gain of that type in radar_modes_rev1.csv
 %   (28 dBi magnetron, 27.5 dBi solid state). A single antenna's distribution is the mutual antenna gain
-%   against an isotropic 0 dBi antenna (offaxis_table of 0 dB), so it comes from the same mag_pair_cdf_rev1
+%   against an isotropic 0 dBi antenna (offaxis_table of 0 dB; its rotation rate, 7.3 rpm, is set off any ratio with the ship rates and does not change its constant gain), so it comes from the same mag_pair_cdf_rev1
 %   code as the pair. Built-ins considered: none; this wraps nicklasorte/mutual_antenna_gain.
 arguments
     P (1,1) struct
@@ -25,7 +25,7 @@ el_grid = (-0.5:0.05:0.5).';
 [scans, names] = nexrad_mode_scans_rev1("all");
 Tn = gain_dist_table_rev1(A.nexrad, scans, struct("name", "WSR-88D", "mode_names", names, "el_grid_deg", el_grid));
 iso = struct("type", "offaxis_table", "g_max_dBi", 0, "offaxis_deg", [0; 180], "gain_dB", [0; 0], "az_bw_deg", 1);
-Ti = gain_dist_table_rev1(iso, struct("type", "mech_rotating", "rate_rpm", 12, "tilt_deg", 0), ...
+Ti = gain_dist_table_rev1(iso, struct("type", "mech_rotating", "rate_rpm", 7.3, "tilt_deg", 0), ...
     struct("name", "isotropic", "el_grid_deg", el_grid));
 co = struct("return_curve", true, "pct", 99);
 parts = {};
