@@ -17,21 +17,24 @@ dark = [31 42 68] / 255; gray = [0.541 0.553 0.569];
 [cm, ~] = emc_fig_color_rev1("magnetron"); [cs, ~] = emc_fig_color_rev1("solid_state");
 fig = figure(Visible=opts.visible, Units="inches", Position=[1 1 8.5 4.4], Color="w");
 theme(fig, "light");   % R2025b follows the desktop theme; figures for the paper are always light
-pos = [0.075 0.13 0.30 0.77; 0.57 0.13 0.30 0.77];
-spec = {{"nexrad", dark, "NEXRAD"; "magnetron", cm, "Magnetron fan beam"; "solid_state", cs, "Solid-state fan beam"}, ...
-        {"mag_magnetron", cm, "NEXRAD and magnetron"; "mag_solid_state", cs, "NEXRAD and solid state"}};
+pos = [0.11 0.13 0.36 0.77; 0.60 0.13 0.36 0.77];
+% {curve, color, label, label x (dBi), label y (%), alignment}: placed by hand clear of the curves
+spec = {{"nexrad", dark, "NEXRAD", 41, 0.004, "left"; "magnetron", cm, "Magnetron fan beam", -18, 30, "left"; ...
+         "solid_state", cs, "Solid-state fan beam", -18, 18, "left"}, ...
+        {"mag_magnetron", cm, "NEXRAD and magnetron", 33, 0.06, "right"; ...
+         "mag_solid_state", cs, "NEXRAD and solid state", 41, 0.15, "left"}};
 ttl = ["Each antenna's gain toward the other radar", "Mutual antenna gain of the pair"];
 for p = 1:2
     ax = axes(fig, Position=pos(p, :));
     hold(ax, "on");
     s = spec{p};
-    lab = strings(0, 1); y_end = zeros(0, 1); col = zeros(0, 3);
     for k = 1:size(s, 1)
         c = C(C.curve == s{k, 1} & C.exceed_pct > 0, :);
         if isempty(c), error("emc:noCurve", "No rows for %s.", s{k, 1}); end
-        stairs(ax, c.gain_dbi, c.exceed_pct, Color=s{k, 2}, LineWidth=2);
-        lab(end+1) = s{k, 3}; y_end(end+1) = log10(c.exceed_pct(end)); col(end+1, :) = s{k, 2}; %#ok<AGROW> few curves
-        x_end(k) = c.gain_dbi(end); %#ok<AGROW> few curves
+        % the gain never falls below its floor: 100% of the time is above the bin just under it
+        stairs(ax, [c.gain_dbi(1) - 0.05; c.gain_dbi], [100; c.exceed_pct], Color=s{k, 2}, LineWidth=2);
+        text(ax, s{k, 4}, s{k, 5}, s{k, 3}, Color=s{k, 2}, FontSize=8.5, FontWeight="bold", ...
+            FontName="Times New Roman", VerticalAlignment="middle", HorizontalAlignment=s{k, 6});
     end
     set(ax, YScale="log");
     if p == 2
@@ -44,15 +47,10 @@ for p = 1:2
         text(ax, mb - 1, 30, ["Main beam to", "main beam"], FontSize=8, Color=dark, HorizontalAlignment="right", ...
             FontName="Times New Roman");
     end
-    for k = 1:numel(lab)
-        text(ax, x_end(k) + 1, 10^y_end(k), lab(k), Color=col(k, :), FontSize=8.5, FontWeight="bold", ...
-            FontName="Times New Roman", VerticalAlignment="middle", Clipping="off");
-    end
     emc_fig_axes_rev1(ax, ttl(p), "Gain toward the other radar (dBi)", [-20 80], [1e-3 100]);
     ax.YTick = [1e-3 1e-2 0.1 1 10 100];
     ax.YTickLabel = ["0.001%", "0.01%", "0.1%", "1%", "10%", "100%"];
     if p == 1, ylabel(ax, "Share of time the gain is exceeded"); end
-    clear x_end
 end
 out = opts.out_base;
 exportgraphics(fig, out + ".png", Resolution=300);
