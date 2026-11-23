@@ -13,18 +13,19 @@ E = readtable(fullfile(here, "outputs", "emc", "nexrad_sweep_envelope_rev1.csv")
 panels = {"ship to NEXRAD", "Ship radar into NEXRAD", ["NEXRAD pulsed", "NEXRAD constant"], ["pulsed level", "-10 dB"]
           "NEXRAD to ship", "NEXRAD into ship radar", ["ship -6 dB", "ship 30 dB"], ["-6 dB", "+30 dB"]};
 gray = [0.541 0.553 0.569]; dark = [31 42 68] / 255;
-y_top = 1200;
+y_top = 1400;
 fig = figure(Visible=opts.visible, Units="inches", Position=[1 1 8.5 4.4], Color="w");
+theme(fig, "light");   % R2025b follows the desktop theme; figures for the paper are always light
 pos = [0.08 0.13 0.286 0.77; 0.543 0.13 0.286 0.77];   % room at the right of each panel for end labels
 for p = 1:2
     ax = axes(fig, Position=pos(p, :));
     hold(ax, "on");
     patch(ax, [3020 3080 3080 3020], [0 0 y_top y_top], [0.93 0.93 0.94], EdgeColor="none");
     xline(ax, 3000, ":", Color=gray, LineWidth=1);
-    text(ax, 3017, y_top - 20, ["Magnetron", "range"], FontSize=8, Color=dark, VerticalAlignment="top", ...
-        HorizontalAlignment="right", FontName="Times New Roman");
-    text(ax, 2997, 60, ["NEXRAD published", "range ends 3000 MHz"], FontSize=8, Color=dark, ...
-        HorizontalAlignment="right", VerticalAlignment="bottom", FontName="Times New Roman");
+    text(ax, 3050, y_top - 15, ["Magnetron", "range"], FontSize=8, Color=dark, VerticalAlignment="top", ...
+        HorizontalAlignment="center", FontName="Times New Roman");
+    text(ax, 2995, y_top - 15, ["NEXRAD published", "range ends 3000 MHz"], FontSize=8, Color=dark, ...
+        HorizontalAlignment="right", VerticalAlignment="top", FontName="Times New Roman");
     lab = strings(0, 1); y_end = zeros(0, 1); col = zeros(0, 3);
     for sys = ["magnetron", "solid_state"]
         [c, name] = emc_fig_color_rev1(sys);
@@ -38,7 +39,7 @@ for p = 1:2
             lab(end+1) = name + ", " + panels{p, 4}(q); y_end(end+1) = g.d_km_p50(end); col(end+1, :) = c; %#ok<AGROW> four lines
         end
     end
-    emc_fig_end_labels_rev1(ax, 3105, y_end, lab, col, 45);
+    emc_fig_end_labels_rev1(ax, 3105, y_end, lab, col, 60);
     emc_fig_axes_rev1(ax, panels{p, 2}, "NEXRAD frequency (MHz)", [2800 3100], [0 y_top]);
     ax.XTick = 2800:100:3100;
     if p == 1, ylabel(ax, "Separation for 50% of time (km)"); end

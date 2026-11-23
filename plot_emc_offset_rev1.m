@@ -12,6 +12,7 @@ E = readtable(fullfile(here, "outputs", "emc", "offset_envelope_rev1.csv"), "Tex
 panels = {"ship to NEXRAD", "Ship radar into NEXRAD", ["NEXRAD pulsed", "NEXRAD constant"], ["pulsed level", "-10 dB"]
           "NEXRAD to ship", "NEXRAD into ship radar", ["ship -6 dB", "ship 30 dB"], ["-6 dB", "+30 dB"]};
 fig = figure(Visible=opts.visible, Units="inches", Position=[1 1 8.5 4.4], Color="w");
+theme(fig, "light");   % R2025b follows the desktop theme; figures for the paper are always light
 pos = [0.08 0.13 0.286 0.77; 0.543 0.13 0.286 0.77];   % room at the right of each panel for end labels
 for p = 1:2
     ax = axes(fig, Position=pos(p, :));
@@ -32,7 +33,7 @@ for p = 1:2
     emc_fig_end_labels_rev1(ax, 153, y_end, lab, col, 45);
     xline(ax, 60, ":", Color=[0.541 0.553 0.569], LineWidth=1);
     text(ax, 61, 1150, ["60 MHz: widest offset", "inside 3020-3080 MHz"], FontSize=8, ...
-        Color=[0.122 0.165 0.267], VerticalAlignment="top");
+        Color=[0.122 0.165 0.267], VerticalAlignment="top", FontName="Times New Roman");
     emc_fig_axes_rev1(ax, panels{p, 2}, "Frequency offset (MHz)", [0 150], [0 1200]);
     if p == 1, ylabel(ax, "Separation for 50% of time (km)"); end
 end
